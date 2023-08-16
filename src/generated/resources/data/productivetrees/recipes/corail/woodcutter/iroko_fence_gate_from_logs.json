@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 1,
+        "ingredient": [
+          {
+            "item": "productivetrees:iroko_log"
+          },
+          {
+            "item": "productivetrees:iroko_wood"
+          },
+          {
+            "item": "productivetrees:iroko_stripped_log"
+          },
+          {
+            "item": "productivetrees:iroko_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:iroko_fence_gate"
+      }
+    }
+  ]
+}

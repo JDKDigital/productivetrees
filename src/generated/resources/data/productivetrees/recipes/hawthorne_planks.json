@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:hawthorne_log"
+      },
+      {
+        "item": "productivetrees:hawthorne_wood"
+      },
+      {
+        "item": "productivetrees:hawthorne_stripped_log"
+      },
+      {
+        "item": "productivetrees:hawthorne_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:hawthorne_planks"
+  }
+}

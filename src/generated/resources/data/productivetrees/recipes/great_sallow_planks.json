@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:great_sallow_log"
+      },
+      {
+        "item": "productivetrees:great_sallow_wood"
+      },
+      {
+        "item": "productivetrees:great_sallow_stripped_log"
+      },
+      {
+        "item": "productivetrees:great_sallow_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:great_sallow_planks"
+  }
+}

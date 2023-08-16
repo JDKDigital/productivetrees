@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:desert_acacia_log"
+      },
+      {
+        "item": "productivetrees:desert_acacia_wood"
+      },
+      {
+        "item": "productivetrees:desert_acacia_stripped_log"
+      },
+      {
+        "item": "productivetrees:desert_acacia_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:desert_acacia_planks"
+  }
+}

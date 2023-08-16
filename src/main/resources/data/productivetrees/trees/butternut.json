@@ -1,0 +1,14 @@
+{
+  "feature": "productivetrees:butternut",
+  "style": "oak",
+  "leafColor": "#1c4316",
+  "logColor": "#cfc3b7",
+  "plankColor": "#ecaa7a",
+  "fruit": {
+    "item": "productivetrees:butternut",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#ab9d46",
+    "ripeColor": "#815a38"
+  }
+}

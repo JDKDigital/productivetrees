@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 1,
+        "ingredient": [
+          {
+            "item": "productivetrees:zebrawood_log"
+          },
+          {
+            "item": "productivetrees:zebrawood_wood"
+          },
+          {
+            "item": "productivetrees:zebrawood_stripped_log"
+          },
+          {
+            "item": "productivetrees:zebrawood_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:zebrawood_fence_gate"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:whitebeam_pressure_plate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_whitebeam_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "productivetrees:whitebeam_planks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_whitebeam_planks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:whitebeam_pressure_plate"
+    ]
+  },
+  "sends_telemetry_event": false
+}

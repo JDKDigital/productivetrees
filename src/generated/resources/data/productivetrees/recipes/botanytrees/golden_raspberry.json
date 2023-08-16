@@ -1,0 +1,58 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "botanytrees"
+        }
+      ],
+      "recipe": {
+        "type": "botanypots:crop",
+        "categories": [
+          "dirt"
+        ],
+        "display": {
+          "block": "productivetrees:golden_raspberry_sapling",
+          "properties": {
+            "stage": 0
+          }
+        },
+        "drops": [
+          {
+            "chance": 0.1,
+            "maxRolls": 2,
+            "minRolls": 1,
+            "output": {
+              "count": 1,
+              "item": "minecraft:stick"
+            }
+          },
+          {
+            "chance": 0.15,
+            "maxRolls": 1,
+            "minRolls": 1,
+            "output": {
+              "count": 1,
+              "item": "productivetrees:golden_raspberry_sapling"
+            }
+          },
+          {
+            "chance": 0.1,
+            "maxRolls": 1,
+            "minRolls": 1,
+            "output": {
+              "count": 1,
+              "item": "productivetrees:golden_raspberry"
+            }
+          }
+        ],
+        "growthTicks": 2400,
+        "seed": {
+          "item": "productivetrees:golden_raspberry_sapling"
+        }
+      }
+    }
+  ]
+}

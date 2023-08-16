@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:padauk_log"
+      },
+      {
+        "item": "productivetrees:padauk_wood"
+      },
+      {
+        "item": "productivetrees:padauk_stripped_log"
+      },
+      {
+        "item": "productivetrees:padauk_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:padauk_planks"
+  }
+}

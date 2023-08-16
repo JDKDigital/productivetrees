@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:brazilwood_log"
+      },
+      {
+        "item": "productivetrees:brazilwood_wood"
+      },
+      {
+        "item": "productivetrees:brazilwood_stripped_log"
+      },
+      {
+        "item": "productivetrees:brazilwood_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:brazilwood_planks"
+  }
+}

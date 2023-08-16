@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:ginkgo_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:hazel_leaves"
+  },
+  "result": {
+    "item": "productivetrees:chilli_pepper_sapling"
+  }
+}

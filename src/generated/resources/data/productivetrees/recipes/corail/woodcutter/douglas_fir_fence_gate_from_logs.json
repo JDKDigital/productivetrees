@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 1,
+        "ingredient": [
+          {
+            "item": "productivetrees:douglas_fir_log"
+          },
+          {
+            "item": "productivetrees:douglas_fir_wood"
+          },
+          {
+            "item": "productivetrees:douglas_fir_stripped_log"
+          },
+          {
+            "item": "productivetrees:douglas_fir_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:douglas_fir_fence_gate"
+      }
+    }
+  ]
+}

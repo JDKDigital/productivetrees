@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 8,
+        "ingredient": [
+          {
+            "item": "productivetrees:sweet_gum_log"
+          },
+          {
+            "item": "productivetrees:sweet_gum_wood"
+          },
+          {
+            "item": "productivetrees:sweet_gum_stripped_log"
+          },
+          {
+            "item": "productivetrees:sweet_gum_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:sweet_gum_slab"
+      }
+    }
+  ]
+}

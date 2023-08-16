@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:purpleheart_log"
+          },
+          {
+            "item": "productivetrees:purpleheart_wood"
+          },
+          {
+            "item": "productivetrees:purpleheart_stripped_log"
+          },
+          {
+            "item": "productivetrees:purpleheart_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:purpleheart_pressure_plate"
+      }
+    }
+  ]
+}

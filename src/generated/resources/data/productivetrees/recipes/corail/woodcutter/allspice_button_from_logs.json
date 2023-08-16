@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:allspice_log"
+          },
+          {
+            "item": "productivetrees:allspice_wood"
+          },
+          {
+            "item": "productivetrees:allspice_stripped_log"
+          },
+          {
+            "item": "productivetrees:allspice_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:allspice_button"
+      }
+    }
+  ]
+}

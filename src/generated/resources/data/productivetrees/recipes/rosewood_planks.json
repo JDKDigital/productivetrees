@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:rosewood_log"
+      },
+      {
+        "item": "productivetrees:rosewood_wood"
+      },
+      {
+        "item": "productivetrees:rosewood_stripped_log"
+      },
+      {
+        "item": "productivetrees:rosewood_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:rosewood_planks"
+  }
+}

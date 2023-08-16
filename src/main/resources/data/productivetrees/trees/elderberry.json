@@ -1,0 +1,13 @@
+{
+  "feature": "productivetrees:elderberry",
+  "style": "bush",
+  "registerWood": false,
+  "leafColor": "#597537",
+  "fruit": {
+    "item": "productivetrees:elderberry",
+    "count": 5,
+    "growthSpeed": 0.5,
+    "unripeColor": "#f8f8f8",
+    "ripeColor": "#070900"
+  }
+}

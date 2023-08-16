@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/tinted_flower_pot_cross",
+  "textures": {
+    "plant": "productivetrees:block/sapling/birch_top",
+    "stem": "productivetrees:block/sapling/birch_stem"
+  }
+}

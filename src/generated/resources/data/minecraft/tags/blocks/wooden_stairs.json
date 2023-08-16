@@ -1,0 +1,472 @@
+{
+  "values": [
+    {
+      "id": "productivetrees:alder_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:allspice_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:almond_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:apricot_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ash_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:aspen_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:avocado_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsa_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsam_fir_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:banana_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beech_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blackthorn_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_cherry_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_locust_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_mahoe_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:boxwood_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazilwood_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazil_nut_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:buddhas_hand_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bull_pine_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:butternut_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:candlenut_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cashew_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cherry_plum_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:chilli_pepper_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cinnamon_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:citron_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:clove_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cocobolo_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coconut_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coffea_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copper_beech_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cultivated_pear_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:date_palm_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:desert_acacia_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:douglas_fir_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:dwarf_hazel_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elm_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:finger_lime_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flowering_crabapple_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ginkgo_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grandidiers_baobab_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grapefruit_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:great_cedar_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:great_sallow_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hawthorne_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hazel_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:holly_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hornbeam_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ipe_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:iroko_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kapok_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:key_lime_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kumquat_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lawson_cypress_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lemon_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lime_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:loblolly_pine_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:logwood_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mahogany_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mandarin_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mango_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:monkey_puzzle_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mundane_larch_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:myrtle_ebony_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nectarine_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nutmeg_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:old_fustic_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orange_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orchard_apple_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:osange_orange_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:padauk_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:papaya_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:peach_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pecan_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pink_ivory_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pistachio_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plantain_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plum_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomelo_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:prarie_crabapple_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purpleheart_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rainbow_gum_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_banana_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_maple_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rosewood_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rose_gum_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rowan_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sand_pear_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:satsuma_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sequoia_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_fir_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_lime_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sipiri_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sour_cherry_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:starfruit_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:star_anise_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_maple_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:swamp_gum_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_chestnut_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_crabapple_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_gum_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sycamore_fig_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tangerine_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:teak_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:walnut_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wenge_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:western_hemlock_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:whitebeam_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_poplar_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_willow_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wild_cherry_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yellow_meranti_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yew_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ysabella_purpurea_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:zebrawood_stairs",
+      "required": false
+    }
+  ]
+}

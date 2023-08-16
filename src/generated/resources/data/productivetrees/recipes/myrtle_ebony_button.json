@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:myrtle_ebony_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:myrtle_ebony_button"
+  }
+}

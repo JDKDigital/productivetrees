@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:kapok_log"
+          },
+          {
+            "item": "productivetrees:kapok_wood"
+          },
+          {
+            "item": "productivetrees:kapok_stripped_log"
+          },
+          {
+            "item": "productivetrees:kapok_stripped_wood"
+          }
+        ],
+        "result": "minecraft:ladder"
+      }
+    }
+  ]
+}

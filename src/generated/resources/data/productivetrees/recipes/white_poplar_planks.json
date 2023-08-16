@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:white_poplar_log"
+      },
+      {
+        "item": "productivetrees:white_poplar_wood"
+      },
+      {
+        "item": "productivetrees:white_poplar_stripped_log"
+      },
+      {
+        "item": "productivetrees:white_poplar_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:white_poplar_planks"
+  }
+}

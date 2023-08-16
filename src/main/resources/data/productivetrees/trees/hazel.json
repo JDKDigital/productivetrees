@@ -1,0 +1,14 @@
+{
+  "feature": "productivetrees:hazel",
+  "style": "oak",
+  "leafColor": "#1c4316",
+  "logColor": "#b3a076",
+  "plankColor": "#cdb195",
+  "fruit": {
+    "item": "productivetrees:hazelnut",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#8b9423",
+    "ripeColor": "#ccb088"
+  }
+}

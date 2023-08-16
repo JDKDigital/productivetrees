@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:great_cedar_log"
+          },
+          {
+            "item": "productivetrees:great_cedar_wood"
+          },
+          {
+            "item": "productivetrees:great_cedar_stripped_log"
+          },
+          {
+            "item": "productivetrees:great_cedar_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:great_cedar_pressure_plate"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:mandarin_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:kumquat_leaves"
+  },
+  "result": {
+    "item": "productivetrees:tangerine_sapling"
+  }
+}

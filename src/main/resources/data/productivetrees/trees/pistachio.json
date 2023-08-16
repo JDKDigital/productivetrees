@@ -1,0 +1,14 @@
+{
+  "feature": "productivetrees:pistachio",
+  "style": "oak",
+  "leafColor": "#1c4316",
+  "logColor": "#202e1d",
+  "plankColor": "#A0A0A0",
+  "fruit": {
+    "item": "productivetrees:pistachio",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
+}

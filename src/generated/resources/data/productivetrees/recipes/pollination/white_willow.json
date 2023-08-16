@@ -1,0 +1,18 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 5,
+  "leafA": {
+    "item": "productivetrees:silver_lime_leaves"
+  },
+  "leafB": [
+    {
+      "item": "minecraft:oak_leaves"
+    },
+    {
+      "item": "minecraft:birch_leaves"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:white_willow_sapling"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/tinted_cross",
+  "textures": {
+    "cross": "productivetrees:block/sapling/oak_top",
+    "stem": "productivetrees:block/sapling/oak_stem"
+  }
+}

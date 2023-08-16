@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:grandidiers_baobab_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:grandidiers_baobab_button"
+  }
+}

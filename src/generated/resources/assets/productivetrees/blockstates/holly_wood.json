@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "productivetrees:block/base_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "productivetrees:block/base_wood"
+    },
+    "axis=z": {
+      "model": "productivetrees:block/base_wood",
+      "x": 90
+    }
+  }
+}

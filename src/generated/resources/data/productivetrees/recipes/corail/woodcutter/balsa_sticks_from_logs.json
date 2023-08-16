@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 8,
+        "ingredient": [
+          {
+            "item": "productivetrees:balsa_log"
+          },
+          {
+            "item": "productivetrees:balsa_wood"
+          },
+          {
+            "item": "productivetrees:balsa_stripped_log"
+          },
+          {
+            "item": "productivetrees:balsa_stripped_wood"
+          }
+        ],
+        "result": "minecraft:stick"
+      }
+    }
+  ]
+}

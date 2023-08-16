@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:boxwood_log"
+          },
+          {
+            "item": "productivetrees:boxwood_wood"
+          },
+          {
+            "item": "productivetrees:boxwood_stripped_log"
+          },
+          {
+            "item": "productivetrees:boxwood_stripped_wood"
+          }
+        ],
+        "result": "minecraft:bowl"
+      }
+    }
+  ]
+}

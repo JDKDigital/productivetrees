@@ -1,0 +1,14 @@
+{
+  "feature": "productivetrees:avocado",
+  "style": "birch",
+  "leafColor": "#1c4316",
+  "logColor": "#202e1d",
+  "plankColor": "#A0A0A0",
+  "fruit": {
+    "item": "productivetrees:avocado",
+    "count": 1,
+    "growthSpeed": 0.4,
+    "unripeColor": "#5e8e28",
+    "ripeColor": "#113600"
+  }
+}

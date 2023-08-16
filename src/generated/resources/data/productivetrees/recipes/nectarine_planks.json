@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:nectarine_log"
+      },
+      {
+        "item": "productivetrees:nectarine_wood"
+      },
+      {
+        "item": "productivetrees:nectarine_stripped_log"
+      },
+      {
+        "item": "productivetrees:nectarine_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:nectarine_planks"
+  }
+}

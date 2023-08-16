@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:brazil_nut_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:brazil_nut_button"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:purpleheart_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:purpleheart_button"
+  }
+}

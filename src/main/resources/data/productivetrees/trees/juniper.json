@@ -1,0 +1,13 @@
+{
+  "feature": "productivetrees:juniper",
+  "style": "bush",
+  "registerWood": false,
+  "leafColor": "#597537",
+  "fruit": {
+    "item": "productivetrees:juniper",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#9fb4a9",
+    "ripeColor": "#7d9fc9"
+  }
+}

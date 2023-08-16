@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:cultivated_pear_log"
+      },
+      {
+        "item": "productivetrees:cultivated_pear_wood"
+      },
+      {
+        "item": "productivetrees:cultivated_pear_stripped_log"
+      },
+      {
+        "item": "productivetrees:cultivated_pear_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:cultivated_pear_planks"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 1,
+        "ingredient": {
+          "item": "productivetrees:finger_lime_planks"
+        },
+        "result": "productivetrees:finger_lime_pressure_plate"
+      }
+    }
+  ]
+}

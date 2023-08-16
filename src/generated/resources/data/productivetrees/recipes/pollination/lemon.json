@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:pomelo_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:citron_leaves"
+  },
+  "result": {
+    "item": "productivetrees:lemon_sapling"
+  }
+}

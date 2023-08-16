@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:cultivated_pear_log"
+          },
+          {
+            "item": "productivetrees:cultivated_pear_wood"
+          },
+          {
+            "item": "productivetrees:cultivated_pear_stripped_log"
+          },
+          {
+            "item": "productivetrees:cultivated_pear_stripped_wood"
+          }
+        ],
+        "result": "minecraft:bowl"
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:mango_log"
+      },
+      {
+        "item": "productivetrees:mango_wood"
+      },
+      {
+        "item": "productivetrees:mango_stripped_log"
+      },
+      {
+        "item": "productivetrees:mango_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:mango_planks"
+  }
+}

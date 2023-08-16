@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "productivetrees:block/sapling/mangrove_top",
+    "layer1": "productivetrees:block/sapling/mangrove_stem"
+  }
+}

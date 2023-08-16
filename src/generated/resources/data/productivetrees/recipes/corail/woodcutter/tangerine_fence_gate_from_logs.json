@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 1,
+        "ingredient": [
+          {
+            "item": "productivetrees:tangerine_log"
+          },
+          {
+            "item": "productivetrees:tangerine_wood"
+          },
+          {
+            "item": "productivetrees:tangerine_stripped_log"
+          },
+          {
+            "item": "productivetrees:tangerine_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:tangerine_fence_gate"
+      }
+    }
+  ]
+}

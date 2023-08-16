@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:banana_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:teak_leaves"
+  },
+  "result": {
+    "item": "productivetrees:plantain_sapling"
+  }
+}

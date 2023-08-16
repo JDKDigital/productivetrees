@@ -1,0 +1,516 @@
+{
+  "values": [
+    {
+      "id": "productivetrees:alder_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:allspice_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:almond_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:apricot_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ash_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:aspen_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:avocado_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsa_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsam_fir_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:banana_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beech_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blackberry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blackcurrant_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blackthorn_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_cherry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_locust_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blueberry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_mahoe_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:boxwood_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazilwood_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazil_nut_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:buddhas_hand_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bull_pine_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:butternut_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:candlenut_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cashew_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cherry_plum_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:chilli_pepper_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cinnamon_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:citron_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:clove_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cocobolo_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coconut_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coffea_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copper_beech_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cranberry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cultivated_pear_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:date_palm_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:desert_acacia_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:douglas_fir_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:dwarf_hazel_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elderberry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elm_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:finger_lime_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flowering_crabapple_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ginkgo_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:golden_raspberry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:gooseberry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grandidiers_baobab_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grapefruit_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:great_cedar_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:great_sallow_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hawthorne_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hazel_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:holly_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hornbeam_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ipe_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:iroko_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:juniper_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kapok_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:key_lime_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kumquat_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lawson_cypress_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lemon_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lime_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:loblolly_pine_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:logwood_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mahogany_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mandarin_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mango_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:monkey_puzzle_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mundane_larch_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:myrtle_ebony_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nectarine_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nutmeg_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:old_fustic_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orange_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orchard_apple_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:osange_orange_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:padauk_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:papaya_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:peach_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pecan_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pink_ivory_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pistachio_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plantain_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plum_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomelo_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:prarie_crabapple_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purpleheart_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rainbow_gum_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:raspberry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:redcurrant_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_banana_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_maple_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rosewood_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rose_gum_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rowan_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sand_pear_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:satsuma_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sequoia_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_fir_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_lime_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sipiri_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sour_cherry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:starfruit_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:star_anise_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_maple_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:swamp_gum_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_chestnut_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_crabapple_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_gum_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sycamore_fig_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tangerine_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:teak_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:walnut_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wenge_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:western_hemlock_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:whitebeam_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_poplar_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_willow_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wild_cherry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yellow_meranti_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yew_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ysabella_purpurea_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:zebrawood_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pollinated_leaves",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:aspen_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:beech_leaves"
+  },
+  "result": {
+    "item": "productivetrees:hazel_sapling"
+  }
+}

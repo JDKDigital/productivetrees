@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:beech_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:spruce_leaves"
+  },
+  "result": {
+    "item": "productivetrees:copper_beech_sapling"
+  }
+}

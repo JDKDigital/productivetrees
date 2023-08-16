@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/tinted_flower_pot_cross",
+  "textures": {
+    "plant": "productivetrees:block/sapling/acacia_top",
+    "stem": "productivetrees:block/sapling/acacia_stem"
+  }
+}

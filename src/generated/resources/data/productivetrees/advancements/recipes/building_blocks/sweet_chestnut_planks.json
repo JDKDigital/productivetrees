@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_logs": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "productivetrees:sweet_chestnut_log",
+              "productivetrees:sweet_chestnut_wood",
+              "productivetrees:sweet_chestnut_stripped_log",
+              "productivetrees:sweet_chestnut_stripped_wood"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:sweet_chestnut_planks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_logs",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:sweet_chestnut_planks"
+    ]
+  },
+  "sends_telemetry_event": false
+}

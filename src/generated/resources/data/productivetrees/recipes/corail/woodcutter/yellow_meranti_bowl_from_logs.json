@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:yellow_meranti_log"
+          },
+          {
+            "item": "productivetrees:yellow_meranti_wood"
+          },
+          {
+            "item": "productivetrees:yellow_meranti_stripped_log"
+          },
+          {
+            "item": "productivetrees:yellow_meranti_stripped_wood"
+          }
+        ],
+        "result": "minecraft:bowl"
+      }
+    }
+  ]
+}

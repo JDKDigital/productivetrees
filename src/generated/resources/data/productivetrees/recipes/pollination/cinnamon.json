@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:rosewood_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:teak_leaves"
+  },
+  "result": {
+    "item": "productivetrees:cinnamon_sapling"
+  }
+}

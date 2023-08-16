@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:wenge_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:silver_lime_leaves"
+  },
+  "result": {
+    "item": "productivetrees:ginkgo_sapling"
+  }
+}

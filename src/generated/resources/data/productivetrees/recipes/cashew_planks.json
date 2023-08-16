@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:cashew_log"
+      },
+      {
+        "item": "productivetrees:cashew_wood"
+      },
+      {
+        "item": "productivetrees:cashew_stripped_log"
+      },
+      {
+        "item": "productivetrees:cashew_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:cashew_planks"
+  }
+}

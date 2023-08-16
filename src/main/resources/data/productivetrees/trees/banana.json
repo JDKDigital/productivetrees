@@ -1,0 +1,14 @@
+{
+  "feature": "productivetrees:banana",
+  "style": "mangrove",
+  "leafColor": "#5a9c32",
+  "logColor": "#818f4c",
+  "plankColor": "#bb9272",
+  "fruit": {
+    "item": "productivetrees:banana",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#5a9c32",
+    "ripeColor": "#e1f500"
+  }
+}

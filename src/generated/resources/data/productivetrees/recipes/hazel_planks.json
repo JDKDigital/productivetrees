@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:hazel_log"
+      },
+      {
+        "item": "productivetrees:hazel_wood"
+      },
+      {
+        "item": "productivetrees:hazel_stripped_log"
+      },
+      {
+        "item": "productivetrees:hazel_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:hazel_planks"
+  }
+}

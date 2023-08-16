@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:sand_pear_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:sand_pear_button"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:sipiri_log"
+      },
+      {
+        "item": "productivetrees:sipiri_wood"
+      },
+      {
+        "item": "productivetrees:sipiri_stripped_log"
+      },
+      {
+        "item": "productivetrees:sipiri_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:sipiri_planks"
+  }
+}

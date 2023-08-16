@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:blackberry_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:raspberry_leaves"
+  },
+  "result": {
+    "item": "productivetrees:blueberry_sapling"
+  }
+}

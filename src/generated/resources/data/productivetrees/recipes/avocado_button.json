@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:avocado_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:avocado_button"
+  }
+}

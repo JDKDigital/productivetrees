@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:cashew_log"
+          },
+          {
+            "item": "productivetrees:cashew_wood"
+          },
+          {
+            "item": "productivetrees:cashew_stripped_log"
+          },
+          {
+            "item": "productivetrees:cashew_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:cashew_planks"
+      }
+    }
+  ]
+}

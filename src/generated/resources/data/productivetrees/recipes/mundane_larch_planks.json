@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:mundane_larch_log"
+      },
+      {
+        "item": "productivetrees:mundane_larch_wood"
+      },
+      {
+        "item": "productivetrees:mundane_larch_stripped_log"
+      },
+      {
+        "item": "productivetrees:mundane_larch_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:mundane_larch_planks"
+  }
+}

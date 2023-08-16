@@ -1,0 +1,58 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "botanytrees"
+        }
+      ],
+      "recipe": {
+        "type": "botanypots:crop",
+        "categories": [
+          "dirt"
+        ],
+        "display": {
+          "block": "productivetrees:rainbow_gum_sapling",
+          "properties": {
+            "stage": 0
+          }
+        },
+        "drops": [
+          {
+            "chance": 1.0,
+            "maxRolls": 4,
+            "minRolls": 2,
+            "output": {
+              "count": 1,
+              "item": "productivetrees:rainbow_gum_log"
+            }
+          },
+          {
+            "chance": 0.1,
+            "maxRolls": 2,
+            "minRolls": 1,
+            "output": {
+              "count": 1,
+              "item": "minecraft:stick"
+            }
+          },
+          {
+            "chance": 0.15,
+            "maxRolls": 1,
+            "minRolls": 1,
+            "output": {
+              "count": 1,
+              "item": "productivetrees:rainbow_gum_sapling"
+            }
+          }
+        ],
+        "growthTicks": 2400,
+        "seed": {
+          "item": "productivetrees:rainbow_gum_sapling"
+        }
+      }
+    }
+  ]
+}

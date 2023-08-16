@@ -1,0 +1,26 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "productivetrees"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "group": "hives",
+        "ingredients": [
+          {
+            "item": "productivetrees:advanced_sweet_gum_beehive"
+          }
+        ],
+        "result": {
+          "item": "productivetrees:advanced_sweet_gum_beehive"
+        }
+      }
+    }
+  ]
+}

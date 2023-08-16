@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:key_lime_log"
+      },
+      {
+        "item": "productivetrees:key_lime_wood"
+      },
+      {
+        "item": "productivetrees:key_lime_stripped_log"
+      },
+      {
+        "item": "productivetrees:key_lime_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:key_lime_planks"
+  }
+}

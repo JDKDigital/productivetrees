@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:hawthorne_log"
+          },
+          {
+            "item": "productivetrees:hawthorne_wood"
+          },
+          {
+            "item": "productivetrees:hawthorne_stripped_log"
+          },
+          {
+            "item": "productivetrees:hawthorne_stripped_wood"
+          }
+        ],
+        "result": "minecraft:ladder"
+      }
+    }
+  ]
+}

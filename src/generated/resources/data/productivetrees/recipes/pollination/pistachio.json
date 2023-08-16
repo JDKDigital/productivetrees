@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:almond_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:cashew_leaves"
+  },
+  "result": {
+    "item": "productivetrees:pistachio_sapling"
+  }
+}

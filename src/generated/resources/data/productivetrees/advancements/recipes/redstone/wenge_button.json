@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:wenge_button"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wenge_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "productivetrees:wenge_planks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_wenge_planks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:wenge_button"
+    ]
+  },
+  "sends_telemetry_event": false
+}

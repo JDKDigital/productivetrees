@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:copper_beech_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:copper_beech_button"
+  }
+}

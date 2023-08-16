@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:western_hemlock_log"
+      },
+      {
+        "item": "productivetrees:western_hemlock_wood"
+      },
+      {
+        "item": "productivetrees:western_hemlock_stripped_log"
+      },
+      {
+        "item": "productivetrees:western_hemlock_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:western_hemlock_planks"
+  }
+}

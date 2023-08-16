@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:ginkgo_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:ginkgo_button"
+  }
+}

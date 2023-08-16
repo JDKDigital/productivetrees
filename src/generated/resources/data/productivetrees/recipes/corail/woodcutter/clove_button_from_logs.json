@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:clove_log"
+          },
+          {
+            "item": "productivetrees:clove_wood"
+          },
+          {
+            "item": "productivetrees:clove_stripped_log"
+          },
+          {
+            "item": "productivetrees:clove_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:clove_button"
+      }
+    }
+  ]
+}

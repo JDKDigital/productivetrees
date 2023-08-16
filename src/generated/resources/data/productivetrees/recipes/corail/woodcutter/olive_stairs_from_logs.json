@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:olive_log"
+          },
+          {
+            "item": "productivetrees:olive_wood"
+          },
+          {
+            "item": "productivetrees:olive_stripped_log"
+          },
+          {
+            "item": "productivetrees:olive_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:olive_stairs"
+      }
+    }
+  ]
+}

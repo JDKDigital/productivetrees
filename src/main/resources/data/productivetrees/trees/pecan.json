@@ -1,0 +1,14 @@
+{
+  "feature": "productivetrees:pecan",
+  "style": "oak",
+  "leafColor": "#1c4316",
+  "logColor": "#202e1d",
+  "plankColor": "#A0A0A0",
+  "fruit": {
+    "item": "productivetrees:pecan",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#5c7b1b",
+    "ripeColor": "#c58759"
+  }
+}

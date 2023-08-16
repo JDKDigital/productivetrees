@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 1,
+        "ingredient": [
+          {
+            "item": "productivetrees:brazil_nut_log"
+          },
+          {
+            "item": "productivetrees:brazil_nut_wood"
+          },
+          {
+            "item": "productivetrees:brazil_nut_stripped_log"
+          },
+          {
+            "item": "productivetrees:brazil_nut_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:brazil_nut_fence_gate"
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:lawson_cypress_log"
+      },
+      {
+        "item": "productivetrees:lawson_cypress_wood"
+      },
+      {
+        "item": "productivetrees:lawson_cypress_stripped_log"
+      },
+      {
+        "item": "productivetrees:lawson_cypress_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:lawson_cypress_planks"
+  }
+}

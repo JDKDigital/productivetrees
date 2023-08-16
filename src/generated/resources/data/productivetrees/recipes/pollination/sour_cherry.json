@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:white_willow_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:cherry_leaves"
+  },
+  "result": {
+    "item": "productivetrees:sour_cherry_sapling"
+  }
+}

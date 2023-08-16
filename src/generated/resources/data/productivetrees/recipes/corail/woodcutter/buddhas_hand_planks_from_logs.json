@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:buddhas_hand_log"
+          },
+          {
+            "item": "productivetrees:buddhas_hand_wood"
+          },
+          {
+            "item": "productivetrees:buddhas_hand_stripped_log"
+          },
+          {
+            "item": "productivetrees:buddhas_hand_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:buddhas_hand_planks"
+      }
+    }
+  ]
+}

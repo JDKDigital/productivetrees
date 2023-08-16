@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:bull_pine_log"
+          },
+          {
+            "item": "productivetrees:bull_pine_wood"
+          },
+          {
+            "item": "productivetrees:bull_pine_stripped_log"
+          },
+          {
+            "item": "productivetrees:bull_pine_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:bull_pine_button"
+      }
+    }
+  ]
+}

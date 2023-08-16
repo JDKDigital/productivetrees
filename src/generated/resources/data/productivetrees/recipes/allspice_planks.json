@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:allspice_log"
+      },
+      {
+        "item": "productivetrees:allspice_wood"
+      },
+      {
+        "item": "productivetrees:allspice_stripped_log"
+      },
+      {
+        "item": "productivetrees:allspice_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:allspice_planks"
+  }
+}

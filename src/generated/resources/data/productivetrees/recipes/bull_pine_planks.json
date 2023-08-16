@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:bull_pine_log"
+      },
+      {
+        "item": "productivetrees:bull_pine_wood"
+      },
+      {
+        "item": "productivetrees:bull_pine_stripped_log"
+      },
+      {
+        "item": "productivetrees:bull_pine_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:bull_pine_planks"
+  }
+}

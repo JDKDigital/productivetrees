@@ -1,0 +1,13 @@
+{
+  "feature": "productivetrees:cranberry",
+  "style": "bush",
+  "registerWood": false,
+  "leafColor": "#597537",
+  "fruit": {
+    "item": "productivetrees:cranberry",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#e9edaa",
+    "ripeColor": "#f62a21"
+  }
+}

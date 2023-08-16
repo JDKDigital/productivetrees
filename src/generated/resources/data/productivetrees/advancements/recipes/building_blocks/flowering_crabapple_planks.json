@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_logs": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "productivetrees:flowering_crabapple_log",
+              "productivetrees:flowering_crabapple_wood",
+              "productivetrees:flowering_crabapple_stripped_log",
+              "productivetrees:flowering_crabapple_stripped_wood"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:flowering_crabapple_planks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_logs",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:flowering_crabapple_planks"
+    ]
+  },
+  "sends_telemetry_event": false
+}

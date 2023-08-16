@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:logwood_log"
+      },
+      {
+        "item": "productivetrees:logwood_wood"
+      },
+      {
+        "item": "productivetrees:logwood_stripped_log"
+      },
+      {
+        "item": "productivetrees:logwood_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:logwood_planks"
+  }
+}

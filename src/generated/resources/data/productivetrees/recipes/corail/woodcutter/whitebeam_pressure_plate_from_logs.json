@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:whitebeam_log"
+          },
+          {
+            "item": "productivetrees:whitebeam_wood"
+          },
+          {
+            "item": "productivetrees:whitebeam_stripped_log"
+          },
+          {
+            "item": "productivetrees:whitebeam_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:whitebeam_pressure_plate"
+      }
+    }
+  ]
+}

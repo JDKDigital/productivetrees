@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:orange_log"
+      },
+      {
+        "item": "productivetrees:orange_wood"
+      },
+      {
+        "item": "productivetrees:orange_stripped_log"
+      },
+      {
+        "item": "productivetrees:orange_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:orange_planks"
+  }
+}

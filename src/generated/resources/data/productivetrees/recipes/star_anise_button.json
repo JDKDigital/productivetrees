@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:star_anise_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:star_anise_button"
+  }
+}

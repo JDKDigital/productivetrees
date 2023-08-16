@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 5,
+  "leafA": {
+    "item": "productivetrees:mundane_larch_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:bull_pine_leaves"
+  },
+  "result": {
+    "item": "productivetrees:sequoia_sapling"
+  }
+}

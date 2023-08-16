@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 1,
+        "ingredient": [
+          {
+            "item": "productivetrees:sycamore_fig_log"
+          },
+          {
+            "item": "productivetrees:sycamore_fig_wood"
+          },
+          {
+            "item": "productivetrees:sycamore_fig_stripped_log"
+          },
+          {
+            "item": "productivetrees:sycamore_fig_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:sycamore_fig_fence_gate"
+      }
+    }
+  ]
+}

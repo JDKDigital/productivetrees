@@ -1,0 +1,472 @@
+{
+  "values": [
+    {
+      "id": "productivetrees:alder_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:allspice_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:almond_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:apricot_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ash_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:aspen_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:avocado_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsa_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsam_fir_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:banana_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beech_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blackthorn_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_cherry_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_locust_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_mahoe_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:boxwood_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazilwood_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazil_nut_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:buddhas_hand_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bull_pine_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:butternut_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:candlenut_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cashew_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cherry_plum_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:chilli_pepper_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cinnamon_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:citron_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:clove_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cocobolo_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coconut_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coffea_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copper_beech_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cultivated_pear_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:date_palm_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:desert_acacia_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:douglas_fir_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:dwarf_hazel_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elm_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:finger_lime_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flowering_crabapple_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ginkgo_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grandidiers_baobab_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grapefruit_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:great_cedar_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:great_sallow_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hawthorne_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hazel_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:holly_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hornbeam_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ipe_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:iroko_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kapok_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:key_lime_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kumquat_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lawson_cypress_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lemon_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lime_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:loblolly_pine_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:logwood_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mahogany_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mandarin_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mango_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:monkey_puzzle_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mundane_larch_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:myrtle_ebony_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nectarine_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nutmeg_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:old_fustic_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orange_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orchard_apple_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:osange_orange_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:padauk_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:papaya_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:peach_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pecan_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pink_ivory_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pistachio_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plantain_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plum_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomelo_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:prarie_crabapple_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purpleheart_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rainbow_gum_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_banana_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_maple_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rosewood_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rose_gum_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rowan_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sand_pear_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:satsuma_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sequoia_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_fir_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_lime_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sipiri_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sour_cherry_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:starfruit_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:star_anise_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_maple_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:swamp_gum_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_chestnut_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_crabapple_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_gum_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sycamore_fig_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tangerine_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:teak_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:walnut_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wenge_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:western_hemlock_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:whitebeam_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_poplar_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_willow_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wild_cherry_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yellow_meranti_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yew_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ysabella_purpurea_button",
+      "required": false
+    },
+    {
+      "id": "productivetrees:zebrawood_button",
+      "required": false
+    }
+  ]
+}

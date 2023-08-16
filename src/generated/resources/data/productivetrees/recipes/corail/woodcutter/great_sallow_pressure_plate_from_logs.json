@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:great_sallow_log"
+          },
+          {
+            "item": "productivetrees:great_sallow_wood"
+          },
+          {
+            "item": "productivetrees:great_sallow_stripped_log"
+          },
+          {
+            "item": "productivetrees:great_sallow_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:great_sallow_pressure_plate"
+      }
+    }
+  ]
+}

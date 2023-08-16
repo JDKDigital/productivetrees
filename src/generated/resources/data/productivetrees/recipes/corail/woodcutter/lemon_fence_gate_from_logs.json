@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 1,
+        "ingredient": [
+          {
+            "item": "productivetrees:lemon_log"
+          },
+          {
+            "item": "productivetrees:lemon_wood"
+          },
+          {
+            "item": "productivetrees:lemon_stripped_log"
+          },
+          {
+            "item": "productivetrees:lemon_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:lemon_fence_gate"
+      }
+    }
+  ]
+}

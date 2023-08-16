@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:satsuma_log"
+      },
+      {
+        "item": "productivetrees:satsuma_wood"
+      },
+      {
+        "item": "productivetrees:satsuma_stripped_log"
+      },
+      {
+        "item": "productivetrees:satsuma_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:satsuma_planks"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:alder_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:rowan_leaves"
+  },
+  "result": {
+    "item": "productivetrees:holly_sapling"
+  }
+}

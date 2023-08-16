@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:rainbow_gum_log"
+          },
+          {
+            "item": "productivetrees:rainbow_gum_wood"
+          },
+          {
+            "item": "productivetrees:rainbow_gum_stripped_log"
+          },
+          {
+            "item": "productivetrees:rainbow_gum_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:rainbow_gum_fence"
+      }
+    }
+  ]
+}

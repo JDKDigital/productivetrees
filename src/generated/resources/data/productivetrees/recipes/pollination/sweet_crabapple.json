@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:orchard_apple_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:sugar_maple_leaves"
+  },
+  "result": {
+    "item": "productivetrees:sweet_crabapple_sapling"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 1,
+        "ingredient": {
+          "item": "productivetrees:sweet_chestnut_planks"
+        },
+        "result": "productivetrees:sweet_chestnut_stairs"
+      }
+    }
+  ]
+}

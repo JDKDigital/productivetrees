@@ -1,0 +1,11 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": [],
+  "leafB": {
+    "item": "productivetrees:sour_cherry_leaves"
+  },
+  "result": {
+    "item": "productivetrees:black_cherry_sapling"
+  }
+}

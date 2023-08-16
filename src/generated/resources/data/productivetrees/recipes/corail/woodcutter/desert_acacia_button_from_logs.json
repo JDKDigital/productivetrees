@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:desert_acacia_log"
+          },
+          {
+            "item": "productivetrees:desert_acacia_wood"
+          },
+          {
+            "item": "productivetrees:desert_acacia_stripped_log"
+          },
+          {
+            "item": "productivetrees:desert_acacia_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:desert_acacia_button"
+      }
+    }
+  ]
+}

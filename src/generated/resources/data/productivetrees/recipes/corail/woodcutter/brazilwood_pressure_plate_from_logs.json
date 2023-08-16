@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:brazilwood_log"
+          },
+          {
+            "item": "productivetrees:brazilwood_wood"
+          },
+          {
+            "item": "productivetrees:brazilwood_stripped_log"
+          },
+          {
+            "item": "productivetrees:brazilwood_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:brazilwood_pressure_plate"
+      }
+    }
+  ]
+}

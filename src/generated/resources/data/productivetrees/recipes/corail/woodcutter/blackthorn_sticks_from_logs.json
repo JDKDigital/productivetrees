@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 8,
+        "ingredient": [
+          {
+            "item": "productivetrees:blackthorn_log"
+          },
+          {
+            "item": "productivetrees:blackthorn_wood"
+          },
+          {
+            "item": "productivetrees:blackthorn_stripped_log"
+          },
+          {
+            "item": "productivetrees:blackthorn_stripped_wood"
+          }
+        ],
+        "result": "minecraft:stick"
+      }
+    }
+  ]
+}

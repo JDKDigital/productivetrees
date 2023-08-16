@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 8,
+        "ingredient": [
+          {
+            "item": "productivetrees:white_willow_log"
+          },
+          {
+            "item": "productivetrees:white_willow_wood"
+          },
+          {
+            "item": "productivetrees:white_willow_stripped_log"
+          },
+          {
+            "item": "productivetrees:white_willow_stripped_wood"
+          }
+        ],
+        "result": "minecraft:stick"
+      }
+    }
+  ]
+}

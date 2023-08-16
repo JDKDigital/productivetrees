@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:yew_log"
+      },
+      {
+        "item": "productivetrees:yew_wood"
+      },
+      {
+        "item": "productivetrees:yew_stripped_log"
+      },
+      {
+        "item": "productivetrees:yew_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:yew_planks"
+  }
+}

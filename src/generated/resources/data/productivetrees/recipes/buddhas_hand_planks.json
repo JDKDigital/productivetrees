@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:buddhas_hand_log"
+      },
+      {
+        "item": "productivetrees:buddhas_hand_wood"
+      },
+      {
+        "item": "productivetrees:buddhas_hand_stripped_log"
+      },
+      {
+        "item": "productivetrees:buddhas_hand_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:buddhas_hand_planks"
+  }
+}

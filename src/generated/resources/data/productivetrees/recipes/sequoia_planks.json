@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:sequoia_log"
+      },
+      {
+        "item": "productivetrees:sequoia_wood"
+      },
+      {
+        "item": "productivetrees:sequoia_stripped_log"
+      },
+      {
+        "item": "productivetrees:sequoia_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:sequoia_planks"
+  }
+}

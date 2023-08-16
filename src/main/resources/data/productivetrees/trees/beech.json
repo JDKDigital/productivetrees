@@ -1,0 +1,14 @@
+{
+  "feature": "productivetrees:beech",
+  "style": "oak",
+  "leafColor": "#1c4316",
+  "logColor": "#b49581",
+  "plankColor": "#e19951",
+  "fruit": {
+    "item": "productivetrees:beechnut",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#9aaa01",
+    "ripeColor": "#6f2304"
+  }
+}

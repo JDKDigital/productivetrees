@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 8,
+        "ingredient": [
+          {
+            "item": "productivetrees:white_poplar_log"
+          },
+          {
+            "item": "productivetrees:white_poplar_wood"
+          },
+          {
+            "item": "productivetrees:white_poplar_stripped_log"
+          },
+          {
+            "item": "productivetrees:white_poplar_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:white_poplar_slab"
+      }
+    }
+  ]
+}

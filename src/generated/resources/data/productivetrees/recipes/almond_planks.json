@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:almond_log"
+      },
+      {
+        "item": "productivetrees:almond_wood"
+      },
+      {
+        "item": "productivetrees:almond_stripped_log"
+      },
+      {
+        "item": "productivetrees:almond_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:almond_planks"
+  }
+}

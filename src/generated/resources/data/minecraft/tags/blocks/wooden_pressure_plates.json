@@ -1,0 +1,472 @@
+{
+  "values": [
+    {
+      "id": "productivetrees:alder_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:allspice_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:almond_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:apricot_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ash_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:aspen_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:avocado_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsa_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsam_fir_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:banana_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beech_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blackthorn_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_cherry_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_locust_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_mahoe_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:boxwood_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazilwood_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazil_nut_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:buddhas_hand_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bull_pine_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:butternut_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:candlenut_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cashew_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cherry_plum_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:chilli_pepper_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cinnamon_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:citron_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:clove_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cocobolo_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coconut_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coffea_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copper_beech_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cultivated_pear_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:date_palm_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:desert_acacia_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:douglas_fir_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:dwarf_hazel_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elm_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:finger_lime_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flowering_crabapple_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ginkgo_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grandidiers_baobab_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grapefruit_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:great_cedar_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:great_sallow_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hawthorne_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hazel_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:holly_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hornbeam_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ipe_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:iroko_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kapok_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:key_lime_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kumquat_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lawson_cypress_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lemon_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lime_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:loblolly_pine_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:logwood_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mahogany_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mandarin_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mango_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:monkey_puzzle_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mundane_larch_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:myrtle_ebony_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nectarine_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nutmeg_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:old_fustic_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orange_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orchard_apple_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:osange_orange_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:padauk_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:papaya_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:peach_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pecan_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pink_ivory_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pistachio_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plantain_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plum_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomelo_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:prarie_crabapple_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purpleheart_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rainbow_gum_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_banana_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_maple_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rosewood_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rose_gum_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rowan_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sand_pear_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:satsuma_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sequoia_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_fir_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_lime_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sipiri_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sour_cherry_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:starfruit_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:star_anise_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_maple_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:swamp_gum_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_chestnut_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_crabapple_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_gum_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sycamore_fig_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tangerine_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:teak_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:walnut_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wenge_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:western_hemlock_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:whitebeam_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_poplar_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_willow_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wild_cherry_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yellow_meranti_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yew_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ysabella_purpurea_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:zebrawood_pressure_plate",
+      "required": false
+    }
+  ]
+}

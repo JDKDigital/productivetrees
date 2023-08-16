@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:mundane_larch_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:spruce_leaves"
+  },
+  "result": {
+    "item": "productivetrees:bull_pine_sapling"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:kumquat_log"
+      },
+      {
+        "item": "productivetrees:kumquat_wood"
+      },
+      {
+        "item": "productivetrees:kumquat_stripped_log"
+      },
+      {
+        "item": "productivetrees:kumquat_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:kumquat_planks"
+  }
+}

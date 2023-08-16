@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:sour_cherry_log"
+          },
+          {
+            "item": "productivetrees:sour_cherry_wood"
+          },
+          {
+            "item": "productivetrees:sour_cherry_stripped_log"
+          },
+          {
+            "item": "productivetrees:sour_cherry_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:sour_cherry_planks"
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:mandarin_log"
+      },
+      {
+        "item": "productivetrees:mandarin_wood"
+      },
+      {
+        "item": "productivetrees:mandarin_stripped_log"
+      },
+      {
+        "item": "productivetrees:mandarin_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:mandarin_planks"
+  }
+}

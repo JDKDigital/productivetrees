@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:yellow_meranti_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:yellow_meranti_button"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 1,
+        "ingredient": [
+          {
+            "item": "productivetrees:butternut_log"
+          },
+          {
+            "item": "productivetrees:butternut_wood"
+          },
+          {
+            "item": "productivetrees:butternut_stripped_log"
+          },
+          {
+            "item": "productivetrees:butternut_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:butternut_fence_gate"
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:lawson_cypress_log"
+          },
+          {
+            "item": "productivetrees:lawson_cypress_wood"
+          },
+          {
+            "item": "productivetrees:lawson_cypress_stripped_log"
+          },
+          {
+            "item": "productivetrees:lawson_cypress_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:lawson_cypress_pressure_plate"
+      }
+    }
+  ]
+}
