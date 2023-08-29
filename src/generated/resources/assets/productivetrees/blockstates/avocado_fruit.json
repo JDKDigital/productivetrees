@@ -1,22 +1,22 @@
 {
   "variants": {
     "age=0": {
-      "model": "productivetrees:block/base_fruit_0"
+      "model": "productivetrees:block/fruit/avocado/0"
     },
     "age=1": {
-      "model": "productivetrees:block/base_fruit_1"
+      "model": "productivetrees:block/fruit/avocado/1"
     },
     "age=2": {
-      "model": "productivetrees:block/base_fruit_2"
+      "model": "productivetrees:block/fruit/avocado/2"
     },
     "age=3": {
-      "model": "productivetrees:block/base_fruit_3"
+      "model": "productivetrees:block/fruit/avocado/3"
     },
     "age=4": {
-      "model": "productivetrees:block/base_fruit_4"
+      "model": "productivetrees:block/fruit/avocado/4"
     },
     "age=5": {
-      "model": "productivetrees:block/base_fruit_5"
+      "model": "productivetrees:block/fruit/avocado/5"
     }
   }
 }

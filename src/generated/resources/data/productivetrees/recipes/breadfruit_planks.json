@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:breadfruit_log"
+      },
+      {
+        "item": "productivetrees:breadfruit_wood"
+      },
+      {
+        "item": "productivetrees:breadfruit_stripped_log"
+      },
+      {
+        "item": "productivetrees:breadfruit_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:breadfruit_planks"
+  }
+}

@@ -2,13 +2,12 @@ package cy.jdkdigital.productivetrees.datagen;
 
 import com.google.common.collect.Maps;
 import com.google.gson.JsonElement;
+import cy.jdkdigital.productivebees.ProductiveBees;
 import cy.jdkdigital.productivebees.setup.HiveType;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
@@ -26,10 +25,7 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -74,19 +70,19 @@ public class BlockstateProvider implements DataProvider
         PackOutput.PathProvider modelPathProvider = packOutput.createPathProvider(PackOutput.Target.RESOURCE_PACK, "models");
 
         TreeFinder.trees.forEach((id, treeObject) -> {
-            addBlockItemModel(treeObject.getLeafBlock().get(), "leaves", itemModels);
+            addBlockItemModel(treeObject.getLeafBlock().get(), "leaves/" + treeObject.getStyle(), itemModels);
             if (treeObject.registerWood()) {
-                addBlockItemModel(treeObject.getPlankBlock().get(), "planks", itemModels);
-                addBlockItemModel(treeObject.getLogBlock().get(), "log", itemModels);
-                addBlockItemModel(treeObject.getStrippedLogBlock().get(), "stripped_log", itemModels);
-                addBlockItemModel(treeObject.getWoodBlock().get(), "wood", itemModels);
-                addBlockItemModel(treeObject.getStrippedWoodBlock().get(), "stripped_wood", itemModels);
-                addBlockItemModel(treeObject.getSlabBlock().get(), "slab", itemModels);
-                addBlockItemModel(treeObject.getStairsBlock().get(), "stairs", itemModels);
-                addBlockItemModel(treeObject.getButtonBlock().get(), "button_inventory", itemModels);
-                addBlockItemModel(treeObject.getPressurePlateBlock().get(), "pressure_plate", itemModels);
-                addBlockItemModel(treeObject.getFenceBlock().get(), "fence_inventory", itemModels);
-                addBlockItemModel(treeObject.getFenceGateBlock().get(), "fence_gate", itemModels);
+                addBlockItemModel(treeObject.getPlankBlock().get(), "base_planks", itemModels);
+                addBlockItemModel(treeObject.getLogBlock().get(), "log/" + treeObject.getStyle() + "_log", itemModels);
+                addBlockItemModel(treeObject.getStrippedLogBlock().get(), "log/" + treeObject.getStyle() + "_stripped_log", itemModels);
+                addBlockItemModel(treeObject.getWoodBlock().get(), "log/" + treeObject.getStyle() + "_wood", itemModels);
+                addBlockItemModel(treeObject.getStrippedWoodBlock().get(), "log/" + treeObject.getStyle() + "_stripped_wood", itemModels);
+                addBlockItemModel(treeObject.getSlabBlock().get(), "base_slab", itemModels);
+                addBlockItemModel(treeObject.getStairsBlock().get(), "base_stairs", itemModels);
+                addBlockItemModel(treeObject.getButtonBlock().get(), "base_button_inventory", itemModels);
+                addBlockItemModel(treeObject.getPressurePlateBlock().get(), "base_pressure_plate", itemModels);
+                addBlockItemModel(treeObject.getFenceBlock().get(), "base_fence_inventory", itemModels);
+                addBlockItemModel(treeObject.getFenceGateBlock().get(), "base_fence_gate", itemModels);
                 addBlockItemParentModel(treeObject.getHiveBlock().get(), itemModels);
                 addBlockItemParentModel(treeObject.getExpansionBoxBlock().get(), itemModels);
             }
@@ -104,6 +100,7 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.GOLDEN_RASPBERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.SLOE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.HAW.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.MIRACLE_BERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.APRICOT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.BLACK_CHERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.CHERRY_PLUM.get(), modelOutput);
@@ -126,12 +123,16 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.SATSUMA.get(), modelOutput);
         generateFruitItem(TreeRegistrator.STAR_FRUIT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.TANGERINE.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.AKEBIA.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.COPOAZU.get(), modelOutput);
         generateFruitItem(TreeRegistrator.BANANA.get(), modelOutput);
         generateFruitItem(TreeRegistrator.COCONUT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.MANGO.get(), modelOutput);
         generateFruitItem(TreeRegistrator.PLANTAIN.get(), modelOutput);
         generateFruitItem(TreeRegistrator.RED_BANANA.get(), modelOutput);
         generateFruitItem(TreeRegistrator.PAPAYA.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.BREADFRUIT.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.MONSTERA_DELICIOSA.get(), modelOutput);
         generateFruitItem(TreeRegistrator.LIME.get(), modelOutput);
         generateFruitItem(TreeRegistrator.KEY_LIME.get(), modelOutput);
         generateFruitItem(TreeRegistrator.FINGER_LIME.get(), modelOutput);
@@ -145,7 +146,7 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.BEECHNUT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.BRAZIL_NUT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.BUTTERNUT.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.CANDLE_NUT.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.CANDLENUT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.CASHEW.get(), modelOutput);
         generateFruitItem(TreeRegistrator.CHESTNUT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.COFFEE_BEAN.get(), modelOutput);
@@ -154,6 +155,7 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.PECAN.get(), modelOutput);
         generateFruitItem(TreeRegistrator.PISTACHIO.get(), modelOutput);
         generateFruitItem(TreeRegistrator.WALNUT.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.CAROB.get(), modelOutput);
         generateFruitItem(TreeRegistrator.ALLSPICE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.CHILLI.get(), modelOutput);
         generateFruitItem(TreeRegistrator.CLOVE.get(), modelOutput);
@@ -192,7 +194,7 @@ public class BlockstateProvider implements DataProvider
     private void addBlockItemModel(Block block, String base, Map<ResourceLocation, Supplier<JsonElement>> itemModels) {
         Item item = Item.BY_BLOCK.get(block);
         if (item != null) {
-            addItemModel(item, new DelegatedModel(new ResourceLocation(ProductiveTrees.MODID, "block/base_" + base)), itemModels);
+            addItemModel(item, new DelegatedModel(new ResourceLocation(ProductiveTrees.MODID, "block/" + base)), itemModels);
         }
     }
 
@@ -220,14 +222,14 @@ public class BlockstateProvider implements DataProvider
 
             TreeFinder.trees.forEach((id, treeObject) -> {
                 this.createSapling(treeObject);
-                this.createBaseBlock(treeObject.getLeafBlock().get(), "leaves");
+                this.createBaseBlock(treeObject.getLeafBlock().get(), "leaves/" + treeObject.getStyle());
                 if (treeObject.hasFruit()) {
-                    this.createFruitBlock(treeObject.getFruitBlock().get());
+                    this.createFruitBlock(treeObject);
                 }
                 if (treeObject.registerWood()) {
-                    new WoodProvider().logWithHorizontal(treeObject.getLogBlock().get(), false).wood(treeObject.getWoodBlock().get(), false);
-                    new WoodProvider().logWithHorizontal(treeObject.getStrippedLogBlock().get(), true).wood(treeObject.getStrippedWoodBlock().get(), true);
-                    this.createBaseBlock(treeObject.getPlankBlock().get(), "planks");
+                    new WoodProvider().logWithHorizontal(treeObject.getStyle(), treeObject.getLogBlock().get(), false).wood(treeObject.getStyle(), treeObject.getWoodBlock().get(), false);
+                    new WoodProvider().logWithHorizontal(treeObject.getStyle(), treeObject.getStrippedLogBlock().get(), true).wood(treeObject.getStyle(), treeObject.getStrippedWoodBlock().get(), true);
+                    this.createBaseBlock(treeObject.getPlankBlock().get(), "planks/" + treeObject.getStyle());
                     this.createStairsBlock(treeObject.getStairsBlock().get());
                     this.createSlabBlock(treeObject.getSlabBlock().get());
                     this.createPressurePlateBlock(treeObject.getPressurePlateBlock().get());
@@ -278,11 +280,14 @@ public class BlockstateProvider implements DataProvider
         }
 
         private void createBaseBlock(Block block, String baseName) {
-            this.blockStateOutput.accept(createSimpleBlock(block, new ResourceLocation(ProductiveTrees.MODID, "block/base_" + baseName)));
+            this.blockStateOutput.accept(createSimpleBlock(block, new ResourceLocation(ProductiveTrees.MODID, "block/" + baseName)));
         }
 
-        private void createFruitBlock(Block block) {
-            this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(PropertyDispatch.property(BlockStateProperties.AGE_5).generate(age -> Variant.variant().with(VariantProperties.MODEL, new ResourceLocation(ProductiveTrees.MODID, "block/base_fruit_" + age)))));
+        private void createFruitBlock(TreeObject treeObject) {
+            this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(treeObject.getFruitBlock().get()).with(PropertyDispatch.property(BlockStateProperties.AGE_5).generate(age -> {
+                var template = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getFruit().style() + "/fruit_" + age)), Optional.empty(), TextureSlot.ALL);
+                return Variant.variant().with(VariantProperties.MODEL, template.create(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/" + age), (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getStyle())), modelOutput));
+            })));
         }
 
         private final ResourceLocation stairs = new ResourceLocation(ProductiveTrees.MODID, "block/base_stairs");
@@ -409,14 +414,14 @@ public class BlockstateProvider implements DataProvider
         {
             public WoodProvider() {}
 
-            public WoodProvider wood(Block block, boolean stripped) {
-                ModelGenerator.this.blockStateOutput.accept(ModelGenerator.createAxisAlignedPillarBlock(block, new ResourceLocation(ProductiveTrees.MODID, stripped ? "block/base_stripped_wood" : "block/base_wood")));
+            public WoodProvider wood(String style, Block block, boolean stripped) {
+                ModelGenerator.this.blockStateOutput.accept(ModelGenerator.createAxisAlignedPillarBlock(block, new ResourceLocation(ProductiveTrees.MODID, stripped ? "block/log/" + style + "_stripped_wood" : "block/log/" + style + "_wood")));
                 return this;
             }
 
-            public WoodProvider logWithHorizontal(Block block, boolean stripped) {
-                ResourceLocation rLoc = new ResourceLocation(ProductiveTrees.MODID, stripped ? "block/base_stripped_log" : "block/base_log");
-                ResourceLocation rLocHor = new ResourceLocation(ProductiveTrees.MODID, stripped ? "block/base_stripped_log_horizontal" : "block/base_log_horizontal");
+            public WoodProvider logWithHorizontal(String style, Block block, boolean stripped) {
+                ResourceLocation rLoc = new ResourceLocation(ProductiveTrees.MODID, stripped ? "block/log/" + style + "_stripped_log" : "block/log/" + style + "_log");
+                ResourceLocation rLocHor = new ResourceLocation(ProductiveTrees.MODID, stripped ? "block/log/" + style + "_stripped_log_horizontal" : "block/log/" + style + "_log_horizontal");
                 ModelGenerator.this.blockStateOutput.accept(ModelGenerator.createRotatedPillarWithHorizontalVariant(block, new ResourceLocation(ProductiveTrees.MODID, rLoc.getPath()), new ResourceLocation(ProductiveTrees.MODID, rLocHor.getPath())));
                 return this;
             }

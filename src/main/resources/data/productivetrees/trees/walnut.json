@@ -1,9 +1,11 @@
 {
   "feature": "productivetrees:walnut",
   "style": "oak",
-  "leafColor": "#1c4316",
-  "logColor": "#93957e",
-  "plankColor": "#685242",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#93957e",
+    "plankColor": "#685242"
+  },
   "fruit": {
     "item": "productivetrees:walnut",
     "count": 3,

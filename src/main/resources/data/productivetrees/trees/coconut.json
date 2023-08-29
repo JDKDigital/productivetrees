@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:coconut",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#202e1d",
-  "plankColor": "#A0A0A0"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#A0A0A0"
+  },
+  "fruit": {
+    "item": "productivetrees:coconut",
+    "count": 1,
+    "growthSpeed": 0.3,
+    "unripeColor": "#6e7d08",
+    "ripeColor": "#6d813b"
+  }
 }

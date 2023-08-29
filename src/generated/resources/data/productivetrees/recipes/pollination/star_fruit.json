@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:mango_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:star_anise_leaves"
+  },
+  "result": {
+    "item": "productivetrees:star_fruit_sapling"
+  }
+}

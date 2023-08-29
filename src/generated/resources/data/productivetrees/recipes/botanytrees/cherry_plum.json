@@ -46,6 +46,15 @@
               "count": 1,
               "item": "productivetrees:cherry_plum_sapling"
             }
+          },
+          {
+            "chance": 0.5,
+            "maxRolls": 2,
+            "minRolls": 1,
+            "output": {
+              "count": 1,
+              "item": "productivetrees:cherry_plum"
+            }
           }
         ],
         "growthTicks": 2400,

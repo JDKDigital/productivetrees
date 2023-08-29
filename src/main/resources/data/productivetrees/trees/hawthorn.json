@@ -1,0 +1,16 @@
+{
+  "feature": "productivetrees:hawthorn",
+  "style": "birch",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#6e644f",
+    "plankColor": "#cc8362"
+  },
+  "fruit": {
+    "item": "productivetrees:haw",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
+}

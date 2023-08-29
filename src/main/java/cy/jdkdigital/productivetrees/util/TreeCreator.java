@@ -42,7 +42,7 @@ public class TreeCreator
             var treeObject = treeOptional.get();
             var name = treeObject.getId().getPath();
 
-            // Register sapling block
+            // Create grower
             var grower = treeObject.getMegaFeature().equals(Features.NULL) ? new AbstractTreeGrower() {
                 @Override
                 protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource rand, boolean hasFlowers) {

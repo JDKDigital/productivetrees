@@ -46,6 +46,15 @@
               "count": 1,
               "item": "productivetrees:buddhas_hand_sapling"
             }
+          },
+          {
+            "chance": 0.35,
+            "maxRolls": 1,
+            "minRolls": 1,
+            "output": {
+              "count": 1,
+              "item": "productivetrees:buddhas_hand"
+            }
           }
         ],
         "growthTicks": 2400,

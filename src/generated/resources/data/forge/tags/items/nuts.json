@@ -5,7 +5,7 @@
     "#forge:nuts/beechnut",
     "#forge:nuts/brazil_nut",
     "#forge:nuts/butternut",
-    "#forge:nuts/candle_nut",
+    "#forge:nuts/candlenut",
     "#forge:nuts/cashew",
     "#forge:nuts/chestnut",
     "#forge:nuts/coffee_bean",
@@ -13,6 +13,7 @@
     "#forge:nuts/hazelnut",
     "#forge:nuts/pecan",
     "#forge:nuts/pistachio",
-    "#forge:nuts/walnut"
+    "#forge:nuts/walnut",
+    "#forge:nuts/carob"
   ]
 }

@@ -46,6 +46,15 @@
               "count": 1,
               "item": "productivetrees:citron_sapling"
             }
+          },
+          {
+            "chance": 0.4,
+            "maxRolls": 1,
+            "minRolls": 1,
+            "output": {
+              "count": 1,
+              "item": "productivetrees:citron"
+            }
           }
         ],
         "growthTicks": 2400,

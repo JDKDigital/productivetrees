@@ -1,0 +1,32 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "corail_woodcutter"
+        }
+      ],
+      "recipe": {
+        "type": "corail_woodcutter:woodcutting",
+        "count": 4,
+        "ingredient": [
+          {
+            "item": "productivetrees:hawthorn_log"
+          },
+          {
+            "item": "productivetrees:hawthorn_wood"
+          },
+          {
+            "item": "productivetrees:hawthorn_stripped_log"
+          },
+          {
+            "item": "productivetrees:hawthorn_stripped_wood"
+          }
+        ],
+        "result": "productivetrees:hawthorn_pressure_plate"
+      }
+    }
+  ]
+}

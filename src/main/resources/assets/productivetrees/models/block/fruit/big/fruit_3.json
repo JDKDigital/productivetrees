@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/base_leaves",
+    "fruit": "productivetrees:block/fruit/big/3"
+  }
+}

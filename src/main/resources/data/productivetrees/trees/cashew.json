@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
-  "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#202e1d",
-  "plankColor": "#A0A0A0"
+  "feature": "productivetrees:cashew",
+  "style": "acacia",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#A0A0A0"
+  },
+  "fruit": {
+    "item": "productivetrees:cashew",
+    "count": 2,
+    "growthSpeed": 0.5,
+    "unripeColor": "#cea120",
+    "ripeColor": "#c31e24"
+  }
 }

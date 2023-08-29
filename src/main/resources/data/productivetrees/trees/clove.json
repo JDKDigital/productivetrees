@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:clove",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#202e1d",
-  "plankColor": "#A0A0A0"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#A0A0A0"
+  },
+  "fruit": {
+    "item": "productivetrees:clove",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#74a00f",
+    "ripeColor": "#5e2610"
+  }
 }

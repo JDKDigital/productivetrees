@@ -30,6 +30,7 @@ public class ProductiveTreesDataProvider
         gen.addProvider(event.includeClient(), new BlockstateProvider(output));
 
         gen.addProvider(event.includeServer(), new LootDataProvider(output, List.of(new LootTableProvider.SubProviderEntry(LootDataProvider.LootProvider::new, LootContextParamSets.BLOCK))));
+        gen.addProvider(event.includeServer(), new FeatureProvider(output));
         gen.addProvider(event.includeServer(), new RecipeProvider(output));
 
         BlockTagProvider blockTags = new BlockTagProvider(output, provider, helper);

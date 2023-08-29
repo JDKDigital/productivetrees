@@ -1,9 +1,12 @@
 {
   "feature": "productivetrees:beech",
+  "megaFeature": "productivetrees:beech_mega",
   "style": "oak",
-  "leafColor": "#1c4316",
-  "logColor": "#b49581",
-  "plankColor": "#e19951",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#b49581",
+    "plankColor": "#e19951"
+  },
   "fruit": {
     "item": "productivetrees:beechnut",
     "count": 3,

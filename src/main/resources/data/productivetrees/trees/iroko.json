@@ -1,7 +1,9 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:iroko",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#817b77",
-  "plankColor": "#753400"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#817b77",
+    "plankColor": "#753400"
+  }
 }

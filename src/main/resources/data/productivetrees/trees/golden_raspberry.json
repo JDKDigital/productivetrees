@@ -2,7 +2,10 @@
   "feature": "productivetrees:golden_raspberry",
   "style": "bush",
   "registerWood": false,
-  "leafColor": "#597537",
+  "log": "minecraft:oak_log",
+  "colors": {
+    "leafColor": "#597537"
+  },
   "fruit": {
     "item": "productivetrees:golden_raspberry",
     "count": 1,

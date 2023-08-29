@@ -2,7 +2,10 @@
   "feature": "productivetrees:blackberry",
   "style": "bush",
   "registerWood": false,
-  "leafColor": "#597537",
+  "log": "minecraft:oak_log",
+  "colors": {
+    "leafColor": "#597537"
+  },
   "fruit": {
     "item": "productivetrees:blackberry",
     "count": 3,

@@ -8,24 +8,44 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
+import java.util.List;
 
 public class TreeUtil
 {
     public static final Path LOCK_FILE = createCustomPath("");
     public static final Path TREE_PATH = createCustomPath("trees");
+    public static final Path INTERNAL_TREE_PATH = createModPath("/data/" + ProductiveTrees.MODID + "/trees");
 
     private static Path createCustomPath(String pathName) {
         Path customPath = Paths.get(FMLPaths.CONFIGDIR.get().toAbsolutePath().toString(), ProductiveTrees.MODID, pathName);
         createDirectory(customPath, pathName);
         return customPath;
+    }
+
+    private static Path createModPath(String pathName) {
+        List<Path> roots = List.of(ModList.get().getModFileById(ProductiveTrees.MODID).getFile().getFilePath());
+        for (Path modRoot : roots) {
+            if (Files.isRegularFile(modRoot)) {
+                try(FileSystem fileSystem = FileSystems.newFileSystem(modRoot)) {
+                    Path path = fileSystem.getPath(pathName);
+                    if (Files.exists(path)) {
+                        return path;
+                    }
+                } catch (IOException e) {
+                    ProductiveTrees.LOGGER.error("Could not load source {}!!", modRoot);
+                    e.printStackTrace();
+                }
+            } else if (Files.isDirectory(modRoot)) {
+                return modRoot;
+            }
+        }
+        return null;
     }
 
     private static void createDirectory(Path path, String dirName) {

@@ -1,8 +1,10 @@
 {
-  "feature": "productivetrees:silver_fir",
-  "megaFeature": "productivetrees:silver_fir",
+  "feature": "productivetrees:sequoia",
+  "megaFeature": "productivetrees:sequoia_mega",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#95420d",
-  "plankColor": "#995a57"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#95420d",
+    "plankColor": "#995a57"
+  }
 }

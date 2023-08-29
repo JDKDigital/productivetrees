@@ -1,6 +1,10 @@
 {
   "values": [
     {
+      "id": "productivetrees:akebia_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:alder_planks",
       "required": false
     },
@@ -73,6 +77,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:breadfruit_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:buddhas_hand_planks",
       "required": false
     },
@@ -89,15 +97,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:carob_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:cashew_planks",
       "required": false
     },
     {
-      "id": "productivetrees:cherry_plum_planks",
+      "id": "productivetrees:cedar_planks",
       "required": false
     },
     {
-      "id": "productivetrees:chilli_pepper_planks",
+      "id": "productivetrees:cheese_plant_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cherry_plum_planks",
       "required": false
     },
     {
@@ -122,6 +138,14 @@
     },
     {
       "id": "productivetrees:coffea_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cogwood_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copoazu_planks",
       "required": false
     },
     {
@@ -153,6 +177,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:european_larch_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:finger_lime_planks",
       "required": false
     },
@@ -173,15 +201,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:great_cedar_planks",
-      "required": false
-    },
-    {
       "id": "productivetrees:great_sallow_planks",
       "required": false
     },
     {
-      "id": "productivetrees:hawthorne_planks",
+      "id": "productivetrees:hawthorn_planks",
       "required": false
     },
     {
@@ -250,10 +274,6 @@
     },
     {
       "id": "productivetrees:monkey_puzzle_planks",
-      "required": false
-    },
-    {
-      "id": "productivetrees:mundane_larch_planks",
       "required": false
     },
     {
@@ -377,10 +397,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:sipiri_planks",
-      "required": false
-    },
-    {
       "id": "productivetrees:sour_cherry_planks",
       "required": false
     },
@@ -393,6 +409,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:star_fruit_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:sugar_maple_planks",
       "required": false
     },
@@ -401,15 +421,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:sweetgum_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:sweet_chestnut_planks",
       "required": false
     },
     {
       "id": "productivetrees:sweet_crabapple_planks",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sweet_gum_planks",
       "required": false
     },
     {
@@ -465,7 +485,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:zebrawood_planks",
+      "id": "productivetrees:zebrano_planks",
       "required": false
     }
   ]

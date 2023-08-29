@@ -2,7 +2,10 @@
   "feature": "productivetrees:redcurrant",
   "style": "bush",
   "registerWood": false,
-  "leafColor": "#597537",
+  "log": "minecraft:oak_log",
+  "colors": {
+    "leafColor": "#597537"
+  },
   "fruit": {
     "item": "productivetrees:redcurrant",
     "count": 3,

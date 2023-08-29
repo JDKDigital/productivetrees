@@ -1,0 +1,16 @@
+{
+  "feature": "productivetrees:breadfruit",
+  "style": "birch",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#A0A0A0"
+  },
+  "fruit": {
+    "item": "productivetrees:breadfruit",
+    "count": 1,
+    "growthSpeed": 0.3,
+    "unripeColor": "#7ab450",
+    "ripeColor": "#d9cb5e"
+  }
+}

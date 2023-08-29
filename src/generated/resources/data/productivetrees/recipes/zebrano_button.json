@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:zebrano_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:zebrano_button"
+  }
+}

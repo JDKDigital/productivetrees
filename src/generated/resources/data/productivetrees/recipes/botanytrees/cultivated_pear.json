@@ -46,6 +46,15 @@
               "count": 1,
               "item": "productivetrees:cultivated_pear_sapling"
             }
+          },
+          {
+            "chance": 0.6,
+            "maxRolls": 1,
+            "minRolls": 1,
+            "output": {
+              "count": 1,
+              "item": "productivetrees:pear"
+            }
           }
         ],
         "growthTicks": 2400,

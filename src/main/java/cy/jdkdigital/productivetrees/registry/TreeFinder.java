@@ -6,6 +6,9 @@ import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.util.TreeCreator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.common.crafting.conditions.ConditionContext;
+import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.fml.ModList;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -22,6 +25,7 @@ import java.util.stream.Stream;
 
 public class TreeFinder
 {
+    public static ICondition.IContext context;
     public static Map<ResourceLocation, TreeObject> trees = new LinkedHashMap<>();
 
     public static void discoverTrees() {
@@ -58,8 +62,9 @@ public class TreeFinder
                 json = parser.parse(reader).getAsJsonObject();
                 var name = file.getName().replace(".json", "");
                 id = new ResourceLocation(ProductiveTrees.MODID, name);
+                ProductiveTrees.LOGGER.info("Import tree config " + id);
 
-                if (json.has("requiredMod") && !ModList.get().isLoaded(json.get("requiredMod").getAsString())) {
+                if (!CraftingHelper.processConditions(json, "conditions", context)) {
                     continue;
                 }
 

@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:cherry_plum",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#202e1d",
-  "plankColor": "#A0A0A0"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#A0A0A0"
+  },
+  "fruit": {
+    "item": "productivetrees:cherry_plum",
+    "count": 2,
+    "growthSpeed": 0.5,
+    "unripeColor": "#a9b935",
+    "ripeColor": "#661c24"
+  }
 }

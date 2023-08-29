@@ -1,7 +1,9 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:brazilwood",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#d7af98",
-  "plankColor": "#64324b"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#d7af98",
+    "plankColor": "#64324b"
+  }
 }

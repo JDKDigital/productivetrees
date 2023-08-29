@@ -41,7 +41,7 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(Tags.BEECHNUT).add(TreeRegistrator.BEECHNUT.get());
         tag(Tags.BRAZIL_NUT).add(TreeRegistrator.BRAZIL_NUT.get());
         tag(Tags.BUTTERNUT).add(TreeRegistrator.BUTTERNUT.get());
-        tag(Tags.CANDLE_NUT).add(TreeRegistrator.CANDLE_NUT.get());
+        tag(Tags.CANDLENUT).add(TreeRegistrator.CANDLENUT.get());
         tag(Tags.CASHEW).add(TreeRegistrator.CASHEW.get());
         tag(Tags.CHESTNUT).add(TreeRegistrator.CHESTNUT.get());
         tag(Tags.COFFEE_BEAN).add(TreeRegistrator.COFFEE_BEAN.get());
@@ -50,7 +50,8 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(Tags.PECAN).add(TreeRegistrator.PECAN.get());
         tag(Tags.PISTACHIO).add(TreeRegistrator.PISTACHIO.get());
         tag(Tags.WALNUT).add(TreeRegistrator.WALNUT.get());
-        tag(Tags.NUTS).addTags(Tags.ALMOND, Tags.ACORN, Tags.BEECHNUT, Tags.BRAZIL_NUT, Tags.BUTTERNUT, Tags.CANDLE_NUT, Tags.CASHEW, Tags.CHESTNUT, Tags.COFFEE_BEAN, Tags.GINKGO_NUT, Tags.HAZELNUT, Tags.PECAN, Tags.PISTACHIO, Tags.WALNUT);
+        tag(Tags.CAROB).add(TreeRegistrator.CAROB.get());
+        tag(Tags.NUTS).addTags(Tags.ALMOND, Tags.ACORN, Tags.BEECHNUT, Tags.BRAZIL_NUT, Tags.BUTTERNUT, Tags.CANDLENUT, Tags.CASHEW, Tags.CHESTNUT, Tags.COFFEE_BEAN, Tags.GINKGO_NUT, Tags.HAZELNUT, Tags.PECAN, Tags.PISTACHIO, Tags.WALNUT, Tags.CAROB);
 
         tag(Tags.BLACKBERRY).add(TreeRegistrator.BLACKBERRY.get());
         tag(Tags.BLACKCURRANT).add(TreeRegistrator.BLACKCURRANT.get());
@@ -64,7 +65,8 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(Tags.GOLDEN_RASPBERRY).add(TreeRegistrator.GOLDEN_RASPBERRY.get());
         tag(Tags.SLOE).add(TreeRegistrator.SLOE.get());
         tag(Tags.HAW).add(TreeRegistrator.HAW.get());
-        tag(Tags.BERRIES).addTags(Tags.BLACKBERRY, Tags.BLACKCURRANT, Tags.BLUEBERRY, Tags.REDCURRANT, Tags.CRANBERRY, Tags.ELDERBERRY, Tags.GOOSEBERRY, Tags.RASPBERRY, Tags.JUNIPER, Tags.GOLDEN_RASPBERRY, Tags.SLOE, Tags.HAW);
+        tag(Tags.MIRACLE_BERRY).add(TreeRegistrator.MIRACLE_BERRY.get());
+        tag(Tags.BERRIES).addTags(Tags.BLACKBERRY, Tags.BLACKCURRANT, Tags.BLUEBERRY, Tags.REDCURRANT, Tags.CRANBERRY, Tags.ELDERBERRY, Tags.GOOSEBERRY, Tags.RASPBERRY, Tags.JUNIPER, Tags.GOLDEN_RASPBERRY, Tags.SLOE, Tags.HAW, Tags.MIRACLE_BERRY);
 
         tag(Tags.APRICOT).add(TreeRegistrator.APRICOT.get());
         tag(Tags.BLACK_CHERRY).add(TreeRegistrator.BLACK_CHERRY.get());
@@ -88,12 +90,16 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(Tags.SATSUMA).add(TreeRegistrator.SATSUMA.get());
         tag(Tags.STAR_FRUIT).add(TreeRegistrator.STAR_FRUIT.get());
         tag(Tags.TANGERINE).add(TreeRegistrator.TANGERINE.get());
+        tag(Tags.AKEBIA).add(TreeRegistrator.AKEBIA.get());
+        tag(Tags.COPOAZU).add(TreeRegistrator.COPOAZU.get());
         tag(Tags.BANANA).add(TreeRegistrator.BANANA.get());
         tag(Tags.COCONUT).add(TreeRegistrator.COCONUT.get());
         tag(Tags.MANGO).add(TreeRegistrator.MANGO.get());
         tag(Tags.PLANTAIN).add(TreeRegistrator.PLANTAIN.get());
         tag(Tags.RED_BANANA).add(TreeRegistrator.RED_BANANA.get());
         tag(Tags.PAPAYA).add(TreeRegistrator.PAPAYA.get());
+        tag(Tags.BREADFRUIT).add(TreeRegistrator.BREADFRUIT.get());
+        tag(Tags.MONSTERA_DELICIOSA).add(TreeRegistrator.MONSTERA_DELICIOSA.get());
         tag(Tags.LIME).add(TreeRegistrator.LIME.get());
         tag(Tags.KEY_LIME).add(TreeRegistrator.KEY_LIME.get());
         tag(Tags.FINGER_LIME).add(TreeRegistrator.FINGER_LIME.get());
@@ -102,7 +108,7 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(Tags.ORANGE).add(TreeRegistrator.ORANGE.get());
         tag(Tags.MANDARIN).add(TreeRegistrator.MANDARIN.get());
         tag(Tags.BUDDHAS_HAND).add(TreeRegistrator.BUDDHAS_HAND.get());
-        tag(Tags.FRUITS).addTags(Tags.APRICOT, Tags.BLACK_CHERRY, Tags.CHERRY_PLUM, Tags.OLIVE, Tags.OSANGE_ORANGE, Tags.KUMQUAT, Tags.WILD_CHERRY, Tags.SOUR_CHERRY, Tags.DATE, Tags.PLUM, Tags.AVOCADO, Tags.CRABAPPLE, Tags.FIG, Tags.GRAPEFRUIT, Tags.NECTARINE, Tags.PEACH, Tags.PEAR, Tags.POMELO, Tags.SAND_PEAR, Tags.SATSUMA, Tags.STAR_FRUIT, Tags.TANGERINE, Tags.BANANA, Tags.COCONUT, Tags.MANGO, Tags.PLANTAIN, Tags.RED_BANANA, Tags.PAPAYA, Tags.LIME, Tags.KEY_LIME, Tags.FINGER_LIME, Tags.CITRON, Tags.LEMON, Tags.ORANGE, Tags.MANDARIN, Tags.BUDDHAS_HAND);
+        tag(Tags.FRUITS).addTags(Tags.APRICOT, Tags.BLACK_CHERRY, Tags.CHERRY_PLUM, Tags.OLIVE, Tags.OSANGE_ORANGE, Tags.KUMQUAT, Tags.WILD_CHERRY, Tags.SOUR_CHERRY, Tags.DATE, Tags.PLUM, Tags.AVOCADO, Tags.CRABAPPLE, Tags.FIG, Tags.GRAPEFRUIT, Tags.NECTARINE, Tags.PEACH, Tags.PEAR, Tags.POMELO, Tags.SAND_PEAR, Tags.SATSUMA, Tags.STAR_FRUIT, Tags.TANGERINE, Tags.AKEBIA, Tags.COPOAZU, Tags.BANANA, Tags.COCONUT, Tags.MANGO, Tags.PLANTAIN, Tags.RED_BANANA, Tags.PAPAYA, Tags.BREADFRUIT, Tags.MONSTERA_DELICIOSA, Tags.LIME, Tags.KEY_LIME, Tags.FINGER_LIME, Tags.CITRON, Tags.LEMON, Tags.ORANGE, Tags.MANDARIN, Tags.BUDDHAS_HAND);
     }
 
     @Override

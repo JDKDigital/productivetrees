@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:copoazu_log"
+      },
+      {
+        "item": "productivetrees:copoazu_wood"
+      },
+      {
+        "item": "productivetrees:copoazu_stripped_log"
+      },
+      {
+        "item": "productivetrees:copoazu_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:copoazu_planks"
+  }
+}

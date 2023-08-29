@@ -46,6 +46,15 @@
               "count": 1,
               "item": "productivetrees:black_cherry_sapling"
             }
+          },
+          {
+            "chance": 0.3,
+            "maxRolls": 5,
+            "minRolls": 1,
+            "output": {
+              "count": 1,
+              "item": "productivetrees:black_cherry"
+            }
           }
         ],
         "growthTicks": 2400,

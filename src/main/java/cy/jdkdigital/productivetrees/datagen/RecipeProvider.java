@@ -203,7 +203,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         }};
         if (treeObject.hasFruit()) {
             ItemStack fruit = treeObject.getFruit().getItem();
-            drops.add(new HarvestEntry(treeObject.getFruit().growthSpeed(), new ItemStack(fruit.getItem()), 1, fruit.getCount()));
+            if (!fruit.isEmpty()) {
+                drops.add(new HarvestEntry(treeObject.getFruit().growthSpeed(), new ItemStack(fruit.getItem()), 1, fruit.getCount()));
+            } else {
+                ProductiveTrees.LOGGER.warn("Empty fruit item for tree " + treeObject.getId());
+            }
         }
 
         ConditionalRecipe.builder().addCondition(modLoaded("botanytrees")).addRecipe(
@@ -215,28 +219,27 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "silver_lime", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 15);
         treeBreeding(consumer, "walnut", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 10);
         treeBreeding(consumer, "sweet_chestnut", "walnut", RecipeProvider.getLeafIngredient("wild_cherry", "silver_lime"), 10);
-        treeBreeding(consumer, "mundane_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), Ingredient.of(Blocks.BIRCH_LEAVES), 10);
-        treeBreeding(consumer, "sugar_maple", "mundane_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), 5);
+        treeBreeding(consumer, "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), Ingredient.of(Blocks.BIRCH_LEAVES), 10);
+        treeBreeding(consumer, "sugar_maple", "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), 5);
         treeBreeding(consumer, "citron", "silver_lime", "sour_cherry", 5);
         treeBreeding(consumer, "plum", "citron", "wild_cherry", 5);
-        treeBreeding(consumer, "bull_pine", "mundane_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), 10);
-        treeBreeding(consumer, "sequoia", "mundane_larch", "bull_pine", 5);
+        treeBreeding(consumer, "bull_pine", "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), 10);
+        treeBreeding(consumer, "sequoia", "european_larch", "bull_pine", 5);
         treeBreeding(consumer, "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), Ingredient.of(Blocks.JUNGLE_LEAVES), 10);
         treeBreeding(consumer, "ipe", "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), 10);
         treeBreeding(consumer, "kapok", "teak", Ingredient.of(Blocks.JUNGLE_LEAVES), 10);
         treeBreeding(consumer, "myrtle_ebony", "kapok", Ingredient.of(Blocks.DARK_OAK_LEAVES), 10);
-        treeBreeding(consumer, "zebrawood", "white_poplar", "myrtle_ebony", 5);
+        treeBreeding(consumer, "zebrano", "white_poplar", "myrtle_ebony", 5);
         treeBreeding(consumer, "yellow_meranti", "myrtle_ebony", "kapok", 10);
         treeBreeding(consumer, "mahogany", "yellow_meranti", "kapok", 10);
-        treeBreeding(consumer, "desert_acacia", "balsa", "teak", 10);
         treeBreeding(consumer, "padauk", Ingredient.of(Blocks.ACACIA_LEAVES), Ingredient.of(Blocks.JUNGLE_LEAVES), 5);
         treeBreeding(consumer, "balsa", "teak", Ingredient.of(Blocks.ACACIA_LEAVES), 10);
-        treeBreeding(consumer, "cocobolo", "desert_acacia", Ingredient.of(Blocks.DARK_OAK_LEAVES), 10);
+        treeBreeding(consumer, "cocobolo", "balsa", Ingredient.of(Blocks.DARK_OAK_LEAVES), 10);
         treeBreeding(consumer, "wenge", "balsa", "cocobolo", 10);
         treeBreeding(consumer, "grandidiers_baobab", "balsa", "wenge", 10);
-        treeBreeding(consumer, "blue_mahoe", "desert_acacia", "balsa", 5);
+        treeBreeding(consumer, "blue_mahoe", "teak", "balsa", 5);
         treeBreeding(consumer, "white_willow", "silver_lime", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES), 5);
-        treeBreeding(consumer, "sipiri", "mahogany", "kapok", 10);
+        treeBreeding(consumer, "cogwood", "mahogany", "kapok", 10);
         treeBreeding(consumer, "papaya", "wild_cherry", Ingredient.of(Blocks.JUNGLE_LEAVES), 5);
         treeBreeding(consumer, "date_palm", "papaya", Ingredient.of(Blocks.JUNGLE_LEAVES), 5);
         treeBreeding(consumer, "white_poplar", "white_willow", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, getLeafIngredient("silver_lime").getItems()[0].getItem()), 5);
@@ -252,7 +255,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "almond", "plum", "walnut", 10);
         treeBreeding(consumer, "wild_cherry", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 10);
         treeBreeding(consumer, "sour_cherry", "white_willow", Ingredient.of(Blocks.CHERRY_LEAVES), 10);
-        treeBreeding(consumer, "black_cherry", "ebony", "sour_cherry", 10);
+        treeBreeding(consumer, "black_cherry", "myrtle_ebony", "sour_cherry", 10);
         treeBreeding(consumer, "orange", "mandarin", "pomelo", 10);
         treeBreeding(consumer, "mandarin", "pomelo", "wild_cherry", 10);
         treeBreeding(consumer, "tangerine", "mandarin", "kumquat", 10);
@@ -276,26 +279,28 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "beech", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 10);
         treeBreeding(consumer, "copper_beech", "beech", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "aspen", "beech", "alder", 10);
-        treeBreeding(consumer, "yew", "mundane_larch", Blocks.SPRUCE_LEAVES, 10);
+        treeBreeding(consumer, "yew", "european_larch", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "lawson_cypress", "bull_pine", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "douglas_fir", "silver_fir", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "hazel", "aspen", "beech", 10);
         treeBreeding(consumer, "sycamore_fig", "ash", "sugar_maple", 10);
+        treeBreeding(consumer, "breadfruit", "sycamore_fig", "sugar_maple", 10);
+        treeBreeding(consumer, "cheese_plant", "sycamore_fig", "breadfruit", 10);
         treeBreeding(consumer, "whitebeam", "ash", Blocks.BIRCH_LEAVES, 10);
-        treeBreeding(consumer, "hawthorne", "rowan", "beech", 10);
+        treeBreeding(consumer, "hawthorn", "rowan", "beech", 10);
         treeBreeding(consumer, "pecan", "beech", Blocks.BIRCH_LEAVES, 10);
         treeBreeding(consumer, "elm", "ash", "bull_pine", 10);
         treeBreeding(consumer, "elderberry", "aspen", "alder", 10);
         treeBreeding(consumer, "holly", "alder", "rowan", 10);
-        treeBreeding(consumer, "hornbeam", "ash", "mundane_larch", 10);
+        treeBreeding(consumer, "hornbeam", "ash", "european_larch", 10);
         treeBreeding(consumer, "great_sallow", "white_willow", "aspen", 10);
         treeBreeding(consumer, "silver_fir", "balsam_fir", "bull_pine", 10);
-        treeBreeding(consumer, "great_cedar", "silver_fir", "mundane_larch", 10);
+        treeBreeding(consumer, "cedar", "silver_fir", "european_larch", 10);
         treeBreeding(consumer, "olive", "alder", "wild_cherry", 10);
         treeBreeding(consumer, "red_maple", "silver_lime", "sugar_maple", 10);
-        treeBreeding(consumer, "balsam_fir", "alder", "mundane_larch", 10);
+        treeBreeding(consumer, "balsam_fir", "alder", "european_larch", 10);
         treeBreeding(consumer, "loblolly_pine", "bull_pine", Blocks.SPRUCE_LEAVES, 10);
-        treeBreeding(consumer, "sweet_gum", "mundane_larch", "sugar_maple", 10);
+        treeBreeding(consumer, "sweetgum", "european_larch", "sugar_maple", 10);
         treeBreeding(consumer, "black_locust", "balsa", "silver_lime", 10);
         treeBreeding(consumer, "sand_pear", "orchard_apple", Blocks.BIRCH_LEAVES, 10);
         treeBreeding(consumer, "cultivated_pear", "orchard_apple", "sand_pear", 10);
@@ -308,7 +313,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "iroko", "balsa", "teak", 10);
         treeBreeding(consumer, "ginkgo", "wenge", "silver_lime", 10);
         treeBreeding(consumer, "brazil_nut", "beech", Blocks.JUNGLE_LEAVES, 10);
-        treeBreeding(consumer, "rose_gum", "balsa", "sweet_gum", 10);
+        treeBreeding(consumer, "rose_gum", "balsa", "sweetgum", 10); // TODO sweetgum has nothing to do with rose gum
         treeBreeding(consumer, "swamp_gum", "yellow_meranti", "rose_gum", 10);
         treeBreeding(consumer, "boxwood", "holly", "alder", 10);
         treeBreeding(consumer, "coffea", "black_cherry", Blocks.JUNGLE_LEAVES, 10);
@@ -325,6 +330,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "juniper", "raspberry", "silver_fir", 10);
         treeBreeding(consumer, "gooseberry", "raspberry", "lime", 10);
         treeBreeding(consumer, "golden_raspberry", "raspberry", "orange", 10);
+        treeBreeding(consumer, "miracle_berry", "golden_raspberry", "sugar_maple", 10);
         treeBreeding(consumer, "cinnamon", "rosewood", "teak", 10);
         treeBreeding(consumer, "coconut", "brazil_nut", "balsa", 10);
         treeBreeding(consumer, "cashew", "teak", Blocks.MANGROVE_LEAVES, 10);
@@ -335,9 +341,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "chilli_pepper", "ginkgo", "hazel", 10);
         treeBreeding(consumer, "star_anise", "clove", "allspice", 10);
         treeBreeding(consumer, "mango", "orange", Blocks.MANGROVE_LEAVES, 10);
-        treeBreeding(consumer, "starfruit", "mango", "star_anise", 10);
+        treeBreeding(consumer, "star_fruit", "mango", "star_anise", 10);
         treeBreeding(consumer, "candlenut", "ginkgo", "hazel", 10);
-        treeBreeding(consumer, "dwarf_hazel", "alder", "hazel", 10);
+        treeBreeding(consumer, "akebia", "candlenut", Blocks.JUNGLE_LEAVES, 10);
+        treeBreeding(consumer, "copoazu", "akebia", "cashew", 10);
+        treeBreeding(consumer, "carob", "sweet_chestnut", "copoazu", 10);
         treeBreeding(consumer, "ysabella_purpurea", "purpleheart", "rosewood", 5);
     }
 
@@ -370,6 +378,15 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
     }
 
     public static void treeBreeding(Consumer<FinishedRecipe> consumer, String name, Ingredient leafA, Ingredient leafB, Ingredient result, int chance) {
+        if (leafA.isEmpty()) {
+            throw new RuntimeException("Empty leafA for tree " + name);
+        }
+        if (leafB.isEmpty()) {
+            throw new RuntimeException("Empty leafB for tree " + name);
+        }
+        if (result.isEmpty()) {
+            throw new RuntimeException("Empty result for tree " + name);
+        }
         TreePollinationRecipeBuilder.direct(leafA, leafB, result, chance).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "pollination/" + name));
     }
 

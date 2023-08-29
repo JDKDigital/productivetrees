@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:cedar_log"
+      },
+      {
+        "item": "productivetrees:cedar_wood"
+      },
+      {
+        "item": "productivetrees:cedar_stripped_log"
+      },
+      {
+        "item": "productivetrees:cedar_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:cedar_planks"
+  }
+}

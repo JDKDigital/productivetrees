@@ -46,6 +46,15 @@
               "count": 1,
               "item": "productivetrees:coffea_sapling"
             }
+          },
+          {
+            "chance": 0.4,
+            "maxRolls": 4,
+            "minRolls": 1,
+            "output": {
+              "count": 1,
+              "item": "productivetrees:coffee_bean"
+            }
           }
         ],
         "growthTicks": 2400,

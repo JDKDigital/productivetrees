@@ -1,0 +1,9 @@
+{
+  "feature": "productivetrees:cogwood",
+  "style": "birch",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#A0A0A0"
+  }
+}

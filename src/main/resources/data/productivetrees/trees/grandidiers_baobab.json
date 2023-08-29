@@ -1,7 +1,9 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:gradidiers_baobab",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#d48b54",
-  "plankColor": "#929c62"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#d48b54",
+    "plankColor": "#929c62"
+  }
 }

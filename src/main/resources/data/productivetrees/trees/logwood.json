@@ -1,7 +1,9 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:logwood",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#ddc7b7",
-  "plankColor": "#a4372c"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#ddc7b7",
+    "plankColor": "#a4372c"
+  }
 }

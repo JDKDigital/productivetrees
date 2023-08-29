@@ -2,7 +2,6 @@ package cy.jdkdigital.productivetrees.common.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.Features;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
@@ -50,7 +49,6 @@ public class FruitLeafPlacerDecorator extends TreeDecorator
         var rand = context.random();
         context.leaves().forEach(blockPos -> {
             if (count.get() < maxFruits && context.isAir(blockPos.below()) && rand.nextFloat() < density) {
-                ProductiveTrees.LOGGER.info("place banana");
                 context.setBlock(blockPos.below(), fruitProvider.getState(rand, blockPos.below()));
                 count.getAndIncrement();
             }

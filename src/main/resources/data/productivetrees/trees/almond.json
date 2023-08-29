@@ -1,9 +1,11 @@
 {
   "feature": "productivetrees:almond",
   "style": "oak",
-  "leafColor": "#1c4316",
-  "logColor": "#202e1d",
-  "plankColor": "#A0A0A0",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#A0A0A0"
+  },
   "fruit": {
     "item": "productivetrees:almond",
     "count": 3,

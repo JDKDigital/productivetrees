@@ -1,7 +1,9 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:rowan",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#b7b6a3",
-  "plankColor": "#cfad9a"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#b7b6a3",
+    "plankColor": "#cfad9a"
+  }
 }

@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
-  "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#202e1d",
-  "plankColor": "#A0A0A0"
+  "feature": "productivetrees:buddhas_hand",
+  "style": "dark_oak",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#A0A0A0"
+  },
+  "fruit": {
+    "item": "productivetrees:buddhas_hand",
+    "count": 1,
+    "growthSpeed": 0.35,
+    "unripeColor": "#539d22",
+    "ripeColor": "#f6be2d"
+  }
 }

@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
-  "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#202e1d",
-  "plankColor": "#A0A0A0"
+  "feature": "productivetrees:candlenut",
+  "style": "oak",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#A0A0A0"
+  },
+  "fruit": {
+    "item": "productivetrees:candlenut",
+    "count": 3,
+    "growthSpeed": 0.3,
+    "unripeColor": "#4c5a1c",
+    "ripeColor": "#caaf7a"
+  }
 }

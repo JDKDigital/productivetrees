@@ -1,7 +1,9 @@
 {
   "type": "productivetrees:tree_pollination",
   "chance": 10,
-  "leafA": [],
+  "leafA": {
+    "item": "productivetrees:myrtle_ebony_leaves"
+  },
   "leafB": {
     "item": "productivetrees:sour_cherry_leaves"
   },

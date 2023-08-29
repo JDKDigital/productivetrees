@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:finger_lime",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#202e1d",
-  "plankColor": "#c8c474"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#c8c474"
+  },
+  "fruit": {
+    "item": "productivetrees:finger_lime",
+    "count": 1,
+    "growthSpeed": 0.5,
+    "unripeColor": "#8cab05",
+    "ripeColor": "#384c00"
+  }
 }

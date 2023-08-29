@@ -2,7 +2,7 @@
   "type": "productivetrees:tree_pollination",
   "chance": 10,
   "leafA": {
-    "item": "productivetrees:desert_acacia_leaves"
+    "item": "productivetrees:balsa_leaves"
   },
   "leafB": {
     "item": "minecraft:dark_oak_leaves"

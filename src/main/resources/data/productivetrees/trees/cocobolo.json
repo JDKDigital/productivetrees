@@ -1,7 +1,9 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:cocobolo",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#6e5c47",
-  "plankColor": "#7e1603"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#6e5c47",
+    "plankColor": "#7e1603"
+  }
 }

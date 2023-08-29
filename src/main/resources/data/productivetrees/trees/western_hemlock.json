@@ -1,7 +1,9 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:western_hemlock",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#b9aea6",
-  "plankColor": "#c7b56c"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#b9aea6",
+    "plankColor": "#c7b56c"
+  }
 }

@@ -2,8 +2,10 @@
   "feature": "productivetrees:ysabella_purpurea",
   "style": "cherry",
   "hiveStyle": "cherry",
-  "leafColor": "#800080",
-  "logColor": "#0e9af2",
-  "plankColor": "#800080",
+  "colors": {
+    "leafColor": "#800080",
+    "logColor": "#0e9af2",
+    "plankColor": "#800080"
+  },
   "fallingLeaves": true
 }

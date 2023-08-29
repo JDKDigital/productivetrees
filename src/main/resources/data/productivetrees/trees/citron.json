@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:citron",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#52483d",
-  "plankColor": "#c8c474"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#52483d",
+    "plankColor": "#c8c474"
+  },
+  "fruit": {
+    "item": "productivetrees:citron",
+    "count": 1,
+    "growthSpeed": 0.4,
+    "unripeColor": "#404b00",
+    "ripeColor": "#e09e12"
+  }
 }

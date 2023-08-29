@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
-  "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#202e1d",
-  "plankColor": "#723e57"
+  "feature": "productivetrees:brazil_nut",
+  "style": "oak",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#723e57"
+  },
+  "fruit": {
+    "item": "productivetrees:brazil_nut",
+    "count": 4,
+    "growthSpeed": 0.2,
+    "unripeColor": "#cc956e",
+    "ripeColor": "#4c2915"
+  }
 }

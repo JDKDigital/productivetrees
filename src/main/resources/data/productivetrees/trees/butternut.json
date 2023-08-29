@@ -1,9 +1,11 @@
 {
   "feature": "productivetrees:butternut",
   "style": "oak",
-  "leafColor": "#1c4316",
-  "logColor": "#cfc3b7",
-  "plankColor": "#ecaa7a",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#cfc3b7",
+    "plankColor": "#ecaa7a"
+  },
   "fruit": {
     "item": "productivetrees:butternut",
     "count": 3,

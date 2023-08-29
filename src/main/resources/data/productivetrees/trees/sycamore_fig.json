@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:sycamore_fig",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#b3a180",
-  "plankColor": "#b3731b"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#b3a180",
+    "plankColor": "#b3731b"
+  },
+  "fruit": {
+    "item": "productivetrees:fig",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
 }

@@ -27,9 +27,8 @@ public class TreeObject
     private final String style;
     private final String hiveStyle;
     private final Boolean registerWood;
-    private final String leafColor;
-    private final String logColor;
-    private final String plankColor;
+    private final ResourceLocation log;
+    private final TreeColors colors;
     private final Fruit fruit;
     private final TagKey<Block> soil;
     private final Boolean canForceGrowth;
@@ -57,16 +56,15 @@ public class TreeObject
     private Supplier<Block> hiveBlock;
     private Supplier<Block> expansionBoxBlock;
 
-    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, String hiveStyle, Boolean registerWood, String leafColor, String logColor, String plankColor, Fruit fruit, TagKey<Block> soil, Boolean canForceGrowth, Boolean fireProof, Boolean useTinting, Boolean fallingLeaves, GrowthConditions growthConditions) {
+    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, String hiveStyle, Boolean registerWood, ResourceLocation log,TreeColors colors, Fruit fruit, TagKey<Block> soil, Boolean canForceGrowth, Boolean fireProof, Boolean useTinting, Boolean fallingLeaves, GrowthConditions growthConditions) {
         this.id = id;
         this.feature = feature;
         this.megaFeature = megaFeature;
         this.style = style;
         this.hiveStyle = hiveStyle;
         this.registerWood = registerWood;
-        this.leafColor = leafColor;
-        this.logColor = logColor;
-        this.plankColor = plankColor;
+        this.log = log;
+        this.colors = colors;
         this.fruit = fruit;
         this.soil = soil;
         this.canForceGrowth = canForceGrowth;
@@ -84,16 +82,15 @@ public class TreeObject
                 Codec.STRING.fieldOf("style").orElse("oak").forGetter(TreeObject::getStyle),
                 Codec.STRING.fieldOf("hiveStyle").orElse("oak").forGetter(TreeObject::getHiveStyle),
                 Codec.BOOL.fieldOf("registerWood").orElse(true).forGetter(TreeObject::registerWood),
-                Codec.STRING.fieldOf("leafColor").orElse("#6b8749").forGetter(TreeObject::getLeafColor),
-                Codec.STRING.fieldOf("logColor").orElse("#917142").forGetter(TreeObject::getLogColor),
-                Codec.STRING.fieldOf("plankColor").orElse("#c29d62").forGetter(TreeObject::getPlankColor),
-                Fruit.codec().fieldOf("fruit").orElse(new Fruit(ProductiveTrees.EMPTY_RL, 1, 1.0F, "", "")).forGetter(TreeObject::getFruit),
+                ResourceLocation.CODEC.fieldOf("log").orElse(new ResourceLocation("oak_log")).forGetter(TreeObject::getLog),
+                TreeColors.codec().fieldOf("colors").orElse(TreeColors.DEFAULT).forGetter(TreeObject::getColors),
+                Fruit.codec().fieldOf("fruit").orElse(Fruit.DEFAULT).forGetter(TreeObject::getFruit),
                 TagKey.hashedCodec(Registries.BLOCK).fieldOf("soil").orElse(Tags.DIRT_OR_FARMLAND).forGetter(TreeObject::getSoil),
                 Codec.BOOL.fieldOf("canForceGrowth").orElse(true).forGetter(TreeObject::canForceGrowth),
                 Codec.BOOL.fieldOf("fireproof").orElse(false).forGetter(TreeObject::isFireProof),
                 Codec.BOOL.fieldOf("useTinting").orElse(true).forGetter(TreeObject::useTinting),
                 Codec.BOOL.fieldOf("fallingLeaves").orElse(false).forGetter(TreeObject::hasFallingLeaves),
-                GrowthConditions.codec().fieldOf("growthConditions").orElse(new GrowthConditions(9, 15, Fluids.EMPTY)).forGetter(TreeObject::getGrowthConditions)
+                GrowthConditions.codec().fieldOf("growthConditions").orElse(GrowthConditions.DEFAULT).forGetter(TreeObject::getGrowthConditions)
         ).apply(instance, TreeObject::new));
     }
 
@@ -121,16 +118,24 @@ public class TreeObject
         return registerWood;
     }
 
+    public ResourceLocation getLog() {
+        return log;
+    }
+
+    public TreeColors getColors() {
+        return colors;
+    }
+
     public String getLeafColor() {
-        return leafColor;
+        return colors.leafColor;
     }
 
     public String getLogColor() {
-        return logColor;
+        return colors.logColor;
     }
 
     public String getPlankColor() {
-        return plankColor;
+        return colors.plankColor;
     }
 
     public Fruit getFruit() {
@@ -190,7 +195,10 @@ public class TreeObject
     }
 
     public Supplier<Block> getLogBlock() {
-        return logBlock;
+        if (registerWood) {
+            return logBlock;
+        }
+        return () -> ForgeRegistries.BLOCKS.getValue(log);
     }
 
     public void setLogBlock(Supplier<Block> logBlock) {
@@ -308,6 +316,7 @@ public class TreeObject
 
     public record GrowthConditions(int minLight, int maxLight, Fluid fluid)
     {
+        private static final GrowthConditions DEFAULT = new GrowthConditions(9, 15, Fluids.EMPTY);
         public static Codec<GrowthConditions> codec() {
             return RecordCodecBuilder.create(instance -> instance.group(
                     ExtraCodecs.POSITIVE_INT.fieldOf("minLight").orElse(9).forGetter(GrowthConditions::minLight),
@@ -318,11 +327,13 @@ public class TreeObject
         }
     }
 
-    public record Fruit(ResourceLocation fruitItem, int count, float growthSpeed, String unripeColor, String ripeColor)
+    public record Fruit(String style, ResourceLocation fruitItem, int count, float growthSpeed, String unripeColor, String ripeColor)
     {
+        private static final Fruit DEFAULT = new Fruit("", ProductiveTrees.EMPTY_RL, 1, 1.0F, "", "");
         public static Codec<Fruit> codec() {
             return RecordCodecBuilder.create(instance -> instance.group(
-                    ResourceLocation.CODEC.fieldOf("item").orElse(ProductiveTrees.EMPTY_RL).forGetter(Fruit::fruitItem),
+                    Codec.STRING.fieldOf("style").orElse("medium").forGetter(Fruit::style),
+                    ResourceLocation.CODEC.fieldOf("item").forGetter(Fruit::fruitItem),
                     Codec.INT.fieldOf("count").orElse(1).forGetter(Fruit::count),
                     Codec.FLOAT.fieldOf("growthSpeed").orElse(1.0F).forGetter(Fruit::growthSpeed),
                     Codec.STRING.fieldOf("unripeColor").orElse("#ffffff").forGetter(Fruit::unripeColor),
@@ -333,6 +344,18 @@ public class TreeObject
         public ItemStack getItem() {
             var item = ForgeRegistries.ITEMS.getValue(fruitItem);
             return item != null ? new ItemStack(item, count) : ItemStack.EMPTY;
+        }
+    }
+
+    public record TreeColors(String leafColor, String logColor, String plankColor)
+    {
+        private static final TreeColors DEFAULT = new TreeColors("", "", "");
+        public static Codec<TreeColors> codec() {
+            return RecordCodecBuilder.create(instance -> instance.group(
+                    Codec.STRING.fieldOf("leafColor").orElse("#ffffff").forGetter(TreeColors::leafColor),
+                    Codec.STRING.fieldOf("logColor").orElse("#ffffff").forGetter(TreeColors::logColor),
+                    Codec.STRING.fieldOf("plankColor").orElse("#ffffff").forGetter(TreeColors::plankColor)
+            ).apply(instance, TreeColors::new));
         }
     }
 }

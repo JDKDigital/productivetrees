@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import cy.jdkdigital.productivebees.ProductiveBees;
 import cy.jdkdigital.productivebees.common.item.UpgradeItem;
 import cy.jdkdigital.productivebees.init.ModBlocks;
+import cy.jdkdigital.productivebees.setup.BeeReloadListener;
 import cy.jdkdigital.productivetrees.client.particle.ColoredParticleType;
 import cy.jdkdigital.productivetrees.common.block.PollinatedLeaves;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
@@ -35,6 +36,8 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.crafting.conditions.ConditionContext;
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -121,13 +124,19 @@ public class ProductiveTrees
         TREE_DECORATORS.register(modEventBus);
         POI_TYPES.register(modEventBus);
 
+        MinecraftForge.EVENT_BUS.addListener(EventHandler::onServerStarting);
         MinecraftForge.EVENT_BUS.addListener(EventHandler::axeStrip);
         MinecraftForge.EVENT_BUS.addListener(EventHandler::blockBreak);
         MinecraftForge.EVENT_BUS.addListener(EventHandler::beeRelease);
 
         // TODO
-        // Fruit drop rate tbd by loot table
         // trapdoors, boats?, signs, door
+        // potted saplings
+        // pollinated leaves to use correct leaf texture
+        // use correct planks texture for other blocks
+
+        // Trees to add
+        // cacao, Socotra Dragon,
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
     }

@@ -1,0 +1,16 @@
+{
+  "feature": "productivetrees:miracle_berry",
+  "style": "bush",
+  "registerWood": false,
+  "log": "minecraft:oak_log",
+  "colors": {
+    "leafColor": "#1c4316"
+  },
+  "fruit": {
+    "item": "productivetrees:miracle_berry",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
+}

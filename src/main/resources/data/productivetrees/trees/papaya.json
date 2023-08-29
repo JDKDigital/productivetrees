@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:papaya",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#ac8547",
-  "plankColor": "#ddcc78"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#ac8547",
+    "plankColor": "#ddcc78"
+  },
+  "fruit": {
+    "item": "productivetrees:papaya",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
 }

@@ -1,7 +1,9 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:padauk",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#c69541",
-  "plankColor": "#bb6c3c"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#c69541",
+    "plankColor": "#bb6c3c"
+  }
 }

@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:ginkgo",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#acad95",
-  "plankColor": "#f4e7ba"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#acad95",
+    "plankColor": "#f4e7ba"
+  },
+  "fruit": {
+    "item": "productivetrees:ginkgo_nut",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
 }

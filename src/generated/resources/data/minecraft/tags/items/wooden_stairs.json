@@ -1,6 +1,10 @@
 {
   "values": [
     {
+      "id": "productivetrees:akebia_stairs",
+      "required": false
+    },
+    {
       "id": "productivetrees:alder_stairs",
       "required": false
     },
@@ -73,6 +77,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:breadfruit_stairs",
+      "required": false
+    },
+    {
       "id": "productivetrees:buddhas_hand_stairs",
       "required": false
     },
@@ -89,15 +97,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:carob_stairs",
+      "required": false
+    },
+    {
       "id": "productivetrees:cashew_stairs",
       "required": false
     },
     {
-      "id": "productivetrees:cherry_plum_stairs",
+      "id": "productivetrees:cedar_stairs",
       "required": false
     },
     {
-      "id": "productivetrees:chilli_pepper_stairs",
+      "id": "productivetrees:cheese_plant_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cherry_plum_stairs",
       "required": false
     },
     {
@@ -122,6 +138,14 @@
     },
     {
       "id": "productivetrees:coffea_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cogwood_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copoazu_stairs",
       "required": false
     },
     {
@@ -153,6 +177,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:european_larch_stairs",
+      "required": false
+    },
+    {
       "id": "productivetrees:finger_lime_stairs",
       "required": false
     },
@@ -173,15 +201,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:great_cedar_stairs",
-      "required": false
-    },
-    {
       "id": "productivetrees:great_sallow_stairs",
       "required": false
     },
     {
-      "id": "productivetrees:hawthorne_stairs",
+      "id": "productivetrees:hawthorn_stairs",
       "required": false
     },
     {
@@ -250,10 +274,6 @@
     },
     {
       "id": "productivetrees:monkey_puzzle_stairs",
-      "required": false
-    },
-    {
-      "id": "productivetrees:mundane_larch_stairs",
       "required": false
     },
     {
@@ -377,10 +397,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:sipiri_stairs",
-      "required": false
-    },
-    {
       "id": "productivetrees:sour_cherry_stairs",
       "required": false
     },
@@ -393,6 +409,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:star_fruit_stairs",
+      "required": false
+    },
+    {
       "id": "productivetrees:sugar_maple_stairs",
       "required": false
     },
@@ -401,15 +421,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:sweetgum_stairs",
+      "required": false
+    },
+    {
       "id": "productivetrees:sweet_chestnut_stairs",
       "required": false
     },
     {
       "id": "productivetrees:sweet_crabapple_stairs",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sweet_gum_stairs",
       "required": false
     },
     {
@@ -465,7 +485,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:zebrawood_stairs",
+      "id": "productivetrees:zebrano_stairs",
       "required": false
     }
   ]

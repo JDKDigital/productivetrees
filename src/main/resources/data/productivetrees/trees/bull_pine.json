@@ -1,7 +1,9 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:bull_pine",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#684e44",
-  "plankColor": "#c6a054"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#684e44",
+    "plankColor": "#c6a054"
+  }
 }

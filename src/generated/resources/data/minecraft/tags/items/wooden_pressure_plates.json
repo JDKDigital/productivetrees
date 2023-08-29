@@ -1,6 +1,10 @@
 {
   "values": [
     {
+      "id": "productivetrees:akebia_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:alder_pressure_plate",
       "required": false
     },
@@ -73,6 +77,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:breadfruit_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:buddhas_hand_pressure_plate",
       "required": false
     },
@@ -89,15 +97,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:carob_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:cashew_pressure_plate",
       "required": false
     },
     {
-      "id": "productivetrees:cherry_plum_pressure_plate",
+      "id": "productivetrees:cedar_pressure_plate",
       "required": false
     },
     {
-      "id": "productivetrees:chilli_pepper_pressure_plate",
+      "id": "productivetrees:cheese_plant_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cherry_plum_pressure_plate",
       "required": false
     },
     {
@@ -122,6 +138,14 @@
     },
     {
       "id": "productivetrees:coffea_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cogwood_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copoazu_pressure_plate",
       "required": false
     },
     {
@@ -153,6 +177,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:european_larch_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:finger_lime_pressure_plate",
       "required": false
     },
@@ -173,15 +201,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:great_cedar_pressure_plate",
-      "required": false
-    },
-    {
       "id": "productivetrees:great_sallow_pressure_plate",
       "required": false
     },
     {
-      "id": "productivetrees:hawthorne_pressure_plate",
+      "id": "productivetrees:hawthorn_pressure_plate",
       "required": false
     },
     {
@@ -250,10 +274,6 @@
     },
     {
       "id": "productivetrees:monkey_puzzle_pressure_plate",
-      "required": false
-    },
-    {
-      "id": "productivetrees:mundane_larch_pressure_plate",
       "required": false
     },
     {
@@ -377,10 +397,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:sipiri_pressure_plate",
-      "required": false
-    },
-    {
       "id": "productivetrees:sour_cherry_pressure_plate",
       "required": false
     },
@@ -393,6 +409,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:star_fruit_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:sugar_maple_pressure_plate",
       "required": false
     },
@@ -401,15 +421,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:sweetgum_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:sweet_chestnut_pressure_plate",
       "required": false
     },
     {
       "id": "productivetrees:sweet_crabapple_pressure_plate",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sweet_gum_pressure_plate",
       "required": false
     },
     {
@@ -465,7 +485,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:zebrawood_pressure_plate",
+      "id": "productivetrees:zebrano_pressure_plate",
       "required": false
     }
   ]

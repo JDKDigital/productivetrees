@@ -1,7 +1,9 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:teak",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#353128",
-  "plankColor": "#7d7963"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#353128",
+    "plankColor": "#7d7963"
+  }
 }

@@ -1,7 +1,16 @@
 {
-  "feature": "productivetrees:silver_fir",
+  "feature": "productivetrees:orchard_apple",
   "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#6f6563",
-  "plankColor": "#603528"
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#6f6563",
+    "plankColor": "#603528"
+  },
+  "fruit": {
+    "item": "minecraft:apple",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
 }

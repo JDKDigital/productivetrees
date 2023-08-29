@@ -1,0 +1,8 @@
+{
+  "parent": "productivetrees:block/log/base_log",
+  "textures": {
+    "end": "productivetrees:block/log_top/mangrove_inner",
+    "bark": "productivetrees:block/log_top/mangrove_bark",
+    "side": "productivetrees:block/log/mangrove"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "productivetrees:block/base_planks"
+      "model": "productivetrees:block/planks/oak"
     }
   }
 }

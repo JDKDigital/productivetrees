@@ -2,7 +2,7 @@
   "type": "productivetrees:tree_pollination",
   "chance": 5,
   "leafA": {
-    "item": "productivetrees:desert_acacia_leaves"
+    "item": "productivetrees:teak_leaves"
   },
   "leafB": {
     "item": "productivetrees:balsa_leaves"

@@ -1,0 +1,16 @@
+{
+  "feature": "productivetrees:carob",
+  "style": "jungle",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#6b6053",
+    "plankColor": "#5e564a"
+  },
+  "fruit": {
+    "item": "productivetrees:carob",
+    "count": 10,
+    "growthSpeed": 0.5,
+    "unripeColor": "#8b9e21",
+    "ripeColor": "#1e1915"
+  }
+}
