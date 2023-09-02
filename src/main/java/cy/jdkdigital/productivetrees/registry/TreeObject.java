@@ -3,12 +3,14 @@ package cy.jdkdigital.productivetrees.registry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -17,6 +19,8 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.Nullable;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class TreeObject
@@ -314,15 +318,15 @@ public class TreeObject
         this.expansionBoxBlock = expansionBoxBlock;
     }
 
-    public record GrowthConditions(int minLight, int maxLight, Fluid fluid)
+    public record GrowthConditions(int minLight, int maxLight, Fluid fluid, Optional<HolderSet<Biome>> biome)
     {
-        private static final GrowthConditions DEFAULT = new GrowthConditions(9, 15, Fluids.EMPTY);
+        private static final GrowthConditions DEFAULT = new GrowthConditions(9, 15, Fluids.EMPTY, null);
         public static Codec<GrowthConditions> codec() {
             return RecordCodecBuilder.create(instance -> instance.group(
                     ExtraCodecs.POSITIVE_INT.fieldOf("minLight").orElse(9).forGetter(GrowthConditions::minLight),
                     ExtraCodecs.POSITIVE_INT.fieldOf("maxLight").orElse(15).forGetter(GrowthConditions::maxLight),
-                    ForgeRegistries.FLUIDS.getCodec().fieldOf("fluid").orElse(Fluids.EMPTY).forGetter(GrowthConditions::fluid)
-//                    Biome.LIST_CODEC.fieldOf("biome").forGetter(GrowthConditions::biome)
+                    ForgeRegistries.FLUIDS.getCodec().fieldOf("fluid").orElse(Fluids.EMPTY).forGetter(GrowthConditions::fluid),
+                    Biome.LIST_CODEC.optionalFieldOf("biome").forGetter(GrowthConditions::biome)
             ).apply(instance, GrowthConditions::new));
         }
     }
@@ -336,8 +340,8 @@ public class TreeObject
                     ResourceLocation.CODEC.fieldOf("item").forGetter(Fruit::fruitItem),
                     Codec.INT.fieldOf("count").orElse(1).forGetter(Fruit::count),
                     Codec.FLOAT.fieldOf("growthSpeed").orElse(1.0F).forGetter(Fruit::growthSpeed),
-                    Codec.STRING.fieldOf("unripeColor").orElse("#ffffff").forGetter(Fruit::unripeColor),
-                    Codec.STRING.fieldOf("ripeColor").orElse("#ffffff").forGetter(Fruit::ripeColor)
+                    Codec.STRING.fieldOf("unripeColor").orElse("#1aa000").forGetter(Fruit::unripeColor),
+                    Codec.STRING.fieldOf("ripeColor").orElse("#ff9d00").forGetter(Fruit::ripeColor)
             ).apply(instance, Fruit::new));
         }
 
@@ -352,9 +356,9 @@ public class TreeObject
         private static final TreeColors DEFAULT = new TreeColors("", "", "");
         public static Codec<TreeColors> codec() {
             return RecordCodecBuilder.create(instance -> instance.group(
-                    Codec.STRING.fieldOf("leafColor").orElse("#ffffff").forGetter(TreeColors::leafColor),
-                    Codec.STRING.fieldOf("logColor").orElse("#ffffff").forGetter(TreeColors::logColor),
-                    Codec.STRING.fieldOf("plankColor").orElse("#ffffff").forGetter(TreeColors::plankColor)
+                    Codec.STRING.fieldOf("leafColor").orElse("#1d7b00").forGetter(TreeColors::leafColor),
+                    Codec.STRING.fieldOf("logColor").orElse("#917142").forGetter(TreeColors::logColor),
+                    Codec.STRING.fieldOf("plankColor").orElse("#c29d62").forGetter(TreeColors::plankColor)
             ).apply(instance, TreeColors::new));
         }
     }

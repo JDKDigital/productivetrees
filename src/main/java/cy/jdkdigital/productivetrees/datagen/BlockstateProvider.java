@@ -286,7 +286,7 @@ public class BlockstateProvider implements DataProvider
         private void createFruitBlock(TreeObject treeObject) {
             this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(treeObject.getFruitBlock().get()).with(PropertyDispatch.property(BlockStateProperties.AGE_5).generate(age -> {
                 var template = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getFruit().style() + "/fruit_" + age)), Optional.empty(), TextureSlot.ALL);
-                return Variant.variant().with(VariantProperties.MODEL, template.create(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/" + age), (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getStyle())), modelOutput));
+                return Variant.variant().with(VariantProperties.MODEL, template.create(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/" + age), (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + (treeObject.getStyle().equals("bush") ? "oak" : treeObject.getStyle()))), modelOutput));
             })));
         }
 

@@ -129,7 +129,7 @@ public class EventHandler
     }
 
     @SubscribeEvent
-    public static void buildContents(RegisterParticleProvidersEvent event) {
+    public static void registerParticles(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ProductiveTrees.PETAL_PARTICLES.get(), PetalParticle.Provider::new);
     }
 

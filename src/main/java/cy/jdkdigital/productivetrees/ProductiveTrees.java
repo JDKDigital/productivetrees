@@ -9,6 +9,7 @@ import cy.jdkdigital.productivetrees.client.particle.ColoredParticleType;
 import cy.jdkdigital.productivetrees.common.block.PollinatedLeaves;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.common.item.PollenItem;
+import cy.jdkdigital.productivetrees.datagen.recipe.SingleConditionalRecipe;
 import cy.jdkdigital.productivetrees.event.EventHandler;
 import cy.jdkdigital.productivetrees.loot.OptionalLootItem;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;

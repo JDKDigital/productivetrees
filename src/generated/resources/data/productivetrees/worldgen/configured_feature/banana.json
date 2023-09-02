@@ -17,7 +17,7 @@
             }
           }
         },
-        "max_fruits": 2
+        "max_fruits": 3
       }
     ],
     "dirt_provider": {

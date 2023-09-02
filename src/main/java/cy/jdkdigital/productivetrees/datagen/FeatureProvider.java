@@ -139,7 +139,7 @@ public class FeatureProvider implements DataProvider
         put("default", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafReplacerDecorator(0.6f, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
         put("almond", MEDIUM_FRUIT_DISTRIBUTION);
         put("avocado", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafReplacerDecorator(0.3f, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
-        put("banana", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafPlacerDecorator(0.2f, 2, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
+        put("banana", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafPlacerDecorator(0.2f, 3, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
         put("beech", MEDIUM_FRUIT_DISTRIBUTION);
         put("butternut", MEDIUM_FRUIT_DISTRIBUTION);
         put("hazel", MEDIUM_FRUIT_DISTRIBUTION);

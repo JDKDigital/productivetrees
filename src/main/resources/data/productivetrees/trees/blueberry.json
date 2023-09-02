@@ -7,6 +7,7 @@
     "leafColor": "#597537"
   },
   "fruit": {
+    "style": "berry",
     "item": "productivetrees:blueberry",
     "count": 3,
     "growthSpeed": 0.5,
