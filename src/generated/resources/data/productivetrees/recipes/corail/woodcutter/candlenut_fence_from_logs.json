@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 4,
-        "ingredient": [
-          {
-            "item": "productivetrees:candlenut_log"
-          },
-          {
-            "item": "productivetrees:candlenut_wood"
-          },
-          {
-            "item": "productivetrees:candlenut_stripped_log"
-          },
-          {
-            "item": "productivetrees:candlenut_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:candlenut_fence"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:candlenut_log"
+    },
+    {
+      "item": "productivetrees:candlenut_wood"
+    },
+    {
+      "item": "productivetrees:candlenut_stripped_log"
+    },
+    {
+      "item": "productivetrees:candlenut_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:candlenut_fence"
 }

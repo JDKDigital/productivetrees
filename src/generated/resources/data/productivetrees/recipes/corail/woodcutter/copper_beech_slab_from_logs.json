@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 8,
-        "ingredient": [
-          {
-            "item": "productivetrees:copper_beech_log"
-          },
-          {
-            "item": "productivetrees:copper_beech_wood"
-          },
-          {
-            "item": "productivetrees:copper_beech_stripped_log"
-          },
-          {
-            "item": "productivetrees:copper_beech_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:copper_beech_slab"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 8,
+  "ingredient": [
+    {
+      "item": "productivetrees:copper_beech_log"
+    },
+    {
+      "item": "productivetrees:copper_beech_wood"
+    },
+    {
+      "item": "productivetrees:copper_beech_stripped_log"
+    },
+    {
+      "item": "productivetrees:copper_beech_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:copper_beech_slab"
 }

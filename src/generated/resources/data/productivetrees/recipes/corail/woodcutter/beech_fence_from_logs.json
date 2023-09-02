@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 4,
-        "ingredient": [
-          {
-            "item": "productivetrees:beech_log"
-          },
-          {
-            "item": "productivetrees:beech_wood"
-          },
-          {
-            "item": "productivetrees:beech_stripped_log"
-          },
-          {
-            "item": "productivetrees:beech_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:beech_fence"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:beech_log"
+    },
+    {
+      "item": "productivetrees:beech_wood"
+    },
+    {
+      "item": "productivetrees:beech_stripped_log"
+    },
+    {
+      "item": "productivetrees:beech_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:beech_fence"
 }

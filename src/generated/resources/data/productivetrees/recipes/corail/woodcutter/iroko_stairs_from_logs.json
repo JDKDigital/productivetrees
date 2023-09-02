@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 4,
-        "ingredient": [
-          {
-            "item": "productivetrees:iroko_log"
-          },
-          {
-            "item": "productivetrees:iroko_wood"
-          },
-          {
-            "item": "productivetrees:iroko_stripped_log"
-          },
-          {
-            "item": "productivetrees:iroko_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:iroko_stairs"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:iroko_log"
+    },
+    {
+      "item": "productivetrees:iroko_wood"
+    },
+    {
+      "item": "productivetrees:iroko_stripped_log"
+    },
+    {
+      "item": "productivetrees:iroko_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:iroko_stairs"
 }

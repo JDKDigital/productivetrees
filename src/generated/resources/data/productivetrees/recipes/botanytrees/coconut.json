@@ -1,67 +1,60 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "botanypots:crop",
+  "categories": [
+    "dirt"
+  ],
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "botanytrees"
-        }
-      ],
-      "recipe": {
-        "type": "botanypots:crop",
-        "categories": [
-          "dirt"
-        ],
-        "display": {
-          "block": "productivetrees:coconut_sapling",
-          "properties": {
-            "stage": 0
-          }
-        },
-        "drops": [
-          {
-            "chance": 1.0,
-            "maxRolls": 4,
-            "minRolls": 2,
-            "output": {
-              "count": 1,
-              "item": "productivetrees:coconut_log"
-            }
-          },
-          {
-            "chance": 0.1,
-            "maxRolls": 2,
-            "minRolls": 1,
-            "output": {
-              "count": 1,
-              "item": "minecraft:stick"
-            }
-          },
-          {
-            "chance": 0.15,
-            "maxRolls": 1,
-            "minRolls": 1,
-            "output": {
-              "count": 1,
-              "item": "productivetrees:coconut_sapling"
-            }
-          },
-          {
-            "chance": 0.3,
-            "maxRolls": 1,
-            "minRolls": 1,
-            "output": {
-              "count": 1,
-              "item": "productivetrees:coconut"
-            }
-          }
-        ],
-        "growthTicks": 2400,
-        "seed": {
-          "item": "productivetrees:coconut_sapling"
-        }
+      "type": "forge:mod_loaded",
+      "modid": "botanytrees"
+    }
+  ],
+  "display": {
+    "block": "productivetrees:coconut_sapling",
+    "properties": {
+      "stage": 0
+    }
+  },
+  "drops": [
+    {
+      "chance": 1.0,
+      "maxRolls": 4,
+      "minRolls": 2,
+      "output": {
+        "count": 1,
+        "item": "productivetrees:coconut_log"
+      }
+    },
+    {
+      "chance": 0.1,
+      "maxRolls": 2,
+      "minRolls": 1,
+      "output": {
+        "count": 1,
+        "item": "minecraft:stick"
+      }
+    },
+    {
+      "chance": 0.15,
+      "maxRolls": 1,
+      "minRolls": 1,
+      "output": {
+        "count": 1,
+        "item": "productivetrees:coconut_sapling"
+      }
+    },
+    {
+      "chance": 0.3,
+      "maxRolls": 1,
+      "minRolls": 1,
+      "output": {
+        "count": 1,
+        "item": "productivetrees:coconut"
       }
     }
-  ]
+  ],
+  "growthTicks": 2400,
+  "seed": {
+    "item": "productivetrees:coconut_sapling"
+  }
 }

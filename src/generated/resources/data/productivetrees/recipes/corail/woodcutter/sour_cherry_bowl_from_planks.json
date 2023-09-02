@@ -1,21 +1,14 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 1,
-        "ingredient": {
-          "item": "productivetrees:sour_cherry_planks"
-        },
-        "result": "minecraft:bowl"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 1,
+  "ingredient": {
+    "item": "productivetrees:sour_cherry_planks"
+  },
+  "result": "minecraft:bowl"
 }

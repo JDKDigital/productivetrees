@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 4,
-        "ingredient": [
-          {
-            "item": "productivetrees:cinnamon_log"
-          },
-          {
-            "item": "productivetrees:cinnamon_wood"
-          },
-          {
-            "item": "productivetrees:cinnamon_stripped_log"
-          },
-          {
-            "item": "productivetrees:cinnamon_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:cinnamon_button"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:cinnamon_log"
+    },
+    {
+      "item": "productivetrees:cinnamon_wood"
+    },
+    {
+      "item": "productivetrees:cinnamon_stripped_log"
+    },
+    {
+      "item": "productivetrees:cinnamon_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:cinnamon_button"
 }

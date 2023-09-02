@@ -1,26 +1,19 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "productivetrees"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shapeless",
-        "category": "misc",
-        "group": "hives",
-        "ingredients": [
-          {
-            "item": "productivetrees:advanced_douglas_fir_beehive"
-          }
-        ],
-        "result": {
-          "item": "productivetrees:advanced_douglas_fir_beehive"
-        }
-      }
+      "type": "forge:mod_loaded",
+      "modid": "productivetrees"
     }
-  ]
+  ],
+  "group": "hives",
+  "ingredients": [
+    {
+      "item": "productivetrees:advanced_douglas_fir_beehive"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:advanced_douglas_fir_beehive"
+  }
 }

@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 4,
-        "ingredient": [
-          {
-            "item": "productivetrees:purpleheart_log"
-          },
-          {
-            "item": "productivetrees:purpleheart_wood"
-          },
-          {
-            "item": "productivetrees:purpleheart_stripped_log"
-          },
-          {
-            "item": "productivetrees:purpleheart_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:purpleheart_planks"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:purpleheart_log"
+    },
+    {
+      "item": "productivetrees:purpleheart_wood"
+    },
+    {
+      "item": "productivetrees:purpleheart_stripped_log"
+    },
+    {
+      "item": "productivetrees:purpleheart_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:purpleheart_planks"
 }

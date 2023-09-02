@@ -1,21 +1,14 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 2,
-        "ingredient": {
-          "item": "productivetrees:swamp_gum_planks"
-        },
-        "result": "minecraft:stick"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 2,
+  "ingredient": {
+    "item": "productivetrees:swamp_gum_planks"
+  },
+  "result": "minecraft:stick"
 }

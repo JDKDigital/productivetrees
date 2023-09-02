@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 8,
-        "ingredient": [
-          {
-            "item": "productivetrees:brazil_nut_log"
-          },
-          {
-            "item": "productivetrees:brazil_nut_wood"
-          },
-          {
-            "item": "productivetrees:brazil_nut_stripped_log"
-          },
-          {
-            "item": "productivetrees:brazil_nut_stripped_wood"
-          }
-        ],
-        "result": "minecraft:stick"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 8,
+  "ingredient": [
+    {
+      "item": "productivetrees:brazil_nut_log"
+    },
+    {
+      "item": "productivetrees:brazil_nut_wood"
+    },
+    {
+      "item": "productivetrees:brazil_nut_stripped_log"
+    },
+    {
+      "item": "productivetrees:brazil_nut_stripped_wood"
+    }
+  ],
+  "result": "minecraft:stick"
 }

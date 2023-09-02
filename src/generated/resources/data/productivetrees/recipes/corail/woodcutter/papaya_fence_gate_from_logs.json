@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 1,
-        "ingredient": [
-          {
-            "item": "productivetrees:papaya_log"
-          },
-          {
-            "item": "productivetrees:papaya_wood"
-          },
-          {
-            "item": "productivetrees:papaya_stripped_log"
-          },
-          {
-            "item": "productivetrees:papaya_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:papaya_fence_gate"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 1,
+  "ingredient": [
+    {
+      "item": "productivetrees:papaya_log"
+    },
+    {
+      "item": "productivetrees:papaya_wood"
+    },
+    {
+      "item": "productivetrees:papaya_stripped_log"
+    },
+    {
+      "item": "productivetrees:papaya_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:papaya_fence_gate"
 }

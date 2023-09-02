@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 1,
-        "ingredient": [
-          {
-            "item": "productivetrees:almond_log"
-          },
-          {
-            "item": "productivetrees:almond_wood"
-          },
-          {
-            "item": "productivetrees:almond_stripped_log"
-          },
-          {
-            "item": "productivetrees:almond_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:almond_fence_gate"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 1,
+  "ingredient": [
+    {
+      "item": "productivetrees:almond_log"
+    },
+    {
+      "item": "productivetrees:almond_wood"
+    },
+    {
+      "item": "productivetrees:almond_stripped_log"
+    },
+    {
+      "item": "productivetrees:almond_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:almond_fence_gate"
 }

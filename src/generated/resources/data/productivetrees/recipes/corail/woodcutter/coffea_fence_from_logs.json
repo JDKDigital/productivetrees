@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 4,
-        "ingredient": [
-          {
-            "item": "productivetrees:coffea_log"
-          },
-          {
-            "item": "productivetrees:coffea_wood"
-          },
-          {
-            "item": "productivetrees:coffea_stripped_log"
-          },
-          {
-            "item": "productivetrees:coffea_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:coffea_fence"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:coffea_log"
+    },
+    {
+      "item": "productivetrees:coffea_wood"
+    },
+    {
+      "item": "productivetrees:coffea_stripped_log"
+    },
+    {
+      "item": "productivetrees:coffea_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:coffea_fence"
 }

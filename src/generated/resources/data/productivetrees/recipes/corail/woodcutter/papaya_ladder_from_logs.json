@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 4,
-        "ingredient": [
-          {
-            "item": "productivetrees:papaya_log"
-          },
-          {
-            "item": "productivetrees:papaya_wood"
-          },
-          {
-            "item": "productivetrees:papaya_stripped_log"
-          },
-          {
-            "item": "productivetrees:papaya_stripped_wood"
-          }
-        ],
-        "result": "minecraft:ladder"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:papaya_log"
+    },
+    {
+      "item": "productivetrees:papaya_wood"
+    },
+    {
+      "item": "productivetrees:papaya_stripped_log"
+    },
+    {
+      "item": "productivetrees:papaya_stripped_wood"
+    }
+  ],
+  "result": "minecraft:ladder"
 }

@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 4,
-        "ingredient": [
-          {
-            "item": "productivetrees:yew_log"
-          },
-          {
-            "item": "productivetrees:yew_wood"
-          },
-          {
-            "item": "productivetrees:yew_stripped_log"
-          },
-          {
-            "item": "productivetrees:yew_stripped_wood"
-          }
-        ],
-        "result": "minecraft:ladder"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:yew_log"
+    },
+    {
+      "item": "productivetrees:yew_wood"
+    },
+    {
+      "item": "productivetrees:yew_stripped_log"
+    },
+    {
+      "item": "productivetrees:yew_stripped_wood"
+    }
+  ],
+  "result": "minecraft:ladder"
 }

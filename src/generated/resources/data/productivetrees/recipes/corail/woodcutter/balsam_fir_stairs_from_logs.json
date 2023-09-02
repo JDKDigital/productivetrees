@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 4,
-        "ingredient": [
-          {
-            "item": "productivetrees:balsam_fir_log"
-          },
-          {
-            "item": "productivetrees:balsam_fir_wood"
-          },
-          {
-            "item": "productivetrees:balsam_fir_stripped_log"
-          },
-          {
-            "item": "productivetrees:balsam_fir_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:balsam_fir_stairs"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:balsam_fir_log"
+    },
+    {
+      "item": "productivetrees:balsam_fir_wood"
+    },
+    {
+      "item": "productivetrees:balsam_fir_stripped_log"
+    },
+    {
+      "item": "productivetrees:balsam_fir_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:balsam_fir_stairs"
 }

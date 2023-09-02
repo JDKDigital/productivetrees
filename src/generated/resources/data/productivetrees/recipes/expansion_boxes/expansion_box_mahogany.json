@@ -1,35 +1,28 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "productivetrees"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:crafting_shaped",
-        "category": "misc",
-        "group": "expansion_boxes",
-        "key": {
-          "C": {
-            "tag": "forge:honeycombs"
-          },
-          "W": {
-            "item": "productivetrees:mahogany_planks"
-          }
-        },
-        "pattern": [
-          "WWW",
-          "WCW",
-          "WWW"
-        ],
-        "result": {
-          "item": "productivetrees:expansion_box_mahogany"
-        },
-        "show_notification": true
-      }
+      "type": "forge:mod_loaded",
+      "modid": "productivetrees"
     }
-  ]
+  ],
+  "group": "expansion_boxes",
+  "key": {
+    "C": {
+      "tag": "forge:honeycombs"
+    },
+    "W": {
+      "item": "productivetrees:mahogany_planks"
+    }
+  },
+  "pattern": [
+    "WWW",
+    "WCW",
+    "WWW"
+  ],
+  "result": {
+    "item": "productivetrees:expansion_box_mahogany"
+  },
+  "show_notification": true
 }

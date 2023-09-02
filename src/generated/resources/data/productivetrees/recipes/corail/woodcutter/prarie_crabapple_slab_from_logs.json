@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 8,
-        "ingredient": [
-          {
-            "item": "productivetrees:prarie_crabapple_log"
-          },
-          {
-            "item": "productivetrees:prarie_crabapple_wood"
-          },
-          {
-            "item": "productivetrees:prarie_crabapple_stripped_log"
-          },
-          {
-            "item": "productivetrees:prarie_crabapple_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:prarie_crabapple_slab"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 8,
+  "ingredient": [
+    {
+      "item": "productivetrees:prarie_crabapple_log"
+    },
+    {
+      "item": "productivetrees:prarie_crabapple_wood"
+    },
+    {
+      "item": "productivetrees:prarie_crabapple_stripped_log"
+    },
+    {
+      "item": "productivetrees:prarie_crabapple_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:prarie_crabapple_slab"
 }

@@ -1,21 +1,14 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 1,
-        "ingredient": {
-          "item": "productivetrees:hornbeam_planks"
-        },
-        "result": "productivetrees:hornbeam_fence"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 1,
+  "ingredient": {
+    "item": "productivetrees:hornbeam_planks"
+  },
+  "result": "productivetrees:hornbeam_fence"
 }

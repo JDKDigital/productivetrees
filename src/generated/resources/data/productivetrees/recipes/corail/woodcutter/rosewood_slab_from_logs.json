@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 8,
-        "ingredient": [
-          {
-            "item": "productivetrees:rosewood_log"
-          },
-          {
-            "item": "productivetrees:rosewood_wood"
-          },
-          {
-            "item": "productivetrees:rosewood_stripped_log"
-          },
-          {
-            "item": "productivetrees:rosewood_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:rosewood_slab"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 8,
+  "ingredient": [
+    {
+      "item": "productivetrees:rosewood_log"
+    },
+    {
+      "item": "productivetrees:rosewood_wood"
+    },
+    {
+      "item": "productivetrees:rosewood_stripped_log"
+    },
+    {
+      "item": "productivetrees:rosewood_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:rosewood_slab"
 }

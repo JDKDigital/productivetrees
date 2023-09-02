@@ -1,32 +1,25 @@
 {
-  "type": "forge:conditional",
-  "recipes": [
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
     {
-      "conditions": [
-        {
-          "type": "forge:mod_loaded",
-          "modid": "corail_woodcutter"
-        }
-      ],
-      "recipe": {
-        "type": "corail_woodcutter:woodcutting",
-        "count": 1,
-        "ingredient": [
-          {
-            "item": "productivetrees:red_maple_log"
-          },
-          {
-            "item": "productivetrees:red_maple_wood"
-          },
-          {
-            "item": "productivetrees:red_maple_stripped_log"
-          },
-          {
-            "item": "productivetrees:red_maple_stripped_wood"
-          }
-        ],
-        "result": "productivetrees:red_maple_fence_gate"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
     }
-  ]
+  ],
+  "count": 1,
+  "ingredient": [
+    {
+      "item": "productivetrees:red_maple_log"
+    },
+    {
+      "item": "productivetrees:red_maple_wood"
+    },
+    {
+      "item": "productivetrees:red_maple_stripped_log"
+    },
+    {
+      "item": "productivetrees:red_maple_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:red_maple_fence_gate"
 }
