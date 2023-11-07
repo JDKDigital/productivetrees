@@ -121,6 +121,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:cempedak_leaves",
+      "required": false
+    },
+    {
       "id": "productivetrees:cheese_plant_leaves",
       "required": false
     },
@@ -181,15 +185,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:desert_acacia_leaves",
-      "required": false
-    },
-    {
       "id": "productivetrees:douglas_fir_leaves",
-      "required": false
-    },
-    {
-      "id": "productivetrees:dwarf_hazel_leaves",
       "required": false
     },
     {
@@ -446,10 +442,6 @@
     },
     {
       "id": "productivetrees:sour_cherry_leaves",
-      "required": false
-    },
-    {
-      "id": "productivetrees:starfruit_leaves",
       "required": false
     },
     {

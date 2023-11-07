@@ -5,5 +5,13 @@
     "leafColor": "#1c4316",
     "logColor": "#202e1d",
     "plankColor": "#A0A0A0"
+  },
+  "fruit": {
+    "style": "berry",
+    "item": "productivetrees:sloe",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#86955c",
+    "ripeColor": "#171925"
   }
 }

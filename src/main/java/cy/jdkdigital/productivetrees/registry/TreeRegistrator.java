@@ -55,8 +55,6 @@ public class TreeRegistrator
     public static final RegistryObject<Item> SATSUMA = ProductiveTrees.ITEMS.register("satsuma", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
     public static final RegistryObject<Item> STAR_FRUIT = ProductiveTrees.ITEMS.register("star_fruit", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
     public static final RegistryObject<Item> TANGERINE = ProductiveTrees.ITEMS.register("tangerine", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> AKEBIA = ProductiveTrees.ITEMS.register("akebia", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> COPOAZU = ProductiveTrees.ITEMS.register("copoazu", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
 
     static final FoodProperties BIG_FRUIT_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(5).saturationMod(0.3F).build();
     public static final RegistryObject<Item> COCONUT = ProductiveTrees.ITEMS.register("coconut", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
@@ -65,6 +63,10 @@ public class TreeRegistrator
     public static final RegistryObject<Item> PAPAYA = ProductiveTrees.ITEMS.register("papaya", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
     public static final RegistryObject<Item> BREADFRUIT = ProductiveTrees.ITEMS.register("breadfruit", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
     public static final RegistryObject<Item> MONSTERA_DELICIOSA = ProductiveTrees.ITEMS.register("monstera_deliciosa", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
+    public static final RegistryObject<Item> AKEBIA = ProductiveTrees.ITEMS.register("akebia", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
+    public static final RegistryObject<Item> COPOAZU = ProductiveTrees.ITEMS.register("copoazu", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
+    public static final RegistryObject<Item> CEMPEDAK = ProductiveTrees.ITEMS.register("cempedak", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
+    public static final RegistryObject<Item> JACKFRUIT = ProductiveTrees.ITEMS.register("jackfruit", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
 
     static final FoodProperties CITRUS_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(2).saturationMod(0.2F).build();
     public static final RegistryObject<Item> LIME = ProductiveTrees.ITEMS.register("lime", () -> new Item(new Item.Properties().food(CITRUS_FOOD)));

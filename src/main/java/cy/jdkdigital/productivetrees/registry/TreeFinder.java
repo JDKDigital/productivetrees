@@ -27,6 +27,7 @@ public class TreeFinder
 {
     public static ICondition.IContext context;
     public static Map<ResourceLocation, TreeObject> trees = new LinkedHashMap<>();
+    public static Map<ResourceLocation, WoodObject> woods = new LinkedHashMap<>();
 
     public static void discoverTrees() {
         try {
@@ -83,11 +84,12 @@ public class TreeFinder
                 ProductiveTrees.LOGGER.error("failed to load tree " + id);
             }
         }
+
+        woods.put(new ResourceLocation(ProductiveTrees.MODID, "bush"), TreeCreator.createWood("bush", new WoodObject.TreeColors("#1c4316", "#c29d62", "#A0A0A0")));
     }
 
     public static void setupDefaultFiles(String dataPath, Path targetPath, boolean override) {
         List<Path> roots = List.of(ModList.get().getModFileById(ProductiveTrees.MODID).getFile().getFilePath());
-        ProductiveTrees.LOGGER.info("Productive Trees Pulling defaults from: " + roots);
 
         if (roots.isEmpty()) {
             throw new RuntimeException("Failed to load defaults.");

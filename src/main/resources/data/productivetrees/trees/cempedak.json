@@ -1,0 +1,16 @@
+{
+  "feature": "productivetrees:cempedak",
+  "style": "birch",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#A0A0A0"
+  },
+  "fruit": {
+    "item": "productivetrees:cempedak",
+    "count": 1,
+    "growthSpeed": 0.2,
+    "unripeColor": "#926e10",
+    "ripeColor": "#663710"
+  }
+}

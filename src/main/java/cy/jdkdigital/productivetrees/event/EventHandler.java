@@ -74,7 +74,7 @@ public class EventHandler
                 Map<BlockState, BlockPos> leafMap = new HashMap<>();
                 leaves.forEach(blockPos -> {
                     var state = level.getBlockState(blockPos);
-                    if(state.is(BlockTags.LEAVES) && !state.is(ProductiveTrees.POLLINATED_LEAVES.get())) {
+                    if (state.is(BlockTags.LEAVES) && !state.is(ProductiveTrees.POLLINATED_LEAVES.get())) {
                         leafMap.put(state, blockPos);
                         if (!uniqueLeaves.contains(state)) {
                             uniqueLeaves.add(state);
@@ -111,7 +111,7 @@ public class EventHandler
                         TreePollinationRecipe pickedRecipe = (TreePollinationRecipe) matchedRecipes.keySet().toArray()[level.random.nextInt(matchedRecipes.size())];
                         Pair<BlockState, BlockState> states = matchedRecipes.get(pickedRecipe);
 
-                        BlockPos posA = level.random.nextBoolean() ? leafMap.get(states.getFirst()): leafMap.get(states.getSecond());
+                        BlockPos posA = level.random.nextBoolean() ? leafMap.get(states.getFirst()) : leafMap.get(states.getSecond());
 
                         if (level.random.nextInt(100) <= pickedRecipe.chance && level.getBlockState(posA).is(BlockTags.LEAVES)) {
                             level.setBlock(posA, ProductiveTrees.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
@@ -136,7 +136,7 @@ public class EventHandler
     @SubscribeEvent
     public static void buildContents(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey().equals(ProductiveTrees.TAB_KEY)) {
-            for (RegistryObject<Item> item: ProductiveTrees.ITEMS.getEntries()) {
+            for (RegistryObject<Item> item : ProductiveTrees.ITEMS.getEntries()) {
                 event.accept(item);
             }
         }

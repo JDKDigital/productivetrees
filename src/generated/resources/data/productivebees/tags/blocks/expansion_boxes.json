@@ -1,10 +1,6 @@
 {
   "values": [
     {
-      "id": "productivetrees:expansion_box_akebia",
-      "required": false
-    },
-    {
       "id": "productivetrees:expansion_box_alder",
       "required": false
     },
@@ -109,6 +105,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_cempedak",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_cheese_plant",
       "required": false
     },
@@ -161,15 +161,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:expansion_box_desert_acacia",
-      "required": false
-    },
-    {
       "id": "productivetrees:expansion_box_douglas_fir",
-      "required": false
-    },
-    {
-      "id": "productivetrees:expansion_box_dwarf_hazel",
       "required": false
     },
     {
@@ -398,10 +390,6 @@
     },
     {
       "id": "productivetrees:expansion_box_sour_cherry",
-      "required": false
-    },
-    {
-      "id": "productivetrees:expansion_box_starfruit",
       "required": false
     },
     {

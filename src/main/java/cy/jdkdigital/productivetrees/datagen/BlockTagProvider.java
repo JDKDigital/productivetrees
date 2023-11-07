@@ -88,6 +88,38 @@ public class BlockTagProvider extends BlockTagsProvider
             }
         });
 
+        TreeFinder.woods.forEach((id, woodObject) -> {
+            axe.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getPlankBlock().get())));
+            axe.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getLogBlock().get())));
+            axe.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getWoodBlock().get())));
+            axe.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getStrippedLogBlock().get())));
+            axe.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getStrippedWoodBlock().get())));
+
+            planks.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getPlankBlock().get())));
+            if (woodObject.isFireProof()) {
+                logs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getLogBlock().get())));
+                logs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getWoodBlock().get())));
+                logs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getStrippedLogBlock().get())));
+                logs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getStrippedWoodBlock().get())));
+            } else {
+                logsThatBurn.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getLogBlock().get())));
+                logsThatBurn.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getWoodBlock().get())));
+                logsThatBurn.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getStrippedLogBlock().get())));
+                logsThatBurn.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getStrippedWoodBlock().get())));
+            }
+            stairs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getStairsBlock().get())));
+            slabs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getSlabBlock().get())));
+            fences.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getFenceBlock().get())));
+            fenceGates.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getFenceGateBlock().get())));
+            pressurePlates.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getPressurePlateBlock().get())));
+            buttons.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getButtonBlock().get())));
+
+            if (woodObject.getHiveStyle() != null) {
+                hives.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getHiveBlock().get())));
+                boxes.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getExpansionBoxBlock().get())));
+            }
+        });
+
         leaves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(ProductiveTrees.POLLINATED_LEAVES.get())));
         dof.addTag(BlockTags.DIRT).add(Blocks.FARMLAND);
     }

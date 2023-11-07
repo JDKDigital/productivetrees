@@ -1,6 +1,8 @@
 {
   "feature": "productivetrees:akebia",
-  "style": "cherry",
+  "style": "bush",
+  "registerWood": false,
+  "log": "productivetrees:bush_log",
   "colors": {
     "leafColor": "#1c4316",
     "logColor": "#202e1d",

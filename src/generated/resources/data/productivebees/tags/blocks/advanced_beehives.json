@@ -1,10 +1,6 @@
 {
   "values": [
     {
-      "id": "productivetrees:advanced_akebia_beehive",
-      "required": false
-    },
-    {
       "id": "productivetrees:advanced_alder_beehive",
       "required": false
     },
@@ -109,6 +105,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_cempedak_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_cheese_plant_beehive",
       "required": false
     },
@@ -161,15 +161,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:advanced_desert_acacia_beehive",
-      "required": false
-    },
-    {
       "id": "productivetrees:advanced_douglas_fir_beehive",
-      "required": false
-    },
-    {
-      "id": "productivetrees:advanced_dwarf_hazel_beehive",
       "required": false
     },
     {
@@ -398,10 +390,6 @@
     },
     {
       "id": "productivetrees:advanced_sour_cherry_beehive",
-      "required": false
-    },
-    {
-      "id": "productivetrees:advanced_starfruit_beehive",
       "required": false
     },
     {

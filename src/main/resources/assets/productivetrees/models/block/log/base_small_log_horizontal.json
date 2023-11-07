@@ -1,0 +1,68 @@
+{
+  "ambientocclusion": false,
+  "parent": "block/block",
+  "render_type": "cutout",
+  "textures": {
+    "particle": "#side"
+  },
+  "elements": [
+    {
+      "from": [5, 5, 0],
+      "to": [11, 11, 16],
+      "shade": false,
+      "faces": {
+        "north": {"uv": [5, 5, 11, 11], "texture": "#top_inner", "tintindex": 1},
+        "east": {"uv": [0, 0, 6, 16], "rotation": 90, "texture": "#side", "tintindex": 0},
+        "south": {"uv": [5, 5, 11, 11], "texture": "#top_inner", "tintindex": 1},
+        "west": {"uv": [0, 0, 6, 16], "rotation": 90, "texture": "#side", "tintindex": 0},
+        "up": {"uv": [0, 0, 6, 16], "texture": "#side", "tintindex": 0},
+        "down": {"uv": [0, 0, 6, 16], "texture": "#side", "tintindex": 0}
+      }
+    },
+    {
+      "from": [5, 5, 0],
+      "to": [11, 11, 16],
+      "shade": false,
+      "faces": {
+        "north": {"uv": [5, 5, 11, 11], "texture": "#top_bark", "tintindex": 0},
+        "south": {"uv": [5, 5, 11, 11], "texture": "#top_bark", "tintindex": 0}
+      }
+    },
+    {
+      "name": "left",
+      "from": [0, 8, 0],
+      "to": [5, 8, 16],
+      "faces": {
+        "up": {"uv": [0, 0, 5, 16], "texture": "#branch", "tintindex": 0},
+        "down": {"uv": [5, 0, 0, 16], "rotation": 180, "texture": "#branch", "tintindex": 0}
+      }
+    },
+    {
+      "name": "right",
+      "from": [11, 8, 0],
+      "to": [16, 8, 16],
+      "faces": {
+        "up": {"uv": [5, 0, 0, 16], "texture": "#branch", "tintindex": 0},
+        "down": {"uv": [0, 0, 5, 16], "rotation": 180, "texture": "#branch", "tintindex": 0}
+      }
+    },
+    {
+      "name": "bottom",
+      "from": [8, 0, 0],
+      "to": [8, 5, 16],
+      "faces": {
+        "east": {"uv": [5, 0, 0, 16], "rotation": 90, "texture": "#branch", "tintindex": 0},
+        "west": {"uv": [0, 0, 5, 16], "rotation": 270, "texture": "#branch", "tintindex": 0}
+      }
+    },
+    {
+      "name": "top",
+      "from": [8, 11, 0],
+      "to": [8, 16, 16],
+      "faces": {
+        "east": {"uv": [0, 0, 5, 16], "rotation": 90, "texture": "#branch", "tintindex": 0},
+        "west": {"uv": [5, 0, 0, 16], "rotation": 270, "texture": "#branch", "tintindex": 0}
+      }
+    }
+  ]
+}

@@ -1,10 +1,6 @@
 {
   "values": [
     {
-      "id": "productivetrees:akebia_fence_gate",
-      "required": false
-    },
-    {
       "id": "productivetrees:alder_fence_gate",
       "required": false
     },
@@ -109,6 +105,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:cempedak_fence_gate",
+      "required": false
+    },
+    {
       "id": "productivetrees:cheese_plant_fence_gate",
       "required": false
     },
@@ -161,15 +161,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:desert_acacia_fence_gate",
-      "required": false
-    },
-    {
       "id": "productivetrees:douglas_fir_fence_gate",
-      "required": false
-    },
-    {
-      "id": "productivetrees:dwarf_hazel_fence_gate",
       "required": false
     },
     {
@@ -401,10 +393,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:starfruit_fence_gate",
-      "required": false
-    },
-    {
       "id": "productivetrees:star_anise_fence_gate",
       "required": false
     },
@@ -486,6 +474,10 @@
     },
     {
       "id": "productivetrees:zebrano_fence_gate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bush_fence_gate",
       "required": false
     }
   ]

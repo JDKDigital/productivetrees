@@ -1,13 +1,13 @@
 {
   "variants": {
     "type=bottom": {
-      "model": "productivetrees:block/base_slab"
+      "model": "productivetrees:block/slab/jungle_slab"
     },
     "type=double": {
-      "model": "productivetrees:block/base_planks"
+      "model": "productivetrees:block/planks/jungle"
     },
     "type=top": {
-      "model": "productivetrees:block/base_slab_top"
+      "model": "productivetrees:block/slab/jungle_slab_top"
     }
   }
 }

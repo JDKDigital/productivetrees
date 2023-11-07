@@ -1,22 +1,6 @@
 {
   "values": [
     {
-      "id": "productivetrees:akebia_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:akebia_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:akebia_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:akebia_stripped_wood",
-      "required": false
-    },
-    {
       "id": "productivetrees:alder_log",
       "required": false
     },
@@ -433,6 +417,22 @@
       "required": false
     },
     {
+      "id": "productivetrees:cempedak_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cempedak_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cempedak_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cempedak_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:cheese_plant_log",
       "required": false
     },
@@ -641,22 +641,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:desert_acacia_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:desert_acacia_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:desert_acacia_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:desert_acacia_stripped_wood",
-      "required": false
-    },
-    {
       "id": "productivetrees:douglas_fir_log",
       "required": false
     },
@@ -670,22 +654,6 @@
     },
     {
       "id": "productivetrees:douglas_fir_stripped_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:dwarf_hazel_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:dwarf_hazel_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:dwarf_hazel_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:dwarf_hazel_stripped_wood",
       "required": false
     },
     {
@@ -1601,22 +1569,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:starfruit_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:starfruit_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:starfruit_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:starfruit_stripped_wood",
-      "required": false
-    },
-    {
       "id": "productivetrees:star_anise_log",
       "required": false
     },
@@ -1950,6 +1902,22 @@
     },
     {
       "id": "productivetrees:zebrano_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bush_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bush_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bush_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bush_stripped_wood",
       "required": false
     }
   ]

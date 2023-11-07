@@ -121,6 +121,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:cempedak_sapling",
+      "required": false
+    },
+    {
       "id": "productivetrees:cheese_plant_sapling",
       "required": false
     },
@@ -181,15 +185,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:desert_acacia_sapling",
-      "required": false
-    },
-    {
       "id": "productivetrees:douglas_fir_sapling",
-      "required": false
-    },
-    {
-      "id": "productivetrees:dwarf_hazel_sapling",
       "required": false
     },
     {
@@ -446,10 +442,6 @@
     },
     {
       "id": "productivetrees:sour_cherry_sapling",
-      "required": false
-    },
-    {
-      "id": "productivetrees:starfruit_sapling",
       "required": false
     },
     {

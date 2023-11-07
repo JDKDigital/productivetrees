@@ -92,6 +92,8 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(Tags.TANGERINE).add(TreeRegistrator.TANGERINE.get());
         tag(Tags.AKEBIA).add(TreeRegistrator.AKEBIA.get());
         tag(Tags.COPOAZU).add(TreeRegistrator.COPOAZU.get());
+        tag(Tags.CEMPEDAK).add(TreeRegistrator.CEMPEDAK.get());
+        tag(Tags.JACKFRUIT).add(TreeRegistrator.JACKFRUIT.get());
         tag(Tags.BANANA).add(TreeRegistrator.BANANA.get());
         tag(Tags.COCONUT).add(TreeRegistrator.COCONUT.get());
         tag(Tags.MANGO).add(TreeRegistrator.MANGO.get());
@@ -108,7 +110,7 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(Tags.ORANGE).add(TreeRegistrator.ORANGE.get());
         tag(Tags.MANDARIN).add(TreeRegistrator.MANDARIN.get());
         tag(Tags.BUDDHAS_HAND).add(TreeRegistrator.BUDDHAS_HAND.get());
-        tag(Tags.FRUITS).addTags(Tags.APRICOT, Tags.BLACK_CHERRY, Tags.CHERRY_PLUM, Tags.OLIVE, Tags.OSANGE_ORANGE, Tags.KUMQUAT, Tags.WILD_CHERRY, Tags.SOUR_CHERRY, Tags.DATE, Tags.PLUM, Tags.AVOCADO, Tags.CRABAPPLE, Tags.FIG, Tags.GRAPEFRUIT, Tags.NECTARINE, Tags.PEACH, Tags.PEAR, Tags.POMELO, Tags.SAND_PEAR, Tags.SATSUMA, Tags.STAR_FRUIT, Tags.TANGERINE, Tags.AKEBIA, Tags.COPOAZU, Tags.BANANA, Tags.COCONUT, Tags.MANGO, Tags.PLANTAIN, Tags.RED_BANANA, Tags.PAPAYA, Tags.BREADFRUIT, Tags.MONSTERA_DELICIOSA, Tags.LIME, Tags.KEY_LIME, Tags.FINGER_LIME, Tags.CITRON, Tags.LEMON, Tags.ORANGE, Tags.MANDARIN, Tags.BUDDHAS_HAND);
+        tag(Tags.FRUITS).addTags(Tags.APRICOT, Tags.BLACK_CHERRY, Tags.CHERRY_PLUM, Tags.OLIVE, Tags.OSANGE_ORANGE, Tags.KUMQUAT, Tags.WILD_CHERRY, Tags.SOUR_CHERRY, Tags.DATE, Tags.PLUM, Tags.AVOCADO, Tags.CRABAPPLE, Tags.FIG, Tags.GRAPEFRUIT, Tags.NECTARINE, Tags.PEACH, Tags.PEAR, Tags.POMELO, Tags.SAND_PEAR, Tags.SATSUMA, Tags.STAR_FRUIT, Tags.TANGERINE, Tags.AKEBIA, Tags.COPOAZU, Tags.CEMPEDAK, Tags.JACKFRUIT, Tags.BANANA, Tags.COCONUT, Tags.MANGO, Tags.PLANTAIN, Tags.RED_BANANA, Tags.PAPAYA, Tags.BREADFRUIT, Tags.MONSTERA_DELICIOSA, Tags.LIME, Tags.KEY_LIME, Tags.FINGER_LIME, Tags.CITRON, Tags.LEMON, Tags.ORANGE, Tags.MANDARIN, Tags.BUDDHAS_HAND);
     }
 
     @Override

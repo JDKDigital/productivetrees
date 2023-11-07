@@ -22,7 +22,7 @@ public class SingleConditionalRecipe
 
     public static class Builder
     {
-        private List<ICondition> conditions = new ArrayList<>();
+        private final List<ICondition> conditions = new ArrayList<>();
         private FinishedRecipe recipe = null;
         private ResourceLocation advId;
         private ConditionalAdvancement.Builder adv;
@@ -39,14 +39,10 @@ public class SingleConditionalRecipe
 
         public SingleConditionalRecipe.Builder setRecipe(FinishedRecipe recipe) {
             if (conditions.isEmpty()) {
-                throw new IllegalStateException("Can not add a recipe with no conditions.");
+                throw new IllegalStateException("Cannot add a recipe with no conditions.");
             }
             this.recipe = recipe;
             return this;
-        }
-
-        public SingleConditionalRecipe.Builder generateAdvancement() {
-            return generateAdvancement(null);
         }
 
         public SingleConditionalRecipe.Builder generateAdvancement(@Nullable ResourceLocation id) {
@@ -60,10 +56,6 @@ public class SingleConditionalRecipe
 
         public SingleConditionalRecipe.Builder setAdvancement(ConditionalAdvancement.Builder advancement) {
             return setAdvancement(null, advancement);
-        }
-
-        public SingleConditionalRecipe.Builder setAdvancement(String namespace, String path, ConditionalAdvancement.Builder advancement) {
-            return setAdvancement(new ResourceLocation(namespace, path), advancement);
         }
 
         public SingleConditionalRecipe.Builder setAdvancement(@Nullable ResourceLocation id, ConditionalAdvancement.Builder advancement) {
@@ -91,22 +83,12 @@ public class SingleConditionalRecipe
         }
     }
 
-    private static class Finished implements FinishedRecipe
+    private record Finished(ResourceLocation id,
+                            List<ICondition> conditions,
+                            FinishedRecipe recipe,
+                            ResourceLocation advId,
+                            ConditionalAdvancement.Builder adv) implements FinishedRecipe
     {
-        private final ResourceLocation id;
-        private final List<ICondition> conditions;
-        private final FinishedRecipe recipe;
-        private final ResourceLocation advId;
-        private final ConditionalAdvancement.Builder adv;
-
-        private Finished(ResourceLocation id, List<ICondition> conditions, FinishedRecipe recipe, @Nullable ResourceLocation advId, @Nullable ConditionalAdvancement.Builder adv) {
-            this.id = id;
-            this.conditions = conditions;
-            this.recipe = recipe;
-            this.advId = advId;
-            this.adv = adv;
-        }
-
         @Override
         public void serializeRecipeData(JsonObject json) {
         }

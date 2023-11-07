@@ -7,6 +7,7 @@ import cy.jdkdigital.productivetrees.datagen.recipe.SingleConditionalRecipe;
 import cy.jdkdigital.productivetrees.datagen.recipe.TreePollinationRecipeBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
+import cy.jdkdigital.productivetrees.registry.WoodObject;
 import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -58,6 +59,21 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             }
             buildBotanyPotsRecipes(treeObject, consumer);
         });
+        TreeFinder.woods.forEach((id, woodObject) -> {
+            RecipeProvider.planksFromLogs(consumer, woodObject.getPlankBlock().get(), woodObject.getLogBlock().get(), woodObject.getWoodBlock().get(), woodObject.getStrippedLogBlock().get(), woodObject.getStrippedWoodBlock().get());
+            woodFromLogs(consumer, woodObject.getWoodBlock().get(), woodObject.getLogBlock().get());
+            shaped(consumer, BlockFamily.Variant.STAIRS, woodObject.getStairsBlock().get(), woodObject.getPlankBlock().get());
+            shaped(consumer, BlockFamily.Variant.SLAB, woodObject.getSlabBlock().get(), woodObject.getPlankBlock().get());
+            shaped(consumer, BlockFamily.Variant.PRESSURE_PLATE, woodObject.getPressurePlateBlock().get(), woodObject.getPlankBlock().get());
+            shaped(consumer, BlockFamily.Variant.BUTTON, woodObject.getButtonBlock().get(), woodObject.getPlankBlock().get());
+            shaped(consumer, BlockFamily.Variant.FENCE, woodObject.getFenceBlock().get(), woodObject.getPlankBlock().get());
+            shaped(consumer, BlockFamily.Variant.FENCE_GATE, woodObject.getFenceGateBlock().get(), woodObject.getPlankBlock().get());
+            buildCorailWoodcutterRecipes(woodObject, consumer);
+            if (woodObject.getHiveStyle() != null) {
+                buildHiveRecipe(ProductiveTrees.MODID, woodObject, consumer);
+                buildBoxRecipe(ProductiveTrees.MODID, woodObject, consumer);
+            }
+        });
 
         buildTreeBreedingRecipes(consumer);
     }
@@ -77,7 +93,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         builder.save(consumer);
     }
 
-    private void buildCorailWoodcutterRecipes(TreeObject treeObject, Consumer<FinishedRecipe> consumer) {
+    private void buildCorailWoodcutterRecipes(WoodObject treeObject, Consumer<FinishedRecipe> consumer) {
         String name = treeObject.getId().getPath();
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
                 woodcutter(Ingredient.of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()), treeObject.getPlankBlock().get(), 4)
@@ -398,7 +414,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         return Ingredient.of(leaves);
     }
 
-    public void buildHiveRecipe(String modid, TreeObject treeObject, Consumer<FinishedRecipe> consumer) {
+    public void buildHiveRecipe(String modid, WoodObject treeObject, Consumer<FinishedRecipe> consumer) {
         Block hive = treeObject.getHiveBlock().get();
         SingleConditionalRecipe.builder()
                 .addCondition(
@@ -419,7 +435,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         buildHiveResetRecipes(modid, hive, new ResourceLocation(ProductiveTrees.MODID, "hives/" + ForgeRegistries.BLOCKS.getKey(hive).getPath().replace("advanced_", "") + "_clear"), consumer);
     }
 
-    public void buildBoxRecipe(String modid, TreeObject treeObject, Consumer<FinishedRecipe> consumer) {
+    public void buildBoxRecipe(String modid, WoodObject treeObject, Consumer<FinishedRecipe> consumer) {
         Block box = treeObject.getExpansionBoxBlock().get();
         SingleConditionalRecipe.builder()
                 .addCondition(

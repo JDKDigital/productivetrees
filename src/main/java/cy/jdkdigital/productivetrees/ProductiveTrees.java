@@ -3,14 +3,18 @@ package cy.jdkdigital.productivetrees;
 import com.mojang.logging.LogUtils;
 import cy.jdkdigital.productivebees.ProductiveBees;
 import cy.jdkdigital.productivebees.common.item.UpgradeItem;
+import cy.jdkdigital.productivebees.container.BottlerContainer;
 import cy.jdkdigital.productivebees.init.ModBlocks;
 import cy.jdkdigital.productivebees.setup.BeeReloadListener;
 import cy.jdkdigital.productivetrees.client.particle.ColoredParticleType;
 import cy.jdkdigital.productivetrees.common.block.PollinatedLeaves;
+import cy.jdkdigital.productivetrees.common.block.Stripper;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
+import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
 import cy.jdkdigital.productivetrees.common.item.PollenItem;
 import cy.jdkdigital.productivetrees.datagen.recipe.SingleConditionalRecipe;
 import cy.jdkdigital.productivetrees.event.EventHandler;
+import cy.jdkdigital.productivetrees.inventory.StripperContainer;
 import cy.jdkdigital.productivetrees.loot.OptionalLootItem;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
@@ -22,10 +26,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
@@ -38,6 +39,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorTy
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.crafting.conditions.ConditionContext;
+import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -96,11 +98,16 @@ public class ProductiveTrees
                 .build();
     });
 
-    public static final RegistryObject<Item> UPGRADE_POLLEN_SIEVE = ITEMS.register("upgrade_pollen_sieve", () -> new UpgradeItem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> POLLEN = ITEMS.register("pollen", () -> new PollenItem(new Item.Properties()));
     public static final RegistryObject<Block> POLLINATED_LEAVES = BLOCKS.register("pollinated_leaves", () -> new PollinatedLeaves(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistryObject<BlockEntityType<PollinatedLeavesBlockEntity>> POLLINATED_LEAVES_BLOCK_ENTITY = BLOCK_ENTITIES.register("pollinated_leaves", () -> BlockEntityType.Builder.of(PollinatedLeavesBlockEntity::new, POLLINATED_LEAVES.get()).build(null));
-
+    public static final RegistryObject<Block> STRIPPER = BLOCKS.register("stripper", () -> new Stripper(BlockBehaviour.Properties.copy(Blocks.STONECUTTER)));
+    public static final RegistryObject<BlockEntityType<StripperBlockEntity>> STRIPPER_BLOCK_ENTITY = BLOCK_ENTITIES.register("stripper", () -> BlockEntityType.Builder.of(StripperBlockEntity::new, STRIPPER.get()).build(null));
+    public static final RegistryObject<MenuType<StripperContainer>> STRIPPER_MENU = CONTAINER_TYPES.register("stripper", () ->
+            IForgeMenuType.create(StripperContainer::new)
+    );
+    public static final RegistryObject<Item> UPGRADE_POLLEN_SIEVE = ITEMS.register("upgrade_pollen_sieve", () -> new UpgradeItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> POLLEN = ITEMS.register("pollen", () -> new PollenItem(new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPER_ITEM = ITEMS.register("stripper", () -> new BlockItem(STRIPPER.get(), new Item.Properties()));
     public static final RegistryObject<RecipeSerializer<?>> TREE_POLLINATION = RECIPE_SERIALIZERS.register("tree_pollination", () -> new TreePollinationRecipe.Serializer<>(TreePollinationRecipe::new));
     public static final RegistryObject<RecipeType<TreePollinationRecipe>> TREE_POLLINATION_TYPE = RECIPE_TYPES.register("tree_pollination", () -> new RecipeType<>() {});
 
@@ -131,13 +138,12 @@ public class ProductiveTrees
         MinecraftForge.EVENT_BUS.addListener(EventHandler::beeRelease);
 
         // TODO
-        // trapdoors, boats?, signs, door
-        // potted saplings
-        // pollinated leaves to use correct leaf texture
-        // use correct planks texture for other blocks
+        // tree features
+        // custom tree textures
+        // trapdoors, boats?, signs, door, bookshelves
 
         // Trees to add
-        // cacao, Socotra Dragon,
+        // cacao, Socotra Dragon, sugar apple, coconut sprout, kadsura, snake fruit, pandanus
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
     }

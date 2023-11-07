@@ -3,6 +3,7 @@ package cy.jdkdigital.productivetrees.registry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.util.WoodSet;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -19,60 +20,39 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class TreeObject
+public class TreeObject extends WoodObject
 {
-    private final ResourceLocation id;
     private final ResourceKey<ConfiguredFeature<?, ?>> feature;
     private final ResourceKey<ConfiguredFeature<?, ?>> megaFeature;
     private final String style;
-    private final String hiveStyle;
-    private final Boolean registerWood;
+    private final boolean registerWood;
     private final ResourceLocation log;
-    private final TreeColors colors;
     private final Fruit fruit;
     private final TagKey<Block> soil;
-    private final Boolean canForceGrowth;
-    private final Boolean fireProof;
-    private final Boolean useTinting;
-    private final Boolean fallingLeaves;
+    private final boolean canForceGrowth;
+    private final boolean useTinting;
+    private final boolean fallingLeaves;
     private final GrowthConditions growthConditions;
 
     private Supplier<Block> saplingBlock;
     private Supplier<Block> pottedSaplingBlock;
     private Supplier<Block> leafBlock;
-    private Supplier<Block> logBlock;
-    private Supplier<Block> strippedLogBlock;
-    private Supplier<Block> woodBlock;
-    private Supplier<Block> strippedWoodBlock;
-    private Supplier<Block> plankBlock;
     private Supplier<Block> fruitBlock;
     private Supplier<BlockEntityType<BlockEntity>> fruitBlockEntity;
-    private Supplier<Block> stairsBlock;
-    private Supplier<Block> slabBlock;
-    private Supplier<Block> fenceBlock;
-    private Supplier<Block> fenceGateBlock;
-    private Supplier<Block> pressurePlate;
-    private Supplier<Block> buttonBlock;
-    private Supplier<Block> hiveBlock;
-    private Supplier<Block> expansionBoxBlock;
 
-    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, String hiveStyle, Boolean registerWood, ResourceLocation log,TreeColors colors, Fruit fruit, TagKey<Block> soil, Boolean canForceGrowth, Boolean fireProof, Boolean useTinting, Boolean fallingLeaves, GrowthConditions growthConditions) {
-        this.id = id;
+    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, String hiveStyle, boolean registerWood, ResourceLocation log,TreeColors colors, Fruit fruit, TagKey<Block> soil, boolean canForceGrowth, boolean fireProof, boolean useTinting, boolean fallingLeaves, GrowthConditions growthConditions) {
+        super(id, fireProof, colors, hiveStyle);
         this.feature = feature;
         this.megaFeature = megaFeature;
         this.style = style;
-        this.hiveStyle = hiveStyle;
         this.registerWood = registerWood;
         this.log = log;
-        this.colors = colors;
         this.fruit = fruit;
         this.soil = soil;
         this.canForceGrowth = canForceGrowth;
-        this.fireProof = fireProof;
         this.useTinting = useTinting;
         this.fallingLeaves = fallingLeaves;
         this.growthConditions = growthConditions;
@@ -83,7 +63,7 @@ public class TreeObject
                 ResourceLocation.CODEC.fieldOf("id").orElse(id).forGetter(TreeObject::getId),
                 ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").orElse(null).forGetter(TreeObject::getFeature),
                 ResourceLocation.CODEC.fieldOf("megaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : Features.NULL, (value) -> value != null ? value.location() : null).forGetter(TreeObject::getMegaFeature),
-                Codec.STRING.fieldOf("style").orElse("oak").forGetter(TreeObject::getStyle),
+                Codec.STRING.fieldOf("style").orElse("oak").forGetter(TreeObject::getStyleName),
                 Codec.STRING.fieldOf("hiveStyle").orElse("oak").forGetter(TreeObject::getHiveStyle),
                 Codec.BOOL.fieldOf("registerWood").orElse(true).forGetter(TreeObject::registerWood),
                 ResourceLocation.CODEC.fieldOf("log").orElse(new ResourceLocation("oak_log")).forGetter(TreeObject::getLog),
@@ -98,10 +78,6 @@ public class TreeObject
         ).apply(instance, TreeObject::new));
     }
 
-    public ResourceLocation getId() {
-        return id;
-    }
-
     public ResourceKey<ConfiguredFeature<?, ?>> getFeature() {
         return feature;
     }
@@ -110,12 +86,12 @@ public class TreeObject
         return megaFeature;
     }
 
-    public String getStyle() {
-        return style;
+    public WoodSet getStyle() {
+        return WoodSet.STYLES.get(style);
     }
 
-    public String getHiveStyle() {
-        return hiveStyle;
+    private String getStyleName() {
+        return style;
     }
 
     public boolean registerWood() {
@@ -124,22 +100,6 @@ public class TreeObject
 
     public ResourceLocation getLog() {
         return log;
-    }
-
-    public TreeColors getColors() {
-        return colors;
-    }
-
-    public String getLeafColor() {
-        return colors.leafColor;
-    }
-
-    public String getLogColor() {
-        return colors.logColor;
-    }
-
-    public String getPlankColor() {
-        return colors.plankColor;
     }
 
     public Fruit getFruit() {
@@ -154,15 +114,11 @@ public class TreeObject
         return soil;
     }
 
-    public Boolean canForceGrowth() {
+    public boolean canForceGrowth() {
         return canForceGrowth;
     }
 
-    public Boolean isFireProof() {
-        return fireProof;
-    }
-
-    public Boolean useTinting() {
+    public boolean useTinting() {
         return useTinting;
     }
 
@@ -200,45 +156,9 @@ public class TreeObject
 
     public Supplier<Block> getLogBlock() {
         if (registerWood) {
-            return logBlock;
+            return super.getLogBlock();
         }
         return () -> ForgeRegistries.BLOCKS.getValue(log);
-    }
-
-    public void setLogBlock(Supplier<Block> logBlock) {
-        this.logBlock = logBlock;
-    }
-
-    public Supplier<Block> getStrippedLogBlock() {
-        return strippedLogBlock;
-    }
-
-    public void setStrippedLogBlock(Supplier<Block> strippedLogBlock) {
-        this.strippedLogBlock = strippedLogBlock;
-    }
-
-    public Supplier<Block> getWoodBlock() {
-        return woodBlock;
-    }
-
-    public void setWoodBlock(Supplier<Block> woodBlock) {
-        this.woodBlock = woodBlock;
-    }
-
-    public Supplier<Block> getStrippedWoodBlock() {
-        return strippedWoodBlock;
-    }
-
-    public void setStrippedWoodBlock(Supplier<Block> strippedWoodBlock) {
-        this.strippedWoodBlock = strippedWoodBlock;
-    }
-
-    public Supplier<Block> getPlankBlock() {
-        return plankBlock;
-    }
-
-    public void setPlankBlock(Supplier<Block> plankBlock) {
-        this.plankBlock = plankBlock;
     }
 
     public Supplier<Block> getFruitBlock() {
@@ -252,70 +172,6 @@ public class TreeObject
     public void setFruitBlock(Supplier<Block> fruitBlock, Supplier<BlockEntityType<BlockEntity>> fruitBlockEntity) {
         this.fruitBlock = fruitBlock;
         this.fruitBlockEntity = fruitBlockEntity;
-    }
-
-    public Supplier<Block> getStairsBlock() {
-        return stairsBlock;
-    }
-
-    public void setStairsBlock(Supplier<Block> stairsBlock) {
-        this.stairsBlock = stairsBlock;
-    }
-
-    public Supplier<Block> getSlabBlock() {
-        return slabBlock;
-    }
-
-    public void setSlabBlock(Supplier<Block> slabBlock) {
-        this.slabBlock = slabBlock;
-    }
-
-    public Supplier<Block> getFenceBlock() {
-        return fenceBlock;
-    }
-
-    public void setFenceBlock(Supplier<Block> fenceBlock) {
-        this.fenceBlock = fenceBlock;
-    }
-
-    public Supplier<Block> getFenceGateBlock() {
-        return fenceGateBlock;
-    }
-
-    public void setFenceGateBlock(Supplier<Block> fenceGateBlock) {
-        this.fenceGateBlock = fenceGateBlock;
-    }
-
-    public void setPressurePlateBlock(Supplier<Block> pressurePlate) {
-        this.pressurePlate = pressurePlate;
-    }
-
-    public Supplier<Block> getPressurePlateBlock() {
-        return pressurePlate;
-    }
-
-    public Supplier<Block> getButtonBlock() {
-        return buttonBlock;
-    }
-
-    public void setButtonBlock(Supplier<Block> buttonBlock) {
-        this.buttonBlock = buttonBlock;
-    }
-
-    public Supplier<Block> getHiveBlock() {
-        return hiveBlock;
-    }
-
-    public void setHiveBlock(Supplier<Block> hiveBlock) {
-        this.hiveBlock = hiveBlock;
-    }
-
-    public Supplier<Block> getExpansionBoxBlock() {
-        return expansionBoxBlock;
-    }
-
-    public void setExpansionBoxBlock(Supplier<Block> expansionBoxBlock) {
-        this.expansionBoxBlock = expansionBoxBlock;
     }
 
     public record GrowthConditions(int minLight, int maxLight, Fluid fluid, Optional<HolderSet<Biome>> biome)
@@ -348,18 +204,6 @@ public class TreeObject
         public ItemStack getItem() {
             var item = ForgeRegistries.ITEMS.getValue(fruitItem);
             return item != null ? new ItemStack(item, count) : ItemStack.EMPTY;
-        }
-    }
-
-    public record TreeColors(String leafColor, String logColor, String plankColor)
-    {
-        private static final TreeColors DEFAULT = new TreeColors("", "", "");
-        public static Codec<TreeColors> codec() {
-            return RecordCodecBuilder.create(instance -> instance.group(
-                    Codec.STRING.fieldOf("leafColor").orElse("#1d7b00").forGetter(TreeColors::leafColor),
-                    Codec.STRING.fieldOf("logColor").orElse("#917142").forGetter(TreeColors::logColor),
-                    Codec.STRING.fieldOf("plankColor").orElse("#c29d62").forGetter(TreeColors::plankColor)
-            ).apply(instance, TreeColors::new));
         }
     }
 }

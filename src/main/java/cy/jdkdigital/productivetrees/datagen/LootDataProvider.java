@@ -93,7 +93,7 @@ public class LootDataProvider implements DataProvider
         @Override
         protected void generate() {
             TreeFinder.trees.forEach((id, treeObject) -> {
-                var saplingChance = treeObject.getId().getPath().contains("berry") ? BERRY_LEAVES_SAPLING_CHANCES : (treeObject.getStyle().equals("jungle") ? NORMAL_LEAVES_SAPLING_CHANCES : JUNGLE_LEAVES_SAPLING_CHANGES);
+                var saplingChance = treeObject.getId().getPath().contains("berry") ? BERRY_LEAVES_SAPLING_CHANCES : (treeObject.getStyle().saplingStyle().equals("jungle") ? JUNGLE_LEAVES_SAPLING_CHANGES : NORMAL_LEAVES_SAPLING_CHANCES);
                 add(treeObject.getLeafBlock().get(), leaf -> createOptionalLeavesDrops(leaf, treeObject.getSaplingBlock().get(), saplingChance));
                 dropSelf(treeObject.getSaplingBlock().get());
                 if (treeObject.registerWood()) {
@@ -113,6 +113,26 @@ public class LootDataProvider implements DataProvider
                     this.add(treeObject.getHiveBlock().get(), hiveFunc.apply(treeObject.getHiveBlock().get()));
                     Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(treeObject.getExpansionBoxBlock().get(), BlockLootProvider::genExpansionDrop);
                     this.add(treeObject.getExpansionBoxBlock().get(), expansionFunc.apply(treeObject.getExpansionBoxBlock().get()));
+                }
+            });
+            TreeFinder.woods.forEach((id, woodObject) -> {
+                dropSelf(woodObject.getLogBlock().get());
+                dropSelf(woodObject.getPlankBlock().get());
+                dropSelf(woodObject.getWoodBlock().get());
+                dropSelf(woodObject.getStrippedLogBlock().get());
+                dropSelf(woodObject.getStrippedWoodBlock().get());
+                dropSelf(woodObject.getSlabBlock().get());
+                dropSelf(woodObject.getStairsBlock().get());
+                dropSelf(woodObject.getFenceBlock().get());
+                dropSelf(woodObject.getFenceGateBlock().get());
+                dropSelf(woodObject.getPressurePlateBlock().get());
+                dropSelf(woodObject.getButtonBlock().get());
+
+                if (woodObject.getHiveStyle() != null) {
+                    Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(woodObject.getHiveBlock().get(), BlockLootProvider::genHiveDrop);
+                    this.add(woodObject.getHiveBlock().get(), hiveFunc.apply(woodObject.getHiveBlock().get()));
+                    Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(woodObject.getExpansionBoxBlock().get(), BlockLootProvider::genExpansionDrop);
+                    this.add(woodObject.getExpansionBoxBlock().get(), expansionFunc.apply(woodObject.getExpansionBoxBlock().get()));
                 }
             });
         }

@@ -68,6 +68,8 @@ public class Tags
     public static final TagKey<Item> TANGERINE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/tangerine"));
     public static final TagKey<Item> AKEBIA = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/akebia"));
     public static final TagKey<Item> COPOAZU = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/copoazu"));
+    public static final TagKey<Item> CEMPEDAK = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/cempedak"));
+    public static final TagKey<Item> JACKFRUIT = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/jackfruit"));
     public static final TagKey<Item> BANANA = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/banana"));
     public static final TagKey<Item> COCONUT = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/coconut"));
     public static final TagKey<Item> MANGO = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/mango"));

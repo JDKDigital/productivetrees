@@ -1,14 +1,14 @@
 package cy.jdkdigital.productivetrees.common.block;
 
-import cy.jdkdigital.productivetrees.registry.TreeObject;
+import cy.jdkdigital.productivetrees.registry.WoodObject;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ProductiveLogBlock extends RotatedPillarBlock
 {
-    private final TreeObject treeObject;
+    private final WoodObject treeObject;
 
-    public ProductiveLogBlock(Properties properties, TreeObject treeObject) {
+    public ProductiveLogBlock(Properties properties, WoodObject treeObject) {
         super(properties);
         this.treeObject = treeObject;
     }

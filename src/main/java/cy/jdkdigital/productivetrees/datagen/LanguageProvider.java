@@ -28,6 +28,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
 
         add(ProductiveTrees.POLLEN.get(), "Pollen");
         add(ProductiveTrees.POLLINATED_LEAVES.get(), "Pollinated Leaves");
+        add(ProductiveTrees.STRIPPER.get(), "Stripper");
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             String name = id.getPath();
@@ -64,6 +65,25 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             }
             add("block.productivetrees." + name + ".latin", getLatinName(name));
         });
+
+        TreeFinder.woods.forEach((id, woodObject) -> {
+            String name = id.getPath();
+            add(woodObject.getLogBlock().get(), capName(name) + " Log");
+            add(woodObject.getWoodBlock().get(), capName(name) + " Wood");
+            add(woodObject.getStrippedLogBlock().get(), capName(name) + " Stripped Log");
+            add(woodObject.getStrippedWoodBlock().get(), capName(name) + " Stripped Wood");
+            add(woodObject.getPlankBlock().get(), capName(name) + " Planks");
+            add(woodObject.getStairsBlock().get(), capName(name) + " Stairs");
+            add(woodObject.getSlabBlock().get(), capName(name) + " Slab");
+            add(woodObject.getFenceBlock().get(), capName(name) + " Fence");
+            add(woodObject.getFenceGateBlock().get(), capName(name) + " Fence Gate");
+            add(woodObject.getButtonBlock().get(), capName(name) + " Button");
+            add(woodObject.getPressurePlateBlock().get(), capName(name) + " Pressure Plate");
+            if (woodObject.getHiveStyle() != null) {
+                add(woodObject.getHiveBlock().get(), "Advanced " + capName(name) + " Beehive");
+                add(woodObject.getExpansionBoxBlock().get(), capName(name) + " Expansion Box");
+            }
+        });
     }
 
     @Override
@@ -97,7 +117,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("beech", "Fagus sylvatica");
             put("blackberry", "Rubus fruticosus");
             put("blackcurrant", "Ribes nigrum");
-            put("blackthorn", "Prunus spinosa"); // sloe
+            put("blackthorn", "Prunus spinosa");
             put("black_cherry", "Prunus serotina");
             put("black_locust", "Robinia pseudoacacia");
             put("blueberry", "Vaccinium angustifolium");

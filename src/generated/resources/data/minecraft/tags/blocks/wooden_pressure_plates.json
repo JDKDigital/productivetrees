@@ -1,10 +1,6 @@
 {
   "values": [
     {
-      "id": "productivetrees:akebia_pressure_plate",
-      "required": false
-    },
-    {
       "id": "productivetrees:alder_pressure_plate",
       "required": false
     },
@@ -109,6 +105,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:cempedak_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:cheese_plant_pressure_plate",
       "required": false
     },
@@ -161,15 +161,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:desert_acacia_pressure_plate",
-      "required": false
-    },
-    {
       "id": "productivetrees:douglas_fir_pressure_plate",
-      "required": false
-    },
-    {
-      "id": "productivetrees:dwarf_hazel_pressure_plate",
       "required": false
     },
     {
@@ -401,10 +393,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:starfruit_pressure_plate",
-      "required": false
-    },
-    {
       "id": "productivetrees:star_anise_pressure_plate",
       "required": false
     },
@@ -486,6 +474,10 @@
     },
     {
       "id": "productivetrees:zebrano_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bush_pressure_plate",
       "required": false
     }
   ]

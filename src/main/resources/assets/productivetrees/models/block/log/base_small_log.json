@@ -1,0 +1,68 @@
+{
+  "ambientocclusion": false,
+  "parent": "block/block",
+  "render_type": "cutout",
+  "textures": {
+    "particle": "#side"
+  },
+  "elements": [
+    {
+      "from": [5, 0, 5],
+      "to": [11, 16, 11],
+      "shade": false,
+      "faces": {
+        "north": {"uv": [0, 0, 6, 16], "texture": "#side", "tintindex": 0},
+        "east": {"uv": [0, 0, 6, 16], "texture": "#side", "tintindex": 0},
+        "south": {"uv": [0, 0, 6, 16], "texture": "#side", "tintindex": 0},
+        "west": {"uv": [0, 0, 6, 16], "texture": "#side", "tintindex": 0},
+        "up": {"uv": [5, 5, 11, 11], "texture": "#top_inner", "tintindex": 1},
+        "down": {"uv": [5, 5, 11, 11], "texture": "#top_inner", "tintindex": 1}
+      }
+    },
+    {
+      "from": [5, 0, 5],
+      "to": [11, 16, 11],
+      "shade": false,
+      "faces": {
+        "up": {"uv": [5, 5, 11, 11], "texture": "#top_bark", "tintindex": 0},
+        "down": {"uv": [5, 5, 11, 11], "texture": "#top_bark", "tintindex": 0}
+      }
+    },
+    {
+      "name": "north",
+      "from": [8, 0, 0],
+      "to": [8, 16, 5],
+      "faces": {
+        "east": {"uv": [5, 0, 0, 16], "texture": "#branch", "tintindex": 0},
+        "west": {"uv": [0, 0, 5, 16], "texture": "#branch", "tintindex": 0}
+      }
+    },
+    {
+      "name": "south",
+      "from": [8, 0, 11],
+      "to": [8, 16, 16],
+      "faces": {
+        "east": {"uv": [0, 0, 5, 16], "texture": "#branch", "tintindex": 0},
+        "west": {"uv": [5, 0, 0, 16], "texture": "#branch", "tintindex": 0}
+      }
+    },
+    {
+      "name": "east",
+      "from": [11, 0, 8],
+      "to": [16, 16, 8],
+      "faces": {
+        "north": {"uv": [0, 0, 5, 16], "texture": "#branch", "tintindex": 0},
+        "south": {"uv": [5, 0, 0, 16], "texture": "#branch", "tintindex": 0}
+      }
+    },
+    {
+      "name": "west",
+      "from": [0, 0, 8],
+      "to": [5, 16, 8],
+      "faces": {
+        "north": {"uv": [5, 0, 0, 16], "texture": "#branch", "tintindex": 0},
+        "south": {"uv": [0, 0, 5, 16], "texture": "#branch", "tintindex": 0}
+      }
+    }
+  ]
+}

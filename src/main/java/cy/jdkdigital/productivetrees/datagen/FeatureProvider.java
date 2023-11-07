@@ -150,6 +150,7 @@ public class FeatureProvider implements DataProvider
     private final JsonElement BUSH_FOLIAGE = FoliagePlacer.CODEC.encodeStart(JsonOps.INSTANCE, new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2)).getOrThrow(false, ProductiveTrees.LOGGER::error);
     private final Map<String, JsonElement> foliagePlacers = new HashMap<>() {{
         put("default", createFoliage(2, 3));
+        put("alder", createFoliage(4, 5));
         put("avocado", createFoliage(4, 3));
         put("banana", createFoliage(3, 1));
         put("blackberry", BUSH_FOLIAGE);
@@ -166,6 +167,7 @@ public class FeatureProvider implements DataProvider
     private final JsonElement BUSH_TRUNK = createTrunk(1, 0, 0);
     private final Map<String, JsonElement> trunkPlacers = new HashMap<>() {{
         put("default", createTrunk(4, 2, 0));
+        put("alder", createTrunk(7, 10, 0));
         put("avocado", createTrunk(9, 10, 0));
         put("banana", createTrunk(5, 6, 0));
         put("beech", createTrunk(20, 10, 0));
