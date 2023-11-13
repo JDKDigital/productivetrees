@@ -345,6 +345,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_blackthorn_slab",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_slab",
       "required": false
     },

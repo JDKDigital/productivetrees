@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:aspen",
-  "style": "birch",
+  "style": "aspen",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
-  }
+    "leafColor": "#82b884",
+    "logColor": "#bba8a1",
+    "plankColor": "#cdc3aa"
+  },
+  "tint": "leaves_hives"
 }

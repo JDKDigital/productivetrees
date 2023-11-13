@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:sour_cherry",
-  "style": "birch",
+  "style": "sour_cherry",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#691500",
-    "plankColor": "#b58234"
+    "leafColor": "#5ec456",
+    "logColor": "#928270",
+    "plankColor": "#a56945"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:sour_cherry",
     "count": 3,

@@ -1,0 +1,488 @@
+{
+  "values": [
+    {
+      "id": "productivetrees:alder_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:allspice_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:almond_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:apricot_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ash_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:aspen_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:avocado_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsa_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsam_fir_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:banana_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beech_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blackthorn_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_cherry_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_locust_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_mahoe_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:boxwood_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazilwood_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazil_nut_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:breadfruit_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:buddhas_hand_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bull_pine_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:butternut_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:candlenut_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:carob_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cashew_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cedar_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cempedak_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cheese_plant_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cherry_plum_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cinnamon_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:citron_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:clove_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cocobolo_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coconut_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coffea_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cogwood_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copoazu_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copper_beech_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cultivated_pear_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:date_palm_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:douglas_fir_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elm_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:european_larch_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:finger_lime_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flowering_crabapple_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ginkgo_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grandidiers_baobab_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grapefruit_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:great_sallow_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hawthorn_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hazel_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:holly_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hornbeam_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ipe_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:iroko_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kapok_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:key_lime_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kumquat_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lawson_cypress_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lemon_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lime_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:loblolly_pine_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:logwood_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mahogany_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mandarin_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mango_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:monkey_puzzle_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:myrtle_ebony_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nectarine_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nutmeg_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:old_fustic_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orange_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orchard_apple_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:osange_orange_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:padauk_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:papaya_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:peach_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pecan_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pink_ivory_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pistachio_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plantain_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plum_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomelo_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:prarie_crabapple_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purpleheart_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_blackthorn_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rainbow_gum_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_banana_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_maple_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rosewood_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rose_gum_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rowan_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sand_pear_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:satsuma_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sequoia_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_fir_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_lime_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sour_cherry_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:star_anise_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:star_fruit_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_maple_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:swamp_gum_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweetgum_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_chestnut_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_crabapple_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sycamore_fig_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tangerine_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:teak_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:walnut_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wenge_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:western_hemlock_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:whitebeam_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_poplar_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_willow_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wild_cherry_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yellow_meranti_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yew_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ysabella_purpurea_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:zebrano_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bush_hanging_sign",
+      "required": false
+    }
+  ]
+}

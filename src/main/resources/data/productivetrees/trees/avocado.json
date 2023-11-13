@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:avocado",
-  "style": "birch",
+  "style": "avocado",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#70a25d",
+    "logColor": "#5d3f34",
+    "plankColor": "#c39f7f"
   },
+  "tint": "leaves_hives",
   "fruit": {
     "item": "productivetrees:avocado",
     "count": 1,

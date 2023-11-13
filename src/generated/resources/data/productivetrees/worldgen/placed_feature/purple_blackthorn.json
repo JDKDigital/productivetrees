@@ -1,0 +1,17 @@
+{
+  "feature": "productivetrees:purple_blackthorn",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "productivetrees:purple_blackthorn_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    }
+  ]
+}

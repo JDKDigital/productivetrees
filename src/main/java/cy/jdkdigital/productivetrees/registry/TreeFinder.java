@@ -85,15 +85,11 @@ public class TreeFinder
             }
         }
 
-        woods.put(new ResourceLocation(ProductiveTrees.MODID, "bush"), TreeCreator.createWood("bush", new WoodObject.TreeColors("#1c4316", "#c29d62", "#A0A0A0")));
+        woods.put(new ResourceLocation(ProductiveTrees.MODID, "bush"), TreeCreator.createWood("bush", new WoodObject.TreeColors("#1c4316", "#c29d62", "#938157")));
     }
 
     public static void setupDefaultFiles(String dataPath, Path targetPath, boolean override) {
         List<Path> roots = List.of(ModList.get().getModFileById(ProductiveTrees.MODID).getFile().getFilePath());
-
-        if (roots.isEmpty()) {
-            throw new RuntimeException("Failed to load defaults.");
-        }
 
         for (Path modRoot : roots) {
             setupDefaultFiles(dataPath, targetPath, modRoot, override);

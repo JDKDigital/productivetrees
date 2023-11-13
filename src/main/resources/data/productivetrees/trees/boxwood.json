@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:boxwood",
-  "style": "birch",
+  "style": "boxwood",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#bd956a",
-    "plankColor": "#fbf1c6"
-  }
+    "leafColor": "#659a32",
+    "logColor": "#6b4d35",
+    "plankColor": "#fcedc4"
+  },
+  "tint": "hives"
 }

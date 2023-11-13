@@ -1,9 +1,17 @@
 {
   "feature": "productivetrees:apricot",
-  "style": "birch",
+  "style": "apricot",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#77a214",
+    "logColor": "#342222",
+    "plankColor": "#dda66e"
+  },
+  "tint": "leaves_hives",
+  "fruit": {
+    "item": "productivetrees:apricot",
+    "count": 1,
+    "growthSpeed": 0.5,
+    "unripeColor": "#87b203",
+    "ripeColor": "#dd490b"
   }
 }

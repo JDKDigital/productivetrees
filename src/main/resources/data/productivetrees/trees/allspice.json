@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:allspice",
-  "style": "birch",
+  "style": "allspice",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
-  }
+    "leafColor": "#62922f",
+    "logColor": "#d2c8c7",
+    "plankColor": "#ac7f56"
+  },
+  "tint": "leaves_hives"
 }

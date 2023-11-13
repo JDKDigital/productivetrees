@@ -22,6 +22,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add("itemGroup.productivetrees", "Productive Trees");
         add("item.productivetrees.upgrade_pollen_sieve", "Upgrade: Pollen Sieve");
         add("jei.productivetrees.tree_pollination", "Tree Pollination");
+        add("jei.productivetrees.log_stripping", "Log Stripping");
         add("productivetrees.pollen.name", "%s");
         add("productivebees.information.upgrade.upgrade_pollen_sieve", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
         add("productivetrees.information.pollen", "Use on a leaf to manually pollinate it.");
@@ -51,8 +52,8 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             if (treeObject.registerWood()) {
                 add(treeObject.getLogBlock().get(), capName(name) + " Log");
                 add(treeObject.getWoodBlock().get(), capName(name) + " Wood");
-                add(treeObject.getStrippedLogBlock().get(), capName(name) + " Stripped Log");
-                add(treeObject.getStrippedWoodBlock().get(), capName(name) + " Stripped Wood");
+                add(treeObject.getStrippedLogBlock().get(), "Stripped " + capName(name) + " Log");
+                add(treeObject.getStrippedWoodBlock().get(), "Stripped " + capName(name) + " Wood");
                 add(treeObject.getPlankBlock().get(), capName(name) + " Planks");
                 add(treeObject.getStairsBlock().get(), capName(name) + " Stairs");
                 add(treeObject.getSlabBlock().get(), capName(name) + " Slab");
@@ -60,6 +61,10 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
                 add(treeObject.getFenceGateBlock().get(), capName(name) + " Fence Gate");
                 add(treeObject.getButtonBlock().get(), capName(name) + " Button");
                 add(treeObject.getPressurePlateBlock().get(), capName(name) + " Pressure Plate");
+                add(treeObject.getDoorBlock().get(), capName(name) + " Door");
+                add(treeObject.getTrapdoorBlock().get(), capName(name) + " Trapdoor");
+                add(treeObject.getSignBlock().get(), capName(name) + " Sign");
+                add(treeObject.getHangingSignBlock().get(), capName(name) + " Hanging Sign");
                 add(treeObject.getHiveBlock().get(), "Advanced " + capName(name) + " Beehive");
                 add(treeObject.getExpansionBoxBlock().get(), capName(name) + " Expansion Box");
             }
@@ -197,6 +202,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("plum", "Prunus domestica");
             put("pomelo", "Citrus maxima");
             put("prarie_crabapple", "Malus ioensis");
+            put("purple_blackthorn", "Prunus spinosa purpurea");
             put("purpleheart", "Peltogyne purpurea");
             put("rainbow_gum", "Eucalyptus deglupta");
             put("raspberry", "Rubus idaeus");

@@ -7,31 +7,27 @@ import cy.jdkdigital.productivebees.event.BeeReleaseEvent;
 import cy.jdkdigital.productivebees.init.ModItems;
 import cy.jdkdigital.productivetrees.Config;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
-import cy.jdkdigital.productivetrees.client.particle.PetalParticle;
-import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
-import cy.jdkdigital.productivetrees.common.block.ProductiveWoodBlock;
+import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
-import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.event.AddReloadListenerEvent;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.event.level.SaplingGrowTreeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,29 +35,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = ProductiveTrees.MODID)
+@Mod.EventBusSubscriber(modid = ProductiveTrees.MODID)
 public class EventHandler
 {
+    @SubscribeEvent
     public static void onServerStarting(AddReloadListenerEvent event) {
         TreeFinder.context = event.getConditionContext();
     }
 
-    public static void axeStrip(BlockEvent.BlockToolModificationEvent event) {
-        if (event.getToolAction().equals(ToolActions.AXE_STRIP)) {
-            if (event.getFinalState().getBlock() instanceof ProductiveLogBlock log) {
-                event.setFinalState(log.getStrippedState(event.getFinalState()));
-            } else if (event.getFinalState().getBlock() instanceof ProductiveWoodBlock wood) {
-                event.setFinalState(wood.getStrippedState(event.getFinalState()));
-            }
-        }
-    }
-
+    @SubscribeEvent
     public static void blockBreak(BlockEvent.BreakEvent event) {
         if (event.getLevel() instanceof Level level && event.getState().is(ProductiveTrees.POLLINATED_LEAVES.get()) && level.getBlockEntity(event.getPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
             Block.popResource(level, event.getPos(), pollinatedLeavesBlockEntity.getResult());
         }
     }
 
+    @SubscribeEvent
     public static void beeRelease(BeeReleaseEvent event) {
         if (event.getLevel() instanceof ServerLevel level && event.getBeeState().equals(BeehiveBlockEntity.BeeReleaseStatus.HONEY_DELIVERED) && event.getBlockEntity() instanceof AdvancedBeehiveBlockEntity advancedBeehiveBlockEntity) {
             if (event.getBee().getHivePos() != null) {
@@ -129,15 +118,13 @@ public class EventHandler
     }
 
     @SubscribeEvent
-    public static void registerParticles(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(ProductiveTrees.PETAL_PARTICLES.get(), PetalParticle.Provider::new);
-    }
-
-    @SubscribeEvent
-    public static void buildContents(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey().equals(ProductiveTrees.TAB_KEY)) {
-            for (RegistryObject<Item> item : ProductiveTrees.ITEMS.getEntries()) {
-                event.accept(item);
+    public static void onBlockGrow(SaplingGrowTreeEvent event) {
+        if (event.getLevel() instanceof ServerLevel serverLevel) {
+            Block grownBlock = serverLevel.getBlockState(event.getPos()).getBlock();
+            if (grownBlock instanceof ProductiveSaplingBlock saplingBlock && !saplingBlock.getTree().getMutationInfo().target().equals(ProductiveTrees.EMPTY_RL)) {
+                if (saplingBlock.getTree().getMutationInfo().chance() >= event.getRandomSource().nextFloat()) {
+                    event.setFeature(ResourceKey.create(Registries.CONFIGURED_FEATURE, saplingBlock.getTree().getMutationInfo().target()));
+                }
             }
         }
     }

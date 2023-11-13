@@ -345,6 +345,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_blackthorn_fence",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_fence",
       "required": false
     },

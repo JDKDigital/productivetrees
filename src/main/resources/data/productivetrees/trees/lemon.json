@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:lemon",
-  "style": "birch",
+  "style": "lemon",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#52483d",
-    "plankColor": "#c8c474"
+    "leafColor": "#273418",
+    "logColor": "#523f37",
+    "plankColor": "#c0a266"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:lemon",
     "count": 3,

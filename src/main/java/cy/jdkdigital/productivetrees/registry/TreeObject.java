@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -31,11 +33,12 @@ public class TreeObject extends WoodObject
     private final boolean registerWood;
     private final ResourceLocation log;
     private final Fruit fruit;
+    private final MutationInfo mutationInfo;
     private final TagKey<Block> soil;
-    private final boolean canForceGrowth;
-    private final boolean useTinting;
+    private final TintStyle tintStyle;
     private final boolean fallingLeaves;
-    private final GrowthConditions growthConditions;
+    private final GrowthCondition growthCondition;
+    private final Decoration decoration;
 
     private Supplier<Block> saplingBlock;
     private Supplier<Block> pottedSaplingBlock;
@@ -43,7 +46,7 @@ public class TreeObject extends WoodObject
     private Supplier<Block> fruitBlock;
     private Supplier<BlockEntityType<BlockEntity>> fruitBlockEntity;
 
-    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, String hiveStyle, boolean registerWood, ResourceLocation log,TreeColors colors, Fruit fruit, TagKey<Block> soil, boolean canForceGrowth, boolean fireProof, boolean useTinting, boolean fallingLeaves, GrowthConditions growthConditions) {
+    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, String hiveStyle, boolean registerWood, ResourceLocation log, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
         super(id, fireProof, colors, hiveStyle);
         this.feature = feature;
         this.megaFeature = megaFeature;
@@ -51,11 +54,12 @@ public class TreeObject extends WoodObject
         this.registerWood = registerWood;
         this.log = log;
         this.fruit = fruit;
+        this.mutationInfo = mutationInfo;
         this.soil = soil;
-        this.canForceGrowth = canForceGrowth;
-        this.useTinting = useTinting;
+        this.tintStyle = tintStyle;
         this.fallingLeaves = fallingLeaves;
-        this.growthConditions = growthConditions;
+        this.growthCondition = growthCondition;
+        this.decoration = decoration;// /kill @e[type=warden]
     }
 
     public static Codec<TreeObject> codec(ResourceLocation id) {
@@ -67,14 +71,15 @@ public class TreeObject extends WoodObject
                 Codec.STRING.fieldOf("hiveStyle").orElse("oak").forGetter(TreeObject::getHiveStyle),
                 Codec.BOOL.fieldOf("registerWood").orElse(true).forGetter(TreeObject::registerWood),
                 ResourceLocation.CODEC.fieldOf("log").orElse(new ResourceLocation("oak_log")).forGetter(TreeObject::getLog),
-                TreeColors.codec().fieldOf("colors").orElse(TreeColors.DEFAULT).forGetter(TreeObject::getColors),
-                Fruit.codec().fieldOf("fruit").orElse(Fruit.DEFAULT).forGetter(TreeObject::getFruit),
-                TagKey.hashedCodec(Registries.BLOCK).fieldOf("soil").orElse(Tags.DIRT_OR_FARMLAND).forGetter(TreeObject::getSoil),
-                Codec.BOOL.fieldOf("canForceGrowth").orElse(true).forGetter(TreeObject::canForceGrowth),
+                TreeColors.CODEC.fieldOf("colors").orElse(TreeColors.DEFAULT).forGetter(TreeObject::getColors),
+                Fruit.CODEC.fieldOf("fruit").orElse(Fruit.DEFAULT).forGetter(TreeObject::getFruit),
+                MutationInfo.CODEC.fieldOf("mutation_info").orElse(MutationInfo.DEFAULT).forGetter(TreeObject::getMutationInfo),
+                TagKey.hashedCodec(Registries.BLOCK).fieldOf("soil").orElse(ModTags.DIRT_OR_FARMLAND).forGetter(TreeObject::getSoil),
                 Codec.BOOL.fieldOf("fireproof").orElse(false).forGetter(TreeObject::isFireProof),
-                Codec.BOOL.fieldOf("useTinting").orElse(true).forGetter(TreeObject::useTinting),
+                TintStyle.CODEC.fieldOf("tint").orElse(TintStyle.FULL).forGetter(TreeObject::getTintStyle),
                 Codec.BOOL.fieldOf("fallingLeaves").orElse(false).forGetter(TreeObject::hasFallingLeaves),
-                GrowthConditions.codec().fieldOf("growthConditions").orElse(GrowthConditions.DEFAULT).forGetter(TreeObject::getGrowthConditions)
+                GrowthCondition.CODEC.fieldOf("growthConditions").orElse(GrowthCondition.DEFAULT).forGetter(TreeObject::getGrowthConditions),
+                Decoration.CODEC.fieldOf("decoration").orElse(Decoration.DEFAULT).forGetter(TreeObject::getDecoration)
         ).apply(instance, TreeObject::new));
     }
 
@@ -110,24 +115,40 @@ public class TreeObject extends WoodObject
         return !getFruit().fruitItem().equals(ProductiveTrees.EMPTY_RL);
     }
 
+    public MutationInfo getMutationInfo() {
+        return this.mutationInfo;
+    }
+
     public TagKey<Block> getSoil() {
         return soil;
     }
 
     public boolean canForceGrowth() {
-        return canForceGrowth;
+        return growthCondition.canForceGrowth();
     }
 
-    public boolean useTinting() {
-        return useTinting;
+    public TintStyle getTintStyle() {
+        return tintStyle;
+    }
+
+    public boolean tintLeaves() {
+        return tintStyle.equals(TintStyle.FULL) || tintStyle.equals(TintStyle.LEAVES) || tintStyle.equals(TintStyle.LEAVES_HIVES);
+    }
+
+    public boolean tintHives() {
+        return tintStyle.equals(TintStyle.FULL) || tintStyle.equals(TintStyle.LEAVES_HIVES) || tintStyle.equals(TintStyle.HIVES);
     }
 
     public boolean hasFallingLeaves() {
         return fallingLeaves;
     }
 
-    public GrowthConditions getGrowthConditions() {
-        return growthConditions;
+    public GrowthCondition getGrowthConditions() {
+        return growthCondition;
+    }
+
+    public Decoration getDecoration() {
+        return decoration;
     }
 
     public Supplier<Block> getSaplingBlock() {
@@ -174,36 +195,73 @@ public class TreeObject extends WoodObject
         this.fruitBlockEntity = fruitBlockEntity;
     }
 
-    public record GrowthConditions(int minLight, int maxLight, Fluid fluid, Optional<HolderSet<Biome>> biome)
+    public record GrowthCondition(boolean canForceGrowth, int minLight, int maxLight, Fluid fluid, Optional<HolderSet<Biome>> biome)
     {
-        private static final GrowthConditions DEFAULT = new GrowthConditions(9, 15, Fluids.EMPTY, null);
-        public static Codec<GrowthConditions> codec() {
-            return RecordCodecBuilder.create(instance -> instance.group(
-                    ExtraCodecs.POSITIVE_INT.fieldOf("minLight").orElse(9).forGetter(GrowthConditions::minLight),
-                    ExtraCodecs.POSITIVE_INT.fieldOf("maxLight").orElse(15).forGetter(GrowthConditions::maxLight),
-                    ForgeRegistries.FLUIDS.getCodec().fieldOf("fluid").orElse(Fluids.EMPTY).forGetter(GrowthConditions::fluid),
-                    Biome.LIST_CODEC.optionalFieldOf("biome").forGetter(GrowthConditions::biome)
-            ).apply(instance, GrowthConditions::new));
-        }
+        private static final GrowthCondition DEFAULT = new GrowthCondition(true, 9, 15, Fluids.EMPTY, null);
+        public static Codec<GrowthCondition> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+                Codec.BOOL.fieldOf("canForceGrowth").orElse(true).forGetter(GrowthCondition::canForceGrowth),
+                ExtraCodecs.POSITIVE_INT.fieldOf("minLight").orElse(9).forGetter(GrowthCondition::minLight),
+                ExtraCodecs.POSITIVE_INT.fieldOf("maxLight").orElse(15).forGetter(GrowthCondition::maxLight),
+                ForgeRegistries.FLUIDS.getCodec().fieldOf("fluid").orElse(Fluids.EMPTY).forGetter(GrowthCondition::fluid),
+                Biome.LIST_CODEC.optionalFieldOf("biome").forGetter(GrowthCondition::biome)
+        ).apply(instance, GrowthCondition::new));
     }
 
-    public record Fruit(String style, ResourceLocation fruitItem, int count, float growthSpeed, String unripeColor, String ripeColor)
+    public record Decoration(String vine)
     {
-        private static final Fruit DEFAULT = new Fruit("", ProductiveTrees.EMPTY_RL, 1, 1.0F, "", "");
-        public static Codec<Fruit> codec() {
-            return RecordCodecBuilder.create(instance -> instance.group(
-                    Codec.STRING.fieldOf("style").orElse("medium").forGetter(Fruit::style),
-                    ResourceLocation.CODEC.fieldOf("item").forGetter(Fruit::fruitItem),
-                    Codec.INT.fieldOf("count").orElse(1).forGetter(Fruit::count),
-                    Codec.FLOAT.fieldOf("growthSpeed").orElse(1.0F).forGetter(Fruit::growthSpeed),
-                    Codec.STRING.fieldOf("unripeColor").orElse("#1aa000").forGetter(Fruit::unripeColor),
-                    Codec.STRING.fieldOf("ripeColor").orElse("#ff9d00").forGetter(Fruit::ripeColor)
-            ).apply(instance, Fruit::new));
-        }
+        private static final Decoration DEFAULT = new Decoration("");
+        public static Codec<Decoration> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+                Codec.STRING.fieldOf("vine").orElse("").forGetter(Decoration::vine)
+        ).apply(instance, Decoration::new));
+    }
+
+    public record Fruit(String style, ResourceLocation fruitItem, int count, float growthSpeed, String flowerColor, String unripeColor, String ripeColor)
+    {
+        private static final Fruit DEFAULT = new Fruit("", ProductiveTrees.EMPTY_RL, 1, 1.0F, "", "", "");
+        public static Codec<Fruit> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+                Codec.STRING.fieldOf("style").orElse("medium").forGetter(Fruit::style),
+                ResourceLocation.CODEC.fieldOf("item").forGetter(Fruit::fruitItem),
+                Codec.INT.fieldOf("count").orElse(1).forGetter(Fruit::count),
+                Codec.FLOAT.fieldOf("growthSpeed").orElse(1.0F).forGetter(Fruit::growthSpeed),
+                Codec.STRING.fieldOf("flowerColor").orElse("#ffffff").forGetter(Fruit::flowerColor),
+                Codec.STRING.fieldOf("unripeColor").orElse("#1aa000").forGetter(Fruit::unripeColor),
+                Codec.STRING.fieldOf("ripeColor").orElse("#ff9d00").forGetter(Fruit::ripeColor)
+        ).apply(instance, Fruit::new));
 
         public ItemStack getItem() {
             var item = ForgeRegistries.ITEMS.getValue(fruitItem);
             return item != null ? new ItemStack(item, count) : ItemStack.EMPTY;
+        }
+    }
+
+    public record MutationInfo(ResourceLocation target, float chance)
+    {
+        private static final MutationInfo DEFAULT = new MutationInfo(ProductiveTrees.EMPTY_RL, 0f);
+        public static Codec<MutationInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+                ResourceLocation.CODEC.fieldOf("target").forGetter(MutationInfo::target),
+                Codec.FLOAT.fieldOf("chance").orElse(1.0F).forGetter(MutationInfo::chance)
+        ).apply(instance, MutationInfo::new));
+    }
+
+    public enum TintStyle implements StringRepresentable
+    {
+        NONE("none"), LEAVES("leaves"), LEAVES_HIVES("leaves_hives"), HIVES("hives"), FULL("full");
+
+        public static final StringRepresentable.EnumCodec<TintStyle> CODEC = StringRepresentable.fromEnum(TintStyle::values);
+
+        private final String name;
+
+        TintStyle(String name) {
+            this.name = name;
+        }
+
+        public String toString() {
+            return this.name;
+        }
+
+        @Override
+        public @NotNull String getSerializedName() {
+            return this.name;
         }
     }
 }

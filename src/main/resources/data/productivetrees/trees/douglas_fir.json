@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:douglas_fir",
-  "style": "birch",
+  "style": "douglas_fir",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#929093",
-    "plankColor": "#A0A0A0"
-  }
+    "leafColor": "#626b32",
+    "logColor": "#593f3b",
+    "plankColor": "#d7a776"
+  },
+  "tint": "hives"
 }

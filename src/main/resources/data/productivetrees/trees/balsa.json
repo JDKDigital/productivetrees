@@ -1,7 +1,10 @@
 {
   "feature": "productivetrees:balsa",
-  "style": "birch",
-  "leafColor": "#1c4316",
-  "logColor": "#8a8682",
-  "plankColor": "#a9a299"
+  "style": "balsa",
+  "colors": {
+    "leafColor": "#35793c",
+    "logColor": "#e1c8cb",
+    "plankColor": "#eae1dc"
+  },
+  "tint": "leaves_hives"
 }

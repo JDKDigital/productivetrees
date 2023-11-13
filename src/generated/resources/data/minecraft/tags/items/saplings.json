@@ -389,6 +389,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_blackthorn_sapling",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_sapling",
       "required": false
     },

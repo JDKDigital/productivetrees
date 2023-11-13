@@ -345,6 +345,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_blackthorn_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_planks",
       "required": false
     },

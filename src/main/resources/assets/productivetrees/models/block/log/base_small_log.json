@@ -1,5 +1,4 @@
 {
-  "ambientocclusion": false,
   "parent": "block/block",
   "render_type": "cutout",
   "textures": {

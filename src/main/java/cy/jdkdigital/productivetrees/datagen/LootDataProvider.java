@@ -108,6 +108,13 @@ public class LootDataProvider implements DataProvider
                     dropSelf(treeObject.getFenceGateBlock().get());
                     dropSelf(treeObject.getPressurePlateBlock().get());
                     dropSelf(treeObject.getButtonBlock().get());
+                    createDoorTable(treeObject.getDoorBlock().get());
+                    dropSelf(treeObject.getTrapdoorBlock().get());
+                    dropSelf(treeObject.getBookshelfBlock().get());
+                    dropSelf(treeObject.getSignBlock().get());
+                    dropOther(treeObject.getWallSignBlock().get(), treeObject.getSignBlock().get());
+                    dropSelf(treeObject.getHangingSignBlock().get());
+                    dropOther(treeObject.getWallHangingSignBlock().get(), treeObject.getHangingSignBlock().get());
 
                     Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(treeObject.getHiveBlock().get(), BlockLootProvider::genHiveDrop);
                     this.add(treeObject.getHiveBlock().get(), hiveFunc.apply(treeObject.getHiveBlock().get()));
@@ -127,6 +134,13 @@ public class LootDataProvider implements DataProvider
                 dropSelf(woodObject.getFenceGateBlock().get());
                 dropSelf(woodObject.getPressurePlateBlock().get());
                 dropSelf(woodObject.getButtonBlock().get());
+                createDoorTable(woodObject.getDoorBlock().get());
+                dropSelf(woodObject.getTrapdoorBlock().get());
+                dropSelf(woodObject.getBookshelfBlock().get());
+                dropSelf(woodObject.getSignBlock().get());
+                dropOther(woodObject.getWallSignBlock().get(), woodObject.getSignBlock().get());
+                dropSelf(woodObject.getHangingSignBlock().get());
+                dropOther(woodObject.getWallHangingSignBlock().get(), woodObject.getHangingSignBlock().get());
 
                 if (woodObject.getHiveStyle() != null) {
                     Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(woodObject.getHiveBlock().get(), BlockLootProvider::genHiveDrop);

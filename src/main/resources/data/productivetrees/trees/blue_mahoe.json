@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:blue_mahoe",
-  "style": "birch",
+  "style": "blue_mahoe",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#636548",
-    "plankColor": "#829aab"
-  }
+    "leafColor": "#719c96",
+    "logColor": "#af9f86",
+    "plankColor": "#456e8a"
+  },
+  "tint": "hives"
 }

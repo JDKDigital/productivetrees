@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:ash",
-  "style": "birch",
+  "style": "ash",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#69675f",
-    "plankColor": "#b82921"
-  }
+    "leafColor": "#6e8422",
+    "logColor": "#676d69",
+    "plankColor": "#d4b18b"
+  },
+  "tint": "leaves_hives"
 }

@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:flowering_crabapple",
-  "style": "birch",
+  "style": "flowering_crabapple",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#7f8c3c",
+    "logColor": "#837e78",
+    "plankColor": "#dcc8a5"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:crabapple",
     "count": 3,

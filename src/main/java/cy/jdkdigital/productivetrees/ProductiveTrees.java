@@ -7,8 +7,10 @@ import cy.jdkdigital.productivebees.container.BottlerContainer;
 import cy.jdkdigital.productivebees.init.ModBlocks;
 import cy.jdkdigital.productivebees.setup.BeeReloadListener;
 import cy.jdkdigital.productivetrees.client.particle.ColoredParticleType;
+import cy.jdkdigital.productivetrees.common.block.EntitySpawner;
 import cy.jdkdigital.productivetrees.common.block.PollinatedLeaves;
 import cy.jdkdigital.productivetrees.common.block.Stripper;
+import cy.jdkdigital.productivetrees.common.block.entity.EntitySpawnerBlockEntity;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
 import cy.jdkdigital.productivetrees.common.item.PollenItem;
@@ -16,6 +18,7 @@ import cy.jdkdigital.productivetrees.datagen.recipe.SingleConditionalRecipe;
 import cy.jdkdigital.productivetrees.event.EventHandler;
 import cy.jdkdigital.productivetrees.inventory.StripperContainer;
 import cy.jdkdigital.productivetrees.loot.OptionalLootItem;
+import cy.jdkdigital.productivetrees.recipe.LogStrippingRecipe;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import net.minecraft.core.particles.ParticleType;
@@ -100,8 +103,10 @@ public class ProductiveTrees
 
     public static final RegistryObject<Block> POLLINATED_LEAVES = BLOCKS.register("pollinated_leaves", () -> new PollinatedLeaves(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistryObject<BlockEntityType<PollinatedLeavesBlockEntity>> POLLINATED_LEAVES_BLOCK_ENTITY = BLOCK_ENTITIES.register("pollinated_leaves", () -> BlockEntityType.Builder.of(PollinatedLeavesBlockEntity::new, POLLINATED_LEAVES.get()).build(null));
-    public static final RegistryObject<Block> STRIPPER = BLOCKS.register("stripper", () -> new Stripper(BlockBehaviour.Properties.copy(Blocks.STONECUTTER)));
+    public static final RegistryObject<Block> STRIPPER = BLOCKS.register("stripper", () -> new Stripper(BlockBehaviour.Properties.copy(Blocks.STONECUTTER).noOcclusion()));
     public static final RegistryObject<BlockEntityType<StripperBlockEntity>> STRIPPER_BLOCK_ENTITY = BLOCK_ENTITIES.register("stripper", () -> BlockEntityType.Builder.of(StripperBlockEntity::new, STRIPPER.get()).build(null));
+    public static final RegistryObject<Block> ENTITY_SPAWNER = BLOCKS.register("entity_spawner", () -> new EntitySpawner(BlockBehaviour.Properties.copy(Blocks.AIR)));
+    public static final RegistryObject<BlockEntityType<EntitySpawnerBlockEntity>> ENTITY_SPAWNER_BLOCK_ENTITY = BLOCK_ENTITIES.register("entity_spawner", () -> BlockEntityType.Builder.of(EntitySpawnerBlockEntity::new, ENTITY_SPAWNER.get()).build(null));
     public static final RegistryObject<MenuType<StripperContainer>> STRIPPER_MENU = CONTAINER_TYPES.register("stripper", () ->
             IForgeMenuType.create(StripperContainer::new)
     );
@@ -110,6 +115,8 @@ public class ProductiveTrees
     public static final RegistryObject<Item> STRIPPER_ITEM = ITEMS.register("stripper", () -> new BlockItem(STRIPPER.get(), new Item.Properties()));
     public static final RegistryObject<RecipeSerializer<?>> TREE_POLLINATION = RECIPE_SERIALIZERS.register("tree_pollination", () -> new TreePollinationRecipe.Serializer<>(TreePollinationRecipe::new));
     public static final RegistryObject<RecipeType<TreePollinationRecipe>> TREE_POLLINATION_TYPE = RECIPE_TYPES.register("tree_pollination", () -> new RecipeType<>() {});
+    public static final RegistryObject<RecipeSerializer<?>> LOG_STRIPPING = RECIPE_SERIALIZERS.register("log_stripping", () -> new LogStrippingRecipe.Serializer<>(LogStrippingRecipe::new));
+    public static final RegistryObject<RecipeType<LogStrippingRecipe>> LOG_STRIPPING_TYPE = RECIPE_TYPES.register("log_stripping", () -> new RecipeType<>() {});
 
     public static final RegistryObject<ColoredParticleType> PETAL_PARTICLES = PARTICLE_TYPES.register("petals", ColoredParticleType::new);
 
@@ -132,18 +139,13 @@ public class ProductiveTrees
         TREE_DECORATORS.register(modEventBus);
         POI_TYPES.register(modEventBus);
 
-        MinecraftForge.EVENT_BUS.addListener(EventHandler::onServerStarting);
-        MinecraftForge.EVENT_BUS.addListener(EventHandler::axeStrip);
-        MinecraftForge.EVENT_BUS.addListener(EventHandler::blockBreak);
-        MinecraftForge.EVENT_BUS.addListener(EventHandler::beeRelease);
-
         // TODO
         // tree features
         // custom tree textures
         // trapdoors, boats?, signs, door, bookshelves
 
         // Trees to add
-        // cacao, Socotra Dragon, sugar apple, coconut sprout, kadsura, snake fruit, pandanus
+        // cacao, Socotra Dragon, sugar apple, coconut sprout, kadsura, snake fruit, pandanus, starry night
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
     }

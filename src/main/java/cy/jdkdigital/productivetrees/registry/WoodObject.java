@@ -26,6 +26,13 @@ public class WoodObject implements TreeWoodProvider
     private Supplier<Block> fenceGateBlock;
     private Supplier<Block> pressurePlate;
     private Supplier<Block> buttonBlock;
+    private Supplier<Block> doorBlock;
+    private Supplier<Block> trapdoorBlock;
+    private Supplier<Block> bookshelfBlock;
+    private Supplier<Block> signBlock;
+    private Supplier<Block> wallSignBlock;
+    private Supplier<Block> hangingSignBlock;
+    private Supplier<Block> wallHangingSignBlock;
     private Supplier<Block> hiveBlock;
     private Supplier<Block> expansionBoxBlock;
 
@@ -156,6 +163,62 @@ public class WoodObject implements TreeWoodProvider
         this.buttonBlock = buttonBlock;
     }
 
+    public Supplier<Block> getDoorBlock() {
+        return doorBlock;
+    }
+
+    public void setDoorBlock(Supplier<Block> doorBlock) {
+        this.doorBlock = doorBlock;
+    }
+
+    public Supplier<Block> getTrapdoorBlock() {
+        return trapdoorBlock;
+    }
+
+    public void setTrapdoorBlock(Supplier<Block> trapdoorBlock) {
+        this.trapdoorBlock = trapdoorBlock;
+    }
+
+    public Supplier<Block> getBookshelfBlock() {
+        return bookshelfBlock;
+    }
+
+    public void setBookshelfBlock(Supplier<Block> bookshelfBlock) {
+        this.bookshelfBlock = bookshelfBlock;
+    }
+
+    public Supplier<Block> getSignBlock() {
+        return signBlock;
+    }
+
+    public void setSignBlock(Supplier<Block> signBlock) {
+        this.signBlock = signBlock;
+    }
+
+    public Supplier<Block> getWallSignBlock() {
+        return wallSignBlock;
+    }
+
+    public void setWallSignBlock(Supplier<Block> wallSignBlock) {
+        this.wallSignBlock = wallSignBlock;
+    }
+
+    public Supplier<Block> getHangingSignBlock() {
+        return hangingSignBlock;
+    }
+
+    public void setHangingSignBlock(Supplier<Block> hangingSignBlock) {
+        this.hangingSignBlock = hangingSignBlock;
+    }
+
+    public Supplier<Block> getWallHangingSignBlock() {
+        return wallHangingSignBlock;
+    }
+
+    public void setWallHangingSignBlock(Supplier<Block> wallHangingSignBlock) {
+        this.wallHangingSignBlock = wallHangingSignBlock;
+    }
+
     public Supplier<Block> getHiveBlock() {
         return hiveBlock;
     }
@@ -175,12 +238,10 @@ public class WoodObject implements TreeWoodProvider
     public record TreeColors(String leafColor, String logColor, String plankColor)
     {
         static final TreeColors DEFAULT = new TreeColors("#000000", "#000000", "#000000");
-        public static Codec<TreeColors> codec() {
-            return RecordCodecBuilder.create(instance -> instance.group(
-                    Codec.STRING.fieldOf("leafColor").orElse("#1d7b00").forGetter(TreeColors::leafColor),
-                    Codec.STRING.fieldOf("logColor").orElse("#917142").forGetter(TreeColors::logColor),
-                    Codec.STRING.fieldOf("plankColor").orElse("#c29d62").forGetter(TreeColors::plankColor)
-            ).apply(instance, TreeColors::new));
-        }
+        public static Codec<TreeColors> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+                Codec.STRING.fieldOf("leafColor").orElse("#1d7b00").forGetter(TreeColors::leafColor),
+                Codec.STRING.fieldOf("logColor").orElse("#917142").forGetter(TreeColors::logColor),
+                Codec.STRING.fieldOf("plankColor").orElse("#c29d62").forGetter(TreeColors::plankColor)
+        ).apply(instance, TreeColors::new));
     }
 }

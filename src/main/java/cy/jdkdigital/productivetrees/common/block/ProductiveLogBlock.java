@@ -16,4 +16,8 @@ public class ProductiveLogBlock extends RotatedPillarBlock
     public BlockState getStrippedState(BlockState blockState) {
         return treeObject.getStrippedLogBlock().get().defaultBlockState().setValue(AXIS, blockState.getValue(AXIS));
     }
+
+    public WoodObject getTree() {
+        return treeObject;
+    }
 }

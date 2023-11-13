@@ -345,6 +345,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_purple_blackthorn",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_rainbow_gum",
       "required": false
     },

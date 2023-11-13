@@ -1,18 +1,13 @@
 package cy.jdkdigital.productivetrees.datagen;
 
-import cy.jdkdigital.productivebees.ProductiveBees;
-import cy.jdkdigital.productivebees.init.ModTags;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
-import cy.jdkdigital.productivetrees.registry.Tags;
+import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -30,7 +25,7 @@ public class BlockTagProvider extends BlockTagsProvider
     protected void addTags(HolderLookup.Provider provider) {
         var axe = tag(BlockTags.MINEABLE_WITH_AXE);
 
-        var dof = tag(Tags.DIRT_OR_FARMLAND);
+        var dof = tag(ModTags.DIRT_OR_FARMLAND);
 
         var flowers = tag(BlockTags.FLOWERS);
         var planks = tag(BlockTags.PLANKS);
@@ -44,14 +39,23 @@ public class BlockTagProvider extends BlockTagsProvider
         var fences = tag(BlockTags.WOODEN_FENCES);
         var fenceGates = tag(BlockTags.FENCE_GATES);
         var buttons = tag(BlockTags.WOODEN_BUTTONS);
-//        var trapdoors = tag(BlockTags.WOODEN_TRAPDOORS);
+        var doors = tag(BlockTags.WOODEN_DOORS);
+        var trapdoors = tag(BlockTags.WOODEN_TRAPDOORS);
+        var bookshelves = tag(Tags.Blocks.BOOKSHELVES);
+        var signs = tag(BlockTags.STANDING_SIGNS);
+        var hangingSigns = tag(BlockTags.CEILING_HANGING_SIGNS);
+        var wallHangingSigns = tag(BlockTags.WALL_HANGING_SIGNS);
+        var wallSigns = tag(BlockTags.WALL_SIGNS);
 
-        var hives = tag(ModTags.HIVES_BLOCK);
-        var boxes = tag(ModTags.BOXES_BLOCK);
+        var hives = tag(cy.jdkdigital.productivebees.init.ModTags.HIVES_BLOCK);
+        var boxes = tag(cy.jdkdigital.productivebees.init.ModTags.BOXES_BLOCK);
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             sapling.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getSaplingBlock().get())));
             leaves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getLeafBlock().get())));
+            if (treeObject.hasFruit()) {
+                leaves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getFruitBlock().get())));
+            }
 
             if (id.getPath().equals("ysabella_purpurea")) {
                 flowers.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getLeafBlock().get())));
@@ -82,6 +86,13 @@ public class BlockTagProvider extends BlockTagsProvider
                 fenceGates.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getFenceGateBlock().get())));
                 pressurePlates.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getPressurePlateBlock().get())));
                 buttons.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getButtonBlock().get())));
+                doors.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getDoorBlock().get())));
+                trapdoors.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getTrapdoorBlock().get())));
+                signs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getSignBlock().get())));
+                bookshelves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getBookshelfBlock().get())));
+                hangingSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getHangingSignBlock().get())));
+                wallSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getWallSignBlock().get())));
+                wallHangingSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getWallHangingSignBlock().get())));
 
                 hives.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getHiveBlock().get())));
                 boxes.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getExpansionBoxBlock().get())));
@@ -113,6 +124,13 @@ public class BlockTagProvider extends BlockTagsProvider
             fenceGates.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getFenceGateBlock().get())));
             pressurePlates.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getPressurePlateBlock().get())));
             buttons.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getButtonBlock().get())));
+            doors.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getDoorBlock().get())));
+            trapdoors.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getTrapdoorBlock().get())));
+            signs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getSignBlock().get())));
+            bookshelves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getBookshelfBlock().get())));
+            hangingSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getHangingSignBlock().get())));
+            wallSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getWallSignBlock().get())));
+            wallHangingSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getWallHangingSignBlock().get())));
 
             if (woodObject.getHiveStyle() != null) {
                 hives.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getHiveBlock().get())));

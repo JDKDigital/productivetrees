@@ -1,11 +1,16 @@
 {
   "feature": "productivetrees:blackthorn",
-  "style": "birch",
+  "style": "blackthorn",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#327629",
+    "logColor": "#3f3a31",
+    "plankColor": "#d1ae6f"
   },
+  "mutation_info": {
+    "target": "productivetrees:purple_blackthorn",
+    "chance": 0.01
+  },
+  "tint": "hives",
   "fruit": {
     "style": "berry",
     "item": "productivetrees:sloe",

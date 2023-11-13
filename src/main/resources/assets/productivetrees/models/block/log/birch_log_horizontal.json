@@ -1,8 +1,0 @@
-{
-  "parent": "productivetrees:block/log/base_log_horizontal",
-  "textures": {
-    "end": "productivetrees:block/log_top/birch_inner",
-    "bark": "productivetrees:block/log_top/birch_bark",
-    "side": "productivetrees:block/log/birch"
-  }
-}

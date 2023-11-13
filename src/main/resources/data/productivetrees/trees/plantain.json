@@ -1,14 +1,15 @@
 {
   "feature": "productivetrees:plantain",
-  "style": "birch",
+  "style": "plantain",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#3f8a33",
+    "logColor": "#726867",
+    "plankColor": "#b6d997"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:plantain",
-    "count": 3,
+    "count": 2,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

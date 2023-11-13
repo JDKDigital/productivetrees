@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:prarie_crabapple",
-  "style": "birch",
+  "style": "prarie_crabapple",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#445938",
+    "logColor": "#94521d",
+    "plankColor": "#a86743"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:crabapple",
     "count": 3,

@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:key_lime",
-  "style": "birch",
+  "style": "key_lime",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#776c5e",
-    "plankColor": "#ceaa70"
+    "leafColor": "#417812",
+    "logColor": "#6e7460",
+    "plankColor": "#e1cb9c"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:key_lime",
     "count": 3,

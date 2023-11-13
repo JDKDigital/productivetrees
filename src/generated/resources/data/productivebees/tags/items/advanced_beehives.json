@@ -345,6 +345,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_purple_blackthorn_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_rainbow_gum_beehive",
       "required": false
     },

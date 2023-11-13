@@ -5,6 +5,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:akebia_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:alder_leaves",
       "required": false
     },
@@ -17,7 +21,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:almond_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:apricot_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:apricot_fruit",
       "required": false
     },
     {
@@ -33,6 +45,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:avocado_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:balsa_leaves",
       "required": false
     },
@@ -45,7 +61,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:banana_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:beech_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beech_fruit",
       "required": false
     },
     {
@@ -53,7 +77,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:blackberry_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:blackcurrant_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blackcurrant_fruit",
       "required": false
     },
     {
@@ -61,7 +93,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:blackthorn_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:black_cherry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_cherry_fruit",
       "required": false
     },
     {
@@ -70,6 +110,10 @@
     },
     {
       "id": "productivetrees:blueberry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blueberry_fruit",
       "required": false
     },
     {
@@ -89,11 +133,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:brazil_nut_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:breadfruit_leaves",
       "required": false
     },
     {
+      "id": "productivetrees:breadfruit_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:buddhas_hand_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:buddhas_hand_fruit",
       "required": false
     },
     {
@@ -105,7 +161,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:butternut_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:candlenut_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:candlenut_fruit",
       "required": false
     },
     {
@@ -113,7 +177,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:carob_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:cashew_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cashew_fruit",
       "required": false
     },
     {
@@ -125,7 +197,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:cempedak_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:cheese_plant_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cheese_plant_fruit",
       "required": false
     },
     {
@@ -133,7 +213,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:cherry_plum_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:chilli_pepper_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:chilli_pepper_fruit",
       "required": false
     },
     {
@@ -145,7 +233,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:citron_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:clove_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:clove_fruit",
       "required": false
     },
     {
@@ -157,7 +253,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:coconut_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:coffea_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coffea_fruit",
       "required": false
     },
     {
@@ -169,6 +273,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:copoazu_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:copper_beech_leaves",
       "required": false
     },
@@ -177,11 +285,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:cranberry_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:cultivated_pear_leaves",
       "required": false
     },
     {
+      "id": "productivetrees:cultivated_pear_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:date_palm_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:date_palm_fruit",
       "required": false
     },
     {
@@ -190,6 +310,10 @@
     },
     {
       "id": "productivetrees:elderberry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elderberry_fruit",
       "required": false
     },
     {
@@ -205,7 +329,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:finger_lime_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:flowering_crabapple_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flowering_crabapple_fruit",
       "required": false
     },
     {
@@ -213,11 +345,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:ginkgo_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:golden_raspberry_leaves",
       "required": false
     },
     {
+      "id": "productivetrees:golden_raspberry_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:gooseberry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:gooseberry_fruit",
       "required": false
     },
     {
@@ -229,6 +373,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:grapefruit_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:great_sallow_leaves",
       "required": false
     },
@@ -237,7 +385,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:hawthorn_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:hazel_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hazel_fruit",
       "required": false
     },
     {
@@ -261,6 +417,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:juniper_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:kapok_leaves",
       "required": false
     },
@@ -269,7 +429,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:key_lime_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:kumquat_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kumquat_fruit",
       "required": false
     },
     {
@@ -281,7 +449,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:lemon_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:lime_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lime_fruit",
       "required": false
     },
     {
@@ -301,11 +477,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:mandarin_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:mango_leaves",
       "required": false
     },
     {
+      "id": "productivetrees:mango_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:miracle_berry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:miracle_berry_fruit",
       "required": false
     },
     {
@@ -321,7 +509,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:nectarine_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:nutmeg_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nutmeg_fruit",
       "required": false
     },
     {
@@ -333,7 +529,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:olive_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:orange_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orange_fruit",
       "required": false
     },
     {
@@ -341,7 +545,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:orchard_apple_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:osange_orange_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:osange_orange_fruit",
       "required": false
     },
     {
@@ -353,11 +565,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:papaya_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:peach_leaves",
       "required": false
     },
     {
+      "id": "productivetrees:peach_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:pecan_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pecan_fruit",
       "required": false
     },
     {
@@ -369,7 +593,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:pistachio_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:plantain_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plantain_fruit",
       "required": false
     },
     {
@@ -377,7 +609,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:plum_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:pomelo_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomelo_fruit",
       "required": false
     },
     {
@@ -385,7 +625,19 @@
       "required": false
     },
     {
+      "id": "productivetrees:prarie_crabapple_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:purpleheart_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_blackthorn_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_blackthorn_fruit",
       "required": false
     },
     {
@@ -397,11 +649,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:raspberry_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:redcurrant_leaves",
       "required": false
     },
     {
+      "id": "productivetrees:redcurrant_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:red_banana_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_banana_fruit",
       "required": false
     },
     {
@@ -425,7 +689,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:sand_pear_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:satsuma_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:satsuma_fruit",
       "required": false
     },
     {
@@ -445,11 +717,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:sour_cherry_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:star_anise_leaves",
       "required": false
     },
     {
+      "id": "productivetrees:star_anise_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:star_fruit_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:star_fruit_fruit",
       "required": false
     },
     {
@@ -473,11 +757,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:sweet_crabapple_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:sycamore_fig_leaves",
       "required": false
     },
     {
+      "id": "productivetrees:sycamore_fig_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:tangerine_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tangerine_fruit",
       "required": false
     },
     {
@@ -486,6 +782,10 @@
     },
     {
       "id": "productivetrees:walnut_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:walnut_fruit",
       "required": false
     },
     {
@@ -510,6 +810,10 @@
     },
     {
       "id": "productivetrees:wild_cherry_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wild_cherry_fruit",
       "required": false
     },
     {

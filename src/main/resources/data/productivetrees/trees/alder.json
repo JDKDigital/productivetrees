@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:alder",
-  "style": "birch",
+  "style": "alder",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#e2d9d3",
-    "plankColor": "#b88553"
-  }
+    "leafColor": "#49764b",
+    "logColor": "#605b4f",
+    "plankColor": "#7f3615"
+  },
+  "tint": "leaves_hives"
 }

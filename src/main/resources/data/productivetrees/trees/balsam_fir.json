@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:balsam_fir",
-  "style": "birch",
+  "style": "balsam_fir",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#929093",
-    "plankColor": "#A0A0A0"
-  }
+    "leafColor": "#346643",
+    "logColor": "#6a6c67",
+    "plankColor": "#e4c898"
+  },
+  "tint": "leaves_hives"
 }

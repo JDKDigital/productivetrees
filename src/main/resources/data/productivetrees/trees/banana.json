@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:banana",
-  "style": "mangrove",
+  "style": "banana",
   "colors": {
     "leafColor": "#5a9c32",
-    "logColor": "#818f4c",
-    "plankColor": "#bb9272"
+    "logColor": "#5f4812",
+    "plankColor": "#cbbf75"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:banana",
     "count": 3,

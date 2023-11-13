@@ -345,6 +345,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_blackthorn_stairs",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_stairs",
       "required": false
     },

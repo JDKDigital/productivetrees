@@ -2,20 +2,15 @@ package cy.jdkdigital.productivetrees.inventory;
 
 import cy.jdkdigital.productivebees.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivebees.container.ManualSlotItemHandler;
-import cy.jdkdigital.productivebees.init.ModContainerTypes;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.Stripper;
 import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
@@ -38,9 +33,11 @@ public class StripperContainer extends cy.jdkdigital.productivebees.container.Ab
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(inv -> {
             // Input slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, StripperBlockEntity.SLOT_IN, 152, 17));
+            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, StripperBlockEntity.SLOT_IN, 44, 25));
+            // Axe slot
+            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, StripperBlockEntity.SLOT_AXE, 44, 44));
             // Output slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, StripperBlockEntity.SLOT_OUT, 152, 53));
+            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, StripperBlockEntity.SLOT_OUT, 116, 34));
         });
 
         layoutPlayerInventorySlots(playerInventory, 0, 8, 84);

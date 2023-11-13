@@ -1,0 +1,488 @@
+{
+  "values": [
+    {
+      "id": "productivetrees:alder_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:allspice_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:almond_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:apricot_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ash_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:aspen_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:avocado_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsa_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsam_fir_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:banana_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beech_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blackthorn_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_cherry_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_locust_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_mahoe_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:boxwood_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazilwood_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazil_nut_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:breadfruit_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:buddhas_hand_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bull_pine_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:butternut_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:candlenut_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:carob_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cashew_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cedar_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cempedak_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cheese_plant_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cherry_plum_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cinnamon_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:citron_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:clove_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cocobolo_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coconut_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coffea_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cogwood_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copoazu_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copper_beech_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cultivated_pear_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:date_palm_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:douglas_fir_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elm_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:european_larch_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:finger_lime_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flowering_crabapple_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ginkgo_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grandidiers_baobab_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grapefruit_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:great_sallow_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hawthorn_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hazel_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:holly_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hornbeam_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ipe_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:iroko_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kapok_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:key_lime_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kumquat_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lawson_cypress_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lemon_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lime_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:loblolly_pine_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:logwood_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mahogany_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mandarin_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mango_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:monkey_puzzle_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:myrtle_ebony_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nectarine_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nutmeg_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:old_fustic_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orange_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orchard_apple_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:osange_orange_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:padauk_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:papaya_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:peach_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pecan_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pink_ivory_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pistachio_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plantain_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plum_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomelo_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:prarie_crabapple_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purpleheart_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_blackthorn_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rainbow_gum_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_banana_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_maple_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rosewood_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rose_gum_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rowan_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sand_pear_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:satsuma_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sequoia_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_fir_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_lime_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sour_cherry_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:star_anise_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:star_fruit_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_maple_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:swamp_gum_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweetgum_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_chestnut_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_crabapple_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sycamore_fig_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tangerine_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:teak_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:walnut_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wenge_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:western_hemlock_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:whitebeam_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_poplar_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_willow_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wild_cherry_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yellow_meranti_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yew_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ysabella_purpurea_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:zebrano_trapdoor",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bush_trapdoor",
+      "required": false
+    }
+  ]
+}

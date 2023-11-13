@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:silver_lime",
-  "style": "birch",
+  "style": "silver_lime",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#c8c474"
-  }
+    "leafColor": "#b5de82",
+    "logColor": "#8b847a",
+    "plankColor": "#dfc0a4"
+  },
+  "tint": "hives"
 }

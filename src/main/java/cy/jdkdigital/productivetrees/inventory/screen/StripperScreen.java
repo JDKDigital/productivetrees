@@ -1,6 +1,6 @@
 package cy.jdkdigital.productivetrees.inventory.screen;
 
-import cy.jdkdigital.productivebees.ProductiveBees;
+import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.inventory.StripperContainer;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class StripperScreen extends AbstractContainerScreen<StripperContainer>
 {
-    private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(ProductiveBees.MODID, "textures/gui/container/stripper.png");
+    private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(ProductiveTrees.MODID, "textures/gui/container/stripper.png");
 
     public StripperScreen(StripperContainer container, Inventory inv, Component titleIn) {
         super(container, inv, titleIn);

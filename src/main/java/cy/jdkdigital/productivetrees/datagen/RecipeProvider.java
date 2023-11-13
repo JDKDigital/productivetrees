@@ -52,6 +52,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 shaped(consumer, BlockFamily.Variant.BUTTON, treeObject.getButtonBlock().get(), treeObject.getPlankBlock().get());
                 shaped(consumer, BlockFamily.Variant.FENCE, treeObject.getFenceBlock().get(), treeObject.getPlankBlock().get());
                 shaped(consumer, BlockFamily.Variant.FENCE_GATE, treeObject.getFenceGateBlock().get(), treeObject.getPlankBlock().get());
+                shaped(consumer, BlockFamily.Variant.DOOR, treeObject.getDoorBlock().get(), treeObject.getPlankBlock().get());
+                shaped(consumer, BlockFamily.Variant.TRAPDOOR, treeObject.getTrapdoorBlock().get(), treeObject.getPlankBlock().get());
+                shaped(consumer, BlockFamily.Variant.SIGN, treeObject.getSignBlock().get(), treeObject.getPlankBlock().get());
+                hangingSign(consumer, treeObject.getHangingSignBlock().get(), treeObject.getPlankBlock().get());
                 buildCorailWoodcutterRecipes(treeObject, consumer);
                 buildHiveRecipe(ProductiveTrees.MODID, treeObject, consumer);
                 buildBoxRecipe(ProductiveTrees.MODID, treeObject, consumer);
@@ -68,6 +72,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             shaped(consumer, BlockFamily.Variant.BUTTON, woodObject.getButtonBlock().get(), woodObject.getPlankBlock().get());
             shaped(consumer, BlockFamily.Variant.FENCE, woodObject.getFenceBlock().get(), woodObject.getPlankBlock().get());
             shaped(consumer, BlockFamily.Variant.FENCE_GATE, woodObject.getFenceGateBlock().get(), woodObject.getPlankBlock().get());
+            shaped(consumer, BlockFamily.Variant.DOOR, woodObject.getDoorBlock().get(), woodObject.getPlankBlock().get());
+            shaped(consumer, BlockFamily.Variant.TRAPDOOR, woodObject.getTrapdoorBlock().get(), woodObject.getPlankBlock().get());
+            shaped(consumer, BlockFamily.Variant.SIGN, woodObject.getSignBlock().get(), woodObject.getPlankBlock().get());
+            hangingSign(consumer, woodObject.getWallSignBlock().get(), woodObject.getPlankBlock().get());
             buildCorailWoodcutterRecipes(woodObject, consumer);
             if (woodObject.getHiveStyle() != null) {
                 buildHiveRecipe(ProductiveTrees.MODID, woodObject, consumer);
@@ -91,6 +99,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         builder.group(variant.getName());
         builder.unlockedBy(getHasName(plank), has(plank));
         builder.save(consumer);
+    }
+
+    protected static void hangingSign(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike plank) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', plank).define('X', Items.CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", has(plank)).save(consumer);
     }
 
     private void buildCorailWoodcutterRecipes(WoodObject treeObject, Consumer<FinishedRecipe> consumer) {

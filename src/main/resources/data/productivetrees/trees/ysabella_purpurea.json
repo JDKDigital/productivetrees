@@ -1,7 +1,10 @@
 {
   "feature": "productivetrees:ysabella_purpurea",
-  "style": "oak",
+  "style": "birch",
   "hiveStyle": "cherry",
+  "decorations": {
+
+  },
   "colors": {
     "leafColor": "#800080",
     "logColor": "#0e9af2",

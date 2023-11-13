@@ -120,17 +120,23 @@ public class TreeCreator
         // Register log block TODO map colors and properties
         if (name.equals("bush")) {
             woodObject.setLogBlock(registerBlock(name + "_log", () -> new ProductiveBranchedLogBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_LOG), woodObject)));
+            // Stripped log
+            woodObject.setStrippedLogBlock(registerBlock(name + "_stripped_log", () -> new ProductiveBranchedLogBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_LOG), woodObject)));
+            // Wood block
+            woodObject.setWoodBlock(registerBlock(name + "_wood", () -> new ProductiveBranchedWoodBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_WOOD), woodObject)));
+            // Stripped wood
+            woodObject.setStrippedWoodBlock(registerBlock(name + "_stripped_wood", () -> new ProductiveBranchedWoodBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_WOOD), woodObject)));
         } else {
             woodObject.setLogBlock(registerBlock(name + "_log", () -> new ProductiveLogBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_LOG), woodObject)));
+            // Stripped log
+            woodObject.setStrippedLogBlock(registerBlock(name + "_stripped_log", () -> new ProductiveLogBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_LOG), woodObject)));
+            // Wood block
+            woodObject.setWoodBlock(registerBlock(name + "_wood", () -> new ProductiveWoodBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_WOOD), woodObject)));
+            // Stripped wood
+            woodObject.setStrippedWoodBlock(registerBlock(name + "_stripped_wood", () -> new ProductiveWoodBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_WOOD), woodObject)));
         }
         // Register planks block
         woodObject.setPlankBlock(registerBlock(name + "_planks", () -> new Block(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.WARPED_PLANKS : Blocks.OAK_PLANKS))));
-        // Stripped log
-        woodObject.setStrippedLogBlock(registerBlock(name + "_stripped_log", () -> new ProductiveLogBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_LOG), woodObject)));
-        // Wood block
-        woodObject.setWoodBlock(registerBlock(name + "_wood", () -> new ProductiveWoodBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_WOOD), woodObject)));
-        // Stripped wood
-        woodObject.setStrippedWoodBlock(registerBlock(name + "_stripped_wood", () -> new ProductiveWoodBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_WOOD), woodObject)));
         // Stairs
         woodObject.setStairsBlock(registerBlock(name + "_stairs", () -> new StairBlock(() -> woodObject.getPlankBlock().get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS))));
         // Slab
@@ -143,6 +149,17 @@ public class TreeCreator
         woodObject.setPressurePlateBlock(registerBlock(name + "_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK)));
         // Button
         woodObject.setButtonBlock(registerBlock(name + "_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON), BlockSetType.OAK, 30, true)));
+        // Door
+        woodObject.setDoorBlock(registerBlock(name + "_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), BlockSetType.OAK)));
+        // Trapdoor
+        woodObject.setTrapdoorBlock(registerBlock(name + "_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK)));
+        // Bookshelf
+        woodObject.setBookshelfBlock(registerBlock(name + "_bookshelf", () -> new Block(BlockBehaviour.Properties.copy(Blocks.BOOKSHELF))));
+        // Signs
+        woodObject.setSignBlock(registerBlock(name + "_sign", () -> new StandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN), WoodType.OAK)));
+        woodObject.setWallSignBlock(registerBlock(name + "_wall_sign", () -> new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN), WoodType.OAK)));
+        woodObject.setHangingSignBlock(registerBlock(name + "_hanging_sign", () -> new CeilingHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN), WoodType.OAK)));
+        woodObject.setWallHangingSignBlock(registerBlock(name + "_wall_hanging_sign", () -> new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN), WoodType.OAK)));
 
         // Hives
         if (woodObject.getHiveStyle() != null) {

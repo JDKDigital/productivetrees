@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/fruit/medium/fruit_0",
-  "textures": {
-    "all": "productivetrees:block/leaves/jungle"
-  }
-}

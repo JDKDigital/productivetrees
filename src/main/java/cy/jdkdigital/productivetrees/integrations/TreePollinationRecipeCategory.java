@@ -28,7 +28,7 @@ public class TreePollinationRecipeCategory implements IRecipeCategory<TreePollin
     private final IDrawable icon;
 
     public TreePollinationRecipeCategory(IGuiHelper guiHelper) {
-        ResourceLocation location = new ResourceLocation(ProductiveTrees.MODID, "textures/gui/tree_pollination.png");
+        ResourceLocation location = new ResourceLocation(ProductiveTrees.MODID, "textures/gui/jei/tree_pollination.png");
         this.background = guiHelper.createDrawable(location, 0, 0, 130, 60);
         this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ProductiveTrees.POLLEN.get()));
     }

@@ -42,6 +42,15 @@
         "count": 1,
         "item": "productivetrees:apricot_sapling"
       }
+    },
+    {
+      "chance": 0.5,
+      "maxRolls": 1,
+      "minRolls": 1,
+      "output": {
+        "count": 1,
+        "item": "productivetrees:apricot"
+      }
     }
   ],
   "growthTicks": 2400,

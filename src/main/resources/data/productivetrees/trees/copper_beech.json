@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:copper_beech",
-  "style": "birch",
+  "style": "copper_beech",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
-  }
+    "leafColor": "#392838",
+    "logColor": "#60493a",
+    "plankColor": "#cc895f"
+  },
+  "tint": "hives"
 }
