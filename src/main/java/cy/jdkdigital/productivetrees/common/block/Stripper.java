@@ -1,8 +1,8 @@
 package cy.jdkdigital.productivetrees.common.block;
 
 import cy.jdkdigital.productivebees.common.block.CapabilityContainerBlock;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -40,7 +40,7 @@ public class Stripper extends CapabilityContainerBlock
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? null : createTickerHelper(blockEntityType, ProductiveTrees.STRIPPER_BLOCK_ENTITY.get(), StripperBlockEntity ::tick);
+        return level.isClientSide ? null : createTickerHelper(blockEntityType, TreeRegistrator.STRIPPER_BLOCK_ENTITY.get(), StripperBlockEntity ::tick);
     }
 
     @SuppressWarnings("deprecation")

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:banana_log"
+    },
+    {
+      "item": "productivetrees:banana_stripped_log"
+    },
+    {
+      "item": "productivetrees:banana_wood"
+    },
+    {
+      "item": "productivetrees:banana_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:banana_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

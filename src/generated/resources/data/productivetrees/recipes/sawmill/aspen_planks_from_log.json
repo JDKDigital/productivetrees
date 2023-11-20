@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:aspen_log"
+    },
+    {
+      "item": "productivetrees:aspen_stripped_log"
+    },
+    {
+      "item": "productivetrees:aspen_wood"
+    },
+    {
+      "item": "productivetrees:aspen_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:aspen_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

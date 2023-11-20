@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:kapok_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:dark_oak_leaves"
+  },
+  "result": {
+    "item": "productivetrees:ceylon_ebony_sapling"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:sweetgum_log"
+    },
+    {
+      "item": "productivetrees:sweetgum_stripped_log"
+    },
+    {
+      "item": "productivetrees:sweetgum_wood"
+    },
+    {
+      "item": "productivetrees:sweetgum_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:sweetgum_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

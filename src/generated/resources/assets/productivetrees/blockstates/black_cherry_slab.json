@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/black_cherry_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/black_cherry"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/black_cherry_slab_top"
+    }
+  }
+}

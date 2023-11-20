@@ -1,18 +1,13 @@
 package cy.jdkdigital.productivetrees.util;
 
 import cy.jdkdigital.productivetrees.common.block.ProductiveLeavesBlock;
-import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.HashMap;
 import java.util.Map;

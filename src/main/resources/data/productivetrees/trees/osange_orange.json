@@ -1,14 +1,15 @@
 {
   "feature": "productivetrees:osange_orange",
-  "style": "birch",
+  "style": "osange_orange",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#3b470a",
+    "logColor": "#6d5650",
+    "plankColor": "#afa16c"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:osange_orange",
-    "count": 3,
+    "count": 2,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

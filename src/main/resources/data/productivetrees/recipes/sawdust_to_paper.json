@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "forge:sawdust"
+    },
+    "W": {
+      "tag": "forge:water_bottles"
+    }
+  },
+  "pattern": [
+    "###",
+    "#W#",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "item": "minecraft:paper"
+  }
+}

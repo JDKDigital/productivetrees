@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:coconut",
-  "style": "birch",
+  "style": "coconut",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#293716",
+    "logColor": "#896e5d",
+    "plankColor": "#ead9ad"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:coconut",
     "count": 1,

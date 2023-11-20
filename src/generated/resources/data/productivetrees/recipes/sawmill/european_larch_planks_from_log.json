@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:european_larch_log"
+    },
+    {
+      "item": "productivetrees:european_larch_stripped_log"
+    },
+    {
+      "item": "productivetrees:european_larch_wood"
+    },
+    {
+      "item": "productivetrees:european_larch_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:european_larch_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

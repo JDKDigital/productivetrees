@@ -1,9 +1,8 @@
 package cy.jdkdigital.productivetrees.integrations;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
-import cy.jdkdigital.productivetrees.common.block.ProductiveLeavesBlock;
-import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -15,7 +14,6 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nonnull;
@@ -30,7 +28,7 @@ public class TreePollinationRecipeCategory implements IRecipeCategory<TreePollin
     public TreePollinationRecipeCategory(IGuiHelper guiHelper) {
         ResourceLocation location = new ResourceLocation(ProductiveTrees.MODID, "textures/gui/jei/tree_pollination.png");
         this.background = guiHelper.createDrawable(location, 0, 0, 130, 60);
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ProductiveTrees.POLLEN.get()));
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TreeRegistrator.POLLEN.get()));
     }
 
     @Override

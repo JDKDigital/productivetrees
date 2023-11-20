@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/fruit/medium_untinted/fruit_4",
+  "textures": {
+    "all": "productivetrees:block/leaves/lemon"
+  }
+}

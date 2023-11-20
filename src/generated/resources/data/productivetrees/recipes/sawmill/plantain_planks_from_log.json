@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:plantain_log"
+    },
+    {
+      "item": "productivetrees:plantain_stripped_log"
+    },
+    {
+      "item": "productivetrees:plantain_wood"
+    },
+    {
+      "item": "productivetrees:plantain_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:plantain_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

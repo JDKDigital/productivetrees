@@ -1,7 +1,7 @@
 package cy.jdkdigital.productivetrees.recipe;
 
 import com.google.gson.JsonObject;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -55,12 +55,12 @@ public class LogStrippingRecipe implements Recipe<Container>
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ProductiveTrees.LOG_STRIPPING.get();
+        return TreeRegistrator.LOG_STRIPPING.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return ProductiveTrees.LOG_STRIPPING_TYPE.get();
+        return TreeRegistrator.LOG_STRIPPING_TYPE.get();
     }
 
     public static class Serializer<T extends LogStrippingRecipe> implements RecipeSerializer<T>

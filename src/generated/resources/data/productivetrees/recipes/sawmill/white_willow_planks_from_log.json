@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:white_willow_log"
+    },
+    {
+      "item": "productivetrees:white_willow_stripped_log"
+    },
+    {
+      "item": "productivetrees:white_willow_wood"
+    },
+    {
+      "item": "productivetrees:white_willow_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:white_willow_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

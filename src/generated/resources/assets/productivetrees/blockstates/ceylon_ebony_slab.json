@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/ceylon_ebony_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/ceylon_ebony"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/ceylon_ebony_slab_top"
+    }
+  }
+}

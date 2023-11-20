@@ -1,0 +1,4 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "render_type": "cutout"
+}

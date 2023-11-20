@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:myrtle_ebony",
-  "style": "birch",
+  "style": "myrtle_ebony",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#ae8952",
-    "plankColor": "#3c3730"
-  }
+    "leafColor": "#a7c6a6",
+    "logColor": "#9d8b90",
+    "plankColor": "#151512"
+  },
+  "tint": "hives"
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "productivetrees:block/planks/moonlight_magic_crepe_myrtle"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:balsa_log"
+    },
+    {
+      "item": "productivetrees:balsa_stripped_log"
+    },
+    {
+      "item": "productivetrees:balsa_wood"
+    },
+    {
+      "item": "productivetrees:balsa_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:balsa_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

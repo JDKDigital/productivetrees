@@ -81,8 +81,11 @@ public class BlockstateProvider implements DataProvider
                 addBlockItemModel(treeObject.getPressurePlateBlock().get(), "pressure_plate/" + treeObject.getStyle().plankStyle() + "_pressure_plate", itemModels);
                 addBlockItemModel(treeObject.getFenceBlock().get(), "fence/" + treeObject.getStyle().plankStyle() + "_fence_inventory", itemModels);
                 addBlockItemModel(treeObject.getFenceGateBlock().get(), "fence_gate/" + treeObject.getStyle().plankStyle() + "_fence_gate", itemModels);
-                addBlockItemParentModel(treeObject.getHiveBlock().get(), itemModels);
-                addBlockItemParentModel(treeObject.getExpansionBoxBlock().get(), itemModels);
+                generateFlatItem(treeObject.getDoorBlock().get().asItem(), "item/door/", modelOutput);
+                addBlockItemModel(treeObject.getTrapdoorBlock().get(), "trapdoor/" + treeObject.getStyle().doorStyle(), itemModels);
+                addBlockItemModel(treeObject.getBookshelfBlock().get(), "bookshelf/" + treeObject.getStyle().plankStyle(), itemModels);
+                generateFlatItem(treeObject.getSignBlock().get().asItem(), "item/sign/", modelOutput);
+                generateFlatItem(treeObject.getHangingSignBlock().get().asItem(), "item/hanging_sign/", modelOutput);
             }
         });
 
@@ -98,10 +101,11 @@ public class BlockstateProvider implements DataProvider
             addBlockItemModel(woodObject.getPressurePlateBlock().get(), "pressure_plate/" + woodObject.getStyle().plankStyle() + "_pressure_plate", itemModels);
             addBlockItemModel(woodObject.getFenceBlock().get(), "fence/" + woodObject.getStyle().plankStyle() + "_fence_inventory", itemModels);
             addBlockItemModel(woodObject.getFenceGateBlock().get(), "fence_gate/" + woodObject.getStyle().plankStyle() + "_fence_gate", itemModels);
-            if (woodObject.getHiveStyle() != null) {
-                addBlockItemParentModel(woodObject.getHiveBlock().get(), itemModels);
-                addBlockItemParentModel(woodObject.getExpansionBoxBlock().get(), itemModels);
-            }
+            generateFlatItem(woodObject.getDoorBlock().get().asItem(), "item/door/", modelOutput);
+            addBlockItemModel(woodObject.getTrapdoorBlock().get(), "trapdoor/" + woodObject.getStyle().doorStyle(), itemModels);
+            addBlockItemModel(woodObject.getBookshelfBlock().get(), "bookshelf/" + woodObject.getStyle().plankStyle(), itemModels);
+            generateFlatItem(woodObject.getSignBlock().get().asItem(), "item/sign/", modelOutput);
+            generateFlatItem(woodObject.getHangingSignBlock().get().asItem(), "item/hanging_sign/", modelOutput);
         });
 
         generateFruitItem(TreeRegistrator.BLACKBERRY.get(), modelOutput);
@@ -149,6 +153,8 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.PLANTAIN.get(), modelOutput);
         generateFruitItem(TreeRegistrator.RED_BANANA.get(), modelOutput);
         generateFruitItem(TreeRegistrator.PAPAYA.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.PERSIMMON.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.POMEGRANATE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.BREADFRUIT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.MONSTERA_DELICIOSA.get(), modelOutput);
         generateFruitItem(TreeRegistrator.LIME.get(), modelOutput);
@@ -192,12 +198,17 @@ public class BlockstateProvider implements DataProvider
         return CompletableFuture.allOf(output.toArray(CompletableFuture[]::new));
     }
 
-    private void generateFruitItem(Item item, BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput) {
-        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(item), getFruitItemTextureMap(item), modelOutput);
+    private void generateFlatItem(Item item, String prefix, BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput) {
+        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(item), getFlatItemTextureMap(item, prefix), modelOutput);
     }
-    private static TextureMapping getFruitItemTextureMap(Item item) {
+
+    private void generateFruitItem(Item item, BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput) {
+        generateFlatItem(item, "item/fruit/", modelOutput);
+    }
+
+    private static TextureMapping getFlatItemTextureMap(Item item, String prefix) {
         ResourceLocation resourcelocation = ForgeRegistries.ITEMS.getKey(item);
-        return (new TextureMapping()).put(TextureSlot.LAYER0, resourcelocation.withPrefix("item/fruit/"));
+        return (new TextureMapping()).put(TextureSlot.LAYER0, resourcelocation.withPrefix(prefix));
     }
 
     private void addItemModel(Item item, Supplier<JsonElement> supplier, Map<ResourceLocation, Supplier<JsonElement>> itemModels) {
@@ -219,7 +230,8 @@ public class BlockstateProvider implements DataProvider
     private void addBlockItemParentModel(Block block, Map<ResourceLocation, Supplier<JsonElement>> itemModels) {
         Item item = Item.BY_BLOCK.get(block);
         if (item != null) {
-            addItemModel(item, new DelegatedModel(ForgeRegistries.BLOCKS.getKey(block)), itemModels);
+            var rl = ForgeRegistries.BLOCKS.getKey(block);
+            addItemModel(item, new DelegatedModel(new ResourceLocation(rl.getNamespace(), "block/" + rl.getPath())), itemModels);
         }
     }
 
@@ -260,11 +272,12 @@ public class BlockstateProvider implements DataProvider
                     this.createFenceGateBlock(treeObject);
                     this.createFenceBlock(treeObject);
                     this.createDoorBlock(treeObject);
-                    this.blockStateOutput.accept(createSimpleBlock(treeObject.getBookshelfBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/base_bookshelf")));
-                    this.blockStateOutput.accept(createSimpleBlock(treeObject.getSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/base_sign")));
-                    this.blockStateOutput.accept(createSimpleBlock(treeObject.getWallSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/base_sign")));
-                    this.blockStateOutput.accept(createSimpleBlock(treeObject.getHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/base_hanging_sign")));
-                    this.blockStateOutput.accept(createSimpleBlock(treeObject.getWallHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/base_hanging_sign")));
+                    this.createTrapdoorBlock(treeObject);
+                    this.blockStateOutput.accept(createSimpleBlock(treeObject.getBookshelfBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/bookshelf/" + treeObject.getStyle().plankStyle())));
+                    this.blockStateOutput.accept(createSimpleBlock(treeObject.getSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + treeObject.getStyle().plankStyle())));
+                    this.blockStateOutput.accept(createSimpleBlock(treeObject.getWallSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + treeObject.getStyle().plankStyle())));
+                    this.blockStateOutput.accept(createSimpleBlock(treeObject.getHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + treeObject.getStyle().plankStyle())));
+                    this.blockStateOutput.accept(createSimpleBlock(treeObject.getWallHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + treeObject.getStyle().plankStyle())));
 
                     if (treeObject.getHiveStyle() != null) {
                         cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(treeObject.getHiveBlock().get(), treeObject.getExpansionBoxBlock().get(), id.getPath(), new HiveType(false, treeObject.getPlankColor(), treeObject.getHiveStyle(), Ingredient.of(treeObject.getPlankBlock().get())), hivBlockStates, this.modelOutput);
@@ -288,11 +301,12 @@ public class BlockstateProvider implements DataProvider
                 this.createFenceGateBlock(woodObject);
                 this.createFenceBlock(woodObject);
                 this.createDoorBlock(woodObject);
-                this.blockStateOutput.accept(createSimpleBlock(woodObject.getBookshelfBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/base_bookshelf")));
-                this.blockStateOutput.accept(createSimpleBlock(woodObject.getSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/base_sign")));
-                this.blockStateOutput.accept(createSimpleBlock(woodObject.getWallSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/base_sign")));
-                this.blockStateOutput.accept(createSimpleBlock(woodObject.getHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/base_hanging_sign")));
-                this.blockStateOutput.accept(createSimpleBlock(woodObject.getWallHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/base_hanging_sign")));
+                this.createTrapdoorBlock(woodObject);
+                this.blockStateOutput.accept(createSimpleBlock(woodObject.getBookshelfBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/bookshelf/" + woodObject.getStyle().plankStyle())));
+                this.blockStateOutput.accept(createSimpleBlock(woodObject.getSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + woodObject.getStyle().plankStyle())));
+                this.blockStateOutput.accept(createSimpleBlock(woodObject.getWallSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + woodObject.getStyle().plankStyle())));
+                this.blockStateOutput.accept(createSimpleBlock(woodObject.getHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + woodObject.getStyle().plankStyle())));
+                this.blockStateOutput.accept(createSimpleBlock(woodObject.getWallHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + woodObject.getStyle().plankStyle())));
 
                 if (woodObject.getHiveStyle() != null) {
                     cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(woodObject.getHiveBlock().get(), woodObject.getExpansionBoxBlock().get(), id.getPath(), new HiveType(false, woodObject.getPlankColor(), woodObject.getHiveStyle(), Ingredient.of(woodObject.getPlankBlock().get())), hivBlockStates, this.modelOutput);
@@ -463,10 +477,10 @@ public class BlockstateProvider implements DataProvider
                     })));
         }
 
-        private void createFenceBlock(WoodObject treeObject) {
-            Block block = treeObject.getFenceBlock().get();
-            ResourceLocation fencePost = new ResourceLocation(ProductiveTrees.MODID, "block/fence/" + treeObject.getStyle().plankStyle() + "_fence_post");
-            ResourceLocation fenceSide = new ResourceLocation(ProductiveTrees.MODID, "block/fence/" + treeObject.getStyle().plankStyle() + "_fence_side");
+        private void createFenceBlock(WoodObject woodObject) {
+            Block block = woodObject.getFenceBlock().get();
+            ResourceLocation fencePost = new ResourceLocation(ProductiveTrees.MODID, "block/fence/" + woodObject.getStyle().plankStyle() + "_fence_post");
+            ResourceLocation fenceSide = new ResourceLocation(ProductiveTrees.MODID, "block/fence/" + woodObject.getStyle().plankStyle() + "_fence_side");
             this.blockStateOutput.accept(
                     MultiPartGenerator.multiPart(block)
                             .with(Variant.variant().with(VariantProperties.MODEL, fencePost))
@@ -477,51 +491,123 @@ public class BlockstateProvider implements DataProvider
             );
         }
 
-        private void createDoorBlock(WoodObject treeObject) {
-            Block block = treeObject.getFenceBlock().get();
-            ResourceLocation bottomLeft = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_bottom_left");
-            ResourceLocation bottomLeftOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_bottom_left_open");
-            ResourceLocation bottomRight = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_bottom_right");
-            ResourceLocation bottomRightOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_bottom_right_open");
-            ResourceLocation topLeft = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_top_left");
-            ResourceLocation topLeftOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_top_left_open");
-            ResourceLocation topRight = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_top_right");
-            ResourceLocation topRightOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_top_right_open");
+        private void createDoorBlock(WoodObject woodObject) {
+            Block block = woodObject.getDoorBlock().get();
+            ResourceLocation bottomLeft = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_bottom_left");
+            ResourceLocation bottomLeftOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_bottom_left_open");
+            ResourceLocation bottomRight = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_bottom_right");
+            ResourceLocation bottomRightOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_bottom_right_open");
+            ResourceLocation topLeft = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_top_left");
+            ResourceLocation topLeftOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_top_left_open");
+            ResourceLocation topRight = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_top_right");
+            ResourceLocation topRightOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_top_right_open");
 
-            this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(PropertyDispatch.properties(DoorBlock.FACING, DoorBlock.HALF, DoorBlock.HINGE, DoorBlock.OPEN)
-                    .generate((facing, half, hinge, open) -> {
-                        var model = half.equals(DoubleBlockHalf.UPPER) ? (
-                                    hinge.equals(DoorHingeSide.LEFT) ? (
-                                            open ? topLeftOpen : topLeft
-                                            ) : (
-                                            open ? topRightOpen : topRight
-                                            )
-                                ) : (
-                                    hinge.equals(DoorHingeSide.LEFT) ? (
-                                            open ? bottomLeftOpen : bottomLeft
-                                    ) : (
-                                            open ? bottomRightOpen : bottomRight
-                                    )
-                                );
-                        var variant = Variant.variant().with(VariantProperties.MODEL, model);
-
-                        int yRotValue = (int) facing.toYRot();
-                        var yRot = switch (yRotValue) {
-                            case 90 -> VariantProperties.Rotation.R90;
-                            case 180 -> VariantProperties.Rotation.R180;
-                            case 270 -> VariantProperties.Rotation.R270;
-                            default -> VariantProperties.Rotation.R0;
-                        };
-
-                        if (!yRot.equals(VariantProperties.Rotation.R0)) {
-                            variant.with(VariantProperties.Y_ROT, yRot);
-                        }
-                        variant.with(VariantProperties.UV_LOCK, true);
-
-                        return variant;
-                    })));
+            this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(configureDoorHalf(configureDoorHalf(PropertyDispatch.properties(DoorBlock.FACING, DoorBlock.HALF, DoorBlock.HINGE, DoorBlock.OPEN), DoubleBlockHalf.LOWER, bottomLeft, bottomLeftOpen, bottomRight, bottomRightOpen), DoubleBlockHalf.UPPER, topLeft, topLeftOpen, topRight, topRightOpen)));
         }
 
+        private static PropertyDispatch.C4<Direction, DoubleBlockHalf, DoorHingeSide, Boolean> configureDoorHalf(PropertyDispatch.C4<Direction, DoubleBlockHalf, DoorHingeSide, Boolean> p_236305_, DoubleBlockHalf half, ResourceLocation left, ResourceLocation leftOpen, ResourceLocation right, ResourceLocation rightOpen) {
+            return p_236305_
+                    .select(Direction.EAST, half, DoorHingeSide.LEFT, false, Variant.variant()
+                            .with(VariantProperties.MODEL, left))
+                    .select(Direction.EAST, half, DoorHingeSide.RIGHT, false, Variant.variant()
+                            .with(VariantProperties.MODEL, right))
+                    .select(Direction.EAST, half, DoorHingeSide.LEFT, true, Variant.variant()
+                            .with(VariantProperties.MODEL, leftOpen)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                    .select(Direction.EAST, half, DoorHingeSide.RIGHT, true, Variant.variant()
+                            .with(VariantProperties.MODEL, rightOpen)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+
+                    .select(Direction.SOUTH, half, DoorHingeSide.LEFT, false, Variant.variant()
+                            .with(VariantProperties.MODEL, left)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                    .select(Direction.SOUTH, half, DoorHingeSide.RIGHT, false, Variant.variant()
+                            .with(VariantProperties.MODEL, right)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                    .select(Direction.SOUTH, half, DoorHingeSide.LEFT, true, Variant.variant()
+                            .with(VariantProperties.MODEL, leftOpen)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                    .select(Direction.SOUTH, half, DoorHingeSide.RIGHT, true, Variant.variant()
+                            .with(VariantProperties.MODEL, rightOpen))
+
+                    .select(Direction.WEST, half, DoorHingeSide.LEFT, false, Variant.variant()
+                            .with(VariantProperties.MODEL, left)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                    .select(Direction.WEST, half, DoorHingeSide.RIGHT, false, Variant.variant()
+                            .with(VariantProperties.MODEL, right)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                    .select(Direction.WEST, half, DoorHingeSide.LEFT, true, Variant.variant()
+                            .with(VariantProperties.MODEL, leftOpen)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                    .select(Direction.WEST, half, DoorHingeSide.RIGHT, true, Variant.variant()
+                            .with(VariantProperties.MODEL, rightOpen)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+
+                    .select(Direction.NORTH, half, DoorHingeSide.LEFT, false, Variant.variant()
+                            .with(VariantProperties.MODEL, left)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                    .select(Direction.NORTH, half, DoorHingeSide.RIGHT, false, Variant.variant()
+                            .with(VariantProperties.MODEL, right)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                    .select(Direction.NORTH, half, DoorHingeSide.LEFT, true, Variant.variant()
+                            .with(VariantProperties.MODEL, leftOpen))
+                    .select(Direction.NORTH, half, DoorHingeSide.RIGHT, true, Variant.variant()
+                            .with(VariantProperties.MODEL, rightOpen)
+                            .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180));
+        }
+
+        private void createTrapdoorBlock(WoodObject treeObject) {
+            Block block = treeObject.getTrapdoorBlock().get();
+            ResourceLocation top = new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + treeObject.getStyle().doorStyle() + "_top");
+            ResourceLocation bottom = new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + treeObject.getStyle().doorStyle() + "_bottom");
+            ResourceLocation open = new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + treeObject.getStyle().doorStyle() + "_open");
+
+            this.blockStateOutput.accept(createTrapdoor(block, top, bottom, open));
+        }
+
+        private static BlockStateGenerator createTrapdoor(Block block, ResourceLocation top, ResourceLocation bottom, ResourceLocation open) {
+            return MultiVariantGenerator.multiVariant(block)
+                    .with(PropertyDispatch.properties(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.HALF, BlockStateProperties.OPEN)
+                            .select(Direction.NORTH, Half.BOTTOM, false, Variant.variant()
+                                    .with(VariantProperties.MODEL, bottom))
+                            .select(Direction.SOUTH, Half.BOTTOM, false, Variant.variant()
+                                    .with(VariantProperties.MODEL, bottom))
+                            .select(Direction.EAST, Half.BOTTOM, false, Variant.variant()
+                                    .with(VariantProperties.MODEL, bottom))
+                            .select(Direction.WEST, Half.BOTTOM, false, Variant.variant()
+                                    .with(VariantProperties.MODEL, bottom))
+                            .select(Direction.NORTH, Half.TOP, false, Variant.variant()
+                                    .with(VariantProperties.MODEL, top))
+                            .select(Direction.SOUTH, Half.TOP, false, Variant.variant()
+                                    .with(VariantProperties.MODEL, top))
+                            .select(Direction.EAST, Half.TOP, false, Variant.variant()
+                                    .with(VariantProperties.MODEL, top))
+                            .select(Direction.WEST, Half.TOP, false, Variant.variant()
+                                    .with(VariantProperties.MODEL, top))
+                            .select(Direction.NORTH, Half.BOTTOM, true, Variant.variant()
+                                    .with(VariantProperties.MODEL, open))
+                            .select(Direction.SOUTH, Half.BOTTOM, true, Variant.variant()
+                                    .with(VariantProperties.MODEL, open)
+                                    .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                            .select(Direction.EAST, Half.BOTTOM, true, Variant.variant()
+                                    .with(VariantProperties.MODEL, open)
+                                    .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                            .select(Direction.WEST, Half.BOTTOM, true, Variant.variant()
+                                    .with(VariantProperties.MODEL, open)
+                                    .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                            .select(Direction.NORTH, Half.TOP, true, Variant.variant()
+                                    .with(VariantProperties.MODEL, open))
+                            .select(Direction.SOUTH, Half.TOP, true, Variant.variant()
+                                    .with(VariantProperties.MODEL, open)
+                                    .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                            .select(Direction.EAST, Half.TOP, true, Variant.variant()
+                                    .with(VariantProperties.MODEL, open)
+                                    .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                            .select(Direction.WEST, Half.TOP, true, Variant.variant()
+                                    .with(VariantProperties.MODEL, open)
+                                    .with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                    );
+        }
 
         private void createBaseModels() {
             var planksModel = new ModelTemplate(Optional.of(new ResourceLocation("block/cube_all")), Optional.empty(), TextureSlot.ALL);
@@ -551,23 +637,28 @@ public class BlockstateProvider implements DataProvider
 
             var leavesModel = new ModelTemplate(Optional.of(new ResourceLocation("block/leaves")), Optional.empty(), TextureSlot.ALL);
 
-            var logModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/log/base_log")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE, TextureSlot.EDGE);
-            var logHorizontalModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/log/base_log_horizontal")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE, TextureSlot.EDGE);
+            var logModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/log/base_log")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
+            var logHorizontalModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/log/base_log_horizontal")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
             var cubeColumnModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/cube_column")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
             var cubeColumnHorizontalModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/cube_column_horizontal")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
 
-            var doorBottomLeftModel = new ModelTemplate(Optional.of(new ResourceLocation("block/door_bottom_left")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorBottomLeftOpenModel = new ModelTemplate(Optional.of(new ResourceLocation("block/door_bottom_left_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorBottomRightModel = new ModelTemplate(Optional.of(new ResourceLocation("block/door_bottom_right")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorBottomRightOpenModel = new ModelTemplate(Optional.of(new ResourceLocation("block/door_bottom_right_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorTopLeftModel = new ModelTemplate(Optional.of(new ResourceLocation("block/door_top_left")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorTopLeftOpenModel = new ModelTemplate(Optional.of(new ResourceLocation("block/door_top_left_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorTopRightModel = new ModelTemplate(Optional.of(new ResourceLocation("block/door_top_right")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorTopRightOpenModel = new ModelTemplate(Optional.of(new ResourceLocation("block/door_top_right_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+            var doorBottomLeftModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/bottom_left")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+            var doorBottomLeftOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/bottom_left_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+            var doorBottomRightModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/bottom_right")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+            var doorBottomRightOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/bottom_right_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+            var doorTopLeftModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/top_left")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+            var doorTopLeftOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/top_left_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+            var doorTopRightModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/top_right")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+            var doorTopRightOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/top_right_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
 
-            var trapdoorBottom = new ModelTemplate(Optional.of(new ResourceLocation("block/template_orientable_trapdoor_bottom")), Optional.empty(), TextureSlot.TEXTURE);
-            var trapdoorOpen = new ModelTemplate(Optional.of(new ResourceLocation("block/template_orientable_trapdoor_open")), Optional.empty(), TextureSlot.TEXTURE);
-            var trapdoorTop = new ModelTemplate(Optional.of(new ResourceLocation("block/template_orientable_trapdoor_top")), Optional.empty(), TextureSlot.TEXTURE);
+            var trapdoorBottom = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/template_orientable_trapdoor_bottom")), Optional.empty(), TextureSlot.TEXTURE);
+            var trapdoorOpen = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/template_orientable_trapdoor_open")), Optional.empty(), TextureSlot.TEXTURE);
+            var trapdoorTop = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/template_orientable_trapdoor_top")), Optional.empty(), TextureSlot.TEXTURE);
+
+            var bookshelf = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/base_bookshelf")), Optional.empty(), TextureSlot.SIDE);
+
+            var sign = new ModelTemplate(Optional.empty(), Optional.empty(), TextureSlot.PARTICLE);
+            var hangingSign = new ModelTemplate(Optional.empty(), Optional.empty(), TextureSlot.PARTICLE);
 
             WoodSet.STYLES.forEach((name, style) -> {
                 if (name.equals("bush")) {
@@ -606,9 +697,8 @@ public class BlockstateProvider implements DataProvider
                 leavesModel.create(new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + name), leavesTextureMap, this.modelOutput);
 
                 var logTextureMap = (new TextureMapping())
-                        .put(TextureSlot.END, new ResourceLocation(ProductiveTrees.MODID, "block/log_top/" + style.woodStyle() + "_inner"))
-                        .put(TextureSlot.SIDE, new ResourceLocation(ProductiveTrees.MODID, "block/log/" + style.woodStyle()))
-                        .put(TextureSlot.EDGE, new ResourceLocation(ProductiveTrees.MODID, "block/log_top/" + style.woodStyle() + "_bark"));
+                        .put(TextureSlot.END, new ResourceLocation(ProductiveTrees.MODID, "block/log_top/" + style.woodStyle()))
+                        .put(TextureSlot.SIDE, new ResourceLocation(ProductiveTrees.MODID, "block/log/" + style.woodStyle()));
 
                 logModel.create(new ResourceLocation(ProductiveTrees.MODID, "block/log/" + name + "_log"), logTextureMap, this.modelOutput);
                 logHorizontalModel.create(new ResourceLocation(ProductiveTrees.MODID, "block/log/" + name + "_log_horizontal"), logTextureMap, this.modelOutput);
@@ -651,6 +741,16 @@ public class BlockstateProvider implements DataProvider
                 trapdoorBottom.create(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + name + "_bottom"), trapdoorTextureMap, this.modelOutput);
                 trapdoorOpen.create(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + name + "_open"), trapdoorTextureMap, this.modelOutput);
                 trapdoorTop.create(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + name + "_top"), trapdoorTextureMap, this.modelOutput);
+
+                var bookshelfTextureMap = (new TextureMapping()).put(TextureSlot.SIDE, new ResourceLocation(ProductiveTrees.MODID, "block/planks/" + style.plankStyle()));
+
+                bookshelf.create(new ResourceLocation(ProductiveTrees.MODID, "block/bookshelf/" + name), bookshelfTextureMap, this.modelOutput);
+
+                var signTextureMap = (new TextureMapping()).put(TextureSlot.TEXTURE, new ResourceLocation(ProductiveTrees.MODID, "block/planks/" + style.plankStyle()));
+                var hangingSignTextureMap = (new TextureMapping()).put(TextureSlot.TEXTURE, new ResourceLocation(ProductiveTrees.MODID, "block/stripped/" + style.plankStyle()));
+
+                sign.create(new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + name), signTextureMap, this.modelOutput);
+                hangingSign.create(new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + name), hangingSignTextureMap, this.modelOutput);
             });
         }
 

@@ -1,16 +1,18 @@
 package cy.jdkdigital.productivetrees.event;
 
-import cy.jdkdigital.productivebees.container.gui.BottlerScreen;
-import cy.jdkdigital.productivebees.init.ModContainerTypes;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.client.render.block.StripperBlockEntityRenderer;
-import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
+import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
+import cy.jdkdigital.productivetrees.inventory.screen.SawmillScreen;
 import cy.jdkdigital.productivetrees.inventory.screen.StripperScreen;
+import cy.jdkdigital.productivetrees.inventory.screen.WoodworkerScreen;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
-import cy.jdkdigital.productivetrees.registry.TreeObject;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.ColorUtil;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -28,13 +30,31 @@ public class ClientSetupEvents
     @SubscribeEvent
     public static void init(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            MenuScreens.register(ProductiveTrees.STRIPPER_MENU.get(), StripperScreen::new);
+            MenuScreens.register(TreeRegistrator.STRIPPER_MENU.get(), StripperScreen::new);
+            MenuScreens.register(TreeRegistrator.SAWMILL_MENU.get(), SawmillScreen::new);
+            MenuScreens.register(TreeRegistrator.WOOD_WORKER_MENU.get(), WoodworkerScreen::new);
         });
     }
 
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(ProductiveTrees.STRIPPER_BLOCK_ENTITY.get(), StripperBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(TreeRegistrator.STRIPPER_BLOCK_ENTITY.get(), StripperBlockEntityRenderer::new);
+
+        TreeFinder.trees.forEach((id, treeObject) -> {
+            if (treeObject.registerWood()) {
+                event.registerBlockEntityRenderer(((ProductiveStandingSignBlock) treeObject.getSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
+                event.registerBlockEntityRenderer(((ProductiveWallSignBlock) treeObject.getWallSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
+                event.registerBlockEntityRenderer(((ProductiveCeilingHangingSignBlock) treeObject.getHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
+                event.registerBlockEntityRenderer(((ProductiveWallHangingSignBlock) treeObject.getWallHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
+            }
+        });
+
+        TreeFinder.woods.forEach((id, woodObject) -> {
+            event.registerBlockEntityRenderer(((ProductiveStandingSignBlock)woodObject.getSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
+            event.registerBlockEntityRenderer(((ProductiveWallSignBlock)woodObject.getWallSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
+            event.registerBlockEntityRenderer(((ProductiveCeilingHangingSignBlock)woodObject.getHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
+            event.registerBlockEntityRenderer(((ProductiveWallHangingSignBlock)woodObject.getWallHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
+        });
     }
 
     @SubscribeEvent
@@ -44,7 +64,7 @@ public class ClientSetupEvents
                 return ColorUtil.getLeafColor(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(stack.getTag().getString("Block"))));
             }
             return FoliageColor.getDefaultColor();
-        }, ProductiveTrees.POLLEN.get());
+        }, TreeRegistrator.POLLEN.get());
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             if (treeObject.tintLeaves()) {
@@ -55,7 +75,7 @@ public class ClientSetupEvents
             }, treeObject.getSaplingBlock().get(), treeObject.getPottedSaplingBlock().get());
 
             if (treeObject.registerWood()) {
-                if (treeObject.getTintStyle().equals(TreeObject.TintStyle.FULL)) {
+                if (treeObject.tintWood()) {
                     event.register((stack, tintIndex) -> {
                         return tintIndex == 0 ? ColorUtil.getCacheColor(treeObject.getLogColor()) : ColorUtil.getCacheColor(treeObject.getPlankColor());
                     }, treeObject.getLogBlock().get(), treeObject.getWoodBlock().get());
@@ -133,7 +153,7 @@ public class ClientSetupEvents
                 }
             }
             return FoliageColor.getDefaultColor();
-        }, ProductiveTrees.POLLINATED_LEAVES.get());
+        }, TreeRegistrator.POLLINATED_LEAVES.get());
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             if (treeObject.hasFruit()) {
@@ -161,7 +181,7 @@ public class ClientSetupEvents
             }, treeObject.getSaplingBlock().get(), treeObject.getPottedSaplingBlock().get());
 
             if (treeObject.registerWood()) {
-                if (treeObject.getTintStyle().equals(TreeObject.TintStyle.FULL)) {
+                if (treeObject.tintWood()) {
                     event.register((blockState, lightReader, pos, tintIndex) -> {
                         return tintIndex == 0 ? ColorUtil.getCacheColor(treeObject.getLogColor()) : ColorUtil.getCacheColor(treeObject.getPlankColor());
                     }, treeObject.getLogBlock().get(), treeObject.getWoodBlock().get());

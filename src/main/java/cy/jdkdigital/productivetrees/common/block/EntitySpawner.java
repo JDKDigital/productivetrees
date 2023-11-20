@@ -1,14 +1,12 @@
 package cy.jdkdigital.productivetrees.common.block;
 
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.entity.EntitySpawnerBlockEntity;
-import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -51,7 +49,7 @@ public class EntitySpawner extends BaseEntityBlock
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? null : createTickerHelper(blockEntityType, ProductiveTrees.ENTITY_SPAWNER_BLOCK_ENTITY.get(), EntitySpawnerBlockEntity::tick);
+        return level.isClientSide ? null : createTickerHelper(blockEntityType, TreeRegistrator.ENTITY_SPAWNER_BLOCK_ENTITY.get(), EntitySpawnerBlockEntity::tick);
     }
 
 }

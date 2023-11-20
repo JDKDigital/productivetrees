@@ -8,7 +8,7 @@
   },
   "fruit": {
     "item": "productivetrees:papaya",
-    "count": 3,
+    "count": 1,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

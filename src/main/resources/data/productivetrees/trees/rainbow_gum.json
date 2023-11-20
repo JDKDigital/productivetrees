@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:rainbow_gum",
-  "style": "birch",
+  "style": "rainbow_gum",
   "colors": {
-    "leafColor": "#1c4316",
+    "leafColor": "#55405b",
     "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
-  }
+    "plankColor": "#6d4e87"
+  },
+  "tint": "hives"
 }

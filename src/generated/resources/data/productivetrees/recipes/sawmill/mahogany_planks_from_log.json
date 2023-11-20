@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:mahogany_log"
+    },
+    {
+      "item": "productivetrees:mahogany_stripped_log"
+    },
+    {
+      "item": "productivetrees:mahogany_wood"
+    },
+    {
+      "item": "productivetrees:mahogany_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:mahogany_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

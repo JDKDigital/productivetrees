@@ -1,17 +1,95 @@
 package cy.jdkdigital.productivetrees.registry;
 
+import cy.jdkdigital.productivebees.common.item.UpgradeItem;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.client.particle.ColoredParticleType;
+import cy.jdkdigital.productivetrees.common.block.*;
+import cy.jdkdigital.productivetrees.common.block.entity.*;
+import cy.jdkdigital.productivetrees.common.item.PollenItem;
+import cy.jdkdigital.productivetrees.inventory.SawmillContainer;
+import cy.jdkdigital.productivetrees.inventory.StripperContainer;
+import cy.jdkdigital.productivetrees.inventory.WoodWorkerContainer;
+import cy.jdkdigital.productivetrees.loot.OptionalLootItem;
+import cy.jdkdigital.productivetrees.recipe.LogStrippingRecipe;
+import cy.jdkdigital.productivetrees.recipe.SawmillRecipe;
+import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
+import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Supplier;
 
 public class TreeRegistrator
 {
+    public static final RegistryObject<LootPoolEntryType> OPTIONAL_LOOT_ITEM = ProductiveTrees.LOOT_POOL_ENTRIES.register("optional_loot_item", () -> new LootPoolEntryType(new OptionalLootItem.Serializer()));
+    public static final RegistryObject<PoiType> ADVANCED_HIVES = ProductiveTrees.POI_TYPES.register("advanced_beehive", () -> {
+        Set<BlockState> blockStates = new HashSet<>();
+        TreeFinder.trees.forEach((id, treeObject) -> {
+            if (treeObject.registerWood()) {
+                blockStates.addAll(treeObject.getHiveBlock().get().getStateDefinition().getPossibleStates());
+            }
+        });
+        return new PoiType(blockStates, 1, 1);
+    });
+    public static final ResourceKey<CreativeModeTab> TAB_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, new ResourceLocation(ProductiveTrees.MODID, ProductiveTrees.MODID));
+    public static final RegistryObject<CreativeModeTab> TAB = ProductiveTrees.CREATIVE_MODE_TABS.register(ProductiveTrees.MODID, () -> {
+        return CreativeModeTab.builder()
+                .icon(() -> new ItemStack(Items.OAK_SAPLING))
+                .title(Component.translatable("itemGroup.productivetrees"))
+                .build();
+    });
+    public static final RegistryObject<Block> POLLINATED_LEAVES = ProductiveTrees.BLOCKS.register("pollinated_leaves", () -> new PollinatedLeaves(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
+    public static final RegistryObject<BlockEntityType<PollinatedLeavesBlockEntity>> POLLINATED_LEAVES_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("pollinated_leaves", () -> BlockEntityType.Builder.of(PollinatedLeavesBlockEntity::new, POLLINATED_LEAVES.get()).build(null));
+    public static final RegistryObject<Block> STRIPPER = ProductiveTrees.BLOCKS.register("stripper", () -> new Stripper(BlockBehaviour.Properties.copy(Blocks.STONECUTTER).noOcclusion()));
+    public static final RegistryObject<BlockEntityType<StripperBlockEntity>> STRIPPER_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("stripper", () -> BlockEntityType.Builder.of(StripperBlockEntity::new, STRIPPER.get()).build(null));
+    public static final RegistryObject<Block> SAWMILL = ProductiveTrees.BLOCKS.register("sawmill", () -> new Sawmill(BlockBehaviour.Properties.copy(Blocks.STONECUTTER).noOcclusion()));
+    public static final RegistryObject<BlockEntityType<SawmillBlockEntity>> SAWMILL_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("sawmill", () -> BlockEntityType.Builder.of(SawmillBlockEntity::new, SAWMILL.get()).build(null));
+    public static final RegistryObject<Block> WOOD_WORKER = ProductiveTrees.BLOCKS.register("wood_worker", () -> new WoodWorker(BlockBehaviour.Properties.copy(Blocks.STONECUTTER).noOcclusion()));
+    public static final RegistryObject<BlockEntityType<WoodWorkerBlockEntity>> WOOD_WORKER_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("wood_worker", () -> BlockEntityType.Builder.of(WoodWorkerBlockEntity::new, WOOD_WORKER.get()).build(null));
+    public static final RegistryObject<Block> ENTITY_SPAWNER = ProductiveTrees.BLOCKS.register("entity_spawner", () -> new EntitySpawner(BlockBehaviour.Properties.copy(Blocks.AIR)));
+    public static final RegistryObject<BlockEntityType<EntitySpawnerBlockEntity>> ENTITY_SPAWNER_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("entity_spawner", () -> BlockEntityType.Builder.of(EntitySpawnerBlockEntity::new, ENTITY_SPAWNER.get()).build(null));
+    public static final RegistryObject<MenuType<StripperContainer>> STRIPPER_MENU = ProductiveTrees.CONTAINER_TYPES.register("stripper", () ->
+            IForgeMenuType.create(StripperContainer::new)
+    );
+    public static final RegistryObject<MenuType<SawmillContainer>> SAWMILL_MENU = ProductiveTrees.CONTAINER_TYPES.register("sawmill", () ->
+            IForgeMenuType.create(SawmillContainer::new)
+    );
+    public static final RegistryObject<MenuType<WoodWorkerContainer>> WOOD_WORKER_MENU = ProductiveTrees.CONTAINER_TYPES.register("wood_worker", () ->
+            IForgeMenuType.create(WoodWorkerContainer::new)
+    );
+    public static final RegistryObject<Item> UPGRADE_POLLEN_SIEVE = ProductiveTrees.ITEMS.register("upgrade_pollen_sieve", () -> new UpgradeItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> POLLEN = ProductiveTrees.ITEMS.register("pollen", () -> new PollenItem(new Item.Properties()));
+    public static final RegistryObject<Item> STRIPPER_ITEM = ProductiveTrees.ITEMS.register("stripper", () -> new BlockItem(STRIPPER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SAWMILL_ITEM = ProductiveTrees.ITEMS.register("sawmill", () -> new BlockItem(SAWMILL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WOOD_WORKER_ITEM = ProductiveTrees.ITEMS.register("wood_worker", () -> new BlockItem(WOOD_WORKER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SAWDUST = ProductiveTrees.ITEMS.register("sawdust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<RecipeSerializer<?>> TREE_POLLINATION = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_pollination", () -> new TreePollinationRecipe.Serializer<>(TreePollinationRecipe::new));
+    public static final RegistryObject<RecipeType<TreePollinationRecipe>> TREE_POLLINATION_TYPE = ProductiveTrees.RECIPE_TYPES.register("tree_pollination", () -> new RecipeType<>() {});
+    public static final RegistryObject<RecipeSerializer<?>> LOG_STRIPPING = ProductiveTrees.RECIPE_SERIALIZERS.register("log_stripping", () -> new LogStrippingRecipe.Serializer<>(LogStrippingRecipe::new));
+    public static final RegistryObject<RecipeType<LogStrippingRecipe>> LOG_STRIPPING_TYPE = ProductiveTrees.RECIPE_TYPES.register("log_stripping", () -> new RecipeType<>() {});
+    public static final RegistryObject<RecipeSerializer<?>> SAW_MILLLING = ProductiveTrees.RECIPE_SERIALIZERS.register("sawmill", () -> new SawmillRecipe.Serializer<>(SawmillRecipe::new));
+    public static final RegistryObject<RecipeType<SawmillRecipe>> SAW_MILLLING_TYPE = ProductiveTrees.RECIPE_TYPES.register("sawmill", () -> new RecipeType<>() {});
+    public static final RegistryObject<ColoredParticleType> PETAL_PARTICLES = ProductiveTrees.PARTICLE_TYPES.register("petals", ColoredParticleType::new);
+
     // Fruiting items
     static final FoodProperties BERRY_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(1).saturationMod(0.1F).build();
     public static final RegistryObject<Item> BLACKBERRY = ProductiveTrees.ITEMS.register("blackberry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
@@ -55,6 +133,8 @@ public class TreeRegistrator
     public static final RegistryObject<Item> SATSUMA = ProductiveTrees.ITEMS.register("satsuma", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
     public static final RegistryObject<Item> STAR_FRUIT = ProductiveTrees.ITEMS.register("star_fruit", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
     public static final RegistryObject<Item> TANGERINE = ProductiveTrees.ITEMS.register("tangerine", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
+    public static final RegistryObject<Item> PERSIMMON = ProductiveTrees.ITEMS.register("persimmon", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
+    public static final RegistryObject<Item> POMEGRANATE = ProductiveTrees.ITEMS.register("pomegranate", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
 
     static final FoodProperties BIG_FRUIT_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(5).saturationMod(0.3F).build();
     public static final RegistryObject<Item> COCONUT = ProductiveTrees.ITEMS.register("coconut", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));

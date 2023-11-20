@@ -2,6 +2,7 @@ package cy.jdkdigital.productivetrees.integrations;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.recipe.LogStrippingRecipe;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -27,7 +28,7 @@ public class LogStrippingRecipeCategory implements IRecipeCategory<LogStrippingR
     public LogStrippingRecipeCategory(IGuiHelper guiHelper) {
         ResourceLocation location = new ResourceLocation(ProductiveTrees.MODID, "textures/gui/jei/stripping.png");
         this.background = guiHelper.createDrawable(location, 0, 0, 130, 60);
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ProductiveTrees.STRIPPER.get()));
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TreeRegistrator.STRIPPER.get()));
     }
 
     @Override

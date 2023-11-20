@@ -1,8 +1,8 @@
 package cy.jdkdigital.productivetrees.datagen.recipe;
 
 import com.google.gson.JsonObject;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
@@ -62,7 +62,7 @@ public record TreePollinationRecipeBuilder(Ingredient leafA, Ingredient leafB, I
 
         @Override
         public RecipeSerializer<?> getType() {
-            return ProductiveTrees.TREE_POLLINATION.get();
+            return TreeRegistrator.TREE_POLLINATION.get();
         }
 
         @Nullable

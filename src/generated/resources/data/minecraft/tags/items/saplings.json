@@ -125,6 +125,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:ceylon_ebony_sapling",
+      "required": false
+    },
+    {
       "id": "productivetrees:cheese_plant_sapling",
       "required": false
     },
@@ -174,6 +178,10 @@
     },
     {
       "id": "productivetrees:cranberry_sapling",
+      "required": false
+    },
+    {
+      "id": "productivetrees:crape_myrtle_sapling",
       "required": false
     },
     {
@@ -313,6 +321,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:moonlight_magic_crepe_myrtle_sapling",
+      "required": false
+    },
+    {
       "id": "productivetrees:myrtle_ebony_sapling",
       "required": false
     },
@@ -361,6 +373,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:persimmon_sapling",
+      "required": false
+    },
+    {
       "id": "productivetrees:pink_ivory_sapling",
       "required": false
     },
@@ -374,6 +390,10 @@
     },
     {
       "id": "productivetrees:plum_sapling",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomegranate_sapling",
       "required": false
     },
     {
@@ -393,6 +413,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_crepe_myrtle_sapling",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_sapling",
       "required": false
     },
@@ -406,6 +430,10 @@
     },
     {
       "id": "productivetrees:red_banana_sapling",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_crepe_myrtle_sapling",
       "required": false
     },
     {
@@ -486,6 +514,14 @@
     },
     {
       "id": "productivetrees:teak_sapling",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tuscarora_crepe_myrtle_sapling",
+      "required": false
+    },
+    {
+      "id": "productivetrees:twinkle_field_sapling",
       "required": false
     },
     {

@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:bull_pine",
-  "style": "birch",
+  "style": "bull_pine",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#684e44",
-    "plankColor": "#c6a054"
-  }
+    "leafColor": "#7f963e",
+    "logColor": "#5a2c12",
+    "plankColor": "#eec597"
+  },
+  "tint": "hives"
 }

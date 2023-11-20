@@ -1,14 +1,15 @@
 {
   "feature": "productivetrees:orange",
-  "style": "birch",
+  "style": "orange",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#52483d",
-    "plankColor": "#c8c474"
+    "leafColor": "#354d13",
+    "logColor": "#846259",
+    "plankColor": "#ab732c"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:orange",
-    "count": 3,
+    "count": 1,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

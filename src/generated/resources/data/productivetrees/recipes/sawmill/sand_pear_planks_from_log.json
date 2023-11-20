@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:sand_pear_log"
+    },
+    {
+      "item": "productivetrees:sand_pear_stripped_log"
+    },
+    {
+      "item": "productivetrees:sand_pear_wood"
+    },
+    {
+      "item": "productivetrees:sand_pear_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:sand_pear_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

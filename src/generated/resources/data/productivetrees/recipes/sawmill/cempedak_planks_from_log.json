@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:cempedak_log"
+    },
+    {
+      "item": "productivetrees:cempedak_stripped_log"
+    },
+    {
+      "item": "productivetrees:cempedak_wood"
+    },
+    {
+      "item": "productivetrees:cempedak_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:cempedak_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

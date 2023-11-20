@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log",
+  "textures": {
+    "end": "productivetrees:block/log_top/moonlight_magic_crepe_myrtle",
+    "side": "productivetrees:block/log/moonlight_magic_crepe_myrtle"
+  }
+}

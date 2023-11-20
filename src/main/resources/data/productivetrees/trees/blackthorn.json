@@ -8,7 +8,7 @@
   },
   "mutation_info": {
     "target": "productivetrees:purple_blackthorn",
-    "chance": 0.01
+    "chance": 0.05
   },
   "tint": "hives",
   "fruit": {

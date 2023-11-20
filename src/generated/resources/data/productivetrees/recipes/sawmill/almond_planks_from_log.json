@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:almond_log"
+    },
+    {
+      "item": "productivetrees:almond_stripped_log"
+    },
+    {
+      "item": "productivetrees:almond_wood"
+    },
+    {
+      "item": "productivetrees:almond_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:almond_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

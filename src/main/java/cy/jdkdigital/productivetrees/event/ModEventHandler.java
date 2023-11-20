@@ -3,6 +3,7 @@ package cy.jdkdigital.productivetrees.event;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.client.particle.PetalParticle;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -33,12 +34,12 @@ public class ModEventHandler
 
     @SubscribeEvent
     public static void registerParticles(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(ProductiveTrees.PETAL_PARTICLES.get(), PetalParticle.Provider::new);
+        event.registerSpriteSet(TreeRegistrator.PETAL_PARTICLES.get(), PetalParticle.Provider::new);
     }
 
     @SubscribeEvent
     public static void buildContents(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey().equals(ProductiveTrees.TAB_KEY)) {
+        if (event.getTabKey().equals(TreeRegistrator.TAB_KEY)) {
             for (RegistryObject<Item> item : ProductiveTrees.ITEMS.getEntries()) {
                 event.accept(item);
             }

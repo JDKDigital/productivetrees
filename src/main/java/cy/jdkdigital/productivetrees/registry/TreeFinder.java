@@ -7,7 +7,6 @@ import cy.jdkdigital.productivetrees.util.TreeCreator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.common.crafting.conditions.ConditionContext;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.fml.ModList;
 import org.apache.commons.io.FileUtils;

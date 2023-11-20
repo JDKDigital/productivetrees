@@ -201,6 +201,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:ceylon_ebony_leaves",
+      "required": false
+    },
+    {
       "id": "productivetrees:cheese_plant_leaves",
       "required": false
     },
@@ -286,6 +290,10 @@
     },
     {
       "id": "productivetrees:cranberry_fruit",
+      "required": false
+    },
+    {
+      "id": "productivetrees:crape_myrtle_leaves",
       "required": false
     },
     {
@@ -501,6 +509,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:moonlight_magic_crepe_myrtle_leaves",
+      "required": false
+    },
+    {
       "id": "productivetrees:myrtle_ebony_leaves",
       "required": false
     },
@@ -585,6 +597,14 @@
       "required": false
     },
     {
+      "id": "productivetrees:persimmon_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:persimmon_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:pink_ivory_leaves",
       "required": false
     },
@@ -610,6 +630,14 @@
     },
     {
       "id": "productivetrees:plum_fruit",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomegranate_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomegranate_fruit",
       "required": false
     },
     {
@@ -641,6 +669,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_crepe_myrtle_leaves",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_leaves",
       "required": false
     },
@@ -666,6 +698,10 @@
     },
     {
       "id": "productivetrees:red_banana_fruit",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_crepe_myrtle_leaves",
       "required": false
     },
     {
@@ -778,6 +814,14 @@
     },
     {
       "id": "productivetrees:teak_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tuscarora_crepe_myrtle_leaves",
+      "required": false
+    },
+    {
+      "id": "productivetrees:twinkle_field_leaves",
       "required": false
     },
     {

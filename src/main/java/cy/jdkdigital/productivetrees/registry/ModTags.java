@@ -60,6 +60,8 @@ public class ModTags
     public static final TagKey<Item> GRAPEFRUIT = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/grapefruit"));
     public static final TagKey<Item> NECTARINE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/nectarine"));
     public static final TagKey<Item> PEACH = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/peach"));
+    public static final TagKey<Item> PERSIMMON = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/persimmon"));
+    public static final TagKey<Item> POMEGRANATE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/pomegranate"));
     public static final TagKey<Item> PEAR = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/pear"));
     public static final TagKey<Item> POMELO = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/pomelo"));
     public static final TagKey<Item> SAND_PEAR = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/sand_pear"));

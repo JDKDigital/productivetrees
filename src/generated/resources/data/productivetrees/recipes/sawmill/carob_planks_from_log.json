@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:carob_log"
+    },
+    {
+      "item": "productivetrees:carob_stripped_log"
+    },
+    {
+      "item": "productivetrees:carob_wood"
+    },
+    {
+      "item": "productivetrees:carob_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:carob_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

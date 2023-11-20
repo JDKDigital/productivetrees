@@ -541,6 +541,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:ceylon_ebony_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ceylon_ebony_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ceylon_ebony_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ceylon_ebony_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ceylon_ebony_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:cheese_plant_planks",
       "required": false
     },
@@ -758,6 +778,26 @@
     },
     {
       "id": "productivetrees:copper_beech_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:crape_myrtle_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:crape_myrtle_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:crape_myrtle_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:crape_myrtle_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:crape_myrtle_stripped_wood",
       "required": false
     },
     {
@@ -1341,6 +1381,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:moonlight_magic_crepe_myrtle_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:moonlight_magic_crepe_myrtle_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:moonlight_magic_crepe_myrtle_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:moonlight_magic_crepe_myrtle_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:moonlight_magic_crepe_myrtle_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:myrtle_ebony_planks",
       "required": false
     },
@@ -1581,6 +1641,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:persimmon_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:persimmon_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:persimmon_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:persimmon_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:persimmon_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:pink_ivory_planks",
       "required": false
     },
@@ -1658,6 +1738,26 @@
     },
     {
       "id": "productivetrees:plum_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomegranate_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomegranate_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomegranate_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomegranate_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomegranate_stripped_wood",
       "required": false
     },
     {
@@ -1741,6 +1841,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_crepe_myrtle_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_crepe_myrtle_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_crepe_myrtle_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_crepe_myrtle_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_crepe_myrtle_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_planks",
       "required": false
     },
@@ -1778,6 +1898,26 @@
     },
     {
       "id": "productivetrees:red_banana_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_crepe_myrtle_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_crepe_myrtle_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_crepe_myrtle_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_crepe_myrtle_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_crepe_myrtle_stripped_wood",
       "required": false
     },
     {
@@ -2178,6 +2318,46 @@
     },
     {
       "id": "productivetrees:teak_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tuscarora_crepe_myrtle_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tuscarora_crepe_myrtle_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tuscarora_crepe_myrtle_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tuscarora_crepe_myrtle_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tuscarora_crepe_myrtle_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:twinkle_field_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:twinkle_field_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:twinkle_field_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:twinkle_field_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:twinkle_field_stripped_wood",
       "required": false
     },
     {

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:red_crepe_myrtle_log"
+      },
+      {
+        "item": "productivetrees:red_crepe_myrtle_wood"
+      },
+      {
+        "item": "productivetrees:red_crepe_myrtle_stripped_log"
+      },
+      {
+        "item": "productivetrees:red_crepe_myrtle_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:red_crepe_myrtle_planks"
+  }
+}

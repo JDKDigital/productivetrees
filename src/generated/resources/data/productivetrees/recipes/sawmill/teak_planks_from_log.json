@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:teak_log"
+    },
+    {
+      "item": "productivetrees:teak_stripped_log"
+    },
+    {
+      "item": "productivetrees:teak_wood"
+    },
+    {
+      "item": "productivetrees:teak_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:teak_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

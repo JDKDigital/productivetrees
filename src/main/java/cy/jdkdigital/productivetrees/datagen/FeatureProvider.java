@@ -57,7 +57,7 @@ public class FeatureProvider implements DataProvider
         Map<ResourceLocation, Supplier<JsonElement>> configuredFeatures = Maps.newHashMap();
         TreeFinder.trees.forEach((id, treeObject) -> {
             placedFeatures.put(treeObject.getId(), getPlacedFeature(treeObject));
-            if (!treeObject.getId().getPath().equals("ysabella_purpurea")) {
+            if (!treeObject.getId().getPath().equals("ysabella_purpurea") && !treeObject.getId().getPath().equals("twinkle_field")) {
                 configuredFeatures.put(treeObject.getId(), getConfiguredFeature(treeObject));
             }
         });
@@ -140,6 +140,8 @@ public class FeatureProvider implements DataProvider
         put("almond", MEDIUM_FRUIT_DISTRIBUTION);
         put("avocado", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafReplacerDecorator(0.3f, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
         put("banana", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafPlacerDecorator(0.2f, 3, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
+        put("red_banana", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafPlacerDecorator(0.2f, 3, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
+        put("plantain", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafPlacerDecorator(0.2f, 3, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
         put("beech", MEDIUM_FRUIT_DISTRIBUTION);
         put("butternut", MEDIUM_FRUIT_DISTRIBUTION);
         put("hazel", MEDIUM_FRUIT_DISTRIBUTION);
@@ -153,6 +155,8 @@ public class FeatureProvider implements DataProvider
         put("alder", createFoliage(4, 5));
         put("avocado", createFoliage(4, 3));
         put("banana", createFoliage(3, 1));
+        put("red_banana", createFoliage(3, 1));
+        put("plantain", createFoliage(3, 1));
         put("blackberry", BUSH_FOLIAGE);
         put("blackcurrant", BUSH_FOLIAGE);
         put("blueberry", BUSH_FOLIAGE);
@@ -170,6 +174,8 @@ public class FeatureProvider implements DataProvider
         put("alder", createTrunk(7, 10, 0));
         put("avocado", createTrunk(9, 10, 0));
         put("banana", createTrunk(5, 6, 0));
+        put("red_banana", createTrunk(5, 6, 0));
+        put("plantain", createTrunk(5, 6, 0));
         put("beech", createTrunk(20, 10, 0));
         put("blackberry", BUSH_TRUNK);
         put("blackcurrant", BUSH_TRUNK);

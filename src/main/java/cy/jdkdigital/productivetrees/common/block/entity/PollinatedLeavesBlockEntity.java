@@ -1,6 +1,6 @@
 package cy.jdkdigital.productivetrees.common.block.entity;
 
-import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -21,7 +21,7 @@ public class PollinatedLeavesBlockEntity extends BlockEntity
     private Block leafB;
 
     public PollinatedLeavesBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(ProductiveTrees.POLLINATED_LEAVES_BLOCK_ENTITY.get(), blockPos, blockState);
+        super(TreeRegistrator.POLLINATED_LEAVES_BLOCK_ENTITY.get(), blockPos, blockState);
     }
 
     public ItemStack getResult() {

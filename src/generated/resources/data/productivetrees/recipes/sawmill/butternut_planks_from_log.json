@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:butternut_log"
+    },
+    {
+      "item": "productivetrees:butternut_stripped_log"
+    },
+    {
+      "item": "productivetrees:butternut_wood"
+    },
+    {
+      "item": "productivetrees:butternut_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:butternut_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:buddhas_hand_log"
+    },
+    {
+      "item": "productivetrees:buddhas_hand_stripped_log"
+    },
+    {
+      "item": "productivetrees:buddhas_hand_wood"
+    },
+    {
+      "item": "productivetrees:buddhas_hand_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:buddhas_hand_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "productivetrees:item/sign/sweet_chestnut_sign"
+  }
+}

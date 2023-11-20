@@ -2,9 +2,9 @@ package cy.jdkdigital.productivetrees.inventory;
 
 import cy.jdkdigital.productivebees.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivebees.container.ManualSlotItemHandler;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.Stripper;
 import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -26,7 +26,7 @@ public class StripperContainer extends cy.jdkdigital.productivebees.container.Ab
     }
 
     public StripperContainer(final int windowId, final Inventory playerInventory, final StripperBlockEntity blockEntity) {
-        super(ProductiveTrees.STRIPPER_MENU.get(), windowId);
+        super(TreeRegistrator.STRIPPER_MENU.get(), windowId);
 
         this.blockEntity = blockEntity;
         this.canInteractWithCallable = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());

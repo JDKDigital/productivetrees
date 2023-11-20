@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log",
+  "textures": {
+    "end": "productivetrees:block/log_top/brazil_nut",
+    "side": "productivetrees:block/log/brazil_nut"
+  }
+}

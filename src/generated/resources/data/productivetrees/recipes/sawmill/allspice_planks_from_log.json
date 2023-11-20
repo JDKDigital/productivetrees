@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:allspice_log"
+    },
+    {
+      "item": "productivetrees:allspice_stripped_log"
+    },
+    {
+      "item": "productivetrees:allspice_wood"
+    },
+    {
+      "item": "productivetrees:allspice_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:allspice_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

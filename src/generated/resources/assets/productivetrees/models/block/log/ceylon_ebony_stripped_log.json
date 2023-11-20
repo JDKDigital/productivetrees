@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/ceylon_ebony_top",
+    "side": "productivetrees:block/stripped/ceylon_ebony"
+  }
+}

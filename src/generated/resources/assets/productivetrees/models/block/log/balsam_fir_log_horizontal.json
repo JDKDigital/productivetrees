@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log_horizontal",
+  "textures": {
+    "end": "productivetrees:block/log_top/balsam_fir",
+    "side": "productivetrees:block/log/balsam_fir"
+  }
+}

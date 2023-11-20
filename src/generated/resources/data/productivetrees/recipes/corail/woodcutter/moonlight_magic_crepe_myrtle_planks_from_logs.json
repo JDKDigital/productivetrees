@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:moonlight_magic_crepe_myrtle_log"
+    },
+    {
+      "item": "productivetrees:moonlight_magic_crepe_myrtle_wood"
+    },
+    {
+      "item": "productivetrees:moonlight_magic_crepe_myrtle_stripped_log"
+    },
+    {
+      "item": "productivetrees:moonlight_magic_crepe_myrtle_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:moonlight_magic_crepe_myrtle_planks"
+}

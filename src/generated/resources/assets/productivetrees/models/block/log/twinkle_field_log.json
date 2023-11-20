@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log",
+  "textures": {
+    "end": "productivetrees:block/log_top/twinkle_field",
+    "side": "productivetrees:block/log/twinkle_field"
+  }
+}

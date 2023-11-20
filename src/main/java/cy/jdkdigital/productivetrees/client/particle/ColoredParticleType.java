@@ -8,7 +8,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class ColoredParticleType extends ParticleType<ColoredParticleType> implements ParticleOptions
 {

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/blue_mahoe_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/blue_mahoe"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/blue_mahoe_slab_top"
+    }
+  }
+}

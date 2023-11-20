@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:kapok_log"
+    },
+    {
+      "item": "productivetrees:kapok_stripped_log"
+    },
+    {
+      "item": "productivetrees:kapok_wood"
+    },
+    {
+      "item": "productivetrees:kapok_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:kapok_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

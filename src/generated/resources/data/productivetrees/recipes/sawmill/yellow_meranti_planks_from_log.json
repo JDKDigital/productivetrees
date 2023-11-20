@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:yellow_meranti_log"
+    },
+    {
+      "item": "productivetrees:yellow_meranti_stripped_log"
+    },
+    {
+      "item": "productivetrees:yellow_meranti_wood"
+    },
+    {
+      "item": "productivetrees:yellow_meranti_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:yellow_meranti_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

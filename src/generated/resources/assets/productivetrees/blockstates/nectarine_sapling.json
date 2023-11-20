@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "productivetrees:block/sapling/base_fruiting_oak"
+    }
+  }
+}

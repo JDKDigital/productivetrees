@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "minecraft:jungle_log"
+    },
+    {
+      "item": "minecraft:stripped_jungle_log"
+    },
+    {
+      "item": "minecraft:jungle_wood"
+    },
+    {
+      "item": "minecraft:stripped_jungle_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "minecraft:jungle_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

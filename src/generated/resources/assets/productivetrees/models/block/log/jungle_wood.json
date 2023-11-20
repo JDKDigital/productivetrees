@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/log/jungle",
+    "side": "productivetrees:block/log/jungle"
+  }
+}

@@ -1,7 +1,7 @@
 package cy.jdkdigital.productivetrees.recipe;
 
 import com.google.gson.JsonObject;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -61,12 +61,12 @@ public class TreePollinationRecipe implements Recipe<Container>
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ProductiveTrees.TREE_POLLINATION.get();
+        return TreeRegistrator.TREE_POLLINATION.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return ProductiveTrees.TREE_POLLINATION_TYPE.get();
+        return TreeRegistrator.TREE_POLLINATION_TYPE.get();
     }
 
     public static class Serializer<T extends TreePollinationRecipe> implements RecipeSerializer<T>

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:satsuma_log"
+    },
+    {
+      "item": "productivetrees:satsuma_stripped_log"
+    },
+    {
+      "item": "productivetrees:satsuma_wood"
+    },
+    {
+      "item": "productivetrees:satsuma_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:satsuma_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

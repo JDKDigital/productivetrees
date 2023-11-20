@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:sequoia_log"
+    },
+    {
+      "item": "productivetrees:sequoia_stripped_log"
+    },
+    {
+      "item": "productivetrees:sequoia_wood"
+    },
+    {
+      "item": "productivetrees:sequoia_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:sequoia_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

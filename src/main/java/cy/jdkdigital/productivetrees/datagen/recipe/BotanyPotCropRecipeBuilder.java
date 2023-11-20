@@ -3,7 +3,6 @@ package cy.jdkdigital.productivetrees.datagen.recipe;
 import com.google.gson.JsonObject;
 import net.darkhax.bookshelf.api.serialization.Serializers;
 import net.darkhax.botanypots.BotanyPotHelper;
-import net.darkhax.botanypots.data.displaystate.DisplayState;
 import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
 import net.darkhax.botanypots.data.recipes.crop.SerializerHarvestEntry;
 import net.minecraft.advancements.CriterionTriggerInstance;

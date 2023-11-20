@@ -2,13 +2,12 @@ package cy.jdkdigital.productivetrees.datagen;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class LanguageProvider extends net.minecraftforge.common.data.LanguageProvider
@@ -23,13 +22,18 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add("item.productivetrees.upgrade_pollen_sieve", "Upgrade: Pollen Sieve");
         add("jei.productivetrees.tree_pollination", "Tree Pollination");
         add("jei.productivetrees.log_stripping", "Log Stripping");
+        add("jei.productivetrees.sawmill", "Sawmill");
         add("productivetrees.pollen.name", "%s");
+        add("productivetrees.screen.progress", "Progress: %s");
         add("productivebees.information.upgrade.upgrade_pollen_sieve", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
         add("productivetrees.information.pollen", "Use on a leaf to manually pollinate it.");
 
-        add(ProductiveTrees.POLLEN.get(), "Pollen");
-        add(ProductiveTrees.POLLINATED_LEAVES.get(), "Pollinated Leaves");
-        add(ProductiveTrees.STRIPPER.get(), "Stripper");
+        add(TreeRegistrator.POLLEN.get(), "Pollen");
+        add(TreeRegistrator.SAWDUST.get(), "Sawdust");
+        add(TreeRegistrator.POLLINATED_LEAVES.get(), "Pollinated Leaves");
+        add(TreeRegistrator.STRIPPER.get(), "Stripper");
+        add(TreeRegistrator.SAWMILL.get(), "Sawmill");
+        add(TreeRegistrator.WOOD_WORKER.get(), "Carpentry Bench");
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             String name = id.getPath();
@@ -63,6 +67,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
                 add(treeObject.getPressurePlateBlock().get(), capName(name) + " Pressure Plate");
                 add(treeObject.getDoorBlock().get(), capName(name) + " Door");
                 add(treeObject.getTrapdoorBlock().get(), capName(name) + " Trapdoor");
+                add(treeObject.getBookshelfBlock().get(), capName(name) + " Bookshelf");
                 add(treeObject.getSignBlock().get(), capName(name) + " Sign");
                 add(treeObject.getHangingSignBlock().get(), capName(name) + " Hanging Sign");
                 add(treeObject.getHiveBlock().get(), "Advanced " + capName(name) + " Beehive");
@@ -184,7 +189,12 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("miracle_berry", "Synsepalum dulcificum");
             put("monkey_puzzle", "Araucaria araucana");
             put("european_larch", "Larix decidua");
+            put("ceylon_ebony", "Diospyros ebenum");
             put("myrtle_ebony", "Diospyros pentamera");
+            put("purple_crepe_myrtle", "Lagerstroemia indica");
+            put("moonlight_magic_crepe_myrtle", "Lagerstroemia indica 'PIILAG-IV'");
+            put("red_crepe_myrtle", "Lagerstroemia indica 'Whit II'");
+            put("tuscarora_crepe_myrtle", "Lagerstroemia indica 'Tuscarora'");
             put("nectarine", "Prunus var. nectarina");
             put("nutmeg", "Myristica fragrans");
             put("old_fustic", "Maclura tinctoria");
@@ -196,10 +206,12 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("papaya", "Carica papaya");
             put("peach", "Prunus persica");
             put("pecan", "Carya illinoinensis");
+            put("persimmon", "Diospyros kaki");
             put("pink_ivory", "Phyllogeiton zeyheri");
             put("pistachio", "Pistacia vera");
             put("plantain", "Musa paradisiaca");
             put("plum", "Prunus domestica");
+            put("pomegranate", "Punica granatum");
             put("pomelo", "Citrus maxima");
             put("prarie_crabapple", "Malus ioensis");
             put("purple_blackthorn", "Prunus spinosa purpurea");
@@ -238,8 +250,9 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("wild_cherry", "Prunus avium");
             put("yellow_meranti", "Shorea faguetiana");
             put("yew", "Taxus baccata");
-            put("ysabella_purpurea", "Ysabella purpurea");
             put("zebrano", "Microberlinia brazzavillensis");
+            put("ysabella_purpurea", "Ysabella purpurea");
+            put("twinkle_field", "Stella caelus");
         }};
 
         return names.get(name);

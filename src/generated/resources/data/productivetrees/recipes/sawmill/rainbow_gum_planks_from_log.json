@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:rainbow_gum_log"
+    },
+    {
+      "item": "productivetrees:rainbow_gum_stripped_log"
+    },
+    {
+      "item": "productivetrees:rainbow_gum_wood"
+    },
+    {
+      "item": "productivetrees:rainbow_gum_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:rainbow_gum_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

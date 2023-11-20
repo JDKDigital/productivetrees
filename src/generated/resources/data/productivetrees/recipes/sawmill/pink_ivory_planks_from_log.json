@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:pink_ivory_log"
+    },
+    {
+      "item": "productivetrees:pink_ivory_stripped_log"
+    },
+    {
+      "item": "productivetrees:pink_ivory_wood"
+    },
+    {
+      "item": "productivetrees:pink_ivory_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:pink_ivory_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

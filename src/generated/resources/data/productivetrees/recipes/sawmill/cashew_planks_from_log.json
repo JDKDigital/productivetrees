@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:cashew_log"
+    },
+    {
+      "item": "productivetrees:cashew_stripped_log"
+    },
+    {
+      "item": "productivetrees:cashew_wood"
+    },
+    {
+      "item": "productivetrees:cashew_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:cashew_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

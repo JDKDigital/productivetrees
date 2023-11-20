@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:pistachio_log"
+    },
+    {
+      "item": "productivetrees:pistachio_stripped_log"
+    },
+    {
+      "item": "productivetrees:pistachio_wood"
+    },
+    {
+      "item": "productivetrees:pistachio_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:pistachio_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

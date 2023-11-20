@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:western_hemlock_log"
+    },
+    {
+      "item": "productivetrees:western_hemlock_stripped_log"
+    },
+    {
+      "item": "productivetrees:western_hemlock_wood"
+    },
+    {
+      "item": "productivetrees:western_hemlock_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:western_hemlock_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

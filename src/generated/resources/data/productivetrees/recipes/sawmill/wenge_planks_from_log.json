@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:wenge_log"
+    },
+    {
+      "item": "productivetrees:wenge_stripped_log"
+    },
+    {
+      "item": "productivetrees:wenge_wood"
+    },
+    {
+      "item": "productivetrees:wenge_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:wenge_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

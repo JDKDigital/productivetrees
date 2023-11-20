@@ -106,6 +106,8 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(ModTags.PLANTAIN).add(TreeRegistrator.PLANTAIN.get());
         tag(ModTags.RED_BANANA).add(TreeRegistrator.RED_BANANA.get());
         tag(ModTags.PAPAYA).add(TreeRegistrator.PAPAYA.get());
+        tag(ModTags.PERSIMMON).add(TreeRegistrator.PERSIMMON.get());
+        tag(ModTags.POMEGRANATE).add(TreeRegistrator.POMEGRANATE.get());
         tag(ModTags.BREADFRUIT).add(TreeRegistrator.BREADFRUIT.get());
         tag(ModTags.MONSTERA_DELICIOSA).add(TreeRegistrator.MONSTERA_DELICIOSA.get());
         tag(ModTags.LIME).add(TreeRegistrator.LIME.get());
@@ -116,7 +118,7 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(ModTags.ORANGE).add(TreeRegistrator.ORANGE.get());
         tag(ModTags.MANDARIN).add(TreeRegistrator.MANDARIN.get());
         tag(ModTags.BUDDHAS_HAND).add(TreeRegistrator.BUDDHAS_HAND.get());
-        tag(ModTags.FRUITS).addTags(ModTags.APRICOT, ModTags.BLACK_CHERRY, ModTags.CHERRY_PLUM, ModTags.OLIVE, ModTags.OSANGE_ORANGE, ModTags.KUMQUAT, ModTags.WILD_CHERRY, ModTags.SOUR_CHERRY, ModTags.DATE, ModTags.PLUM, ModTags.AVOCADO, ModTags.CRABAPPLE, ModTags.FIG, ModTags.GRAPEFRUIT, ModTags.NECTARINE, ModTags.PEACH, ModTags.PEAR, ModTags.POMELO, ModTags.SAND_PEAR, ModTags.SATSUMA, ModTags.STAR_FRUIT, ModTags.TANGERINE, ModTags.AKEBIA, ModTags.COPOAZU, ModTags.CEMPEDAK, ModTags.JACKFRUIT, ModTags.BANANA, ModTags.COCONUT, ModTags.MANGO, ModTags.PLANTAIN, ModTags.RED_BANANA, ModTags.PAPAYA, ModTags.BREADFRUIT, ModTags.MONSTERA_DELICIOSA, ModTags.LIME, ModTags.KEY_LIME, ModTags.FINGER_LIME, ModTags.CITRON, ModTags.LEMON, ModTags.ORANGE, ModTags.MANDARIN, ModTags.BUDDHAS_HAND);
+        tag(ModTags.FRUITS).addTags(ModTags.APRICOT, ModTags.BLACK_CHERRY, ModTags.CHERRY_PLUM, ModTags.OLIVE, ModTags.OSANGE_ORANGE, ModTags.KUMQUAT, ModTags.WILD_CHERRY, ModTags.SOUR_CHERRY, ModTags.DATE, ModTags.PLUM, ModTags.AVOCADO, ModTags.CRABAPPLE, ModTags.FIG, ModTags.GRAPEFRUIT, ModTags.NECTARINE, ModTags.PEACH, ModTags.PEAR, ModTags.POMELO, ModTags.SAND_PEAR, ModTags.SATSUMA, ModTags.STAR_FRUIT, ModTags.TANGERINE, ModTags.AKEBIA, ModTags.COPOAZU, ModTags.CEMPEDAK, ModTags.JACKFRUIT, ModTags.BANANA, ModTags.COCONUT, ModTags.MANGO, ModTags.PLANTAIN, ModTags.RED_BANANA, ModTags.PAPAYA, ModTags.PERSIMMON, ModTags.POMEGRANATE, ModTags.BREADFRUIT, ModTags.MONSTERA_DELICIOSA, ModTags.LIME, ModTags.KEY_LIME, ModTags.FINGER_LIME, ModTags.CITRON, ModTags.LEMON, ModTags.ORANGE, ModTags.MANDARIN, ModTags.BUDDHAS_HAND);
     }
 
     @Override

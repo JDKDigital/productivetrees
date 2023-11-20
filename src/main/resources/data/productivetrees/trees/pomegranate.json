@@ -1,0 +1,16 @@
+{
+  "feature": "productivetrees:pomegranate",
+  "style": "birch",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#202e1d",
+    "plankColor": "#A0A0A0"
+  },
+  "fruit": {
+    "item": "productivetrees:pomegranate",
+    "count": 1,
+    "growthSpeed": 0.5,
+    "unripeColor": "#a9b935",
+    "ripeColor": "#661c24"
+  }
+}

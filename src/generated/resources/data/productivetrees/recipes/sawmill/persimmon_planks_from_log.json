@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:persimmon_log"
+    },
+    {
+      "item": "productivetrees:persimmon_stripped_log"
+    },
+    {
+      "item": "productivetrees:persimmon_wood"
+    },
+    {
+      "item": "productivetrees:persimmon_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:persimmon_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

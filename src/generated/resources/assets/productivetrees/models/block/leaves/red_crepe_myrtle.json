@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "productivetrees:block/leaves/red_crepe_myrtle"
+  }
+}

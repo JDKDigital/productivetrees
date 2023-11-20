@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:iroko_log"
+    },
+    {
+      "item": "productivetrees:iroko_stripped_log"
+    },
+    {
+      "item": "productivetrees:iroko_wood"
+    },
+    {
+      "item": "productivetrees:iroko_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:iroko_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:brazil_nut_log"
+    },
+    {
+      "item": "productivetrees:brazil_nut_stripped_log"
+    },
+    {
+      "item": "productivetrees:brazil_nut_wood"
+    },
+    {
+      "item": "productivetrees:brazil_nut_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:brazil_nut_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

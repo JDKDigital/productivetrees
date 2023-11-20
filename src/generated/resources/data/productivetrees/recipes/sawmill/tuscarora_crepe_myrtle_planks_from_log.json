@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:tuscarora_crepe_myrtle_log"
+    },
+    {
+      "item": "productivetrees:tuscarora_crepe_myrtle_stripped_log"
+    },
+    {
+      "item": "productivetrees:tuscarora_crepe_myrtle_wood"
+    },
+    {
+      "item": "productivetrees:tuscarora_crepe_myrtle_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:tuscarora_crepe_myrtle_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

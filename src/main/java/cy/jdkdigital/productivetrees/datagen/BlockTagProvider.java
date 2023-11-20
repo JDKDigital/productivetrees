@@ -3,6 +3,7 @@ package cy.jdkdigital.productivetrees.datagen;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -138,7 +139,7 @@ public class BlockTagProvider extends BlockTagsProvider
             }
         });
 
-        leaves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(ProductiveTrees.POLLINATED_LEAVES.get())));
+        leaves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeRegistrator.POLLINATED_LEAVES.get())));
         dof.addTag(BlockTags.DIRT).add(Blocks.FARMLAND);
     }
 

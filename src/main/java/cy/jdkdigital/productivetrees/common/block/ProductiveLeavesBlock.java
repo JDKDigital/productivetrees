@@ -1,7 +1,7 @@
 package cy.jdkdigital.productivetrees.common.block;
 
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.ColorUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,7 +27,7 @@ public class ProductiveLeavesBlock extends LeavesBlock
             BlockPos blockpos = pos.below();
             BlockState blockstate = level.getBlockState(blockpos);
             if (!isFaceFull(blockstate.getCollisionShape(level, blockpos), Direction.UP)) {
-                var particle = ProductiveTrees.PETAL_PARTICLES.get();
+                var particle = TreeRegistrator.PETAL_PARTICLES.get();
                 particle.setColor(ColorUtil.getCacheColor(TextColor.parseColor(treeObject.getLeafColor()).getValue()));
                 ParticleUtils.spawnParticleBelow(level, pos, rand, particle);
             }

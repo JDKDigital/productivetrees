@@ -3,7 +3,7 @@ package cy.jdkdigital.productivetrees.loot;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.Item;
@@ -34,7 +34,7 @@ public class OptionalLootItem extends LootPoolSingletonContainer {
     }
 
     public LootPoolEntryType getType() {
-        return ProductiveTrees.OPTIONAL_LOOT_ITEM.get();
+        return TreeRegistrator.OPTIONAL_LOOT_ITEM.get();
     }
 
     public void createItemStack(Consumer<ItemStack> pStackConsumer, LootContext pLootContext) {

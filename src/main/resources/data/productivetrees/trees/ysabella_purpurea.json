@@ -2,8 +2,8 @@
   "feature": "productivetrees:ysabella_purpurea",
   "style": "birch",
   "hiveStyle": "cherry",
-  "decorations": {
-
+  "decoration": {
+    "lightLevel": 15
   },
   "colors": {
     "leafColor": "#800080",

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:old_fustic_log"
+    },
+    {
+      "item": "productivetrees:old_fustic_stripped_log"
+    },
+    {
+      "item": "productivetrees:old_fustic_wood"
+    },
+    {
+      "item": "productivetrees:old_fustic_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:old_fustic_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

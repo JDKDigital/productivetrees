@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:holly_log"
+    },
+    {
+      "item": "productivetrees:holly_stripped_log"
+    },
+    {
+      "item": "productivetrees:holly_wood"
+    },
+    {
+      "item": "productivetrees:holly_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:holly_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:zebrano_log"
+    },
+    {
+      "item": "productivetrees:zebrano_stripped_log"
+    },
+    {
+      "item": "productivetrees:zebrano_wood"
+    },
+    {
+      "item": "productivetrees:zebrano_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:zebrano_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:papaya_log"
+    },
+    {
+      "item": "productivetrees:papaya_stripped_log"
+    },
+    {
+      "item": "productivetrees:papaya_wood"
+    },
+    {
+      "item": "productivetrees:papaya_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:papaya_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:padauk_log"
+    },
+    {
+      "item": "productivetrees:padauk_stripped_log"
+    },
+    {
+      "item": "productivetrees:padauk_wood"
+    },
+    {
+      "item": "productivetrees:padauk_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:padauk_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

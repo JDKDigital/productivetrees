@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:loblolly_pine",
-  "style": "birch",
+  "style": "loblolly_pine",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
-  }
+    "leafColor": "#6da98d",
+    "logColor": "#615347",
+    "plankColor": "#e4c9ab"
+  },
+  "tint": "hives"
 }

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:hornbeam_log"
+    },
+    {
+      "item": "productivetrees:hornbeam_stripped_log"
+    },
+    {
+      "item": "productivetrees:hornbeam_wood"
+    },
+    {
+      "item": "productivetrees:hornbeam_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:hornbeam_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:kumquat_log"
+    },
+    {
+      "item": "productivetrees:kumquat_stripped_log"
+    },
+    {
+      "item": "productivetrees:kumquat_wood"
+    },
+    {
+      "item": "productivetrees:kumquat_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:kumquat_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

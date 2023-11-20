@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/black_locust_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/black_locust"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/black_locust_slab_top"
+    }
+  }
+}

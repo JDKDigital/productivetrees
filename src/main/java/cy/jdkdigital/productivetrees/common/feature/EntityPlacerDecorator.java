@@ -2,8 +2,8 @@ package cy.jdkdigital.productivetrees.common.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.Features;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
@@ -34,7 +34,7 @@ public class EntityPlacerDecorator extends TreeDecorator
             var pos =  context.logs().get(context.random().nextInt( context.logs().size()));
             for (Direction dir: Direction.values()) {
                 if (context.isAir(pos.relative(dir))) {
-                    context.setBlock(pos.relative(dir), ProductiveTrees.ENTITY_SPAWNER.get().defaultBlockState());
+                    context.setBlock(pos.relative(dir), TreeRegistrator.ENTITY_SPAWNER.get().defaultBlockState());
                     break;
                 }
             }

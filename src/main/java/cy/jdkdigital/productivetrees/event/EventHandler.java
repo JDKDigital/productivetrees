@@ -11,6 +11,7 @@ import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -45,7 +46,7 @@ public class EventHandler
 
     @SubscribeEvent
     public static void blockBreak(BlockEvent.BreakEvent event) {
-        if (event.getLevel() instanceof Level level && event.getState().is(ProductiveTrees.POLLINATED_LEAVES.get()) && level.getBlockEntity(event.getPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
+        if (event.getLevel() instanceof Level level && event.getState().is(TreeRegistrator.POLLINATED_LEAVES.get()) && level.getBlockEntity(event.getPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
             Block.popResource(level, event.getPos(), pollinatedLeavesBlockEntity.getResult());
         }
     }
@@ -63,7 +64,7 @@ public class EventHandler
                 Map<BlockState, BlockPos> leafMap = new HashMap<>();
                 leaves.forEach(blockPos -> {
                     var state = level.getBlockState(blockPos);
-                    if (state.is(BlockTags.LEAVES) && !state.is(ProductiveTrees.POLLINATED_LEAVES.get())) {
+                    if (state.is(BlockTags.LEAVES) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get())) {
                         leafMap.put(state, blockPos);
                         if (!uniqueLeaves.contains(state)) {
                             uniqueLeaves.add(state);
@@ -73,11 +74,11 @@ public class EventHandler
 
                 if (uniqueLeaves.size() > 0) {
                     // Check for pollen sieve upgrade and collect pollen from nearby leaf
-                    int sieveUpgrades = advancedBeehiveBlockEntity.getUpgradeCount(ProductiveTrees.UPGRADE_POLLEN_SIEVE.get());
+                    int sieveUpgrades = advancedBeehiveBlockEntity.getUpgradeCount(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get());
                     if (sieveUpgrades > 0 && level.random.nextInt(100) < Config.SERVER.pollenChanceFromSieve.get()) {
                         BlockState pollenLeaf = uniqueLeaves.get(level.random.nextInt(uniqueLeaves.size()));
                         advancedBeehiveBlockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(inv -> {
-                            var pollenStack = new ItemStack(ProductiveTrees.POLLEN.get());
+                            var pollenStack = new ItemStack(TreeRegistrator.POLLEN.get());
                             pollenStack.getOrCreateTag().putString("Block", ForgeRegistries.BLOCKS.getKey(pollenLeaf.getBlock()).toString());
                             ((InventoryHandlerHelper.ItemHandler) inv).addOutput(pollenStack);
                         });
@@ -85,7 +86,7 @@ public class EventHandler
 
                     // Pollinate leaves
                     Map<TreePollinationRecipe, Pair<BlockState, BlockState>> matchedRecipes = new HashMap<>();
-                    var allRecipes = level.getRecipeManager().getAllRecipesFor(ProductiveTrees.TREE_POLLINATION_TYPE.get());
+                    var allRecipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.TREE_POLLINATION_TYPE.get());
                     allRecipes.forEach(treePollinationRecipe -> {
                         uniqueLeaves.forEach(stateA -> {
                             uniqueLeaves.forEach(stateB -> {
@@ -103,7 +104,7 @@ public class EventHandler
                         BlockPos posA = level.random.nextBoolean() ? leafMap.get(states.getFirst()) : leafMap.get(states.getSecond());
 
                         if (level.random.nextInt(100) <= pickedRecipe.chance && level.getBlockState(posA).is(BlockTags.LEAVES)) {
-                            level.setBlock(posA, ProductiveTrees.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
+                            level.setBlock(posA, TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
                             if (level.getBlockEntity(posA) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
                                 pollinatedLeavesBlockEntity.setLeafA(states.getFirst().getBlock());
                                 pollinatedLeavesBlockEntity.setLeafB(states.getSecond().getBlock());

@@ -3,8 +3,8 @@ package cy.jdkdigital.productivetrees.common.block.entity;
 import com.mojang.authlib.GameProfile;
 import cy.jdkdigital.productivebees.common.block.entity.CapabilityBlockEntity;
 import cy.jdkdigital.productivebees.common.block.entity.InventoryHandlerHelper;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.inventory.StripperContainer;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,7 +16,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -45,7 +44,10 @@ public class StripperBlockEntity extends CapabilityBlockEntity
             }
             if (slot == SLOT_OUT && !stack.is(ItemTags.AXES)) {
                 var currentOutStack = getStackInSlot(slot);
-                if (currentOutStack.isEmpty() || currentOutStack.getCount() < currentOutStack.getMaxStackSize()) {
+                if (currentOutStack.isEmpty()) {
+                    return true;
+                }
+                if (currentOutStack.getCount() < currentOutStack.getMaxStackSize()) {
                     return ItemHandlerHelper.canItemStacksStack(stack, currentOutStack) && !canProcess(stack);
                 }
             }
@@ -87,21 +89,22 @@ public class StripperBlockEntity extends CapabilityBlockEntity
     }
 
     public StripperBlockEntity(BlockPos pos, BlockState state) {
-        super(ProductiveTrees.STRIPPER_BLOCK_ENTITY.get(), pos, state);
+        super(TreeRegistrator.STRIPPER_BLOCK_ENTITY.get(), pos, state);
     }
 
     @Override
     public Component getName() {
-        return Component.translatable(ProductiveTrees.STRIPPER.get().getDescriptionId());
+        return Component.translatable(TreeRegistrator.STRIPPER.get().getDescriptionId());
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, StripperBlockEntity blockEntity) {
         if (++blockEntity.tickCounter % 10 == 0 && level instanceof ServerLevel serverLevel) {
             blockEntity.inventoryHandler.ifPresent(inv -> {
-                ItemStack logs = inv.getStackInSlot(SLOT_IN);
-                ItemStack axe = inv.getStackInSlot(SLOT_AXE);
-                if (!logs.isEmpty() && !axe.isEmpty()) {
-                    var strippedLogItem = TreeUtil.getStrippedItem(blockEntity, serverLevel, new ItemStack(logs.getItem()));
+                var logs = inv.getStackInSlot(SLOT_IN);
+                var axe = inv.getStackInSlot(SLOT_AXE);
+                var output = inv.getStackInSlot(SLOT_OUT);
+                if (!logs.isEmpty() && !axe.isEmpty() && (output.getCount() < output.getMaxStackSize())) {
+                    var strippedLogItem = TreeUtil.getStrippedItem(blockEntity, serverLevel, logs);
                     if (!strippedLogItem.isEmpty() && inv.insertItem(SLOT_OUT, strippedLogItem, false).isEmpty()) {
                         logs.shrink(1);
                         if (axe.isDamageableItem()) {

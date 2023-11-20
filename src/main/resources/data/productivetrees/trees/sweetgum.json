@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:sweetgum",
-  "style": "birch",
+  "style": "sweetgum",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#9a9b96",
-    "plankColor": "#d59658"
-  }
+    "leafColor": "#4f6155",
+    "logColor": "#abad92",
+    "plankColor": "#786e63"
+  },
+  "tint": "hives"
 }

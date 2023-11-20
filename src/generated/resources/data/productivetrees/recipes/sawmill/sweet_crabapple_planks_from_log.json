@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:sweet_crabapple_log"
+    },
+    {
+      "item": "productivetrees:sweet_crabapple_stripped_log"
+    },
+    {
+      "item": "productivetrees:sweet_crabapple_wood"
+    },
+    {
+      "item": "productivetrees:sweet_crabapple_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:sweet_crabapple_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

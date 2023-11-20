@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "productivetrees:item/sign/ceylon_ebony_sign"
+  }
+}

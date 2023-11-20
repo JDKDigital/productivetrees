@@ -139,6 +139,10 @@ public class TreeObject extends WoodObject
         return tintStyle.equals(TintStyle.FULL) || tintStyle.equals(TintStyle.LEAVES_HIVES) || tintStyle.equals(TintStyle.HIVES);
     }
 
+    public boolean tintWood() {
+        return tintStyle.equals(TintStyle.FULL);
+    }
+
     public boolean hasFallingLeaves() {
         return fallingLeaves;
     }
@@ -207,11 +211,12 @@ public class TreeObject extends WoodObject
         ).apply(instance, GrowthCondition::new));
     }
 
-    public record Decoration(String vine)
+    public record Decoration(String vine, Integer lightLevel)
     {
-        private static final Decoration DEFAULT = new Decoration("");
+        private static final Decoration DEFAULT = new Decoration("", 0);
         public static Codec<Decoration> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                Codec.STRING.fieldOf("vine").orElse("").forGetter(Decoration::vine)
+                Codec.STRING.fieldOf("vine").orElse("").forGetter(Decoration::vine),
+                Codec.INT.fieldOf("lightLevel").orElse(0).forGetter(Decoration::lightLevel)
         ).apply(instance, Decoration::new));
     }
 

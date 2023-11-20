@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:cogwood_log"
+    },
+    {
+      "item": "productivetrees:cogwood_stripped_log"
+    },
+    {
+      "item": "productivetrees:cogwood_wood"
+    },
+    {
+      "item": "productivetrees:cogwood_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:cogwood_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

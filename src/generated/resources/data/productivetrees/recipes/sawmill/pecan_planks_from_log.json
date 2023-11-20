@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:pecan_log"
+    },
+    {
+      "item": "productivetrees:pecan_stripped_log"
+    },
+    {
+      "item": "productivetrees:pecan_wood"
+    },
+    {
+      "item": "productivetrees:pecan_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:pecan_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:mandarin_log"
+    },
+    {
+      "item": "productivetrees:mandarin_stripped_log"
+    },
+    {
+      "item": "productivetrees:mandarin_wood"
+    },
+    {
+      "item": "productivetrees:mandarin_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:mandarin_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

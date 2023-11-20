@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:swamp_gum",
-  "style": "birch",
+  "style": "swamp_gum",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
-  }
+    "leafColor": "#3d5a3e",
+    "logColor": "#373125",
+    "plankColor": "#b17143"
+  },
+  "tint": "hives"
 }

@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 1,
+  "ingredient": [
+    {
+      "item": "productivetrees:tuscarora_crepe_myrtle_log"
+    },
+    {
+      "item": "productivetrees:tuscarora_crepe_myrtle_wood"
+    },
+    {
+      "item": "productivetrees:tuscarora_crepe_myrtle_stripped_log"
+    },
+    {
+      "item": "productivetrees:tuscarora_crepe_myrtle_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:tuscarora_crepe_myrtle_fence_gate"
+}

@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:peach",
-  "style": "birch",
+  "style": "peach",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#507b22",
+    "logColor": "#73665d",
+    "plankColor": "#f09841"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:peach",
     "count": 3,

@@ -1,0 +1,15 @@
+{
+  "feature": "productivetrees:twinkle_field",
+  "style": "twinkle_field",
+  "hiveStyle": "snake_block",
+  "decoration": {
+    "lightLevel": 11
+  },
+  "colors": {
+    "leafColor": "#c7c7c8",
+    "logColor": "#161530",
+    "plankColor": "#0e4873"
+  },
+  "tint": "hives",
+  "fallingLeaves": true
+}

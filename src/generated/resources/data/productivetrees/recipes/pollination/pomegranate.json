@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 5,
+  "leafA": {
+    "item": "productivetrees:holly_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:purple_crepe_myrtle_leaves"
+  },
+  "result": {
+    "item": "productivetrees:pomegranate_sapling"
+  }
+}

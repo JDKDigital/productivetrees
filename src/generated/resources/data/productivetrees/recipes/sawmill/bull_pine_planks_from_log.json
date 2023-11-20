@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:bull_pine_log"
+    },
+    {
+      "item": "productivetrees:bull_pine_stripped_log"
+    },
+    {
+      "item": "productivetrees:bull_pine_wood"
+    },
+    {
+      "item": "productivetrees:bull_pine_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:bull_pine_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

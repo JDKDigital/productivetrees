@@ -3,6 +3,7 @@ package cy.jdkdigital.productivetrees.common.item;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.recipe.RecipeHelper;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -44,11 +45,11 @@ public class PollenItem extends Item
         if (context.getPlayer() != null) {
             ItemStack stack = context.getPlayer().getItemInHand(context.getHand());
             BlockState state = level.getBlockState(context.getClickedPos());
-            if (stack.getTag() != null && stack.getTag().contains("Block") && state.is(BlockTags.LEAVES) && !state.is(ProductiveTrees.POLLINATED_LEAVES.get())) {
+            if (stack.getTag() != null && stack.getTag().contains("Block") && state.is(BlockTags.LEAVES) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get())) {
                 Block leafB = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(stack.getTag().getString("Block")));
                 if (leafB != null) {
                     var recipe = RecipeHelper.getRecipe(level, state, leafB.defaultBlockState());
-                    level.setBlock(context.getClickedPos(), ProductiveTrees.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
+                    level.setBlock(context.getClickedPos(), TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
                     if (level.getBlockEntity(context.getClickedPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
                         pollinatedLeavesBlockEntity.setLeafA(state.getBlock());
                         pollinatedLeavesBlockEntity.setLeafB(leafB);

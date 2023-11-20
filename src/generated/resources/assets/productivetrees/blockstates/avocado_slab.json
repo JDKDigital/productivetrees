@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/avocado_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/avocado"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/avocado_slab_top"
+    }
+  }
+}

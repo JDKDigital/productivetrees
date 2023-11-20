@@ -2,13 +2,11 @@ package cy.jdkdigital.productivetrees.datagen;
 
 import com.google.common.collect.Maps;
 import cy.jdkdigital.productivebees.datagen.BlockLootProvider;
-import cy.jdkdigital.productivebees.init.ModBlocks;
 import cy.jdkdigital.productivetrees.loot.OptionalLootItem;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;

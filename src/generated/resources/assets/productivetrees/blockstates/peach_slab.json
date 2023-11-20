@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/peach_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/peach"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/peach_slab_top"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:pomegranate_log"
+      },
+      {
+        "item": "productivetrees:pomegranate_wood"
+      },
+      {
+        "item": "productivetrees:pomegranate_stripped_log"
+      },
+      {
+        "item": "productivetrees:pomegranate_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:pomegranate_planks"
+  }
+}

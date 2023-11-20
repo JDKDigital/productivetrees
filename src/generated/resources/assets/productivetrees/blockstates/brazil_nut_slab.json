@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/brazil_nut_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/brazil_nut"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/brazil_nut_slab_top"
+    }
+  }
+}

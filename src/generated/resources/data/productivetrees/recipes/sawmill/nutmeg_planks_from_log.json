@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:nutmeg_log"
+    },
+    {
+      "item": "productivetrees:nutmeg_stripped_log"
+    },
+    {
+      "item": "productivetrees:nutmeg_wood"
+    },
+    {
+      "item": "productivetrees:nutmeg_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:nutmeg_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

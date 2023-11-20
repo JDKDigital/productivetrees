@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "productivetrees:item/hanging_sign/red_banana_hanging_sign"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log_horizontal",
+  "textures": {
+    "end": "productivetrees:block/log_top/tuscarora_crepe_myrtle",
+    "side": "productivetrees:block/log/tuscarora_crepe_myrtle"
+  }
+}

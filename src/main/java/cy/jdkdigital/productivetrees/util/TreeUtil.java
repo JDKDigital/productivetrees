@@ -8,6 +8,8 @@ import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveWoodBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
+import cy.jdkdigital.productivetrees.recipe.SawmillRecipe;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -15,9 +17,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
@@ -31,7 +33,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class TreeUtil
@@ -139,5 +143,25 @@ public class TreeUtil
             }
         }
         return ItemStack.EMPTY;
+    }
+
+    static Map<ItemStack, SawmillRecipe> sawmillRecipeCache = new HashMap<>();
+    public static SawmillRecipe getSawmillRecipe(Level level, ItemStack stack) {
+        if (!stack.isEmpty()) {
+            var cacheItem = stack.copy();
+            cacheItem.setCount(1);
+            if (sawmillRecipeCache.containsKey(cacheItem)) {
+                return sawmillRecipeCache.get(cacheItem);
+            }
+
+            List<SawmillRecipe> recipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.SAW_MILLLING_TYPE.get());
+            for (SawmillRecipe recipe : recipes) {
+                if (recipe.log.test(stack)) {
+                    sawmillRecipeCache.put(cacheItem, recipe);
+                    return recipe;
+                }
+            }
+        }
+        return null;
     }
 }

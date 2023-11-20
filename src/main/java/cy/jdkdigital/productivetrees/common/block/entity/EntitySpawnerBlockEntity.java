@@ -1,13 +1,12 @@
 package cy.jdkdigital.productivetrees.common.block.entity;
 
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.feature.EntityPlacerDecorator;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.Level;
@@ -25,7 +24,7 @@ import java.util.List;
 public class EntitySpawnerBlockEntity extends BlockEntity
 {
     public EntitySpawnerBlockEntity(BlockPos pos, BlockState state) {
-        super(ProductiveTrees.ENTITY_SPAWNER_BLOCK_ENTITY.get(), pos, state);
+        super(TreeRegistrator.ENTITY_SPAWNER_BLOCK_ENTITY.get(), pos, state);
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, EntitySpawnerBlockEntity blockEntity) {

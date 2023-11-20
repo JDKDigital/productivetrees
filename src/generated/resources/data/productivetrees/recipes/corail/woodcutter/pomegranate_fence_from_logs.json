@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:pomegranate_log"
+    },
+    {
+      "item": "productivetrees:pomegranate_wood"
+    },
+    {
+      "item": "productivetrees:pomegranate_stripped_log"
+    },
+    {
+      "item": "productivetrees:pomegranate_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:pomegranate_fence"
+}

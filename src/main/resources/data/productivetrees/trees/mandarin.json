@@ -1,14 +1,15 @@
 {
   "feature": "productivetrees:mandarin",
-  "style": "birch",
+  "style": "mandarin",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#242101",
+    "logColor": "#7e665e",
+    "plankColor": "#ea834a"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:mandarin",
-    "count": 3,
+    "count": 1,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"
