@@ -37,14 +37,14 @@
                   "source": "block_entity"
                 },
                 {
-                  "block": "productivetrees:advanced_ceylon_ebony_beehive",
+                  "block": "productivetrees:advanced_myrtle_ebony_beehive",
                   "function": "productivebees:optional_copy_block_state",
                   "properties": [
                     "honey_level"
                   ]
                 }
               ],
-              "name": "productivetrees:advanced_ceylon_ebony_beehive"
+              "name": "productivetrees:advanced_myrtle_ebony_beehive"
             },
             {
               "type": "productivebees:optional_loot_item",
@@ -66,7 +66,7 @@
                   "source": "block_entity"
                 }
               ],
-              "name": "productivetrees:advanced_ceylon_ebony_beehive"
+              "name": "productivetrees:advanced_myrtle_ebony_beehive"
             }
           ]
         }
@@ -74,5 +74,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "productivetrees:blocks/advanced_ceylon_ebony_beehive"
+  "random_sequence": "productivetrees:blocks/advanced_myrtle_ebony_beehive"
 }

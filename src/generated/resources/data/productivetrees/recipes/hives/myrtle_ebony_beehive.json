@@ -22,7 +22,7 @@
       "tag": "forge:shears"
     },
     "W": {
-      "item": "productivetrees:ceylon_ebony_planks"
+      "item": "productivetrees:myrtle_ebony_planks"
     }
   },
   "pattern": [
@@ -31,7 +31,7 @@
     "FWS"
   ],
   "result": {
-    "item": "productivetrees:advanced_ceylon_ebony_beehive"
+    "item": "productivetrees:advanced_myrtle_ebony_beehive"
   },
   "show_notification": true
 }

@@ -10,6 +10,7 @@ import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
+import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
@@ -64,7 +65,7 @@ public class EventHandler
                 Map<BlockState, BlockPos> leafMap = new HashMap<>();
                 leaves.forEach(blockPos -> {
                     var state = level.getBlockState(blockPos);
-                    if (state.is(BlockTags.LEAVES) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get())) {
+                    if (state.is(ModTags.POLLINATABLE) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get())) {
                         leafMap.put(state, blockPos);
                         if (!uniqueLeaves.contains(state)) {
                             uniqueLeaves.add(state);

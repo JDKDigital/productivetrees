@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:buddhas_hand",
-  "style": "dark_oak",
+  "style": "buddhas_hand",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#2a7453",
+    "logColor": "#41372d",
+    "plankColor": "#895f43"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:buddhas_hand",
     "count": 1,

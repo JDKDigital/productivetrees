@@ -10,10 +10,10 @@
   "group": "hives",
   "ingredients": [
     {
-      "item": "productivetrees:advanced_ceylon_ebony_beehive"
+      "item": "productivetrees:advanced_myrtle_ebony_beehive"
     }
   ],
   "result": {
-    "item": "productivetrees:advanced_ceylon_ebony_beehive"
+    "item": "productivetrees:advanced_myrtle_ebony_beehive"
   }
 }

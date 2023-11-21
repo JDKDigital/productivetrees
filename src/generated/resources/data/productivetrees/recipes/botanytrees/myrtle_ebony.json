@@ -10,7 +10,7 @@
     }
   ],
   "display": {
-    "block": "productivetrees:ceylon_ebony_sapling",
+    "block": "productivetrees:myrtle_ebony_sapling",
     "properties": {
       "stage": 0
     }
@@ -22,7 +22,7 @@
       "minRolls": 2,
       "output": {
         "count": 1,
-        "item": "productivetrees:ceylon_ebony_log"
+        "item": "productivetrees:myrtle_ebony_log"
       }
     },
     {
@@ -40,12 +40,12 @@
       "minRolls": 1,
       "output": {
         "count": 1,
-        "item": "productivetrees:ceylon_ebony_sapling"
+        "item": "productivetrees:myrtle_ebony_sapling"
       }
     }
   ],
   "growthTicks": 2400,
   "seed": {
-    "item": "productivetrees:ceylon_ebony_sapling"
+    "item": "productivetrees:myrtle_ebony_sapling"
   }
 }

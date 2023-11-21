@@ -11,11 +11,11 @@
               "condition": "minecraft:survives_explosion"
             }
           ],
-          "name": "productivetrees:expansion_box_ceylon_ebony"
+          "name": "productivetrees:expansion_box_myrtle_ebony"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "productivetrees:blocks/expansion_box_ceylon_ebony"
+  "random_sequence": "productivetrees:blocks/expansion_box_myrtle_ebony"
 }

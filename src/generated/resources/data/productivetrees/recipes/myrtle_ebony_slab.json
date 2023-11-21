@@ -4,7 +4,7 @@
   "group": "slab",
   "key": {
     "#": {
-      "item": "productivetrees:ceylon_ebony_planks"
+      "item": "productivetrees:myrtle_ebony_planks"
     }
   },
   "pattern": [
@@ -12,7 +12,7 @@
   ],
   "result": {
     "count": 6,
-    "item": "productivetrees:ceylon_ebony_slab"
+    "item": "productivetrees:myrtle_ebony_slab"
   },
   "show_notification": true
 }

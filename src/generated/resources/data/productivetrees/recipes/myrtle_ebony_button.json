@@ -4,10 +4,10 @@
   "group": "button",
   "ingredients": [
     {
-      "item": "productivetrees:ceylon_ebony_planks"
+      "item": "productivetrees:myrtle_ebony_planks"
     }
   ],
   "result": {
-    "item": "productivetrees:ceylon_ebony_button"
+    "item": "productivetrees:myrtle_ebony_button"
   }
 }

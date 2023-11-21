@@ -1,12 +1,12 @@
 {
-  "feature": "productivetrees:ceylon_ebony",
+  "feature": "productivetrees:myrtle_ebony",
   "placement": [
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "productivetrees:ceylon_ebony_sapling",
+          "Name": "productivetrees:myrtle_ebony_sapling",
           "Properties": {
             "stage": "0"
           }

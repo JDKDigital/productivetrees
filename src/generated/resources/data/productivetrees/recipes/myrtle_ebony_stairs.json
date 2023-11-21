@@ -4,7 +4,7 @@
   "group": "stairs",
   "key": {
     "#": {
-      "item": "productivetrees:ceylon_ebony_planks"
+      "item": "productivetrees:myrtle_ebony_planks"
     }
   },
   "pattern": [
@@ -14,7 +14,7 @@
   ],
   "result": {
     "count": 4,
-    "item": "productivetrees:ceylon_ebony_stairs"
+    "item": "productivetrees:myrtle_ebony_stairs"
   },
   "show_notification": true
 }

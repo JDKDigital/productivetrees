@@ -5,21 +5,21 @@
   "ingredients": [
     [
       {
-        "item": "productivetrees:ceylon_ebony_log"
+        "item": "productivetrees:myrtle_ebony_log"
       },
       {
-        "item": "productivetrees:ceylon_ebony_wood"
+        "item": "productivetrees:myrtle_ebony_wood"
       },
       {
-        "item": "productivetrees:ceylon_ebony_stripped_log"
+        "item": "productivetrees:myrtle_ebony_stripped_log"
       },
       {
-        "item": "productivetrees:ceylon_ebony_stripped_wood"
+        "item": "productivetrees:myrtle_ebony_stripped_wood"
       }
     ]
   ],
   "result": {
     "count": 4,
-    "item": "productivetrees:ceylon_ebony_planks"
+    "item": "productivetrees:myrtle_ebony_planks"
   }
 }

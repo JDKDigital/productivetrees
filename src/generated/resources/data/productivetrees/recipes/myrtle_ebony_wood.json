@@ -4,7 +4,7 @@
   "group": "bark",
   "key": {
     "#": {
-      "item": "productivetrees:ceylon_ebony_log"
+      "item": "productivetrees:myrtle_ebony_log"
     }
   },
   "pattern": [
@@ -13,7 +13,7 @@
   ],
   "result": {
     "count": 3,
-    "item": "productivetrees:ceylon_ebony_wood"
+    "item": "productivetrees:myrtle_ebony_wood"
   },
   "show_notification": true
 }

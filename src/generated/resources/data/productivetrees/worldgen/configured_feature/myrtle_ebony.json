@@ -17,7 +17,7 @@
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "productivetrees:ceylon_ebony_leaves",
+        "Name": "productivetrees:myrtle_ebony_leaves",
         "Properties": {
           "distance": "7",
           "persistent": "false",
@@ -42,7 +42,7 @@
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "productivetrees:ceylon_ebony_log",
+        "Name": "productivetrees:myrtle_ebony_log",
         "Properties": {
           "axis": "y"
         }

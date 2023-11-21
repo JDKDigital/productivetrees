@@ -4,7 +4,7 @@
   "group": "door",
   "key": {
     "#": {
-      "item": "productivetrees:ceylon_ebony_planks"
+      "item": "productivetrees:myrtle_ebony_planks"
     }
   },
   "pattern": [
@@ -14,7 +14,7 @@
   ],
   "result": {
     "count": 3,
-    "item": "productivetrees:ceylon_ebony_door"
+    "item": "productivetrees:myrtle_ebony_door"
   },
   "show_notification": true
 }

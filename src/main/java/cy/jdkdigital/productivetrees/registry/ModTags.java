@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 public class ModTags
 {
     public static final TagKey<Block> DIRT_OR_FARMLAND = TagKey.create(Registries.BLOCK, new ResourceLocation(ProductiveTrees.MODID, "dirt_or_farmland"));
+    public static final TagKey<Block> POLLINATABLE = TagKey.create(Registries.BLOCK, new ResourceLocation(ProductiveTrees.MODID, "pollinatable"));
 
     public static final TagKey<Item> NUTS = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "nuts"));
     public static final TagKey<Item> ALMOND = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "nuts/almond"));

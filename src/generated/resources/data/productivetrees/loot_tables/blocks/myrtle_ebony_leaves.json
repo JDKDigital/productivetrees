@@ -33,7 +33,7 @@
                   ]
                 }
               ],
-              "name": "productivetrees:ceylon_ebony_leaves"
+              "name": "productivetrees:myrtle_ebony_leaves"
             },
             {
               "type": "productivetrees:optional_loot_item",
@@ -52,7 +52,7 @@
                   "enchantment": "minecraft:fortune"
                 }
               ],
-              "name": "productivetrees:ceylon_ebony_sapling"
+              "name": "productivetrees:myrtle_ebony_sapling"
             }
           ]
         }
@@ -124,5 +124,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "productivetrees:blocks/ceylon_ebony_leaves"
+  "random_sequence": "productivetrees:blocks/myrtle_ebony_leaves"
 }

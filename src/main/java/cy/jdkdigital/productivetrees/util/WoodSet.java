@@ -34,8 +34,10 @@ public record WoodSet(String woodStyle, String plankStyle, String leavesStyle, S
         put("blue_mahoe", new WoodSet("blue_mahoe", "blue_mahoe", "blue_mahoe", "oak", "oak"));
         put("boxwood", new WoodSet("boxwood", "boxwood", "boxwood", "oak", "dark_oak"));
         put("brazil_nut", new WoodSet("brazil_nut", "brazil_nut", "brazil_nut", "oak", "acacia"));
+        put("buddhas_hand", new WoodSet("buddhas_hand", "buddhas_hand", "buddhas_hand", "oak", "oak"));
         put("bull_pine", new WoodSet("bull_pine", "bull_pine", "bull_pine", "oak", "spruce"));
         put("coconut", new WoodSet("coconut", "coconut", "coconut", "oak", "mangrove"));
+        put("coffea", new WoodSet("coffea", "coffea", "coffea", "oak", "bush"));
         put("copper_beech", new WoodSet("copper_beech", "copper_beech", "copper_beech", "oak", "birch"));
         put("douglas_fir", new WoodSet("douglas_fir", "douglas_fir", "douglas_fir", "oak", "spruce"));
         put("finger_lime", new WoodSet("finger_lime", "finger_lime", "finger_lime", "oak", "oak"));
@@ -48,6 +50,7 @@ public record WoodSet(String woodStyle, String plankStyle, String leavesStyle, S
         put("plantain", new WoodSet("plantain", "plantain", "plantain", "oak", "mangrove"));
         put("prarie_crabapple", new WoodSet("prarie_crabapple", "prarie_crabapple", "prarie_crabapple", "oak", "cherry"));
         put("purple_blackthorn", new WoodSet("purple_blackthorn", "purple_blackthorn", "purple_blackthorn", "oak", "cherry"));
+        put("purpleheart", new WoodSet("purpleheart", "purpleheart", "purpleheart", "oak", "jungle"));
         put("rainbow_gum", new WoodSet("rainbow_gum", "rainbow_gum", "rainbow_gum", "oak", "jungle"));
         put("red_banana", new WoodSet("red_banana", "red_banana", "red_banana", "oak", "mangrove"));
         put("rose_gum", new WoodSet("rose_gum", "rose_gum", "rose_gum", "oak", "jungle"));
@@ -58,6 +61,7 @@ public record WoodSet(String woodStyle, String plankStyle, String leavesStyle, S
         put("swamp_gum", new WoodSet("swamp_gum", "swamp_gum", "swamp_gum", "oak", "jungle"));
         put("sweetgum", new WoodSet("sweetgum", "sweetgum", "sweetgum", "oak", "jungle"));
         put("wild_cherry", new WoodSet("wild_cherry", "wild_cherry", "wild_cherry", "oak", "cherry"));
+        put("white_willow", new WoodSet("white_willow", "white_willow", "white_willow", "oak", "birch"));
 
         put("mandarin", new WoodSet("mandarin", "mandarin", "mandarin", "oak", "oak"));
         put("nectarine", new WoodSet("nectarine", "nectarine", "nectarine", "oak", "oak"));

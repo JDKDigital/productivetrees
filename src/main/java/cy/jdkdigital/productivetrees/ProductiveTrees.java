@@ -69,7 +69,7 @@ public class ProductiveTrees
         // TODO
         // tree features
         // custom tree textures
-        // boats?
+        // wood worker for making combination blocks and panels
 
         // Trees to add
         // cacao, Socotra Dragon, sugar apple, coconut sprout, kadsura, snake fruit, pandanus, starry night, Sandalwood, Agarwood

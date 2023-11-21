@@ -7,7 +7,7 @@
       "item": "minecraft:stick"
     },
     "W": {
-      "item": "productivetrees:ceylon_ebony_planks"
+      "item": "productivetrees:myrtle_ebony_planks"
     }
   },
   "pattern": [
@@ -15,7 +15,7 @@
     "#W#"
   ],
   "result": {
-    "item": "productivetrees:ceylon_ebony_fence_gate"
+    "item": "productivetrees:myrtle_ebony_fence_gate"
   },
   "show_notification": true
 }

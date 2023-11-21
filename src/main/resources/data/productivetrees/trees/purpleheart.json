@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:purpleheart",
-  "style": "birch",
+  "style": "purpleheart",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#9e9cae",
-    "plankColor": "#5b1c2f"
-  }
+    "leafColor": "#414d01",
+    "logColor": "#c9b99f",
+    "plankColor": "#6e3869"
+  },
+  "tint": "hives"
 }

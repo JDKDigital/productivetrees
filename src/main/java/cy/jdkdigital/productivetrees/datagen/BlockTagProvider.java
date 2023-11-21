@@ -7,6 +7,7 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
@@ -27,6 +28,7 @@ public class BlockTagProvider extends BlockTagsProvider
         var axe = tag(BlockTags.MINEABLE_WITH_AXE);
 
         var dof = tag(ModTags.DIRT_OR_FARMLAND);
+        var pollinatable = tag(ModTags.POLLINATABLE);
 
         var flowers = tag(BlockTags.FLOWERS);
         var planks = tag(BlockTags.PLANKS);
@@ -141,6 +143,8 @@ public class BlockTagProvider extends BlockTagsProvider
 
         leaves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeRegistrator.POLLINATED_LEAVES.get())));
         dof.addTag(BlockTags.DIRT).add(Blocks.FARMLAND);
+
+        pollinatable.addTag(BlockTags.LEAVES).add(Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);
     }
 
     @Override

@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:coffea",
-  "style": "birch",
+  "style": "coffea",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#154f05",
+    "logColor": "#6c5953",
+    "plankColor": "#fddfe2"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:coffee_bean",
     "count": 4,

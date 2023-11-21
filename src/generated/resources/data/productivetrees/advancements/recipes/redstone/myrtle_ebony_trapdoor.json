@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_ceylon_ebony_planks": {
+    "has_myrtle_ebony_planks": {
       "conditions": {
         "items": [
           {
             "items": [
-              "productivetrees:ceylon_ebony_planks"
+              "productivetrees:myrtle_ebony_planks"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "productivetrees:ceylon_ebony_trapdoor"
+        "recipe": "productivetrees:myrtle_ebony_trapdoor"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_ceylon_ebony_planks",
+      "has_myrtle_ebony_planks",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "productivetrees:ceylon_ebony_trapdoor"
+      "productivetrees:myrtle_ebony_trapdoor"
     ]
   },
   "sends_telemetry_event": false

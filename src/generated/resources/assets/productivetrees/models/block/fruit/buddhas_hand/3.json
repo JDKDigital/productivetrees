@@ -1,6 +1,6 @@
 {
-  "parent": "productivetrees:block/fruit/medium/fruit_3",
+  "parent": "productivetrees:block/fruit/medium_untinted/fruit_3",
   "textures": {
-    "all": "productivetrees:block/leaves/dark_oak"
+    "all": "productivetrees:block/leaves/buddhas_hand"
   }
 }

@@ -13,7 +13,7 @@
       "tag": "forge:honeycombs"
     },
     "W": {
-      "item": "productivetrees:ceylon_ebony_planks"
+      "item": "productivetrees:myrtle_ebony_planks"
     }
   },
   "pattern": [
@@ -22,7 +22,7 @@
     "WWW"
   ],
   "result": {
-    "item": "productivetrees:expansion_box_ceylon_ebony"
+    "item": "productivetrees:expansion_box_myrtle_ebony"
   },
   "show_notification": true
 }
