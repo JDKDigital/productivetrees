@@ -1,8 +1,8 @@
 package cy.jdkdigital.productivetrees.common.block;
 
+import cy.jdkdigital.productivelib.util.ColorUtil;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import cy.jdkdigital.productivetrees.util.ColorUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.TextColor;

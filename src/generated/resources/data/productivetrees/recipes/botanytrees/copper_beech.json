@@ -42,6 +42,15 @@
         "count": 1,
         "item": "productivetrees:copper_beech_sapling"
       }
+    },
+    {
+      "chance": 0.5,
+      "maxRolls": 3,
+      "minRolls": 1,
+      "output": {
+        "count": 1,
+        "item": "productivetrees:beechnut"
+      }
     }
   ],
   "growthTicks": 2400,

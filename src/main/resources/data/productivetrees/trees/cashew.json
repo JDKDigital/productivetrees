@@ -1,14 +1,15 @@
 {
   "feature": "productivetrees:cashew",
-  "style": "acacia",
+  "style": "cashew",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#316207",
+    "logColor": "#3c3d38",
+    "plankColor": "#a67253"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:cashew",
-    "count": 2,
+    "count": 3,
     "growthSpeed": 0.5,
     "unripeColor": "#cea120",
     "ripeColor": "#c31e24"

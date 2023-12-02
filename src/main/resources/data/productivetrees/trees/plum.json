@@ -1,14 +1,15 @@
 {
   "feature": "productivetrees:plum",
-  "style": "birch",
+  "style": "plum",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#b17246",
-    "plankColor": "#af6a81"
+    "leafColor": "#7b8c27",
+    "logColor": "#cc7957",
+    "plankColor": "#58151c"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:plum",
-    "count": 3,
+    "count": 2,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

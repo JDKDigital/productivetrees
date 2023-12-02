@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:cocobolo",
-  "style": "birch",
+  "style": "cocobolo",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#6e5c47",
-    "plankColor": "#7e1603"
-  }
+    "leafColor": "#749e4a",
+    "logColor": "#85737f",
+    "plankColor": "#7b1901"
+  },
+  "tint": "hives"
 }

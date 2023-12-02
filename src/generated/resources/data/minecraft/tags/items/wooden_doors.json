@@ -45,6 +45,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:beliy_naliv_apple_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:blackthorn_door",
       "required": false
     },
@@ -113,10 +117,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:cheese_plant_door",
-      "required": false
-    },
-    {
       "id": "productivetrees:cherry_plum_door",
       "required": false
     },
@@ -157,10 +157,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:crape_myrtle_door",
-      "required": false
-    },
-    {
       "id": "productivetrees:cultivated_pear_door",
       "required": false
     },
@@ -193,7 +189,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:golden_delicious_apple_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:grandidiers_baobab_door",
+      "required": false
+    },
+    {
+      "id": "productivetrees:granny_smith_apple_door",
       "required": false
     },
     {
@@ -305,10 +309,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:orchard_apple_door",
-      "required": false
-    },
-    {
       "id": "productivetrees:osange_orange_door",
       "required": false
     },
@@ -357,7 +357,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:prarie_crabapple_door",
+      "id": "productivetrees:prairie_crabapple_door",
       "required": false
     },
     {
@@ -382,6 +382,10 @@
     },
     {
       "id": "productivetrees:red_crepe_myrtle_door",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_delicious_apple_door",
       "required": false
     },
     {

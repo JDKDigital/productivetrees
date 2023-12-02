@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:breadfruit",
-  "style": "birch",
+  "style": "breadfruit",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#447f58",
+    "logColor": "#858881",
+    "plankColor": "#cb7647"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:breadfruit",
     "count": 1,

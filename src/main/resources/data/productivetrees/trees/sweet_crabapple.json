@@ -8,8 +8,8 @@
   },
   "tint": "hives",
   "fruit": {
-    "item": "productivetrees:crabapple",
-    "count": 3,
+    "item": "productivetrees:sweet_crabapple",
+    "count": 2,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

@@ -1,7 +1,7 @@
 package cy.jdkdigital.productivetrees.common.block.entity;
 
-import cy.jdkdigital.productivebees.common.block.entity.CapabilityBlockEntity;
-import cy.jdkdigital.productivebees.common.block.entity.InventoryHandlerHelper;
+import cy.jdkdigital.productivelib.common.block.entity.CapabilityBlockEntity;
+import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivetrees.inventory.WoodWorkerContainer;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
@@ -32,7 +32,7 @@ public class WoodWorkerBlockEntity extends CapabilityBlockEntity
     public static int SLOT_IN = 0;
     public static int SLOT_OUT = 1;
     public static int SLOT_AXE = 2;
-    private final LazyOptional<IItemHandlerModifiable> inventoryHandler = LazyOptional.of(() -> new InventoryHandlerHelper.ItemHandler(3, this)
+    private final LazyOptional<IItemHandlerModifiable> inventoryHandler = LazyOptional.of(() -> new InventoryHandlerHelper.BlockEntityItemStackHandler(3, this)
     {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {

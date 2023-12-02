@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/prairie_crabapple_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/prairie_crabapple"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/prairie_crabapple_slab_top"
+    }
+  }
+}

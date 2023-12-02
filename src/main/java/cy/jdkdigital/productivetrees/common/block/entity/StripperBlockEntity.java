@@ -1,8 +1,9 @@
 package cy.jdkdigital.productivetrees.common.block.entity;
 
 import com.mojang.authlib.GameProfile;
-import cy.jdkdigital.productivebees.common.block.entity.CapabilityBlockEntity;
-import cy.jdkdigital.productivebees.common.block.entity.InventoryHandlerHelper;
+import cy.jdkdigital.productivelib.common.block.entity.CapabilityBlockEntity;
+import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
+import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.inventory.StripperContainer;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -35,14 +37,15 @@ public class StripperBlockEntity extends CapabilityBlockEntity
     public static int SLOT_IN = 0;
     public static int SLOT_OUT = 1;
     public static int SLOT_AXE = 2;
-    private final LazyOptional<IItemHandlerModifiable> inventoryHandler = LazyOptional.of(() -> new InventoryHandlerHelper.ItemHandler(3, this)
+    public static int SLOT_BARK = 3;
+    private final LazyOptional<IItemHandlerModifiable> inventoryHandler = LazyOptional.of(() -> new InventoryHandlerHelper.BlockEntityItemStackHandler(4, this)
     {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             if (isInputSlotItem(slot, stack)) {
                 return true;
             }
-            if (slot == SLOT_OUT && !stack.is(ItemTags.AXES)) {
+            if ((slot == SLOT_OUT || slot == SLOT_BARK) && !stack.is(ItemTags.AXES)) {
                 var currentOutStack = getStackInSlot(slot);
                 if (currentOutStack.isEmpty()) {
                     return true;
@@ -70,7 +73,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity
 
         @Override
         public int[] getOutputSlots() {
-            return new int[]{SLOT_OUT};
+            return new int[]{SLOT_OUT, SLOT_BARK};
         }
 
         @Override
@@ -100,13 +103,16 @@ public class StripperBlockEntity extends CapabilityBlockEntity
     public static void tick(Level level, BlockPos pos, BlockState state, StripperBlockEntity blockEntity) {
         if (++blockEntity.tickCounter % 10 == 0 && level instanceof ServerLevel serverLevel) {
             blockEntity.inventoryHandler.ifPresent(inv -> {
-                var logs = inv.getStackInSlot(SLOT_IN);
+                var log = inv.getStackInSlot(SLOT_IN);
                 var axe = inv.getStackInSlot(SLOT_AXE);
                 var output = inv.getStackInSlot(SLOT_OUT);
-                if (!logs.isEmpty() && !axe.isEmpty() && (output.getCount() < output.getMaxStackSize())) {
-                    var strippedLogItem = TreeUtil.getStrippedItem(blockEntity, serverLevel, logs);
+                if (!log.isEmpty() && !axe.isEmpty() && (output.getCount() < output.getMaxStackSize())) {
+                    var strippedLogItem = TreeUtil.getStrippedItem(blockEntity, serverLevel, log);
                     if (!strippedLogItem.isEmpty() && inv.insertItem(SLOT_OUT, strippedLogItem, false).isEmpty()) {
-                        logs.shrink(1);
+                        if (log.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock && !logBlock.getTree().getStripDrop().get().isEmpty()) {
+                            inv.insertItem(SLOT_BARK, logBlock.getTree().getStripDrop().get().copy(), false);
+                        }
+                        log.shrink(1);
                         if (axe.isDamageableItem()) {
                             Player fakePlayer = FakePlayerFactory.get(serverLevel, new GameProfile(TreeUtil.STRIPPER_UUID, "stripper"));
                             axe.hurtAndBreak(1, fakePlayer, e -> e.broadcastBreakEvent(EquipmentSlot.MAINHAND));

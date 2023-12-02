@@ -1,0 +1,17 @@
+{
+  "feature": "productivetrees:granny_smith_apple",
+  "style": "granny_smith_apple",
+  "colors": {
+    "leafColor": "#5a8422",
+    "logColor": "#554724",
+    "plankColor": "#e99d63"
+  },
+  "tint": "hives",
+  "fruit": {
+    "item": "productivetrees:granny_smith_apple",
+    "count": 1,
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
+}

@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.util.WoodSet;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
@@ -13,7 +14,7 @@ public class WoodObject implements TreeWoodProvider
     private final ResourceLocation id;
     private final boolean fireProof;
     private final TreeObject.TreeColors colors;
-    private final String hiveStyle;
+    private final Supplier<ItemStack> stripDrop;
 
     private Supplier<Block> logBlock;
     private Supplier<Block> strippedLogBlock;
@@ -36,11 +37,11 @@ public class WoodObject implements TreeWoodProvider
     private Supplier<Block> hiveBlock;
     private Supplier<Block> expansionBoxBlock;
 
-    public WoodObject(ResourceLocation id, boolean fireProof, TreeColors colors, String hiveStyle) {
+    public WoodObject(ResourceLocation id, boolean fireProof, TreeColors colors, Supplier<ItemStack> stripDrop) {
         this.id = id;
         this.fireProof = fireProof;
         this.colors = colors;
-        this.hiveStyle = hiveStyle;
+        this.stripDrop = stripDrop;
     }
 
     public ResourceLocation getId() {
@@ -71,8 +72,8 @@ public class WoodObject implements TreeWoodProvider
         return colors.plankColor;
     }
 
-    public String getHiveStyle() {
-        return hiveStyle;
+    public Supplier<ItemStack> getStripDrop() {
+        return stripDrop;
     }
 
     public Supplier<Block> getLogBlock() {

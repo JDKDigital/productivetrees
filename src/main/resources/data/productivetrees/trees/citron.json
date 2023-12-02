@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:citron",
-  "style": "birch",
+  "style": "citron",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#52483d",
-    "plankColor": "#c8c474"
+    "leafColor": "#678f5f",
+    "logColor": "#2d301b",
+    "plankColor": "#b1976e"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:citron",
     "count": 1,

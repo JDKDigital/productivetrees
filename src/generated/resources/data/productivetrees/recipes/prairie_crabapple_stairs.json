@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "stairs",
+  "key": {
+    "#": {
+      "item": "productivetrees:prairie_crabapple_planks"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:prairie_crabapple_stairs"
+  },
+  "show_notification": true
+}

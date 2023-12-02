@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:golden_delicious_apple_log"
+      },
+      {
+        "item": "productivetrees:golden_delicious_apple_wood"
+      },
+      {
+        "item": "productivetrees:golden_delicious_apple_stripped_log"
+      },
+      {
+        "item": "productivetrees:golden_delicious_apple_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:golden_delicious_apple_planks"
+  }
+}

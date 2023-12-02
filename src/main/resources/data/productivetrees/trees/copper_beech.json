@@ -6,5 +6,12 @@
     "logColor": "#60493a",
     "plankColor": "#cc895f"
   },
-  "tint": "hives"
+  "tint": "hives",
+  "fruit": {
+    "item": "productivetrees:beechnut",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#9aaa01",
+    "ripeColor": "#6f2304"
+  }
 }

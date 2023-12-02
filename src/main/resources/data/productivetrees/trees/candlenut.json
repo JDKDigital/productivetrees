@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:candlenut",
-  "style": "oak",
+  "style": "candlenut",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#5d8558",
+    "logColor": "#a39e98",
+    "plankColor": "#c8a168"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:candlenut",
     "count": 3,

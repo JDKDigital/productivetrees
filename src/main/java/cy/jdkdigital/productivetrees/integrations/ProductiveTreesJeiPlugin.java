@@ -3,7 +3,9 @@ package cy.jdkdigital.productivetrees.integrations;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.recipe.LogStrippingRecipe;
 import cy.jdkdigital.productivetrees.recipe.SawmillRecipe;
+import cy.jdkdigital.productivetrees.recipe.TreeFruitingRecipe;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
+import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import mezz.jei.api.IModPlugin;
@@ -33,6 +35,7 @@ public class ProductiveTreesJeiPlugin implements IModPlugin
     private static final ResourceLocation pluginId = new ResourceLocation(ProductiveTrees.MODID, ProductiveTrees.MODID);
 
     public static final RecipeType<TreePollinationRecipe> TREE_POLLINATION_TYPE = RecipeType.create(ProductiveTrees.MODID, "tree_pollination", TreePollinationRecipe.class);
+    public static final RecipeType<TreeFruitingRecipe> TREE_FRUITING_TYPE = RecipeType.create(ProductiveTrees.MODID, "tree_fruiting", TreeFruitingRecipe.class);
     public static final RecipeType<LogStrippingRecipe> LOG_STRIPPING_TYPE = RecipeType.create(ProductiveTrees.MODID, "log_stripping", LogStrippingRecipe.class);
     public static final RecipeType<SawmillRecipe> SAWMILL_TYPE = RecipeType.create(ProductiveTrees.MODID, "sawmill", SawmillRecipe.class);
 
@@ -58,6 +61,7 @@ public class ProductiveTreesJeiPlugin implements IModPlugin
         IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 
         registration.addRecipeCategories(new TreePollinationRecipeCategory(guiHelper));
+        registration.addRecipeCategories(new TreeFruitingRecipeCategory(guiHelper));
         registration.addRecipeCategories(new LogStrippingRecipeCategory(guiHelper));
         registration.addRecipeCategories(new SawmillRecipeCategory(guiHelper));
     }
@@ -66,21 +70,30 @@ public class ProductiveTreesJeiPlugin implements IModPlugin
     public void registerRecipes(IRecipeRegistration registration) {
         RecipeManager recipeManager = Minecraft.getInstance().level.getRecipeManager();
 
-        List<TreePollinationRecipe> pollinatioonRecipeMap = recipeManager.getAllRecipesFor(TreeRegistrator.TREE_POLLINATION_TYPE.get());
-        registration.addRecipes(TREE_POLLINATION_TYPE, pollinatioonRecipeMap);
+        List<TreePollinationRecipe> pollinatioonRecipeList = recipeManager.getAllRecipesFor(TreeRegistrator.TREE_POLLINATION_TYPE.get());
+        registration.addRecipes(TREE_POLLINATION_TYPE, pollinatioonRecipeList);
+
+        // Tree fruiting recipes
+        List<TreeFruitingRecipe> fruitingRecipeList = new ArrayList<>();
+        TreeFinder.trees.forEach((resourceLocation, treeObject) -> {
+            if (treeObject.hasFruit()) {
+                fruitingRecipeList.add(new TreeFruitingRecipe(new ResourceLocation(ProductiveTrees.MODID, ""), Ingredient.of(treeObject.getSaplingBlock().get()), treeObject.getFruit().getItem().copy()));
+            }
+        });
+        registration.addRecipes(TREE_FRUITING_TYPE, fruitingRecipeList);
 
         List<LogStrippingRecipe> jsonRecipes = recipeManager.getAllRecipesFor(TreeRegistrator.LOG_STRIPPING_TYPE.get());
-        List<LogStrippingRecipe> stripMap = new ArrayList<>(jsonRecipes);
+        List<LogStrippingRecipe> stripList = new ArrayList<>(jsonRecipes);
         Arrays.stream(Ingredient.of(ItemTags.LOGS).getItems()).forEach(itemStack -> {
             var stripped = TreeUtil.getStrippedItem(itemStack);
             if (!stripped.isEmpty() && !ItemStack.isSameItem(itemStack, stripped)) {
                 var id = new ResourceLocation(ProductiveTrees.MODID, ForgeRegistries.ITEMS.getKey(itemStack.getItem()).getPath() + "_" + ForgeRegistries.ITEMS.getKey(stripped.getItem()).getPath());
-                stripMap.add(new LogStrippingRecipe(id, itemStack, stripped));
+                stripList.add(new LogStrippingRecipe(id, itemStack, stripped));
             }
         });
-        registration.addRecipes(LOG_STRIPPING_TYPE, stripMap);
+        registration.addRecipes(LOG_STRIPPING_TYPE, stripList);
 
-        List<SawmillRecipe> sawmillRecipeMap = recipeManager.getAllRecipesFor(TreeRegistrator.SAW_MILLLING_TYPE.get());
-        registration.addRecipes(SAWMILL_TYPE, sawmillRecipeMap);
+        List<SawmillRecipe> sawmillRecipeList = recipeManager.getAllRecipesFor(TreeRegistrator.SAW_MILLLING_TYPE.get());
+        registration.addRecipes(SAWMILL_TYPE, sawmillRecipeList);
     }
 }

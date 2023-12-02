@@ -221,6 +221,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:beliy_naliv_apple_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beliy_naliv_apple_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beliy_naliv_apple_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beliy_naliv_apple_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beliy_naliv_apple_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:blackthorn_planks",
       "required": false
     },
@@ -561,26 +581,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:cheese_plant_planks",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cheese_plant_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cheese_plant_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cheese_plant_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cheese_plant_stripped_wood",
-      "required": false
-    },
-    {
       "id": "productivetrees:cherry_plum_planks",
       "required": false
     },
@@ -781,26 +781,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:crape_myrtle_planks",
-      "required": false
-    },
-    {
-      "id": "productivetrees:crape_myrtle_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:crape_myrtle_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:crape_myrtle_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:crape_myrtle_stripped_wood",
-      "required": false
-    },
-    {
       "id": "productivetrees:cultivated_pear_planks",
       "required": false
     },
@@ -961,6 +941,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:golden_delicious_apple_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:golden_delicious_apple_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:golden_delicious_apple_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:golden_delicious_apple_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:golden_delicious_apple_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:grandidiers_baobab_planks",
       "required": false
     },
@@ -978,6 +978,26 @@
     },
     {
       "id": "productivetrees:grandidiers_baobab_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:granny_smith_apple_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:granny_smith_apple_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:granny_smith_apple_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:granny_smith_apple_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:granny_smith_apple_stripped_wood",
       "required": false
     },
     {
@@ -1521,26 +1541,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:orchard_apple_planks",
-      "required": false
-    },
-    {
-      "id": "productivetrees:orchard_apple_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:orchard_apple_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:orchard_apple_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:orchard_apple_stripped_wood",
-      "required": false
-    },
-    {
       "id": "productivetrees:osange_orange_planks",
       "required": false
     },
@@ -1781,23 +1781,23 @@
       "required": false
     },
     {
-      "id": "productivetrees:prarie_crabapple_planks",
+      "id": "productivetrees:prairie_crabapple_planks",
       "required": false
     },
     {
-      "id": "productivetrees:prarie_crabapple_log",
+      "id": "productivetrees:prairie_crabapple_log",
       "required": false
     },
     {
-      "id": "productivetrees:prarie_crabapple_wood",
+      "id": "productivetrees:prairie_crabapple_wood",
       "required": false
     },
     {
-      "id": "productivetrees:prarie_crabapple_stripped_log",
+      "id": "productivetrees:prairie_crabapple_stripped_log",
       "required": false
     },
     {
-      "id": "productivetrees:prarie_crabapple_stripped_wood",
+      "id": "productivetrees:prairie_crabapple_stripped_wood",
       "required": false
     },
     {
@@ -1918,6 +1918,26 @@
     },
     {
       "id": "productivetrees:red_crepe_myrtle_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_delicious_apple_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_delicious_apple_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_delicious_apple_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_delicious_apple_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_delicious_apple_stripped_wood",
       "required": false
     },
     {

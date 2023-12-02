@@ -1,0 +1,17 @@
+{
+  "feature": "productivetrees:red_delicious_apple",
+  "style": "red_delicious_apple",
+  "colors": {
+    "leafColor": "#8aa265",
+    "logColor": "#3a2d1d",
+    "plankColor": "#b9643f"
+  },
+  "tint": "hives",
+  "fruit": {
+    "item": "minecraft:apple",
+    "count": 2,
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
+}

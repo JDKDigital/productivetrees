@@ -2,7 +2,7 @@
   "type": "productivetrees:tree_pollination",
   "chance": 10,
   "leafA": {
-    "item": "productivetrees:orchard_apple_leaves"
+    "item": "productivetrees:red_delicious_apple_leaves"
   },
   "leafB": {
     "item": "productivetrees:sand_pear_leaves"

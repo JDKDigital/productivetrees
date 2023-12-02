@@ -48,7 +48,7 @@ public class PollenItem extends Item
             if (stack.getTag() != null && stack.getTag().contains("Block") && state.is(BlockTags.LEAVES) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get())) {
                 Block leafB = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(stack.getTag().getString("Block")));
                 if (leafB != null) {
-                    var recipe = RecipeHelper.getRecipe(level, state, leafB.defaultBlockState());
+                    var recipe = RecipeHelper.getPollinationRecipe(level, state, leafB.defaultBlockState());
                     level.setBlock(context.getClickedPos(), TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
                     if (level.getBlockEntity(context.getClickedPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
                         pollinatedLeavesBlockEntity.setLeafA(state.getBlock());

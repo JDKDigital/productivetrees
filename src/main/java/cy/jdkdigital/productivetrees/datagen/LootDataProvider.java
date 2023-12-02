@@ -2,7 +2,7 @@ package cy.jdkdigital.productivetrees.datagen;
 
 import com.google.common.collect.Maps;
 import cy.jdkdigital.productivebees.datagen.BlockLootProvider;
-import cy.jdkdigital.productivetrees.loot.OptionalLootItem;
+import cy.jdkdigital.productivelib.loot.OptionalLootItem;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -113,7 +113,8 @@ public class LootDataProvider implements DataProvider
                     dropOther(treeObject.getWallSignBlock().get(), treeObject.getSignBlock().get());
                     dropSelf(treeObject.getHangingSignBlock().get());
                     dropOther(treeObject.getWallHangingSignBlock().get(), treeObject.getHangingSignBlock().get());
-
+                }
+                if (treeObject.getStyle().hiveStyle() != null) {
                     Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(treeObject.getHiveBlock().get(), BlockLootProvider::genHiveDrop);
                     this.add(treeObject.getHiveBlock().get(), hiveFunc.apply(treeObject.getHiveBlock().get()));
                     Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(treeObject.getExpansionBoxBlock().get(), BlockLootProvider::genExpansionDrop);
@@ -140,7 +141,7 @@ public class LootDataProvider implements DataProvider
                 dropSelf(woodObject.getHangingSignBlock().get());
                 dropOther(woodObject.getWallHangingSignBlock().get(), woodObject.getHangingSignBlock().get());
 
-                if (woodObject.getHiveStyle() != null) {
+                if (woodObject.getStyle().hiveStyle() != null) {
                     Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(woodObject.getHiveBlock().get(), BlockLootProvider::genHiveDrop);
                     this.add(woodObject.getHiveBlock().get(), hiveFunc.apply(woodObject.getHiveBlock().get()));
                     Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(woodObject.getExpansionBoxBlock().get(), BlockLootProvider::genExpansionDrop);

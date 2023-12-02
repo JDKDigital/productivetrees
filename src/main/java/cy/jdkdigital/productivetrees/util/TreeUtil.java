@@ -1,7 +1,9 @@
 package cy.jdkdigital.productivetrees.util;
 
-import com.google.common.collect.Maps;
 import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import cy.jdkdigital.productivelib.util.ColorUtil;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLeavesBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
@@ -10,7 +12,10 @@ import cy.jdkdigital.productivetrees.common.block.ProductiveWoodBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
 import cy.jdkdigital.productivetrees.recipe.SawmillRecipe;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -19,8 +24,11 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ToolActions;
@@ -33,13 +41,23 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
+import java.util.function.Supplier;
 
 public class TreeUtil
 {
+    public static final Codec<Supplier<ItemStack>> ITEM_STACK_CODEC = RecordCodecBuilder.create((instance) -> {
+        return instance.group(ResourceLocation.CODEC.fieldOf("item").forGetter(stack -> {
+            return ForgeRegistries.ITEMS.getKey(stack.get().getItem());
+        }), Codec.INT.fieldOf("count").orElse(1).forGetter(stack -> stack.get().getCount()), CompoundTag.CODEC.optionalFieldOf("nbt").forGetter((stack) -> Optional.ofNullable(stack.get().getTag()))).apply(instance, (item, count, tag) -> {
+            return () -> {
+                var stack = new ItemStack(ForgeRegistries.ITEMS.getValue(item), count);
+                tag.ifPresent(stack::setTag);
+                return stack;
+            };
+        });
+    });
+
     public static final Path LOCK_FILE = createCustomPath("");
     public static final Path TREE_PATH = createCustomPath("trees");
     public static final Path INTERNAL_TREE_PATH = createModPath("/data/" + ProductiveTrees.MODID + "/trees");
@@ -79,6 +97,28 @@ public class TreeUtil
         }
     }
 
+    public static int getLeafColor(Block leaf) {
+        return getLeafColor(leaf, null, null);
+    }
+
+    public static int getLeafColor(Block leaf, BlockAndTintGetter lightReader, BlockPos pos) {
+        if (leaf != null) {
+            if (leaf instanceof ProductiveLeavesBlock leafBlock) {
+                return ColorUtil.getCacheColor(leafBlock.getTree().getLeafColor());
+            }
+            if (leaf.equals(Blocks.SPRUCE_LEAVES)) {
+                return FoliageColor.getEvergreenColor();
+            }
+            if (leaf.equals(Blocks.BIRCH_LEAVES)) {
+                return FoliageColor.getBirchColor();
+            }
+        }
+        if (lightReader != null && pos != null) {
+            return BiomeColors.getAverageFoliageColor(lightReader, pos);
+        }
+        return FoliageColor.getDefaultColor();
+    }
+
     public static ItemStack getLeafFromSapling(ItemStack saplingStack) {
         if (saplingStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveSaplingBlock saplingBlock) {
             return new ItemStack(saplingBlock.getTree().getLeafBlock().get());
@@ -105,11 +145,6 @@ public class TreeUtil
             }
         }
         return ItemStack.EMPTY;
-    }
-
-    public static void registerStrippable(Block log, Block stripped_log) {
-        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
-        AxeItem.STRIPPABLES.put(log, stripped_log);
     }
 
     public static final UUID STRIPPER_UUID = UUID.nameUUIDFromBytes("pt_stripper".getBytes(StandardCharsets.UTF_8)); // d6608568-e24a-326a-a40b-503179fff39e

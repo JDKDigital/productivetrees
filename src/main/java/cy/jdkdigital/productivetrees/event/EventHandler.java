@@ -2,11 +2,12 @@ package cy.jdkdigital.productivetrees.event;
 
 import com.mojang.datafixers.util.Pair;
 import cy.jdkdigital.productivebees.common.block.entity.AdvancedBeehiveBlockEntity;
-import cy.jdkdigital.productivebees.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivebees.event.BeeReleaseEvent;
 import cy.jdkdigital.productivebees.init.ModItems;
+import cy.jdkdigital.productivebees.common.block.entity.InventoryHandlerHelper; // TODO change to lib when bees are using it
 import cy.jdkdigital.productivetrees.Config;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.level.BlockEvent;
@@ -48,7 +50,16 @@ public class EventHandler
     @SubscribeEvent
     public static void blockBreak(BlockEvent.BreakEvent event) {
         if (event.getLevel() instanceof Level level && event.getState().is(TreeRegistrator.POLLINATED_LEAVES.get()) && level.getBlockEntity(event.getPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
-            Block.popResource(level, event.getPos(), pollinatedLeavesBlockEntity.getResult());
+            Block.popResource(level, event.getPos(), pollinatedLeavesBlockEntity.getResult().copy());
+        }
+    }
+
+    @SubscribeEvent
+    public static void blockToolModified(BlockEvent.BlockToolModificationEvent event) {
+        if (!event.isSimulated() && event.getToolAction().equals(ToolActions.AXE_STRIP) && event.getLevel() instanceof ServerLevel level) {
+            if (event.getLevel().getBlockState(event.getPos()).getBlock() instanceof ProductiveLogBlock logBlock && !logBlock.getTree().getStripDrop().get().isEmpty()) {
+                Block.popResource(level, event.getPos(), logBlock.getTree().getStripDrop().get().copy());
+            }
         }
     }
 

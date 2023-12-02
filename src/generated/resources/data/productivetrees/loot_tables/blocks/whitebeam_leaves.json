@@ -8,7 +8,7 @@
           "type": "minecraft:alternatives",
           "children": [
             {
-              "type": "productivetrees:optional_loot_item",
+              "type": "productivelib:optional_loot_item",
               "conditions": [
                 {
                   "condition": "minecraft:any_of",
@@ -36,7 +36,7 @@
               "name": "productivetrees:whitebeam_leaves"
             },
             {
-              "type": "productivetrees:optional_loot_item",
+              "type": "productivelib:optional_loot_item",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"
@@ -90,7 +90,7 @@
       ],
       "entries": [
         {
-          "type": "productivetrees:optional_loot_item",
+          "type": "productivelib:optional_loot_item",
           "conditions": [
             {
               "chances": [

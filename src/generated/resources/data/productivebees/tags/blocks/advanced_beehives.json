@@ -45,6 +45,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_beliy_naliv_apple_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_blackthorn_beehive",
       "required": false
     },
@@ -113,10 +117,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:advanced_cheese_plant_beehive",
-      "required": false
-    },
-    {
       "id": "productivetrees:advanced_cherry_plum_beehive",
       "required": false
     },
@@ -157,10 +157,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:advanced_crape_myrtle_beehive",
-      "required": false
-    },
-    {
       "id": "productivetrees:advanced_cultivated_pear_beehive",
       "required": false
     },
@@ -193,7 +189,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_golden_delicious_apple_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_grandidiers_baobab_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_granny_smith_apple_beehive",
       "required": false
     },
     {
@@ -305,10 +309,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:advanced_orchard_apple_beehive",
-      "required": false
-    },
-    {
       "id": "productivetrees:advanced_osange_orange_beehive",
       "required": false
     },
@@ -357,7 +357,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:advanced_prarie_crabapple_beehive",
+      "id": "productivetrees:advanced_prairie_crabapple_beehive",
       "required": false
     },
     {
@@ -382,6 +382,10 @@
     },
     {
       "id": "productivetrees:advanced_red_crepe_myrtle_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_red_delicious_apple_beehive",
       "required": false
     },
     {

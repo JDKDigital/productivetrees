@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees.integrations;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.recipe.LogStrippingRecipe;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import mezz.jei.api.constants.VanillaTypes;
@@ -14,6 +15,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -64,8 +66,14 @@ public class LogStrippingRecipeCategory implements IRecipeCategory<LogStrippingR
                 .addIngredients(VanillaTypes.ITEM_STACK, Arrays.asList(Ingredient.of(ItemTags.AXES).getItems()))
                 .setSlotName("axe");
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 24)
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 15)
                 .addItemStack(recipe.stripped)
                 .setSlotName("stripped");
+
+        if (recipe.log.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock && !logBlock.getTree().getStripDrop().get().isEmpty()) {
+            builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 15)
+                    .addItemStack(logBlock.getTree().getStripDrop().get())
+                    .setSlotName("bark");
+        }
     }
 }

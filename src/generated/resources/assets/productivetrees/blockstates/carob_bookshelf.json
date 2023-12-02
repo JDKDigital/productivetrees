@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "productivetrees:block/bookshelf/jungle"
+      "model": "productivetrees:block/bookshelf/carob"
     }
   }
 }

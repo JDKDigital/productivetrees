@@ -1,5 +1,19 @@
 {
   "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "productivetrees:item/sloe_two",
+      "predicate": {
+        "count": 2
+      }
+    },
+    {
+      "model": "productivetrees:item/sloe_multiple",
+      "predicate": {
+        "count": 3
+      }
+    }
+  ],
   "textures": {
     "layer0": "productivetrees:item/fruit/sloe"
   }

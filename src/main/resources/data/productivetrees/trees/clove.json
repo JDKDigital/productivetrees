@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:clove",
-  "style": "birch",
+  "style": "clove",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#3d6813",
+    "logColor": "#d0b09b",
+    "plankColor": "#3c1b0c"
   },
+  "tint": "hives",
   "fruit": {
     "style": "berry",
     "item": "productivetrees:clove",

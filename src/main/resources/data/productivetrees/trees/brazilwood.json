@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:brazilwood",
-  "style": "birch",
+  "style": "brazilwood",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#d7af98",
-    "plankColor": "#64324b"
-  }
+    "leafColor": "#4d7a1b",
+    "logColor": "#816456",
+    "plankColor": "#491d04"
+  },
+  "tint": "hives"
 }

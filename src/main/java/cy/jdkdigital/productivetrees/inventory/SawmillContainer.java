@@ -1,8 +1,8 @@
 package cy.jdkdigital.productivetrees.inventory;
 
-import cy.jdkdigital.productivebees.common.block.entity.InventoryHandlerHelper;
-import cy.jdkdigital.productivebees.container.AbstractContainer;
-import cy.jdkdigital.productivebees.container.ManualSlotItemHandler;
+import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
+import cy.jdkdigital.productivelib.container.AbstractContainer;
+import cy.jdkdigital.productivelib.container.ManualSlotItemHandler;
 import cy.jdkdigital.productivetrees.common.block.Sawmill;
 import cy.jdkdigital.productivetrees.common.block.entity.SawmillBlockEntity;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
@@ -47,10 +47,10 @@ public class SawmillContainer extends AbstractContainer
         });
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(inv -> {
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, SawmillBlockEntity.SLOT_IN, 44, 34));
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, SawmillBlockEntity.SLOT_OUT, 116, 25));
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, SawmillBlockEntity.SLOT_SECONDARY, 107, 43));
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, SawmillBlockEntity.SLOT_TERTIARY, 125, 43));
+            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, SawmillBlockEntity.SLOT_IN, 44, 34));
+            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, SawmillBlockEntity.SLOT_OUT, 116, 25));
+            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, SawmillBlockEntity.SLOT_SECONDARY, 107, 43));
+            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, SawmillBlockEntity.SLOT_TERTIARY, 125, 43));
         });
 
         layoutPlayerInventorySlots(playerInventory, 0, 8, 84);

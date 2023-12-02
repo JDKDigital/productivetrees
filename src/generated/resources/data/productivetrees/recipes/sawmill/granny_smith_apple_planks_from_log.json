@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:granny_smith_apple_log"
+    },
+    {
+      "item": "productivetrees:granny_smith_apple_stripped_log"
+    },
+    {
+      "item": "productivetrees:granny_smith_apple_wood"
+    },
+    {
+      "item": "productivetrees:granny_smith_apple_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:granny_smith_apple_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

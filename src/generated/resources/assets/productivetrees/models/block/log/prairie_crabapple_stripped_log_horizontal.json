@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column_horizontal",
+  "textures": {
+    "end": "productivetrees:block/stripped/prairie_crabapple_top",
+    "side": "productivetrees:block/stripped/prairie_crabapple"
+  }
+}

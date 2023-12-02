@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/fruit/medium_untinted/fruit_0",
-  "textures": {
-    "all": "productivetrees:block/leaves/prarie_crabapple"
-  }
-}

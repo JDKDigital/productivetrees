@@ -1,11 +1,12 @@
 {
   "feature": "productivetrees:carob",
-  "style": "jungle",
+  "style": "carob",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#6b6053",
-    "plankColor": "#5e564a"
+    "leafColor": "#253508",
+    "logColor": "#675c5a",
+    "plankColor": "#6e2212"
   },
+  "tint": "hives",
   "fruit": {
     "item": "productivetrees:carob",
     "count": 10,

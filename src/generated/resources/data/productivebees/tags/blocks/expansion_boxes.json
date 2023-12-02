@@ -45,6 +45,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_beliy_naliv_apple",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_blackthorn",
       "required": false
     },
@@ -113,10 +117,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:expansion_box_cheese_plant",
-      "required": false
-    },
-    {
       "id": "productivetrees:expansion_box_cherry_plum",
       "required": false
     },
@@ -157,10 +157,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:expansion_box_crape_myrtle",
-      "required": false
-    },
-    {
       "id": "productivetrees:expansion_box_cultivated_pear",
       "required": false
     },
@@ -193,7 +189,15 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_golden_delicious_apple",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_grandidiers_baobab",
+      "required": false
+    },
+    {
+      "id": "productivetrees:expansion_box_granny_smith_apple",
       "required": false
     },
     {
@@ -305,10 +309,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:expansion_box_orchard_apple",
-      "required": false
-    },
-    {
       "id": "productivetrees:expansion_box_osange_orange",
       "required": false
     },
@@ -357,7 +357,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:expansion_box_prarie_crabapple",
+      "id": "productivetrees:expansion_box_prairie_crabapple",
       "required": false
     },
     {
@@ -382,6 +382,10 @@
     },
     {
       "id": "productivetrees:expansion_box_red_crepe_myrtle",
+      "required": false
+    },
+    {
+      "id": "productivetrees:expansion_box_red_delicious_apple",
       "required": false
     },
     {

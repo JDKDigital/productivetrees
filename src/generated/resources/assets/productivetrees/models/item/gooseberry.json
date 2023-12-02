@@ -1,5 +1,19 @@
 {
   "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "productivetrees:item/gooseberry_two",
+      "predicate": {
+        "count": 2
+      }
+    },
+    {
+      "model": "productivetrees:item/gooseberry_multiple",
+      "predicate": {
+        "count": 3
+      }
+    }
+  ],
   "textures": {
     "layer0": "productivetrees:item/fruit/gooseberry"
   }

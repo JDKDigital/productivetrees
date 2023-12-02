@@ -36,6 +36,10 @@ public class ProductiveFruitBlock extends LeavesBlock implements EntityBlock
         this.registerDefaultState(this.stateDefinition.any().setValue(getAgeProperty(), 0).setValue(DISTANCE, 7).setValue(PERSISTENT, false).setValue(WATERLOGGED, false));
     }
 
+    public TreeObject getTree() {
+        return treeObject;
+    }
+
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;

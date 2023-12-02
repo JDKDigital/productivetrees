@@ -1,7 +1,7 @@
 package cy.jdkdigital.productivetrees.common.block.entity;
 
-import cy.jdkdigital.productivebees.common.block.entity.CapabilityBlockEntity;
-import cy.jdkdigital.productivebees.common.block.entity.InventoryHandlerHelper;
+import cy.jdkdigital.productivelib.common.block.entity.CapabilityBlockEntity;
+import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivetrees.inventory.SawmillContainer;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
@@ -36,7 +36,7 @@ public class SawmillBlockEntity extends CapabilityBlockEntity
     public static int SLOT_OUT = 1;
     public static int SLOT_SECONDARY = 2;
     public static int SLOT_TERTIARY = 3;
-    private final LazyOptional<IItemHandlerModifiable> inventoryHandler = LazyOptional.of(() -> new InventoryHandlerHelper.ItemHandler(4, this)
+    private final LazyOptional<IItemHandlerModifiable> inventoryHandler = LazyOptional.of(() -> new InventoryHandlerHelper.BlockEntityItemStackHandler(4, this)
     {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {

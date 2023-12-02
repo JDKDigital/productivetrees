@@ -7,6 +7,7 @@ import cy.jdkdigital.productivebees.common.block.AdvancedBeehive;
 import cy.jdkdigital.productivebees.common.block.ExpansionBox;
 import cy.jdkdigital.productivebees.common.block.entity.AdvancedBeehiveBlockEntity;
 import cy.jdkdigital.productivebees.common.block.entity.ExpansionBoxBlockEntity;
+import cy.jdkdigital.productivelib.util.ColorUtil;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.ProductiveFruitBlockEntity;
@@ -21,6 +22,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.AbstractMegaTreeGrower;
@@ -55,12 +57,14 @@ public class TreeCreator
             }
 
             // Create grower
-            var grower = treeObject.getMegaFeature().equals(Features.NULL) ? new AbstractTreeGrower() {
+            var grower = treeObject.getMegaFeature().equals(Features.NULL) ? new AbstractTreeGrower()
+            {
                 @Override
                 protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource rand, boolean hasFlowers) {
                     return treeObject.getFeature();
                 }
-            } : new AbstractMegaTreeGrower() {
+            } : new AbstractMegaTreeGrower()
+            {
                 @Override
                 protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource rand, boolean hasFlowers) {
                     return treeObject.getFeature();
@@ -76,14 +80,14 @@ public class TreeCreator
             treeObject.setSaplingBlock(registerBlock(name + "_sapling", () -> new ProductiveSaplingBlock(grower, BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING), treeObject)));
             // Potted sapling
             treeObject.setPottedSaplingBlock(registerBlock(name + "_potted_sapling", () -> new FlowerPotBlock(null, treeObject.getSaplingBlock(), BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)), false));
-            ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(new ResourceLocation(ProductiveTrees.MODID, name + "_sapling"), treeObject.getPottedSaplingBlock());
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(ProductiveTrees.MODID, name + "_sapling"), treeObject.getPottedSaplingBlock());
             // Register leaf block
             treeObject.setLeafBlock(registerBlock(name + "_leaves", () -> new ProductiveLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), treeObject)));
             // Register fruit block + BE
             if (treeObject.hasFruit()) {
                 treeObject.setFruitBlock(
-                    ProductiveTrees.BLOCKS.register(name + "_fruit", () -> new ProductiveFruitBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), treeObject)),
-                    TreeRegistrator.registerBlockEntity(name, () -> TreeRegistrator.createBlockEntityType((pos, state) -> new ProductiveFruitBlockEntity(treeObject, pos, state), treeObject.getFruitBlock().get()))
+                        ProductiveTrees.BLOCKS.register(name + "_fruit", () -> new ProductiveFruitBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), treeObject)),
+                        TreeRegistrator.registerBlockEntity(name, () -> TreeRegistrator.createBlockEntityType((pos, state) -> new ProductiveFruitBlockEntity(treeObject, pos, state), treeObject.getFruitBlock().get()))
                 );
             }
 
@@ -100,7 +104,7 @@ public class TreeCreator
     }
 
     public static WoodObject createWood(String name, WoodObject.TreeColors colors) {
-        var wood = new WoodObject(new ResourceLocation(ProductiveTrees.MODID, name), false, colors, null);
+        var wood = new WoodObject(new ResourceLocation(ProductiveTrees.MODID, name), false, colors, () -> ItemStack.EMPTY);
         registerWoodBlocks(wood, name);
         return wood;
     }
@@ -108,6 +112,7 @@ public class TreeCreator
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> blockSupplier) {
         return registerBlock(name, blockSupplier, true);
     }
+
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> blockSupplier, boolean withItem) {
         RegistryObject<Block> block = ProductiveTrees.BLOCKS.register(name, blockSupplier);
 
@@ -117,6 +122,7 @@ public class TreeCreator
 
         return block;
     }
+
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> blockSupplier, Supplier<Item> itemSupplier) {
         RegistryObject<Block> block = ProductiveTrees.BLOCKS.register(name, blockSupplier);
 
@@ -142,11 +148,11 @@ public class TreeCreator
         } else {
             woodObject.setLogBlock(registerBlock(name + "_log", () -> new ProductiveLogBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_LOG).lightLevel(lightLevel), woodObject)));
             // Stripped log
-            woodObject.setStrippedLogBlock(registerBlock(name + "_stripped_log", () -> new ProductiveLogBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_LOG).lightLevel(lightLevel), woodObject)));
+            woodObject.setStrippedLogBlock(registerBlock(name + "_stripped_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_LOG).lightLevel(lightLevel))));
             // Wood block
             woodObject.setWoodBlock(registerBlock(name + "_wood", () -> new ProductiveWoodBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_WOOD).lightLevel(lightLevel), woodObject)));
             // Stripped wood
-            woodObject.setStrippedWoodBlock(registerBlock(name + "_stripped_wood", () -> new ProductiveWoodBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_WOOD).lightLevel(lightLevel), woodObject)));
+            woodObject.setStrippedWoodBlock(registerBlock(name + "_stripped_wood", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_WOOD).lightLevel(lightLevel))));
         }
         // Register planks block
         woodObject.setPlankBlock(registerBlock(name + "_planks", () -> new Block(BlockBehaviour.Properties.copy(woodObject.isFireProof() ? Blocks.WARPED_PLANKS : Blocks.OAK_PLANKS).lightLevel(lightLevel))));
@@ -175,7 +181,7 @@ public class TreeCreator
         woodObject.setWallHangingSignBlock(registerBlock(name + "_wall_hanging_sign", () -> new ProductiveWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).lightLevel(lightLevel), woodType, TreeRegistrator.registerBlockEntity(name + "_wall_hanging_sign", () -> TreeRegistrator.createBlockEntityType((pos, state) -> new ProductiveHangingSignBlockEntity(woodObject.getWallHangingSignBlock().get(), pos, state), woodObject.getWallHangingSignBlock().get()))), false));
 
         // Hives
-        if (woodObject.getHiveStyle() != null) {
+        if (woodObject.getStyle().hiveStyle() != null) {
             String hiveName = "advanced_" + name + "_beehive";
             String boxName = "expansion_box_" + name;
             woodObject.setHiveBlock(registerBlock(hiveName, () -> new AdvancedBeehive(Block.Properties.copy(Blocks.BEEHIVE).lightLevel(lightLevel), TreeRegistrator.registerBlockEntity(hiveName, () -> TreeRegistrator.createBlockEntityType((pos, state) -> new AdvancedBeehiveBlockEntity((AdvancedBeehive) woodObject.getHiveBlock().get(), pos, state), woodObject.getHiveBlock().get()))), true));

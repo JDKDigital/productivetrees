@@ -10,7 +10,7 @@
           "state": {
             "Name": "productivetrees:banana_fruit",
             "Properties": {
-              "age": "0",
+              "age": "1",
               "distance": "7",
               "persistent": "false",
               "waterlogged": "false"

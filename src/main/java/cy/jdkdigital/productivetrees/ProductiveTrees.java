@@ -2,6 +2,7 @@ package cy.jdkdigital.productivetrees;
 
 import com.mojang.logging.LogUtils;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -32,15 +33,15 @@ public class ProductiveTrees
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static ResourceLocation EMPTY_RL = new ResourceLocation(ProductiveTrees.MODID, "");
+    public static ResourceLocation EMPTY_RL = new ResourceLocation(MODID, "");
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ProductiveTrees.MODID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ProductiveTrees.MODID);
-    public static final DeferredRegister<MenuType<?>> CONTAINER_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, ProductiveTrees.MODID);
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, ProductiveTrees.MODID);
-    public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ProductiveTrees.MODID);
-    public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, ProductiveTrees.MODID);
-    public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, ProductiveTrees.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
+    public static final DeferredRegister<MenuType<?>> CONTAINER_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MODID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MODID);
+    public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, MODID);
+    public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, MODID);
+    public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, MODID);
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MODID);
     public static final DeferredRegister<TreeDecoratorType<?>> TREE_DECORATORS = DeferredRegister.create(ForgeRegistries.TREE_DECORATOR_TYPES, MODID);
     public static final DeferredRegister<LootPoolEntryType> LOOT_POOL_ENTRIES = DeferredRegister.create(Registries.LOOT_POOL_ENTRY_TYPE, MODID);
@@ -66,13 +67,15 @@ public class ProductiveTrees
         TREE_DECORATORS.register(modEventBus);
         POI_TYPES.register(modEventBus);
 
+        TreeRegistrator.init();
+
         // TODO
         // tree features
         // custom tree textures
         // wood worker for making combination blocks and panels
 
         // Trees to add
-        // cacao, Socotra Dragon, sugar apple, coconut sprout, kadsura, snake fruit, pandanus, starry night, Sandalwood, Agarwood
+        // cacao, Socotra Dragon, sugar apple(Annona squamosa), coconut sprout, kadsura, snake fruit, pandanus, starry night, Sandalwood, Agarwood, cork oak (only with food mod that has wine)
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
     }

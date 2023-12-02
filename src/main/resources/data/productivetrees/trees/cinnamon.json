@@ -1,9 +1,13 @@
 {
   "feature": "productivetrees:cinnamon",
-  "style": "birch",
+  "style": "cinnamon",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#8b5d3f",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#29590d",
+    "logColor": "#3f3f37",
+    "plankColor": "#cd4f18"
+  },
+  "tint": "hives",
+  "stripDrop": {
+    "item": "productivetrees:cinnamon"
   }
 }

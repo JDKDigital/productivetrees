@@ -1,7 +1,8 @@
 package cy.jdkdigital.productivetrees.inventory;
 
-import cy.jdkdigital.productivebees.common.block.entity.InventoryHandlerHelper;
-import cy.jdkdigital.productivebees.container.ManualSlotItemHandler;
+import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
+import cy.jdkdigital.productivelib.container.AbstractContainer;
+import cy.jdkdigital.productivelib.container.ManualSlotItemHandler;
 import cy.jdkdigital.productivetrees.common.block.Stripper;
 import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
@@ -15,7 +16,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import javax.annotation.Nonnull;
 import java.util.Objects;
 
-public class StripperContainer extends cy.jdkdigital.productivebees.container.AbstractContainer
+public class StripperContainer extends AbstractContainer
 {
     public final StripperBlockEntity blockEntity;
 
@@ -33,11 +34,13 @@ public class StripperContainer extends cy.jdkdigital.productivebees.container.Ab
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(inv -> {
             // Input slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, StripperBlockEntity.SLOT_IN, 44, 25));
+            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, StripperBlockEntity.SLOT_IN, 44, 25));
             // Axe slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, StripperBlockEntity.SLOT_AXE, 44, 44));
+            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, StripperBlockEntity.SLOT_AXE, 44, 44));
             // Output slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.ItemHandler) inv, StripperBlockEntity.SLOT_OUT, 116, 34));
+            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, StripperBlockEntity.SLOT_OUT, 116, 25));
+            // Bark slot
+            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, StripperBlockEntity.SLOT_BARK, 116, 44));
         });
 
         layoutPlayerInventorySlots(playerInventory, 0, 8, 84);

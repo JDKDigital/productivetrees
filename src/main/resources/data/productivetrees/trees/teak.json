@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:teak",
-  "style": "birch",
+  "style": "teak",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#353128",
-    "plankColor": "#7d7963"
-  }
+    "leafColor": "#718e76",
+    "logColor": "#758d4e",
+    "plankColor": "#82584b"
+  },
+  "tint": "hives"
 }

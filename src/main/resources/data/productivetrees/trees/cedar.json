@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:cedar",
-  "style": "birch",
+  "style": "cedar",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#b57d51",
-    "plankColor": "#d86634"
-  }
+    "leafColor": "#4d8119",
+    "logColor": "#645d5f",
+    "plankColor": "#a1685a"
+  },
+  "tint": "hives"
 }

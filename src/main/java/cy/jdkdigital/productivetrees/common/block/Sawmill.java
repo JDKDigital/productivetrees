@@ -1,6 +1,6 @@
 package cy.jdkdigital.productivetrees.common.block;
 
-import cy.jdkdigital.productivebees.common.block.CapabilityContainerBlock;
+import cy.jdkdigital.productivelib.common.block.CapabilityContainerBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.SawmillBlockEntity;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
@@ -30,8 +30,8 @@ public class Sawmill extends CapabilityContainerBlock
     @Nonnull
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (!level.isClientSide() && level.getBlockEntity(pos) instanceof SawmillBlockEntity tileEntity) {
-            openGui((ServerPlayer) player, tileEntity);
+        if (!level.isClientSide() && level.getBlockEntity(pos) instanceof SawmillBlockEntity blockEntity) {
+            openGui((ServerPlayer) player, blockEntity);
         }
         return InteractionResult.SUCCESS;
     }
@@ -39,7 +39,7 @@ public class Sawmill extends CapabilityContainerBlock
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? null : createTickerHelper(blockEntityType, TreeRegistrator.SAWMILL_BLOCK_ENTITY.get(), SawmillBlockEntity ::tick);
+        return level.isClientSide ? null : createTickerHelper(blockEntityType, TreeRegistrator.SAWMILL_BLOCK_ENTITY.get(), SawmillBlockEntity::tick);
     }
 
     @SuppressWarnings("deprecation")
@@ -55,7 +55,7 @@ public class Sawmill extends CapabilityContainerBlock
         return new SawmillBlockEntity(pos, state);
     }
 
-    public void openGui(ServerPlayer player, SawmillBlockEntity tileEntity) {
-        NetworkHooks.openScreen(player, tileEntity, packetBuffer -> packetBuffer.writeBlockPos(tileEntity.getBlockPos()));
+    public void openGui(ServerPlayer player, SawmillBlockEntity blockEntity) {
+        NetworkHooks.openScreen(player, blockEntity, packetBuffer -> packetBuffer.writeBlockPos(blockEntity.getBlockPos()));
     }
 }

@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:sugar_maple",
-  "style": "birch",
+  "style": "sugar_maple",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#9c99aa",
-    "plankColor": "#9b6127"
-  }
+    "leafColor": "#5f9450",
+    "logColor": "#6b6c64",
+    "plankColor": "#ab8a61"
+  },
+  "tint": "hives"
 }

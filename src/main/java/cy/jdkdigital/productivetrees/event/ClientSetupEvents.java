@@ -1,5 +1,6 @@
 package cy.jdkdigital.productivetrees.event;
 
+import cy.jdkdigital.productivelib.util.ColorUtil;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.client.render.block.StripperBlockEntityRenderer;
 import cy.jdkdigital.productivetrees.common.block.*;
@@ -9,10 +10,11 @@ import cy.jdkdigital.productivetrees.inventory.screen.StripperScreen;
 import cy.jdkdigital.productivetrees.inventory.screen.WoodworkerScreen;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import cy.jdkdigital.productivetrees.util.ColorUtil;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -33,6 +35,22 @@ public class ClientSetupEvents
             MenuScreens.register(TreeRegistrator.STRIPPER_MENU.get(), StripperScreen::new);
             MenuScreens.register(TreeRegistrator.SAWMILL_MENU.get(), SawmillScreen::new);
             MenuScreens.register(TreeRegistrator.WOOD_WORKER_MENU.get(), WoodworkerScreen::new);
+            // Fruits with multi stack overrides
+            ItemProperties.register(TreeRegistrator.BLACKBERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.BLUEBERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.REDCURRANT.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.BLACKCURRANT.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.CRANBERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.GOOSEBERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.RASPBERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.GOLDEN_RASPBERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.JUNIPER.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.SLOE.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.MIRACLE_BERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.BLACK_CHERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.SOUR_CHERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.WILD_CHERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.OLIVE.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
         });
     }
 
@@ -50,10 +68,10 @@ public class ClientSetupEvents
         });
 
         TreeFinder.woods.forEach((id, woodObject) -> {
-            event.registerBlockEntityRenderer(((ProductiveStandingSignBlock)woodObject.getSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
-            event.registerBlockEntityRenderer(((ProductiveWallSignBlock)woodObject.getWallSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
-            event.registerBlockEntityRenderer(((ProductiveCeilingHangingSignBlock)woodObject.getHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
-            event.registerBlockEntityRenderer(((ProductiveWallHangingSignBlock)woodObject.getWallHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
+            event.registerBlockEntityRenderer(((ProductiveStandingSignBlock) woodObject.getSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
+            event.registerBlockEntityRenderer(((ProductiveWallSignBlock) woodObject.getWallSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
+            event.registerBlockEntityRenderer(((ProductiveCeilingHangingSignBlock) woodObject.getHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
+            event.registerBlockEntityRenderer(((ProductiveWallHangingSignBlock) woodObject.getWallHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
         });
     }
 
@@ -61,7 +79,7 @@ public class ClientSetupEvents
     public static void registerItemColors(final RegisterColorHandlersEvent.Item event) {
         event.register((stack, tintIndex) -> {
             if (stack.getTag() != null && stack.getTag().contains("Block")) {
-                return ColorUtil.getLeafColor(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(stack.getTag().getString("Block"))));
+                return TreeUtil.getLeafColor(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(stack.getTag().getString("Block"))));
             }
             return FoliageColor.getDefaultColor();
         }, TreeRegistrator.POLLEN.get());
@@ -99,12 +117,12 @@ public class ClientSetupEvents
                             treeObject.getWallHangingSignBlock().get()
                     );
                 }
-                if (treeObject.tintHives()) {
-                    event.register((stack, tintIndex) -> ColorUtil.getCacheColor(treeObject.getPlankColor()),
-                            treeObject.getHiveBlock().get(),
-                            treeObject.getExpansionBoxBlock().get()
-                    );
-                }
+            }
+            if (treeObject.getStyle().hiveStyle() != null && treeObject.tintHives()) {
+                event.register((stack, tintIndex) -> ColorUtil.getCacheColor(treeObject.getPlankColor()),
+                        treeObject.getHiveBlock().get(),
+                        treeObject.getExpansionBoxBlock().get()
+                );
             }
         });
 
@@ -128,7 +146,7 @@ public class ClientSetupEvents
                     woodObject.getWallHangingSignBlock().get()
             );
 
-            if (woodObject.getHiveStyle() != null) {
+            if (woodObject.getStyle().hiveStyle() != null) {
                 event.register((stack, tintIndex) -> ColorUtil.getCacheColor(woodObject.getPlankColor()),
                         woodObject.getHiveBlock().get(),
                         woodObject.getExpansionBoxBlock().get()
@@ -145,11 +163,17 @@ public class ClientSetupEvents
     public static void registerBlockColors(final RegisterColorHandlersEvent.Block event) {
         event.register((blockState, lightReader, pos, tintIndex) -> {
             if (lightReader != null && pos != null) {
-                BlockEntity be = lightReader.getBlockEntity(pos);
-                if (be instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
-                    int colorA = ColorUtil.getLeafColor(pollinatedLeavesBlockEntity.getLeafA(), lightReader, pos);
-                    int colorB = ColorUtil.getLeafColor(pollinatedLeavesBlockEntity.getLeafB(), lightReader, pos);
-                    return ColorUtil.blend(colorA, colorB, 0.5f);
+                if (blockState.getBlock() instanceof ProductiveFruitBlock fruitBlock && fruitBlock.getTree().tintFruit()) {
+                    var stage = blockState.getValue(ProductiveFruitBlock.getAgeProperty());
+                    if (stage < 3) {
+                        return ColorUtil.getCacheColor(fruitBlock.getTree().getFruit().flowerColor());
+                    }
+                    BlockEntity be = lightReader.getBlockEntity(pos);
+                    if (be instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
+                        int colorA = TreeUtil.getLeafColor(pollinatedLeavesBlockEntity.getLeafA(), lightReader, pos);
+                        int colorB = TreeUtil.getLeafColor(pollinatedLeavesBlockEntity.getLeafB(), lightReader, pos);
+                        return ColorUtil.blend(colorA, colorB, 0.5f);
+                    }
                 }
             }
             return FoliageColor.getDefaultColor();
@@ -205,12 +229,12 @@ public class ClientSetupEvents
                             treeObject.getWallHangingSignBlock().get()
                     );
                 }
-                if (treeObject.tintHives()) {
-                    event.register((blockState, lightReader, pos, tintIndex) -> ColorUtil.getCacheColor(treeObject.getPlankColor()),
-                            treeObject.getHiveBlock().get(),
-                            treeObject.getExpansionBoxBlock().get()
-                    );
-                }
+            }
+            if (treeObject.getStyle().hiveStyle() != null && treeObject.tintHives()) {
+                event.register((blockState, lightReader, pos, tintIndex) -> ColorUtil.getCacheColor(treeObject.getPlankColor()),
+                        treeObject.getHiveBlock().get(),
+                        treeObject.getExpansionBoxBlock().get()
+                );
             }
         });
 
@@ -237,7 +261,7 @@ public class ClientSetupEvents
                     woodObject.getWallSignBlock().get(),
                     woodObject.getWallHangingSignBlock().get()
             );
-            if (woodObject.getHiveStyle() != null) {
+            if (woodObject.getStyle().hiveStyle() != null) {
                 event.register((blockState, lightReader, pos, tintIndex) -> ColorUtil.getCacheColor(woodObject.getPlankColor()),
                         woodObject.getHiveBlock().get(),
                         woodObject.getExpansionBoxBlock().get()

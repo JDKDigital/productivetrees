@@ -3,6 +3,7 @@ package cy.jdkdigital.productivetrees.registry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import cy.jdkdigital.productivetrees.util.WoodSet;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
@@ -46,8 +47,8 @@ public class TreeObject extends WoodObject
     private Supplier<Block> fruitBlock;
     private Supplier<BlockEntityType<BlockEntity>> fruitBlockEntity;
 
-    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, String hiveStyle, boolean registerWood, ResourceLocation log, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
-        super(id, fireProof, colors, hiveStyle);
+    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, Supplier<ItemStack> stripDrop, boolean registerWood, ResourceLocation log, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
+        super(id, fireProof, colors, stripDrop);
         this.feature = feature;
         this.megaFeature = megaFeature;
         this.style = style;
@@ -59,7 +60,7 @@ public class TreeObject extends WoodObject
         this.tintStyle = tintStyle;
         this.fallingLeaves = fallingLeaves;
         this.growthCondition = growthCondition;
-        this.decoration = decoration;// /kill @e[type=warden]
+        this.decoration = decoration;
     }
 
     public static Codec<TreeObject> codec(ResourceLocation id) {
@@ -67,8 +68,8 @@ public class TreeObject extends WoodObject
                 ResourceLocation.CODEC.fieldOf("id").orElse(id).forGetter(TreeObject::getId),
                 ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").orElse(null).forGetter(TreeObject::getFeature),
                 ResourceLocation.CODEC.fieldOf("megaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : Features.NULL, (value) -> value != null ? value.location() : null).forGetter(TreeObject::getMegaFeature),
-                Codec.STRING.fieldOf("style").orElse("oak").forGetter(TreeObject::getStyleName),
-                Codec.STRING.fieldOf("hiveStyle").orElse("oak").forGetter(TreeObject::getHiveStyle),
+                Codec.STRING.fieldOf("style").orElse(id.getPath()).forGetter(TreeObject::getStyleName),
+                TreeUtil.ITEM_STACK_CODEC.fieldOf("stripDrop").orElse(() -> ItemStack.EMPTY).forGetter(TreeObject::getStripDrop),
                 Codec.BOOL.fieldOf("registerWood").orElse(true).forGetter(TreeObject::registerWood),
                 ResourceLocation.CODEC.fieldOf("log").orElse(new ResourceLocation("oak_log")).forGetter(TreeObject::getLog),
                 TreeColors.CODEC.fieldOf("colors").orElse(TreeColors.DEFAULT).forGetter(TreeObject::getColors),
@@ -141,6 +142,10 @@ public class TreeObject extends WoodObject
 
     public boolean tintWood() {
         return tintStyle.equals(TintStyle.FULL);
+    }
+
+    public boolean tintFruit() {
+        return tintStyle.equals(TintStyle.FRUIT_HIVES) || tintStyle.equals(TintStyle.FULL);
     }
 
     public boolean hasFallingLeaves() {
@@ -250,7 +255,7 @@ public class TreeObject extends WoodObject
 
     public enum TintStyle implements StringRepresentable
     {
-        NONE("none"), LEAVES("leaves"), LEAVES_HIVES("leaves_hives"), HIVES("hives"), FULL("full");
+        NONE("none"), LEAVES("leaves"), LEAVES_HIVES("leaves_hives"), FRUIT_HIVES("fruit_hives"), HIVES("hives"), FULL("full");
 
         public static final StringRepresentable.EnumCodec<TintStyle> CODEC = StringRepresentable.fromEnum(TintStyle::values);
 

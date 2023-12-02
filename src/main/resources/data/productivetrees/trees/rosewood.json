@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:rosewood",
-  "style": "birch",
+  "style": "rosewood",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#5e5548",
-    "plankColor": "#800c00"
-  }
+    "leafColor": "#1f3413",
+    "logColor": "#3a2a1d",
+    "plankColor": "#471105"
+  },
+  "tint": "hives"
 }

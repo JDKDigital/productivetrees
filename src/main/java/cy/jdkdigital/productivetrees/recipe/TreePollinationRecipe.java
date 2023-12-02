@@ -41,7 +41,7 @@ public class TreePollinationRecipe implements Recipe<Container>
 
     @Override
     public ItemStack assemble(Container container, RegistryAccess level) {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class TreePollinationRecipe implements Recipe<Container>
 
     @Override
     public ItemStack getResultItem(RegistryAccess level) {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     @Override

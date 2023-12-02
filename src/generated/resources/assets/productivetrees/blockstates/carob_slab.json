@@ -1,13 +1,13 @@
 {
   "variants": {
     "type=bottom": {
-      "model": "productivetrees:block/slab/jungle_slab"
+      "model": "productivetrees:block/slab/carob_slab"
     },
     "type=double": {
-      "model": "productivetrees:block/planks/jungle"
+      "model": "productivetrees:block/planks/carob"
     },
     "type=top": {
-      "model": "productivetrees:block/slab/jungle_slab_top"
+      "model": "productivetrees:block/slab/carob_slab_top"
     }
   }
 }

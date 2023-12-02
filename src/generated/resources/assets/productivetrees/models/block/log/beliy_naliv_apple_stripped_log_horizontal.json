@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column_horizontal",
+  "textures": {
+    "end": "productivetrees:block/stripped/beliy_naliv_apple_top",
+    "side": "productivetrees:block/stripped/beliy_naliv_apple"
+  }
+}

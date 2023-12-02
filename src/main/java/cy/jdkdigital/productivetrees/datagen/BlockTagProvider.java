@@ -7,7 +7,6 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
@@ -97,6 +96,8 @@ public class BlockTagProvider extends BlockTagsProvider
                 wallSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getWallSignBlock().get())));
                 wallHangingSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getWallHangingSignBlock().get())));
 
+            }
+            if (treeObject.getStyle().hiveStyle() != null) {
                 hives.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getHiveBlock().get())));
                 boxes.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getExpansionBoxBlock().get())));
             }
@@ -135,7 +136,7 @@ public class BlockTagProvider extends BlockTagsProvider
             wallSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getWallSignBlock().get())));
             wallHangingSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getWallHangingSignBlock().get())));
 
-            if (woodObject.getHiveStyle() != null) {
+            if (woodObject.getStyle().hiveStyle() != null) {
                 hives.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getHiveBlock().get())));
                 boxes.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(woodObject.getExpansionBoxBlock().get())));
             }

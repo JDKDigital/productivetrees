@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.serialization.JsonOps;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.common.feature.FruitLeafPlacerDecorator;
 import cy.jdkdigital.productivetrees.common.feature.FruitLeafReplacerDecorator;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
@@ -98,7 +99,11 @@ public class FeatureProvider implements DataProvider
             // decorators
             JsonArray decoratorArray = new JsonArray();
             if (treeObject.hasFruit()) {
-                decoratorArray.add(fruitDecorators.containsKey(name) ? fruitDecorators.get(name).apply(SimpleStateProvider.simple(treeObject.getFruitBlock().get())) : fruitDecorators.get("default").apply(SimpleStateProvider.simple(treeObject.getFruitBlock().get())));
+                var state = treeObject.getFruitBlock().get().defaultBlockState();
+                if (treeObject.getId().getPath().equals("banana")) {
+                    state = state.setValue(ProductiveFruitBlock.getAgeProperty(), 1);
+                }
+                decoratorArray.add(fruitDecorators.containsKey(name) ? fruitDecorators.get(name).apply(SimpleStateProvider.simple(state)) : fruitDecorators.get("default").apply(SimpleStateProvider.simple(state)));
             }
             config.add("decorators", decoratorArray);
             // dirt_provider

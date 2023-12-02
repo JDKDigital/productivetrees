@@ -6,11 +6,13 @@
     "logColor": "#5f4812",
     "plankColor": "#cbbf75"
   },
-  "tint": "hives",
+  "tint": "FRUIT_HIVES  ",
   "fruit": {
     "item": "productivetrees:banana",
+    "style": "banana",
     "count": 3,
     "growthSpeed": 0.5,
+    "flowerColor": "#aa6ca6",
     "unripeColor": "#5a9c32",
     "ripeColor": "#e1f500"
   }

@@ -1,5 +1,19 @@
 {
   "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "productivetrees:item/miracle_berry_two",
+      "predicate": {
+        "count": 2
+      }
+    },
+    {
+      "model": "productivetrees:item/miracle_berry_multiple",
+      "predicate": {
+        "count": 3
+      }
+    }
+  ],
   "textures": {
     "layer0": "productivetrees:item/fruit/miracle_berry"
   }

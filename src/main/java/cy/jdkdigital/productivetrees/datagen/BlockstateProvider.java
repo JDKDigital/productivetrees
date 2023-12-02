@@ -1,7 +1,9 @@
 package cy.jdkdigital.productivetrees.datagen;
 
 import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import cy.jdkdigital.productivebees.setup.HiveType;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
@@ -68,7 +70,7 @@ public class BlockstateProvider implements DataProvider
         PackOutput.PathProvider modelPathProvider = packOutput.createPathProvider(PackOutput.Target.RESOURCE_PACK, "models");
 
         TreeFinder.trees.forEach((id, treeObject) -> {
-            addBlockItemModel(treeObject.getLeafBlock().get(), "leaves/" + treeObject.getStyle().leavesStyle(), itemModels);
+            addBlockItemModel(treeObject.getLeafBlock().get(), "leaves/" + treeObject.getStyle().leafStyle(), itemModels);
             if (treeObject.registerWood()) {
                 addBlockItemModel(treeObject.getPlankBlock().get(), "planks/" + treeObject.getStyle().plankStyle(), itemModels);
                 addBlockItemModel(treeObject.getLogBlock().get(), "log/" + treeObject.getStyle().woodStyle() + "_log", itemModels);
@@ -108,31 +110,34 @@ public class BlockstateProvider implements DataProvider
             generateFlatItem(woodObject.getHangingSignBlock().get().asItem(), "item/hanging_sign/", modelOutput);
         });
 
-        generateFruitItem(TreeRegistrator.BLACKBERRY.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.BLACKCURRANT.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.BLUEBERRY.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.REDCURRANT.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.CRANBERRY.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.BLACKBERRY.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.BLACKCURRANT.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.BLUEBERRY.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.REDCURRANT.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.CRANBERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.ELDERBERRY.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.GOOSEBERRY.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.RASPBERRY.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.JUNIPER.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.GOLDEN_RASPBERRY.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.SLOE.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.GOOSEBERRY.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.RASPBERRY.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.GOLDEN_RASPBERRY.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.JUNIPER.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.SLOE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.HAW.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.MIRACLE_BERRY.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.MIRACLE_BERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.APRICOT.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.BLACK_CHERRY.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.BLACK_CHERRY.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.WILD_CHERRY.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.SOUR_CHERRY.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.SPARKLING_CHERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.CHERRY_PLUM.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.OLIVE.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.OLIVE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.OSANGE_ORANGE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.KUMQUAT.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.WILD_CHERRY.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.SOUR_CHERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.DATE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.PLUM.get(), modelOutput);
         generateFruitItem(TreeRegistrator.AVOCADO.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.CRABAPPLE.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.SWEET_CRABAPPLE.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.PRAIRIE_CRABAPPLE.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.FLOWERING_CRABAPPLE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.FIG.get(), modelOutput);
         generateFruitItem(TreeRegistrator.GRAPEFRUIT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.NECTARINE.get(), modelOutput);
@@ -156,7 +161,6 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.PERSIMMON.get(), modelOutput);
         generateFruitItem(TreeRegistrator.POMEGRANATE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.BREADFRUIT.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.MONSTERA_DELICIOSA.get(), modelOutput);
         generateFruitItem(TreeRegistrator.LIME.get(), modelOutput);
         generateFruitItem(TreeRegistrator.KEY_LIME.get(), modelOutput);
         generateFruitItem(TreeRegistrator.FINGER_LIME.get(), modelOutput);
@@ -181,7 +185,6 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.WALNUT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.CAROB.get(), modelOutput);
         generateFruitItem(TreeRegistrator.ALLSPICE.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.CHILLI.get(), modelOutput);
         generateFruitItem(TreeRegistrator.CLOVE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.CINNAMON.get(), modelOutput);
         generateFruitItem(TreeRegistrator.NUTMEG.get(), modelOutput);
@@ -206,9 +209,51 @@ public class BlockstateProvider implements DataProvider
         generateFlatItem(item, "item/fruit/", modelOutput);
     }
 
+    private void generateMultiFruitItem(Item item, BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput) {
+        var tLocation = ForgeRegistries.ITEMS.getKey(item).withPrefix("item/").withSuffix("_two");
+        ModelTemplates.FLAT_ITEM.create(tLocation, getFlatItemTextureMap(item, "item/fruit/", "_two"), modelOutput);
+        var mLocation = ForgeRegistries.ITEMS.getKey(item).withPrefix("item/").withSuffix("_multiple");
+        ModelTemplates.FLAT_ITEM.create(mLocation, getFlatItemTextureMap(item, "item/fruit/", "_multiple"), modelOutput);
+        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(item), getFlatItemTextureMap(item, "item/fruit/"), modelOutput, this::createFruitTemplate);
+    }
+
+    public JsonObject createFruitTemplate(ResourceLocation resourceLocation, Map<TextureSlot, ResourceLocation> slotResourceLocationMap) {
+        JsonObject jsonobject = new JsonObject();
+
+        jsonobject.addProperty("parent", "minecraft:item/generated");
+        if (!slotResourceLocationMap.isEmpty()) {
+            JsonObject textureLocations = new JsonObject();
+            slotResourceLocationMap.forEach((textureSlot, resourceLocation1) -> {
+                textureLocations.addProperty(textureSlot.getId(), resourceLocation1.toString());
+            });
+            jsonobject.add("textures", textureLocations);
+        }
+
+        JsonArray overrides = new JsonArray();
+        JsonObject twoOverride = new JsonObject();
+        JsonObject twoPredicate = new JsonObject();
+        twoPredicate.addProperty("count", 2);
+        twoOverride.add("predicate", twoPredicate);
+        twoOverride.addProperty("model", resourceLocation.toString() + "_two");
+        JsonObject moreOverride = new JsonObject();
+        JsonObject morePredicate = new JsonObject();
+        morePredicate.addProperty("count", 3);
+        moreOverride.add("predicate", morePredicate);
+        moreOverride.addProperty("model", resourceLocation + "_multiple");
+        overrides.add(twoOverride);
+        overrides.add(moreOverride);
+        jsonobject.add("overrides", overrides);
+
+        return jsonobject;
+    }
+
     private static TextureMapping getFlatItemTextureMap(Item item, String prefix) {
+        return getFlatItemTextureMap(item, prefix, "");
+    }
+
+    private static TextureMapping getFlatItemTextureMap(Item item, String prefix, String suffix) {
         ResourceLocation resourcelocation = ForgeRegistries.ITEMS.getKey(item);
-        return (new TextureMapping()).put(TextureSlot.LAYER0, resourcelocation.withPrefix(prefix));
+        return (new TextureMapping()).put(TextureSlot.LAYER0, resourcelocation.withPrefix(prefix).withSuffix(suffix));
     }
 
     private void addItemModel(Item item, Supplier<JsonElement> supplier, Map<ResourceLocation, Supplier<JsonElement>> itemModels) {
@@ -257,7 +302,7 @@ public class BlockstateProvider implements DataProvider
                     ProductiveTrees.LOGGER.warn("Error generating sapling for " + id);
                     throw ne;
                 }
-                this.createBaseBlock(treeObject.getLeafBlock().get(), "leaves/" + treeObject.getStyle().leavesStyle());
+                this.createBaseBlock(treeObject.getLeafBlock().get(), "leaves/" + treeObject.getStyle().leafStyle());
                 if (treeObject.hasFruit()) {
                     this.createFruitBlock(treeObject);
                 }
@@ -279,8 +324,8 @@ public class BlockstateProvider implements DataProvider
                     this.blockStateOutput.accept(createSimpleBlock(treeObject.getHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + treeObject.getStyle().plankStyle())));
                     this.blockStateOutput.accept(createSimpleBlock(treeObject.getWallHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + treeObject.getStyle().plankStyle())));
 
-                    if (treeObject.getHiveStyle() != null) {
-                        cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(treeObject.getHiveBlock().get(), treeObject.getExpansionBoxBlock().get(), id.getPath(), new HiveType(false, treeObject.getPlankColor(), treeObject.getHiveStyle(), Ingredient.of(treeObject.getPlankBlock().get())), hivBlockStates, this.modelOutput);
+                    if (treeObject.getStyle().hiveStyle() != null) {
+                        cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(treeObject.getHiveBlock().get(), treeObject.getExpansionBoxBlock().get(), id.getPath(), new HiveType(false, treeObject.getPlankColor(), treeObject.getStyle().hiveStyle(), Ingredient.of(treeObject.getPlankBlock().get())), hivBlockStates, this.modelOutput);
                     }
                 }
             });
@@ -308,8 +353,8 @@ public class BlockstateProvider implements DataProvider
                 this.blockStateOutput.accept(createSimpleBlock(woodObject.getHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + woodObject.getStyle().plankStyle())));
                 this.blockStateOutput.accept(createSimpleBlock(woodObject.getWallHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + woodObject.getStyle().plankStyle())));
 
-                if (woodObject.getHiveStyle() != null) {
-                    cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(woodObject.getHiveBlock().get(), woodObject.getExpansionBoxBlock().get(), id.getPath(), new HiveType(false, woodObject.getPlankColor(), woodObject.getHiveStyle(), Ingredient.of(woodObject.getPlankBlock().get())), hivBlockStates, this.modelOutput);
+                if (woodObject.getStyle().hiveStyle() != null) {
+                    cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(woodObject.getHiveBlock().get(), woodObject.getExpansionBoxBlock().get(), id.getPath(), new HiveType(false, woodObject.getPlankColor(), woodObject.getStyle().hiveStyle(), Ingredient.of(woodObject.getPlankBlock().get())), hivBlockStates, this.modelOutput);
                 }
             });
 
@@ -361,7 +406,7 @@ public class BlockstateProvider implements DataProvider
             this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(treeObject.getFruitBlock().get()).with(PropertyDispatch.property(BlockStateProperties.AGE_5).generate(age -> {
                 String fruitStyle = treeObject.tintLeaves() ? treeObject.getFruit().style() : treeObject.getFruit().style() + "_untinted";
                 var template = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + fruitStyle + "/fruit_" + age)), Optional.empty(), TextureSlot.ALL);
-                return Variant.variant().with(VariantProperties.MODEL, template.create(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/" + age), (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + treeObject.getStyle().leavesStyle())), modelOutput));
+                return Variant.variant().with(VariantProperties.MODEL, template.create(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/" + age), (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + treeObject.getStyle().leafStyle())), modelOutput));
             })));
         }
 
@@ -692,7 +737,7 @@ public class BlockstateProvider implements DataProvider
                 stairsInnerModel.create(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/" + name + "_stairs_inner"), plankTextureMap, this.modelOutput);
                 stairsOuterModel.create(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/" + name + "_stairs_outer"), plankTextureMap, this.modelOutput);
 
-                var leavesTextureMap = (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + style.leavesStyle()));
+                var leavesTextureMap = (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + style.leafStyle()));
                 // leaves
                 leavesModel.create(new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + name), leavesTextureMap, this.modelOutput);
 

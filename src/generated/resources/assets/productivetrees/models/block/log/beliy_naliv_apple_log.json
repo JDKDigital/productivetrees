@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log",
+  "textures": {
+    "end": "productivetrees:block/log_top/beliy_naliv_apple",
+    "side": "productivetrees:block/log/beliy_naliv_apple"
+  }
+}

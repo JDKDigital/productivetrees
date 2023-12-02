@@ -1,6 +1,6 @@
 package cy.jdkdigital.productivetrees.common.block;
 
-import cy.jdkdigital.productivebees.common.block.CapabilityContainerBlock;
+import cy.jdkdigital.productivelib.common.block.CapabilityContainerBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;

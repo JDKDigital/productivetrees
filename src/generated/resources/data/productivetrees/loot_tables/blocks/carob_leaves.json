@@ -8,7 +8,7 @@
           "type": "minecraft:alternatives",
           "children": [
             {
-              "type": "productivetrees:optional_loot_item",
+              "type": "productivelib:optional_loot_item",
               "conditions": [
                 {
                   "condition": "minecraft:any_of",
@@ -36,17 +36,16 @@
               "name": "productivetrees:carob_leaves"
             },
             {
-              "type": "productivetrees:optional_loot_item",
+              "type": "productivelib:optional_loot_item",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"
                 },
                 {
                   "chances": [
-                    0.025,
-                    0.027777778,
-                    0.03125,
-                    0.041666668,
+                    0.05,
+                    0.0625,
+                    0.083333336,
                     0.1
                   ],
                   "condition": "minecraft:table_bonus",
@@ -91,7 +90,7 @@
       ],
       "entries": [
         {
-          "type": "productivetrees:optional_loot_item",
+          "type": "productivelib:optional_loot_item",
           "conditions": [
             {
               "chances": [

@@ -1,9 +1,10 @@
 {
   "feature": "productivetrees:red_maple",
-  "style": "birch",
+  "style": "red_maple",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#7f7f79",
-    "plankColor": "#9a6026"
-  }
+    "leafColor": "#f81f31",
+    "logColor": "#b0a9a5",
+    "plankColor": "#d1b890"
+  },
+  "tint": "hives"
 }

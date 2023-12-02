@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "group": "hives",
+  "ingredients": [
+    {
+      "item": "productivetrees:advanced_golden_delicious_apple_beehive"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:advanced_golden_delicious_apple_beehive"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 1,
+  "ingredient": [
+    {
+      "item": "productivetrees:prairie_crabapple_log"
+    },
+    {
+      "item": "productivetrees:prairie_crabapple_wood"
+    },
+    {
+      "item": "productivetrees:prairie_crabapple_stripped_log"
+    },
+    {
+      "item": "productivetrees:prairie_crabapple_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:prairie_crabapple_fence_gate"
+}

@@ -45,7 +45,7 @@
     },
     {
       "chance": 0.6,
-      "maxRolls": 1,
+      "maxRolls": 2,
       "minRolls": 1,
       "output": {
         "count": 1,

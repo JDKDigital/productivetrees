@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:red_delicious_apple_log"
+    },
+    {
+      "item": "productivetrees:red_delicious_apple_wood"
+    },
+    {
+      "item": "productivetrees:red_delicious_apple_stripped_log"
+    },
+    {
+      "item": "productivetrees:red_delicious_apple_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:red_delicious_apple_planks"
+}

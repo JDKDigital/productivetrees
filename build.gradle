@@ -6,6 +6,18 @@ plugins {
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
+jarJar.enable()
+//tasks.jarJar.configure {
+//    archiveClassifier.set('')
+//}
+//tasks.build.dependsOn tasks.jarJar
+
+reobf {
+    jarJar { }
+}
+
+jar.finalizedBy('reobfJarJar')
+
 version = mod_version
 group = mod_group_id
 
@@ -121,10 +133,16 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
+    implementation fg.deobf("local.libs:productivelib-${minecraft_version}:${lib_version}")
+    implementation fg.deobf("local.libs:productivebees-${minecraft_version}:${pb_version}")
+
+    jarJar(group: 'cy.jdkdigital.productivelib', name: 'productivelib', version: '[0.0.1,)') {
+        transitive(false)
+    }
+
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
-    implementation fg.deobf("local.libs:productivebees-${minecraft_version}:${pb_version}")
-//    implementation fg.deobf("curse.maven:productivebees-377897:4743183")
+
     implementation fg.deobf("curse.maven:corail-woodcutter-331983:4637053")
     implementation fg.deobf("curse.maven:bookshelf-228525:4668763")
     implementation fg.deobf("curse.maven:botany-pots-353928:4703902")
@@ -152,6 +170,7 @@ processResources {
     }
 }
 
+
 // Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
@@ -166,12 +185,6 @@ jar {
         ])
     }
 }
-
-// Example configuration to allow publishing using the maven-publish plugin
-// This is the preferred method to reobfuscate your jar file
-jar.finalizedBy('reobfJar')
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-// publish.dependsOn('reobfJar')
 
 publishing {
     publications {
