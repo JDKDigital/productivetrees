@@ -1,12 +1,10 @@
 {
   "feature": "productivetrees:black_cherry",
-  "style": "black_cherry",
   "colors": {
     "leafColor": "#364e14",
     "logColor": "#6b5e43",
     "plankColor": "#ab6940"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:black_cherry",
     "count": 5,

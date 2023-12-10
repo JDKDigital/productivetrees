@@ -10,7 +10,6 @@
   },
   "fruit": {
     "item": "productivetrees:akebia",
-    "count": 1,
     "growthSpeed": 0.4,
     "unripeColor": "#c3bb59",
     "ripeColor": "#5a0181"

@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:purpleheart",
-  "style": "purpleheart",
   "colors": {
     "leafColor": "#414d01",
     "logColor": "#c9b99f",
     "plankColor": "#6e3869"
-  },
-  "tint": "hives"
+  }
 }

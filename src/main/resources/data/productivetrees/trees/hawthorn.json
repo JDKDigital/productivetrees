@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:hawthorn",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#6e644f",
-    "plankColor": "#cc8362"
+    "leafColor": "#9ab57c",
+    "logColor": "#a38c7a",
+    "plankColor": "#9a6c48"
   },
   "fruit": {
     "item": "productivetrees:haw",

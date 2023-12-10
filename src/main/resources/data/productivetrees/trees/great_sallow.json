@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:great_sallow",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#3d5b29",
+    "logColor": "#4c4942",
+    "plankColor": "#d1a173"
   }
 }

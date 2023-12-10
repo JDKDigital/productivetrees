@@ -8,7 +8,6 @@
   },
   "fruit": {
     "item": "productivetrees:cempedak",
-    "count": 1,
     "growthSpeed": 0.2,
     "unripeColor": "#926e10",
     "ripeColor": "#663710"

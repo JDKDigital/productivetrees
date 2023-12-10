@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:cacao_log"
+    },
+    {
+      "item": "productivetrees:cacao_stripped_log"
+    },
+    {
+      "item": "productivetrees:cacao_wood"
+    },
+    {
+      "item": "productivetrees:cacao_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:cacao_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

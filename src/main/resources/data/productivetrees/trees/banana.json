@@ -1,17 +1,16 @@
 {
   "feature": "productivetrees:banana",
-  "style": "banana",
   "colors": {
     "leafColor": "#5a9c32",
     "logColor": "#5f4812",
     "plankColor": "#cbbf75"
   },
-  "tint": "FRUIT_HIVES  ",
+  "tint": "fruit_hives",
   "fruit": {
     "item": "productivetrees:banana",
     "style": "banana",
     "count": 3,
-    "growthSpeed": 0.5,
+    "growthSpeed": 0.2,
     "flowerColor": "#aa6ca6",
     "unripeColor": "#5a9c32",
     "ripeColor": "#e1f500"

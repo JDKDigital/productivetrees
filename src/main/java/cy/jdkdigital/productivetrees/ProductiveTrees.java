@@ -15,7 +15,9 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -47,6 +49,8 @@ public class ProductiveTrees
     public static final DeferredRegister<LootPoolEntryType> LOOT_POOL_ENTRIES = DeferredRegister.create(Registries.LOOT_POOL_ENTRY_TYPE, MODID);
     public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(ForgeRegistries.POI_TYPES, MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+    public static final DeferredRegister<FoliagePlacerType<?>> FOLIAGE_PLACERS = DeferredRegister.create(Registries.FOLIAGE_PLACER_TYPE, MODID);
+    public static final DeferredRegister<TrunkPlacerType<?>> TRUNK_PLACERS = DeferredRegister.create(Registries.TRUNK_PLACER_TYPE, MODID);
 
     public ProductiveTrees()
     {
@@ -66,6 +70,8 @@ public class ProductiveTrees
         FEATURES.register(modEventBus);
         TREE_DECORATORS.register(modEventBus);
         POI_TYPES.register(modEventBus);
+        FOLIAGE_PLACERS.register(modEventBus);
+        TRUNK_PLACERS.register(modEventBus);
 
         TreeRegistrator.init();
 
@@ -73,9 +79,6 @@ public class ProductiveTrees
         // tree features
         // custom tree textures
         // wood worker for making combination blocks and panels
-
-        // Trees to add
-        // cacao, Socotra Dragon, sugar apple(Annona squamosa), coconut sprout, kadsura, snake fruit, pandanus, starry night, Sandalwood, Agarwood, cork oak (only with food mod that has wine)
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
     }

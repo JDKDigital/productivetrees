@@ -1,14 +1,12 @@
 {
   "feature": "productivetrees:pomelo",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#c8c474"
+    "leafColor": "#6e7d8a",
+    "logColor": "#46454e",
+    "plankColor": "#c9c9c8"
   },
   "fruit": {
     "item": "productivetrees:pomelo",
-    "count": 3,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

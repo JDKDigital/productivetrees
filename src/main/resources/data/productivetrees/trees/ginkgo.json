@@ -1,10 +1,10 @@
 {
   "feature": "productivetrees:ginkgo",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#acad95",
-    "plankColor": "#f4e7ba"
+    "leafColor": "#b9bd1a",
+    "leafColorFall": "#e8dd00",
+    "logColor": "#c4bbbc",
+    "plankColor": "#d3af7d"
   },
   "fruit": {
     "item": "productivetrees:ginkgo_nut",

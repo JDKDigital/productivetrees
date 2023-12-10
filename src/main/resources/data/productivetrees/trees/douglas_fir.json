@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:douglas_fir",
-  "style": "douglas_fir",
   "colors": {
     "leafColor": "#626b32",
     "logColor": "#593f3b",
     "plankColor": "#d7a776"
-  },
-  "tint": "hives"
+  }
 }

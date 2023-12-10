@@ -6,10 +6,8 @@
     "logColor": "#ac8547",
     "plankColor": "#ddcc78"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:persimmon",
-    "count": 1,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

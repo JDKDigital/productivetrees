@@ -77,7 +77,7 @@ public class TreeObject extends WoodObject
                 MutationInfo.CODEC.fieldOf("mutation_info").orElse(MutationInfo.DEFAULT).forGetter(TreeObject::getMutationInfo),
                 TagKey.hashedCodec(Registries.BLOCK).fieldOf("soil").orElse(ModTags.DIRT_OR_FARMLAND).forGetter(TreeObject::getSoil),
                 Codec.BOOL.fieldOf("fireproof").orElse(false).forGetter(TreeObject::isFireProof),
-                TintStyle.CODEC.fieldOf("tint").orElse(TintStyle.FULL).forGetter(TreeObject::getTintStyle),
+                TintStyle.CODEC.fieldOf("tint").orElse(TintStyle.HIVES).forGetter(TreeObject::getTintStyle),
                 Codec.BOOL.fieldOf("fallingLeaves").orElse(false).forGetter(TreeObject::hasFallingLeaves),
                 GrowthCondition.CODEC.fieldOf("growthConditions").orElse(GrowthCondition.DEFAULT).forGetter(TreeObject::getGrowthConditions),
                 Decoration.CODEC.fieldOf("decoration").orElse(Decoration.DEFAULT).forGetter(TreeObject::getDecoration)
@@ -145,7 +145,7 @@ public class TreeObject extends WoodObject
     }
 
     public boolean tintFruit() {
-        return tintStyle.equals(TintStyle.FRUIT_HIVES) || tintStyle.equals(TintStyle.FULL);
+        return tintStyle.equals(TintStyle.FULL) || tintStyle.equals(TintStyle.FRUIT) || tintStyle.equals(TintStyle.FRUIT_HIVES);
     }
 
     public boolean hasFallingLeaves() {
@@ -229,7 +229,7 @@ public class TreeObject extends WoodObject
     {
         private static final Fruit DEFAULT = new Fruit("", ProductiveTrees.EMPTY_RL, 1, 1.0F, "", "", "");
         public static Codec<Fruit> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                Codec.STRING.fieldOf("style").orElse("medium").forGetter(Fruit::style),
+                Codec.STRING.fieldOf("style").orElse("berry").forGetter(Fruit::style),
                 ResourceLocation.CODEC.fieldOf("item").forGetter(Fruit::fruitItem),
                 Codec.INT.fieldOf("count").orElse(1).forGetter(Fruit::count),
                 Codec.FLOAT.fieldOf("growthSpeed").orElse(1.0F).forGetter(Fruit::growthSpeed),
@@ -255,7 +255,7 @@ public class TreeObject extends WoodObject
 
     public enum TintStyle implements StringRepresentable
     {
-        NONE("none"), LEAVES("leaves"), LEAVES_HIVES("leaves_hives"), FRUIT_HIVES("fruit_hives"), HIVES("hives"), FULL("full");
+        NONE("none"), LEAVES("leaves"), LEAVES_HIVES("leaves_hives"), FRUIT("fruit"), FRUIT_HIVES("fruit_hives"), HIVES("hives"), FULL("full");
 
         public static final StringRepresentable.EnumCodec<TintStyle> CODEC = StringRepresentable.fromEnum(TintStyle::values);
 

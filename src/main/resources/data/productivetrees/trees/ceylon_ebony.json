@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:ceylon_ebony",
-  "style": "ceylon_ebony",
   "colors": {
     "leafColor": "#6e8f48",
     "logColor": "#221d27",
     "plankColor": "#030102"
-  },
-  "tint": "hives"
+  }
 }

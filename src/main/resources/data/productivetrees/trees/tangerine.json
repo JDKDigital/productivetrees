@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:tangerine",
-  "style": "tangerine",
   "colors": {
     "leafColor": "#439253",
     "logColor": "#c9a688",
     "plankColor": "#de9453"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:tangerine",
-    "count": 2,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

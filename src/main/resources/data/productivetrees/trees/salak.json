@@ -1,0 +1,15 @@
+{
+  "feature": "productivetrees:salak",
+  "style": "birch",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#6b6053",
+    "plankColor": "#5e564a"
+  },
+  "fruit": {
+    "item": "productivetrees:snake_fruit",
+    "growthSpeed": 0.5,
+    "unripeColor": "#8fa425",
+    "ripeColor": "#7b411f"
+  }
+}

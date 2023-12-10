@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:finger_lime",
-  "style": "finger_lime",
   "colors": {
     "leafColor": "#105b00",
     "logColor": "#f3f3d7",
     "plankColor": "#e3bf8f"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:finger_lime",
-    "count": 1,
     "growthSpeed": 0.5,
     "unripeColor": "#8cab05",
     "ripeColor": "#384c00"

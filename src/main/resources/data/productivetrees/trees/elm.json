@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:elm",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#ababab",
-    "plankColor": "#f0a964"
+    "leafColor": "#21514f",
+    "logColor": "#dfc19e",
+    "plankColor": "#ccae8c"
   }
 }

@@ -1,14 +1,12 @@
 {
   "feature": "productivetrees:grapefruit",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#c8c474"
+    "leafColor": "#5f943e",
+    "logColor": "#3c3420",
+    "plankColor": "#9a9592"
   },
   "fruit": {
     "item": "productivetrees:grapefruit",
-    "count": 3,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

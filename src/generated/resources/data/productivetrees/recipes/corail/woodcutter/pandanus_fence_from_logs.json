@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:pandanus_log"
+    },
+    {
+      "item": "productivetrees:pandanus_wood"
+    },
+    {
+      "item": "productivetrees:pandanus_stripped_log"
+    },
+    {
+      "item": "productivetrees:pandanus_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:pandanus_fence"
+}

@@ -1,15 +1,13 @@
 {
   "feature": "productivetrees:wild_cherry",
-  "style": "wild_cherry",
   "colors": {
     "leafColor": "#a1b84e",
     "logColor": "#4d3a35",
     "plankColor": "#a45a33"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:wild_cherry",
-    "count": 3,
+    "count": 2,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

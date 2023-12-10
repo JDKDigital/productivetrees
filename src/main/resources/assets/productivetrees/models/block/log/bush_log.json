@@ -2,8 +2,7 @@
   "parent": "productivetrees:block/log/base_small_log",
   "textures": {
     "side": "productivetrees:block/log/oak",
-    "top_inner": "productivetrees:block/log_top/oak_inner",
-    "top_bark": "productivetrees:block/log_top/bush_bark",
+    "top_inner": "productivetrees:block/log_top/oak",
     "branch": "productivetrees:block/branch"
   }
 }

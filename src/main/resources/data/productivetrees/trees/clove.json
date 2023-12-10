@@ -1,14 +1,11 @@
 {
   "feature": "productivetrees:clove",
-  "style": "clove",
   "colors": {
     "leafColor": "#3d6813",
     "logColor": "#d0b09b",
     "plankColor": "#3c1b0c"
   },
-  "tint": "hives",
   "fruit": {
-    "style": "berry",
     "item": "productivetrees:clove",
     "count": 3,
     "growthSpeed": 0.5,

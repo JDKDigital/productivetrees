@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:nectarine",
-  "style": "nectarine",
   "colors": {
     "leafColor": "#134502",
     "logColor": "#714f36",
     "plankColor": "#e09654"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:nectarine",
-    "count": 1,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

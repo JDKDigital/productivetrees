@@ -65,6 +65,22 @@
       "required": false
     },
     {
+      "id": "productivetrees:aquilaria_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:aquilaria_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:aquilaria_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:aquilaria_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:ash_log",
       "required": false
     },
@@ -369,6 +385,22 @@
       "required": false
     },
     {
+      "id": "productivetrees:cacao_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cacao_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cacao_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cacao_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:candlenut_log",
       "required": false
     },
@@ -625,6 +657,22 @@
       "required": false
     },
     {
+      "id": "productivetrees:cork_oak_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cork_oak_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cork_oak_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cork_oak_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:cultivated_pear_log",
       "required": false
     },
@@ -654,6 +702,22 @@
     },
     {
       "id": "productivetrees:date_palm_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:dogwood_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:dogwood_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:dogwood_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:dogwood_stripped_wood",
       "required": false
     },
     {
@@ -833,6 +897,22 @@
       "required": false
     },
     {
+      "id": "productivetrees:greenheart_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:greenheart_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:greenheart_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:greenheart_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:hawthorn_log",
       "required": false
     },
@@ -926,6 +1006,38 @@
     },
     {
       "id": "productivetrees:iroko_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:juniper_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:juniper_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:juniper_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:juniper_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kadsura_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kadsura_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kadsura_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kadsura_stripped_wood",
       "required": false
     },
     {
@@ -1201,22 +1313,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:olive_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:olive_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:olive_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:olive_stripped_wood",
-      "required": false
-    },
-    {
       "id": "productivetrees:orange_log",
       "required": false
     },
@@ -1262,6 +1358,22 @@
     },
     {
       "id": "productivetrees:padauk_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pandanus_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pandanus_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pandanus_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pandanus_stripped_wood",
       "required": false
     },
     {
@@ -1617,6 +1729,38 @@
       "required": false
     },
     {
+      "id": "productivetrees:salak_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:salak_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:salak_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:salak_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sandalwood_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sandalwood_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sandalwood_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sandalwood_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:sand_pear_log",
       "required": false
     },
@@ -1697,6 +1841,22 @@
       "required": false
     },
     {
+      "id": "productivetrees:socotra_dragon_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:socotra_dragon_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:socotra_dragon_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:socotra_dragon_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:sour_cherry_log",
       "required": false
     },
@@ -1742,6 +1902,22 @@
     },
     {
       "id": "productivetrees:star_fruit_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_apple_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_apple_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_apple_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_apple_stripped_wood",
       "required": false
     },
     {

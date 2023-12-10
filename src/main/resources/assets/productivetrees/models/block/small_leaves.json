@@ -1,0 +1,7 @@
+{
+  "parent": "block/fence_post",
+  "textures": {
+    "texture": "productivetrees:block/leaves/monkey_puzzle",
+    "particle": "productivetrees:block/leaves/monkey_puzzle"
+  }
+}

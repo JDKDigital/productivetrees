@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:swamp_gum",
-  "style": "swamp_gum",
   "colors": {
     "leafColor": "#3d5a3e",
     "logColor": "#373125",
     "plankColor": "#b17143"
-  },
-  "tint": "hives"
+  }
 }

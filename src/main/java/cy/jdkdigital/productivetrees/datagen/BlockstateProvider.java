@@ -83,7 +83,8 @@ public class BlockstateProvider implements DataProvider
                 addBlockItemModel(treeObject.getPressurePlateBlock().get(), "pressure_plate/" + treeObject.getStyle().plankStyle() + "_pressure_plate", itemModels);
                 addBlockItemModel(treeObject.getFenceBlock().get(), "fence/" + treeObject.getStyle().plankStyle() + "_fence_inventory", itemModels);
                 addBlockItemModel(treeObject.getFenceGateBlock().get(), "fence_gate/" + treeObject.getStyle().plankStyle() + "_fence_gate", itemModels);
-                generateFlatItem(treeObject.getDoorBlock().get().asItem(), "item/door/", modelOutput);
+//                generateFlatItem(treeObject.getDoorBlock().get().asItem(), "item/door/", modelOutput);
+                ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(treeObject.getDoorBlock().get().asItem()), (new TextureMapping()).put(TextureSlot.LAYER0, new ResourceLocation(ProductiveTrees.MODID, "item/door/" + treeObject.getStyle().doorStyle())), modelOutput);
                 addBlockItemModel(treeObject.getTrapdoorBlock().get(), "trapdoor/" + treeObject.getStyle().doorStyle(), itemModels);
                 addBlockItemModel(treeObject.getBookshelfBlock().get(), "bookshelf/" + treeObject.getStyle().plankStyle(), itemModels);
                 generateFlatItem(treeObject.getSignBlock().get().asItem(), "item/sign/", modelOutput);
@@ -103,7 +104,8 @@ public class BlockstateProvider implements DataProvider
             addBlockItemModel(woodObject.getPressurePlateBlock().get(), "pressure_plate/" + woodObject.getStyle().plankStyle() + "_pressure_plate", itemModels);
             addBlockItemModel(woodObject.getFenceBlock().get(), "fence/" + woodObject.getStyle().plankStyle() + "_fence_inventory", itemModels);
             addBlockItemModel(woodObject.getFenceGateBlock().get(), "fence_gate/" + woodObject.getStyle().plankStyle() + "_fence_gate", itemModels);
-            generateFlatItem(woodObject.getDoorBlock().get().asItem(), "item/door/", modelOutput);
+//            generateFlatItem(woodObject.getDoorBlock().get().asItem(), "item/door/", modelOutput);
+            ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(woodObject.getDoorBlock().get().asItem()), (new TextureMapping()).put(TextureSlot.LAYER0, new ResourceLocation(ProductiveTrees.MODID, "item/door/" + woodObject.getStyle().doorStyle())), modelOutput);
             addBlockItemModel(woodObject.getTrapdoorBlock().get(), "trapdoor/" + woodObject.getStyle().doorStyle(), itemModels);
             addBlockItemModel(woodObject.getBookshelfBlock().get(), "bookshelf/" + woodObject.getStyle().plankStyle(), itemModels);
             generateFlatItem(woodObject.getSignBlock().get().asItem(), "item/sign/", modelOutput);
@@ -123,6 +125,7 @@ public class BlockstateProvider implements DataProvider
         generateMultiFruitItem(TreeRegistrator.SLOE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.HAW.get(), modelOutput);
         generateMultiFruitItem(TreeRegistrator.MIRACLE_BERRY.get(), modelOutput);
+        generateMultiFruitItem(TreeRegistrator.ASAI_BERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.APRICOT.get(), modelOutput);
         generateMultiFruitItem(TreeRegistrator.BLACK_CHERRY.get(), modelOutput);
         generateMultiFruitItem(TreeRegistrator.WILD_CHERRY.get(), modelOutput);
@@ -134,6 +137,7 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.KUMQUAT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.DATE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.PLUM.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.SNAKE_FRUIT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.AVOCADO.get(), modelOutput);
         generateFruitItem(TreeRegistrator.SWEET_CRABAPPLE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.PRAIRIE_CRABAPPLE.get(), modelOutput);
@@ -152,6 +156,8 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.COPOAZU.get(), modelOutput);
         generateFruitItem(TreeRegistrator.CEMPEDAK.get(), modelOutput);
         generateFruitItem(TreeRegistrator.JACKFRUIT.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.HALA_FRUIT.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.SOURSOP.get(), modelOutput);
         generateFruitItem(TreeRegistrator.BANANA.get(), modelOutput);
         generateFruitItem(TreeRegistrator.COCONUT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.MANGO.get(), modelOutput);
@@ -189,6 +195,7 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.CINNAMON.get(), modelOutput);
         generateFruitItem(TreeRegistrator.NUTMEG.get(), modelOutput);
         generateFruitItem(TreeRegistrator.STAR_ANISE.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.CORK.get(), modelOutput);
 
         List<CompletableFuture<?>> output = new ArrayList<>();
         blockModels.forEach((block, supplier) -> {
@@ -404,7 +411,7 @@ public class BlockstateProvider implements DataProvider
 
         private void createFruitBlock(TreeObject treeObject) {
             this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(treeObject.getFruitBlock().get()).with(PropertyDispatch.property(BlockStateProperties.AGE_5).generate(age -> {
-                String fruitStyle = treeObject.tintLeaves() ? treeObject.getFruit().style() : treeObject.getFruit().style() + "_untinted";
+                String fruitStyle = treeObject.tintFruit() ? treeObject.getFruit().style() : treeObject.getFruit().style() + "_untinted";
                 var template = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + fruitStyle + "/fruit_" + age)), Optional.empty(), TextureSlot.ALL);
                 return Variant.variant().with(VariantProperties.MODEL, template.create(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/" + age), (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + treeObject.getStyle().leafStyle())), modelOutput));
             })));
@@ -680,7 +687,7 @@ public class BlockstateProvider implements DataProvider
             var stairsInnerModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/base_stairs_inner")), Optional.empty(), TextureSlot.TEXTURE);
             var stairsOuterModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/base_stairs_outer")), Optional.empty(), TextureSlot.TEXTURE);
 
-            var leavesModel = new ModelTemplate(Optional.of(new ResourceLocation("block/leaves")), Optional.empty(), TextureSlot.ALL);
+            var leavesModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/base_leaves")), Optional.empty(), TextureSlot.ALL);
 
             var logModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/log/base_log")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
             var logHorizontalModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/log/base_log_horizontal")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);

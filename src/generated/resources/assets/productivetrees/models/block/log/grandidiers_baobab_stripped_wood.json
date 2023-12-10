@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/grandidiers_baobab",
+    "side": "productivetrees:block/stripped/grandidiers_baobab"
+  }
+}

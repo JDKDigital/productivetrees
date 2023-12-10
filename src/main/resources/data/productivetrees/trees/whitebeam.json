@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:whitebeam",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#6c5e60",
-    "plankColor": "#c9c2b9"
+    "leafColor": "#f0fbf5",
+    "logColor": "#6c584f",
+    "plankColor": "#e2e2e2"
   }
 }

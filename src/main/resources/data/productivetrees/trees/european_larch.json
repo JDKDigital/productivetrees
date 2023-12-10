@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:european_larch",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#796169",
-    "plankColor": "#d79f8d"
+    "leafColor": "#a1d97f",
+    "logColor": "#494440",
+    "plankColor": "#af784f"
   }
 }

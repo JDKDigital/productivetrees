@@ -1,6 +1,5 @@
 {
   "feature": "productivetrees:twinkle_field",
-  "style": "twinkle_field",
   "decoration": {
     "lightLevel": 11
   },
@@ -9,6 +8,5 @@
     "logColor": "#161530",
     "plankColor": "#0e4873"
   },
-  "tint": "hives",
   "fallingLeaves": true
 }

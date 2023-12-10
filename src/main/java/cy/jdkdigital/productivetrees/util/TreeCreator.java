@@ -96,6 +96,12 @@ public class TreeCreator
             } else {
                 treeObject.setLogBlock(() -> Blocks.OAK_LOG);
             }
+
+            if (name.equals("monkey_puzzle")) {
+                registerBlock(name + "_small_leaves", () -> new ProductiveDirectionalLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), treeObject));
+                registerBlock(name + "_medium_leaves", () -> new ProductiveDirectionalLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), treeObject));
+            }
+
             return treeObject;
         } else {
             ProductiveTrees.LOGGER.info("failed to read tree configuration for " + id);

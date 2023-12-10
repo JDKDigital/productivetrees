@@ -235,6 +235,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
 
     private void buildTreeBreedingRecipes(Consumer<FinishedRecipe> consumer) {
         treeBreeding(consumer, "silver_lime", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 15);
+        treeBreeding(consumer, "cacao", Blocks.JUNGLE_LEAVES, Blocks.CHERRY_LEAVES, 15);
         treeBreeding(consumer, "walnut", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 10);
         treeBreeding(consumer, "sweet_chestnut", "walnut", RecipeProvider.getLeafIngredient("wild_cherry", "silver_lime"), 10);
         treeBreeding(consumer, "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), Ingredient.of(Blocks.BIRCH_LEAVES), 10);
@@ -245,6 +246,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "sequoia", "european_larch", "bull_pine", 5);
         treeBreeding(consumer, "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), Ingredient.of(Blocks.JUNGLE_LEAVES), 10);
         treeBreeding(consumer, "ipe", "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), 10);
+        treeBreeding(consumer, "aquilaria", "teak", "ipe", 10);
         treeBreeding(consumer, "kapok", "teak", Ingredient.of(Blocks.JUNGLE_LEAVES), 10);
         treeBreeding(consumer, "ceylon_ebony", "kapok", Ingredient.of(Blocks.DARK_OAK_LEAVES), 10);
         treeBreeding(consumer, "purple_crepe_myrtle", "ceylon_ebony", Ingredient.of(Blocks.CHERRY_LEAVES), 5);
@@ -252,21 +254,24 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "yellow_meranti", "ceylon_ebony", "kapok", 10);
         treeBreeding(consumer, "mahogany", "yellow_meranti", "kapok", 10);
         treeBreeding(consumer, "padauk", Ingredient.of(Blocks.ACACIA_LEAVES), Ingredient.of(Blocks.JUNGLE_LEAVES), 5);
+        treeBreeding(consumer, "dogwood", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 5);
         treeBreeding(consumer, "balsa", "teak", Ingredient.of(Blocks.ACACIA_LEAVES), 10);
         treeBreeding(consumer, "cocobolo", "balsa", Ingredient.of(Blocks.DARK_OAK_LEAVES), 10);
         treeBreeding(consumer, "wenge", "balsa", "cocobolo", 10);
+        treeBreeding(consumer, "socotra_dragon", "wenge", "cocobolo", 10);
         treeBreeding(consumer, "grandidiers_baobab", "balsa", "wenge", 10);
         treeBreeding(consumer, "blue_mahoe", "teak", "balsa", 5);
         treeBreeding(consumer, "white_willow", "silver_lime", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES), 5);
-        treeBreeding(consumer, "cogwood", "mahogany", "kapok", 10);
-        treeBreeding(consumer, "papaya", "wild_cherry", Ingredient.of(Blocks.JUNGLE_LEAVES), 5);
-        treeBreeding(consumer, "date_palm", "papaya", Ingredient.of(Blocks.JUNGLE_LEAVES), 5);
+        treeBreeding(consumer, "greenheart", "mahogany", "kapok", 10);
+        treeBreeding(consumer, "papaya", "wild_cherry", "cacao", 5);
+        treeBreeding(consumer, "date_palm", "papaya", "cacao", 5);
+        treeBreeding(consumer, "asai_palm", "date_palm", "blackcurrant", 5);
         treeBreeding(consumer, "persimmon", "ceylon_ebony", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 5);
         treeBreeding(consumer, "pomegranate", "holly", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 5);
         treeBreeding(consumer, "white_poplar", "white_willow", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, getLeafIngredient("silver_lime").getItems()[0].getItem()), 5);
         treeBreeding(consumer, "red_delicious_apple", Ingredient.of(Blocks.CHERRY_LEAVES), Ingredient.of(Blocks.OAK_LEAVES, Blocks.DARK_OAK_LEAVES), 10);
         treeBreeding(consumer, "sweet_crabapple", "red_delicious_apple", "sugar_maple", 10);
-        treeBreeding(consumer, "flowering_crabapple", "red_delicious_apple", "sweet_crabapple", 10);
+        treeBreeding(consumer, "flowering_crabapple", "dogwood", "sweet_crabapple", 10);
         treeBreeding(consumer, "prairie_crabapple", "red_delicious_apple", Ingredient.of(Blocks.BIRCH_LEAVES), 10);
         treeBreeding(consumer, "blackthorn", "plum", "red_delicious_apple", 10);
         treeBreeding(consumer, "cherry_plum", "plum", Ingredient.of(Blocks.CHERRY_LEAVES), 10);
@@ -289,7 +294,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "kumquat", "mandarin", "wild_cherry", 10);
         treeBreeding(consumer, "lemon", "pomelo", "citron", 10);
         treeBreeding(consumer, "buddhas_hand", "mandarin", "citron", 10);
-        treeBreeding(consumer, "banana", "balsa", Ingredient.of(Blocks.JUNGLE_LEAVES), 10);
+        treeBreeding(consumer, "banana", "balsa", "cacao", 10);
         treeBreeding(consumer, "red_banana", "banana", "kapok", 10);
         treeBreeding(consumer, "plantain", "banana", "teak", 10);
         treeBreeding(consumer, "butternut", "walnut", "wild_cherry", 10);
@@ -302,6 +307,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "aspen", "beech", "alder", 10);
         treeBreeding(consumer, "yew", "european_larch", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "lawson_cypress", "bull_pine", Blocks.SPRUCE_LEAVES, 10);
+        treeBreeding(consumer, "cork_oak", "lawson_cypress", Blocks.OAK_LEAVES, 10);
         treeBreeding(consumer, "douglas_fir", "silver_fir", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "hazel", "aspen", "beech", 10);
         treeBreeding(consumer, "sycamore_fig", "ash", "sugar_maple", 10);
@@ -309,6 +315,9 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "whitebeam", "ash", Blocks.BIRCH_LEAVES, 10);
         treeBreeding(consumer, "hawthorn", "rowan", "beech", 10);
         treeBreeding(consumer, "pecan", "beech", Blocks.BIRCH_LEAVES, 10);
+        treeBreeding(consumer, "sugar_apple", "pecan", "raspberry", 10);
+        treeBreeding(consumer, "soursop", "sugar_apple", "banana", 10);
+        treeBreeding(consumer, "kadsura", "pecan", "sugar_apple", 10);
         treeBreeding(consumer, "elm", "ash", "bull_pine", 10);
         treeBreeding(consumer, "elderberry", "aspen", "alder", 10);
         treeBreeding(consumer, "holly", "alder", "rowan", 10);
@@ -327,16 +336,17 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "osange_orange", "kapok", "old_fustic", 10);
         treeBreeding(consumer, "old_fustic", "teak", "mahogany", 10);
         treeBreeding(consumer, "brazilwood", "teak", "mahogany", 10);
+        treeBreeding(consumer, "sandalwood", "brazilwood", "mahogany", 10);
         treeBreeding(consumer, "logwood", "kapok", "rosewood", 10);
         treeBreeding(consumer, "rosewood", "mahogany", "teak", 10);
         treeBreeding(consumer, "purpleheart", "brazilwood", "kapok", 10);
         treeBreeding(consumer, "iroko", "balsa", "teak", 10);
         treeBreeding(consumer, "ginkgo", "wenge", "silver_lime", 10);
-        treeBreeding(consumer, "brazil_nut", "beech", Blocks.JUNGLE_LEAVES, 10);
+        treeBreeding(consumer, "brazil_nut", "beech", "cacao", 10);
         treeBreeding(consumer, "rose_gum", "balsa", "sweetgum", 10); // TODO sweetgum has nothing to do with rose gum
         treeBreeding(consumer, "swamp_gum", "yellow_meranti", "rose_gum", 10);
         treeBreeding(consumer, "boxwood", "holly", "alder", 10);
-        treeBreeding(consumer, "coffea", "black_cherry", Blocks.JUNGLE_LEAVES, 10);
+        treeBreeding(consumer, "coffea", "black_cherry", "cacao", 10);
         treeBreeding(consumer, "clove", "coffea", "teak", 10);
         treeBreeding(consumer, "monkey_puzzle", "western_hemlock", Blocks.JUNGLE_LEAVES, 10);
         treeBreeding(consumer, "rainbow_gum", "balsa", "rose_gum", 10);
@@ -358,14 +368,14 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "avocado", "wenge", Blocks.OAK_LEAVES, 10);
         treeBreeding(consumer, "nutmeg", "teak", "clove", 10);
         treeBreeding(consumer, "allspice", "teak", "clove", 10);
-//        treeBreeding(consumer, "chilli_pepper", "ginkgo", "hazel", 10);
         treeBreeding(consumer, "star_anise", "clove", "allspice", 10);
         treeBreeding(consumer, "mango", "orange", Blocks.MANGROVE_LEAVES, 10);
         treeBreeding(consumer, "star_fruit", "mango", "star_anise", 10);
         treeBreeding(consumer, "candlenut", "ginkgo", "hazel", 10);
-        treeBreeding(consumer, "akebia", "candlenut", Blocks.JUNGLE_LEAVES, 10);
+        treeBreeding(consumer, "akebia", "candlenut", "cacao", 10);
         treeBreeding(consumer, "copoazu", "akebia", "cashew", 10);
         treeBreeding(consumer, "carob", "sweet_chestnut", "copoazu", 10);
+        treeBreeding(consumer, "pandanus", "walnut", "coconut", 10);
         treeBreeding(consumer, "ysabella_purpurea", "purpleheart", "rosewood", 5);
     }
 

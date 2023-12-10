@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:rowan",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#b7b6a3",
-    "plankColor": "#cfad9a"
+    "leafColor": "#5b7e67",
+    "logColor": "#211a10",
+    "plankColor": "#d2b190"
   }
 }

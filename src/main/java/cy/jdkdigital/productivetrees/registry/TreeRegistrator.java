@@ -6,6 +6,8 @@ import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.*;
 import cy.jdkdigital.productivetrees.common.item.PollenItem;
 import cy.jdkdigital.productivetrees.common.item.SieveUpgradeItem;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.TaperedFoliagePlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.CenteredUpwardsBranchingTrunkPlacer;
 import cy.jdkdigital.productivetrees.inventory.SawmillContainer;
 import cy.jdkdigital.productivetrees.inventory.StripperContainer;
 import cy.jdkdigital.productivetrees.inventory.WoodWorkerContainer;
@@ -29,6 +31,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -92,6 +96,9 @@ public class TreeRegistrator
     public static final RegistryObject<RecipeType<SawmillRecipe>> SAW_MILLLING_TYPE = ProductiveTrees.RECIPE_TYPES.register("sawmill", () -> new RecipeType<>() {});
     public static final RegistryObject<ColoredParticleType> PETAL_PARTICLES = ProductiveTrees.PARTICLE_TYPES.register("petals", ColoredParticleType::new);
 
+    public static final RegistryObject<TrunkPlacerType<CenteredUpwardsBranchingTrunkPlacer>> CENTERED_UPWARDS_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("centered_upwards_branching_trunk_placer", () -> new TrunkPlacerType<>(CenteredUpwardsBranchingTrunkPlacer.CODEC));
+    public static final RegistryObject<FoliagePlacerType<TaperedFoliagePlacer>> TAPERED_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("tapered_foliage_placer", () -> new FoliagePlacerType<>(TaperedFoliagePlacer.CODEC));
+
     // Fruiting items
     static final FoodProperties BERRY_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(1).saturationMod(0.1F).build();
     public static final RegistryObject<Item> BLACKBERRY = ProductiveTrees.ITEMS.register("blackberry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
@@ -107,6 +114,7 @@ public class TreeRegistrator
     public static final RegistryObject<Item> SLOE = ProductiveTrees.ITEMS.register("sloe", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
     public static final RegistryObject<Item> HAW = ProductiveTrees.ITEMS.register("haw", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
     public static final RegistryObject<Item> MIRACLE_BERRY = ProductiveTrees.ITEMS.register("miracle_berry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
+    public static final RegistryObject<Item> ASAI_BERRY = ProductiveTrees.ITEMS.register("asai_berry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
 
     static final FoodProperties SMALL_FRUIT_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(4).saturationMod(0.3F).build();
     public static final RegistryObject<Item> APRICOT = ProductiveTrees.ITEMS.register("apricot", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
@@ -119,6 +127,7 @@ public class TreeRegistrator
     public static final RegistryObject<Item> SOUR_CHERRY = ProductiveTrees.ITEMS.register("sour_cherry", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
     public static final RegistryObject<Item> DATE = ProductiveTrees.ITEMS.register("date", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
     public static final RegistryObject<Item> PLUM = ProductiveTrees.ITEMS.register("plum", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
+    public static final RegistryObject<Item> SNAKE_FRUIT = ProductiveTrees.ITEMS.register("snake_fruit", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
     public static final RegistryObject<Item> SPARKLING_CHERRY = ProductiveTrees.ITEMS.register("sparkling_cherry", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
 
     static final FoodProperties FRUIT_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(4).saturationMod(0.3F).build();
@@ -154,6 +163,8 @@ public class TreeRegistrator
     public static final RegistryObject<Item> COPOAZU = ProductiveTrees.ITEMS.register("copoazu", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
     public static final RegistryObject<Item> CEMPEDAK = ProductiveTrees.ITEMS.register("cempedak", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
     public static final RegistryObject<Item> JACKFRUIT = ProductiveTrees.ITEMS.register("jackfruit", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
+    public static final RegistryObject<Item> HALA_FRUIT = ProductiveTrees.ITEMS.register("hala_fruit", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
+    public static final RegistryObject<Item> SOURSOP = ProductiveTrees.ITEMS.register("soursop", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
 
     static final FoodProperties CITRUS_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(2).saturationMod(0.2F).build();
     public static final RegistryObject<Item> LIME = ProductiveTrees.ITEMS.register("lime", () -> new Item(new Item.Properties().food(CITRUS_FOOD)));
@@ -190,6 +201,7 @@ public class TreeRegistrator
     public static final RegistryObject<Item> CINNAMON = ProductiveTrees.ITEMS.register("cinnamon", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> NUTMEG = ProductiveTrees.ITEMS.register("nutmeg", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STAR_ANISE = ProductiveTrees.ITEMS.register("star_anise", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CORK = ProductiveTrees.ITEMS.register("cork", () -> new Item(new Item.Properties()));
 
     public static <E extends BlockEntity, T extends BlockEntityType<E>> Supplier<T> registerBlockEntity(String id, Supplier<T> supplier) {
         return ProductiveTrees.BLOCK_ENTITIES.register(id, supplier);

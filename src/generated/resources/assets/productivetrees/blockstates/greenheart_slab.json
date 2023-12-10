@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/greenheart_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/greenheart"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/greenheart_slab_top"
+    }
+  }
+}

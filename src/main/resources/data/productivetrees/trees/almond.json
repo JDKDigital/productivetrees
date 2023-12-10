@@ -1,6 +1,5 @@
 {
   "feature": "productivetrees:almond",
-  "style": "almond",
   "colors": {
     "leafColor": "#396027",
     "logColor": "#10100e",

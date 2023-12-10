@@ -1,0 +1,11 @@
+{
+  "feature": "productivetrees:cork_oak",
+  "colors": {
+    "leafColor": "#19230b",
+    "logColor": "#bd9281",
+    "plankColor": "#af947e"
+  },
+  "stripDrop": {
+    "item": "productivetrees:cork"
+  }
+}

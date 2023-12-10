@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column_horizontal",
+  "textures": {
+    "end": "productivetrees:block/stripped/dogwood_top",
+    "side": "productivetrees:block/stripped/dogwood"
+  }
+}

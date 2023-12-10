@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/cork_oak_top",
+    "side": "productivetrees:block/stripped/cork_oak"
+  }
+}

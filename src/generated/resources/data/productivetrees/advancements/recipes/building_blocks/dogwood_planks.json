@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_logs": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "productivetrees:dogwood_log",
+              "productivetrees:dogwood_wood",
+              "productivetrees:dogwood_stripped_log",
+              "productivetrees:dogwood_stripped_wood"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:dogwood_planks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_logs",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:dogwood_planks"
+    ]
+  },
+  "sends_telemetry_event": false
+}

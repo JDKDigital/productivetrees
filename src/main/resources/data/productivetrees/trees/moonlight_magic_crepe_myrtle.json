@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:moonlight_magic_crepe_myrtle",
-  "style": "moonlight_magic_crepe_myrtle",
   "colors": {
     "leafColor": "#c8c8c8",
     "logColor": "#9e8b7f",
     "plankColor": "#897159"
-  },
-  "tint": "hives"
+  }
 }

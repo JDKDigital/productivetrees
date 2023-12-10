@@ -5,7 +5,7 @@
     "item": "productivetrees:black_cherry_leaves"
   },
   "leafB": {
-    "item": "minecraft:jungle_leaves"
+    "item": "productivetrees:cacao_leaves"
   },
   "result": {
     "item": "productivetrees:coffea_sapling"

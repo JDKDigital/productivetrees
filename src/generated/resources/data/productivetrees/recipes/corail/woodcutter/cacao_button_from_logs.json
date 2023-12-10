@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:cacao_log"
+    },
+    {
+      "item": "productivetrees:cacao_wood"
+    },
+    {
+      "item": "productivetrees:cacao_stripped_log"
+    },
+    {
+      "item": "productivetrees:cacao_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:cacao_button"
+}

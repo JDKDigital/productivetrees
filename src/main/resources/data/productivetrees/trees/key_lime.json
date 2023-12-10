@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:key_lime",
-  "style": "key_lime",
   "colors": {
     "leafColor": "#417812",
     "logColor": "#6e7460",
     "plankColor": "#e1cb9c"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:key_lime",
-    "count": 3,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

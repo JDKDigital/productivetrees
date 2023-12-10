@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/dogwood_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/dogwood"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/dogwood_slab_top"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:pandanus_log"
+    },
+    {
+      "item": "productivetrees:pandanus_stripped_log"
+    },
+    {
+      "item": "productivetrees:pandanus_wood"
+    },
+    {
+      "item": "productivetrees:pandanus_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:pandanus_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

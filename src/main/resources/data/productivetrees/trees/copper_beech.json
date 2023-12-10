@@ -1,12 +1,10 @@
 {
   "feature": "productivetrees:copper_beech",
-  "style": "copper_beech",
   "colors": {
     "leafColor": "#392838",
     "logColor": "#60493a",
     "plankColor": "#cc895f"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:beechnut",
     "count": 3,

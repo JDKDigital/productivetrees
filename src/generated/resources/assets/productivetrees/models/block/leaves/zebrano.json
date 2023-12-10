@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/base_leaves",
+  "textures": {
+    "all": "productivetrees:block/leaves/zebrano"
+  }
+}

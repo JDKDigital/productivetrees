@@ -1,5 +1,5 @@
 {
-  "parent": "productivetrees:block/fruit/medium_untinted/fruit_3",
+  "parent": "productivetrees:block/fruit/berry_untinted/fruit_3",
   "textures": {
     "all": "productivetrees:block/leaves/orange"
   }

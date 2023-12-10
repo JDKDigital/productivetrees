@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:sweet_crabapple",
-  "style": "sweet_crabapple",
   "colors": {
     "leafColor": "#546751",
     "logColor": "#42453f",
     "plankColor": "#ca8d57"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:sweet_crabapple",
-    "count": 2,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:sand_pear",
-  "style": "sand_pear",
   "colors": {
     "leafColor": "#378515",
     "logColor": "#5e5c59",
     "plankColor": "#c89b7c"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:sand_pear",
-    "count": 1,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

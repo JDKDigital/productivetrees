@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/juniper_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/juniper"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/juniper_slab_top"
+    }
+  }
+}

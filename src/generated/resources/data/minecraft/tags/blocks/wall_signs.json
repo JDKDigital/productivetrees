@@ -17,6 +17,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:aquilaria_wall_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:ash_wall_sign",
       "required": false
     },
@@ -93,6 +97,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:cacao_wall_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:candlenut_wall_sign",
       "required": false
     },
@@ -157,11 +165,19 @@
       "required": false
     },
     {
+      "id": "productivetrees:cork_oak_wall_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:cultivated_pear_wall_sign",
       "required": false
     },
     {
       "id": "productivetrees:date_palm_wall_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:dogwood_wall_sign",
       "required": false
     },
     {
@@ -209,6 +225,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:greenheart_wall_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:hawthorn_wall_sign",
       "required": false
     },
@@ -230,6 +250,14 @@
     },
     {
       "id": "productivetrees:iroko_wall_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:juniper_wall_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kadsura_wall_sign",
       "required": false
     },
     {
@@ -301,10 +329,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:olive_wall_sign",
-      "required": false
-    },
-    {
       "id": "productivetrees:orange_wall_sign",
       "required": false
     },
@@ -314,6 +338,10 @@
     },
     {
       "id": "productivetrees:padauk_wall_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pandanus_wall_sign",
       "required": false
     },
     {
@@ -405,6 +433,14 @@
       "required": false
     },
     {
+      "id": "productivetrees:salak_wall_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sandalwood_wall_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:sand_pear_wall_sign",
       "required": false
     },
@@ -425,6 +461,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:socotra_dragon_wall_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:sour_cherry_wall_sign",
       "required": false
     },
@@ -434,6 +474,10 @@
     },
     {
       "id": "productivetrees:star_fruit_wall_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_apple_wall_sign",
       "required": false
     },
     {

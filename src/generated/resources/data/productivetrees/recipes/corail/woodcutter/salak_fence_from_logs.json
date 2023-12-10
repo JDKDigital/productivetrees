@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:salak_log"
+    },
+    {
+      "item": "productivetrees:salak_wood"
+    },
+    {
+      "item": "productivetrees:salak_stripped_log"
+    },
+    {
+      "item": "productivetrees:salak_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:salak_fence"
+}

@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:cultivated_pear",
-  "style": "cultivated_pear",
   "colors": {
     "leafColor": "#3c6539",
     "logColor": "#9b876f",
     "plankColor": "#cc7957"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:pear",
-    "count": 2,
     "growthSpeed": 0.6,
     "unripeColor": "#768422",
     "ripeColor": "#5f6f0c"

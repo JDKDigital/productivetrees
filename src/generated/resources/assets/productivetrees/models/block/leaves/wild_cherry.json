@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/leaves",
+  "parent": "productivetrees:block/base_leaves",
   "textures": {
     "all": "productivetrees:block/leaves/wild_cherry"
   }

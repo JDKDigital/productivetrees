@@ -1,12 +1,10 @@
 {
   "feature": "productivetrees:coffea",
-  "style": "coffea",
   "colors": {
     "leafColor": "#154f05",
     "logColor": "#6c5953",
     "plankColor": "#fddfe2"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:coffee_bean",
     "count": 4,

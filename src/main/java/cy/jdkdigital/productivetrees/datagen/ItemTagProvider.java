@@ -44,6 +44,7 @@ public class ItemTagProvider extends ItemTagsProvider
         copy(cy.jdkdigital.productivebees.init.ModTags.BOXES_BLOCK, cy.jdkdigital.productivebees.init.ModTags.BOXES);
 
         tag(ModTags.CINNAMON).add(TreeRegistrator.CINNAMON.get());
+        tag(ModTags.CORK).add(TreeRegistrator.CORK.get());
 
         tag(ModTags.NUTS_ALMOND).add(TreeRegistrator.ALMOND.get());
         tag(ModTags.NUTS_ACORN).add(TreeRegistrator.ACORN.get());
@@ -75,7 +76,8 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(ModTags.BERRIES_SLOE).add(TreeRegistrator.SLOE.get());
         tag(ModTags.BERRIES_HAW).add(TreeRegistrator.HAW.get());
         tag(ModTags.BERRIES_MIRACLE_BERRY).add(TreeRegistrator.MIRACLE_BERRY.get());
-        tag(ModTags.BERRIES).addTags(ModTags.BERRIES_BLACKBERRY, ModTags.BERRIES_BLACKCURRANT, ModTags.BERRIES_BLUEBERRY, ModTags.BERRIES_REDCURRANT, ModTags.BERRIES_CRANBERRY, ModTags.BERRIES_ELDERBERRY, ModTags.BERRIES_GOOSEBERRY, ModTags.BERRIES_RASPBERRY, ModTags.BERRIES_JUNIPER, ModTags.BERRIES_GOLDEN_RASPBERRY, ModTags.BERRIES_SLOE, ModTags.BERRIES_HAW, ModTags.BERRIES_MIRACLE_BERRY);
+        tag(ModTags.BERRIES_ASAI_BERRY).add(TreeRegistrator.ASAI_BERRY.get());
+        tag(ModTags.BERRIES).addTags(ModTags.BERRIES_BLACKBERRY, ModTags.BERRIES_BLACKCURRANT, ModTags.BERRIES_BLUEBERRY, ModTags.BERRIES_REDCURRANT, ModTags.BERRIES_CRANBERRY, ModTags.BERRIES_ELDERBERRY, ModTags.BERRIES_GOOSEBERRY, ModTags.BERRIES_RASPBERRY, ModTags.BERRIES_JUNIPER, ModTags.BERRIES_GOLDEN_RASPBERRY, ModTags.BERRIES_SLOE, ModTags.BERRIES_HAW, ModTags.BERRIES_MIRACLE_BERRY, ModTags.BERRIES_ASAI_BERRY);
 
         tag(ModTags.FRUITS_APPLE).add(Items.APPLE, TreeRegistrator.GOLDEN_DELICIOUS.get(), TreeRegistrator.GRANNY_SMITH.get(), TreeRegistrator.BELIY_NALIV.get());
         tag(ModTags.FRUITS_CHERRY).add(TreeRegistrator.SPARKLING_CHERRY.get()).add(TreeRegistrator.SOUR_CHERRY.get()).add(TreeRegistrator.WILD_CHERRY.get()).add(TreeRegistrator.BLACK_CHERRY.get());
@@ -89,6 +91,7 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(ModTags.FRUITS_SOUR_CHERRY).add(TreeRegistrator.SOUR_CHERRY.get());
         tag(ModTags.FRUITS_DATE).add(TreeRegistrator.DATE.get());
         tag(ModTags.FRUITS_PLUM).add(TreeRegistrator.PLUM.get());
+        tag(ModTags.FRUITS_SNAKE_FRUIT).add(TreeRegistrator.SNAKE_FRUIT.get());
         tag(ModTags.FRUITS_AVOCADO).add(TreeRegistrator.AVOCADO.get());
         tag(ModTags.FRUITS_CRABAPPLE).add(TreeRegistrator.SWEET_CRABAPPLE.get());
         tag(ModTags.FRUITS_CRABAPPLE).add(TreeRegistrator.PRAIRIE_CRABAPPLE.get());
@@ -107,6 +110,8 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(ModTags.FRUITS_COPOAZU).add(TreeRegistrator.COPOAZU.get());
         tag(ModTags.FRUITS_CEMPEDAK).add(TreeRegistrator.CEMPEDAK.get());
         tag(ModTags.FRUITS_JACKFRUIT).add(TreeRegistrator.JACKFRUIT.get());
+        tag(ModTags.FRUITS_HALA_FRUIT).add(TreeRegistrator.HALA_FRUIT.get());
+        tag(ModTags.FRUITS_SOURSOP).add(TreeRegistrator.SOURSOP.get());
         tag(ModTags.FRUITS_BANANA).add(TreeRegistrator.BANANA.get());
         tag(ModTags.FRUITS_COCONUT).add(TreeRegistrator.COCONUT.get());
         tag(ModTags.FRUITS_MANGO).add(TreeRegistrator.MANGO.get());
@@ -124,7 +129,7 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(ModTags.FRUITS_ORANGE).add(TreeRegistrator.ORANGE.get());
         tag(ModTags.FRUITS_MANDARIN).add(TreeRegistrator.MANDARIN.get());
         tag(ModTags.FRUITS_BUDDHAS_HAND).add(TreeRegistrator.BUDDHAS_HAND.get());
-        tag(ModTags.FRUITS).addTags(ModTags.FRUITS_APRICOT, ModTags.FRUITS_BLACK_CHERRY, ModTags.FRUITS_CHERRY_PLUM, ModTags.FRUITS_OLIVE, ModTags.FRUITS_OSANGE_ORANGE, ModTags.FRUITS_KUMQUAT, ModTags.FRUITS_WILD_CHERRY, ModTags.FRUITS_SOUR_CHERRY, ModTags.FRUITS_DATE, ModTags.FRUITS_PLUM, ModTags.FRUITS_AVOCADO, ModTags.FRUITS_CRABAPPLE, ModTags.FRUITS_FIG, ModTags.FRUITS_GRAPEFRUIT, ModTags.FRUITS_NECTARINE, ModTags.FRUITS_PEACH, ModTags.FRUITS_PEAR, ModTags.FRUITS_POMELO, ModTags.FRUITS_SAND_PEAR, ModTags.FRUITS_SATSUMA, ModTags.FRUITS_STAR_FRUIT, ModTags.FRUITS_TANGERINE, ModTags.FRUITS_AKEBIA, ModTags.FRUITS_COPOAZU, ModTags.FRUITS_CEMPEDAK, ModTags.FRUITS_JACKFRUIT, ModTags.FRUITS_BANANA, ModTags.FRUITS_COCONUT, ModTags.FRUITS_MANGO, ModTags.FRUITS_PLANTAIN, ModTags.FRUITS_RED_BANANA, ModTags.FRUITS_PAPAYA, ModTags.FRUITS_PERSIMMON, ModTags.FRUITS_POMEGRANATE, ModTags.FRUITS_BREADFRUIT, ModTags.FRUITS_LIME, ModTags.FRUITS_KEY_LIME, ModTags.FRUITS_FINGER_LIME, ModTags.FRUITS_CITRON, ModTags.FRUITS_LEMON, ModTags.FRUITS_ORANGE, ModTags.FRUITS_MANDARIN, ModTags.FRUITS_BUDDHAS_HAND);
+        tag(ModTags.FRUITS).addTags(ModTags.FRUITS_APRICOT, ModTags.FRUITS_BLACK_CHERRY, ModTags.FRUITS_CHERRY_PLUM, ModTags.FRUITS_OLIVE, ModTags.FRUITS_OSANGE_ORANGE, ModTags.FRUITS_KUMQUAT, ModTags.FRUITS_WILD_CHERRY, ModTags.FRUITS_SOUR_CHERRY, ModTags.FRUITS_DATE, ModTags.FRUITS_PLUM, ModTags.FRUITS_SNAKE_FRUIT, ModTags.FRUITS_AVOCADO, ModTags.FRUITS_CRABAPPLE, ModTags.FRUITS_FIG, ModTags.FRUITS_GRAPEFRUIT, ModTags.FRUITS_NECTARINE, ModTags.FRUITS_PEACH, ModTags.FRUITS_PEAR, ModTags.FRUITS_POMELO, ModTags.FRUITS_SAND_PEAR, ModTags.FRUITS_SATSUMA, ModTags.FRUITS_STAR_FRUIT, ModTags.FRUITS_TANGERINE, ModTags.FRUITS_AKEBIA, ModTags.FRUITS_COPOAZU, ModTags.FRUITS_CEMPEDAK, ModTags.FRUITS_JACKFRUIT, ModTags.FRUITS_HALA_FRUIT, ModTags.FRUITS_SOURSOP, ModTags.FRUITS_BANANA, ModTags.FRUITS_COCONUT, ModTags.FRUITS_MANGO, ModTags.FRUITS_PLANTAIN, ModTags.FRUITS_RED_BANANA, ModTags.FRUITS_PAPAYA, ModTags.FRUITS_PERSIMMON, ModTags.FRUITS_POMEGRANATE, ModTags.FRUITS_BREADFRUIT, ModTags.FRUITS_LIME, ModTags.FRUITS_KEY_LIME, ModTags.FRUITS_FINGER_LIME, ModTags.FRUITS_CITRON, ModTags.FRUITS_LEMON, ModTags.FRUITS_ORANGE, ModTags.FRUITS_MANDARIN, ModTags.FRUITS_BUDDHAS_HAND);
     }
 
     @Override

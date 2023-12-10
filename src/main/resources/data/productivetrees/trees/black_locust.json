@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:black_locust",
-  "style": "black_locust",
   "colors": {
     "leafColor": "#86ab9a",
     "logColor": "#767678",
     "plankColor": "#744318"
-  },
-  "tint": "hives"
+  }
 }

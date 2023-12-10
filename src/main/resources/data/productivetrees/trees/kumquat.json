@@ -1,14 +1,12 @@
 {
   "feature": "productivetrees:kumquat",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#272f24",
+    "logColor": "#75736d",
+    "plankColor": "#af7a52"
   },
   "fruit": {
     "item": "productivetrees:kumquat",
-    "count": 3,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

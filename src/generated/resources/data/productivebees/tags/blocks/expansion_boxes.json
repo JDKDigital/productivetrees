@@ -17,6 +17,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_aquilaria",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_ash",
       "required": false
     },
@@ -93,6 +97,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_cacao",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_candlenut",
       "required": false
     },
@@ -157,11 +165,19 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_cork_oak",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_cultivated_pear",
       "required": false
     },
     {
       "id": "productivetrees:expansion_box_date_palm",
+      "required": false
+    },
+    {
+      "id": "productivetrees:expansion_box_dogwood",
       "required": false
     },
     {
@@ -209,6 +225,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_greenheart",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_hawthorn",
       "required": false
     },
@@ -230,6 +250,14 @@
     },
     {
       "id": "productivetrees:expansion_box_iroko",
+      "required": false
+    },
+    {
+      "id": "productivetrees:expansion_box_juniper",
+      "required": false
+    },
+    {
+      "id": "productivetrees:expansion_box_kadsura",
       "required": false
     },
     {
@@ -301,10 +329,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:expansion_box_olive",
-      "required": false
-    },
-    {
       "id": "productivetrees:expansion_box_orange",
       "required": false
     },
@@ -314,6 +338,10 @@
     },
     {
       "id": "productivetrees:expansion_box_padauk",
+      "required": false
+    },
+    {
+      "id": "productivetrees:expansion_box_pandanus",
       "required": false
     },
     {
@@ -405,6 +433,14 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_salak",
+      "required": false
+    },
+    {
+      "id": "productivetrees:expansion_box_sandalwood",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_sand_pear",
       "required": false
     },
@@ -425,6 +461,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_socotra_dragon",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_sour_cherry",
       "required": false
     },
@@ -434,6 +474,10 @@
     },
     {
       "id": "productivetrees:expansion_box_star_fruit",
+      "required": false
+    },
+    {
+      "id": "productivetrees:expansion_box_sugar_apple",
       "required": false
     },
     {

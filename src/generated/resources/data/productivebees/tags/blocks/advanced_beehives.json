@@ -17,6 +17,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_aquilaria_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_ash_beehive",
       "required": false
     },
@@ -93,6 +97,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_cacao_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_candlenut_beehive",
       "required": false
     },
@@ -157,11 +165,19 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_cork_oak_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_cultivated_pear_beehive",
       "required": false
     },
     {
       "id": "productivetrees:advanced_date_palm_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_dogwood_beehive",
       "required": false
     },
     {
@@ -209,6 +225,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_greenheart_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_hawthorn_beehive",
       "required": false
     },
@@ -230,6 +250,14 @@
     },
     {
       "id": "productivetrees:advanced_iroko_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_juniper_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_kadsura_beehive",
       "required": false
     },
     {
@@ -301,10 +329,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:advanced_olive_beehive",
-      "required": false
-    },
-    {
       "id": "productivetrees:advanced_orange_beehive",
       "required": false
     },
@@ -314,6 +338,10 @@
     },
     {
       "id": "productivetrees:advanced_padauk_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_pandanus_beehive",
       "required": false
     },
     {
@@ -405,6 +433,14 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_salak_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_sandalwood_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_sand_pear_beehive",
       "required": false
     },
@@ -425,6 +461,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_socotra_dragon_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_sour_cherry_beehive",
       "required": false
     },
@@ -434,6 +474,10 @@
     },
     {
       "id": "productivetrees:advanced_star_fruit_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_sugar_apple_beehive",
       "required": false
     },
     {

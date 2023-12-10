@@ -1,0 +1,15 @@
+{
+  "feature": "productivetrees:pandanus",
+  "style": "birch",
+  "colors": {
+    "leafColor": "#1c4316",
+    "logColor": "#b7b6a3",
+    "plankColor": "#cfad9a"
+  },
+  "fruit": {
+    "item": "productivetrees:hala_fruit",
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
+}

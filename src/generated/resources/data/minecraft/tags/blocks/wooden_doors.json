@@ -17,6 +17,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:aquilaria_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:ash_door",
       "required": false
     },
@@ -93,6 +97,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:cacao_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:candlenut_door",
       "required": false
     },
@@ -157,11 +165,19 @@
       "required": false
     },
     {
+      "id": "productivetrees:cork_oak_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:cultivated_pear_door",
       "required": false
     },
     {
       "id": "productivetrees:date_palm_door",
+      "required": false
+    },
+    {
+      "id": "productivetrees:dogwood_door",
       "required": false
     },
     {
@@ -209,6 +225,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:greenheart_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:hawthorn_door",
       "required": false
     },
@@ -230,6 +250,14 @@
     },
     {
       "id": "productivetrees:iroko_door",
+      "required": false
+    },
+    {
+      "id": "productivetrees:juniper_door",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kadsura_door",
       "required": false
     },
     {
@@ -301,10 +329,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:olive_door",
-      "required": false
-    },
-    {
       "id": "productivetrees:orange_door",
       "required": false
     },
@@ -314,6 +338,10 @@
     },
     {
       "id": "productivetrees:padauk_door",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pandanus_door",
       "required": false
     },
     {
@@ -405,6 +433,14 @@
       "required": false
     },
     {
+      "id": "productivetrees:salak_door",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sandalwood_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:sand_pear_door",
       "required": false
     },
@@ -425,6 +461,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:socotra_dragon_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:sour_cherry_door",
       "required": false
     },
@@ -434,6 +474,10 @@
     },
     {
       "id": "productivetrees:star_fruit_door",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_apple_door",
       "required": false
     },
     {

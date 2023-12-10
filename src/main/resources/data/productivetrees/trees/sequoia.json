@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:sequoia",
   "megaFeature": "productivetrees:sequoia_mega",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#95420d",
-    "plankColor": "#995a57"
+    "leafColor": "#75a277",
+    "logColor": "#6b3e29",
+    "plankColor": "#c6887b"
   }
 }

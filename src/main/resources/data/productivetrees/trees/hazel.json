@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:hazel",
-  "style": "oak",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#b3a076",
-    "plankColor": "#cdb195"
+    "leafColor": "#7b9677",
+    "logColor": "#876943",
+    "plankColor": "#816951"
   },
   "fruit": {
     "item": "productivetrees:hazelnut",

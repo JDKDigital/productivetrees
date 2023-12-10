@@ -17,12 +17,7 @@
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "productivetrees:yew_leaves",
-        "Properties": {
-          "distance": "7",
-          "persistent": "false",
-          "waterlogged": "false"
-        }
+        "Name": "minecraft:air"
       }
     },
     "force_dirt": false,

@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:mahogany_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:kapok_leaves"
+  },
+  "result": {
+    "item": "productivetrees:greenheart_sapling"
+  }
+}

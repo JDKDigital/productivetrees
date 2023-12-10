@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:peach",
-  "style": "peach",
   "colors": {
     "leafColor": "#507b22",
     "logColor": "#73665d",
     "plankColor": "#f09841"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:peach",
-    "count": 3,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

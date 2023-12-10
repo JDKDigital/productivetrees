@@ -1,9 +1,8 @@
 {
-  "feature": "productivetrees:gradidiers_baobab",
-  "style": "birch",
+  "feature": "productivetrees:grandidiers_baobab",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#d48b54",
-    "plankColor": "#929c62"
+    "leafColor": "#4e6e03",
+    "logColor": "#e8dd00",
+    "plankColor": "#78573e"
   }
 }

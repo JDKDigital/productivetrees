@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_logs": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "productivetrees:pandanus_log",
+              "productivetrees:pandanus_wood",
+              "productivetrees:pandanus_stripped_log",
+              "productivetrees:pandanus_stripped_wood"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:pandanus_planks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_logs",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:pandanus_planks"
+    ]
+  },
+  "sends_telemetry_event": false
+}

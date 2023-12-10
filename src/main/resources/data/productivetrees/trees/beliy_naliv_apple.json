@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:beliy_naliv_apple",
-  "style": "beliy_naliv_apple",
   "colors": {
     "leafColor": "#10361d",
     "logColor": "#2a2a22",
     "plankColor": "#ad6853"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:beliy_naliv_apple",
-    "count": 1,
     "growthSpeed": 0.3,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

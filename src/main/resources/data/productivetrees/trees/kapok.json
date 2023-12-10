@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:kapok",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#53574a",
-    "plankColor": "#7c7434"
+    "leafColor": "#6cb57a",
+    "logColor": "#fae7c9",
+    "plankColor": "#896044"
   }
 }

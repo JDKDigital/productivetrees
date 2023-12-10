@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:sour_cherry",
-  "style": "sour_cherry",
   "colors": {
     "leafColor": "#5ec456",
     "logColor": "#928270",
     "plankColor": "#a56945"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:sour_cherry",
-    "count": 3,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:silver_fir",
-  "style": "silver_fir",
   "colors": {
     "leafColor": "#4b6741",
     "logColor": "#606060",
     "plankColor": "#e3d2be"
-  },
-  "tint": "hives"
+  }
 }

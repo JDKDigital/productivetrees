@@ -1,6 +1,6 @@
 {
-  "parent": "productivetrees:block/fruit/medium/fruit_1",
+  "parent": "productivetrees:block/fruit/berry_untinted/fruit_1",
   "textures": {
-    "all": "productivetrees:block/leaves/birch"
+    "all": "productivetrees:block/leaves/pomelo"
   }
 }

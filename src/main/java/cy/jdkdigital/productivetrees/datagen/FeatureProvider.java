@@ -9,14 +9,18 @@ import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.common.feature.FruitLeafPlacerDecorator;
 import cy.jdkdigital.productivetrees.common.feature.FruitLeafReplacerDecorator;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.CenteredUpwardsBranchingTrunkPlacer;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.Vec3i;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSize;
@@ -28,6 +32,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProv
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.UpwardsBranchingTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
@@ -111,7 +116,8 @@ public class FeatureProvider implements DataProvider
             // foliage_placer
             config.add("foliage_placer", foliagePlacers.containsKey(name) ? foliagePlacers.get(name) : foliagePlacers.get("default"));
             // foliage_provider
-            config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(treeObject.getLeafBlock().get())).getOrThrow(false, ProductiveTrees.LOGGER::error));
+//            config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(treeObject.getLeafBlock().get())).getOrThrow(false, ProductiveTrees.LOGGER::error));
+            config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(Blocks.AIR)).getOrThrow(false, ProductiveTrees.LOGGER::error));
             // minimum_size
             config.add("minimum_size", FeatureSize.CODEC.encodeStart(JsonOps.INSTANCE, new TwoLayersFeatureSize(1, 0, 1)).getOrThrow(false, ProductiveTrees.LOGGER::error));
             // trunk_placer
@@ -133,8 +139,12 @@ public class FeatureProvider implements DataProvider
         return FoliagePlacer.CODEC.encodeStart(JsonOps.INSTANCE, new BlobFoliagePlacer(ConstantInt.of(radius), ConstantInt.of(0), height)).getOrThrow(false, ProductiveTrees.LOGGER::error);
     }
 
-    private JsonElement createTrunk(int height, int randA, int randB) {
+    private JsonElement createStraightTrunk(int height, int randA, int randB) {
         return TrunkPlacer.CODEC.encodeStart(JsonOps.INSTANCE, new StraightTrunkPlacer(height, randA, randB)).getOrThrow(false, ProductiveTrees.LOGGER::error);
+    }
+
+    private JsonElement createBranchingTrunk(int height, int randA, int randB, IntProvider extraBranchSteps, float placeBranchPerLogProbability, IntProvider extraBranchLength) {
+        return TrunkPlacer.CODEC.encodeStart(JsonOps.INSTANCE, new CenteredUpwardsBranchingTrunkPlacer(height, randA, randB, extraBranchSteps, placeBranchPerLogProbability, extraBranchLength)).getOrThrow(false, ProductiveTrees.LOGGER::error);
     }
 
     private final JsonElement DIRT_PROVIDER = BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(Blocks.DIRT)).getOrThrow(false, ProductiveTrees.LOGGER::error);
@@ -173,15 +183,15 @@ public class FeatureProvider implements DataProvider
         put("raspberry", BUSH_FOLIAGE);
         put("redcurrant", BUSH_FOLIAGE);
     }};
-    private final JsonElement BUSH_TRUNK = createTrunk(1, 0, 0);
+    private final JsonElement BUSH_TRUNK = createStraightTrunk(1, 0, 0);
     private final Map<String, JsonElement> trunkPlacers = new HashMap<>() {{
-        put("default", createTrunk(4, 2, 0));
-        put("alder", createTrunk(7, 10, 0));
-        put("avocado", createTrunk(9, 10, 0));
-        put("banana", createTrunk(5, 6, 0));
-        put("red_banana", createTrunk(5, 6, 0));
-        put("plantain", createTrunk(5, 6, 0));
-        put("beech", createTrunk(20, 10, 0));
+        put("default", createStraightTrunk(4, 2, 0));
+        put("alder", createBranchingTrunk(24, 2, 2, UniformInt.of(1, 6), 0.5F, UniformInt.of(0, 1)));
+        put("avocado", createStraightTrunk(9, 10, 0));
+        put("banana", createStraightTrunk(5, 6, 0));
+        put("red_banana", createStraightTrunk(5, 6, 0));
+        put("plantain", createStraightTrunk(5, 6, 0));
+        put("beech", createStraightTrunk(20, 10, 0));
         put("blackberry", BUSH_TRUNK);
         put("blackcurrant", BUSH_TRUNK);
         put("blueberry", BUSH_TRUNK);

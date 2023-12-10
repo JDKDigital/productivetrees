@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:citron",
-  "style": "citron",
   "colors": {
     "leafColor": "#678f5f",
     "logColor": "#2d301b",
     "plankColor": "#b1976e"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:citron",
-    "count": 1,
     "growthSpeed": 0.4,
     "unripeColor": "#404b00",
     "ripeColor": "#e09e12"

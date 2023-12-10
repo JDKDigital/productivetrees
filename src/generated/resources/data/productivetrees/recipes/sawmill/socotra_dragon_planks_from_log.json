@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:socotra_dragon_log"
+    },
+    {
+      "item": "productivetrees:socotra_dragon_stripped_log"
+    },
+    {
+      "item": "productivetrees:socotra_dragon_wood"
+    },
+    {
+      "item": "productivetrees:socotra_dragon_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:socotra_dragon_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

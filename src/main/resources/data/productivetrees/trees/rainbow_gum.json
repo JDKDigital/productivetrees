@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:rainbow_gum",
-  "style": "rainbow_gum",
   "colors": {
     "leafColor": "#55405b",
     "logColor": "#202e1d",
     "plankColor": "#6d4e87"
-  },
-  "tint": "hives"
+  }
 }

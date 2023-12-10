@@ -1,6 +1,5 @@
 {
   "feature": "productivetrees:apricot",
-  "style": "apricot",
   "colors": {
     "leafColor": "#77a214",
     "logColor": "#342222",
@@ -9,7 +8,6 @@
   "tint": "leaves_hives",
   "fruit": {
     "item": "productivetrees:apricot",
-    "count": 1,
     "growthSpeed": 0.5,
     "unripeColor": "#87b203",
     "ripeColor": "#dd490b"

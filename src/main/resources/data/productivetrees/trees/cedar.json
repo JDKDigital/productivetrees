@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:cedar",
-  "style": "cedar",
   "colors": {
     "leafColor": "#4d8119",
     "logColor": "#645d5f",
     "plankColor": "#a1685a"
-  },
-  "tint": "hives"
+  }
 }

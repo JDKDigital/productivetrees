@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:zebrano",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#ae9177",
-    "plankColor": "#ae9177"
+    "leafColor": "#a4c449",
+    "logColor": "#0f100b",
+    "plankColor": "#ddbc93"
   }
 }

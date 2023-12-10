@@ -1,14 +1,12 @@
 {
   "feature": "productivetrees:mango",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#2e4719",
+    "logColor": "#c29f67",
+    "plankColor": "#a8794d"
   },
   "fruit": {
     "item": "productivetrees:mango",
-    "count": 3,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

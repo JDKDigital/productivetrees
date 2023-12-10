@@ -1,12 +1,10 @@
 {
   "feature": "productivetrees:plum",
-  "style": "plum",
   "colors": {
     "leafColor": "#7b8c27",
     "logColor": "#cc7957",
     "plankColor": "#58151c"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:plum",
     "count": 2,

@@ -1,6 +1,5 @@
 {
   "feature": "productivetrees:avocado",
-  "style": "avocado",
   "colors": {
     "leafColor": "#70a25d",
     "logColor": "#5d3f34",
@@ -9,7 +8,6 @@
   "tint": "leaves_hives",
   "fruit": {
     "item": "productivetrees:avocado",
-    "count": 1,
     "growthSpeed": 0.4,
     "unripeColor": "#5e8e28",
     "ripeColor": "#113600"

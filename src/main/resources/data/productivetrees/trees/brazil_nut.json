@@ -1,12 +1,10 @@
 {
   "feature": "productivetrees:brazil_nut",
-  "style": "brazil_nut",
   "colors": {
     "leafColor": "#365c09",
     "logColor": "#4e433a",
     "plankColor": "#c47643"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:brazil_nut",
     "count": 4,

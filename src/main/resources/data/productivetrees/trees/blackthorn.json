@@ -1,6 +1,5 @@
 {
   "feature": "productivetrees:blackthorn",
-  "style": "blackthorn",
   "colors": {
     "leafColor": "#327629",
     "logColor": "#3f3a31",
@@ -10,9 +9,7 @@
     "target": "productivetrees:purple_blackthorn",
     "chance": 0.05
   },
-  "tint": "hives",
   "fruit": {
-    "style": "berry",
     "item": "productivetrees:sloe",
     "count": 3,
     "growthSpeed": 0.5,

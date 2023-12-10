@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:juniper_log"
+    },
+    {
+      "item": "productivetrees:juniper_stripped_log"
+    },
+    {
+      "item": "productivetrees:juniper_wood"
+    },
+    {
+      "item": "productivetrees:juniper_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:juniper_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

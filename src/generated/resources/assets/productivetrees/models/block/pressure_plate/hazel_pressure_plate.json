@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/pressure_plate/base_pressure_plate",
+  "textures": {
+    "texture": "productivetrees:block/planks/hazel"
+  }
+}

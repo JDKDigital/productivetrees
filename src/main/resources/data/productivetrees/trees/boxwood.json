@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:boxwood",
-  "style": "boxwood",
   "colors": {
     "leafColor": "#659a32",
     "logColor": "#6b4d35",
     "plankColor": "#fcedc4"
-  },
-  "tint": "hives"
+  }
 }

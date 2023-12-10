@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:loblolly_pine",
-  "style": "loblolly_pine",
   "colors": {
     "leafColor": "#6da98d",
     "logColor": "#615347",
     "plankColor": "#e4c9ab"
-  },
-  "tint": "hives"
+  }
 }

@@ -5,7 +5,7 @@
     "item": "productivetrees:papaya_leaves"
   },
   "leafB": {
-    "item": "minecraft:jungle_leaves"
+    "item": "productivetrees:cacao_leaves"
   },
   "result": {
     "item": "productivetrees:date_palm_sapling"

@@ -47,6 +47,7 @@ public class ClientSetupEvents
             ItemProperties.register(TreeRegistrator.JUNIPER.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
             ItemProperties.register(TreeRegistrator.SLOE.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
             ItemProperties.register(TreeRegistrator.MIRACLE_BERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.ASAI_BERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
             ItemProperties.register(TreeRegistrator.BLACK_CHERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
             ItemProperties.register(TreeRegistrator.SOUR_CHERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
             ItemProperties.register(TreeRegistrator.WILD_CHERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
@@ -163,37 +164,33 @@ public class ClientSetupEvents
     public static void registerBlockColors(final RegisterColorHandlersEvent.Block event) {
         event.register((blockState, lightReader, pos, tintIndex) -> {
             if (lightReader != null && pos != null) {
-                if (blockState.getBlock() instanceof ProductiveFruitBlock fruitBlock && fruitBlock.getTree().tintFruit()) {
-                    var stage = blockState.getValue(ProductiveFruitBlock.getAgeProperty());
-                    if (stage < 3) {
-                        return ColorUtil.getCacheColor(fruitBlock.getTree().getFruit().flowerColor());
-                    }
-                    BlockEntity be = lightReader.getBlockEntity(pos);
-                    if (be instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
-                        int colorA = TreeUtil.getLeafColor(pollinatedLeavesBlockEntity.getLeafA(), lightReader, pos);
-                        int colorB = TreeUtil.getLeafColor(pollinatedLeavesBlockEntity.getLeafB(), lightReader, pos);
-                        return ColorUtil.blend(colorA, colorB, 0.5f);
-                    }
+                BlockEntity be = lightReader.getBlockEntity(pos);
+                if (be instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
+                    int colorA = TreeUtil.getLeafColor(pollinatedLeavesBlockEntity.getLeafA(), lightReader, pos);
+                    int colorB = TreeUtil.getLeafColor(pollinatedLeavesBlockEntity.getLeafB(), lightReader, pos);
+                    return ColorUtil.blend(colorA, colorB, 0.5f);
                 }
             }
             return FoliageColor.getDefaultColor();
         }, TreeRegistrator.POLLINATED_LEAVES.get());
 
         TreeFinder.trees.forEach((id, treeObject) -> {
-            if (treeObject.hasFruit()) {
+            if (treeObject.tintFruit()) {
                 event.register((blockState, lightReader, pos, tintIndex) -> {
                     if (tintIndex == 0) {
                         return ColorUtil.getCacheColor(treeObject.getLeafColor());
                     }
+
                     int age = blockState.getValue(ProductiveFruitBlock.getAgeProperty());
-                    if (age > 2) {
+                    if (age < 3) {
+                        return ColorUtil.getCacheColor(treeObject.getFruit().flowerColor());
+                    } else if (age < ProductiveFruitBlock.getMaxAge()) {
                         float agePercentage = (float) age / (float) ProductiveFruitBlock.getMaxAge();
                         int colorA = ColorUtil.getCacheColor(treeObject.getFruit().unripeColor());
                         int colorB = ColorUtil.getCacheColor(treeObject.getFruit().ripeColor());
                         return ColorUtil.blend(colorA, colorB, agePercentage);
-                    } else {
-                        return ColorUtil.getCacheColor(treeObject.getFruit().ripeColor());
                     }
+                    return ColorUtil.getCacheColor(treeObject.getFruit().ripeColor());
                 }, treeObject.getFruitBlock().get());
             }
 

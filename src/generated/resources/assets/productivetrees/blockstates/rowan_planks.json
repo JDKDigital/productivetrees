@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "productivetrees:block/planks/birch"
+      "model": "productivetrees:block/planks/rowan"
     }
   }
 }

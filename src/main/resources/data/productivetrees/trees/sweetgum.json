@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:sweetgum",
-  "style": "sweetgum",
   "colors": {
     "leafColor": "#4f6155",
     "logColor": "#abad92",
     "plankColor": "#786e63"
-  },
-  "tint": "hives"
+  }
 }

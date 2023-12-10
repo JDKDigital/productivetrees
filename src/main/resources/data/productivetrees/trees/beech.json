@@ -1,13 +1,11 @@
 {
   "feature": "productivetrees:beech",
   "megaFeature": "productivetrees:beech_mega",
-  "style": "beech",
   "colors": {
     "leafColor": "#1c4316",
     "logColor": "#776f62",
     "plankColor": "#d0ad91"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:beechnut",
     "count": 3,

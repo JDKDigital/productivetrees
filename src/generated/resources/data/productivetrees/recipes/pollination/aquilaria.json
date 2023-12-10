@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:teak_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:ipe_leaves"
+  },
+  "result": {
+    "item": "productivetrees:aquilaria_sapling"
+  }
+}

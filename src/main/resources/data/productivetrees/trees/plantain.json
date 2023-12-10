@@ -1,16 +1,14 @@
 {
   "feature": "productivetrees:plantain",
-  "style": "plantain",
   "colors": {
     "leafColor": "#3f8a33",
     "logColor": "#726867",
     "plankColor": "#b6d997"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:plantain",
     "count": 2,
-    "growthSpeed": 0.5,
+    "growthSpeed": 0.2,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"
   }

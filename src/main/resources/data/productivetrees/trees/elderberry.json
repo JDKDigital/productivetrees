@@ -1,13 +1,11 @@
 {
   "feature": "productivetrees:elderberry",
-  "style": "bush",
   "registerWood": false,
-  "log": "minecraft:oak_log",
+  "log": "productivetrees:bush_log",
   "colors": {
-    "leafColor": "#597537"
+    "leafColor": "#7c9827"
   },
   "fruit": {
-    "style": "berry",
     "item": "productivetrees:elderberry",
     "count": 5,
     "growthSpeed": 0.5,

@@ -148,7 +148,7 @@ dependencies {
     implementation fg.deobf("curse.maven:botany-pots-353928:4703902")
     implementation fg.deobf("curse.maven:botany-trees-411357:4694737")
 
-    implementation fg.deobf("curse.maven:jei-238222:4579419")
+    implementation fg.deobf("curse.maven:jei-238222:4712868")
     implementation fg.deobf("curse.maven:the-one-probe-245211:4629624")
     implementation fg.deobf("curse.maven:fast-leaf-decay-230976:4620069")
 }

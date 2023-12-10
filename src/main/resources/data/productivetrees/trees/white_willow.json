@@ -1,10 +1,8 @@
 {
   "feature": "productivetrees:white_willow",
-  "style": "white_willow",
   "colors": {
     "leafColor": "#e8e9e3",
     "logColor": "#446681",
     "plankColor": "#cfb89b"
-  },
-  "tint": "hives"
+  }
 }

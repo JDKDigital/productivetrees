@@ -8,7 +8,6 @@
   },
   "fruit": {
     "item": "productivetrees:pomegranate",
-    "count": 1,
     "growthSpeed": 0.5,
     "unripeColor": "#a9b935",
     "ripeColor": "#661c24"

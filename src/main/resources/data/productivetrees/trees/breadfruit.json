@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:breadfruit",
-  "style": "breadfruit",
   "colors": {
     "leafColor": "#447f58",
     "logColor": "#858881",
     "plankColor": "#cb7647"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:breadfruit",
-    "count": 1,
     "growthSpeed": 0.3,
     "unripeColor": "#7ab450",
     "ripeColor": "#d9cb5e"

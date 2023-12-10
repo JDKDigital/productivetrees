@@ -2,7 +2,7 @@
   "type": "productivetrees:tree_pollination",
   "chance": 10,
   "leafA": {
-    "item": "productivetrees:red_delicious_apple_leaves"
+    "item": "productivetrees:dogwood_leaves"
   },
   "leafB": {
     "item": "productivetrees:sweet_crabapple_leaves"

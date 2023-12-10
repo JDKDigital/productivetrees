@@ -1,0 +1,14 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 1,
+  "ingredient": {
+    "item": "productivetrees:cacao_planks"
+  },
+  "result": "productivetrees:cacao_button"
+}

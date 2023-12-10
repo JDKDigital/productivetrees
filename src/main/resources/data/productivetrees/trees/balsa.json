@@ -1,6 +1,5 @@
 {
   "feature": "productivetrees:balsa",
-  "style": "balsa",
   "colors": {
     "leafColor": "#35793c",
     "logColor": "#e1c8cb",

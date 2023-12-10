@@ -1,0 +1,14 @@
+{
+  "feature": "productivetrees:soursop",
+  "colors": {
+    "leafColor": "#396027",
+    "logColor": "#10100e",
+    "plankColor": "#bcaa96"
+  },
+  "fruit": {
+    "item": "productivetrees:soursop",
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
+}

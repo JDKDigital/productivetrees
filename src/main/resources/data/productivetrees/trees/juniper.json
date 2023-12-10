@@ -1,13 +1,11 @@
 {
   "feature": "productivetrees:juniper",
-  "style": "bush",
-  "registerWood": false,
-  "log": "minecraft:oak_log",
   "colors": {
-    "leafColor": "#597537"
+    "leafColor": "#7d9178",
+    "logColor": "#d5c09e",
+    "plankColor": "#85443a"
   },
   "fruit": {
-    "style": "berry",
     "item": "productivetrees:juniper",
     "count": 3,
     "growthSpeed": 0.5,

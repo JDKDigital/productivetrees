@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 15,
+  "leafA": {
+    "item": "minecraft:jungle_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:cherry_leaves"
+  },
+  "result": {
+    "item": "productivetrees:cacao_sapling"
+  }
+}

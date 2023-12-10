@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:papaya",
-  "style": "papaya",
   "colors": {
     "leafColor": "#507a14",
     "logColor": "#7f807a",
     "plankColor": "#e8e4cb"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:papaya",
-    "count": 1,
     "growthSpeed": 0.5,
     "unripeColor": "#bdcaa0",
     "ripeColor": "#824f12"

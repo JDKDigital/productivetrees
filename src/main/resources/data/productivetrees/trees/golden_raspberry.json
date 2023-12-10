@@ -7,9 +7,8 @@
     "leafColor": "#597537"
   },
   "fruit": {
-    "style": "berry",
     "item": "productivetrees:golden_raspberry",
-    "count": 1,
+    "count": 2,
     "growthSpeed": 0.1,
     "unripeColor": "#798257",
     "ripeColor": "#fabe00"

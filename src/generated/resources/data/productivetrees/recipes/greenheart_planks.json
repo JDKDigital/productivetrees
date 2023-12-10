@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:greenheart_log"
+      },
+      {
+        "item": "productivetrees:greenheart_wood"
+      },
+      {
+        "item": "productivetrees:greenheart_stripped_log"
+      },
+      {
+        "item": "productivetrees:greenheart_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:greenheart_planks"
+  }
+}

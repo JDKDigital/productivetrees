@@ -1,0 +1,15 @@
+{
+  "feature": "productivetrees:asai_palm",
+  "colors": {
+    "leafColor": "#396027",
+    "logColor": "#10100e",
+    "plankColor": "#bcaa96"
+  },
+  "fruit": {
+    "item": "productivetrees:asai_berry",
+    "count": 3,
+    "growthSpeed": 0.5,
+    "unripeColor": "#bdcaa0",
+    "ripeColor": "#824f12"
+  }
+}

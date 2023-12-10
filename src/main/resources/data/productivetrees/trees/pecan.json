@@ -1,12 +1,10 @@
 {
   "feature": "productivetrees:pecan",
-  "style": "pecan",
   "colors": {
     "leafColor": "#498952",
     "logColor": "#878173",
     "plankColor": "#9c6a37"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:pecan",
     "count": 3,

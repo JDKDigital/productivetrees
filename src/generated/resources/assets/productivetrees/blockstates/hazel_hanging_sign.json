@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "productivetrees:block/sign/hanging_oak"
+      "model": "productivetrees:block/sign/hanging_hazel"
     }
   }
 }

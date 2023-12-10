@@ -13,6 +13,7 @@ public class ModTags
     public static final TagKey<Block> POLLINATABLE = TagKey.create(Registries.BLOCK, new ResourceLocation(ProductiveTrees.MODID, "pollinatable"));
 
     public static final TagKey<Item> CINNAMON = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "cinnamon"));
+    public static final TagKey<Item> CORK = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "cork"));
 
     public static final TagKey<Item> NUTS = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "nuts"));
     public static final TagKey<Item> NUTS_ALMOND = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "nuts/almond"));
@@ -45,6 +46,7 @@ public class ModTags
     public static final TagKey<Item> BERRIES_SLOE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "berries/sloe"));
     public static final TagKey<Item> BERRIES_HAW = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "berries/haw"));
     public static final TagKey<Item> BERRIES_MIRACLE_BERRY = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "berries/miracle_berry"));
+    public static final TagKey<Item> BERRIES_ASAI_BERRY = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "berries/asai_berry"));
 
     public static final TagKey<Item> FRUITS = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits"));
     public static final TagKey<Item> FRUITS_APPLE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/apple"));
@@ -59,6 +61,7 @@ public class ModTags
     public static final TagKey<Item> FRUITS_SOUR_CHERRY = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/sour_cherry"));
     public static final TagKey<Item> FRUITS_DATE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/date"));
     public static final TagKey<Item> FRUITS_PLUM = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/plum"));
+    public static final TagKey<Item> FRUITS_SNAKE_FRUIT = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/snake_fruit"));
     public static final TagKey<Item> FRUITS_AVOCADO = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/avocado"));
     public static final TagKey<Item> FRUITS_CRABAPPLE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/crabapple"));
     public static final TagKey<Item> FRUITS_FIG = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/fig"));
@@ -77,6 +80,8 @@ public class ModTags
     public static final TagKey<Item> FRUITS_COPOAZU = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/copoazu"));
     public static final TagKey<Item> FRUITS_CEMPEDAK = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/cempedak"));
     public static final TagKey<Item> FRUITS_JACKFRUIT = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/jackfruit"));
+    public static final TagKey<Item> FRUITS_HALA_FRUIT = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/hala_fruit"));
+    public static final TagKey<Item> FRUITS_SOURSOP = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/soursop"));
     public static final TagKey<Item> FRUITS_BANANA = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/banana"));
     public static final TagKey<Item> FRUITS_COCONUT = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/coconut"));
     public static final TagKey<Item> FRUITS_MANGO = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/mango"));

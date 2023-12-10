@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:monkey_puzzle",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#626925",
+    "logColor": "#50611a",
+    "plankColor": "#81593a"
   }
 }

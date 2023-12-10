@@ -1,12 +1,10 @@
 {
   "feature": "productivetrees:cashew",
-  "style": "cashew",
   "colors": {
     "leafColor": "#316207",
     "logColor": "#3c3d38",
     "plankColor": "#a67253"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:cashew",
     "count": 3,

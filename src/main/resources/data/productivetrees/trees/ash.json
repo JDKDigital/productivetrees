@@ -1,6 +1,5 @@
 {
   "feature": "productivetrees:ash",
-  "style": "ash",
   "colors": {
     "leafColor": "#6e8422",
     "logColor": "#676d69",

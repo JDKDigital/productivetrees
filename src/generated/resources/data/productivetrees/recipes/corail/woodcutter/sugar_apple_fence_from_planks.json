@@ -1,0 +1,14 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 1,
+  "ingredient": {
+    "item": "productivetrees:sugar_apple_planks"
+  },
+  "result": "productivetrees:sugar_apple_fence"
+}

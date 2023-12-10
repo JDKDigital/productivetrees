@@ -1,15 +1,12 @@
 {
   "feature": "productivetrees:cherry_plum",
-  "style": "cherry_plum",
   "colors": {
     "leafColor": "#7fb53d",
     "logColor": "#321f19",
     "plankColor": "#a26159"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:cherry_plum",
-    "count": 2,
     "growthSpeed": 0.5,
     "unripeColor": "#a9b935",
     "ripeColor": "#661c24"

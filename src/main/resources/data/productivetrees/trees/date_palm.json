@@ -1,12 +1,10 @@
 {
   "feature": "productivetrees:date_palm",
-  "style": "date_palm",
   "colors": {
     "leafColor": "#7f8459",
     "logColor": "#96552a",
     "plankColor": "#3e1f0c"
   },
-  "tint": "hives",
   "fruit": {
     "item": "productivetrees:date",
     "count": 3,
