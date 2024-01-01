@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:star_anise",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#5e734b",
+    "logColor": "#4f4745",
+    "plankColor": "#a6a199"
   },
   "fruit": {
     "item": "productivetrees:star_anise",

@@ -1,0 +1,4 @@
+{
+  "parent": "productivetrees:block/pressure_plate/base_pressure_plate",
+  "render_type": "translucent"
+}

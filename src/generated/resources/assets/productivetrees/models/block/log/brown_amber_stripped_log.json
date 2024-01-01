@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/translucent_cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/brown_amber_top",
+    "side": "productivetrees:block/stripped/brown_amber"
+  }
+}

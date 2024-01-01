@@ -1,9 +1,9 @@
 {
   "feature": "productivetrees:asai_palm",
   "colors": {
-    "leafColor": "#396027",
-    "logColor": "#10100e",
-    "plankColor": "#bcaa96"
+    "leafColor": "#627b33",
+    "logColor": "#a09785",
+    "plankColor": "#2c2018"
   },
   "fruit": {
     "item": "productivetrees:asai_berry",

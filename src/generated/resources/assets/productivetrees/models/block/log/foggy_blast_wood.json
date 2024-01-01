@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/translucent_cube_column",
+  "textures": {
+    "end": "productivetrees:block/log/foggy_blast",
+    "side": "productivetrees:block/log/foggy_blast"
+  }
+}

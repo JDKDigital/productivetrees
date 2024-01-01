@@ -2,10 +2,10 @@
   "type": "productivetrees:tree_pollination",
   "chance": 10,
   "leafA": {
-    "item": "productivetrees:akebia_leaves"
+    "item": "productivetrees:cacao_leaves"
   },
   "leafB": {
-    "item": "productivetrees:cashew_leaves"
+    "item": "productivetrees:candlenut_leaves"
   },
   "result": {
     "item": "productivetrees:copoazu_sapling"

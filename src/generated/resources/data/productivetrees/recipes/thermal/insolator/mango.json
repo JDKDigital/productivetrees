@@ -1,0 +1,28 @@
+{
+  "type": "thermal:insolator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy_mod": 3.0,
+  "ingredient": {
+    "item": "productivetrees:mango_sapling"
+  },
+  "result": [
+    {
+      "chance": 6.0,
+      "item": "productivetrees:mango_log"
+    },
+    {
+      "chance": 1.1,
+      "item": "productivetrees:mango_sapling"
+    },
+    {
+      "chance": 0.5,
+      "item": "productivetrees:mango"
+    }
+  ],
+  "water_mod": 3.0
+}

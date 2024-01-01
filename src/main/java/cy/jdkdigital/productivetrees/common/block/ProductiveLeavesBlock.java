@@ -8,13 +8,14 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ProductiveLeavesBlock extends LeavesBlock
 {
-    private final TreeObject treeObject;
+    protected final TreeObject treeObject;
 
     public ProductiveLeavesBlock(Properties properties, TreeObject treeObject) {
         super(properties);

@@ -1,0 +1,29 @@
+{
+  "type": "thermal:insolator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy_mod": 3.0,
+  "ingredient": {
+    "item": "productivetrees:pistachio_sapling"
+  },
+  "result": [
+    {
+      "chance": 6.0,
+      "item": "productivetrees:pistachio_log"
+    },
+    {
+      "chance": 1.1,
+      "item": "productivetrees:pistachio_sapling"
+    },
+    {
+      "chance": 0.5,
+      "count": 3,
+      "item": "productivetrees:pistachio"
+    }
+  ],
+  "water_mod": 3.0
+}

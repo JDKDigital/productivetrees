@@ -1,0 +1,12 @@
+{
+  "feature": "productivetrees:time_traveller",
+  "decoration": {
+    "lightLevel": 11
+  },
+  "colors": {
+    "leafColor": "#338285",
+    "logColor": "#001d1d",
+    "plankColor": "#3fb4af"
+  },
+  "fallingLeaves": true
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/button/translucent_base_button_pressed",
+  "textures": {
+    "texture": "productivetrees:block/planks/foggy_blast"
+  }
+}

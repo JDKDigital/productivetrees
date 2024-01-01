@@ -5,7 +5,6 @@
     "logColor": "#5d3f34",
     "plankColor": "#c39f7f"
   },
-  "tint": "leaves_hives",
   "fruit": {
     "item": "productivetrees:avocado",
     "growthSpeed": 0.4,

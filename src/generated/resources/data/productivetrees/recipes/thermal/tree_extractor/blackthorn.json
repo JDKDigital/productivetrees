@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "leaves": "productivetrees:blackthorn_leaves",
+  "result": {
+    "amount": 50,
+    "fluid": "thermal:sap"
+  },
+  "trunk": "productivetrees:blackthorn_log"
+}

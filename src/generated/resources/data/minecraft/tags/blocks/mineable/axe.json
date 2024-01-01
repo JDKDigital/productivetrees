@@ -101,6 +101,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:asai_palm_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:asai_palm_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:asai_palm_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:asai_palm_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:asai_palm_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:ash_planks",
       "required": false
     },
@@ -301,6 +321,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:black_ember_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_ember_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_ember_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_ember_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_ember_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:black_locust_planks",
       "required": false
     },
@@ -418,6 +458,26 @@
     },
     {
       "id": "productivetrees:breadfruit_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_stripped_wood",
       "required": false
     },
     {
@@ -558,6 +618,26 @@
     },
     {
       "id": "productivetrees:cashew_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_stripped_wood",
       "required": false
     },
     {
@@ -761,26 +841,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:cogwood_planks",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cogwood_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cogwood_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cogwood_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cogwood_stripped_wood",
-      "required": false
-    },
-    {
       "id": "productivetrees:copoazu_planks",
       "required": false
     },
@@ -921,6 +981,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:elderberry_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elderberry_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elderberry_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elderberry_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elderberry_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:elm_planks",
       "required": false
     },
@@ -981,6 +1061,46 @@
       "required": false
     },
     {
+      "id": "productivetrees:firecracker_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:firecracker_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:firecracker_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:firecracker_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:firecracker_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:flowering_crabapple_planks",
       "required": false
     },
@@ -998,6 +1118,26 @@
     },
     {
       "id": "productivetrees:flowering_crabapple_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:foggy_blast_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:foggy_blast_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:foggy_blast_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:foggy_blast_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:foggy_blast_stripped_wood",
       "required": false
     },
     {
@@ -1261,6 +1401,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:jackfruit_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:jackfruit_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:jackfruit_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:jackfruit_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:jackfruit_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:juniper_planks",
       "required": false
     },
@@ -1278,26 +1438,6 @@
     },
     {
       "id": "productivetrees:juniper_stripped_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:kadsura_planks",
-      "required": false
-    },
-    {
-      "id": "productivetrees:kadsura_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:kadsura_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:kadsura_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:kadsura_stripped_wood",
       "required": false
     },
     {
@@ -1638,6 +1778,26 @@
     },
     {
       "id": "productivetrees:old_fustic_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_stripped_wood",
       "required": false
     },
     {
@@ -2101,6 +2261,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:rippling_willow_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rippling_willow_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rippling_willow_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rippling_willow_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rippling_willow_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:rosewood_planks",
       "required": false
     },
@@ -2158,6 +2338,26 @@
     },
     {
       "id": "productivetrees:rowan_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rubber_tree_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rubber_tree_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rubber_tree_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rubber_tree_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rubber_tree_stripped_wood",
       "required": false
     },
     {
@@ -2301,6 +2501,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:slimy_delight_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:slimy_delight_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:slimy_delight_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:slimy_delight_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:slimy_delight_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:socotra_dragon_planks",
       "required": false
     },
@@ -2321,6 +2541,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:soursop_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soursop_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soursop_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soursop_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soursop_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:sour_cherry_planks",
       "required": false
     },
@@ -2338,6 +2578,26 @@
     },
     {
       "id": "productivetrees:sour_cherry_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_stripped_wood",
       "required": false
     },
     {
@@ -2561,6 +2821,26 @@
       "required": false
     },
     {
+      "id": "productivetrees:time_traveller_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:time_traveller_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:time_traveller_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:time_traveller_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:time_traveller_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:tuscarora_crepe_myrtle_planks",
       "required": false
     },
@@ -2781,23 +3061,23 @@
       "required": false
     },
     {
-      "id": "productivetrees:ysabella_purpurea_planks",
+      "id": "productivetrees:ysabelle_planks",
       "required": false
     },
     {
-      "id": "productivetrees:ysabella_purpurea_log",
+      "id": "productivetrees:ysabelle_log",
       "required": false
     },
     {
-      "id": "productivetrees:ysabella_purpurea_wood",
+      "id": "productivetrees:ysabelle_wood",
       "required": false
     },
     {
-      "id": "productivetrees:ysabella_purpurea_stripped_log",
+      "id": "productivetrees:ysabelle_stripped_log",
       "required": false
     },
     {
-      "id": "productivetrees:ysabella_purpurea_stripped_wood",
+      "id": "productivetrees:ysabelle_stripped_wood",
       "required": false
     },
     {
@@ -2818,26 +3098,6 @@
     },
     {
       "id": "productivetrees:zebrano_stripped_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bush_planks",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bush_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bush_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bush_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bush_stripped_wood",
       "required": false
     }
   ]

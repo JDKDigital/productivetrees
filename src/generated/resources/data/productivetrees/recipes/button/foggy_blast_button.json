@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:foggy_blast_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:foggy_blast_button"
+  }
+}

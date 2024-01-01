@@ -1,0 +1,4 @@
+{
+  "parent": "productivetrees:block/log/base_log",
+  "render_type": "translucent"
+}

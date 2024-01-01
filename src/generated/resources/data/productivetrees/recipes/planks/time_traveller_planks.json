@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:time_traveller_log"
+      },
+      {
+        "item": "productivetrees:time_traveller_wood"
+      },
+      {
+        "item": "productivetrees:time_traveller_stripped_log"
+      },
+      {
+        "item": "productivetrees:time_traveller_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:time_traveller_planks"
+  }
+}

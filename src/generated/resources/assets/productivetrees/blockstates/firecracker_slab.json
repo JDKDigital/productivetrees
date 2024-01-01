@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/firecracker_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/firecracker"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/firecracker_slab_top"
+    }
+  }
+}

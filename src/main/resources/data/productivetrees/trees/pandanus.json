@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:pandanus",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#b7b6a3",
-    "plankColor": "#cfad9a"
+    "leafColor": "#80ae42",
+    "logColor": "#846f4e",
+    "plankColor": "#b7a78b"
   },
   "fruit": {
     "item": "productivetrees:hala_fruit",

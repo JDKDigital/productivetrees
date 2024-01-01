@@ -1,0 +1,21 @@
+{
+  "textures": {
+    "copoazu": "productivetrees:block/fruit/copoazu/copoazu",
+    "particle": "#copoazu"
+  },
+  "elements": [
+    {
+      "name": "flower",
+      "from": [7, 14, 7],
+      "to": [9, 16, 9],
+      "faces": {
+        "north": {"uv": [0, 0, 2, 2], "texture": "#copoazu"},
+        "east": {"uv": [0, 0, 2, 2], "texture": "#copoazu"},
+        "south": {"uv": [0, 0, 2, 2], "texture": "#copoazu"},
+        "west": {"uv": [0, 0, 2, 2], "texture": "#copoazu"},
+        "up": {"uv": [2, 2, 0, 0], "texture": "#copoazu"},
+        "down": {"uv": [2, 0, 0, 2], "texture": "#copoazu"}
+      }
+    }
+  ]
+}

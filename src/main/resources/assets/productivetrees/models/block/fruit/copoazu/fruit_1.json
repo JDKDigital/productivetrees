@@ -1,0 +1,47 @@
+{
+  "textures": {
+    "copoazu": "productivetrees:block/fruit/copoazu/copoazu",
+    "particle": "#copoazu"
+  },
+  "elements": [
+    {
+      "name": "flower",
+      "from": [6, 15, 6],
+      "to": [10, 16, 10],
+      "faces": {
+        "north": {"uv": [4, 2, 8, 3], "texture": "#copoazu"},
+        "east": {"uv": [4, 2, 8, 3], "texture": "#copoazu"},
+        "south": {"uv": [4, 2, 8, 3], "texture": "#copoazu"},
+        "west": {"uv": [4, 2, 8, 3], "texture": "#copoazu"},
+        "up": {"uv": [4, 6, 0, 2], "texture": "#copoazu"},
+        "down": {"uv": [4, 2, 0, 6], "texture": "#copoazu"}
+      }
+    },
+    {
+      "name": "petals",
+      "from": [6.5, 12.99, 6.5],
+      "to": [9.5, 14.99, 9.5],
+      "faces": {
+        "north": {"uv": [0, 9, 3, 11], "texture": "#copoazu"},
+        "east": {"uv": [0, 9, 3, 11], "texture": "#copoazu"},
+        "south": {"uv": [0, 9, 3, 11], "texture": "#copoazu"},
+        "west": {"uv": [0, 9, 3, 11], "texture": "#copoazu"},
+        "up": {"uv": [0, 6, 3, 9], "texture": "#copoazu"},
+        "down": {"uv": [3, 6, 6, 9], "texture": "#copoazu"}
+      }
+    },
+    {
+      "name": "petals",
+      "from": [9.5, 14.99, 9.5],
+      "to": [6.5, 12.99, 6.5],
+      "faces": {
+        "north": {"uv": [0, 11, 3, 13], "texture": "#copoazu"},
+        "east": {"uv": [0, 11, 3, 13], "texture": "#copoazu"},
+        "south": {"uv": [0, 11, 3, 13], "texture": "#copoazu"},
+        "west": {"uv": [0, 11, 3, 13], "texture": "#copoazu"},
+        "up": {"uv": [0, 13, 3, 16], "texture": "#copoazu"},
+        "down": {"uv": [0, 6, 3, 9], "texture": "#copoazu"}
+      }
+    }
+  ]
+}

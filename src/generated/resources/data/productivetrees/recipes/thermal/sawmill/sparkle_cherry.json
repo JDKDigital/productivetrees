@@ -1,0 +1,35 @@
+{
+  "type": "thermal:sawmill",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy": 1000,
+  "experience": 0.15,
+  "ingredient": [
+    {
+      "item": "productivetrees:sparkle_cherry_log"
+    },
+    {
+      "item": "productivetrees:sparkle_cherry_stripped_log"
+    },
+    {
+      "item": "productivetrees:sparkle_cherry_wood"
+    },
+    {
+      "item": "productivetrees:sparkle_cherry_stripped_wood"
+    }
+  ],
+  "result": [
+    {
+      "count": 6,
+      "item": "productivetrees:sparkle_cherry_planks"
+    },
+    {
+      "chance": 1.25,
+      "item": "thermal:sawdust"
+    }
+  ]
+}

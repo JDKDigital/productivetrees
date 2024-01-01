@@ -1,0 +1,24 @@
+{
+  "type": "thermal:insolator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy_mod": 3.0,
+  "ingredient": {
+    "item": "productivetrees:ceylon_ebony_sapling"
+  },
+  "result": [
+    {
+      "chance": 6.0,
+      "item": "productivetrees:ceylon_ebony_log"
+    },
+    {
+      "chance": 1.1,
+      "item": "productivetrees:ceylon_ebony_sapling"
+    }
+  ],
+  "water_mod": 3.0
+}

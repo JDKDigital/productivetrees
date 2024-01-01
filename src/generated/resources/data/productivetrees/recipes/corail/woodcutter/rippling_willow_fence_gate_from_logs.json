@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 1,
+  "ingredient": [
+    {
+      "item": "productivetrees:rippling_willow_log"
+    },
+    {
+      "item": "productivetrees:rippling_willow_wood"
+    },
+    {
+      "item": "productivetrees:rippling_willow_stripped_log"
+    },
+    {
+      "item": "productivetrees:rippling_willow_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:rippling_willow_fence_gate"
+}

@@ -1,0 +1,14 @@
+{
+  "feature": "productivetrees:jackfruit",
+  "colors": {
+    "leafColor": "#477d03",
+    "logColor": "#636051",
+    "plankColor": "#eaae5d"
+  },
+  "fruit": {
+    "item": "productivetrees:jackfruit",
+    "growthSpeed": 0.2,
+    "unripeColor": "#7ab450",
+    "ripeColor": "#d9cb5e"
+  }
+}

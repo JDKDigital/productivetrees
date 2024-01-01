@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "layers=1": {
+      "model": "productivetrees:block/brown_amber/puddle2"
+    },
+    "layers=2": {
+      "model": "productivetrees:block/brown_amber/puddle4"
+    },
+    "layers=3": {
+      "model": "productivetrees:block/brown_amber/puddle6"
+    },
+    "layers=4": {
+      "model": "productivetrees:block/brown_amber/puddle8"
+    },
+    "layers=5": {
+      "model": "productivetrees:block/brown_amber/puddle10"
+    },
+    "layers=6": {
+      "model": "productivetrees:block/brown_amber/puddle12"
+    },
+    "layers=7": {
+      "model": "productivetrees:block/brown_amber/puddle14"
+    },
+    "layers=8": {
+      "model": "productivetrees:block/leaves/brown_amber"
+    }
+  }
+}

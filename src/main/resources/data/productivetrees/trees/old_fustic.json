@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:old_fustic",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#8db092",
+    "logColor": "#bba979",
+    "plankColor": "#f7c86d"
   }
 }

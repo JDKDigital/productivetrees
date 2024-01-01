@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log",
+  "textures": {
+    "end": "productivetrees:block/log_top/cave_dweller",
+    "side": "productivetrees:block/log/cave_dweller"
+  }
+}

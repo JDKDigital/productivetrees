@@ -1,5 +1,5 @@
 {
-  "parent": "productivetrees:block/base_leaves",
+  "parent": "productivetrees:block/leaves/base_leaves",
   "textures": {
     "all": "productivetrees:block/leaves/butternut"
   }

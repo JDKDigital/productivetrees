@@ -12,6 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -30,7 +31,7 @@ import net.minecraftforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class StripperBlockEntity extends CapabilityBlockEntity
+public class StripperBlockEntity extends CapabilityBlockEntity implements MenuProvider
 {
     protected int tickCounter = 0;
 
@@ -85,14 +86,14 @@ public class StripperBlockEntity extends CapabilityBlockEntity
         }
     });
 
+    public StripperBlockEntity(BlockPos pos, BlockState state) {
+        super(TreeRegistrator.STRIPPER_BLOCK_ENTITY.get(), pos, state);
+    }
+
     private boolean canProcess(ItemStack stack) {
         var stripped = TreeUtil.getStrippedItem(stack);
 
         return !stripped.isEmpty() && !ItemHandlerHelper.canItemStacksStack(stack, stripped);
-    }
-
-    public StripperBlockEntity(BlockPos pos, BlockState state) {
-        super(TreeRegistrator.STRIPPER_BLOCK_ENTITY.get(), pos, state);
     }
 
     @Override

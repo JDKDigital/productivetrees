@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/translucent_base_bookshelf",
+  "textures": {
+    "side": "productivetrees:block/planks/slimy_delight"
+  }
+}

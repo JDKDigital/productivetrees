@@ -1,0 +1,4 @@
+{
+  "parent": "minecraft:block/template_orientable_trapdoor_bottom",
+  "render_type": "translucent"
+}

@@ -1,0 +1,4 @@
+{
+  "parent": "productivetrees:block/slab/base_slab_top",
+  "render_type": "translucent"
+}

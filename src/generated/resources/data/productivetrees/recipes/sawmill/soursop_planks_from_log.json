@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:soursop_log"
+    },
+    {
+      "item": "productivetrees:soursop_stripped_log"
+    },
+    {
+      "item": "productivetrees:soursop_wood"
+    },
+    {
+      "item": "productivetrees:soursop_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:soursop_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

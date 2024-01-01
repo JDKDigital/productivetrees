@@ -1,7 +1,0 @@
-{
-  "parent": "productivetrees:block/fruit/base_fruit_untinted_leaves",
-  "textures": {
-    "all": "productivetrees:block/base_leaves",
-    "fruit": "productivetrees:block/fruit/small/2"
-  }
-}

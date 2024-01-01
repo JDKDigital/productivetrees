@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:logwood",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#ddc7b7",
-    "plankColor": "#a4372c"
+    "leafColor": "#869d18",
+    "logColor": "#39312f",
+    "plankColor": "#a6511a"
   }
 }

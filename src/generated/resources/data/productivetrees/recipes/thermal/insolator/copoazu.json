@@ -1,0 +1,28 @@
+{
+  "type": "thermal:insolator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy_mod": 3.0,
+  "ingredient": {
+    "item": "productivetrees:copoazu_sapling"
+  },
+  "result": [
+    {
+      "chance": 6.0,
+      "item": "productivetrees:copoazu_log"
+    },
+    {
+      "chance": 1.1,
+      "item": "productivetrees:copoazu_sapling"
+    },
+    {
+      "chance": 0.2,
+      "item": "productivetrees:copoazu"
+    }
+  ],
+  "water_mod": 3.0
+}

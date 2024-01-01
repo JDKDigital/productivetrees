@@ -12,6 +12,7 @@ import cy.jdkdigital.productivetrees.common.feature.FruitLeafReplacerDecorator;
 import cy.jdkdigital.productivetrees.feature.trunkplacers.CenteredUpwardsBranchingTrunkPlacer;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Vec3i;
 import net.minecraft.data.CachedOutput;
@@ -63,7 +64,7 @@ public class FeatureProvider implements DataProvider
         Map<ResourceLocation, Supplier<JsonElement>> configuredFeatures = Maps.newHashMap();
         TreeFinder.trees.forEach((id, treeObject) -> {
             placedFeatures.put(treeObject.getId(), getPlacedFeature(treeObject));
-            if (!treeObject.getId().getPath().equals("ysabella_purpurea") && !treeObject.getId().getPath().equals("twinkle_field")) {
+            if (!TreeUtil.isSpecialTree(treeObject.getId())) {
                 configuredFeatures.put(treeObject.getId(), getConfiguredFeature(treeObject));
             }
         });
@@ -116,8 +117,8 @@ public class FeatureProvider implements DataProvider
             // foliage_placer
             config.add("foliage_placer", foliagePlacers.containsKey(name) ? foliagePlacers.get(name) : foliagePlacers.get("default"));
             // foliage_provider
-//            config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(treeObject.getLeafBlock().get())).getOrThrow(false, ProductiveTrees.LOGGER::error));
-            config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(Blocks.AIR)).getOrThrow(false, ProductiveTrees.LOGGER::error));
+            config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(treeObject.getLeafBlock().get())).getOrThrow(false, ProductiveTrees.LOGGER::error));
+//            config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(Blocks.AIR)).getOrThrow(false, ProductiveTrees.LOGGER::error));
             // minimum_size
             config.add("minimum_size", FeatureSize.CODEC.encodeStart(JsonOps.INSTANCE, new TwoLayersFeatureSize(1, 0, 1)).getOrThrow(false, ProductiveTrees.LOGGER::error));
             // trunk_placer
@@ -149,14 +150,24 @@ public class FeatureProvider implements DataProvider
 
     private final JsonElement DIRT_PROVIDER = BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(Blocks.DIRT)).getOrThrow(false, ProductiveTrees.LOGGER::error);
 
+    private Function<SimpleStateProvider, JsonElement> createDanglerFruitProvider(float density, int maxFruits) {
+        return (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafPlacerDecorator(density, maxFruits, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error);
+    }
+
     private final Function<SimpleStateProvider, JsonElement> MEDIUM_FRUIT_DISTRIBUTION = (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafReplacerDecorator(0.4f, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error);
     private final Map<String, Function<SimpleStateProvider, JsonElement>> fruitDecorators = new HashMap<>() {{
         put("default", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafReplacerDecorator(0.6f, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
         put("almond", MEDIUM_FRUIT_DISTRIBUTION);
         put("avocado", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafReplacerDecorator(0.3f, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
-        put("banana", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafPlacerDecorator(0.2f, 3, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
-        put("red_banana", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafPlacerDecorator(0.2f, 3, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
-        put("plantain", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafPlacerDecorator(0.2f, 3, fruitProvider)).getOrThrow(false, ProductiveTrees.LOGGER::error));
+        put("banana", createDanglerFruitProvider(0.2f, 3));
+        put("red_banana", createDanglerFruitProvider(0.2f, 3));
+        put("plantain", createDanglerFruitProvider(0.2f, 3));
+        put("breadfruit", createDanglerFruitProvider(0.2f, 6));
+        put("copoazu", createDanglerFruitProvider(0.2f, 5));
+        put("coconut", createDanglerFruitProvider(0.2f, 4));
+        put("cempedak", createDanglerFruitProvider(0.2f, 3));
+        put("jackfruit", createDanglerFruitProvider(0.2f, 4));
+        put("hala_fruit", createDanglerFruitProvider(0.2f, 4));
         put("beech", MEDIUM_FRUIT_DISTRIBUTION);
         put("butternut", MEDIUM_FRUIT_DISTRIBUTION);
         put("hazel", MEDIUM_FRUIT_DISTRIBUTION);
@@ -164,7 +175,6 @@ public class FeatureProvider implements DataProvider
         put("pistachio", MEDIUM_FRUIT_DISTRIBUTION);
         put("wallnut", MEDIUM_FRUIT_DISTRIBUTION);
     }};
-    private final JsonElement BUSH_FOLIAGE = FoliagePlacer.CODEC.encodeStart(JsonOps.INSTANCE, new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2)).getOrThrow(false, ProductiveTrees.LOGGER::error);
     private final Map<String, JsonElement> foliagePlacers = new HashMap<>() {{
         put("default", createFoliage(2, 3));
         put("alder", createFoliage(4, 5));
@@ -172,35 +182,23 @@ public class FeatureProvider implements DataProvider
         put("banana", createFoliage(3, 1));
         put("red_banana", createFoliage(3, 1));
         put("plantain", createFoliage(3, 1));
-        put("blackberry", BUSH_FOLIAGE);
-        put("blackcurrant", BUSH_FOLIAGE);
-        put("blueberry", BUSH_FOLIAGE);
-        put("cranberry", BUSH_FOLIAGE);
-        put("elderberry", BUSH_FOLIAGE);
-        put("golden_raspberry", BUSH_FOLIAGE);
-        put("gooseberry", BUSH_FOLIAGE);
-        put("juniper", BUSH_FOLIAGE);
-        put("raspberry", BUSH_FOLIAGE);
-        put("redcurrant", BUSH_FOLIAGE);
+        put("asai_palm", createFoliage(3, 2));
+        put("date_palm", createFoliage(4, 2));
+        put("elderberry", createFoliage(4, 4));
+        put("juniper", createFoliage(2, 6));
     }};
-    private final JsonElement BUSH_TRUNK = createStraightTrunk(1, 0, 0);
     private final Map<String, JsonElement> trunkPlacers = new HashMap<>() {{
-        put("default", createStraightTrunk(4, 2, 0));
+        put("default", createStraightTrunk(6, 2, 0));
         put("alder", createBranchingTrunk(24, 2, 2, UniformInt.of(1, 6), 0.5F, UniformInt.of(0, 1)));
         put("avocado", createStraightTrunk(9, 10, 0));
         put("banana", createStraightTrunk(5, 6, 0));
         put("red_banana", createStraightTrunk(5, 6, 0));
         put("plantain", createStraightTrunk(5, 6, 0));
+        put("asai_palm", createStraightTrunk(9, 5, 2));
+        put("date_palm", createStraightTrunk(8, 4, 2));
         put("beech", createStraightTrunk(20, 10, 0));
-        put("blackberry", BUSH_TRUNK);
-        put("blackcurrant", BUSH_TRUNK);
-        put("blueberry", BUSH_TRUNK);
-        put("cranberry", BUSH_TRUNK);
-        put("elderberry", BUSH_TRUNK);
-        put("golden_raspberry", BUSH_TRUNK);
-        put("gooseberry", BUSH_TRUNK);
-        put("juniper", BUSH_TRUNK);
-        put("raspberry", BUSH_TRUNK);
-        put("redcurrant", BUSH_TRUNK);
+        put("copoazu", createStraightTrunk(8, 2, 1));
+        put("elderberry", createStraightTrunk(5, 0, 0));
+        put("juniper", createStraightTrunk(4, 0, 0));
     }};
 }

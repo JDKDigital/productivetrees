@@ -1,9 +1,9 @@
 {
   "feature": "productivetrees:soursop",
   "colors": {
-    "leafColor": "#396027",
-    "logColor": "#10100e",
-    "plankColor": "#bcaa96"
+    "leafColor": "#106331",
+    "logColor": "#6d6858",
+    "plankColor": "#e8c7a0"
   },
   "fruit": {
     "item": "productivetrees:soursop",

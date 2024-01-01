@@ -1,0 +1,9 @@
+{
+  "feature": "productivetrees:firecracker",
+  "colors": {
+    "leafColor": "#dcceb3",
+    "logColor": "#831e24",
+    "plankColor": "#c40510"
+  },
+  "fireproof": true
+}

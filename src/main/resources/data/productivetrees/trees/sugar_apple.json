@@ -1,9 +1,14 @@
 {
   "feature": "productivetrees:sugar_apple",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#6b6053",
-    "plankColor": "#5e564a"
+    "leafColor": "#4c7305",
+    "logColor": "#564f3e",
+    "plankColor": "#e0beb0"
+  },
+  "fruit": {
+    "item": "productivetrees:sweetsop",
+    "growthSpeed": 0.5,
+    "unripeColor": "#a9b935",
+    "ripeColor": "#661c24"
   }
 }

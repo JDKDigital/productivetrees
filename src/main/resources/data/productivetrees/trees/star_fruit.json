@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:star_fruit",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#8da60c",
+    "logColor": "#948e89",
+    "plankColor": "#b99994"
   },
   "fruit": {
     "item": "productivetrees:star_fruit",

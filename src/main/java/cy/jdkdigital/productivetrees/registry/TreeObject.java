@@ -45,7 +45,6 @@ public class TreeObject extends WoodObject
     private Supplier<Block> pottedSaplingBlock;
     private Supplier<Block> leafBlock;
     private Supplier<Block> fruitBlock;
-    private Supplier<BlockEntityType<BlockEntity>> fruitBlockEntity;
 
     public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, Supplier<ItemStack> stripDrop, boolean registerWood, ResourceLocation log, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
         super(id, fireProof, colors, stripDrop);
@@ -195,13 +194,8 @@ public class TreeObject extends WoodObject
         return fruitBlock;
     }
 
-    public Supplier<BlockEntityType<BlockEntity>> getFruitBlockEntity() {
-        return fruitBlockEntity;
-    }
-
-    public void setFruitBlock(Supplier<Block> fruitBlock, Supplier<BlockEntityType<BlockEntity>> fruitBlockEntity) {
+    public void setFruitBlock(Supplier<Block> fruitBlock) {
         this.fruitBlock = fruitBlock;
-        this.fruitBlockEntity = fruitBlockEntity;
     }
 
     public record GrowthCondition(boolean canForceGrowth, int minLight, int maxLight, Fluid fluid, Optional<HolderSet<Biome>> biome)

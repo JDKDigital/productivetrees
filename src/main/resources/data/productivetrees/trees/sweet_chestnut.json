@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:sweet_chestnut",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#484c20",
-    "plankColor": "#bbaa5d"
+    "leafColor": "#8a933a",
+    "logColor": "#8e7658",
+    "plankColor": "#d3a981"
   }
 }

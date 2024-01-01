@@ -1,0 +1,12 @@
+{
+  "feature": "productivetrees:ysabelle",
+  "decoration": {
+    "lightLevel": 11
+  },
+  "colors": {
+    "leafColor": "#c8a3e3",
+    "logColor": "#370073",
+    "plankColor": "#d2a6fd"
+  },
+  "fallingLeaves": true
+}

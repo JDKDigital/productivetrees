@@ -1,3 +1,36 @@
 {
-  "values": []
+  "values": [
+    {
+      "id": "productivetrees:brown_amber_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:firecracker_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:firecracker_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:firecracker_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:firecracker_stripped_wood",
+      "required": false
+    }
+  ]
 }

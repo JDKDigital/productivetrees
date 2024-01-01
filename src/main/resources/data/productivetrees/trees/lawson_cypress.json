@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:lawson_cypress",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#f6b85c"
+    "leafColor": "#3d7925",
+    "logColor": "#3e3224",
+    "plankColor": "#d2bc9d"
   }
 }

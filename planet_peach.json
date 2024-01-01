@@ -1,0 +1,335 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"10": "Twinkle Field Leaves",
+		"11": "mature",
+		"12": "texture",
+		"13": "base"
+	},
+	"elements": [
+		{
+			"from": [0, 16, 0],
+			"to": [16, 32, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#10"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#10"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#10"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#10"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#10"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#10"}
+			}
+		},
+		{
+			"name": "Top Stalk",
+			"from": [0.5, 13, 0.5],
+			"to": [15.5, 16, 15.5],
+			"faces": {
+				"north": {"uv": [0, 7, 15, 10], "texture": "#13"},
+				"east": {"uv": [0, 12, 15, 15], "texture": "#13"},
+				"south": {"uv": [0, 3, 15, 6], "texture": "#13"},
+				"west": {"uv": [1, 3, 16, 6], "texture": "#13"},
+				"up": {"uv": [15, 16, 0, 1], "texture": "#13"},
+				"down": {"uv": [15, 1, 0, 16], "texture": "#13"}
+			}
+		},
+		{
+			"name": "Top Stalk",
+			"from": [0.5, 13, 0.5],
+			"to": [15.5, 16, 15.5],
+			"faces": {
+				"north": {"uv": [0, 7, 15, 10], "texture": "#13"},
+				"east": {"uv": [0, 12, 15, 15], "texture": "#13"},
+				"south": {"uv": [0, 3, 15, 6], "texture": "#13"},
+				"west": {"uv": [1, 3, 16, 6], "texture": "#13"},
+				"up": {"uv": [15, 16, 0, 1], "texture": "#13"},
+				"down": {"uv": [15, 1, 0, 16], "texture": "#13"}
+			}
+		},
+		{
+			"name": "Bottom Stalk",
+			"from": [1.5, 11, 1.5],
+			"to": [14.5, 13, 14.5],
+			"faces": {
+				"north": {"uv": [3, 7, 16, 9], "texture": "#13"},
+				"east": {"uv": [3, 13, 16, 15], "texture": "#13"},
+				"south": {"uv": [3, 4, 16, 6], "texture": "#13"},
+				"west": {"uv": [3, 10, 16, 12], "texture": "#13"},
+				"up": {"uv": [13, 13, 0, 0], "texture": "#13"},
+				"down": {"uv": [13, 3, 0, 16], "texture": "#13"}
+			}
+		},
+		{
+			"name": "Bottom Stalk",
+			"from": [1.5, 11, 1.5],
+			"to": [14.5, 13, 14.5],
+			"faces": {
+				"north": {"uv": [3, 7, 16, 9], "texture": "#13"},
+				"east": {"uv": [3, 13, 16, 15], "texture": "#13"},
+				"south": {"uv": [3, 4, 16, 6], "texture": "#13"},
+				"west": {"uv": [3, 10, 16, 12], "texture": "#13"},
+				"up": {"uv": [13, 13, 0, 0], "texture": "#13"},
+				"down": {"uv": [13, 3, 0, 16], "texture": "#13"}
+			}
+		},
+		{
+			"name": "Top Stalk",
+			"from": [0.5, 13, 0.5],
+			"to": [15.5, 16, 15.5],
+			"faces": {
+				"north": {"uv": [0, 7, 15, 10], "texture": "#13"},
+				"east": {"uv": [0, 12, 15, 15], "texture": "#13"},
+				"south": {"uv": [0, 3, 15, 6], "texture": "#13"},
+				"west": {"uv": [1, 3, 16, 6], "texture": "#13"},
+				"up": {"uv": [15, 16, 0, 1], "texture": "#13"},
+				"down": {"uv": [15, 1, 0, 16], "texture": "#13"}
+			}
+		},
+		{
+			"name": "Stem",
+			"from": [7.5, 7, 7.5],
+			"to": [8.5, 11, 8.5],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 4], "texture": "#12"},
+				"east": {"uv": [1, 0, 2, 4], "texture": "#12"},
+				"south": {"uv": [2, 0, 3, 4], "texture": "#12"},
+				"west": {"uv": [3, 0, 4, 4], "texture": "#12"},
+				"up": {"uv": [5, 1, 4, 0], "texture": "#12"},
+				"down": {"uv": [5, 1, 4, 2], "texture": "#12"}
+			}
+		},
+		{
+			"name": "Top Stalk",
+			"from": [0.5, 13, 0.5],
+			"to": [15.5, 16, 15.5],
+			"faces": {
+				"north": {"uv": [0, 7, 15, 10], "texture": "#13"},
+				"east": {"uv": [0, 12, 15, 15], "texture": "#13"},
+				"south": {"uv": [0, 3, 15, 6], "texture": "#13"},
+				"west": {"uv": [1, 3, 16, 6], "texture": "#13"},
+				"up": {"uv": [15, 16, 0, 1], "texture": "#13"},
+				"down": {"uv": [15, 1, 0, 16], "texture": "#13"}
+			}
+		},
+		{
+			"name": "Bottom Stalk",
+			"from": [1.5, 11, 1.5],
+			"to": [14.5, 13, 14.5],
+			"faces": {
+				"north": {"uv": [3, 7, 16, 9], "texture": "#13"},
+				"east": {"uv": [3, 13, 16, 15], "texture": "#13"},
+				"south": {"uv": [3, 4, 16, 6], "texture": "#13"},
+				"west": {"uv": [3, 10, 16, 12], "texture": "#13"},
+				"up": {"uv": [13, 13, 0, 0], "texture": "#13"},
+				"down": {"uv": [13, 3, 0, 16], "texture": "#13"}
+			}
+		},
+		{
+			"name": "Stem",
+			"from": [7.5, 7, 7.5],
+			"to": [8.5, 11, 8.5],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 4], "texture": "#12"},
+				"east": {"uv": [1, 0, 2, 4], "texture": "#12"},
+				"south": {"uv": [2, 0, 3, 4], "texture": "#12"},
+				"west": {"uv": [3, 0, 4, 4], "texture": "#12"},
+				"up": {"uv": [5, 1, 4, 0], "texture": "#12"},
+				"down": {"uv": [5, 1, 4, 2], "texture": "#12"}
+			}
+		},
+		{
+			"name": "Fruit Small",
+			"from": [7.5, 4, 7.5],
+			"to": [8.5, 7, 8.5],
+			"faces": {
+				"north": {"uv": [7, 0, 9, 6], "texture": "#12"},
+				"east": {"uv": [11, 0, 13, 6], "texture": "#12"},
+				"south": {"uv": [9, 0, 11, 6], "texture": "#12"},
+				"west": {"uv": [13, 0, 15, 6], "texture": "#12"},
+				"up": {"uv": [14, 4, 16, 6], "texture": "#12"},
+				"down": {"uv": [14, 0, 16, 2], "texture": "#12"}
+			}
+		},
+		{
+			"name": "Fruit Ring",
+			"from": [6.5, 5.37, 6.5],
+			"to": [9.5, 5.62, 9.5],
+			"faces": {
+				"north": {"uv": [2, 5, 3, 6], "texture": "#12"},
+				"east": {"uv": [2, 5, 3, 6], "texture": "#12"},
+				"south": {"uv": [2, 5, 3, 6], "texture": "#12"},
+				"west": {"uv": [2, 5, 3, 6], "texture": "#12"},
+				"up": {"uv": [3, 6, 2, 5], "texture": "#12"},
+				"down": {"uv": [3, 5, 2, 6], "texture": "#12"}
+			}
+		},
+		{
+			"name": "Bottom Stalk",
+			"from": [1.5, 11, 1.5],
+			"to": [14.5, 13, 14.5],
+			"faces": {
+				"north": {"uv": [3, 7, 16, 9], "texture": "#13"},
+				"east": {"uv": [3, 13, 16, 15], "texture": "#13"},
+				"south": {"uv": [3, 4, 16, 6], "texture": "#13"},
+				"west": {"uv": [3, 10, 16, 12], "texture": "#13"},
+				"up": {"uv": [13, 13, 0, 0], "texture": "#13"},
+				"down": {"uv": [13, 3, 0, 16], "texture": "#13"}
+			}
+		},
+		{
+			"name": "Top Stalk",
+			"from": [0.5, 13, 0.5],
+			"to": [15.5, 16, 15.5],
+			"faces": {
+				"north": {"uv": [0, 7, 15, 10], "texture": "#13"},
+				"east": {"uv": [0, 12, 15, 15], "texture": "#13"},
+				"south": {"uv": [0, 3, 15, 6], "texture": "#13"},
+				"west": {"uv": [1, 3, 16, 6], "texture": "#13"},
+				"up": {"uv": [15, 16, 0, 1], "texture": "#13"},
+				"down": {"uv": [15, 1, 0, 16], "texture": "#13"}
+			}
+		},
+		{
+			"name": "Fruit",
+			"from": [6.5, 4, 6.5],
+			"to": [9.5, 7, 9.5],
+			"faces": {
+				"north": {"uv": [0, 8, 6, 14], "texture": "#12"},
+				"east": {"uv": [0, 10, 6, 16], "texture": "#12"},
+				"south": {"uv": [1, 8, 7, 14], "texture": "#12"},
+				"west": {"uv": [0, 9, 6, 15], "texture": "#12"},
+				"up": {"uv": [9, 14, 3, 8], "texture": "#12"},
+				"down": {"uv": [8, 8, 2, 14], "texture": "#12"}
+			}
+		},
+		{
+			"name": "Stem",
+			"from": [7.5, 7, 7.5],
+			"to": [8.5, 11, 8.5],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 4], "texture": "#12"},
+				"east": {"uv": [1, 0, 2, 4], "texture": "#12"},
+				"south": {"uv": [2, 0, 3, 4], "texture": "#12"},
+				"west": {"uv": [3, 0, 4, 4], "texture": "#12"},
+				"up": {"uv": [5, 1, 4, 0], "texture": "#12"},
+				"down": {"uv": [5, 1, 4, 2], "texture": "#12"}
+			}
+		},
+		{
+			"name": "Fruit Ring",
+			"from": [5.5, 5.25, 5.5],
+			"to": [10.5, 5.75, 10.5],
+			"faces": {
+				"north": {"uv": [1, 5, 2, 6], "texture": "#12"},
+				"east": {"uv": [1, 5, 2, 6], "texture": "#12"},
+				"south": {"uv": [1, 5, 2, 6], "texture": "#12"},
+				"west": {"uv": [1, 5, 2, 6], "texture": "#12"},
+				"up": {"uv": [2, 6, 1, 5], "texture": "#12"},
+				"down": {"uv": [2, 5, 1, 6], "texture": "#12"}
+			}
+		},
+		{
+			"name": "Bottom Stalk",
+			"from": [1.5, 11, 1.5],
+			"to": [14.5, 13, 14.5],
+			"faces": {
+				"north": {"uv": [3, 7, 16, 9], "texture": "#13"},
+				"east": {"uv": [3, 13, 16, 15], "texture": "#13"},
+				"south": {"uv": [3, 4, 16, 6], "texture": "#13"},
+				"west": {"uv": [3, 10, 16, 12], "texture": "#13"},
+				"up": {"uv": [13, 13, 0, 0], "texture": "#13"},
+				"down": {"uv": [13, 3, 0, 16], "texture": "#13"}
+			}
+		},
+		{
+			"name": "Top Stalk",
+			"from": [0.5, 13, 0.5],
+			"to": [15.5, 16, 15.5],
+			"faces": {
+				"north": {"uv": [0, 7, 15, 10], "texture": "#13"},
+				"east": {"uv": [0, 12, 15, 15], "texture": "#13"},
+				"south": {"uv": [0, 3, 15, 6], "texture": "#13"},
+				"west": {"uv": [1, 3, 16, 6], "texture": "#13"},
+				"up": {"uv": [15, 16, 0, 1], "texture": "#13"},
+				"down": {"uv": [15, 1, 0, 16], "texture": "#13"}
+			}
+		},
+		{
+			"name": "Stem",
+			"from": [7.5, 7, 7.5],
+			"to": [8.5, 11, 8.5],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 4], "texture": "#12"},
+				"east": {"uv": [0, 0, 1, 4], "texture": "#12"},
+				"south": {"uv": [0, 0, 1, 4], "texture": "#12"},
+				"west": {"uv": [0, 0, 1, 4], "texture": "#12"},
+				"up": {"uv": [2, 1, 3, 2], "texture": "#12"},
+				"down": {"uv": [1, 0, 2, 1], "texture": "#12"}
+			}
+		},
+		{
+			"name": "Fruit",
+			"from": [5.5, 2, 5.5],
+			"to": [10.5, 7, 10.5],
+			"faces": {
+				"north": {"uv": [0, 0, 10, 10], "texture": "#11"},
+				"east": {"uv": [2, 2, 12, 11], "texture": "#11"},
+				"south": {"uv": [5, 0, 16, 10], "texture": "#11"},
+				"west": {"uv": [4, 4, 14, 14], "texture": "#11"},
+				"up": {"uv": [10, 16, 0, 5], "texture": "#11"},
+				"down": {"uv": [16, 6, 6, 16], "texture": "#11"}
+			}
+		},
+		{
+			"name": "Fruit Ring",
+			"from": [4.5, 4, 4.5],
+			"to": [11.5, 5, 11.5],
+			"faces": {
+				"north": {"uv": [0, 5, 1, 6], "texture": "#12"},
+				"east": {"uv": [0, 5, 1, 6], "texture": "#12"},
+				"south": {"uv": [0, 5, 1, 6], "texture": "#12"},
+				"west": {"uv": [0, 5, 1, 6], "texture": "#12"},
+				"up": {"uv": [1, 6, 0, 5], "texture": "#12"},
+				"down": {"uv": [1, 5, 0, 6], "texture": "#12"}
+			}
+		}
+	],
+	"groups": [
+		0,
+		{
+			"name": "stage0",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [1]
+		},
+		{
+			"name": "stage1",
+			"origin": [7, 16, -8],
+			"color": 0,
+			"children": [2, 3]
+		},
+		{
+			"name": "stage2",
+			"origin": [23, 13, -8],
+			"color": 0,
+			"children": [4, 5, 6]
+		},
+		{
+			"name": "stage3",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [7, 8, 9, 10, 11]
+		},
+		{
+			"name": "stage4",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [12, 13, 14, 15, 16]
+		},
+		{
+			"name": "stage5",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [17, 18, 19, 20, 21]
+		}
+	]
+}

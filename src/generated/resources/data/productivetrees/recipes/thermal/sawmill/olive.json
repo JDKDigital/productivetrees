@@ -1,0 +1,35 @@
+{
+  "type": "thermal:sawmill",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy": 1000,
+  "experience": 0.15,
+  "ingredient": [
+    {
+      "item": "productivetrees:olive_log"
+    },
+    {
+      "item": "productivetrees:olive_stripped_log"
+    },
+    {
+      "item": "productivetrees:olive_wood"
+    },
+    {
+      "item": "productivetrees:olive_stripped_wood"
+    }
+  ],
+  "result": [
+    {
+      "count": 6,
+      "item": "productivetrees:olive_planks"
+    },
+    {
+      "chance": 1.25,
+      "item": "thermal:sawdust"
+    }
+  ]
+}

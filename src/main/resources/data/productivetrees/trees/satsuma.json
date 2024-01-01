@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:satsuma",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#4a5510",
+    "logColor": "#483930",
+    "plankColor": "#ae640b"
   },
   "fruit": {
     "item": "productivetrees:satsuma",

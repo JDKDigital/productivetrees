@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:western_hemlock",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#b9aea6",
-    "plankColor": "#c7b56c"
+    "leafColor": "#8baf71",
+    "logColor": "#4d4328",
+    "plankColor": "#bea787"
   }
 }

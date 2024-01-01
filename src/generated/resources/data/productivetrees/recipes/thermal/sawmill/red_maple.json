@@ -1,0 +1,35 @@
+{
+  "type": "thermal:sawmill",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy": 1000,
+  "experience": 0.15,
+  "ingredient": [
+    {
+      "item": "productivetrees:red_maple_log"
+    },
+    {
+      "item": "productivetrees:red_maple_stripped_log"
+    },
+    {
+      "item": "productivetrees:red_maple_wood"
+    },
+    {
+      "item": "productivetrees:red_maple_stripped_wood"
+    }
+  ],
+  "result": [
+    {
+      "count": 6,
+      "item": "productivetrees:red_maple_planks"
+    },
+    {
+      "chance": 1.25,
+      "item": "thermal:sawdust"
+    }
+  ]
+}

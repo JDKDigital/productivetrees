@@ -1,8 +1,0 @@
-{
-  "parent": "productivetrees:block/log/base_small_log",
-  "textures": {
-    "side": "productivetrees:block/log/oak",
-    "top_inner": "productivetrees:block/stripped/oak",
-    "branch": "productivetrees:block/empty"
-  }
-}

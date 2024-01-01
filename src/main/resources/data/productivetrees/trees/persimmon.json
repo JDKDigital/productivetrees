@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:persimmon",
-  "style": "dark_oak",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#ac8547",
-    "plankColor": "#ddcc78"
+    "leafColor": "#1e2d14",
+    "logColor": "#341c00",
+    "plankColor": "#9c806b"
   },
   "fruit": {
     "item": "productivetrees:persimmon",

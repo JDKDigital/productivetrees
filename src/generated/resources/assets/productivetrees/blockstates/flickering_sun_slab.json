@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/flickering_sun_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/flickering_sun"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/flickering_sun_slab_top"
+    }
+  }
+}

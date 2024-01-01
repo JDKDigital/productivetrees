@@ -21,6 +21,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:asai_palm_wall_hanging_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:ash_wall_hanging_sign",
       "required": false
     },
@@ -61,6 +65,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:black_ember_wall_hanging_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:black_locust_wall_hanging_sign",
       "required": false
     },
@@ -82,6 +90,10 @@
     },
     {
       "id": "productivetrees:breadfruit_wall_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_wall_hanging_sign",
       "required": false
     },
     {
@@ -110,6 +122,10 @@
     },
     {
       "id": "productivetrees:cashew_wall_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_wall_hanging_sign",
       "required": false
     },
     {
@@ -153,10 +169,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:cogwood_wall_hanging_sign",
-      "required": false
-    },
-    {
       "id": "productivetrees:copoazu_wall_hanging_sign",
       "required": false
     },
@@ -185,6 +197,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:elderberry_wall_hanging_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:elm_wall_hanging_sign",
       "required": false
     },
@@ -197,7 +213,19 @@
       "required": false
     },
     {
+      "id": "productivetrees:firecracker_wall_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_wall_hanging_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:flowering_crabapple_wall_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:foggy_blast_wall_hanging_sign",
       "required": false
     },
     {
@@ -253,11 +281,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:juniper_wall_hanging_sign",
+      "id": "productivetrees:jackfruit_wall_hanging_sign",
       "required": false
     },
     {
-      "id": "productivetrees:kadsura_wall_hanging_sign",
+      "id": "productivetrees:juniper_wall_hanging_sign",
       "required": false
     },
     {
@@ -326,6 +354,10 @@
     },
     {
       "id": "productivetrees:old_fustic_wall_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_wall_hanging_sign",
       "required": false
     },
     {
@@ -421,6 +453,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:rippling_willow_wall_hanging_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:rosewood_wall_hanging_sign",
       "required": false
     },
@@ -430,6 +466,10 @@
     },
     {
       "id": "productivetrees:rowan_wall_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rubber_tree_wall_hanging_sign",
       "required": false
     },
     {
@@ -461,11 +501,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:slimy_delight_wall_hanging_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:socotra_dragon_wall_hanging_sign",
       "required": false
     },
     {
+      "id": "productivetrees:soursop_wall_hanging_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:sour_cherry_wall_hanging_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_wall_hanging_sign",
       "required": false
     },
     {
@@ -513,6 +565,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:time_traveller_wall_hanging_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:tuscarora_crepe_myrtle_wall_hanging_sign",
       "required": false
     },
@@ -557,15 +613,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:ysabella_purpurea_wall_hanging_sign",
+      "id": "productivetrees:ysabelle_wall_hanging_sign",
       "required": false
     },
     {
       "id": "productivetrees:zebrano_wall_hanging_sign",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bush_wall_hanging_sign",
       "required": false
     }
   ]

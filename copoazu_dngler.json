@@ -1,0 +1,218 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "productivetrees:block/leaves/copoazu",
+		"1": "productivetrees:block/fruit/copoazu/copoazu",
+		"particle": "productivetrees:block/leaves/copoazu"
+	},
+	"elements": [
+		{
+			"name": "leaf",
+			"from": [0, 16, 0],
+			"to": [16, 32, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "flower",
+			"from": [7, 14, 7],
+			"to": [9, 16, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 2], "texture": "#1"},
+				"east": {"uv": [0, 0, 2, 2], "texture": "#1"},
+				"south": {"uv": [0, 0, 2, 2], "texture": "#1"},
+				"west": {"uv": [0, 0, 2, 2], "texture": "#1"},
+				"up": {"uv": [2, 2, 0, 0], "texture": "#1"},
+				"down": {"uv": [2, 0, 0, 2], "texture": "#1"}
+			}
+		},
+		{
+			"name": "flower",
+			"from": [6, 15, 6],
+			"to": [10, 16, 10],
+			"faces": {
+				"north": {"uv": [4, 2, 8, 3], "texture": "#1"},
+				"east": {"uv": [4, 2, 8, 3], "texture": "#1"},
+				"south": {"uv": [4, 2, 8, 3], "texture": "#1"},
+				"west": {"uv": [4, 2, 8, 3], "texture": "#1"},
+				"up": {"uv": [4, 6, 0, 2], "texture": "#1"},
+				"down": {"uv": [4, 2, 0, 6], "texture": "#1"}
+			}
+		},
+		{
+			"name": "petals",
+			"from": [6.5, 12.99, 6.5],
+			"to": [9.5, 14.99, 9.5],
+			"faces": {
+				"north": {"uv": [0, 9, 3, 11], "texture": "#1"},
+				"east": {"uv": [0, 9, 3, 11], "texture": "#1"},
+				"south": {"uv": [0, 9, 3, 11], "texture": "#1"},
+				"west": {"uv": [0, 9, 3, 11], "texture": "#1"},
+				"up": {"uv": [0, 6, 3, 9], "texture": "#1"},
+				"down": {"uv": [3, 6, 6, 9], "texture": "#1"}
+			}
+		},
+		{
+			"name": "petals",
+			"from": [9.5, 14.99, 9.5],
+			"to": [6.5, 12.99, 6.5],
+			"faces": {
+				"north": {"uv": [0, 11, 3, 13], "texture": "#1"},
+				"east": {"uv": [0, 11, 3, 13], "texture": "#1"},
+				"south": {"uv": [0, 11, 3, 13], "texture": "#1"},
+				"west": {"uv": [0, 11, 3, 13], "texture": "#1"},
+				"up": {"uv": [0, 13, 3, 16], "texture": "#1"},
+				"down": {"uv": [0, 6, 3, 9], "texture": "#1"}
+			}
+		},
+		{
+			"name": "stalk",
+			"from": [7.5, 14, 7.5],
+			"to": [8.5, 16, 8.5],
+			"faces": {
+				"north": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"east": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"south": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"west": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"up": {"uv": [10, 1, 11, 2], "texture": "#1"},
+				"down": {"uv": [10, 0, 11, 1], "texture": "#1"}
+			}
+		},
+		{
+			"name": "fruit",
+			"from": [7, 10, 7],
+			"to": [9, 14, 9],
+			"faces": {
+				"north": {"uv": [13, 1, 15, 5], "texture": "#1"},
+				"east": {"uv": [13, 1, 15, 5], "texture": "#1"},
+				"south": {"uv": [13, 1, 15, 5], "texture": "#1"},
+				"west": {"uv": [13, 1, 15, 5], "texture": "#1"},
+				"up": {"uv": [13, 9, 15, 11], "texture": "#1"},
+				"down": {"uv": [8, 9, 10, 11], "texture": "#1"}
+			}
+		},
+		{
+			"name": "stalk",
+			"from": [7.5, 14, 7.5],
+			"to": [8.5, 16, 8.5],
+			"faces": {
+				"north": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"east": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"south": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"west": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"up": {"uv": [10, 1, 11, 2], "texture": "#1"},
+				"down": {"uv": [10, 0, 11, 1], "texture": "#1"}
+			}
+		},
+		{
+			"name": "fruit",
+			"from": [6.5, 9, 6.5],
+			"to": [9.5, 14, 9.5],
+			"faces": {
+				"north": {"uv": [12, 1, 15, 6], "texture": "#1"},
+				"east": {"uv": [12, 1, 15, 6], "texture": "#1"},
+				"south": {"uv": [12, 1, 15, 6], "texture": "#1"},
+				"west": {"uv": [12, 1, 15, 6], "texture": "#1"},
+				"up": {"uv": [12, 9, 15, 12], "texture": "#1"},
+				"down": {"uv": [7, 9, 10, 12], "texture": "#1"}
+			}
+		},
+		{
+			"name": "stalk",
+			"from": [7.5, 14, 7.5],
+			"to": [8.5, 16, 8.5],
+			"faces": {
+				"north": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"east": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"south": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"west": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"up": {"uv": [10, 1, 11, 2], "texture": "#1"},
+				"down": {"uv": [10, 0, 11, 1], "texture": "#1"}
+			}
+		},
+		{
+			"name": "fruit",
+			"from": [6, 8, 6],
+			"to": [10, 14, 10],
+			"faces": {
+				"north": {"uv": [12, 0, 16, 6], "texture": "#1"},
+				"east": {"uv": [12, 0, 16, 6], "texture": "#1"},
+				"south": {"uv": [12, 0, 16, 6], "texture": "#1"},
+				"west": {"uv": [12, 0, 16, 6], "texture": "#1"},
+				"up": {"uv": [12, 8, 16, 12], "texture": "#1"},
+				"down": {"uv": [7, 8, 11, 12], "texture": "#1"}
+			}
+		},
+		{
+			"name": "stalk",
+			"from": [7.5, 14, 7.5],
+			"to": [8.5, 16, 8.5],
+			"faces": {
+				"north": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"east": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"south": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"west": {"uv": [10, 0, 11, 2], "texture": "#1"},
+				"up": {"uv": [10, 1, 11, 2], "texture": "#1"},
+				"down": {"uv": [10, 0, 11, 1], "texture": "#1"}
+			}
+		},
+		{
+			"name": "fruit",
+			"from": [5.5, 6, 5.5],
+			"to": [10.5, 14, 10.5],
+			"faces": {
+				"north": {"uv": [11, 0, 16, 8], "texture": "#1"},
+				"east": {"uv": [11, 0, 16, 8], "texture": "#1"},
+				"south": {"uv": [11, 0, 16, 8], "texture": "#1"},
+				"west": {"uv": [11, 0, 16, 8], "texture": "#1"},
+				"up": {"uv": [11, 8, 16, 13], "texture": "#1"},
+				"down": {"uv": [6, 8, 11, 13], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		0,
+		{
+			"name": "stage0",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [1]
+		},
+		{
+			"name": "stage1",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [2, 3, 4]
+		},
+		{
+			"name": "stage2",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [5, 6]
+		},
+		{
+			"name": "stage3",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [7, 8]
+		},
+		{
+			"name": "stage4",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [9, 10]
+		},
+		{
+			"name": "stage5",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [11, 12]
+		}
+	]
+}

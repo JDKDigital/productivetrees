@@ -21,6 +21,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:asai_palm_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:ash_pressure_plate",
       "required": false
     },
@@ -61,6 +65,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:black_ember_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:black_locust_pressure_plate",
       "required": false
     },
@@ -82,6 +90,10 @@
     },
     {
       "id": "productivetrees:breadfruit_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_pressure_plate",
       "required": false
     },
     {
@@ -110,6 +122,10 @@
     },
     {
       "id": "productivetrees:cashew_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_pressure_plate",
       "required": false
     },
     {
@@ -153,10 +169,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:cogwood_pressure_plate",
-      "required": false
-    },
-    {
       "id": "productivetrees:copoazu_pressure_plate",
       "required": false
     },
@@ -185,6 +197,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:elderberry_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:elm_pressure_plate",
       "required": false
     },
@@ -197,7 +213,19 @@
       "required": false
     },
     {
+      "id": "productivetrees:firecracker_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:flowering_crabapple_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:foggy_blast_pressure_plate",
       "required": false
     },
     {
@@ -253,11 +281,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:juniper_pressure_plate",
+      "id": "productivetrees:jackfruit_pressure_plate",
       "required": false
     },
     {
-      "id": "productivetrees:kadsura_pressure_plate",
+      "id": "productivetrees:juniper_pressure_plate",
       "required": false
     },
     {
@@ -326,6 +354,10 @@
     },
     {
       "id": "productivetrees:old_fustic_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_pressure_plate",
       "required": false
     },
     {
@@ -421,6 +453,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:rippling_willow_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:rosewood_pressure_plate",
       "required": false
     },
@@ -430,6 +466,10 @@
     },
     {
       "id": "productivetrees:rowan_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rubber_tree_pressure_plate",
       "required": false
     },
     {
@@ -461,11 +501,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:slimy_delight_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:socotra_dragon_pressure_plate",
       "required": false
     },
     {
+      "id": "productivetrees:soursop_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:sour_cherry_pressure_plate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_pressure_plate",
       "required": false
     },
     {
@@ -513,6 +565,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:time_traveller_pressure_plate",
+      "required": false
+    },
+    {
       "id": "productivetrees:tuscarora_crepe_myrtle_pressure_plate",
       "required": false
     },
@@ -557,15 +613,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:ysabella_purpurea_pressure_plate",
+      "id": "productivetrees:ysabelle_pressure_plate",
       "required": false
     },
     {
       "id": "productivetrees:zebrano_pressure_plate",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bush_pressure_plate",
       "required": false
     }
   ]

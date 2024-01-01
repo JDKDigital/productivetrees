@@ -1,15 +1,9 @@
 package cy.jdkdigital.productivetrees.datagen;
 
-import cy.jdkdigital.productivebees.init.ModTags;
+import cy.jdkdigital.productivelib.datagen.recipe.SingleConditionalRecipe;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
-import cy.jdkdigital.productivetrees.datagen.recipe.BotanyPotCropRecipeBuilder;
-import cy.jdkdigital.productivetrees.datagen.recipe.SawmillRecipeBuilder;
-import cy.jdkdigital.productivetrees.datagen.recipe.SingleConditionalRecipe;
-import cy.jdkdigital.productivetrees.datagen.recipe.TreePollinationRecipeBuilder;
-import cy.jdkdigital.productivetrees.registry.TreeFinder;
-import cy.jdkdigital.productivetrees.registry.TreeObject;
-import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import cy.jdkdigital.productivetrees.registry.WoodObject;
+import cy.jdkdigital.productivetrees.datagen.recipe.*;
+import cy.jdkdigital.productivetrees.registry.*;
 import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -19,12 +13,17 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.crafting.StrictNBTIngredient;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import ovh.corail.woodcutter.registry.ModRecipeSerializers;
 
@@ -36,15 +35,43 @@ import java.util.function.Consumer;
 
 public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider implements IConditionBuilder
 {
+    String[] RESIN_TREES = new String[]{"bull_pine"};
+//                    Bull Pine (Pinus ponderosa): Bull pine trees produce resin, which can be collected for various uses.
+//                    Douglas Fir (Pseudotsuga menziesii): Douglas fir trees produce resin, which can be tapped for various uses.
+//                    Cedar (Cedrus libani): Cedar trees produce resin, which has various uses.
+//                            Juniper (Juniperus communis): Juniper trees produce resin, which can be tapped for various uses.
+//                    Loblolly Pine (Pinus taeda): Loblolly pine trees produce resin, which can be tapped for various uses.
+//                    Sweetgum (Liquidambar styraciflua): Sweetgum trees produce a resinous sap, which can be harvested for various uses.
+//
+//                    Sandalwood (Santalum album): Sandalwood trees produce a fragrant sap, which is used in the production of essential oils.
+//                    Sugar Maple (Acer saccharum): Sugar maple trees produce a watery sap, which is tapped for the production of maple syrup.
+
     public RecipeProvider(PackOutput gen) {
         super(gen);
     }
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 2)
+                .unlockedBy("has_sawdust", has(ModTags.SAWDUST))
+                .pattern("###").pattern("#W#").pattern("###")
+                .define('#', Ingredient.of(ModTags.SAWDUST))
+                .define('W', StrictNBTIngredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)))
+                .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawdust_to_paper_water_bottle"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 2)
+                .unlockedBy("has_sawdust", has(ModTags.SAWDUST))
+                .pattern("###").pattern("#W#").pattern("###")
+                .define('#', Ingredient.of(ModTags.SAWDUST))
+                .define('W', Items.WATER_BUCKET)
+                .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawdust_to_paper"));
+
+        Block THERMAL_SAWMILL = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("thermal:sawmill"));
+        Block THERMAL_INSOLATOR = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("thermal:insolator"));
+        Block THERMAL_EXTRACTOR = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("thermal:tree_extractor"));
+
         TreeFinder.trees.forEach((id, treeObject) -> {
             if (treeObject.registerWood()) {
-                RecipeProvider.planksFromLogs(consumer, treeObject.getPlankBlock().get(), treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get());
+                planksFromLogs(consumer, treeObject.getPlankBlock().get(), treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get());
                 woodFromLogs(consumer, treeObject.getWoodBlock().get(), treeObject.getLogBlock().get());
                 shaped(consumer, BlockFamily.Variant.STAIRS, treeObject.getStairsBlock().get(), treeObject.getPlankBlock().get());
                 shaped(consumer, BlockFamily.Variant.SLAB, treeObject.getSlabBlock().get(), treeObject.getPlankBlock().get());
@@ -58,7 +85,52 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 hangingSign(consumer, treeObject.getHangingSignBlock().get(), treeObject.getPlankBlock().get());
                 buildSawmillRecipe(treeObject, consumer);
                 buildCorailWoodcutterRecipes(treeObject, consumer);
-                // TODO thermal sawmill support
+                // arboreal extractor (for resin, sap and latex), insolator (logs, saplings and fruit)
+                if (THERMAL_SAWMILL != null) {
+                    SingleConditionalRecipe.builder()
+                            .addCondition(new ModLoadedCondition("thermal"))
+                            .setRecipe(
+                                    ThermalSawmilRecipeBuilder.tree(treeObject)
+                                            .unlockedBy("has_log", has(treeObject.getLogBlock().get()))
+                                            .unlockedBy("has_sawmill", has(THERMAL_SAWMILL))
+                                            ::save
+                            )
+                            .build(consumer, new ResourceLocation(ProductiveTrees.MODID, "thermal/sawmill/" + id.getPath()));
+                }
+                if (THERMAL_INSOLATOR != null) {
+                    SingleConditionalRecipe.builder()
+                            .addCondition(new ModLoadedCondition("thermal"))
+                            .setRecipe(
+                                    ThermalInsulatorRecipeBuilder.tree(treeObject)
+                                            .unlockedBy("has_sapling", has(treeObject.getSaplingBlock().get()))
+                                            .unlockedBy("has_insolator", has(THERMAL_INSOLATOR))
+                                            ::save
+                            )
+                            .build(consumer, new ResourceLocation(ProductiveTrees.MODID, "thermal/insolator/" + id.getPath()));
+                }
+                if (THERMAL_EXTRACTOR != null) {
+                    String fluidName = "thermal:sap"; // resin, latex
+                    if (Arrays.stream(RESIN_TREES).anyMatch(s -> s.equals(id.getPath()))) {
+                        fluidName = "thermal:resin";
+                    }
+                    if (id.getPath().equals("rubber_tree")) {
+                        fluidName = "thermal:latex";
+                    }
+                    if (id.getPath().equals("sugar_maple")) {
+                        fluidName = "productivetrees:maple_sap";
+                    }
+
+                    FluidStack fluid = new FluidStack(ForgeRegistries.FLUIDS.getValue(new ResourceLocation(fluidName)), 50);
+                    SingleConditionalRecipe.builder()
+                            .addCondition(new ModLoadedCondition("thermal"))
+                            .setRecipe(
+                                    ThermalExtractorRecipeBuilder.tree(treeObject, fluid)
+                                            .unlockedBy("has_log", has(treeObject.getLogBlock().get()))
+                                            .unlockedBy("has_tree_extractor", has(THERMAL_EXTRACTOR))
+                                            ::save
+                            )
+                            .build(consumer, new ResourceLocation(ProductiveTrees.MODID, "thermal/tree_extractor/" + id.getPath()));
+                }
             }
             if (treeObject.getStyle().hiveStyle() != null) {
                 buildHiveRecipe(ProductiveTrees.MODID, treeObject, consumer);
@@ -66,31 +138,16 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             }
             buildBotanyPotsRecipes(treeObject, consumer);
         });
-        TreeFinder.woods.forEach((id, woodObject) -> {
-            RecipeProvider.planksFromLogs(consumer, woodObject.getPlankBlock().get(), woodObject.getLogBlock().get(), woodObject.getWoodBlock().get(), woodObject.getStrippedLogBlock().get(), woodObject.getStrippedWoodBlock().get());
-            woodFromLogs(consumer, woodObject.getWoodBlock().get(), woodObject.getLogBlock().get());
-            shaped(consumer, BlockFamily.Variant.STAIRS, woodObject.getStairsBlock().get(), woodObject.getPlankBlock().get());
-            shaped(consumer, BlockFamily.Variant.SLAB, woodObject.getSlabBlock().get(), woodObject.getPlankBlock().get());
-            shaped(consumer, BlockFamily.Variant.PRESSURE_PLATE, woodObject.getPressurePlateBlock().get(), woodObject.getPlankBlock().get());
-            shaped(consumer, BlockFamily.Variant.BUTTON, woodObject.getButtonBlock().get(), woodObject.getPlankBlock().get());
-            shaped(consumer, BlockFamily.Variant.FENCE, woodObject.getFenceBlock().get(), woodObject.getPlankBlock().get());
-            shaped(consumer, BlockFamily.Variant.FENCE_GATE, woodObject.getFenceGateBlock().get(), woodObject.getPlankBlock().get());
-            shaped(consumer, BlockFamily.Variant.DOOR, woodObject.getDoorBlock().get(), woodObject.getPlankBlock().get());
-            shaped(consumer, BlockFamily.Variant.TRAPDOOR, woodObject.getTrapdoorBlock().get(), woodObject.getPlankBlock().get());
-            shaped(consumer, BlockFamily.Variant.SIGN, woodObject.getSignBlock().get(), woodObject.getPlankBlock().get());
-            hangingSign(consumer, woodObject.getHangingSignBlock().get(), woodObject.getPlankBlock().get());
-            buildSawmillRecipe(woodObject, consumer);
-            buildCorailWoodcutterRecipes(woodObject, consumer);
-            if (woodObject.getStyle().hiveStyle() != null) {
-                buildHiveRecipe(ProductiveTrees.MODID, woodObject, consumer);
-                buildBoxRecipe(ProductiveTrees.MODID, woodObject, consumer);
-            }
-        });
 
         buildTreeBreedingRecipes(consumer);
 
         // vanilla wood processing
-        buildVanillaSawmillRecipe(consumer);
+        buildVanillaSawmillRecipes(consumer);
+
+        // Treetap recipes
+//        SingleConditionalRecipe.builder().addCondition(modLoaded("treetap")).setRecipe(
+//                ::save
+//        ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "treetap/dracaena_sap"));
     }
 
     private static void planksFromLogs(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike... ingredients) {
@@ -98,18 +155,29 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .requires(Ingredient.of(ingredients))
                 .group("planks")
                 .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(ingredients).build()))
-                .save(consumer);
+                .save(consumer, prefixedRecipeId(result, "planks/"));
+    }
+
+    protected static void woodFromLogs(Consumer<FinishedRecipe> consumer, ItemLike pWood, ItemLike pLog) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, pWood, 3)
+                .define('#', pLog).pattern("##").pattern("##").group("bark")
+                .unlockedBy("has_log", has(pLog))
+                .save(consumer, prefixedRecipeId(pWood, "wood/"));
     }
 
     private static void shaped(Consumer<FinishedRecipe> consumer, BlockFamily.Variant variant, ItemLike result, ItemLike plank) {
         var builder = SHAPE_BUILDERS.get(variant).apply(result, plank);
         builder.group(variant.getName());
         builder.unlockedBy(getHasName(plank), has(plank));
-        builder.save(consumer);
+        builder.save(consumer, prefixedRecipeId(result, variant.getName() + "/"));
     }
 
     protected static void hangingSign(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike plank) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', plank).define('X', Items.CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", has(plank)).save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', plank).define('X', Items.CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", has(plank)).save(consumer, prefixedRecipeId(result, "hanging_sign/"));
+    }
+
+    private static ResourceLocation prefixedRecipeId(ItemLike item, String prefix) {
+        return ForgeRegistries.ITEMS.getKey(item.asItem()).withPath(path ->  prefix + path);
     }
 
     private void buildSawmillRecipe(WoodObject treeObject, Consumer<FinishedRecipe> consumer) {
@@ -117,7 +185,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         SawmillRecipeBuilder.tree(treeObject).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/" + name + "_planks_from_log"));
     }
 
-    private void buildVanillaSawmillRecipe(Consumer<FinishedRecipe> consumer) {
+    private void buildVanillaSawmillRecipes(Consumer<FinishedRecipe> consumer) {
         SawmillRecipeBuilder.direct(Ingredient.of(Items.OAK_LOG, Items.STRIPPED_OAK_LOG, Items.OAK_WOOD, Items.STRIPPED_OAK_WOOD), new ItemStack(Items.OAK_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/oak_planks_from_log"));
         SawmillRecipeBuilder.direct(Ingredient.of(Items.SPRUCE_LOG, Items.STRIPPED_SPRUCE_LOG, Items.SPRUCE_WOOD, Items.STRIPPED_SPRUCE_WOOD), new ItemStack(Items.SPRUCE_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/spruce_planks_from_log"));
         SawmillRecipeBuilder.direct(Ingredient.of(Items.ACACIA_LOG, Items.STRIPPED_ACACIA_LOG, Items.ACACIA_WOOD, Items.STRIPPED_ACACIA_WOOD), new ItemStack(Items.ACACIA_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/acacia_planks_from_log"));
@@ -265,13 +333,13 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "greenheart", "mahogany", "kapok", 10);
         treeBreeding(consumer, "papaya", "wild_cherry", "cacao", 5);
         treeBreeding(consumer, "date_palm", "papaya", "cacao", 5);
-        treeBreeding(consumer, "asai_palm", "date_palm", "blackcurrant", 5);
+        treeBreeding(consumer, "asai_palm", "date_palm", "black_cherry", 5);
         treeBreeding(consumer, "persimmon", "ceylon_ebony", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 5);
         treeBreeding(consumer, "pomegranate", "holly", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 5);
         treeBreeding(consumer, "white_poplar", "white_willow", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, getLeafIngredient("silver_lime").getItems()[0].getItem()), 5);
         treeBreeding(consumer, "red_delicious_apple", Ingredient.of(Blocks.CHERRY_LEAVES), Ingredient.of(Blocks.OAK_LEAVES, Blocks.DARK_OAK_LEAVES), 10);
         treeBreeding(consumer, "sweet_crabapple", "red_delicious_apple", "sugar_maple", 10);
-        treeBreeding(consumer, "flowering_crabapple", "dogwood", "sweet_crabapple", 10);
+        treeBreeding(consumer, "flowering_crabapple", "sweet_crabapple", Blocks.FLOWERING_AZALEA_LEAVES, 10);
         treeBreeding(consumer, "prairie_crabapple", "red_delicious_apple", Ingredient.of(Blocks.BIRCH_LEAVES), 10);
         treeBreeding(consumer, "blackthorn", "plum", "red_delicious_apple", 10);
         treeBreeding(consumer, "cherry_plum", "plum", Ingredient.of(Blocks.CHERRY_LEAVES), 10);
@@ -315,9 +383,8 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "whitebeam", "ash", Blocks.BIRCH_LEAVES, 10);
         treeBreeding(consumer, "hawthorn", "rowan", "beech", 10);
         treeBreeding(consumer, "pecan", "beech", Blocks.BIRCH_LEAVES, 10);
-        treeBreeding(consumer, "sugar_apple", "pecan", "raspberry", 10);
+        treeBreeding(consumer, "sugar_apple", "pecan", "wild_cherry", 10);
         treeBreeding(consumer, "soursop", "sugar_apple", "banana", 10);
-        treeBreeding(consumer, "kadsura", "pecan", "sugar_apple", 10);
         treeBreeding(consumer, "elm", "ash", "bull_pine", 10);
         treeBreeding(consumer, "elderberry", "aspen", "alder", 10);
         treeBreeding(consumer, "holly", "alder", "rowan", 10);
@@ -331,10 +398,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "loblolly_pine", "bull_pine", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "sweetgum", "european_larch", "sugar_maple", 10);
         treeBreeding(consumer, "black_locust", "balsa", "silver_lime", 10);
-        treeBreeding(consumer, "sand_pear", "red_delicious_apple", Blocks.BIRCH_LEAVES, 10);
+        treeBreeding(consumer, "sand_pear", "red_delicious_apple", Blocks.FLOWERING_AZALEA_LEAVES, 10);
         treeBreeding(consumer, "cultivated_pear", "red_delicious_apple", "sand_pear", 10);
         treeBreeding(consumer, "osange_orange", "kapok", "old_fustic", 10);
-        treeBreeding(consumer, "old_fustic", "teak", "mahogany", 10);
+        treeBreeding(consumer, "old_fustic", "red_maple", "mahogany", 10);
         treeBreeding(consumer, "brazilwood", "teak", "mahogany", 10);
         treeBreeding(consumer, "sandalwood", "brazilwood", "mahogany", 10);
         treeBreeding(consumer, "logwood", "kapok", "rosewood", 10);
@@ -343,7 +410,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "iroko", "balsa", "teak", 10);
         treeBreeding(consumer, "ginkgo", "wenge", "silver_lime", 10);
         treeBreeding(consumer, "brazil_nut", "beech", "cacao", 10);
-        treeBreeding(consumer, "rose_gum", "balsa", "sweetgum", 10); // TODO sweetgum has nothing to do with rose gum
+        treeBreeding(consumer, "rose_gum", "balsa", Blocks.FLOWERING_AZALEA_LEAVES, 10);
         treeBreeding(consumer, "swamp_gum", "yellow_meranti", "rose_gum", 10);
         treeBreeding(consumer, "boxwood", "holly", "alder", 10);
         treeBreeding(consumer, "coffea", "black_cherry", "cacao", 10);
@@ -351,16 +418,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "monkey_puzzle", "western_hemlock", Blocks.JUNGLE_LEAVES, 10);
         treeBreeding(consumer, "rainbow_gum", "balsa", "rose_gum", 10);
         treeBreeding(consumer, "pink_ivory", "brazilwood", "rose_gum", 10);
-        treeBreeding(consumer, "redcurrant", "elderberry", "wild_cherry", 10);
-        treeBreeding(consumer, "blackcurrant", "black_cherry", "redcurrant", 10);
-        treeBreeding(consumer, "raspberry", "elderberry", "wild_cherry", 10);
-        treeBreeding(consumer, "blackberry", "black_cherry", "raspberry", 10);
-        treeBreeding(consumer, "blueberry", "blackberry", "raspberry", 10);
-        treeBreeding(consumer, "cranberry", "blackberry", "cherry_plum", 10);
-        treeBreeding(consumer, "juniper", "raspberry", "silver_fir", 10);
-        treeBreeding(consumer, "gooseberry", "raspberry", "lime", 10);
-        treeBreeding(consumer, "golden_raspberry", "raspberry", "orange", 10);
-        treeBreeding(consumer, "miracle_berry", "golden_raspberry", "sugar_maple", 10);
+        treeBreeding(consumer, "juniper", "elderberry", "silver_fir", 10);
         treeBreeding(consumer, "cinnamon", "rosewood", "teak", 10);
         treeBreeding(consumer, "coconut", "brazil_nut", "balsa", 10);
         treeBreeding(consumer, "cashew", "teak", Blocks.MANGROVE_LEAVES, 10);
@@ -372,11 +430,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "mango", "orange", Blocks.MANGROVE_LEAVES, 10);
         treeBreeding(consumer, "star_fruit", "mango", "star_anise", 10);
         treeBreeding(consumer, "candlenut", "ginkgo", "hazel", 10);
-        treeBreeding(consumer, "akebia", "candlenut", "cacao", 10);
-        treeBreeding(consumer, "copoazu", "akebia", "cashew", 10);
+        treeBreeding(consumer, "copoazu", "cacao", "candlenut", 10);
         treeBreeding(consumer, "carob", "sweet_chestnut", "copoazu", 10);
         treeBreeding(consumer, "pandanus", "walnut", "coconut", 10);
-        treeBreeding(consumer, "ysabella_purpurea", "purpleheart", "rosewood", 5);
+        treeBreeding(consumer, "ysabelle", "purpleheart", "rosewood", 5);
     }
 
     public static void treeBreeding(Consumer<FinishedRecipe> consumer, String name, String leafA, String leafB, int chance) {
@@ -436,9 +493,9 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .setRecipe(
                         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, hive).group("hives").pattern("WWW").pattern("CHC").pattern("FWS")
                                 .define('W', Ingredient.of(treeObject.getPlankBlock().get()))
-                                .define('H', Ingredient.of(ModTags.Forge.HIVES))
-                                .define('C', Ingredient.of(ModTags.Forge.HONEYCOMBS))
-                                .define('F', Ingredient.of(ModTags.Forge.CAMPFIRES))
+                                .define('H', Ingredient.of(cy.jdkdigital.productivebees.init.ModTags.Forge.HIVES))
+                                .define('C', Ingredient.of(cy.jdkdigital.productivebees.init.ModTags.Forge.HONEYCOMBS))
+                                .define('F', Ingredient.of(cy.jdkdigital.productivebees.init.ModTags.Forge.CAMPFIRES))
                                 .define('S', Ingredient.of(Tags.Items.SHEARS))
                                 .unlockedBy("has_hive", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BEEHIVE))
                                 ::save
@@ -457,7 +514,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .setRecipe(
                         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, box).group("expansion_boxes").pattern("WWW").pattern("WCW").pattern("WWW")
                                 .define('W', treeObject.getPlankBlock().get())
-                                .define('C', Ingredient.of(ModTags.Forge.HONEYCOMBS))
+                                .define('C', Ingredient.of(cy.jdkdigital.productivebees.init.ModTags.Forge.HONEYCOMBS))
                                 .unlockedBy("has_hive", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BEEHIVE))
                                 ::save
                 )

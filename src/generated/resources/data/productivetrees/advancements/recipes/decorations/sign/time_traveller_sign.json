@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:sign/time_traveller_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_time_traveller_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "productivetrees:time_traveller_planks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_time_traveller_planks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:sign/time_traveller_sign"
+    ]
+  },
+  "sends_telemetry_event": false
+}

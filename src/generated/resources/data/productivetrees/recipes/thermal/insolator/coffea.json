@@ -1,0 +1,29 @@
+{
+  "type": "thermal:insolator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy_mod": 3.0,
+  "ingredient": {
+    "item": "productivetrees:coffea_sapling"
+  },
+  "result": [
+    {
+      "chance": 6.0,
+      "item": "productivetrees:coffea_log"
+    },
+    {
+      "chance": 1.1,
+      "item": "productivetrees:coffea_sapling"
+    },
+    {
+      "chance": 0.4,
+      "count": 4,
+      "item": "productivetrees:coffee_bean"
+    }
+  ],
+  "water_mod": 3.0
+}

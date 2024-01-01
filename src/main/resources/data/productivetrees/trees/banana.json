@@ -5,7 +5,6 @@
     "logColor": "#5f4812",
     "plankColor": "#cbbf75"
   },
-  "tint": "fruit_hives",
   "fruit": {
     "item": "productivetrees:banana",
     "style": "banana",

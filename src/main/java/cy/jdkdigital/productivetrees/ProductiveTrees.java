@@ -18,7 +18,9 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
+import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -39,6 +41,8 @@ public class ProductiveTrees
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
+    public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, MODID);
+    public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, MODID);
     public static final DeferredRegister<MenuType<?>> CONTAINER_TYPES = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MODID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MODID);
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, MODID);
@@ -62,6 +66,8 @@ public class ProductiveTrees
         BLOCK_ENTITIES.register(modEventBus);
         CONTAINER_TYPES.register(modEventBus);
         ITEMS.register(modEventBus);
+        FLUIDS.register(modEventBus);
+        FLUID_TYPES.register(modEventBus);
         RECIPE_SERIALIZERS.register(modEventBus);
         RECIPE_TYPES.register(modEventBus);
         PARTICLE_TYPES.register(modEventBus);
@@ -76,9 +82,16 @@ public class ProductiveTrees
         TreeRegistrator.init();
 
         // TODO
-        // tree features
-        // custom tree textures
-        // wood worker for making combination blocks and panels
+        //  remove fruit block entity
+        //  tree features
+        //  mega features
+        //  glowstone line of trees
+        //  use aezelea in breeding lines
+        //  pollinated leaves to use correct leaf textures
+        //  pollen sifter that pulls pollen from leaf items as an alternative pollination method to bees
+        //  wood worker for making combination blocks and panels
+        //  Brazilwood (Paubrasilia echinata): Brazilwood trees produce a reddish sap, which historically was used as a source of red dye.
+        //  Sandalwood (Santalum album): Sandalwood trees produce a fragrant sap, which is used in the production of essential oils.
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
     }

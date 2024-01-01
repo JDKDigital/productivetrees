@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:nutmeg",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#5e966f",
+    "logColor": "#b4afad",
+    "plankColor": "#d3ba9b"
   },
   "fruit": {
     "item": "productivetrees:nutmeg",

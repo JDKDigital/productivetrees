@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/fence/base_fence_inventory",
+  "textures": {
+    "texture": "productivetrees:block/planks/pomegranate"
+  }
+}

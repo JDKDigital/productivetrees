@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:brown_amber_log"
+      },
+      {
+        "item": "productivetrees:brown_amber_wood"
+      },
+      {
+        "item": "productivetrees:brown_amber_stripped_log"
+      },
+      {
+        "item": "productivetrees:brown_amber_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:brown_amber_planks"
+  }
+}

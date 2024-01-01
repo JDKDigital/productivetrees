@@ -135,6 +135,7 @@ dependencies {
 
     implementation fg.deobf("local.libs:productivelib-${minecraft_version}:${lib_version}")
     implementation fg.deobf("local.libs:productivebees-${minecraft_version}:${pb_version}")
+    implementation fg.deobf("local.libs:treetap-${minecraft_version}:${treetap_version}")
 
     jarJar(group: 'cy.jdkdigital.productivelib', name: 'productivelib', version: '[0.0.1,)') {
         transitive(false)
@@ -151,6 +152,10 @@ dependencies {
     implementation fg.deobf("curse.maven:jei-238222:4712868")
     implementation fg.deobf("curse.maven:the-one-probe-245211:4629624")
     implementation fg.deobf("curse.maven:fast-leaf-decay-230976:4620069")
+
+    implementation fg.deobf("curse.maven:cofh-core-69162:4970669")
+    implementation fg.deobf("curse.maven:thermal-foundation-222880:4970702")
+    implementation fg.deobf("curse.maven:thermal-expansion-69163:4970700")
 }
 
 def resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta']
@@ -159,7 +164,8 @@ def replaceProperties = [
         forge_version: forge_version, forge_version_range: forge_version_range,
         loader_version_range: loader_version_range,
         mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-        mod_authors: mod_authors, mod_description: mod_description
+        mod_authors: mod_authors, mod_description: mod_description,
+        treetap_version: treetap_version, lib_version: lib_version, pb_version: pb_version
 ]
 processResources {
     inputs.properties replaceProperties

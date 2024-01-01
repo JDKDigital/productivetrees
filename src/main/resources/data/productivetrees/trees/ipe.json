@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:ipe",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#44271a",
-    "plankColor": "#613825"
+    "leafColor": "#eaaf00",
+    "logColor": "#603c00",
+    "plankColor": "#715146"
   }
 }

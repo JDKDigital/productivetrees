@@ -1,0 +1,4 @@
+{
+  "parent": "productivetrees:block/door/top_right",
+  "render_type": "translucent"
+}

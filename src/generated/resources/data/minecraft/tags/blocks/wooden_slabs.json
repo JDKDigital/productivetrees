@@ -21,6 +21,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:asai_palm_slab",
+      "required": false
+    },
+    {
       "id": "productivetrees:ash_slab",
       "required": false
     },
@@ -61,6 +65,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:black_ember_slab",
+      "required": false
+    },
+    {
       "id": "productivetrees:black_locust_slab",
       "required": false
     },
@@ -82,6 +90,10 @@
     },
     {
       "id": "productivetrees:breadfruit_slab",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_slab",
       "required": false
     },
     {
@@ -110,6 +122,10 @@
     },
     {
       "id": "productivetrees:cashew_slab",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_slab",
       "required": false
     },
     {
@@ -153,10 +169,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:cogwood_slab",
-      "required": false
-    },
-    {
       "id": "productivetrees:copoazu_slab",
       "required": false
     },
@@ -185,6 +197,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:elderberry_slab",
+      "required": false
+    },
+    {
       "id": "productivetrees:elm_slab",
       "required": false
     },
@@ -197,7 +213,19 @@
       "required": false
     },
     {
+      "id": "productivetrees:firecracker_slab",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_slab",
+      "required": false
+    },
+    {
       "id": "productivetrees:flowering_crabapple_slab",
+      "required": false
+    },
+    {
+      "id": "productivetrees:foggy_blast_slab",
       "required": false
     },
     {
@@ -253,11 +281,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:juniper_slab",
+      "id": "productivetrees:jackfruit_slab",
       "required": false
     },
     {
-      "id": "productivetrees:kadsura_slab",
+      "id": "productivetrees:juniper_slab",
       "required": false
     },
     {
@@ -326,6 +354,10 @@
     },
     {
       "id": "productivetrees:old_fustic_slab",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_slab",
       "required": false
     },
     {
@@ -421,6 +453,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:rippling_willow_slab",
+      "required": false
+    },
+    {
       "id": "productivetrees:rosewood_slab",
       "required": false
     },
@@ -430,6 +466,10 @@
     },
     {
       "id": "productivetrees:rowan_slab",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rubber_tree_slab",
       "required": false
     },
     {
@@ -461,11 +501,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:slimy_delight_slab",
+      "required": false
+    },
+    {
       "id": "productivetrees:socotra_dragon_slab",
       "required": false
     },
     {
+      "id": "productivetrees:soursop_slab",
+      "required": false
+    },
+    {
       "id": "productivetrees:sour_cherry_slab",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_slab",
       "required": false
     },
     {
@@ -513,6 +565,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:time_traveller_slab",
+      "required": false
+    },
+    {
       "id": "productivetrees:tuscarora_crepe_myrtle_slab",
       "required": false
     },
@@ -557,15 +613,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:ysabella_purpurea_slab",
+      "id": "productivetrees:ysabelle_slab",
       "required": false
     },
     {
       "id": "productivetrees:zebrano_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bush_slab",
       "required": false
     }
   ]

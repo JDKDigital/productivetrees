@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:yellow_meranti",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#aacf5e",
+    "logColor": "#423d01",
+    "plankColor": "#e2c581"
   }
 }

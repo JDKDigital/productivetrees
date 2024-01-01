@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:ysabelle_log"
+    },
+    {
+      "item": "productivetrees:ysabelle_wood"
+    },
+    {
+      "item": "productivetrees:ysabelle_stripped_log"
+    },
+    {
+      "item": "productivetrees:ysabelle_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:ysabelle_planks"
+}

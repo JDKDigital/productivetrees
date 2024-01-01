@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:hornbeam",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#a19278",
-    "plankColor": "#c39860"
+    "leafColor": "#38431b",
+    "logColor": "#5d5d53",
+    "plankColor": "#ebc8a8"
   }
 }

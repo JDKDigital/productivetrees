@@ -25,11 +25,15 @@ public record SawmillRecipeBuilder(Ingredient log, ItemStack plank, ItemStack se
     }
 
     public static SawmillRecipeBuilder tree(WoodObject tree) {
-        return direct(Ingredient.of(tree.getLogBlock().get(), tree.getStrippedLogBlock().get(), tree.getWoodBlock().get(), tree.getStrippedWoodBlock().get()), new ItemStack(tree.getPlankBlock().get(), 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY);
+        ItemStack tertiary =
+                tree.getId().getPath().equals("old_fustic") ? new ItemStack(TreeRegistrator.FUSTIC.get()) :
+                tree.getId().getPath().equals("logwood") ? new ItemStack(TreeRegistrator.HAEMATOXYLIN.get()) :
+                ItemStack.EMPTY;
+        return direct(Ingredient.of(tree.getLogBlock().get(), tree.getStrippedLogBlock().get(), tree.getWoodBlock().get(), tree.getStrippedWoodBlock().get()), new ItemStack(tree.getPlankBlock().get(), 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), tertiary);
     }
 
     @Override
-    public RecipeBuilder unlockedBy(String p_176496_, CriterionTriggerInstance p_176497_) {
+    public RecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterion) {
         return null;
     }
 

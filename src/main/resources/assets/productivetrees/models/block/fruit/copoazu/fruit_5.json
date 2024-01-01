@@ -1,0 +1,34 @@
+{
+  "textures": {
+    "copoazu": "productivetrees:block/fruit/copoazu/copoazu",
+    "particle": "#copoazu"
+  },
+  "elements": [
+    {
+      "name": "stalk",
+      "from": [7.5, 14, 7.5],
+      "to": [8.5, 16, 8.5],
+      "faces": {
+        "north": {"uv": [10, 0, 11, 2], "texture": "#copoazu"},
+        "east": {"uv": [10, 0, 11, 2], "texture": "#copoazu"},
+        "south": {"uv": [10, 0, 11, 2], "texture": "#copoazu"},
+        "west": {"uv": [10, 0, 11, 2], "texture": "#copoazu"},
+        "up": {"uv": [10, 1, 11, 2], "texture": "#copoazu"},
+        "down": {"uv": [10, 0, 11, 1], "texture": "#copoazu"}
+      }
+    },
+    {
+      "name": "fruit",
+      "from": [5.5, 6, 5.5],
+      "to": [10.5, 14, 10.5],
+      "faces": {
+        "north": {"uv": [11, 0, 16, 8], "texture": "#copoazu"},
+        "east": {"uv": [11, 0, 16, 8], "texture": "#copoazu"},
+        "south": {"uv": [11, 0, 16, 8], "texture": "#copoazu"},
+        "west": {"uv": [11, 0, 16, 8], "texture": "#copoazu"},
+        "up": {"uv": [11, 8, 16, 13], "texture": "#copoazu"},
+        "down": {"uv": [6, 8, 11, 13], "texture": "#copoazu"}
+      }
+    }
+  ]
+}

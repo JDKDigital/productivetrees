@@ -1,9 +1,9 @@
 {
   "feature": "productivetrees:elderberry",
-  "registerWood": false,
-  "log": "productivetrees:bush_log",
   "colors": {
-    "leafColor": "#7c9827"
+    "leafColor": "#7c9827",
+    "logColor": "#dfc19e",
+    "plankColor": "#ccae8c"
   },
   "fruit": {
     "item": "productivetrees:elderberry",

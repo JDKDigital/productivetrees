@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:yew",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#ceb8bc",
-    "plankColor": "#e0a57a"
+    "leafColor": "#526d3a",
+    "logColor": "#665754",
+    "plankColor": "#b4845c"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:time_traveller_log"
+    },
+    {
+      "item": "productivetrees:time_traveller_stripped_log"
+    },
+    {
+      "item": "productivetrees:time_traveller_wood"
+    },
+    {
+      "item": "productivetrees:time_traveller_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:time_traveller_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:elderberry_log"
+    },
+    {
+      "item": "productivetrees:elderberry_stripped_log"
+    },
+    {
+      "item": "productivetrees:elderberry_wood"
+    },
+    {
+      "item": "productivetrees:elderberry_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:elderberry_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

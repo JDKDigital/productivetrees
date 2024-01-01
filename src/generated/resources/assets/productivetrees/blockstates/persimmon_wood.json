@@ -1,15 +1,15 @@
 {
   "variants": {
     "axis=x": {
-      "model": "productivetrees:block/log/dark_oak_wood",
+      "model": "productivetrees:block/log/persimmon_wood",
       "x": 90,
       "y": 90
     },
     "axis=y": {
-      "model": "productivetrees:block/log/dark_oak_wood"
+      "model": "productivetrees:block/log/persimmon_wood"
     },
     "axis=z": {
-      "model": "productivetrees:block/log/dark_oak_wood",
+      "model": "productivetrees:block/log/persimmon_wood",
       "x": 90
     }
   }

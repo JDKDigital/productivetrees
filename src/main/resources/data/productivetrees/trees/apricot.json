@@ -5,7 +5,6 @@
     "logColor": "#342222",
     "plankColor": "#dda66e"
   },
-  "tint": "leaves_hives",
   "fruit": {
     "item": "productivetrees:apricot",
     "growthSpeed": 0.5,

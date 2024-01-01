@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:time_traveller_log"
+    },
+    {
+      "item": "productivetrees:time_traveller_wood"
+    },
+    {
+      "item": "productivetrees:time_traveller_stripped_log"
+    },
+    {
+      "item": "productivetrees:time_traveller_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:time_traveller_fence"
+}

@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:wenge",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#6b6053",
-    "plankColor": "#5e564a"
+    "leafColor": "#488013",
+    "logColor": "#554b3f",
+    "plankColor": "#291a11"
   }
 }

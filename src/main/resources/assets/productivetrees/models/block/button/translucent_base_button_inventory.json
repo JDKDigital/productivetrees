@@ -1,0 +1,4 @@
+{
+  "parent": "productivetrees:block/button/base_button_inventory",
+  "render_type": "translucent"
+}

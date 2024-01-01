@@ -1,0 +1,4 @@
+{
+    "parent": "productivetrees:block/cube_column_horizontal",
+    "render_type": "translucent"
+}

@@ -1,0 +1,35 @@
+{
+  "type": "thermal:sawmill",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy": 1000,
+  "experience": 0.15,
+  "ingredient": [
+    {
+      "item": "productivetrees:foggy_blast_log"
+    },
+    {
+      "item": "productivetrees:foggy_blast_stripped_log"
+    },
+    {
+      "item": "productivetrees:foggy_blast_wood"
+    },
+    {
+      "item": "productivetrees:foggy_blast_stripped_wood"
+    }
+  ],
+  "result": [
+    {
+      "count": 6,
+      "item": "productivetrees:foggy_blast_planks"
+    },
+    {
+      "chance": 1.25,
+      "item": "thermal:sawdust"
+    }
+  ]
+}

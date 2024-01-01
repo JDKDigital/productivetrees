@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "productivetrees:block/time_traveller_display_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "productivetrees:block/time_traveller_display"
+    },
+    "axis=z": {
+      "model": "productivetrees:block/time_traveller_display_horizontal",
+      "x": 90
+    }
+  }
+}

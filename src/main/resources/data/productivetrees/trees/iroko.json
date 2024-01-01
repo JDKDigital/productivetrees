@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:iroko",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#817b77",
-    "plankColor": "#753400"
+    "leafColor": "#5e635f",
+    "logColor": "#929486",
+    "plankColor": "#89693c"
   }
 }

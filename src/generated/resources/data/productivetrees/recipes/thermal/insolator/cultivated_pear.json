@@ -1,0 +1,28 @@
+{
+  "type": "thermal:insolator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy_mod": 3.0,
+  "ingredient": {
+    "item": "productivetrees:cultivated_pear_sapling"
+  },
+  "result": [
+    {
+      "chance": 6.0,
+      "item": "productivetrees:cultivated_pear_log"
+    },
+    {
+      "chance": 1.1,
+      "item": "productivetrees:cultivated_pear_sapling"
+    },
+    {
+      "chance": 0.6,
+      "item": "productivetrees:pear"
+    }
+  ],
+  "water_mod": 3.0
+}

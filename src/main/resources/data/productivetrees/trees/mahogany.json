@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:mahogany",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#988475",
-    "plankColor": "#5f3630"
+    "leafColor": "#74946f",
+    "logColor": "#b3aba8",
+    "plankColor": "#703425"
   }
 }

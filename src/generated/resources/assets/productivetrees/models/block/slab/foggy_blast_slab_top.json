@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/slab/translucent_base_slab_top",
+  "textures": {
+    "texture": "productivetrees:block/planks/foggy_blast"
+  }
+}

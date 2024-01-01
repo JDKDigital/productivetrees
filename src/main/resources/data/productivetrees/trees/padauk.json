@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:padauk",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#c69541",
-    "plankColor": "#bb6c3c"
+    "leafColor": "#69803c",
+    "logColor": "#a18951",
+    "plankColor": "#4d0500"
   }
 }

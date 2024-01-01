@@ -21,6 +21,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_asai_palm_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_ash_beehive",
       "required": false
     },
@@ -61,6 +65,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_black_ember_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_black_locust_beehive",
       "required": false
     },
@@ -82,6 +90,10 @@
     },
     {
       "id": "productivetrees:advanced_breadfruit_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_brown_amber_beehive",
       "required": false
     },
     {
@@ -110,6 +122,10 @@
     },
     {
       "id": "productivetrees:advanced_cashew_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_cave_dweller_beehive",
       "required": false
     },
     {
@@ -153,10 +169,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:advanced_cogwood_beehive",
-      "required": false
-    },
-    {
       "id": "productivetrees:advanced_copoazu_beehive",
       "required": false
     },
@@ -197,7 +209,19 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_firecracker_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_flickering_sun_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_flowering_crabapple_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_foggy_blast_beehive",
       "required": false
     },
     {
@@ -253,11 +277,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:advanced_juniper_beehive",
+      "id": "productivetrees:advanced_jackfruit_beehive",
       "required": false
     },
     {
-      "id": "productivetrees:advanced_kadsura_beehive",
+      "id": "productivetrees:advanced_juniper_beehive",
       "required": false
     },
     {
@@ -326,6 +350,10 @@
     },
     {
       "id": "productivetrees:advanced_old_fustic_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_olive_beehive",
       "required": false
     },
     {
@@ -421,6 +449,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_rippling_willow_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_rosewood_beehive",
       "required": false
     },
@@ -430,6 +462,10 @@
     },
     {
       "id": "productivetrees:advanced_rowan_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_rubber_tree_beehive",
       "required": false
     },
     {
@@ -461,11 +497,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_slimy_delight_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_socotra_dragon_beehive",
       "required": false
     },
     {
+      "id": "productivetrees:advanced_soursop_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_sour_cherry_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_sparkle_cherry_beehive",
       "required": false
     },
     {
@@ -513,6 +561,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_time_traveller_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_tuscarora_crepe_myrtle_beehive",
       "required": false
     },
@@ -557,7 +609,7 @@
       "required": false
     },
     {
-      "id": "productivetrees:advanced_ysabella_purpurea_beehive",
+      "id": "productivetrees:advanced_ysabelle_beehive",
       "required": false
     },
     {

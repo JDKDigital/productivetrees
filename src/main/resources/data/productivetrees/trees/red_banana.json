@@ -7,6 +7,7 @@
   },
   "fruit": {
     "item": "productivetrees:red_banana",
+    "style": "red_banana",
     "count": 3,
     "growthSpeed": 0.2,
     "unripeColor": "#bdcaa0",

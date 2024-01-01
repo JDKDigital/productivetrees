@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:brown_amber_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:brown_amber_button"
+  }
+}

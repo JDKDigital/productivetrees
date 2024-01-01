@@ -1,0 +1,24 @@
+{
+  "type": "thermal:insolator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy_mod": 3.0,
+  "ingredient": {
+    "item": "productivetrees:rosewood_sapling"
+  },
+  "result": [
+    {
+      "chance": 6.0,
+      "item": "productivetrees:rosewood_log"
+    },
+    {
+      "chance": 1.1,
+      "item": "productivetrees:rosewood_sapling"
+    }
+  ],
+  "water_mod": 3.0
+}

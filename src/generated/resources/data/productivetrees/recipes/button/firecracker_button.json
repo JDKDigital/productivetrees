@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:firecracker_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:firecracker_button"
+  }
+}

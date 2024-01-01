@@ -1,7 +1,9 @@
 package cy.jdkdigital.productivetrees.util;
 
+import com.google.gson.JsonObject;
 import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivelib.util.ColorUtil;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
@@ -16,6 +18,7 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -34,6 +37,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -133,11 +137,11 @@ public class TreeUtil
         return ItemStack.EMPTY;
     }
 
-    public static ItemStack getSaplingFromLeaf(ItemStack saplingStack) {
-        if (saplingStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLeavesBlock leavesBlock) {
+    public static ItemStack getSaplingFromLeaf(ItemStack leafStack) {
+        if (leafStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLeavesBlock leavesBlock) {
             return new ItemStack(leavesBlock.getTree().getSaplingBlock().get());
         }
-        var resourceLocation = ForgeRegistries.ITEMS.getKey(saplingStack.getItem());
+        var resourceLocation = ForgeRegistries.ITEMS.getKey(leafStack.getItem());
         if (resourceLocation != null) {
             var block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(resourceLocation.getPath().replace("leaves", "sapling")));
             if (block != null) {
@@ -198,5 +202,55 @@ public class TreeUtil
             }
         }
         return null;
+    }
+
+    public static boolean isSpecialTree(ResourceLocation id) {
+        return  id.getPath().equals("ysabelle") ||
+                id.getPath().equals("cave_dweller") ||
+                id.getPath().equals("black_ember") ||
+                id.getPath().equals("brown_amber") ||
+                id.getPath().equals("firecracker") ||
+                id.getPath().equals("flickering_sun") ||
+                id.getPath().equals("time_traveller") ||
+                id.getPath().equals("rippling_willow") ||
+                id.getPath().equals("twinkle_field") ||
+                id.getPath().equals("sparkle_cherry") ||
+                id.getPath().equals("slimy_delight") ||
+                id.getPath().equals("foggy_blast");
+    }
+
+    public static boolean isTranslucentTree(String name) {
+        return name.equals("brown_amber") || name.equals("slimy_delight") || name.equals("foggy_blast");
+    }
+
+    // TODO move to lib
+    public static JsonObject itemToJson(ItemStack item) {
+        var json = new JsonObject();
+        json.addProperty("item", ForgeRegistries.ITEMS.getKey(item.getItem()).toString());
+        if (item.getCount() > 1) {
+            json.addProperty("count", item.getCount());
+        }
+        if (item.getTag() != null) {
+            json.addProperty("type", "forge:nbt");
+            json.addProperty("nbt", NbtOps.INSTANCE.convertTo(JsonOps.INSTANCE, item.getTag()).toString());
+        }
+        return json;
+    }
+    public static JsonObject itemChanceToJson(ItemStack item, float chance) {
+        var json = itemToJson(item);
+        json.addProperty("chance", chance);
+        return json;
+    }
+    public static JsonObject fluidToJson(FluidStack fluid) {
+        var json = new JsonObject();
+        json.addProperty("fluid", ForgeRegistries.FLUIDS.getKey(fluid.getFluid()).toString());
+        if (fluid.getAmount() > 1) {
+            json.addProperty("amount", fluid.getAmount());
+        }
+        if (fluid.getTag() != null) {
+            json.addProperty("type", "forge:nbt");
+            json.addProperty("nbt", NbtOps.INSTANCE.convertTo(JsonOps.INSTANCE, fluid.getTag()).toString());
+        }
+        return json;
     }
 }

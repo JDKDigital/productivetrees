@@ -1,5 +1,6 @@
 {
   "feature": "productivetrees:grandidiers_baobab",
+  "megaFeature": "productivetrees:grandidiers_baobab_mega",
   "colors": {
     "leafColor": "#4e6e03",
     "logColor": "#e8dd00",

@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/socotra_dragon",
+    "side": "productivetrees:block/stripped/socotra_dragon"
+  }
+}

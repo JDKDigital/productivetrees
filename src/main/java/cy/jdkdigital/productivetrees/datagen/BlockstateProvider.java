@@ -4,12 +4,14 @@ import com.google.common.collect.Maps;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import cy.jdkdigital.productivebees.setup.HiveType;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.registry.WoodObject;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import cy.jdkdigital.productivetrees.util.WoodSet;
 import net.minecraft.core.Direction;
 import net.minecraft.data.CachedOutput;
@@ -92,47 +94,18 @@ public class BlockstateProvider implements DataProvider
             }
         });
 
-        TreeFinder.woods.forEach((id, woodObject) -> {
-            addBlockItemModel(woodObject.getPlankBlock().get(), "planks/" + woodObject.getStyle().plankStyle(), itemModels);
-            addBlockItemModel(woodObject.getLogBlock().get(), "log/" + woodObject.getStyle().woodStyle() + "_log", itemModels);
-            addBlockItemModel(woodObject.getStrippedLogBlock().get(), "log/" + woodObject.getStyle().woodStyle() + "_stripped_log", itemModels);
-            addBlockItemModel(woodObject.getWoodBlock().get(), "log/" + woodObject.getStyle().woodStyle() + "_wood", itemModels);
-            addBlockItemModel(woodObject.getStrippedWoodBlock().get(), "log/" + woodObject.getStyle().woodStyle() + "_stripped_wood", itemModels);
-            addBlockItemModel(woodObject.getSlabBlock().get(), "slab/" + woodObject.getStyle().plankStyle() + "_slab", itemModels);
-            addBlockItemModel(woodObject.getStairsBlock().get(), "stairs/" + woodObject.getStyle().plankStyle() + "_stairs", itemModels);
-            addBlockItemModel(woodObject.getButtonBlock().get(), "button/" + woodObject.getStyle().plankStyle() + "_button_inventory", itemModels);
-            addBlockItemModel(woodObject.getPressurePlateBlock().get(), "pressure_plate/" + woodObject.getStyle().plankStyle() + "_pressure_plate", itemModels);
-            addBlockItemModel(woodObject.getFenceBlock().get(), "fence/" + woodObject.getStyle().plankStyle() + "_fence_inventory", itemModels);
-            addBlockItemModel(woodObject.getFenceGateBlock().get(), "fence_gate/" + woodObject.getStyle().plankStyle() + "_fence_gate", itemModels);
-//            generateFlatItem(woodObject.getDoorBlock().get().asItem(), "item/door/", modelOutput);
-            ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(woodObject.getDoorBlock().get().asItem()), (new TextureMapping()).put(TextureSlot.LAYER0, new ResourceLocation(ProductiveTrees.MODID, "item/door/" + woodObject.getStyle().doorStyle())), modelOutput);
-            addBlockItemModel(woodObject.getTrapdoorBlock().get(), "trapdoor/" + woodObject.getStyle().doorStyle(), itemModels);
-            addBlockItemModel(woodObject.getBookshelfBlock().get(), "bookshelf/" + woodObject.getStyle().plankStyle(), itemModels);
-            generateFlatItem(woodObject.getSignBlock().get().asItem(), "item/sign/", modelOutput);
-            generateFlatItem(woodObject.getHangingSignBlock().get().asItem(), "item/hanging_sign/", modelOutput);
-        });
-
-        generateMultiFruitItem(TreeRegistrator.BLACKBERRY.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.BLACKCURRANT.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.BLUEBERRY.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.REDCURRANT.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.CRANBERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.ELDERBERRY.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.GOOSEBERRY.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.RASPBERRY.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.GOLDEN_RASPBERRY.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.JUNIPER.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.SLOE.get(), modelOutput);
+        generateMultiItem(TreeRegistrator.JUNIPER.get(), modelOutput);
+        generateMultiItem(TreeRegistrator.SLOE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.HAW.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.MIRACLE_BERRY.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.ASAI_BERRY.get(), modelOutput);
+        generateMultiItem(TreeRegistrator.ASAI_BERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.APRICOT.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.BLACK_CHERRY.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.WILD_CHERRY.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.SOUR_CHERRY.get(), modelOutput);
+        generateMultiItem(TreeRegistrator.BLACK_CHERRY.get(), modelOutput);
+        generateMultiItem(TreeRegistrator.WILD_CHERRY.get(), modelOutput);
+        generateMultiItem(TreeRegistrator.SOUR_CHERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.SPARKLING_CHERRY.get(), modelOutput);
         generateFruitItem(TreeRegistrator.CHERRY_PLUM.get(), modelOutput);
-        generateMultiFruitItem(TreeRegistrator.OLIVE.get(), modelOutput);
+        generateMultiItem(TreeRegistrator.OLIVE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.OSANGE_ORANGE.get(), modelOutput);
         generateFruitItem(TreeRegistrator.KUMQUAT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.DATE.get(), modelOutput);
@@ -166,6 +139,7 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.PAPAYA.get(), modelOutput);
         generateFruitItem(TreeRegistrator.PERSIMMON.get(), modelOutput);
         generateFruitItem(TreeRegistrator.POMEGRANATE.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.SWEETSOP.get(), modelOutput);
         generateFruitItem(TreeRegistrator.BREADFRUIT.get(), modelOutput);
         generateFruitItem(TreeRegistrator.LIME.get(), modelOutput);
         generateFruitItem(TreeRegistrator.KEY_LIME.get(), modelOutput);
@@ -195,7 +169,18 @@ public class BlockstateProvider implements DataProvider
         generateFruitItem(TreeRegistrator.CINNAMON.get(), modelOutput);
         generateFruitItem(TreeRegistrator.NUTMEG.get(), modelOutput);
         generateFruitItem(TreeRegistrator.STAR_ANISE.get(), modelOutput);
-        generateFruitItem(TreeRegistrator.CORK.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.BELIY_NALIV.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.GOLDEN_DELICIOUS.get(), modelOutput);
+        generateFruitItem(TreeRegistrator.GRANNY_SMITH.get(), modelOutput);
+        generateMultiItem(TreeRegistrator.FUSTIC.get(), "item/", modelOutput);
+        generateFruitItem(TreeRegistrator.PLANET_PEACH.get(), modelOutput);
+        generateFlatItem(TreeRegistrator.CORK.get(), "item/", modelOutput);
+        generateFlatItem(TreeRegistrator.HAEMATOXYLIN.get(), "item/", modelOutput);
+        generateFlatItem(TreeRegistrator.DRACAENA_SAP.get(), "item/", modelOutput);
+        generateFlatItem(TreeRegistrator.RUBBER.get(), "item/", modelOutput);
+        generateFlatItem(TreeRegistrator.MAPLE_SAP_BUCKET.get(), "item/", modelOutput);
+        generateFlatItem(TreeRegistrator.MAPLE_SYRUP.get(), "item/", modelOutput);
+        generateFlatItem(TreeRegistrator.SANDALWOOD_OIL.get(), "item/", modelOutput);
 
         List<CompletableFuture<?>> output = new ArrayList<>();
         blockModels.forEach((block, supplier) -> {
@@ -216,12 +201,15 @@ public class BlockstateProvider implements DataProvider
         generateFlatItem(item, "item/fruit/", modelOutput);
     }
 
-    private void generateMultiFruitItem(Item item, BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput) {
+    private void generateMultiItem(Item item, BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput) {
+        generateMultiItem(item, "item/fruit/", modelOutput);
+    }
+    private void generateMultiItem(Item item, String suffix, BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput) {
         var tLocation = ForgeRegistries.ITEMS.getKey(item).withPrefix("item/").withSuffix("_two");
-        ModelTemplates.FLAT_ITEM.create(tLocation, getFlatItemTextureMap(item, "item/fruit/", "_two"), modelOutput);
+        ModelTemplates.FLAT_ITEM.create(tLocation, getFlatItemTextureMap(item, suffix, "_two"), modelOutput);
         var mLocation = ForgeRegistries.ITEMS.getKey(item).withPrefix("item/").withSuffix("_multiple");
-        ModelTemplates.FLAT_ITEM.create(mLocation, getFlatItemTextureMap(item, "item/fruit/", "_multiple"), modelOutput);
-        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(item), getFlatItemTextureMap(item, "item/fruit/"), modelOutput, this::createFruitTemplate);
+        ModelTemplates.FLAT_ITEM.create(mLocation, getFlatItemTextureMap(item, suffix, "_multiple"), modelOutput);
+        ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(item), getFlatItemTextureMap(item, suffix), modelOutput, this::createFruitTemplate);
     }
 
     public JsonObject createFruitTemplate(ResourceLocation resourceLocation, Map<TextureSlot, ResourceLocation> slotResourceLocationMap) {
@@ -300,15 +288,10 @@ public class BlockstateProvider implements DataProvider
         protected void registerStatesAndModels(Consumer<BlockStateGenerator> blockStateOutput, BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput) {
             this.blockStateOutput = blockStateOutput;
             this.modelOutput = modelOutput;
-            Map<ResourceLocation, BlockStateGenerator> hivBlockStates = new HashMap<>();
+            Map<ResourceLocation, BlockStateGenerator> hiveBlockStates = new HashMap<>();
 
             TreeFinder.trees.forEach((id, treeObject) -> {
-                try {
-                    this.createSapling(treeObject);
-                } catch (NullPointerException ne) {
-                    ProductiveTrees.LOGGER.warn("Error generating sapling for " + id);
-                    throw ne;
-                }
+                this.createSapling(treeObject);
                 this.createBaseBlock(treeObject.getLeafBlock().get(), "leaves/" + treeObject.getStyle().leafStyle());
                 if (treeObject.hasFruit()) {
                     this.createFruitBlock(treeObject);
@@ -332,42 +315,14 @@ public class BlockstateProvider implements DataProvider
                     this.blockStateOutput.accept(createSimpleBlock(treeObject.getWallHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + treeObject.getStyle().plankStyle())));
 
                     if (treeObject.getStyle().hiveStyle() != null) {
-                        cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(treeObject.getHiveBlock().get(), treeObject.getExpansionBoxBlock().get(), id.getPath(), new HiveType(false, treeObject.getPlankColor(), treeObject.getStyle().hiveStyle(), Ingredient.of(treeObject.getPlankBlock().get())), hivBlockStates, this.modelOutput);
+                        cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(treeObject.getHiveBlock().get(), treeObject.getExpansionBoxBlock().get(), id.getPath(), new HiveType(false, treeObject.getPlankColor(), treeObject.getStyle().hiveStyle(), Ingredient.of(treeObject.getPlankBlock().get())), hiveBlockStates, this.modelOutput);
                     }
-                }
-            });
-
-            TreeFinder.woods.forEach((id, woodObject) -> {
-                if (id.getPath().equals("bush")) {
-                    new WoodProvider().logWithHorizontal(woodObject.getStyle().woodStyle(), woodObject.getLogBlock().get(), false).logWithHorizontal(woodObject.getStyle().woodStyle(), woodObject.getWoodBlock().get(), false, "wood");
-                    new WoodProvider().logWithHorizontal(woodObject.getStyle().woodStyle(), woodObject.getStrippedLogBlock().get(), true).logWithHorizontal(woodObject.getStyle().woodStyle(), woodObject.getStrippedWoodBlock().get(), true, "wood");
-                } else {
-                    new WoodProvider().logWithHorizontal(woodObject.getStyle().woodStyle(), woodObject.getLogBlock().get(), false).wood(woodObject.getStyle().woodStyle(), woodObject.getWoodBlock().get(), false);
-                    new WoodProvider().logWithHorizontal(woodObject.getStyle().woodStyle(), woodObject.getStrippedLogBlock().get(), true).wood(woodObject.getStyle().woodStyle(), woodObject.getStrippedWoodBlock().get(), true);
-                }
-                this.createBaseBlock(woodObject.getPlankBlock().get(), "planks/" + woodObject.getStyle().plankStyle());
-                this.createStairsBlock(woodObject);
-                this.createSlabBlock(woodObject);
-                this.createPressurePlateBlock(woodObject);
-                this.createButtonBlock(woodObject);
-                this.createFenceGateBlock(woodObject);
-                this.createFenceBlock(woodObject);
-                this.createDoorBlock(woodObject);
-                this.createTrapdoorBlock(woodObject);
-                this.blockStateOutput.accept(createSimpleBlock(woodObject.getBookshelfBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/bookshelf/" + woodObject.getStyle().plankStyle())));
-                this.blockStateOutput.accept(createSimpleBlock(woodObject.getSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + woodObject.getStyle().plankStyle())));
-                this.blockStateOutput.accept(createSimpleBlock(woodObject.getWallSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + woodObject.getStyle().plankStyle())));
-                this.blockStateOutput.accept(createSimpleBlock(woodObject.getHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + woodObject.getStyle().plankStyle())));
-                this.blockStateOutput.accept(createSimpleBlock(woodObject.getWallHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + woodObject.getStyle().plankStyle())));
-
-                if (woodObject.getStyle().hiveStyle() != null) {
-                    cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(woodObject.getHiveBlock().get(), woodObject.getExpansionBoxBlock().get(), id.getPath(), new HiveType(false, woodObject.getPlankColor(), woodObject.getStyle().hiveStyle(), Ingredient.of(woodObject.getPlankBlock().get())), hivBlockStates, this.modelOutput);
                 }
             });
 
             createBaseModels();
 
-            hivBlockStates.forEach((resourceLocation, stateGenerator) -> {
+            hiveBlockStates.forEach((resourceLocation, stateGenerator) -> {
                 this.blockStateOutput.accept(stateGenerator);
             });
         }
@@ -385,7 +340,7 @@ public class BlockstateProvider implements DataProvider
             if (item != Items.AIR) {
                 this.modelOutput.accept(ModelLocationUtils.getModelLocation(item), new DelegatedModel(new ResourceLocation(ProductiveTrees.MODID, "item/sapling/base_" + baseSapling + treeObject.getStyle().saplingStyle())));
             }
-            this.blockStateOutput.accept(createSimpleBlock(pottedBlock, new ResourceLocation(ProductiveTrees.MODID, "block/sapling/base_potted_sapling_" + treeObject.getStyle().saplingStyle()))); // TODO
+            this.blockStateOutput.accept(createSimpleBlock(pottedBlock, new ResourceLocation(ProductiveTrees.MODID, "block/sapling/base_potted_sapling_" + treeObject.getStyle().saplingStyle())));
             this.blockStateOutput.accept(createSimpleBlock(block, new ResourceLocation(ProductiveTrees.MODID, "block/sapling/base_" + baseSapling + treeObject.getStyle().saplingStyle())));
         }
 
@@ -411,7 +366,7 @@ public class BlockstateProvider implements DataProvider
 
         private void createFruitBlock(TreeObject treeObject) {
             this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(treeObject.getFruitBlock().get()).with(PropertyDispatch.property(BlockStateProperties.AGE_5).generate(age -> {
-                String fruitStyle = treeObject.tintFruit() ? treeObject.getFruit().style() : treeObject.getFruit().style() + "_untinted";
+                String fruitStyle = treeObject.getFruit().style();
                 var template = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + fruitStyle + "/fruit_" + age)), Optional.empty(), TextureSlot.ALL);
                 return Variant.variant().with(VariantProperties.MODEL, template.create(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/" + age), (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + treeObject.getStyle().leafStyle())), modelOutput));
             })));
@@ -662,60 +617,58 @@ public class BlockstateProvider implements DataProvider
         }
 
         private void createBaseModels() {
-            var planksModel = new ModelTemplate(Optional.of(new ResourceLocation("block/cube_all")), Optional.empty(), TextureSlot.ALL);
-
-            var buttonModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/button/base_button")), Optional.empty(), TextureSlot.TEXTURE);
-            var buttonInventoryModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/button/base_button_inventory")), Optional.empty(), TextureSlot.TEXTURE);
-            var buttonPressedModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/button/base_button_pressed")), Optional.empty(), TextureSlot.TEXTURE);
-
-            var fenceInventoryModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence/base_fence_inventory")), Optional.empty(), TextureSlot.TEXTURE);
-            var fencePostModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence/base_fence_post")), Optional.empty(), TextureSlot.TEXTURE);
-            var fenceSideModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence/base_fence_side")), Optional.empty(), TextureSlot.TEXTURE);
-
-            var fenceGateModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence_gate/base_fence_gate")), Optional.empty(), TextureSlot.TEXTURE);
-            var fenceGateOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence_gate/base_fence_gate_open")), Optional.empty(), TextureSlot.TEXTURE);
-            var fenceGateWallModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence_gate/base_fence_gate_wall")), Optional.empty(), TextureSlot.TEXTURE);
-            var fenceGateWallOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence_gate/base_fence_gate_wall_open")), Optional.empty(), TextureSlot.TEXTURE);
-
-            var pressurePlateModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/pressure_plate/base_pressure_plate")), Optional.empty(), TextureSlot.TEXTURE);
-            var pressurePlateDownModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/pressure_plate/base_pressure_plate_down")), Optional.empty(), TextureSlot.TEXTURE);
-
-            var slabModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/slab/base_slab")), Optional.empty(), TextureSlot.TEXTURE);
-            var slabTopModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/slab/base_slab_top")), Optional.empty(), TextureSlot.TEXTURE);
-
-            var stairsModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/base_stairs")), Optional.empty(), TextureSlot.TEXTURE);
-            var stairsInnerModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/base_stairs_inner")), Optional.empty(), TextureSlot.TEXTURE);
-            var stairsOuterModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/base_stairs_outer")), Optional.empty(), TextureSlot.TEXTURE);
-
-            var leavesModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/base_leaves")), Optional.empty(), TextureSlot.ALL);
-
-            var logModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/log/base_log")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
-            var logHorizontalModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/log/base_log_horizontal")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
-            var cubeColumnModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/cube_column")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
-            var cubeColumnHorizontalModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/cube_column_horizontal")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
-
-            var doorBottomLeftModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/bottom_left")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorBottomLeftOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/bottom_left_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorBottomRightModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/bottom_right")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorBottomRightOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/bottom_right_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorTopLeftModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/top_left")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorTopLeftOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/top_left_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorTopRightModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/top_right")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-            var doorTopRightOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/top_right_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
-
-            var trapdoorBottom = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/template_orientable_trapdoor_bottom")), Optional.empty(), TextureSlot.TEXTURE);
-            var trapdoorOpen = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/template_orientable_trapdoor_open")), Optional.empty(), TextureSlot.TEXTURE);
-            var trapdoorTop = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/template_orientable_trapdoor_top")), Optional.empty(), TextureSlot.TEXTURE);
-
-            var bookshelf = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/base_bookshelf")), Optional.empty(), TextureSlot.SIDE);
-
-            var sign = new ModelTemplate(Optional.empty(), Optional.empty(), TextureSlot.PARTICLE);
-            var hangingSign = new ModelTemplate(Optional.empty(), Optional.empty(), TextureSlot.PARTICLE);
-
             WoodSet.STYLES.forEach((name, style) -> {
-                if (name.equals("bush")) {
-                    return;
-                }
+                String modelPrefix = TreeUtil.isTranslucentTree(name) ? "translucent_" : "";
+
+                var planksModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/planks/" + modelPrefix + "base_planks")), Optional.empty(), TextureSlot.ALL);
+
+                var buttonModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/button/" + modelPrefix + "base_button")), Optional.empty(), TextureSlot.TEXTURE);
+                var buttonInventoryModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/button/" + modelPrefix + "base_button_inventory")), Optional.empty(), TextureSlot.TEXTURE);
+                var buttonPressedModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/button/" + modelPrefix + "base_button_pressed")), Optional.empty(), TextureSlot.TEXTURE);
+
+                var fenceInventoryModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence/" + modelPrefix + "base_fence_inventory")), Optional.empty(), TextureSlot.TEXTURE);
+                var fencePostModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence/" + modelPrefix + "base_fence_post")), Optional.empty(), TextureSlot.TEXTURE);
+                var fenceSideModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence/" + modelPrefix + "base_fence_side")), Optional.empty(), TextureSlot.TEXTURE);
+
+                var fenceGateModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence_gate/" + modelPrefix + "base_fence_gate")), Optional.empty(), TextureSlot.TEXTURE);
+                var fenceGateOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence_gate/" + modelPrefix + "base_fence_gate_open")), Optional.empty(), TextureSlot.TEXTURE);
+                var fenceGateWallModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence_gate/" + modelPrefix + "base_fence_gate_wall")), Optional.empty(), TextureSlot.TEXTURE);
+                var fenceGateWallOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fence_gate/" + modelPrefix + "base_fence_gate_wall_open")), Optional.empty(), TextureSlot.TEXTURE);
+
+                var pressurePlateModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/pressure_plate/" + modelPrefix + "base_pressure_plate")), Optional.empty(), TextureSlot.TEXTURE);
+                var pressurePlateDownModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/pressure_plate/" + modelPrefix + "base_pressure_plate_down")), Optional.empty(), TextureSlot.TEXTURE);
+
+                var slabModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/slab/" + modelPrefix + "base_slab")), Optional.empty(), TextureSlot.TEXTURE);
+                var slabTopModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/slab/" + modelPrefix + "base_slab_top")), Optional.empty(), TextureSlot.TEXTURE);
+
+                var stairsModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/" + modelPrefix + "base_stairs")), Optional.empty(), TextureSlot.TEXTURE);
+                var stairsInnerModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/" + modelPrefix + "base_stairs_inner")), Optional.empty(), TextureSlot.TEXTURE);
+                var stairsOuterModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/" + modelPrefix + "base_stairs_outer")), Optional.empty(), TextureSlot.TEXTURE);
+
+                var leavesModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + modelPrefix + "base_leaves")), Optional.empty(), TextureSlot.ALL);
+
+                var logModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/log/" + modelPrefix + "base_log")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
+                var logHorizontalModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/log/" + modelPrefix + "base_log_horizontal")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
+                var cubeColumnModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/" + modelPrefix + "cube_column")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
+                var cubeColumnHorizontalModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/" + modelPrefix + "cube_column_horizontal")), Optional.empty(), TextureSlot.END, TextureSlot.SIDE);
+
+                var doorBottomLeftModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/" + modelPrefix + "bottom_left")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+                var doorBottomLeftOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/" + modelPrefix + "bottom_left_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+                var doorBottomRightModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/" + modelPrefix + "bottom_right")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+                var doorBottomRightOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/" + modelPrefix + "bottom_right_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+                var doorTopLeftModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/" + modelPrefix + "top_left")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+                var doorTopLeftOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/" + modelPrefix + "top_left_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+                var doorTopRightModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/" + modelPrefix + "top_right")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+                var doorTopRightOpenModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/door/" + modelPrefix + "top_right_open")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.TOP);
+
+                var trapdoorBottom = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + modelPrefix + "template_orientable_trapdoor_bottom")), Optional.empty(), TextureSlot.TEXTURE);
+                var trapdoorOpen = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + modelPrefix + "template_orientable_trapdoor_open")), Optional.empty(), TextureSlot.TEXTURE);
+                var trapdoorTop = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + modelPrefix + "template_orientable_trapdoor_top")), Optional.empty(), TextureSlot.TEXTURE);
+
+                var bookshelf = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/" + modelPrefix + "base_bookshelf")), Optional.empty(), TextureSlot.SIDE);
+
+                var sign = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + modelPrefix + "base_sign")), Optional.empty(), TextureSlot.PARTICLE);
+                var hangingSign = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + modelPrefix + "base_sign")), Optional.empty(), TextureSlot.PARTICLE);
 
                 var plankTextureMap = (new TextureMapping()).put(TextureSlot.TEXTURE, new ResourceLocation(ProductiveTrees.MODID, "block/planks/" + style.plankStyle())).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/planks/" + style.plankStyle()));
                 // planks
@@ -744,8 +697,8 @@ public class BlockstateProvider implements DataProvider
                 stairsInnerModel.create(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/" + name + "_stairs_inner"), plankTextureMap, this.modelOutput);
                 stairsOuterModel.create(new ResourceLocation(ProductiveTrees.MODID, "block/stairs/" + name + "_stairs_outer"), plankTextureMap, this.modelOutput);
 
-                var leavesTextureMap = (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + style.leafStyle()));
                 // leaves
+                var leavesTextureMap = (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + style.leafStyle()));
                 leavesModel.create(new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + name), leavesTextureMap, this.modelOutput);
 
                 var logTextureMap = (new TextureMapping())

@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:firecracker_log"
+    },
+    {
+      "item": "productivetrees:firecracker_wood"
+    },
+    {
+      "item": "productivetrees:firecracker_stripped_log"
+    },
+    {
+      "item": "productivetrees:firecracker_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:firecracker_pressure_plate"
+}

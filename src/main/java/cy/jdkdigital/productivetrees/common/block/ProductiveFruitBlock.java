@@ -1,6 +1,5 @@
 package cy.jdkdigital.productivetrees.common.block;
 
-import cy.jdkdigital.productivetrees.common.block.entity.ProductiveFruitBlockEntity;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -13,8 +12,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -24,20 +21,12 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.common.ForgeHooks;
-import org.jetbrains.annotations.Nullable;
 
-public class ProductiveFruitBlock extends LeavesBlock implements EntityBlock
+public class ProductiveFruitBlock extends ProductiveLeavesBlock
 {
-    private final TreeObject treeObject;
-
     public ProductiveFruitBlock(Properties properties, TreeObject treeObject) {
-        super(properties);
-        this.treeObject = treeObject;
+        super(properties, treeObject);
         this.registerDefaultState(this.stateDefinition.any().setValue(getAgeProperty(), 0).setValue(DISTANCE, 7).setValue(PERSISTENT, false).setValue(WATERLOGGED, false));
-    }
-
-    public TreeObject getTree() {
-        return treeObject;
     }
 
     @Override
@@ -56,12 +45,6 @@ public class ProductiveFruitBlock extends LeavesBlock implements EntityBlock
         super.triggerEvent(blockState, level, blockPos, p_49229_, p_49230_);
         BlockEntity blockentity = level.getBlockEntity(blockPos);
         return blockentity != null && blockentity.triggerEvent(p_49229_, p_49230_);
-    }
-
-    @Nullable
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new ProductiveFruitBlockEntity(treeObject, pos, state);
     }
 
     public static IntegerProperty getAgeProperty() {
@@ -89,10 +72,12 @@ public class ProductiveFruitBlock extends LeavesBlock implements EntityBlock
         return blockState.getValue(getAgeProperty()) >= getMaxAge();
     }
 
+    @Override
     public boolean isRandomlyTicking(BlockState blockState) {
         return !isMaxAge(blockState);
     }
 
+    @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos blockPos, RandomSource random) {
         super.randomTick(state, level, blockPos, random);
         int light = level.getRawBrightness(blockPos, 0);

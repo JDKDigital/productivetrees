@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:flickering_sun_planks"
+    }
+  ],
+  "result": {
+    "item": "productivetrees:flickering_sun_button"
+  }
+}

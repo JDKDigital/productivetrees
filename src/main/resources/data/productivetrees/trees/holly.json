@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:holly",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#b8ac89",
-    "plankColor": "#fbf6e7"
+    "leafColor": "#3c6b33",
+    "logColor": "#5c483d",
+    "plankColor": "#f0dbb1"
   }
 }

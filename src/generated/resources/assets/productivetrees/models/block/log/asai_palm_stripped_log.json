@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/asai_palm_top",
+    "side": "productivetrees:block/stripped/asai_palm"
+  }
+}

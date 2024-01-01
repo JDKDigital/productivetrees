@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "productivetrees:item/fruit/cork"
+    "layer0": "productivetrees:item/cork"
   }
 }

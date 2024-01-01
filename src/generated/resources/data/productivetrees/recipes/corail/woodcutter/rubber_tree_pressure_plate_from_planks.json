@@ -1,0 +1,14 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 1,
+  "ingredient": {
+    "item": "productivetrees:rubber_tree_planks"
+  },
+  "result": "productivetrees:rubber_tree_pressure_plate"
+}

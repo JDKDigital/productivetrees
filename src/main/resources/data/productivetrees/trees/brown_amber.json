@@ -1,0 +1,14 @@
+{
+  "feature": "productivetrees:brown_amber",
+  "colors": {
+    "leafColor": "#651a00",
+    "logColor": "#140302",
+    "plankColor": "#b24629"
+  },
+  "fireproof": true,
+  "fruit": {
+    "style": "brown_amber_drip",
+    "item": "minecraft:air",
+    "growthSpeed": 0.35
+  }
+}

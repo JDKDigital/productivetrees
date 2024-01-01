@@ -5,7 +5,6 @@
     "logColor": "#10100e",
     "plankColor": "#bcaa96"
   },
-  "tint": "leaves_hives",
   "fruit": {
     "item": "productivetrees:almond",
     "count": 3,

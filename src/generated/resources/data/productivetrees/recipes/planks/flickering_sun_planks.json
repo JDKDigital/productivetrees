@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:flickering_sun_log"
+      },
+      {
+        "item": "productivetrees:flickering_sun_wood"
+      },
+      {
+        "item": "productivetrees:flickering_sun_stripped_log"
+      },
+      {
+        "item": "productivetrees:flickering_sun_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:flickering_sun_planks"
+  }
+}

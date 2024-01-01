@@ -1,0 +1,29 @@
+{
+  "type": "thermal:insolator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "energy_mod": 3.0,
+  "ingredient": {
+    "item": "productivetrees:date_palm_sapling"
+  },
+  "result": [
+    {
+      "chance": 6.0,
+      "item": "productivetrees:date_palm_log"
+    },
+    {
+      "chance": 1.1,
+      "item": "productivetrees:date_palm_sapling"
+    },
+    {
+      "chance": 0.3,
+      "count": 3,
+      "item": "productivetrees:date"
+    }
+  ],
+  "water_mod": 3.0
+}

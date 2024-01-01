@@ -21,6 +21,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:asai_palm_fence",
+      "required": false
+    },
+    {
       "id": "productivetrees:ash_fence",
       "required": false
     },
@@ -61,6 +65,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:black_ember_fence",
+      "required": false
+    },
+    {
       "id": "productivetrees:black_locust_fence",
       "required": false
     },
@@ -82,6 +90,10 @@
     },
     {
       "id": "productivetrees:breadfruit_fence",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_fence",
       "required": false
     },
     {
@@ -110,6 +122,10 @@
     },
     {
       "id": "productivetrees:cashew_fence",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_fence",
       "required": false
     },
     {
@@ -153,10 +169,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:cogwood_fence",
-      "required": false
-    },
-    {
       "id": "productivetrees:copoazu_fence",
       "required": false
     },
@@ -185,6 +197,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:elderberry_fence",
+      "required": false
+    },
+    {
       "id": "productivetrees:elm_fence",
       "required": false
     },
@@ -197,7 +213,19 @@
       "required": false
     },
     {
+      "id": "productivetrees:firecracker_fence",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_fence",
+      "required": false
+    },
+    {
       "id": "productivetrees:flowering_crabapple_fence",
+      "required": false
+    },
+    {
+      "id": "productivetrees:foggy_blast_fence",
       "required": false
     },
     {
@@ -253,11 +281,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:juniper_fence",
+      "id": "productivetrees:jackfruit_fence",
       "required": false
     },
     {
-      "id": "productivetrees:kadsura_fence",
+      "id": "productivetrees:juniper_fence",
       "required": false
     },
     {
@@ -326,6 +354,10 @@
     },
     {
       "id": "productivetrees:old_fustic_fence",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_fence",
       "required": false
     },
     {
@@ -421,6 +453,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:rippling_willow_fence",
+      "required": false
+    },
+    {
       "id": "productivetrees:rosewood_fence",
       "required": false
     },
@@ -430,6 +466,10 @@
     },
     {
       "id": "productivetrees:rowan_fence",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rubber_tree_fence",
       "required": false
     },
     {
@@ -461,11 +501,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:slimy_delight_fence",
+      "required": false
+    },
+    {
       "id": "productivetrees:socotra_dragon_fence",
       "required": false
     },
     {
+      "id": "productivetrees:soursop_fence",
+      "required": false
+    },
+    {
       "id": "productivetrees:sour_cherry_fence",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_fence",
       "required": false
     },
     {
@@ -513,6 +565,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:time_traveller_fence",
+      "required": false
+    },
+    {
       "id": "productivetrees:tuscarora_crepe_myrtle_fence",
       "required": false
     },
@@ -557,15 +613,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:ysabella_purpurea_fence",
+      "id": "productivetrees:ysabelle_fence",
       "required": false
     },
     {
       "id": "productivetrees:zebrano_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bush_fence",
       "required": false
     }
   ]

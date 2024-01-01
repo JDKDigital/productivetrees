@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:pistachio",
-  "style": "oak",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#687f62",
+    "logColor": "#5b5316",
+    "plankColor": "#9d7446"
   },
   "fruit": {
     "item": "productivetrees:pistachio",

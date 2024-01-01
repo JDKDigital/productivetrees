@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/ipe",
+    "side": "productivetrees:block/stripped/ipe"
+  }
+}

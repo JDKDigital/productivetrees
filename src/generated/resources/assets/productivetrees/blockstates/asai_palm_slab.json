@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/asai_palm_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/asai_palm"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/asai_palm_slab_top"
+    }
+  }
+}

@@ -7,6 +7,7 @@
   },
   "fruit": {
     "item": "productivetrees:copoazu",
+    "style": "copoazu",
     "growthSpeed": 0.2,
     "unripeColor": "#926e10",
     "ripeColor": "#663710"

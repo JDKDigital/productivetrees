@@ -4,6 +4,8 @@ import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.client.particle.ColoredParticleType;
 import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.*;
+import cy.jdkdigital.productivetrees.common.fluid.MapleSap;
+import cy.jdkdigital.productivetrees.common.fluid.type.MapleSapType;
 import cy.jdkdigital.productivetrees.common.item.PollenItem;
 import cy.jdkdigital.productivetrees.common.item.SieveUpgradeItem;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.TaperedFoliagePlacer;
@@ -27,13 +29,19 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
+import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.extensions.IForgeMenuType;
+import net.minecraftforge.fluids.FluidType;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.HashSet;
@@ -48,7 +56,11 @@ public class TreeRegistrator
         Set<BlockState> blockStates = new HashSet<>();
         TreeFinder.trees.forEach((id, treeObject) -> {
             if (treeObject.getStyle().hiveStyle() != null) {
-                blockStates.addAll(treeObject.getHiveBlock().get().getStateDefinition().getPossibleStates());
+                try {
+                    blockStates.addAll(treeObject.getHiveBlock().get().getStateDefinition().getPossibleStates());
+                } catch (NullPointerException e) {
+                    throw new RuntimeException(treeObject.getId() + " failed hive");
+                }
             }
         });
         return new PoiType(blockStates, 1, 1);
@@ -62,14 +74,17 @@ public class TreeRegistrator
     });
     public static final RegistryObject<Block> POLLINATED_LEAVES = ProductiveTrees.BLOCKS.register("pollinated_leaves", () -> new PollinatedLeaves(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistryObject<BlockEntityType<PollinatedLeavesBlockEntity>> POLLINATED_LEAVES_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("pollinated_leaves", () -> BlockEntityType.Builder.of(PollinatedLeavesBlockEntity::new, POLLINATED_LEAVES.get()).build(null));
-    public static final RegistryObject<Block> STRIPPER = ProductiveTrees.BLOCKS.register("stripper", () -> new Stripper(BlockBehaviour.Properties.copy(Blocks.STONECUTTER).noOcclusion()));
+    public static final RegistryObject<Block> STRIPPER = registerBlock("stripper", () -> new Stripper(BlockBehaviour.Properties.copy(Blocks.STONECUTTER).noOcclusion()), true);
     public static final RegistryObject<BlockEntityType<StripperBlockEntity>> STRIPPER_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("stripper", () -> BlockEntityType.Builder.of(StripperBlockEntity::new, STRIPPER.get()).build(null));
-    public static final RegistryObject<Block> SAWMILL = ProductiveTrees.BLOCKS.register("sawmill", () -> new Sawmill(BlockBehaviour.Properties.copy(Blocks.STONECUTTER).noOcclusion()));
+    public static final RegistryObject<Block> SAWMILL = registerBlock("sawmill", () -> new Sawmill(BlockBehaviour.Properties.copy(Blocks.STONECUTTER).noOcclusion()), true);
     public static final RegistryObject<BlockEntityType<SawmillBlockEntity>> SAWMILL_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("sawmill", () -> BlockEntityType.Builder.of(SawmillBlockEntity::new, SAWMILL.get()).build(null));
-    public static final RegistryObject<Block> WOOD_WORKER = ProductiveTrees.BLOCKS.register("wood_worker", () -> new WoodWorker(BlockBehaviour.Properties.copy(Blocks.STONECUTTER).noOcclusion()));
+    public static final RegistryObject<Block> WOOD_WORKER = registerBlock("wood_worker", () -> new WoodWorker(BlockBehaviour.Properties.copy(Blocks.STONECUTTER).noOcclusion()), true);
     public static final RegistryObject<BlockEntityType<WoodWorkerBlockEntity>> WOOD_WORKER_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("wood_worker", () -> BlockEntityType.Builder.of(WoodWorkerBlockEntity::new, WOOD_WORKER.get()).build(null));
     public static final RegistryObject<Block> ENTITY_SPAWNER = ProductiveTrees.BLOCKS.register("entity_spawner", () -> new EntitySpawner(BlockBehaviour.Properties.copy(Blocks.AIR)));
     public static final RegistryObject<BlockEntityType<EntitySpawnerBlockEntity>> ENTITY_SPAWNER_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("entity_spawner", () -> BlockEntityType.Builder.of(EntitySpawnerBlockEntity::new, ENTITY_SPAWNER.get()).build(null));
+    public static final RegistryObject<Block> TIME_TRAVELLER_DISPLAY = registerBlock("time_traveller_display", () -> new TimeTravellerDisplay(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)), true);
+    public static final RegistryObject<BlockEntityType<TimeTravellerDisplayBlockEntity>> TIME_TRAVELLER_DISPLAY_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("time_traveller_display", () -> BlockEntityType.Builder.of(TimeTravellerDisplayBlockEntity::new, TIME_TRAVELLER_DISPLAY.get()).build(null));
+
     public static final RegistryObject<MenuType<StripperContainer>> STRIPPER_MENU = ProductiveTrees.CONTAINER_TYPES.register("stripper", () ->
             IForgeMenuType.create(StripperContainer::new)
     );
@@ -79,12 +94,21 @@ public class TreeRegistrator
     public static final RegistryObject<MenuType<WoodWorkerContainer>> WOOD_WORKER_MENU = ProductiveTrees.CONTAINER_TYPES.register("wood_worker", () ->
             IForgeMenuType.create(WoodWorkerContainer::new)
     );
-    public static final RegistryObject<Item> UPGRADE_POLLEN_SIEVE = ProductiveTrees.ITEMS.register("upgrade_pollen_sieve", () -> new SieveUpgradeItem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> POLLEN = ProductiveTrees.ITEMS.register("pollen", () -> new PollenItem(new Item.Properties()));
-    public static final RegistryObject<Item> STRIPPER_ITEM = ProductiveTrees.ITEMS.register("stripper", () -> new BlockItem(STRIPPER.get(), new Item.Properties()));
-    public static final RegistryObject<Item> SAWMILL_ITEM = ProductiveTrees.ITEMS.register("sawmill", () -> new BlockItem(SAWMILL.get(), new Item.Properties()));
-    public static final RegistryObject<Item> WOOD_WORKER_ITEM = ProductiveTrees.ITEMS.register("wood_worker", () -> new BlockItem(WOOD_WORKER.get(), new Item.Properties()));
-    public static final RegistryObject<Item> SAWDUST = ProductiveTrees.ITEMS.register("sawdust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<FluidType> MAPLE_SAP_TYPE = ProductiveTrees.FLUID_TYPES.register("maple_sap", MapleSapType::new);
+    public static final RegistryObject<FlowingFluid> MAPLE_SAP = ProductiveTrees.FLUIDS.register("maple_sap", MapleSap.Source::new);
+    public static final RegistryObject<FlowingFluid> MAPLE_SAP_FLOWING = ProductiveTrees.FLUIDS.register("flowing_maple_sap", MapleSap.Flowing::new);
+
+    public static final RegistryObject<Item> MAPLE_SAP_BUCKET = registerItem("maple_sap_bucket", () -> new BucketItem(MAPLE_SAP, new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final RegistryObject<Item> UPGRADE_POLLEN_SIEVE = registerItem("upgrade_pollen_sieve", () -> new SieveUpgradeItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> POLLEN = registerItem("pollen", () -> new PollenItem(new Item.Properties()));
+    public static final RegistryObject<Item> SAWDUST = registerItem("sawdust");
+    public static final RegistryObject<Item> FUSTIC = registerItem("fustic");
+    public static final RegistryObject<Item> HAEMATOXYLIN = registerItem("haematoxylin");
+    public static final RegistryObject<Item> DRACAENA_SAP = registerItem("dracaena_sap");
+    public static final RegistryObject<Item> RUBBER = registerItem("rubber");
+    public static final RegistryObject<Item> MAPLE_SYRUP = registerItem("maple_syrup"); // TODO move to cuisine mod?
+    public static final RegistryObject<Item> SANDALWOOD_OIL = registerItem("sandalwood_oil"); // TODO move to cuisine mod?
 
     public static final RegistryObject<RecipeSerializer<?>> TREE_POLLINATION = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_pollination", () -> new TreePollinationRecipe.Serializer<>(TreePollinationRecipe::new));
     public static final RegistryObject<RecipeType<TreePollinationRecipe>> TREE_POLLINATION_TYPE = ProductiveTrees.RECIPE_TYPES.register("tree_pollination", () -> new RecipeType<>() {});
@@ -101,107 +125,121 @@ public class TreeRegistrator
 
     // Fruiting items
     static final FoodProperties BERRY_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(1).saturationMod(0.1F).build();
-    public static final RegistryObject<Item> BLACKBERRY = ProductiveTrees.ITEMS.register("blackberry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> BLACKCURRANT = ProductiveTrees.ITEMS.register("blackcurrant", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> BLUEBERRY = ProductiveTrees.ITEMS.register("blueberry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> REDCURRANT = ProductiveTrees.ITEMS.register("redcurrant", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> CRANBERRY = ProductiveTrees.ITEMS.register("cranberry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> ELDERBERRY = ProductiveTrees.ITEMS.register("elderberry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> GOOSEBERRY = ProductiveTrees.ITEMS.register("gooseberry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> RASPBERRY = ProductiveTrees.ITEMS.register("raspberry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> JUNIPER = ProductiveTrees.ITEMS.register("juniper", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> GOLDEN_RASPBERRY = ProductiveTrees.ITEMS.register("golden_raspberry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> SLOE = ProductiveTrees.ITEMS.register("sloe", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> HAW = ProductiveTrees.ITEMS.register("haw", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> MIRACLE_BERRY = ProductiveTrees.ITEMS.register("miracle_berry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
-    public static final RegistryObject<Item> ASAI_BERRY = ProductiveTrees.ITEMS.register("asai_berry", () -> new Item(new Item.Properties().food(BERRY_FOOD)));
+    public static final RegistryObject<Item> ELDERBERRY = registerItem("elderberry", BERRY_FOOD);
+    public static final RegistryObject<Item> JUNIPER = registerItem("juniper", BERRY_FOOD);
+    public static final RegistryObject<Item> SLOE = registerItem("sloe", BERRY_FOOD);
+    public static final RegistryObject<Item> HAW = registerItem("haw", BERRY_FOOD);
+    public static final RegistryObject<Item> ASAI_BERRY = registerItem("asai_berry", BERRY_FOOD);
 
-    static final FoodProperties SMALL_FRUIT_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(4).saturationMod(0.3F).build();
-    public static final RegistryObject<Item> APRICOT = ProductiveTrees.ITEMS.register("apricot", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
-    public static final RegistryObject<Item> BLACK_CHERRY = ProductiveTrees.ITEMS.register("black_cherry", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
-    public static final RegistryObject<Item> CHERRY_PLUM = ProductiveTrees.ITEMS.register("cherry_plum", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
-    public static final RegistryObject<Item> OLIVE = ProductiveTrees.ITEMS.register("olive", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
-    public static final RegistryObject<Item> OSANGE_ORANGE = ProductiveTrees.ITEMS.register("osange_orange", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
-    public static final RegistryObject<Item> KUMQUAT = ProductiveTrees.ITEMS.register("kumquat", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
-    public static final RegistryObject<Item> WILD_CHERRY = ProductiveTrees.ITEMS.register("wild_cherry", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
-    public static final RegistryObject<Item> SOUR_CHERRY = ProductiveTrees.ITEMS.register("sour_cherry", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
-    public static final RegistryObject<Item> DATE = ProductiveTrees.ITEMS.register("date", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
-    public static final RegistryObject<Item> PLUM = ProductiveTrees.ITEMS.register("plum", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
-    public static final RegistryObject<Item> SNAKE_FRUIT = ProductiveTrees.ITEMS.register("snake_fruit", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
-    public static final RegistryObject<Item> SPARKLING_CHERRY = ProductiveTrees.ITEMS.register("sparkling_cherry", () -> new Item(new Item.Properties().food(SMALL_FRUIT_FOOD)));
+    static final FoodProperties SMALL_FRUIT_FOOD = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.3F).build();
+    public static final RegistryObject<Item> APRICOT = registerItem("apricot", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> BLACK_CHERRY = registerItem("black_cherry", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> CHERRY_PLUM = registerItem("cherry_plum", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> DATE = registerItem("date", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> FIG = registerItem("fig", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> KUMQUAT = registerItem("kumquat", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> OLIVE = registerItem("olive", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> OSANGE_ORANGE = registerItem("osange_orange", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> PLUM = registerItem("plum", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> SOUR_CHERRY = registerItem("sour_cherry", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> SNAKE_FRUIT = registerItem("snake_fruit", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> SPARKLING_CHERRY = registerItem("sparkling_cherry", SMALL_FRUIT_FOOD);
+    public static final RegistryObject<Item> WILD_CHERRY = registerItem("wild_cherry", SMALL_FRUIT_FOOD);
 
-    static final FoodProperties FRUIT_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(4).saturationMod(0.3F).build();
-    public static final RegistryObject<Item> GOLDEN_DELICIOUS = ProductiveTrees.ITEMS.register("golden_delicious_apple", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> GRANNY_SMITH = ProductiveTrees.ITEMS.register("granny_smith_apple", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> BELIY_NALIV = ProductiveTrees.ITEMS.register("beliy_naliv_apple", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> AVOCADO = ProductiveTrees.ITEMS.register("avocado", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> BANANA = ProductiveTrees.ITEMS.register("banana", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> SWEET_CRABAPPLE = ProductiveTrees.ITEMS.register("sweet_crabapple", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> PRAIRIE_CRABAPPLE = ProductiveTrees.ITEMS.register("prairie_crabapple", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> FLOWERING_CRABAPPLE = ProductiveTrees.ITEMS.register("flowering_crabapple", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> FIG = ProductiveTrees.ITEMS.register("fig", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> GRAPEFRUIT = ProductiveTrees.ITEMS.register("grapefruit", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> NECTARINE = ProductiveTrees.ITEMS.register("nectarine", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> PEACH = ProductiveTrees.ITEMS.register("peach", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> PEAR = ProductiveTrees.ITEMS.register("pear", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> POMELO = ProductiveTrees.ITEMS.register("pomelo", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> RED_BANANA = ProductiveTrees.ITEMS.register("red_banana", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> SAND_PEAR = ProductiveTrees.ITEMS.register("sand_pear", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> SATSUMA = ProductiveTrees.ITEMS.register("satsuma", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> STAR_FRUIT = ProductiveTrees.ITEMS.register("star_fruit", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> TANGERINE = ProductiveTrees.ITEMS.register("tangerine", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> PERSIMMON = ProductiveTrees.ITEMS.register("persimmon", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
-    public static final RegistryObject<Item> POMEGRANATE = ProductiveTrees.ITEMS.register("pomegranate", () -> new Item(new Item.Properties().food(FRUIT_FOOD)));
+    static final FoodProperties FRUIT_FOOD = (new FoodProperties.Builder()).nutrition(4).saturationMod(0.3F).build();
+    public static final RegistryObject<Item> GOLDEN_DELICIOUS = registerItem("golden_delicious_apple", FRUIT_FOOD);
+    public static final RegistryObject<Item> GRANNY_SMITH = registerItem("granny_smith_apple", FRUIT_FOOD);
+    public static final RegistryObject<Item> BELIY_NALIV = registerItem("beliy_naliv_apple", FRUIT_FOOD);
+    public static final RegistryObject<Item> AVOCADO = registerItem("avocado", FRUIT_FOOD);
+    public static final RegistryObject<Item> BANANA = registerItem("banana", FRUIT_FOOD);
+    public static final RegistryObject<Item> SWEET_CRABAPPLE = registerItem("sweet_crabapple", FRUIT_FOOD);
+    public static final RegistryObject<Item> PRAIRIE_CRABAPPLE = registerItem("prairie_crabapple", FRUIT_FOOD);
+    public static final RegistryObject<Item> FLOWERING_CRABAPPLE = registerItem("flowering_crabapple", FRUIT_FOOD);
+    public static final RegistryObject<Item> GRAPEFRUIT = registerItem("grapefruit", FRUIT_FOOD);
+    public static final RegistryObject<Item> NECTARINE = registerItem("nectarine", FRUIT_FOOD);
+    public static final RegistryObject<Item> PEACH = registerItem("peach", FRUIT_FOOD);
+    public static final RegistryObject<Item> PEAR = registerItem("pear", FRUIT_FOOD);
+    public static final RegistryObject<Item> PERSIMMON = registerItem("persimmon", FRUIT_FOOD);
+    public static final RegistryObject<Item> POMELO = registerItem("pomelo", FRUIT_FOOD);
+    public static final RegistryObject<Item> POMEGRANATE = registerItem("pomegranate", FRUIT_FOOD);
+    public static final RegistryObject<Item> RED_BANANA = registerItem("red_banana", FRUIT_FOOD);
+    public static final RegistryObject<Item> SAND_PEAR = registerItem("sand_pear", FRUIT_FOOD);
+    public static final RegistryObject<Item> SATSUMA = registerItem("satsuma", FRUIT_FOOD);
+    public static final RegistryObject<Item> STAR_FRUIT = registerItem("star_fruit", FRUIT_FOOD);
+    public static final RegistryObject<Item> TANGERINE = registerItem("tangerine", FRUIT_FOOD);
+    public static final RegistryObject<Item> SWEETSOP = registerItem("sweetsop", FRUIT_FOOD);
 
-    static final FoodProperties BIG_FRUIT_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(5).saturationMod(0.3F).build();
-    public static final RegistryObject<Item> COCONUT = ProductiveTrees.ITEMS.register("coconut", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
-    public static final RegistryObject<Item> MANGO = ProductiveTrees.ITEMS.register("mango", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
-    public static final RegistryObject<Item> PLANTAIN = ProductiveTrees.ITEMS.register("plantain", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
-    public static final RegistryObject<Item> PAPAYA = ProductiveTrees.ITEMS.register("papaya", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
-    public static final RegistryObject<Item> BREADFRUIT = ProductiveTrees.ITEMS.register("breadfruit", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
-    public static final RegistryObject<Item> AKEBIA = ProductiveTrees.ITEMS.register("akebia", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
-    public static final RegistryObject<Item> COPOAZU = ProductiveTrees.ITEMS.register("copoazu", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
-    public static final RegistryObject<Item> CEMPEDAK = ProductiveTrees.ITEMS.register("cempedak", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
-    public static final RegistryObject<Item> JACKFRUIT = ProductiveTrees.ITEMS.register("jackfruit", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
-    public static final RegistryObject<Item> HALA_FRUIT = ProductiveTrees.ITEMS.register("hala_fruit", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
-    public static final RegistryObject<Item> SOURSOP = ProductiveTrees.ITEMS.register("soursop", () -> new Item(new Item.Properties().food(BIG_FRUIT_FOOD)));
+    static final FoodProperties BIG_FRUIT_FOOD = (new FoodProperties.Builder()).nutrition(5).saturationMod(0.3F).build();
+    public static final RegistryObject<Item> COCONUT = registerItem("coconut", BIG_FRUIT_FOOD);
+    public static final RegistryObject<Item> MANGO = registerItem("mango", BIG_FRUIT_FOOD);
+    public static final RegistryObject<Item> PLANTAIN = registerItem("plantain", BIG_FRUIT_FOOD);
+    public static final RegistryObject<Item> PAPAYA = registerItem("papaya", BIG_FRUIT_FOOD);
+    public static final RegistryObject<Item> BREADFRUIT = registerItem("breadfruit", BIG_FRUIT_FOOD);
+    public static final RegistryObject<Item> AKEBIA = registerItem("akebia", BIG_FRUIT_FOOD);
+    public static final RegistryObject<Item> COPOAZU = registerItem("copoazu", BIG_FRUIT_FOOD);
+    public static final RegistryObject<Item> CEMPEDAK = registerItem("cempedak", BIG_FRUIT_FOOD);
+    public static final RegistryObject<Item> JACKFRUIT = registerItem("jackfruit", BIG_FRUIT_FOOD);
+    public static final RegistryObject<Item> HALA_FRUIT = registerItem("hala_fruit", BIG_FRUIT_FOOD);
+    public static final RegistryObject<Item> SOURSOP = registerItem("soursop", BIG_FRUIT_FOOD);
 
-    static final FoodProperties CITRUS_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(2).saturationMod(0.2F).build();
-    public static final RegistryObject<Item> LIME = ProductiveTrees.ITEMS.register("lime", () -> new Item(new Item.Properties().food(CITRUS_FOOD)));
-    public static final RegistryObject<Item> KEY_LIME = ProductiveTrees.ITEMS.register("key_lime", () -> new Item(new Item.Properties().food(CITRUS_FOOD)));
-    public static final RegistryObject<Item> FINGER_LIME = ProductiveTrees.ITEMS.register("finger_lime", () -> new Item(new Item.Properties().food(CITRUS_FOOD)));
-    public static final RegistryObject<Item> CITRON = ProductiveTrees.ITEMS.register("citron", () -> new Item(new Item.Properties().food(CITRUS_FOOD)));
-    public static final RegistryObject<Item> LEMON = ProductiveTrees.ITEMS.register("lemon", () -> new Item(new Item.Properties().food(CITRUS_FOOD)));
+    static final FoodProperties CITRUS_FOOD = (new FoodProperties.Builder()).nutrition(2).saturationMod(0F).build();
+    public static final RegistryObject<Item> LIME = registerItem("lime", CITRUS_FOOD);
+    public static final RegistryObject<Item> KEY_LIME = registerItem("key_lime", CITRUS_FOOD);
+    public static final RegistryObject<Item> FINGER_LIME = registerItem("finger_lime", CITRUS_FOOD);
+    public static final RegistryObject<Item> CITRON = registerItem("citron", CITRUS_FOOD);
+    public static final RegistryObject<Item> LEMON = registerItem("lemon", CITRUS_FOOD);
 
-    static final FoodProperties BIG_CITRUS_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(3).saturationMod(0.2F).build();
-    public static final RegistryObject<Item> ORANGE = ProductiveTrees.ITEMS.register("orange", () -> new Item(new Item.Properties().food(BIG_CITRUS_FOOD)));
-    public static final RegistryObject<Item> MANDARIN = ProductiveTrees.ITEMS.register("mandarin", () -> new Item(new Item.Properties().food(BIG_CITRUS_FOOD)));
-    public static final RegistryObject<Item> BUDDHAS_HAND = ProductiveTrees.ITEMS.register("buddhas_hand", () -> new Item(new Item.Properties().food(BIG_CITRUS_FOOD)));
+    static final FoodProperties BIG_CITRUS_FOOD = (new FoodProperties.Builder()).nutrition(3).saturationMod(0F).build();
+    public static final RegistryObject<Item> ORANGE = registerItem("orange", BIG_CITRUS_FOOD);
+    public static final RegistryObject<Item> MANDARIN = registerItem("mandarin", BIG_CITRUS_FOOD);
+    public static final RegistryObject<Item> BUDDHAS_HAND = registerItem("buddhas_hand", BIG_CITRUS_FOOD);
 
-    static final FoodProperties NUT_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(1).saturationMod(0.2F).build();
-    public static final RegistryObject<Item> ALMOND = ProductiveTrees.ITEMS.register("almond", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> ACORN = ProductiveTrees.ITEMS.register("acorn", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> BEECHNUT = ProductiveTrees.ITEMS.register("beechnut", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> BRAZIL_NUT = ProductiveTrees.ITEMS.register("brazil_nut", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> BUTTERNUT = ProductiveTrees.ITEMS.register("butternut", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> CANDLENUT = ProductiveTrees.ITEMS.register("candlenut", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> CASHEW = ProductiveTrees.ITEMS.register("cashew", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> CHESTNUT = ProductiveTrees.ITEMS.register("chestnut", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> COFFEE_BEAN = ProductiveTrees.ITEMS.register("coffee_bean", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> GINKGO_NUT = ProductiveTrees.ITEMS.register("ginkgo_nut", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> HAZELNUT = ProductiveTrees.ITEMS.register("hazelnut", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> PECAN = ProductiveTrees.ITEMS.register("pecan", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> PISTACHIO = ProductiveTrees.ITEMS.register("pistachio", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> WALNUT = ProductiveTrees.ITEMS.register("walnut", () -> new Item(new Item.Properties().food(NUT_FOOD)));
-    public static final RegistryObject<Item> CAROB = ProductiveTrees.ITEMS.register("carob", () -> new Item(new Item.Properties().food(NUT_FOOD)));
+    static final FoodProperties NUT_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(1).saturationMod(0.1F).build();
+    public static final RegistryObject<Item> ALMOND = registerItem("almond", NUT_FOOD);
+    public static final RegistryObject<Item> ACORN = registerItem("acorn", NUT_FOOD);
+    public static final RegistryObject<Item> BEECHNUT = registerItem("beechnut", NUT_FOOD);
+    public static final RegistryObject<Item> BRAZIL_NUT = registerItem("brazil_nut", NUT_FOOD);
+    public static final RegistryObject<Item> BUTTERNUT = registerItem("butternut", NUT_FOOD);
+    public static final RegistryObject<Item> CANDLENUT = registerItem("candlenut", NUT_FOOD);
+    public static final RegistryObject<Item> CASHEW = registerItem("cashew", NUT_FOOD);
+    public static final RegistryObject<Item> CHESTNUT = registerItem("chestnut", NUT_FOOD);
+    public static final RegistryObject<Item> GINKGO_NUT = registerItem("ginkgo_nut", NUT_FOOD);
+    public static final RegistryObject<Item> HAZELNUT = registerItem("hazelnut", NUT_FOOD);
+    public static final RegistryObject<Item> PECAN = registerItem("pecan", NUT_FOOD);
+    public static final RegistryObject<Item> PISTACHIO = registerItem("pistachio", NUT_FOOD);
+    public static final RegistryObject<Item> WALNUT = registerItem("walnut", NUT_FOOD);
 
-    // Spice
-    public static final RegistryObject<Item> ALLSPICE = ProductiveTrees.ITEMS.register("allspice", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CLOVE = ProductiveTrees.ITEMS.register("clove", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CINNAMON = ProductiveTrees.ITEMS.register("cinnamon", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> NUTMEG = ProductiveTrees.ITEMS.register("nutmeg", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> STAR_ANISE = ProductiveTrees.ITEMS.register("star_anise", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CORK = ProductiveTrees.ITEMS.register("cork", () -> new Item(new Item.Properties()));
+    // Inedible produce
+    public static final RegistryObject<Item> COFFEE_BEAN = registerItem("coffee_bean");
+    public static final RegistryObject<Item> CAROB = registerItem("carob");
+    public static final RegistryObject<Item> ALLSPICE = registerItem("allspice");
+    public static final RegistryObject<Item> CLOVE = registerItem("clove");
+    public static final RegistryObject<Item> CINNAMON = registerItem("cinnamon");
+    public static final RegistryObject<Item> NUTMEG = registerItem("nutmeg");
+    public static final RegistryObject<Item> STAR_ANISE = registerItem("star_anise");
+    public static final RegistryObject<Item> CORK = registerItem("cork");
+    public static final RegistryObject<Item> PLANET_PEACH = registerItem("planet_peach");
+
+
+    public static RegistryObject<Item> registerItem(String name) {
+        return registerItem(name, () -> new Item(new Item.Properties()));
+    }
+
+    public static RegistryObject<Item> registerItem(String name, FoodProperties food) {
+        return registerItem(name, () -> new Item(new Item.Properties().food(food)));
+    }
+
+    public static RegistryObject<Item> registerItem(String name, Supplier<Item> supplier) {
+        return ProductiveTrees.ITEMS.register(name, supplier);
+    }
+    
+    public static RegistryObject<Block> registerBlock(String name, Supplier<Block> supplier, boolean hasItem) {
+        var block = ProductiveTrees.BLOCKS.register(name, supplier);
+        if (hasItem) {
+            registerItem(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        }
+        return block;
+    }
 
     public static <E extends BlockEntity, T extends BlockEntityType<E>> Supplier<T> registerBlockEntity(String id, Supplier<T> supplier) {
         return ProductiveTrees.BLOCK_ENTITIES.register(id, supplier);

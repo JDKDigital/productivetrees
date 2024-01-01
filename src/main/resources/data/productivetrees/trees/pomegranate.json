@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:pomegranate",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#588759",
+    "logColor": "#6d6649",
+    "plankColor": "#a57e45"
   },
   "fruit": {
     "item": "productivetrees:pomegranate",

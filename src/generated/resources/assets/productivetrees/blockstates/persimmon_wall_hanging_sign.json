@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "productivetrees:block/sign/hanging_dark_oak"
+      "model": "productivetrees:block/sign/hanging_persimmon"
     }
   }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/button/base_button",
+  "textures": {
+    "texture": "productivetrees:block/planks/logwood"
+  }
+}

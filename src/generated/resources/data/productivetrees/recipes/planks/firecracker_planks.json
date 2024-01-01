@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:firecracker_log"
+      },
+      {
+        "item": "productivetrees:firecracker_wood"
+      },
+      {
+        "item": "productivetrees:firecracker_stripped_log"
+      },
+      {
+        "item": "productivetrees:firecracker_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:firecracker_planks"
+  }
+}

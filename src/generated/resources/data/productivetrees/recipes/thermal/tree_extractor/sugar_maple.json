@@ -1,0 +1,15 @@
+{
+  "type": "thermal:tree_extractor",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    }
+  ],
+  "leaves": "productivetrees:sugar_maple_leaves",
+  "result": {
+    "amount": 50,
+    "fluid": "productivetrees:maple_sap"
+  },
+  "trunk": "productivetrees:sugar_maple_log"
+}

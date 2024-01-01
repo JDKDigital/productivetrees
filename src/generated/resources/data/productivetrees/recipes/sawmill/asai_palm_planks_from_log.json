@@ -1,0 +1,25 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": [
+    {
+      "item": "productivetrees:asai_palm_log"
+    },
+    {
+      "item": "productivetrees:asai_palm_stripped_log"
+    },
+    {
+      "item": "productivetrees:asai_palm_wood"
+    },
+    {
+      "item": "productivetrees:asai_palm_stripped_wood"
+    }
+  ],
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:asai_palm_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

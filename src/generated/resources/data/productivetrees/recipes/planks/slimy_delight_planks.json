@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:slimy_delight_log"
+      },
+      {
+        "item": "productivetrees:slimy_delight_wood"
+      },
+      {
+        "item": "productivetrees:slimy_delight_stripped_log"
+      },
+      {
+        "item": "productivetrees:slimy_delight_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:slimy_delight_planks"
+  }
+}

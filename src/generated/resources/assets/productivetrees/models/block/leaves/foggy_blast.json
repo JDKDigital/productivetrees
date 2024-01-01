@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/leaves/translucent_base_leaves",
+  "textures": {
+    "all": "productivetrees:block/leaves/foggy_blast"
+  }
+}

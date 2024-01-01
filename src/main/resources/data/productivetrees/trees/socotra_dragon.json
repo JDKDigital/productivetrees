@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:socotra_dragon",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#6b6053",
-    "plankColor": "#5e564a"
+    "leafColor": "#b3b979",
+    "logColor": "#adafb3",
+    "plankColor": "#de8f45"
   }
 }

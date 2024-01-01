@@ -1,0 +1,17 @@
+{
+  "type": "treetap:tap_extract",
+  "log": {
+    "item": "productivetrees:rubber_tree_log"
+  },
+  "processing_time": 1200,
+  "result": {
+    "item": "productivetrees:rubber"
+  },
+  "fluid_color": "#cdd8df",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "treetap"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "parent": "productivetrees:block/stairs/base_stairs_inner",
+  "render_type": "translucent"
+}

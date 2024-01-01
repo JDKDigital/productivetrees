@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "productivetrees:block/planks/base_planks",
   "textures": {
     "all": "productivetrees:block/planks/butternut"
   }

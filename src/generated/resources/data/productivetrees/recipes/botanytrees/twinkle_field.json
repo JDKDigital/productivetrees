@@ -42,6 +42,15 @@
         "count": 1,
         "item": "productivetrees:twinkle_field_sapling"
       }
+    },
+    {
+      "chance": 0.1,
+      "maxRolls": 1,
+      "minRolls": 1,
+      "output": {
+        "count": 1,
+        "item": "productivetrees:planet_peach"
+      }
     }
   ],
   "growthTicks": 2400,

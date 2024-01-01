@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "productivetrees:asai_palm_log"
+      },
+      {
+        "item": "productivetrees:asai_palm_wood"
+      },
+      {
+        "item": "productivetrees:asai_palm_stripped_log"
+      },
+      {
+        "item": "productivetrees:asai_palm_stripped_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "productivetrees:asai_palm_planks"
+  }
+}

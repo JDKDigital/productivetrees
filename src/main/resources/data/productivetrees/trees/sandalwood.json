@@ -1,9 +1,8 @@
 {
   "feature": "productivetrees:sandalwood",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#b7b6a3",
-    "plankColor": "#cfad9a"
+    "leafColor": "#41521f",
+    "logColor": "#322e2a",
+    "plankColor": "#d8c0a0"
   }
 }

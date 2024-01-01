@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "productivetrees:block/leaves/oak"
+      "model": "productivetrees:block/leaves/pistachio"
     }
   }
 }

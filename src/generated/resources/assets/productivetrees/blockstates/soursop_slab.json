@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/soursop_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/soursop"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/soursop_slab_top"
+    }
+  }
+}

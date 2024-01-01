@@ -1,0 +1,4 @@
+{
+  "parent": "productivetrees:block/fence/base_fence_inventory",
+  "render_type": "translucent"
+}

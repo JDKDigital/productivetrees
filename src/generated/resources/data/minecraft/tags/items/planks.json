@@ -21,6 +21,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:asai_palm_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:ash_planks",
       "required": false
     },
@@ -61,6 +65,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:black_ember_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:black_locust_planks",
       "required": false
     },
@@ -82,6 +90,10 @@
     },
     {
       "id": "productivetrees:breadfruit_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_planks",
       "required": false
     },
     {
@@ -110,6 +122,10 @@
     },
     {
       "id": "productivetrees:cashew_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_planks",
       "required": false
     },
     {
@@ -153,10 +169,6 @@
       "required": false
     },
     {
-      "id": "productivetrees:cogwood_planks",
-      "required": false
-    },
-    {
       "id": "productivetrees:copoazu_planks",
       "required": false
     },
@@ -185,6 +197,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:elderberry_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:elm_planks",
       "required": false
     },
@@ -197,7 +213,19 @@
       "required": false
     },
     {
+      "id": "productivetrees:firecracker_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:flowering_crabapple_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:foggy_blast_planks",
       "required": false
     },
     {
@@ -253,11 +281,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:juniper_planks",
+      "id": "productivetrees:jackfruit_planks",
       "required": false
     },
     {
-      "id": "productivetrees:kadsura_planks",
+      "id": "productivetrees:juniper_planks",
       "required": false
     },
     {
@@ -326,6 +354,10 @@
     },
     {
       "id": "productivetrees:old_fustic_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_planks",
       "required": false
     },
     {
@@ -421,6 +453,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:rippling_willow_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:rosewood_planks",
       "required": false
     },
@@ -430,6 +466,10 @@
     },
     {
       "id": "productivetrees:rowan_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rubber_tree_planks",
       "required": false
     },
     {
@@ -461,11 +501,23 @@
       "required": false
     },
     {
+      "id": "productivetrees:slimy_delight_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:socotra_dragon_planks",
       "required": false
     },
     {
+      "id": "productivetrees:soursop_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:sour_cherry_planks",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_planks",
       "required": false
     },
     {
@@ -513,6 +565,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:time_traveller_planks",
+      "required": false
+    },
+    {
       "id": "productivetrees:tuscarora_crepe_myrtle_planks",
       "required": false
     },
@@ -557,15 +613,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:ysabella_purpurea_planks",
+      "id": "productivetrees:ysabelle_planks",
       "required": false
     },
     {
       "id": "productivetrees:zebrano_planks",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bush_planks",
       "required": false
     }
   ]

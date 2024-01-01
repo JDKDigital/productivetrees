@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:cempedak",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#202e1d",
-    "plankColor": "#A0A0A0"
+    "leafColor": "#225618",
+    "logColor": "#41270c",
+    "plankColor": "#9b5f43"
   },
   "fruit": {
     "item": "productivetrees:cempedak",

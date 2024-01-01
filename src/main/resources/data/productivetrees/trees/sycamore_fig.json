@@ -1,10 +1,9 @@
 {
   "feature": "productivetrees:sycamore_fig",
-  "style": "birch",
   "colors": {
-    "leafColor": "#1c4316",
-    "logColor": "#b3a180",
-    "plankColor": "#b3731b"
+    "leafColor": "#3e8237",
+    "logColor": "#a4b6ba",
+    "plankColor": "#ae7d55"
   },
   "fruit": {
     "item": "productivetrees:fig",

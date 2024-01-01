@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/slimy_delight_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/slimy_delight"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/slimy_delight_slab_top"
+    }
+  }
+}
