@@ -1,19 +1,5 @@
 {
   "parent": "minecraft:item/generated",
-  "overrides": [
-    {
-      "model": "productivetrees:item/wild_cherry_two",
-      "predicate": {
-        "count": 2
-      }
-    },
-    {
-      "model": "productivetrees:item/wild_cherry_multiple",
-      "predicate": {
-        "count": 3
-      }
-    }
-  ],
   "textures": {
     "layer0": "productivetrees:item/fruit/wild_cherry"
   }

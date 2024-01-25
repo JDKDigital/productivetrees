@@ -4,7 +4,6 @@ import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivelib.container.AbstractContainer;
 import cy.jdkdigital.productivelib.container.ManualSlotItemHandler;
 import cy.jdkdigital.productivetrees.common.block.Stripper;
-import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
 import cy.jdkdigital.productivetrees.common.block.entity.WoodWorkerBlockEntity;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.network.FriendlyByteBuf;

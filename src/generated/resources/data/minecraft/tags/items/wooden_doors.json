@@ -349,6 +349,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:night_fuchsia_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:nutmeg_door",
       "required": false
     },
@@ -433,6 +437,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_spiral_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_door",
       "required": false
     },
@@ -509,6 +517,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:soul_tree_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:soursop_door",
       "required": false
     },
@@ -565,6 +577,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:thunder_bolt_door",
+      "required": false
+    },
+    {
       "id": "productivetrees:time_traveller_door",
       "required": false
     },
@@ -573,11 +589,15 @@
       "required": false
     },
     {
-      "id": "productivetrees:twinkle_field_door",
+      "id": "productivetrees:blue_yonder_door",
       "required": false
     },
     {
       "id": "productivetrees:walnut_door",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_door",
       "required": false
     },
     {
@@ -610,10 +630,6 @@
     },
     {
       "id": "productivetrees:yew_door",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ysabelle_door",
       "required": false
     },
     {

@@ -529,6 +529,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:night_fuchsia_leaves",
+      "required": false
+    },
+    {
       "id": "productivetrees:nutmeg_leaves",
       "required": false
     },
@@ -677,6 +681,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_spiral_leaves",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_leaves",
       "required": false
     },
@@ -773,6 +781,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:soul_tree_leaves",
+      "required": false
+    },
+    {
       "id": "productivetrees:soursop_leaves",
       "required": false
     },
@@ -833,6 +845,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:sweet_chestnut_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:sweet_crabapple_leaves",
       "required": false
     },
@@ -861,6 +877,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:thunder_bolt_leaves",
+      "required": false
+    },
+    {
       "id": "productivetrees:time_traveller_leaves",
       "required": false
     },
@@ -869,11 +889,11 @@
       "required": false
     },
     {
-      "id": "productivetrees:twinkle_field_leaves",
+      "id": "productivetrees:blue_yonder_leaves",
       "required": false
     },
     {
-      "id": "productivetrees:twinkle_field_fruit",
+      "id": "productivetrees:blue_yonder_fruit",
       "required": false
     },
     {
@@ -882,6 +902,10 @@
     },
     {
       "id": "productivetrees:walnut_fruit",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_leaves",
       "required": false
     },
     {
@@ -918,10 +942,6 @@
     },
     {
       "id": "productivetrees:yew_leaves",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ysabelle_leaves",
       "required": false
     },
     {

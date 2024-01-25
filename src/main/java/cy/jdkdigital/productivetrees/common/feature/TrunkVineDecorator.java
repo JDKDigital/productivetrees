@@ -2,7 +2,7 @@ package cy.jdkdigital.productivetrees.common.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import cy.jdkdigital.productivetrees.registry.Features;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.VineBlock;
@@ -23,7 +23,7 @@ public class TrunkVineDecorator extends TreeDecorator
 
     @Override
     protected @NotNull TreeDecoratorType<?> type() {
-        return Features.TRUNK_VINE.get();
+        return TreeRegistrator.TRUNK_VINE.get();
     }
 
     public BlockStateProvider getVineProvider() {

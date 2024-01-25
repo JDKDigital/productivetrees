@@ -1,70 +1,101 @@
 package cy.jdkdigital.productivetrees.datagen.recipe;
 
 import com.google.gson.JsonObject;
-import com.mojang.serialization.JsonOps;
-import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import cy.jdkdigital.productivetrees.registry.WoodObject;
-import cy.jdkdigital.productivetrees.util.TreeUtil;
+import cy.jdkdigital.productivelib.util.RecipeUtil;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
-import net.minecraft.nbt.NbtOps;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public record TreetapRecipeBuilder(Ingredient log, ItemStack plank, ItemStack secondary, ItemStack tertiary) implements RecipeBuilder
+public final class TreetapRecipeBuilder implements RecipeBuilder
 {
-    public static TreetapRecipeBuilder direct(Ingredient logs, ItemStack plank, ItemStack secondary, ItemStack tertiary) {
-        return new TreetapRecipeBuilder(logs, plank, secondary, tertiary);
+    private final Ingredient log;
+    private final ItemStack result;
+    private final ItemStack harvestItem;
+    private final String fluidColor;
+    private final FluidStack displayFluid;
+    private final boolean collectBucket;
+    private final int processingTime;
+    public final Advancement.Builder advancement = Advancement.Builder.recipeAdvancement();
+
+    private TreetapRecipeBuilder(Ingredient log, ItemStack result, ItemStack harvestItem, String fluidColor, FluidStack displayFluid, boolean collectBucket, int processingTime) {
+        this.log = log;
+        this.result = result;
+        this.harvestItem = harvestItem;
+        this.fluidColor = fluidColor;
+        this.displayFluid = displayFluid;
+        this.collectBucket = collectBucket;
+        this.processingTime = processingTime;
     }
 
-    public static TreetapRecipeBuilder tree(WoodObject tree) {
-        ItemStack tertiary =
-                tree.getId().getPath().equals("old_fustic") ? new ItemStack(TreeRegistrator.FUSTIC.get()) :
-                tree.getId().getPath().equals("logwood") ? new ItemStack(TreeRegistrator.HAEMATOXYLIN.get()) :
-                ItemStack.EMPTY;
-        return direct(Ingredient.of(tree.getLogBlock().get(), tree.getStrippedLogBlock().get(), tree.getWoodBlock().get(), tree.getStrippedWoodBlock().get()), new ItemStack(tree.getPlankBlock().get(), 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), tertiary);
+    public static TreetapRecipeBuilder direct(Ingredient log, ItemStack result, ItemStack harvestItem, String fluidColor, FluidStack displayFluid, boolean collectBucket, int processingTime) {
+        return new TreetapRecipeBuilder(log, result, harvestItem, fluidColor, displayFluid, collectBucket, processingTime);
+    }
+
+    public static TreetapRecipeBuilder direct(Block log, ItemStack result, FluidStack fluid, int processingTime) {
+        return direct(Ingredient.of(log), result, ItemStack.EMPTY, "", fluid, true, processingTime);
+    }
+
+    public static TreetapRecipeBuilder direct(Block log, ItemStack result, String fluidColor, int processingTime) {
+        return direct(Ingredient.of(log), result, ItemStack.EMPTY, fluidColor, FluidStack.EMPTY, false, processingTime);
+    }
+
+    public static TreetapRecipeBuilder direct(Block log, ItemStack result, ItemStack harvestItem, String fluidColor, int processingTime) {
+        return direct(Ingredient.of(log), result, harvestItem, fluidColor, FluidStack.EMPTY, false, processingTime);
     }
 
     @Override
     public RecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterion) {
+        this.advancement.addCriterion(name, criterion);
         return null;
     }
 
     @Override
-    public RecipeBuilder group(@Nullable String p_176495_) {
+    public RecipeBuilder group(@Nullable String group) {
         return null;
     }
 
     @Override
     public Item getResult() {
-        return null;
+        return result.getItem();
     }
 
     @Override
     public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
-        consumer.accept(new Result(id, log, plank, secondary, tertiary));
+        consumer.accept(new Result(id, log, result, harvestItem, fluidColor, displayFluid, collectBucket, processingTime, this.advancement));
     }
 
-    record Result(ResourceLocation id, Ingredient log, ItemStack plank, ItemStack secondary, ItemStack tertiary) implements FinishedRecipe
+    record Result(ResourceLocation id, Ingredient log, ItemStack result, ItemStack harvestItem, String fluidColor,
+                  FluidStack displayFluid, boolean collectBucket, int processingTime,
+                  Advancement.Builder advancement) implements FinishedRecipe
     {
         @Override
         public void serializeRecipeData(JsonObject json) {
             json.add("log", log.toJson());
-            json.add("planks", TreeUtil.itemToJson(plank));
-
-            if (!secondary.isEmpty()) {
-                json.add("secondary", TreeUtil.itemToJson(secondary));
+            json.add("result", RecipeUtil.itemToJson(result));
+            json.addProperty("processing_time", processingTime);
+            if (!harvestItem.isEmpty()) {
+                json.add("harvest_item", RecipeUtil.itemToJson(harvestItem));
             }
-            if (!tertiary.isEmpty()) {
-                json.add("tertiary", TreeUtil.itemToJson(tertiary));
+            if (collectBucket) {
+                json.addProperty("collect_bucket", true);
+            }
+            if (!displayFluid.isEmpty()) {
+                json.add("display_fluid", RecipeUtil.fluidToJson(displayFluid));
+            } else {
+                json.addProperty("fluid_color", fluidColor);
             }
         }
 
@@ -75,19 +106,19 @@ public record TreetapRecipeBuilder(Ingredient log, ItemStack plank, ItemStack se
 
         @Override
         public RecipeSerializer<?> getType() {
-            return TreeRegistrator.SAW_MILLLING.get();
+            return ForgeRegistries.RECIPE_SERIALIZERS.getValue(new ResourceLocation("treetap:tap_extract"));
         }
 
         @Nullable
         @Override
         public JsonObject serializeAdvancement() {
-            return null;
+            return this.advancement.serializeToJson();
         }
 
         @Nullable
         @Override
         public ResourceLocation getAdvancementId() {
-            return null;
+            return id.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/");
         }
     }
 }

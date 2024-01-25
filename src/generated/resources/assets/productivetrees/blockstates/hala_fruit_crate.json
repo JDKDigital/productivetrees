@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "productivetrees:block/crates/hala_fruit_crate"
+    }
+  }
+}

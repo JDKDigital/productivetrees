@@ -9,7 +9,7 @@
   "leaves": "productivetrees:cedar_leaves",
   "result": {
     "amount": 50,
-    "fluid": "thermal:sap"
+    "fluid": "thermal:resin"
   },
   "trunk": "productivetrees:cedar_log"
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/soursop",
+    "plant": "productivetrees:block/fruit/soursop/stage_3"
+  }
+}

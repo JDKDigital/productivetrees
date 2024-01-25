@@ -1,6 +1,6 @@
 {
   "parent": "productivetrees:block/planks/base_planks",
   "textures": {
-    "all": "productivetrees:block/planks/oak"
+    "all": "productivetrees:block/planks/elderberry"
   }
 }

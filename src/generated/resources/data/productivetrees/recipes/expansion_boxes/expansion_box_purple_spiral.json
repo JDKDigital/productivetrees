@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "group": "expansion_boxes",
+  "key": {
+    "C": {
+      "tag": "forge:honeycombs"
+    },
+    "W": {
+      "item": "productivetrees:purple_spiral_planks"
+    }
+  },
+  "pattern": [
+    "WWW",
+    "WCW",
+    "WWW"
+  ],
+  "result": {
+    "item": "productivetrees:expansion_box_purple_spiral"
+  },
+  "show_notification": true
+}

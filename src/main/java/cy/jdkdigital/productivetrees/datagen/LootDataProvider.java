@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import cy.jdkdigital.productivebees.datagen.BlockLootProvider;
 import cy.jdkdigital.productivelib.loot.OptionalLootItem;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
@@ -81,7 +82,7 @@ public class LootDataProvider implements DataProvider
                 .hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))));
         private static final LootItemCondition.Builder SHEARS_OR_SILK = SHEARS_DIG.or(SILK_TOUCH);
 
-        private List<Block> knownBlocks = new ArrayList<>();
+        private final List<Block> knownBlocks = new ArrayList<>();
 
         public LootProvider() {
             super(Set.of(), FeatureFlags.REGISTRY.allFlags());
@@ -89,30 +90,34 @@ public class LootDataProvider implements DataProvider
 
         @Override
         protected void generate() {
+            dropSelf(TreeRegistrator.SAWMILL.get());
+            dropSelf(TreeRegistrator.STRIPPER.get());
+            dropSelf(TreeRegistrator.WOOD_WORKER.get());
+            dropSelf(TreeRegistrator.POLLEN_SIFTER.get());
+            dropSelf(TreeRegistrator.TIME_TRAVELLER_DISPLAY.get());
+
             TreeFinder.trees.forEach((id, treeObject) -> {
                 var saplingChance = treeObject.getStyle().saplingStyle().equals("jungle") ? JUNGLE_LEAVES_SAPLING_CHANGES : NORMAL_LEAVES_SAPLING_CHANCES;
                 add(treeObject.getLeafBlock().get(), leaf -> createOptionalLeavesDrops(leaf, treeObject.getSaplingBlock().get(), saplingChance));
                 dropSelf(treeObject.getSaplingBlock().get());
-                if (treeObject.registerWood()) {
-                    dropSelf(treeObject.getLogBlock().get());
-                    dropSelf(treeObject.getPlankBlock().get());
-                    dropSelf(treeObject.getWoodBlock().get());
-                    dropSelf(treeObject.getStrippedLogBlock().get());
-                    dropSelf(treeObject.getStrippedWoodBlock().get());
-                    dropSelf(treeObject.getSlabBlock().get());
-                    dropSelf(treeObject.getStairsBlock().get());
-                    dropSelf(treeObject.getFenceBlock().get());
-                    dropSelf(treeObject.getFenceGateBlock().get());
-                    dropSelf(treeObject.getPressurePlateBlock().get());
-                    dropSelf(treeObject.getButtonBlock().get());
-                    createDoorTable(treeObject.getDoorBlock().get());
-                    dropSelf(treeObject.getTrapdoorBlock().get());
-                    dropSelf(treeObject.getBookshelfBlock().get());
-                    dropSelf(treeObject.getSignBlock().get());
-                    dropOther(treeObject.getWallSignBlock().get(), treeObject.getSignBlock().get());
-                    dropSelf(treeObject.getHangingSignBlock().get());
-                    dropOther(treeObject.getWallHangingSignBlock().get(), treeObject.getHangingSignBlock().get());
-                }
+                dropSelf(treeObject.getLogBlock().get());
+                dropSelf(treeObject.getPlankBlock().get());
+                dropSelf(treeObject.getWoodBlock().get());
+                dropSelf(treeObject.getStrippedLogBlock().get());
+                dropSelf(treeObject.getStrippedWoodBlock().get());
+                dropSelf(treeObject.getSlabBlock().get());
+                dropSelf(treeObject.getStairsBlock().get());
+                dropSelf(treeObject.getFenceBlock().get());
+                dropSelf(treeObject.getFenceGateBlock().get());
+                dropSelf(treeObject.getPressurePlateBlock().get());
+                dropSelf(treeObject.getButtonBlock().get());
+                createDoorTable(treeObject.getDoorBlock().get());
+                dropSelf(treeObject.getTrapdoorBlock().get());
+                dropSelf(treeObject.getBookshelfBlock().get());
+                dropSelf(treeObject.getSignBlock().get());
+                dropOther(treeObject.getWallSignBlock().get(), treeObject.getSignBlock().get());
+                dropSelf(treeObject.getHangingSignBlock().get());
+                dropOther(treeObject.getWallHangingSignBlock().get(), treeObject.getHangingSignBlock().get());
                 if (treeObject.getStyle().hiveStyle() != null) {
                     Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(treeObject.getHiveBlock().get(), BlockLootProvider::genHiveDrop);
                     this.add(treeObject.getHiveBlock().get(), hiveFunc.apply(treeObject.getHiveBlock().get()));

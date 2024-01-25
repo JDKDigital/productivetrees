@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/nectarine",
+    "plant": "productivetrees:block/fruit/nectarine/stage_4"
+  }
+}

@@ -2,14 +2,17 @@ package cy.jdkdigital.productivetrees.event;
 
 import cy.jdkdigital.productivelib.util.ColorUtil;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.client.particle.PetalParticle;
 import cy.jdkdigital.productivetrees.client.render.block.PollinatedLeavesBlockEntityRenderer;
 import cy.jdkdigital.productivetrees.client.render.block.StripperBlockEntityRenderer;
 import cy.jdkdigital.productivetrees.client.render.block.TimeTravellerDisplayBlockEntityRenderer;
 import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
+import cy.jdkdigital.productivetrees.inventory.screen.PollenSifterScreen;
 import cy.jdkdigital.productivetrees.inventory.screen.SawmillScreen;
 import cy.jdkdigital.productivetrees.inventory.screen.StripperScreen;
 import cy.jdkdigital.productivetrees.inventory.screen.WoodworkerScreen;
+import cy.jdkdigital.productivetrees.registry.ClientRegistration;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
@@ -23,6 +26,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -32,19 +36,18 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ClientSetupEvents
 {
     @SubscribeEvent
+    public static void registerParticles(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(ClientRegistration.PETAL_PARTICLES.get(), PetalParticle.Provider::new);
+    }
+
+    @SubscribeEvent
     public static void clientSetupEvent(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             MenuScreens.register(TreeRegistrator.STRIPPER_MENU.get(), StripperScreen::new);
             MenuScreens.register(TreeRegistrator.SAWMILL_MENU.get(), SawmillScreen::new);
             MenuScreens.register(TreeRegistrator.WOOD_WORKER_MENU.get(), WoodworkerScreen::new);
+            MenuScreens.register(TreeRegistrator.POLLEN_SIFTER_MENU.get(), PollenSifterScreen::new);
             // Fruits with multi stack overrides
-            ItemProperties.register(TreeRegistrator.JUNIPER.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
-            ItemProperties.register(TreeRegistrator.SLOE.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
-            ItemProperties.register(TreeRegistrator.ASAI_BERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
-            ItemProperties.register(TreeRegistrator.BLACK_CHERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
-            ItemProperties.register(TreeRegistrator.SOUR_CHERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
-            ItemProperties.register(TreeRegistrator.WILD_CHERRY.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
-            ItemProperties.register(TreeRegistrator.OLIVE.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
             ItemProperties.register(TreeRegistrator.FUSTIC.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
         });
     }
@@ -56,12 +59,10 @@ public class ClientSetupEvents
         event.registerBlockEntityRenderer(TreeRegistrator.TIME_TRAVELLER_DISPLAY_BLOCK_ENTITY.get(), TimeTravellerDisplayBlockEntityRenderer::new);
 
         TreeFinder.trees.forEach((id, treeObject) -> {
-            if (treeObject.registerWood()) {
-                event.registerBlockEntityRenderer(((ProductiveStandingSignBlock) treeObject.getSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
-                event.registerBlockEntityRenderer(((ProductiveWallSignBlock) treeObject.getWallSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
-                event.registerBlockEntityRenderer(((ProductiveCeilingHangingSignBlock) treeObject.getHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
-                event.registerBlockEntityRenderer(((ProductiveWallHangingSignBlock) treeObject.getWallHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
-            }
+            event.registerBlockEntityRenderer(((ProductiveStandingSignBlock) treeObject.getSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
+            event.registerBlockEntityRenderer(((ProductiveWallSignBlock) treeObject.getWallSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
+            event.registerBlockEntityRenderer(((ProductiveCeilingHangingSignBlock) treeObject.getHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
+            event.registerBlockEntityRenderer(((ProductiveWallHangingSignBlock) treeObject.getWallHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
         });
     }
 

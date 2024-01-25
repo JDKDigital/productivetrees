@@ -1,22 +1,28 @@
 {
   "variants": {
     "age=0": {
-      "model": "productivetrees:block/fruit/breadfruit/0"
+      "model": "productivetrees:block/fruit/breadfruit/stage_0"
     },
     "age=1": {
-      "model": "productivetrees:block/fruit/breadfruit/1"
+      "model": "productivetrees:block/fruit/breadfruit/stage_1"
     },
     "age=2": {
-      "model": "productivetrees:block/fruit/breadfruit/2"
+      "model": "productivetrees:block/fruit/breadfruit/stage_2"
     },
     "age=3": {
-      "model": "productivetrees:block/fruit/breadfruit/3"
+      "model": "productivetrees:block/fruit/breadfruit/stage_3"
     },
     "age=4": {
-      "model": "productivetrees:block/fruit/breadfruit/4"
+      "model": "productivetrees:block/fruit/breadfruit/stage_4"
     },
     "age=5": {
-      "model": "productivetrees:block/fruit/breadfruit/5"
+      "model": "productivetrees:block/fruit/breadfruit/stage_5"
+    },
+    "age=6": {
+      "model": "productivetrees:block/fruit/breadfruit/stage_6"
+    },
+    "age=7": {
+      "model": "productivetrees:block/fruit/breadfruit/stage_7"
     }
   }
 }

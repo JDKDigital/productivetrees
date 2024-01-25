@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/cultivated_pear",
+    "plant": "productivetrees:block/fruit/cultivated_pear/stage_1"
+  }
+}

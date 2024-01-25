@@ -1,6 +1,6 @@
 package cy.jdkdigital.productivetrees.event;
 
-import cy.jdkdigital.productivebees.event.BeeReleaseEvent; // TODO move to lib
+import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;

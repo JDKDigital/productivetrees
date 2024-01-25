@@ -19,15 +19,15 @@
     },
     {
       "name": "fruit",
-      "from": [6, 8, 6],
-      "to": [10, 14, 10],
+      "from": [6.5, 9, 6.5],
+      "to": [9.5, 14, 9.5],
       "faces": {
-        "north": {"uv": [12, 0, 16, 6], "texture": "#copoazu"},
-        "east": {"uv": [12, 0, 16, 6], "texture": "#copoazu"},
-        "south": {"uv": [12, 0, 16, 6], "texture": "#copoazu"},
-        "west": {"uv": [12, 0, 16, 6], "texture": "#copoazu"},
-        "up": {"uv": [12, 8, 16, 12], "texture": "#copoazu"},
-        "down": {"uv": [7, 8, 11, 12], "texture": "#copoazu"}
+        "north": {"uv": [12, 1, 15, 6], "texture": "#copoazu"},
+        "east": {"uv": [12, 1, 15, 6], "texture": "#copoazu"},
+        "south": {"uv": [12, 1, 15, 6], "texture": "#copoazu"},
+        "west": {"uv": [12, 1, 15, 6], "texture": "#copoazu"},
+        "up": {"uv": [12, 9, 15, 12], "texture": "#copoazu"},
+        "down": {"uv": [7, 9, 10, 12], "texture": "#copoazu"}
       }
     }
   ]

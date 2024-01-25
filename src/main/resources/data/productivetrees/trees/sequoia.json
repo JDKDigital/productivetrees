@@ -1,9 +1,0 @@
-{
-  "feature": "productivetrees:sequoia",
-  "megaFeature": "productivetrees:sequoia_mega",
-  "colors": {
-    "leafColor": "#75a277",
-    "logColor": "#6b3e29",
-    "plankColor": "#c6887b"
-  }
-}

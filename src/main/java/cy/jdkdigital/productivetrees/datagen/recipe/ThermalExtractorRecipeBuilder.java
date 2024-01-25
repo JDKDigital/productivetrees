@@ -1,9 +1,8 @@
 package cy.jdkdigital.productivetrees.datagen.recipe;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import cy.jdkdigital.productivelib.util.RecipeUtil;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
-import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -11,8 +10,6 @@ import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fluids.FluidStack;
@@ -71,7 +68,7 @@ public final class ThermalExtractorRecipeBuilder implements RecipeBuilder
             json.addProperty("trunk", ForgeRegistries.BLOCKS.getKey(log).toString());
             json.addProperty("leaves", ForgeRegistries.BLOCKS.getKey(leaves).toString());
 
-            json.add("result", TreeUtil.fluidToJson(fluid));
+            json.add("result", RecipeUtil.fluidToJson(fluid));
         }
 
         @Override

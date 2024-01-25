@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/olive",
+    "plant": "productivetrees:block/fruit/olive/stage_5"
+  }
+}

@@ -349,6 +349,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:night_fuchsia_stairs",
+      "required": false
+    },
+    {
       "id": "productivetrees:nutmeg_stairs",
       "required": false
     },
@@ -433,6 +437,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_spiral_stairs",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_stairs",
       "required": false
     },
@@ -509,6 +517,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:soul_tree_stairs",
+      "required": false
+    },
+    {
       "id": "productivetrees:soursop_stairs",
       "required": false
     },
@@ -565,6 +577,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:thunder_bolt_stairs",
+      "required": false
+    },
+    {
       "id": "productivetrees:time_traveller_stairs",
       "required": false
     },
@@ -573,11 +589,15 @@
       "required": false
     },
     {
-      "id": "productivetrees:twinkle_field_stairs",
+      "id": "productivetrees:blue_yonder_stairs",
       "required": false
     },
     {
       "id": "productivetrees:walnut_stairs",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_stairs",
       "required": false
     },
     {
@@ -610,10 +630,6 @@
     },
     {
       "id": "productivetrees:yew_stairs",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ysabelle_stairs",
       "required": false
     },
     {

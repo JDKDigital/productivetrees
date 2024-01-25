@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/copper_beech",
+    "plant": "productivetrees:block/fruit/copper_beech/stage_2"
+  }
+}

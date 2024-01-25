@@ -20,7 +20,7 @@ public class ProductiveTreesDataProvider
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
-        PackOutput output = event.getGenerator().getPackOutput();
+        PackOutput output = gen.getPackOutput();
         CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
         ExistingFileHelper helper = event.getExistingFileHelper();
 
@@ -29,6 +29,7 @@ public class ProductiveTreesDataProvider
         gen.addProvider(event.includeClient(), new BlockstateProvider(output));
 
         gen.addProvider(event.includeServer(), new LootDataProvider(output, List.of(new LootTableProvider.SubProviderEntry(LootDataProvider.LootProvider::new, LootContextParamSets.BLOCK))));
+        gen.addProvider(event.includeServer(), new LootModifierProvider(output));
         gen.addProvider(event.includeServer(), new FeatureProvider(output));
         gen.addProvider(event.includeServer(), new RecipeProvider(output));
 

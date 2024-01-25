@@ -345,6 +345,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_night_fuchsia",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_nutmeg",
       "required": false
     },
@@ -429,6 +433,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_purple_spiral",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_rainbow_gum",
       "required": false
     },
@@ -505,6 +513,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_soul_tree",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_soursop",
       "required": false
     },
@@ -561,6 +573,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_thunder_bolt",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_time_traveller",
       "required": false
     },
@@ -569,11 +585,15 @@
       "required": false
     },
     {
-      "id": "productivetrees:expansion_box_twinkle_field",
+      "id": "productivetrees:expansion_box_blue_yonder",
       "required": false
     },
     {
       "id": "productivetrees:expansion_box_walnut",
+      "required": false
+    },
+    {
+      "id": "productivetrees:expansion_box_water_wonder",
       "required": false
     },
     {
@@ -606,10 +626,6 @@
     },
     {
       "id": "productivetrees:expansion_box_yew",
-      "required": false
-    },
-    {
-      "id": "productivetrees:expansion_box_ysabelle",
       "required": false
     },
     {

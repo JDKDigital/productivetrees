@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/fence/translucent_base_fence_post",
+  "textures": {
+    "texture": "productivetrees:block/planks/soul_tree"
+  }
+}

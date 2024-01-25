@@ -1,0 +1,448 @@
+{
+  "modId": "productivetrees",
+  "group": {
+    "name": "Productive Trees Saplings",
+    "enabledByDefault": false,
+    "defaultPayment": {
+      "item": "minecraft:emerald"
+    },
+    "defaultCategory": "farmingforblockheads:seeds"
+  },
+  "customEntries": [
+    {
+      "output": "productivetrees:alder_sapling"
+    },
+    {
+      "output": "productivetrees:allspice_sapling"
+    },
+    {
+      "output": "productivetrees:almond_sapling"
+    },
+    {
+      "output": "productivetrees:apricot_sapling"
+    },
+    {
+      "output": "productivetrees:aquilaria_sapling"
+    },
+    {
+      "output": "productivetrees:asai_palm_sapling"
+    },
+    {
+      "output": "productivetrees:ash_sapling"
+    },
+    {
+      "output": "productivetrees:aspen_sapling"
+    },
+    {
+      "output": "productivetrees:avocado_sapling"
+    },
+    {
+      "output": "productivetrees:balsa_sapling"
+    },
+    {
+      "output": "productivetrees:balsam_fir_sapling"
+    },
+    {
+      "output": "productivetrees:banana_sapling"
+    },
+    {
+      "output": "productivetrees:beech_sapling"
+    },
+    {
+      "output": "productivetrees:beliy_naliv_apple_sapling"
+    },
+    {
+      "output": "productivetrees:blackthorn_sapling"
+    },
+    {
+      "output": "productivetrees:black_cherry_sapling"
+    },
+    {
+      "output": "productivetrees:black_locust_sapling"
+    },
+    {
+      "output": "productivetrees:blue_mahoe_sapling"
+    },
+    {
+      "output": "productivetrees:boxwood_sapling"
+    },
+    {
+      "output": "productivetrees:brazilwood_sapling"
+    },
+    {
+      "output": "productivetrees:brazil_nut_sapling"
+    },
+    {
+      "output": "productivetrees:breadfruit_sapling"
+    },
+    {
+      "output": "productivetrees:buddhas_hand_sapling"
+    },
+    {
+      "output": "productivetrees:bull_pine_sapling"
+    },
+    {
+      "output": "productivetrees:butternut_sapling"
+    },
+    {
+      "output": "productivetrees:cacao_sapling"
+    },
+    {
+      "output": "productivetrees:candlenut_sapling"
+    },
+    {
+      "output": "productivetrees:carob_sapling"
+    },
+    {
+      "output": "productivetrees:cashew_sapling"
+    },
+    {
+      "output": "productivetrees:cedar_sapling"
+    },
+    {
+      "output": "productivetrees:cempedak_sapling"
+    },
+    {
+      "output": "productivetrees:ceylon_ebony_sapling"
+    },
+    {
+      "output": "productivetrees:cherry_plum_sapling"
+    },
+    {
+      "output": "productivetrees:cinnamon_sapling"
+    },
+    {
+      "output": "productivetrees:citron_sapling"
+    },
+    {
+      "output": "productivetrees:clove_sapling"
+    },
+    {
+      "output": "productivetrees:cocobolo_sapling"
+    },
+    {
+      "output": "productivetrees:coconut_sapling"
+    },
+    {
+      "output": "productivetrees:coffea_sapling"
+    },
+    {
+      "output": "productivetrees:copoazu_sapling"
+    },
+    {
+      "output": "productivetrees:copper_beech_sapling"
+    },
+    {
+      "output": "productivetrees:cork_oak_sapling"
+    },
+    {
+      "output": "productivetrees:cultivated_pear_sapling"
+    },
+    {
+      "output": "productivetrees:date_palm_sapling"
+    },
+    {
+      "output": "productivetrees:dogwood_sapling"
+    },
+    {
+      "output": "productivetrees:douglas_fir_sapling"
+    },
+    {
+      "output": "productivetrees:elderberry_sapling"
+    },
+    {
+      "output": "productivetrees:elm_sapling"
+    },
+    {
+      "output": "productivetrees:european_larch_sapling"
+    },
+    {
+      "output": "productivetrees:finger_lime_sapling"
+    },
+    {
+      "output": "productivetrees:flowering_crabapple_sapling"
+    },
+    {
+      "output": "productivetrees:ginkgo_sapling"
+    },
+    {
+      "output": "productivetrees:golden_delicious_apple_sapling"
+    },
+    {
+      "output": "productivetrees:grandidiers_baobab_sapling"
+    },
+    {
+      "output": "productivetrees:granny_smith_apple_sapling"
+    },
+    {
+      "output": "productivetrees:grapefruit_sapling"
+    },
+    {
+      "output": "productivetrees:great_sallow_sapling"
+    },
+    {
+      "output": "productivetrees:greenheart_sapling"
+    },
+    {
+      "output": "productivetrees:hawthorn_sapling"
+    },
+    {
+      "output": "productivetrees:hazel_sapling"
+    },
+    {
+      "output": "productivetrees:holly_sapling"
+    },
+    {
+      "output": "productivetrees:hornbeam_sapling"
+    },
+    {
+      "output": "productivetrees:ipe_sapling"
+    },
+    {
+      "output": "productivetrees:iroko_sapling"
+    },
+    {
+      "output": "productivetrees:jackfruit_sapling"
+    },
+    {
+      "output": "productivetrees:juniper_sapling"
+    },
+    {
+      "output": "productivetrees:kapok_sapling"
+    },
+    {
+      "output": "productivetrees:key_lime_sapling"
+    },
+    {
+      "output": "productivetrees:kumquat_sapling"
+    },
+    {
+      "output": "productivetrees:lawson_cypress_sapling"
+    },
+    {
+      "output": "productivetrees:lemon_sapling"
+    },
+    {
+      "output": "productivetrees:lime_sapling"
+    },
+    {
+      "output": "productivetrees:loblolly_pine_sapling"
+    },
+    {
+      "output": "productivetrees:logwood_sapling"
+    },
+    {
+      "output": "productivetrees:mahogany_sapling"
+    },
+    {
+      "output": "productivetrees:mandarin_sapling"
+    },
+    {
+      "output": "productivetrees:mango_sapling"
+    },
+    {
+      "output": "productivetrees:monkey_puzzle_sapling"
+    },
+    {
+      "output": "productivetrees:moonlight_magic_crepe_myrtle_sapling"
+    },
+    {
+      "output": "productivetrees:myrtle_ebony_sapling"
+    },
+    {
+      "output": "productivetrees:nectarine_sapling"
+    },
+    {
+      "output": "productivetrees:nutmeg_sapling"
+    },
+    {
+      "output": "productivetrees:old_fustic_sapling"
+    },
+    {
+      "output": "productivetrees:olive_sapling"
+    },
+    {
+      "output": "productivetrees:orange_sapling"
+    },
+    {
+      "output": "productivetrees:osange_orange_sapling"
+    },
+    {
+      "output": "productivetrees:padauk_sapling"
+    },
+    {
+      "output": "productivetrees:pandanus_sapling"
+    },
+    {
+      "output": "productivetrees:papaya_sapling"
+    },
+    {
+      "output": "productivetrees:peach_sapling"
+    },
+    {
+      "output": "productivetrees:pecan_sapling"
+    },
+    {
+      "output": "productivetrees:persimmon_sapling"
+    },
+    {
+      "output": "productivetrees:pink_ivory_sapling"
+    },
+    {
+      "output": "productivetrees:pistachio_sapling"
+    },
+    {
+      "output": "productivetrees:plantain_sapling"
+    },
+    {
+      "output": "productivetrees:plum_sapling"
+    },
+    {
+      "output": "productivetrees:pomegranate_sapling"
+    },
+    {
+      "output": "productivetrees:pomelo_sapling"
+    },
+    {
+      "output": "productivetrees:prairie_crabapple_sapling"
+    },
+    {
+      "output": "productivetrees:purpleheart_sapling"
+    },
+    {
+      "output": "productivetrees:purple_blackthorn_sapling"
+    },
+    {
+      "output": "productivetrees:purple_crepe_myrtle_sapling"
+    },
+    {
+      "output": "productivetrees:rainbow_gum_sapling"
+    },
+    {
+      "output": "productivetrees:red_banana_sapling"
+    },
+    {
+      "output": "productivetrees:red_crepe_myrtle_sapling"
+    },
+    {
+      "output": "productivetrees:red_delicious_apple_sapling"
+    },
+    {
+      "output": "productivetrees:red_maple_sapling"
+    },
+    {
+      "output": "productivetrees:rosewood_sapling"
+    },
+    {
+      "output": "productivetrees:rose_gum_sapling"
+    },
+    {
+      "output": "productivetrees:rowan_sapling"
+    },
+    {
+      "output": "productivetrees:rubber_tree_sapling"
+    },
+    {
+      "output": "productivetrees:salak_sapling"
+    },
+    {
+      "output": "productivetrees:sandalwood_sapling"
+    },
+    {
+      "output": "productivetrees:sand_pear_sapling"
+    },
+    {
+      "output": "productivetrees:satsuma_sapling"
+    },
+    {
+      "output": "productivetrees:sequoia_sapling"
+    },
+    {
+      "output": "productivetrees:silver_fir_sapling"
+    },
+    {
+      "output": "productivetrees:silver_lime_sapling"
+    },
+    {
+      "output": "productivetrees:socotra_dragon_sapling"
+    },
+    {
+      "output": "productivetrees:soul_tree_sapling"
+    },
+    {
+      "output": "productivetrees:soursop_sapling"
+    },
+    {
+      "output": "productivetrees:sour_cherry_sapling"
+    },
+    {
+      "output": "productivetrees:star_anise_sapling"
+    },
+    {
+      "output": "productivetrees:star_fruit_sapling"
+    },
+    {
+      "output": "productivetrees:sugar_apple_sapling"
+    },
+    {
+      "output": "productivetrees:sugar_maple_sapling"
+    },
+    {
+      "output": "productivetrees:swamp_gum_sapling"
+    },
+    {
+      "output": "productivetrees:sweetgum_sapling"
+    },
+    {
+      "output": "productivetrees:sweet_chestnut_sapling"
+    },
+    {
+      "output": "productivetrees:sweet_crabapple_sapling"
+    },
+    {
+      "output": "productivetrees:sycamore_fig_sapling"
+    },
+    {
+      "output": "productivetrees:tangerine_sapling"
+    },
+    {
+      "output": "productivetrees:teak_sapling"
+    },
+    {
+      "output": "productivetrees:tuscarora_crepe_myrtle_sapling"
+    },
+    {
+      "output": "productivetrees:walnut_sapling"
+    },
+    {
+      "output": "productivetrees:water_wonder_sapling"
+    },
+    {
+      "output": "productivetrees:wenge_sapling"
+    },
+    {
+      "output": "productivetrees:western_hemlock_sapling"
+    },
+    {
+      "output": "productivetrees:whitebeam_sapling"
+    },
+    {
+      "output": "productivetrees:white_poplar_sapling"
+    },
+    {
+      "output": "productivetrees:white_willow_sapling"
+    },
+    {
+      "output": "productivetrees:wild_cherry_sapling"
+    },
+    {
+      "output": "productivetrees:yellow_meranti_sapling"
+    },
+    {
+      "output": "productivetrees:yew_sapling"
+    },
+    {
+      "output": "productivetrees:zebrano_sapling"
+    }
+  ]
+}

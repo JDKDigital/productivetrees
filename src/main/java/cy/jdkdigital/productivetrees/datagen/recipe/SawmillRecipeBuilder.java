@@ -27,7 +27,7 @@ public record SawmillRecipeBuilder(Ingredient log, ItemStack plank, ItemStack se
     public static SawmillRecipeBuilder tree(WoodObject tree) {
         ItemStack tertiary =
                 tree.getId().getPath().equals("old_fustic") ? new ItemStack(TreeRegistrator.FUSTIC.get()) :
-                tree.getId().getPath().equals("logwood") ? new ItemStack(TreeRegistrator.HAEMATOXYLIN.get()) :
+                (tree.getId().getPath().equals("logwood") || tree.getId().getPath().equals("brazilwood")) ? new ItemStack(TreeRegistrator.HAEMATOXYLIN.get()) :
                 ItemStack.EMPTY;
         return direct(Ingredient.of(tree.getLogBlock().get(), tree.getStrippedLogBlock().get(), tree.getWoodBlock().get(), tree.getStrippedWoodBlock().get()), new ItemStack(tree.getPlankBlock().get(), 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), tertiary);
     }
@@ -44,7 +44,7 @@ public record SawmillRecipeBuilder(Ingredient log, ItemStack plank, ItemStack se
 
     @Override
     public Item getResult() {
-        return null;
+        return plank.getItem();
     }
 
     @Override

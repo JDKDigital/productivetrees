@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/asai_palm",
+    "plant": "productivetrees:block/fruit/asai_palm/stage_2"
+  }
+}

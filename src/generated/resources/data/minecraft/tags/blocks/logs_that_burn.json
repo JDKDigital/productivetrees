@@ -1361,6 +1361,22 @@
       "required": false
     },
     {
+      "id": "productivetrees:night_fuchsia_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:night_fuchsia_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:night_fuchsia_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:night_fuchsia_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:nutmeg_log",
       "required": false
     },
@@ -1697,6 +1713,22 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_spiral_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_spiral_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_spiral_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_spiral_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_log",
       "required": false
     },
@@ -2001,6 +2033,22 @@
       "required": false
     },
     {
+      "id": "productivetrees:soul_tree_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soul_tree_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soul_tree_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soul_tree_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:soursop_log",
       "required": false
     },
@@ -2225,6 +2273,22 @@
       "required": false
     },
     {
+      "id": "productivetrees:thunder_bolt_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:thunder_bolt_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:thunder_bolt_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:thunder_bolt_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:time_traveller_log",
       "required": false
     },
@@ -2257,19 +2321,19 @@
       "required": false
     },
     {
-      "id": "productivetrees:twinkle_field_log",
+      "id": "productivetrees:blue_yonder_log",
       "required": false
     },
     {
-      "id": "productivetrees:twinkle_field_wood",
+      "id": "productivetrees:blue_yonder_wood",
       "required": false
     },
     {
-      "id": "productivetrees:twinkle_field_stripped_log",
+      "id": "productivetrees:blue_yonder_stripped_log",
       "required": false
     },
     {
-      "id": "productivetrees:twinkle_field_stripped_wood",
+      "id": "productivetrees:blue_yonder_stripped_wood",
       "required": false
     },
     {
@@ -2286,6 +2350,22 @@
     },
     {
       "id": "productivetrees:walnut_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_stripped_wood",
       "required": false
     },
     {
@@ -2414,22 +2494,6 @@
     },
     {
       "id": "productivetrees:yew_stripped_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ysabelle_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ysabelle_wood",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ysabelle_stripped_log",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ysabelle_stripped_wood",
       "required": false
     },
     {

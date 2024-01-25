@@ -1,19 +1,19 @@
 {
   "textures": {
-    "fruit": "productivetrees:block/fruit/banana/fruit_stage4",
-    "banana": "productivetrees:block/fruit/banana/banana",
+    "fruit": "productivetrees:block/fruit/red_banana/fruit_stage3",
+    "banana": "productivetrees:block/fruit/red_banana/red_banana",
     "particle": "#banana"
   },
   "elements": [
     {
       "name": "fruit",
-      "from": [5.5, 4, 5.5],
-      "to": [10.5, 14, 10.5],
+      "from": [6, 6, 6],
+      "to": [10, 14, 10],
       "faces": {
-        "north": {"uv": [0, 0, 5, 10], "texture": "#fruit"},
-        "east": {"uv": [0, 0, 5, 10], "texture": "#fruit"},
-        "south": {"uv": [0, 0, 5, 10], "texture": "#fruit"},
-        "west": {"uv": [0, 0, 5, 10], "texture": "#fruit"},
+        "north": {"uv": [0, 0, 4, 8], "texture": "#fruit"},
+        "east": {"uv": [0, 0, 4, 8], "texture": "#fruit"},
+        "south": {"uv": [0, 0, 4, 8], "texture": "#fruit"},
+        "west": {"uv": [0, 0, 4, 8], "texture": "#fruit"},
         "up": {"uv": [12, 6, 6, 0], "texture": "#fruit"},
         "down": {"uv": [12, 6, 6, 12], "texture": "#fruit"}
       }

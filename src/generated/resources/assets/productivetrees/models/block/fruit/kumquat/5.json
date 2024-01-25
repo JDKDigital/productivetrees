@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/fruit/berry/fruit_5",
-  "textures": {
-    "all": "productivetrees:block/leaves/kumquat"
-  }
-}

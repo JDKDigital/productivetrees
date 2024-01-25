@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/juniper",
+    "plant": "productivetrees:block/fruit/juniper/stage_0"
+  }
+}

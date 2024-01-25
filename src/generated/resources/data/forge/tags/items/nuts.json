@@ -8,12 +8,10 @@
     "#forge:nuts/candlenut",
     "#forge:nuts/cashew",
     "#forge:nuts/chestnut",
-    "#forge:nuts/coffee_bean",
     "#forge:nuts/ginkgo_nut",
     "#forge:nuts/hazelnut",
     "#forge:nuts/pecan",
     "#forge:nuts/pistachio",
-    "#forge:nuts/walnut",
-    "#forge:nuts/carob"
+    "#forge:nuts/walnut"
   ]
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/purple_blackthorn",
+    "plant": "productivetrees:block/fruit/purple_blackthorn/stage_5"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "productivelib:item_modifier",
+  "addition": "productivetrees:black_ember_sapling",
+  "chance": 0.1,
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/bastion_treasure"
+    }
+  ]
+}

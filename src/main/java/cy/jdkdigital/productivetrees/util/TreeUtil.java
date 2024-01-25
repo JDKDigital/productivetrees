@@ -1,9 +1,7 @@
 package cy.jdkdigital.productivetrees.util;
 
-import com.google.gson.JsonObject;
 import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivelib.util.ColorUtil;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
@@ -18,7 +16,6 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -37,7 +34,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -62,7 +58,6 @@ public class TreeUtil
         });
     });
 
-    public static final Path LOCK_FILE = createCustomPath("");
     public static final Path TREE_PATH = createCustomPath("trees");
     public static final Path INTERNAL_TREE_PATH = createModPath("/data/" + ProductiveTrees.MODID + "/trees");
 
@@ -204,53 +199,32 @@ public class TreeUtil
         return null;
     }
 
+    public static ItemStack getPollen(Block block) {
+        var pollenStack = new ItemStack(TreeRegistrator.POLLEN.get());
+        pollenStack.getOrCreateTag().putString("Block", ForgeRegistries.BLOCKS.getKey(block).toString());
+        return pollenStack;
+    }
+
     public static boolean isSpecialTree(ResourceLocation id) {
-        return  id.getPath().equals("ysabelle") ||
-                id.getPath().equals("cave_dweller") ||
-                id.getPath().equals("black_ember") ||
-                id.getPath().equals("brown_amber") ||
-                id.getPath().equals("firecracker") ||
-                id.getPath().equals("flickering_sun") ||
-                id.getPath().equals("time_traveller") ||
-                id.getPath().equals("rippling_willow") ||
-                id.getPath().equals("twinkle_field") ||
-                id.getPath().equals("sparkle_cherry") ||
-                id.getPath().equals("slimy_delight") ||
-                id.getPath().equals("foggy_blast");
+        return  id.getPath().equals("purple_spiral") || // purple
+                id.getPath().equals("cave_dweller") || // gray
+                id.getPath().equals("black_ember") || // black
+                id.getPath().equals("brown_amber") || // brown
+                id.getPath().equals("firecracker") || // red
+                id.getPath().equals("flickering_sun") || // yellow
+                id.getPath().equals("foggy_blast") || // light gray
+                id.getPath().equals("night_fuchsia") || // magenta
+                id.getPath().equals("time_traveller") || // cyan
+                id.getPath().equals("rippling_willow") || // green
+                id.getPath().equals("soul_tree") || // white
+                id.getPath().equals("sparkle_cherry") || // pink
+                id.getPath().equals("slimy_delight") || // lime
+                id.getPath().equals("thunder_bolt") || // orange
+                id.getPath().equals("blue_yonder") || // blue
+                id.getPath().equals("water_wonder"); // light blue
     }
 
     public static boolean isTranslucentTree(String name) {
-        return name.equals("brown_amber") || name.equals("slimy_delight") || name.equals("foggy_blast");
-    }
-
-    // TODO move to lib
-    public static JsonObject itemToJson(ItemStack item) {
-        var json = new JsonObject();
-        json.addProperty("item", ForgeRegistries.ITEMS.getKey(item.getItem()).toString());
-        if (item.getCount() > 1) {
-            json.addProperty("count", item.getCount());
-        }
-        if (item.getTag() != null) {
-            json.addProperty("type", "forge:nbt");
-            json.addProperty("nbt", NbtOps.INSTANCE.convertTo(JsonOps.INSTANCE, item.getTag()).toString());
-        }
-        return json;
-    }
-    public static JsonObject itemChanceToJson(ItemStack item, float chance) {
-        var json = itemToJson(item);
-        json.addProperty("chance", chance);
-        return json;
-    }
-    public static JsonObject fluidToJson(FluidStack fluid) {
-        var json = new JsonObject();
-        json.addProperty("fluid", ForgeRegistries.FLUIDS.getKey(fluid.getFluid()).toString());
-        if (fluid.getAmount() > 1) {
-            json.addProperty("amount", fluid.getAmount());
-        }
-        if (fluid.getTag() != null) {
-            json.addProperty("type", "forge:nbt");
-            json.addProperty("nbt", NbtOps.INSTANCE.convertTo(JsonOps.INSTANCE, fluid.getTag()).toString());
-        }
-        return json;
+        return name.equals("brown_amber") || name.equals("slimy_delight") || name.equals("foggy_blast") || name.equals("soul_tree") || name.equals("water_wonder");
     }
 }

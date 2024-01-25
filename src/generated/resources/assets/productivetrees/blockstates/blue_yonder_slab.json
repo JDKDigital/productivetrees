@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/blue_yonder_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/blue_yonder"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/blue_yonder_slab_top"
+    }
+  }
+}

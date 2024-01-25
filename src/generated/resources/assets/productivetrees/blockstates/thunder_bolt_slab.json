@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/thunder_bolt_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/thunder_bolt"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/thunder_bolt_slab_top"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:purple_spiral_log"
+    },
+    {
+      "item": "productivetrees:purple_spiral_wood"
+    },
+    {
+      "item": "productivetrees:purple_spiral_stripped_log"
+    },
+    {
+      "item": "productivetrees:purple_spiral_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:purple_spiral_pressure_plate"
+}

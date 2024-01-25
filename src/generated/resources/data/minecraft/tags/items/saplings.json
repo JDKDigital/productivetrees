@@ -349,6 +349,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:night_fuchsia_sapling",
+      "required": false
+    },
+    {
       "id": "productivetrees:nutmeg_sapling",
       "required": false
     },
@@ -433,6 +437,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_spiral_sapling",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_sapling",
       "required": false
     },
@@ -509,6 +517,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:soul_tree_sapling",
+      "required": false
+    },
+    {
       "id": "productivetrees:soursop_sapling",
       "required": false
     },
@@ -565,6 +577,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:thunder_bolt_sapling",
+      "required": false
+    },
+    {
       "id": "productivetrees:time_traveller_sapling",
       "required": false
     },
@@ -573,11 +589,15 @@
       "required": false
     },
     {
-      "id": "productivetrees:twinkle_field_sapling",
+      "id": "productivetrees:blue_yonder_sapling",
       "required": false
     },
     {
       "id": "productivetrees:walnut_sapling",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_sapling",
       "required": false
     },
     {
@@ -610,10 +630,6 @@
     },
     {
       "id": "productivetrees:yew_sapling",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ysabelle_sapling",
       "required": false
     },
     {

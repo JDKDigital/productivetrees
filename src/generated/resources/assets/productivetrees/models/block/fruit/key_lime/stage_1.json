@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/key_lime",
+    "plant": "productivetrees:block/fruit/key_lime/stage_1"
+  }
+}

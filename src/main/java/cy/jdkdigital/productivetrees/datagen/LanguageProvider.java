@@ -5,7 +5,6 @@ import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.registry.WoodObject;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.BlockItem;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
@@ -27,13 +26,14 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add("jei.productivetrees.sawmill", "Sawmill");
         add("productivetrees.pollen.name", "%s");
         add("productivetrees.screen.progress", "Progress: %s");
-        add("productivebees.information.upgrade.upgrade_pollen_sieve", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
+        add("productivetrees.information.upgrade.upgrade_pollen_sieve", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
         add("productivetrees.information.pollen", "Use on a leaf to manually pollinate it.");
 
         add(TreeRegistrator.POLLINATED_LEAVES.get(), "Pollinated Leaves");
         add(TreeRegistrator.STRIPPER.get(), "Stripper");
         add(TreeRegistrator.SAWMILL.get(), "Sawmill");
         add(TreeRegistrator.WOOD_WORKER.get(), "Carpentry Bench");
+        add(TreeRegistrator.POLLEN_SIFTER.get(), "Pollen Sifter");
         add(TreeRegistrator.TIME_TRAVELLER_DISPLAY.get(), "Time Traveller Display");
 
         add(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get(), "Upgrade: Pollen Sieve");
@@ -57,6 +57,10 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             }
         });
 
+        TreeRegistrator.CRATED_CROPS.forEach(crate -> {
+            add(ForgeRegistries.BLOCKS.getValue(crate), capName(crate.getPath()));
+        });
+
         TreeFinder.trees.forEach((id, treeObject) -> {
             String name = id.getPath();
             add(treeObject.getLeafBlock().get(), capName(name) + " Leaves");
@@ -65,9 +69,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             if (treeObject.hasFruit()) {
                 add(treeObject.getFruitBlock().get(), capName(name) + " Fruiting Leaves");
             }
-            if (treeObject.registerWood()) {
-                addWoodStuff(treeObject, name);
-            }
+            addWoodStuff(treeObject, name);
             add("block.productivetrees." + name + ".latin", getLatinName(name));
         });
     }
@@ -274,12 +276,16 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("firecracker", "Scintillat calamus");
             put("flickering_sun", "Stella coruscatio");
             put("foggy_blast", "Nebula inflatus");
+            put("night_fuscia", "");
             put("purple_spiral", "Ysabella purpurea");
             put("rippling_willow", "Salix fluctus");
             put("slimy_delight", "Salivarius delicium");
             put("sparkle_cherry", "Prunus splendico");
-            put("twinkle_field", "Stella caelus");
+            put("soul_tree", "Aevum viatora");
+            put("thunder_bolt", "");
+            put("blue_yonder", "Stella caelus");
             put("time_traveller", "Aevum viatora");
+            put("water_wonder", "Aevum viatora");
         }};
 
         return names.get(name);

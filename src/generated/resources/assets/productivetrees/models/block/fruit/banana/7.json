@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/fruit/banana/fruit_7",
+  "textures": {
+    "all": "productivetrees:block/leaves/banana"
+  }
+}

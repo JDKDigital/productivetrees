@@ -2,8 +2,8 @@ package cy.jdkdigital.productivetrees.datagen.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import cy.jdkdigital.productivelib.util.RecipeUtil;
 import cy.jdkdigital.productivetrees.registry.WoodObject;
-import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -17,7 +17,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
 import java.util.function.Consumer;
 
 public final class ThermalSawmilRecipeBuilder implements RecipeBuilder
@@ -70,8 +69,8 @@ public final class ThermalSawmilRecipeBuilder implements RecipeBuilder
             json.add("ingredient", log.toJson());
 
             JsonArray result = new JsonArray();
-            result.add(TreeUtil.itemToJson(plank));
-            result.add(TreeUtil.itemChanceToJson(secondary, 1.25f));
+            result.add(RecipeUtil.itemToJson(plank));
+            result.add(RecipeUtil.itemChanceToJson(secondary, 1.25f));
             json.add("result", result);
 
             json.addProperty("energy", 1000);

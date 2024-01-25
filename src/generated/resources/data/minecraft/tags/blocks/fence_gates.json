@@ -349,6 +349,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:night_fuchsia_fence_gate",
+      "required": false
+    },
+    {
       "id": "productivetrees:nutmeg_fence_gate",
       "required": false
     },
@@ -433,6 +437,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_spiral_fence_gate",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_fence_gate",
       "required": false
     },
@@ -509,6 +517,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:soul_tree_fence_gate",
+      "required": false
+    },
+    {
       "id": "productivetrees:soursop_fence_gate",
       "required": false
     },
@@ -565,6 +577,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:thunder_bolt_fence_gate",
+      "required": false
+    },
+    {
       "id": "productivetrees:time_traveller_fence_gate",
       "required": false
     },
@@ -573,11 +589,15 @@
       "required": false
     },
     {
-      "id": "productivetrees:twinkle_field_fence_gate",
+      "id": "productivetrees:blue_yonder_fence_gate",
       "required": false
     },
     {
       "id": "productivetrees:walnut_fence_gate",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_fence_gate",
       "required": false
     },
     {
@@ -610,10 +630,6 @@
     },
     {
       "id": "productivetrees:yew_fence_gate",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ysabelle_fence_gate",
       "required": false
     },
     {

@@ -2,7 +2,6 @@ package cy.jdkdigital.productivetrees.common.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import cy.jdkdigital.productivetrees.registry.Features;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -22,7 +21,7 @@ public class EntityPlacerDecorator extends TreeDecorator
 
     @Override
     protected TreeDecoratorType<?> type() {
-        return Features.ENTITY_PLACER.get();
+        return TreeRegistrator.ENTITY_PLACER.get();
     }
 
     @Override

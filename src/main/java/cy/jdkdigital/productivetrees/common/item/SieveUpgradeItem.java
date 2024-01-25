@@ -20,6 +20,6 @@ public class SieveUpgradeItem extends AbstractUpgradeItem
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flagIn) {
         super.appendHoverText(stack, world, tooltip, flagIn);
 
-        tooltip.add(Component.translatable("productivebees.information.upgrade.upgrade_pollen_sieve").withStyle(ChatFormatting.GOLD));
+        tooltip.add(Component.translatable("productivetrees.information.upgrade.upgrade_pollen_sieve").withStyle(ChatFormatting.GOLD));
     }
 }

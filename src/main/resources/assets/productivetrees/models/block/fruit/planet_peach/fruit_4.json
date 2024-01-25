@@ -1,24 +1,10 @@
 {
   "textures": {
-    "fruit": "productivetrees:block/fruit/planet_peach/mature",
     "texture": "productivetrees:block/fruit/planet_peach/texture",
     "base": "productivetrees:block/fruit/planet_peach/base",
-    "particle": "#fruit"
+    "particle": "#base"
   },
   "elements": [
-    {
-      "name": "Bottom Stalk",
-      "from": [1.5, 11, 1.5],
-      "to": [14.5, 13, 14.5],
-      "faces": {
-        "north": {"uv": [3, 7, 16, 9], "texture": "#base"},
-        "east": {"uv": [3, 13, 16, 15], "texture": "#base"},
-        "south": {"uv": [3, 4, 16, 6], "texture": "#base"},
-        "west": {"uv": [3, 10, 16, 12], "texture": "#base"},
-        "up": {"uv": [13, 13, 0, 0], "texture": "#base"},
-        "down": {"uv": [13, 3, 0, 16], "texture": "#base"}
-      }
-    },
     {
       "name": "Top Stalk",
       "from": [0.5, 13, 0.5],
@@ -33,16 +19,16 @@
       }
     },
     {
-      "name": "Fruit",
-      "from": [6.5, 4, 6.5],
-      "to": [9.5, 7, 9.5],
+      "name": "Bottom Stalk",
+      "from": [1.5, 11, 1.5],
+      "to": [14.5, 13, 14.5],
       "faces": {
-        "north": {"uv": [0, 8, 6, 14], "texture": "#texture"},
-        "east": {"uv": [0, 10, 6, 16], "texture": "#texture"},
-        "south": {"uv": [1, 8, 7, 14], "texture": "#texture"},
-        "west": {"uv": [0, 9, 6, 15], "texture": "#texture"},
-        "up": {"uv": [9, 14, 3, 8], "texture": "#texture"},
-        "down": {"uv": [8, 8, 2, 14], "texture": "#texture"}
+        "north": {"uv": [3, 7, 16, 9], "texture": "#base"},
+        "east": {"uv": [3, 13, 16, 15], "texture": "#base"},
+        "south": {"uv": [3, 4, 16, 6], "texture": "#base"},
+        "west": {"uv": [3, 10, 16, 12], "texture": "#base"},
+        "up": {"uv": [13, 13, 0, 0], "texture": "#base"},
+        "down": {"uv": [13, 3, 0, 16], "texture": "#base"}
       }
     },
     {
@@ -59,16 +45,29 @@
       }
     },
     {
-      "name": "Fruit Ring",
-      "from": [5.5, 5.25, 5.5],
-      "to": [10.5, 5.75, 10.5],
+      "name": "Fruit Small",
+      "from": [7.5, 4, 7.5],
+      "to": [8.5, 7, 8.5],
       "faces": {
-        "north": {"uv": [1, 5, 2, 6], "texture": "#texture"},
-        "east": {"uv": [1, 5, 2, 6], "texture": "#texture"},
-        "south": {"uv": [1, 5, 2, 6], "texture": "#texture"},
-        "west": {"uv": [1, 5, 2, 6], "texture": "#texture"},
-        "up": {"uv": [2, 6, 1, 5], "texture": "#texture"},
-        "down": {"uv": [2, 5, 1, 6], "texture": "#texture"}
+        "north": {"uv": [7, 0, 9, 6], "texture": "#texture"},
+        "east": {"uv": [11, 0, 13, 6], "texture": "#texture"},
+        "south": {"uv": [9, 0, 11, 6], "texture": "#texture"},
+        "west": {"uv": [13, 0, 15, 6], "texture": "#texture"},
+        "up": {"uv": [14, 4, 16, 6], "texture": "#texture"},
+        "down": {"uv": [14, 0, 16, 2], "texture": "#texture"}
+      }
+    },
+    {
+      "name": "Fruit Ring",
+      "from": [6.5, 5.37, 6.5],
+      "to": [9.5, 5.62, 9.5],
+      "faces": {
+        "north": {"uv": [2, 5, 3, 6], "texture": "#texture"},
+        "east": {"uv": [2, 5, 3, 6], "texture": "#texture"},
+        "south": {"uv": [2, 5, 3, 6], "texture": "#texture"},
+        "west": {"uv": [2, 5, 3, 6], "texture": "#texture"},
+        "up": {"uv": [3, 6, 2, 5], "texture": "#texture"},
+        "down": {"uv": [3, 5, 2, 6], "texture": "#texture"}
       }
     }
   ]

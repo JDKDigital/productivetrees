@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "productivetrees:block/crates/cherry_plum_crate"
+    }
+  }
+}

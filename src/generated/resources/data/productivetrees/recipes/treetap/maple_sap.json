@@ -1,0 +1,21 @@
+{
+  "type": "treetap:tap_extract",
+  "collect_bucket": true,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "treetap"
+    }
+  ],
+  "display_fluid": {
+    "amount": 1000,
+    "fluid": "productivetrees:maple_sap"
+  },
+  "log": {
+    "item": "productivetrees:sugar_maple_log"
+  },
+  "processing_time": 2400,
+  "result": {
+    "item": "productivetrees:maple_sap_bucket"
+  }
+}

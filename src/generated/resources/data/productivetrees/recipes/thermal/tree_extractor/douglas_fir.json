@@ -9,7 +9,7 @@
   "leaves": "productivetrees:douglas_fir_leaves",
   "result": {
     "amount": 50,
-    "fluid": "thermal:sap"
+    "fluid": "thermal:resin"
   },
   "trunk": "productivetrees:douglas_fir_log"
 }

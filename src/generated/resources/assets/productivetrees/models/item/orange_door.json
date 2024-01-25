@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "productivetrees:item/door/oak"
+    "layer0": "productivetrees:item/door/orange"
   }
 }

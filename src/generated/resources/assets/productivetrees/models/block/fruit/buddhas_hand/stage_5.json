@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/buddhas_hand",
+    "plant": "productivetrees:block/fruit/buddhas_hand/stage_5"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "textures": {
+    "fruit": "productivetrees:block/fruit/red_banana/fruit_stage5",
+    "banana": "productivetrees:block/fruit/red_banana/red_banana",
+    "particle": "#banana"
+  },
+  "elements": [
+    {
+      "name": "fruit",
+      "from": [5, 2, 5],
+      "to": [11, 14, 11],
+      "faces": {
+        "north": {"uv": [0, 0, 6, 12], "texture": "#fruit"},
+        "east": {"uv": [0, 0, 6, 12], "texture": "#fruit"},
+        "south": {"uv": [0, 0, 6, 12], "texture": "#fruit"},
+        "west": {"uv": [0, 0, 6, 12], "texture": "#fruit"},
+        "up": {"uv": [12, 6, 6, 0], "texture": "#fruit"},
+        "down": {"uv": [12, 6, 6, 12], "texture": "#fruit"}
+      }
+    },
+    {
+      "name": "stalk",
+      "from": [7.5, 14, 7.5],
+      "to": [8.5, 16, 8.5],
+      "faces": {
+        "north": {"uv": [0, 12, 1, 14], "texture": "#banana"},
+        "east": {"uv": [1, 12, 2, 14], "texture": "#banana"},
+        "south": {"uv": [0, 14, 1, 16], "texture": "#banana"},
+        "west": {"uv": [2, 12, 3, 14], "texture": "#banana"},
+        "up": {"uv": [2, 15, 1, 14], "texture": "#banana"},
+        "down": {"uv": [3, 14, 2, 15], "texture": "#banana"}
+      }
+    }
+  ]
+}

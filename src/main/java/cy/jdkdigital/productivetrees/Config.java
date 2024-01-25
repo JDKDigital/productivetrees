@@ -23,7 +23,7 @@ public class Config
 
             pollenChanceFromSieve = builder
                     .comment("Chance to get a pollen when using sieve upgrades in hives")
-                    .defineInRange("pollenChanceFromSieve", 2, 1, Integer.MAX_VALUE);
+                    .defineInRange("pollenChanceFromSieve", 2, 1, 100);
 
             builder.pop();
         }

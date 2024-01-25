@@ -15,8 +15,6 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
@@ -31,8 +29,6 @@ public class TreeObject extends WoodObject
     private final ResourceKey<ConfiguredFeature<?, ?>> feature;
     private final ResourceKey<ConfiguredFeature<?, ?>> megaFeature;
     private final String style;
-    private final boolean registerWood;
-    private final ResourceLocation log;
     private final Fruit fruit;
     private final MutationInfo mutationInfo;
     private final TagKey<Block> soil;
@@ -46,13 +42,11 @@ public class TreeObject extends WoodObject
     private Supplier<Block> leafBlock;
     private Supplier<Block> fruitBlock;
 
-    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, Supplier<ItemStack> stripDrop, boolean registerWood, ResourceLocation log, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
+    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, Supplier<ItemStack> stripDrop, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
         super(id, fireProof, colors, stripDrop);
         this.feature = feature;
         this.megaFeature = megaFeature;
         this.style = style;
-        this.registerWood = registerWood;
-        this.log = log;
         this.fruit = fruit;
         this.mutationInfo = mutationInfo;
         this.soil = soil;
@@ -66,11 +60,9 @@ public class TreeObject extends WoodObject
         return RecordCodecBuilder.create(instance -> instance.group(
                 ResourceLocation.CODEC.fieldOf("id").orElse(id).forGetter(TreeObject::getId),
                 ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").orElse(null).forGetter(TreeObject::getFeature),
-                ResourceLocation.CODEC.fieldOf("megaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : Features.NULL, (value) -> value != null ? value.location() : null).forGetter(TreeObject::getMegaFeature),
+                ResourceLocation.CODEC.fieldOf("megaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : TreeRegistrator.NULL_FEATURE, (value) -> value != null ? value.location() : null).forGetter(TreeObject::getMegaFeature),
                 Codec.STRING.fieldOf("style").orElse(id.getPath()).forGetter(TreeObject::getStyleName),
                 TreeUtil.ITEM_STACK_CODEC.fieldOf("stripDrop").orElse(() -> ItemStack.EMPTY).forGetter(TreeObject::getStripDrop),
-                Codec.BOOL.fieldOf("registerWood").orElse(true).forGetter(TreeObject::registerWood),
-                ResourceLocation.CODEC.fieldOf("log").orElse(new ResourceLocation("oak_log")).forGetter(TreeObject::getLog),
                 TreeColors.CODEC.fieldOf("colors").orElse(TreeColors.DEFAULT).forGetter(TreeObject::getColors),
                 Fruit.CODEC.fieldOf("fruit").orElse(Fruit.DEFAULT).forGetter(TreeObject::getFruit),
                 MutationInfo.CODEC.fieldOf("mutation_info").orElse(MutationInfo.DEFAULT).forGetter(TreeObject::getMutationInfo),
@@ -99,14 +91,6 @@ public class TreeObject extends WoodObject
         return style;
     }
 
-    public boolean registerWood() {
-        return registerWood;
-    }
-
-    public ResourceLocation getLog() {
-        return log;
-    }
-
     public Fruit getFruit() {
         return fruit;
     }
@@ -131,16 +115,8 @@ public class TreeObject extends WoodObject
         return tintStyle;
     }
 
-    public boolean tintLeaves() {
-        return tintStyle.equals(TintStyle.FULL) || tintStyle.equals(TintStyle.LEAVES) || tintStyle.equals(TintStyle.LEAVES_HIVES);
-    }
-
     public boolean tintHives() {
         return tintStyle.equals(TintStyle.FULL) || tintStyle.equals(TintStyle.LEAVES_HIVES) || tintStyle.equals(TintStyle.HIVES);
-    }
-
-    public boolean tintWood() {
-        return tintStyle.equals(TintStyle.FULL);
     }
 
     public boolean tintFruit() {
@@ -183,13 +159,6 @@ public class TreeObject extends WoodObject
         this.leafBlock = leafBlock;
     }
 
-    public Supplier<Block> getLogBlock() {
-        if (registerWood) {
-            return super.getLogBlock();
-        }
-        return () -> ForgeRegistries.BLOCKS.getValue(log);
-    }
-
     public Supplier<Block> getFruitBlock() {
         return fruitBlock;
     }
@@ -223,7 +192,7 @@ public class TreeObject extends WoodObject
     {
         private static final Fruit DEFAULT = new Fruit("", ProductiveTrees.EMPTY_RL, 1, 1.0F, "", "", "");
         public static Codec<Fruit> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                Codec.STRING.fieldOf("style").orElse("berry").forGetter(Fruit::style),
+                Codec.STRING.fieldOf("style").orElse("default").forGetter(Fruit::style),
                 ResourceLocation.CODEC.fieldOf("item").forGetter(Fruit::fruitItem),
                 Codec.INT.fieldOf("count").orElse(1).forGetter(Fruit::count),
                 Codec.FLOAT.fieldOf("growthSpeed").orElse(1.0F).forGetter(Fruit::growthSpeed),

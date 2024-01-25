@@ -48,11 +48,11 @@ public class ProductiveFruitBlock extends ProductiveLeavesBlock
     }
 
     public static IntegerProperty getAgeProperty() {
-        return BlockStateProperties.AGE_5;
+        return BlockStateProperties.AGE_7;
     }
 
     public static int getMaxAge() {
-        return 5;
+        return BlockStateProperties.MAX_AGE_7;
     }
 
     protected int getAge(BlockState blockState) {

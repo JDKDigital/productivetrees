@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/translucent_base_log_horizontal",
+  "textures": {
+    "end": "productivetrees:block/log_top/water_wonder",
+    "side": "productivetrees:block/log/water_wonder"
+  }
+}

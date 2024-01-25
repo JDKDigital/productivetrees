@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees;
 
 import com.mojang.logging.LogUtils;
+import cy.jdkdigital.productivetrees.registry.ClientRegistration;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.particles.ParticleType;
@@ -80,18 +81,20 @@ public class ProductiveTrees
         TRUNK_PLACERS.register(modEventBus);
 
         TreeRegistrator.init();
+        ClientRegistration.init();
 
-        // TODO
-        //  remove fruit block entity
+        // TODO alpha
+        //  fruiting textures
+        //  dangler models (red banana, plantain, coconut, breadfruit, cempedak, jackfruit and hala fruit)
+        //  add stages to banana, copoazu and planet peach
+        //  door textures
+        //  replace WoodSet entries with tree configs
+        //  redo blue_yonder, sequoia hanging sign texture, thunder bolt and night fuchsia
+        // TODO beta
         //  tree features
-        //  mega features
-        //  glowstone line of trees
-        //  use aezelea in breeding lines
-        //  pollinated leaves to use correct leaf textures
-        //  pollen sifter that pulls pollen from leaf items as an alternative pollination method to bees
+        //  mega and special features
+        // TODO v2
         //  wood worker for making combination blocks and panels
-        //  Brazilwood (Paubrasilia echinata): Brazilwood trees produce a reddish sap, which historically was used as a source of red dye.
-        //  Sandalwood (Santalum album): Sandalwood trees produce a fragrant sap, which is used in the production of essential oils.
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
     }

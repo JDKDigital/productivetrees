@@ -1,6 +1,6 @@
 {
   "textures": {
-    "banana": "productivetrees:block/fruit/banana/banana",
+    "banana": "productivetrees:block/fruit/red_banana/red_banana",
     "particle": "#banana"
   },
   "elements": [

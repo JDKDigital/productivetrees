@@ -345,6 +345,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_night_fuchsia_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_nutmeg_beehive",
       "required": false
     },
@@ -429,6 +433,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_purple_spiral_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_rainbow_gum_beehive",
       "required": false
     },
@@ -505,6 +513,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_soul_tree_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_soursop_beehive",
       "required": false
     },
@@ -561,6 +573,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_thunder_bolt_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_time_traveller_beehive",
       "required": false
     },
@@ -569,11 +585,15 @@
       "required": false
     },
     {
-      "id": "productivetrees:advanced_twinkle_field_beehive",
+      "id": "productivetrees:advanced_blue_yonder_beehive",
       "required": false
     },
     {
       "id": "productivetrees:advanced_walnut_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_water_wonder_beehive",
       "required": false
     },
     {
@@ -606,10 +626,6 @@
     },
     {
       "id": "productivetrees:advanced_yew_beehive",
-      "required": false
-    },
-    {
-      "id": "productivetrees:advanced_ysabelle_beehive",
       "required": false
     },
     {

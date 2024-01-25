@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/black_cherry",
+    "plant": "productivetrees:block/fruit/black_cherry/stage_6"
+  }
+}

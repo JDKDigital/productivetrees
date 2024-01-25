@@ -2,8 +2,8 @@ package cy.jdkdigital.productivetrees.datagen.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import cy.jdkdigital.productivelib.util.RecipeUtil;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
-import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -73,10 +73,10 @@ public final class ThermalInsulatorRecipeBuilder implements RecipeBuilder
             json.add("ingredient", ingredient.toJson());
 
             JsonArray result = new JsonArray();
-            result.add(TreeUtil.itemChanceToJson(log, 6f));
-            result.add(TreeUtil.itemChanceToJson(sapling, 1.1f));
+            result.add(RecipeUtil.itemChanceToJson(log, 6f));
+            result.add(RecipeUtil.itemChanceToJson(sapling, 1.1f));
             if (!fruit.isEmpty()) {
-                result.add(TreeUtil.itemChanceToJson(fruit, fruitChance));
+                result.add(RecipeUtil.itemChanceToJson(fruit, fruitChance));
             }
             json.add("result", result);
 

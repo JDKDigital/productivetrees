@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/night_fuchsia",
+    "side": "productivetrees:block/stripped/night_fuchsia"
+  }
+}

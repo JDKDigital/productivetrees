@@ -2,7 +2,7 @@ package cy.jdkdigital.productivetrees.common.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import cy.jdkdigital.productivetrees.registry.Features;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
@@ -29,7 +29,7 @@ public class FruitLeafReplacerDecorator extends TreeDecorator
 
     @Override
     protected TreeDecoratorType<?> type() {
-        return Features.FRUIT_LEAF_REPLACER.get();
+        return TreeRegistrator.FRUIT_LEAF_REPLACER.get();
     }
 
     @Override

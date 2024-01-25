@@ -349,6 +349,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:night_fuchsia_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:nutmeg_sign",
       "required": false
     },
@@ -433,6 +437,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:purple_spiral_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:rainbow_gum_sign",
       "required": false
     },
@@ -509,6 +517,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:soul_tree_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:soursop_sign",
       "required": false
     },
@@ -565,6 +577,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:thunder_bolt_sign",
+      "required": false
+    },
+    {
       "id": "productivetrees:time_traveller_sign",
       "required": false
     },
@@ -573,11 +589,15 @@
       "required": false
     },
     {
-      "id": "productivetrees:twinkle_field_sign",
+      "id": "productivetrees:blue_yonder_sign",
       "required": false
     },
     {
       "id": "productivetrees:walnut_sign",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_sign",
       "required": false
     },
     {
@@ -610,10 +630,6 @@
     },
     {
       "id": "productivetrees:yew_sign",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ysabelle_sign",
       "required": false
     },
     {

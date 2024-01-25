@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/top_right_open",
+  "textures": {
+    "bottom": "productivetrees:block/door/night_fuchsia_bottom",
+    "top": "productivetrees:block/door/night_fuchsia_top"
+  }
+}

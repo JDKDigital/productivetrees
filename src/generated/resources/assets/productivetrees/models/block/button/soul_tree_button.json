@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/button/translucent_base_button",
+  "textures": {
+    "texture": "productivetrees:block/planks/soul_tree"
+  }
+}

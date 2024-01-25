@@ -1,0 +1,1681 @@
+{
+  "alder": {
+    "colors": {
+      "leafColor": "#49764b",
+      "logColor": "#605b4f",
+      "plankColor": "#7f3615"
+    }
+  },
+  "allspice": {
+    "colors": {
+      "leafColor": "#62922f",
+      "logColor": "#d2c8c7",
+      "plankColor": "#ac7f56"
+    }
+  },
+  "almond": {
+    "colors": {
+      "leafColor": "#396027",
+      "logColor": "#10100e",
+      "plankColor": "#bcaa96"
+    },
+    "fruit": {
+      "item": "productivetrees:almond",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "apricot": {
+    "colors": {
+      "leafColor": "#77a214",
+      "logColor": "#342222",
+      "plankColor": "#dda66e"
+    },
+    "fruit": {
+      "item": "productivetrees:apricot",
+      "growthSpeed": 0.5,
+      "unripeColor": "#87b203",
+      "ripeColor": "#dd490b"
+    }
+  },
+  "aquilaria": {
+    "colors": {
+      "leafColor": "#7bdc7b",
+      "logColor": "#4b4f45",
+      "plankColor": "#775f51"
+    }
+  },
+  "asai_palm": {
+    "colors": {
+      "leafColor": "#627b33",
+      "logColor": "#a09785",
+      "plankColor": "#2c2018"
+    },
+    "fruit": {
+      "item": "productivetrees:asai_berry",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "ash": {
+    "colors": {
+      "leafColor": "#6e8422",
+      "logColor": "#676d69",
+      "plankColor": "#d4b18b"
+    }
+  },
+  "aspen": {
+    "colors": {
+      "leafColor": "#82b884",
+      "logColor": "#bba8a1",
+      "plankColor": "#cdc3aa"
+    }
+  },
+  "avocado": {
+    "colors": {
+      "leafColor": "#70a25d",
+      "logColor": "#5d3f34",
+      "plankColor": "#c39f7f"
+    },
+    "fruit": {
+      "item": "productivetrees:avocado",
+      "growthSpeed": 0.4,
+      "unripeColor": "#5e8e28",
+      "ripeColor": "#113600"
+    }
+  },
+  "balsa": {
+    "colors": {
+      "leafColor": "#35793c",
+      "logColor": "#e1c8cb",
+      "plankColor": "#eae1dc"
+    }
+  },
+  "balsam_fir": {
+    "colors": {
+      "leafColor": "#346643",
+      "logColor": "#6a6c67",
+      "plankColor": "#e4c898"
+    }
+  },
+  "banana": {
+    "colors": {
+      "leafColor": "#5a9c32",
+      "logColor": "#5f4812",
+      "plankColor": "#cbbf75"
+    },
+    "fruit": {
+      "item": "productivetrees:banana",
+      "style": "banana",
+      "count": 3,
+      "growthSpeed": 0.2,
+      "flowerColor": "#aa6ca6",
+      "unripeColor": "#5a9c32",
+      "ripeColor": "#e1f500"
+    }
+  },
+  "beech": {
+    "megaFeature": "productivetrees:beech_mega",
+    "colors": {
+      "leafColor": "#1c4316",
+      "logColor": "#776f62",
+      "plankColor": "#d0ad91"
+    },
+    "fruit": {
+      "item": "productivetrees:beechnut",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#9aaa01",
+      "ripeColor": "#6f2304"
+    }
+  },
+  "beliy_naliv_apple": {
+    "colors": {
+      "leafColor": "#10361d",
+      "logColor": "#2a2a22",
+      "plankColor": "#ad6853"
+    },
+    "fruit": {
+      "item": "productivetrees:beliy_naliv_apple",
+      "growthSpeed": 0.3,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "blackthorn": {
+    "colors": {
+      "leafColor": "#327629",
+      "logColor": "#3f3a31",
+      "plankColor": "#d1ae6f"
+    },
+    "mutation_info": {
+      "target": "productivetrees:purple_blackthorn",
+      "chance": 0.05
+    },
+    "fruit": {
+      "item": "productivetrees:sloe",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#86955c",
+      "ripeColor": "#171925"
+    }
+  },
+  "black_cherry": {
+    "colors": {
+      "leafColor": "#364e14",
+      "logColor": "#6b5e43",
+      "plankColor": "#ab6940"
+    },
+    "fruit": {
+      "item": "productivetrees:black_cherry",
+      "count": 5,
+      "growthSpeed": 0.3,
+      "unripeColor": "#477709",
+      "ripeColor": "#0e0f13"
+    }
+  },
+  "black_ember": {
+    "colors": {
+      "leafColor": "#af1502",
+      "logColor": "#882309",
+      "plankColor": "#2c0808"
+    }
+  },
+  "black_locust": {
+    "colors": {
+      "leafColor": "#86ab9a",
+      "logColor": "#767678",
+      "plankColor": "#744318"
+    }
+  },
+  "blue_mahoe": {
+    "colors": {
+      "leafColor": "#719c96",
+      "logColor": "#af9f86",
+      "plankColor": "#456e8a"
+    }
+  },
+  "boxwood": {
+    "colors": {
+      "leafColor": "#659a32",
+      "logColor": "#6b4d35",
+      "plankColor": "#fcedc4"
+    }
+  },
+  "brazilwood": {
+    "colors": {
+      "leafColor": "#4d7a1b",
+      "logColor": "#816456",
+      "plankColor": "#491d04"
+    }
+  },
+  "brazil_nut": {
+    "colors": {
+      "leafColor": "#365c09",
+      "logColor": "#4e433a",
+      "plankColor": "#c47643"
+    },
+    "fruit": {
+      "item": "productivetrees:brazil_nut",
+      "count": 3,
+      "growthSpeed": 0.2,
+      "unripeColor": "#cc956e",
+      "ripeColor": "#4c2915"
+    }
+  },
+  "breadfruit": {
+    "colors": {
+      "leafColor": "#447f58",
+      "logColor": "#858881",
+      "plankColor": "#cb7647"
+    },
+    "fruit": {
+      "item": "productivetrees:breadfruit",
+      "growthSpeed": 0.3,
+      "unripeColor": "#7ab450",
+      "ripeColor": "#d9cb5e"
+    }
+  },
+  "brown_amber": {
+    "colors": {
+      "leafColor": "#651a00",
+      "logColor": "#140302",
+      "plankColor": "#b24629"
+    },
+    "fireproof": true,
+    "fruit": {
+      "style": "brown_amber_drip",
+      "item": "minecraft:air",
+      "growthSpeed": 0.35
+    }
+  },
+  "buddhas_hand": {
+    "colors": {
+      "leafColor": "#2a7453",
+      "logColor": "#41372d",
+      "plankColor": "#895f43"
+    },
+    "fruit": {
+      "item": "productivetrees:buddhas_hand",
+      "growthSpeed": 0.35,
+      "unripeColor": "#539d22",
+      "ripeColor": "#f6be2d"
+    }
+  },
+  "bull_pine": {
+    "colors": {
+      "leafColor": "#7f963e",
+      "logColor": "#5a2c12",
+      "plankColor": "#eec597"
+    }
+  },
+  "butternut": {
+    "colors": {
+      "leafColor": "#328f1c",
+      "logColor": "#2e2f2a",
+      "plankColor": "#d2a088"
+    },
+    "fruit": {
+      "item": "productivetrees:butternut",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#ab9d46",
+      "ripeColor": "#815a38"
+    }
+  },
+  "cacao": {
+    "colors": {
+      "leafColor": "#285407",
+      "logColor": "#56474a",
+      "plankColor": "#3b2112"
+    }
+  },
+  "candlenut": {
+    "colors": {
+      "leafColor": "#5d8558",
+      "logColor": "#a39e98",
+      "plankColor": "#c8a168"
+    },
+    "fruit": {
+      "item": "productivetrees:candlenut",
+      "count": 3,
+      "growthSpeed": 0.3,
+      "unripeColor": "#4c5a1c",
+      "ripeColor": "#caaf7a"
+    }
+  },
+  "carob": {
+    "colors": {
+      "leafColor": "#253508",
+      "logColor": "#675c5a",
+      "plankColor": "#6e2212"
+    },
+    "fruit": {
+      "item": "productivetrees:carob",
+      "growthSpeed": 0.5,
+      "unripeColor": "#8b9e21",
+      "ripeColor": "#1e1915"
+    }
+  },
+  "cashew": {
+    "colors": {
+      "leafColor": "#316207",
+      "logColor": "#3c3d38",
+      "plankColor": "#a67253"
+    },
+    "fruit": {
+      "item": "productivetrees:cashew",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#cea120",
+      "ripeColor": "#c31e24"
+    }
+  },
+  "cave_dweller": {
+    "decoration": {
+      "lightLevel": 11
+    },
+    "colors": {
+      "leafColor": "#575f5f",
+      "logColor": "#4a4c4e",
+      "plankColor": "#515151"
+    },
+    "fallingLeaves": true
+  },
+  "cedar": {
+    "colors": {
+      "leafColor": "#4d8119",
+      "logColor": "#645d5f",
+      "plankColor": "#a1685a"
+    }
+  },
+  "cempedak": {
+    "colors": {
+      "leafColor": "#225618",
+      "logColor": "#41270c",
+      "plankColor": "#9b5f43"
+    },
+    "fruit": {
+      "item": "productivetrees:cempedak",
+      "growthSpeed": 0.2,
+      "unripeColor": "#926e10",
+      "ripeColor": "#663710"
+    }
+  },
+  "ceylon_ebony": {
+    "colors": {
+      "leafColor": "#6e8f48",
+      "logColor": "#221d27",
+      "plankColor": "#030102"
+    }
+  },
+  "cherry_plum": {
+    "colors": {
+      "leafColor": "#7fb53d",
+      "logColor": "#321f19",
+      "plankColor": "#a26159"
+    },
+    "fruit": {
+      "item": "productivetrees:cherry_plum",
+      "growthSpeed": 0.5,
+      "unripeColor": "#a9b935",
+      "ripeColor": "#661c24"
+    }
+  },
+  "cinnamon": {
+    "colors": {
+      "leafColor": "#29590d",
+      "logColor": "#3f3f37",
+      "plankColor": "#cd4f18"
+    },
+    "stripDrop": {
+      "item": "productivetrees:cinnamon"
+    }
+  },
+  "citron": {
+    "colors": {
+      "leafColor": "#678f5f",
+      "logColor": "#2d301b",
+      "plankColor": "#b1976e"
+    },
+    "fruit": {
+      "item": "productivetrees:citron",
+      "growthSpeed": 0.4,
+      "unripeColor": "#404b00",
+      "ripeColor": "#e09e12"
+    }
+  },
+  "clove": {
+    "colors": {
+      "leafColor": "#3d6813",
+      "logColor": "#d0b09b",
+      "plankColor": "#3c1b0c"
+    },
+    "fruit": {
+      "item": "productivetrees:clove",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#74a00f",
+      "ripeColor": "#5e2610"
+    }
+  },
+  "cocobolo": {
+    "colors": {
+      "leafColor": "#749e4a",
+      "logColor": "#85737f",
+      "plankColor": "#7b1901"
+    }
+  },
+  "coconut": {
+    "colors": {
+      "leafColor": "#293716",
+      "logColor": "#896e5d",
+      "plankColor": "#ead9ad"
+    },
+    "fruit": {
+      "item": "productivetrees:coconut",
+      "growthSpeed": 0.3,
+      "unripeColor": "#6e7d08",
+      "ripeColor": "#6d813b"
+    }
+  },
+  "coffea": {
+    "colors": {
+      "leafColor": "#154f05",
+      "logColor": "#6c5953",
+      "plankColor": "#fddfe2"
+    },
+    "fruit": {
+      "item": "productivetrees:coffee_bean",
+      "count": 4,
+      "growthSpeed": 0.4,
+      "unripeColor": "#4f7426",
+      "ripeColor": "#e3616d"
+    }
+  },
+  "copoazu": {
+    "colors": {
+      "leafColor": "#3d7933",
+      "logColor": "#424645",
+      "plankColor": "#301615"
+    },
+    "fruit": {
+      "item": "productivetrees:copoazu",
+      "style": "copoazu",
+      "growthSpeed": 0.2,
+      "unripeColor": "#926e10",
+      "ripeColor": "#663710"
+    }
+  },
+  "copper_beech": {
+    "colors": {
+      "leafColor": "#392838",
+      "logColor": "#60493a",
+      "plankColor": "#cc895f"
+    },
+    "fruit": {
+      "item": "productivetrees:beechnut",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#9aaa01",
+      "ripeColor": "#6f2304"
+    }
+  },
+  "cork_oak": {
+    "colors": {
+      "leafColor": "#19230b",
+      "logColor": "#bd9281",
+      "plankColor": "#af947e"
+    },
+    "stripDrop": {
+      "item": "productivetrees:cork"
+    }
+  },
+  "cultivated_pear": {
+    "colors": {
+      "leafColor": "#3c6539",
+      "logColor": "#9b876f",
+      "plankColor": "#cc7957"
+    },
+    "fruit": {
+      "item": "productivetrees:pear",
+      "growthSpeed": 0.6,
+      "unripeColor": "#768422",
+      "ripeColor": "#5f6f0c"
+    }
+  },
+  "date_palm": {
+    "colors": {
+      "leafColor": "#7f8459",
+      "logColor": "#96552a",
+      "plankColor": "#3e1f0c"
+    },
+    "fruit": {
+      "item": "productivetrees:date",
+      "count": 3,
+      "growthSpeed": 0.3,
+      "unripeColor": "#d7a046",
+      "ripeColor": "#683534"
+    }
+  },
+  "dogwood": {
+    "colors": {
+      "leafColor": "#e7efed",
+      "logColor": "#b69a8e",
+      "plankColor": "#cba590"
+    }
+  },
+  "douglas_fir": {
+    "colors": {
+      "leafColor": "#626b32",
+      "logColor": "#593f3b",
+      "plankColor": "#d7a776"
+    }
+  },
+  "elderberry": {
+    "colors": {
+      "leafColor": "#7c9827",
+      "logColor": "#90947b",
+      "plankColor": "#f9f3d4"
+    },
+    "fruit": {
+      "item": "productivetrees:elderberry",
+      "count": 5,
+      "growthSpeed": 0.5,
+      "unripeColor": "#f8f8f8",
+      "ripeColor": "#070900"
+    }
+  },
+  "elm": {
+    "colors": {
+      "leafColor": "#21514f",
+      "logColor": "#dfc19e",
+      "plankColor": "#ccae8c"
+    }
+  },
+  "european_larch": {
+    "colors": {
+      "leafColor": "#a1d97f",
+      "logColor": "#494440",
+      "plankColor": "#af784f"
+    }
+  },
+  "finger_lime": {
+    "colors": {
+      "leafColor": "#105b00",
+      "logColor": "#f3f3d7",
+      "plankColor": "#e3bf8f"
+    },
+    "fruit": {
+      "item": "productivetrees:finger_lime",
+      "growthSpeed": 0.5,
+      "unripeColor": "#8cab05",
+      "ripeColor": "#384c00"
+    }
+  },
+  "firecracker": {
+    "colors": {
+      "leafColor": "#dcceb3",
+      "logColor": "#831e24",
+      "plankColor": "#c40510"
+    },
+    "fireproof": true
+  },
+  "flickering_sun": {
+    "colors": {
+      "leafColor": "#fcbb43",
+      "logColor": "#ffdb8b",
+      "plankColor": "#fef0af"
+    }
+  },
+  "flowering_crabapple": {
+    "colors": {
+      "leafColor": "#7f8c3c",
+      "logColor": "#837e78",
+      "plankColor": "#dcc8a5"
+    },
+    "fruit": {
+      "item": "productivetrees:flowering_crabapple",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "foggy_blast": {
+    "colors": {
+      "leafColor": "#a6aeb0",
+      "logColor": "#94999e",
+      "plankColor": "#959c9e"
+    }
+  },
+  "ginkgo": {
+    "colors": {
+      "leafColor": "#b9bd1a",
+      "leafColorFall": "#e8dd00",
+      "logColor": "#c4bbbc",
+      "plankColor": "#d3af7d"
+    },
+    "fruit": {
+      "item": "productivetrees:ginkgo_nut",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "golden_delicious_apple": {
+    "colors": {
+      "leafColor": "#4b7a21",
+      "logColor": "#917c85",
+      "plankColor": "#ab6b3f"
+    },
+    "fruit": {
+      "item": "productivetrees:golden_delicious_apple",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "grandidiers_baobab": {
+    "megaFeature": "productivetrees:grandidiers_baobab_mega",
+    "colors": {
+      "leafColor": "#4e6e03",
+      "logColor": "#e8dd00",
+      "plankColor": "#78573e"
+    }
+  },
+  "granny_smith_apple": {
+    "colors": {
+      "leafColor": "#5a8422",
+      "logColor": "#554724",
+      "plankColor": "#e99d63"
+    },
+    "fruit": {
+      "item": "productivetrees:granny_smith_apple",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "grapefruit": {
+    "colors": {
+      "leafColor": "#5f943e",
+      "logColor": "#3c3420",
+      "plankColor": "#9a9592"
+    },
+    "fruit": {
+      "item": "productivetrees:grapefruit",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "great_sallow": {
+    "colors": {
+      "leafColor": "#3d5b29",
+      "logColor": "#4c4942",
+      "plankColor": "#d1a173"
+    }
+  },
+  "greenheart": {
+    "colors": {
+      "leafColor": "#72eb9e",
+      "logColor": "#a8adb0",
+      "plankColor": "#a08467"
+    }
+  },
+  "hawthorn": {
+    "colors": {
+      "leafColor": "#9ab57c",
+      "logColor": "#a38c7a",
+      "plankColor": "#9a6c48"
+    },
+    "fruit": {
+      "item": "productivetrees:haw",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "hazel": {
+    "colors": {
+      "leafColor": "#7b9677",
+      "logColor": "#876943",
+      "plankColor": "#816951"
+    },
+    "fruit": {
+      "item": "productivetrees:hazelnut",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#8b9423",
+      "ripeColor": "#ccb088"
+    }
+  },
+  "holly": {
+    "colors": {
+      "leafColor": "#3c6b33",
+      "logColor": "#5c483d",
+      "plankColor": "#f0dbb1"
+    }
+  },
+  "hornbeam": {
+    "colors": {
+      "leafColor": "#38431b",
+      "logColor": "#5d5d53",
+      "plankColor": "#ebc8a8"
+    }
+  },
+  "ipe": {
+    "colors": {
+      "leafColor": "#eaaf00",
+      "logColor": "#603c00",
+      "plankColor": "#715146"
+    }
+  },
+  "iroko": {
+    "colors": {
+      "leafColor": "#5e635f",
+      "logColor": "#929486",
+      "plankColor": "#89693c"
+    }
+  },
+  "jackfruit": {
+    "colors": {
+      "leafColor": "#477d03",
+      "logColor": "#636051",
+      "plankColor": "#eaae5d"
+    },
+    "fruit": {
+      "item": "productivetrees:jackfruit",
+      "growthSpeed": 0.2,
+      "unripeColor": "#7ab450",
+      "ripeColor": "#d9cb5e"
+    }
+  },
+  "juniper": {
+    "colors": {
+      "leafColor": "#7d9178",
+      "logColor": "#d5c09e",
+      "plankColor": "#85443a"
+    },
+    "fruit": {
+      "item": "productivetrees:juniper",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#9fb4a9",
+      "ripeColor": "#7d9fc9"
+    }
+  },
+  "kapok": {
+    "colors": {
+      "leafColor": "#6cb57a",
+      "logColor": "#fae7c9",
+      "plankColor": "#896044"
+    }
+  },
+  "key_lime": {
+    "colors": {
+      "leafColor": "#417812",
+      "logColor": "#6e7460",
+      "plankColor": "#e1cb9c"
+    },
+    "fruit": {
+      "item": "productivetrees:key_lime",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "kumquat": {
+    "colors": {
+      "leafColor": "#272f24",
+      "logColor": "#75736d",
+      "plankColor": "#af7a52"
+    },
+    "fruit": {
+      "item": "productivetrees:kumquat",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "lawson_cypress": {
+    "colors": {
+      "leafColor": "#3d7925",
+      "logColor": "#3e3224",
+      "plankColor": "#d2bc9d"
+    }
+  },
+  "lemon": {
+    "colors": {
+      "leafColor": "#273418",
+      "logColor": "#523f37",
+      "plankColor": "#c0a266"
+    },
+    "fruit": {
+      "item": "productivetrees:lemon",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "lime": {
+    "colors": {
+      "leafColor": "#4c693d",
+      "logColor": "#6b7c6f",
+      "plankColor": "#cb9f72"
+    },
+    "fruit": {
+      "item": "productivetrees:lime",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "loblolly_pine": {
+    "colors": {
+      "leafColor": "#6da98d",
+      "logColor": "#615347",
+      "plankColor": "#f8d8ab"
+    }
+  },
+  "logwood": {
+    "colors": {
+      "leafColor": "#869d18",
+      "logColor": "#39312f",
+      "plankColor": "#a6511a"
+    }
+  },
+  "mahogany": {
+    "colors": {
+      "leafColor": "#74946f",
+      "logColor": "#b3aba8",
+      "plankColor": "#703425"
+    }
+  },
+  "mandarin": {
+    "colors": {
+      "leafColor": "#242101",
+      "logColor": "#7e665e",
+      "plankColor": "#ea834a"
+    },
+    "fruit": {
+      "item": "productivetrees:mandarin",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "mango": {
+    "colors": {
+      "leafColor": "#2e4719",
+      "logColor": "#c29f67",
+      "plankColor": "#a8794d"
+    },
+    "fruit": {
+      "item": "productivetrees:mango",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "monkey_puzzle": {
+    "colors": {
+      "leafColor": "#626925",
+      "logColor": "#50611a",
+      "plankColor": "#81593a"
+    }
+  },
+  "moonlight_magic_crepe_myrtle": {
+    "colors": {
+      "leafColor": "#c8c8c8",
+      "logColor": "#9e8b7f",
+      "plankColor": "#897159"
+    }
+  },
+  "myrtle_ebony": {
+    "colors": {
+      "leafColor": "#a7c6a6",
+      "logColor": "#9d8b90",
+      "plankColor": "#151512"
+    }
+  },
+  "nectarine": {
+    "colors": {
+      "leafColor": "#134502",
+      "logColor": "#714f36",
+      "plankColor": "#e09654"
+    },
+    "fruit": {
+      "item": "productivetrees:nectarine",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "night_fuchsia": {
+    "colors": {
+      "leafColor": "#651a00",
+      "logColor": "#140302",
+      "plankColor": "#b24629"
+    }
+  },
+  "nutmeg": {
+    "colors": {
+      "leafColor": "#5e966f",
+      "logColor": "#b4afad",
+      "plankColor": "#d3ba9b"
+    },
+    "fruit": {
+      "item": "productivetrees:nutmeg",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "old_fustic": {
+    "colors": {
+      "leafColor": "#8db092",
+      "logColor": "#bba979",
+      "plankColor": "#f7c86d"
+    }
+  },
+  "olive": {
+    "colors": {
+      "leafColor": "#86875d",
+      "logColor": "#423b2e",
+      "plankColor": "#4a2e11"
+    },
+    "fruit": {
+      "item": "productivetrees:olive",
+      "count": 2,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "orange": {
+    "colors": {
+      "leafColor": "#354d13",
+      "logColor": "#846259",
+      "plankColor": "#ab732c"
+    },
+    "fruit": {
+      "item": "productivetrees:orange",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "osange_orange": {
+    "colors": {
+      "leafColor": "#3b470a",
+      "logColor": "#6d5650",
+      "plankColor": "#afa16c"
+    },
+    "fruit": {
+      "item": "productivetrees:osange_orange",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "padauk": {
+    "colors": {
+      "leafColor": "#69803c",
+      "logColor": "#a18951",
+      "plankColor": "#4d0500"
+    }
+  },
+  "pandanus": {
+    "colors": {
+      "leafColor": "#80ae42",
+      "logColor": "#846f4e",
+      "plankColor": "#b7a78b"
+    },
+    "fruit": {
+      "item": "productivetrees:hala_fruit",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "papaya": {
+    "colors": {
+      "leafColor": "#507a14",
+      "logColor": "#7f807a",
+      "plankColor": "#e8e4cb"
+    },
+    "fruit": {
+      "item": "productivetrees:papaya",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "peach": {
+    "colors": {
+      "leafColor": "#507b22",
+      "logColor": "#73665d",
+      "plankColor": "#f09841"
+    },
+    "fruit": {
+      "item": "productivetrees:peach",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "pecan": {
+    "colors": {
+      "leafColor": "#498952",
+      "logColor": "#878173",
+      "plankColor": "#9c6a37"
+    },
+    "fruit": {
+      "item": "productivetrees:pecan",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#5c7b1b",
+      "ripeColor": "#c58759"
+    }
+  },
+  "persimmon": {
+    "colors": {
+      "leafColor": "#1e2d14",
+      "logColor": "#341c00",
+      "plankColor": "#9c806b"
+    },
+    "fruit": {
+      "item": "productivetrees:persimmon",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "pink_ivory": {
+    "colors": {
+      "leafColor": "#6d924f",
+      "logColor": "#3a3024",
+      "plankColor": "#963b46"
+    }
+  },
+  "pistachio": {
+    "colors": {
+      "leafColor": "#687f62",
+      "logColor": "#5b5316",
+      "plankColor": "#9d7446"
+    },
+    "fruit": {
+      "item": "productivetrees:pistachio",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "plantain": {
+    "colors": {
+      "leafColor": "#3f8a33",
+      "logColor": "#726867",
+      "plankColor": "#b6d997"
+    },
+    "fruit": {
+      "item": "productivetrees:plantain",
+      "style": "plantain",
+      "count": 2,
+      "growthSpeed": 0.2,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "plum": {
+    "colors": {
+      "leafColor": "#7b8c27",
+      "logColor": "#cc7957",
+      "plankColor": "#58151c"
+    },
+    "fruit": {
+      "item": "productivetrees:plum",
+      "count": 2,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "pomegranate": {
+    "colors": {
+      "leafColor": "#588759",
+      "logColor": "#6d6649",
+      "plankColor": "#a57e45"
+    },
+    "fruit": {
+      "item": "productivetrees:pomegranate",
+      "growthSpeed": 0.5,
+      "unripeColor": "#a9b935",
+      "ripeColor": "#661c24"
+    }
+  },
+  "pomelo": {
+    "colors": {
+      "leafColor": "#6e7d8a",
+      "logColor": "#46454e",
+      "plankColor": "#c9c9c8"
+    },
+    "fruit": {
+      "item": "productivetrees:pomelo",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "prairie_crabapple": {
+    "colors": {
+      "leafColor": "#445938",
+      "logColor": "#94521d",
+      "plankColor": "#a86743"
+    },
+    "fruit": {
+      "item": "productivetrees:prairie_crabapple",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "purpleheart": {
+    "colors": {
+      "leafColor": "#414d01",
+      "logColor": "#c9b99f",
+      "plankColor": "#6e3869"
+    }
+  },
+  "purple_blackthorn": {
+    "colors": {
+      "leafColor": "#59643a",
+      "logColor": "#382720",
+      "plankColor": "#bb8680"
+    },
+    "fruit": {
+      "item": "productivetrees:sloe",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#86955c",
+      "ripeColor": "#171925"
+    }
+  },
+  "purple_crepe_myrtle": {
+    "colors": {
+      "leafColor": "#603170",
+      "logColor": "#877862",
+      "plankColor": "#69503a"
+    },
+    "mutation_info": {
+      "target": "productivetrees:red_crepe_myrtle",
+      "chance": 0.05
+    }
+  },
+  "purple_spiral": {
+    "decoration": {
+      "lightLevel": 11
+    },
+    "colors": {
+      "leafColor": "#c8a3e3",
+      "logColor": "#370073",
+      "plankColor": "#d2a6fd"
+    },
+    "fallingLeaves": true
+  },
+  "rainbow_gum": {
+    "colors": {
+      "leafColor": "#55405b",
+      "logColor": "#202e1d",
+      "plankColor": "#6d4e87"
+    }
+  },
+  "red_banana": {
+    "colors": {
+      "leafColor": "#527f48",
+      "logColor": "#88070b",
+      "plankColor": "#d84369"
+    },
+    "fruit": {
+      "item": "productivetrees:red_banana",
+      "style": "red_banana",
+      "count": 3,
+      "growthSpeed": 0.2,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "red_crepe_myrtle": {
+    "colors": {
+      "leafColor": "#c81114",
+      "logColor": "#9d9d9d",
+      "plankColor": "#b29a88"
+    },
+    "mutation_info": {
+      "target": "productivetrees:tuscarora_crepe_myrtle",
+      "chance": 0.05
+    }
+  },
+  "red_delicious_apple": {
+    "colors": {
+      "leafColor": "#8aa265",
+      "logColor": "#3a2d1d",
+      "plankColor": "#b9643f"
+    },
+    "fruit": {
+      "item": "minecraft:apple",
+      "count": 2,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "red_maple": {
+    "colors": {
+      "leafColor": "#f81f31",
+      "logColor": "#b0a9a5",
+      "plankColor": "#d1b890"
+    }
+  },
+  "rippling_willow": {
+    "colors": {
+      "leafColor": "#233308",
+      "logColor": "#1d3f1b",
+      "plankColor": "#5b6f4f"
+    }
+  },
+  "rosewood": {
+    "colors": {
+      "leafColor": "#1f3413",
+      "logColor": "#3a2a1d",
+      "plankColor": "#471105"
+    }
+  },
+  "rose_gum": {
+    "colors": {
+      "leafColor": "#3d5845",
+      "logColor": "#271811",
+      "plankColor": "#884437"
+    }
+  },
+  "rowan": {
+    "colors": {
+      "leafColor": "#5b7e67",
+      "logColor": "#211a10",
+      "plankColor": "#d2b190"
+    }
+  },
+  "rubber_tree": {
+    "colors": {
+      "leafColor": "#628755",
+      "logColor": "#b9a276",
+      "plankColor": "#b8b4a9"
+    }
+  },
+  "salak": {
+    "colors": {
+      "leafColor": "#606725",
+      "logColor": "#96a040",
+      "plankColor": "#f4e3d2"
+    },
+    "fruit": {
+      "item": "productivetrees:snake_fruit",
+      "growthSpeed": 0.5,
+      "unripeColor": "#8fa425",
+      "ripeColor": "#7b411f"
+    }
+  },
+  "sandalwood": {
+    "colors": {
+      "leafColor": "#41521f",
+      "logColor": "#322e2a",
+      "plankColor": "#d8c0a0"
+    }
+  },
+  "sand_pear": {
+    "colors": {
+      "leafColor": "#378515",
+      "logColor": "#5e5c59",
+      "plankColor": "#c89b7c"
+    },
+    "fruit": {
+      "item": "productivetrees:sand_pear",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "satsuma": {
+    "colors": {
+      "leafColor": "#4a5510",
+      "logColor": "#483930",
+      "plankColor": "#ae640b"
+    },
+    "fruit": {
+      "item": "productivetrees:satsuma",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "sequoia": {
+    "megaFeature": "productivetrees:sequoia_mega",
+    "colors": {
+      "leafColor": "#75a277",
+      "logColor": "#6b3e29",
+      "plankColor": "#c6887b"
+    }
+  },
+  "silver_fir": {
+    "colors": {
+      "leafColor": "#4b6741",
+      "logColor": "#606060",
+      "plankColor": "#e3d2be"
+    }
+  },
+  "silver_lime": {
+    "colors": {
+      "leafColor": "#b5de82",
+      "logColor": "#8b847a",
+      "plankColor": "#dfc0a4"
+    }
+  },
+  "slimy_delight": {
+    "colors": {
+      "leafColor": "#00db01",
+      "logColor": "#0b7c00",
+      "plankColor": "#27bb0f"
+    }
+  },
+  "socotra_dragon": {
+    "colors": {
+      "leafColor": "#b3b979",
+      "logColor": "#adafb3",
+      "plankColor": "#de8f45"
+    }
+  },
+  "soul_tree": {
+    "decoration": {
+      "lightLevel": 11
+    },
+    "colors": {
+      "leafColor": "#ccc8c5",
+      "logColor": "#d2d2d2",
+      "plankColor": "#efefef"
+    },
+    "fallingLeaves": true
+  },
+  "soursop": {
+    "colors": {
+      "leafColor": "#106331",
+      "logColor": "#6d6858",
+      "plankColor": "#e8c7a0"
+    },
+    "fruit": {
+      "item": "productivetrees:soursop",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "sour_cherry": {
+    "colors": {
+      "leafColor": "#5ec456",
+      "logColor": "#928270",
+      "plankColor": "#a56945"
+    },
+    "fruit": {
+      "item": "productivetrees:sour_cherry",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "sparkle_cherry": {
+    "colors": {
+      "leafColor": "#eee4ed",
+      "logColor": "#30121b",
+      "plankColor": "#fbd6de"
+    },
+    "fruit": {
+      "item": "productivetrees:sparkling_cherry",
+      "count": 1,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "star_anise": {
+    "colors": {
+      "leafColor": "#5e734b",
+      "logColor": "#4f4745",
+      "plankColor": "#a6a199"
+    },
+    "fruit": {
+      "item": "productivetrees:star_anise",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "star_fruit": {
+    "colors": {
+      "leafColor": "#8da60c",
+      "logColor": "#948e89",
+      "plankColor": "#b99994"
+    },
+    "fruit": {
+      "item": "productivetrees:star_fruit",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "sugar_apple": {
+    "colors": {
+      "leafColor": "#4c7305",
+      "logColor": "#564f3e",
+      "plankColor": "#e0beb0"
+    },
+    "fruit": {
+      "item": "productivetrees:sweetsop",
+      "growthSpeed": 0.5,
+      "unripeColor": "#a9b935",
+      "ripeColor": "#661c24"
+    }
+  },
+  "sugar_maple": {
+    "colors": {
+      "leafColor": "#5f9450",
+      "logColor": "#6b6c64",
+      "plankColor": "#ab8a61"
+    }
+  },
+  "swamp_gum": {
+    "colors": {
+      "leafColor": "#3d5a3e",
+      "logColor": "#373125",
+      "plankColor": "#b17143"
+    }
+  },
+  "sweetgum": {
+    "colors": {
+      "leafColor": "#4f6155",
+      "logColor": "#abad92",
+      "plankColor": "#786e63"
+    }
+  },
+  "sweet_chestnut": {
+    "colors": {
+      "leafColor": "#8a933a",
+      "logColor": "#8e7658",
+      "plankColor": "#d3a981"
+    },
+    "fruit": {
+      "item": "productivetrees:chestnut",
+      "count": 2,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "sweet_crabapple": {
+    "colors": {
+      "leafColor": "#546751",
+      "logColor": "#42453f",
+      "plankColor": "#ca8d57"
+    },
+    "fruit": {
+      "item": "productivetrees:sweet_crabapple",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "sycamore_fig": {
+    "colors": {
+      "leafColor": "#3e8237",
+      "logColor": "#a4b6ba",
+      "plankColor": "#ae7d55"
+    },
+    "fruit": {
+      "item": "productivetrees:fig",
+      "count": 2,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "tangerine": {
+    "colors": {
+      "leafColor": "#439253",
+      "logColor": "#c9a688",
+      "plankColor": "#de9453"
+    },
+    "fruit": {
+      "item": "productivetrees:tangerine",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "teak": {
+    "colors": {
+      "leafColor": "#718e76",
+      "logColor": "#758d4e",
+      "plankColor": "#82584b"
+    }
+  },
+  "thunder_bolt": {
+    "colors": {
+      "leafColor": "#651a00",
+      "logColor": "#140302",
+      "plankColor": "#b24629"
+    }
+  },
+  "time_traveller": {
+    "decoration": {
+      "lightLevel": 11
+    },
+    "colors": {
+      "leafColor": "#338285",
+      "logColor": "#001d1d",
+      "plankColor": "#3fb4af"
+    },
+    "fallingLeaves": true
+  },
+  "tuscarora_crepe_myrtle": {
+    "colors": {
+      "leafColor": "#a71d7f",
+      "logColor": "#7e685d",
+      "plankColor": "#9b7148"
+    },
+    "mutation_info": {
+      "target": "productivetrees:moonlight_magic_crepe_myrtle",
+      "chance": 0.05
+    }
+  },
+  "blue_yonder": {
+    "decoration": {
+      "lightLevel": 11
+    },
+    "colors": {
+      "leafColor": "#c7c7c8",
+      "logColor": "#161530",
+      "plankColor": "#0e4873"
+    },
+    "fruit": {
+      "style": "planet_peach",
+      "item": "productivetrees:planet_peach",
+      "growthSpeed": 0.1,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    },
+    "fallingLeaves": true
+  },
+  "walnut": {
+    "colors": {
+      "leafColor": "#648e20",
+      "logColor": "#a4956d",
+      "plankColor": "#3d2417"
+    },
+    "fruit": {
+      "item": "productivetrees:walnut",
+      "count": 3,
+      "growthSpeed": 0.5,
+      "unripeColor": "#afca81",
+      "ripeColor": "#b47d3f"
+    }
+  },
+  "water_wonder": {
+    "decoration": {
+      "lightLevel": 11
+    },
+    "colors": {
+      "leafColor": "#82b3f4",
+      "logColor": "#116879",
+      "plankColor": "#84cdee"
+    },
+    "fallingLeaves": true
+  },
+  "wenge": {
+    "colors": {
+      "leafColor": "#488013",
+      "logColor": "#554b3f",
+      "plankColor": "#291a11"
+    }
+  },
+  "western_hemlock": {
+    "colors": {
+      "leafColor": "#8baf71",
+      "logColor": "#4d4328",
+      "plankColor": "#bea787"
+    }
+  },
+  "whitebeam": {
+    "colors": {
+      "leafColor": "#f0fbf5",
+      "logColor": "#6c584f",
+      "plankColor": "#e2e2e2"
+    }
+  },
+  "white_poplar": {
+    "colors": {
+      "leafColor": "#d2d2c6",
+      "logColor": "#676056",
+      "plankColor": "#bebab1"
+    }
+  },
+  "white_willow": {
+    "colors": {
+      "leafColor": "#e8e9e3",
+      "logColor": "#446681",
+      "plankColor": "#cfb89b"
+    }
+  },
+  "wild_cherry": {
+    "colors": {
+      "leafColor": "#a1b84e",
+      "logColor": "#4d3a35",
+      "plankColor": "#a45a33"
+    },
+    "fruit": {
+      "item": "productivetrees:wild_cherry",
+      "count": 2,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
+    }
+  },
+  "yellow_meranti": {
+    "colors": {
+      "leafColor": "#aacf5e",
+      "logColor": "#423d01",
+      "plankColor": "#e2c581"
+    }
+  },
+  "yew": {
+    "colors": {
+      "leafColor": "#526d3a",
+      "logColor": "#665754",
+      "plankColor": "#b4845c"
+    }
+  },
+  "zebrano": {
+    "colors": {
+      "leafColor": "#a4c449",
+      "logColor": "#0f100b",
+      "plankColor": "#ddbc93"
+    }
+  }
+}

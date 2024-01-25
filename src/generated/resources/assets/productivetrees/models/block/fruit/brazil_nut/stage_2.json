@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/brazil_nut",
+    "plant": "productivetrees:block/fruit/brazil_nut/stage_2"
+  }
+}

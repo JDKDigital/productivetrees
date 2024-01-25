@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/golden_delicious_apple",
+    "plant": "productivetrees:block/fruit/golden_delicious_apple/stage_0"
+  }
+}

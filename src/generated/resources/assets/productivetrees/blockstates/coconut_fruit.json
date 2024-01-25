@@ -1,22 +1,28 @@
 {
   "variants": {
     "age=0": {
-      "model": "productivetrees:block/fruit/coconut/0"
+      "model": "productivetrees:block/fruit/coconut/stage_0"
     },
     "age=1": {
-      "model": "productivetrees:block/fruit/coconut/1"
+      "model": "productivetrees:block/fruit/coconut/stage_1"
     },
     "age=2": {
-      "model": "productivetrees:block/fruit/coconut/2"
+      "model": "productivetrees:block/fruit/coconut/stage_2"
     },
     "age=3": {
-      "model": "productivetrees:block/fruit/coconut/3"
+      "model": "productivetrees:block/fruit/coconut/stage_3"
     },
     "age=4": {
-      "model": "productivetrees:block/fruit/coconut/4"
+      "model": "productivetrees:block/fruit/coconut/stage_4"
     },
     "age=5": {
-      "model": "productivetrees:block/fruit/coconut/5"
+      "model": "productivetrees:block/fruit/coconut/stage_5"
+    },
+    "age=6": {
+      "model": "productivetrees:block/fruit/coconut/stage_6"
+    },
+    "age=7": {
+      "model": "productivetrees:block/fruit/coconut/stage_7"
     }
   }
 }
