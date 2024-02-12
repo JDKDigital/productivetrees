@@ -3,12 +3,15 @@
   "category": "misc",
   "key": {
     "#": {
+      "tag": "forge:fruits/mandarin"
+    },
+    "R": {
       "item": "productivetrees:mandarin"
     }
   },
   "pattern": [
     "###",
-    "###",
+    "#R#",
     "###"
   ],
   "result": {

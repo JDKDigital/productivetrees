@@ -52,7 +52,6 @@ public class MapleSapType extends FluidType
                 return WATER_FLOW;
             }
 
-            @Nullable
             @Override
             public ResourceLocation getOverlayTexture()
             {

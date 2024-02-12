@@ -3,12 +3,15 @@
   "category": "misc",
   "key": {
     "#": {
+      "tag": "forge:nuts/cashew"
+    },
+    "R": {
       "item": "productivetrees:cashew"
     }
   },
   "pattern": [
     "###",
-    "###",
+    "#R#",
     "###"
   ],
   "result": {

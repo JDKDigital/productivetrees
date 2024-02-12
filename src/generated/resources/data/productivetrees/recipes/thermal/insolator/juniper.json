@@ -22,7 +22,7 @@
     {
       "chance": 0.5,
       "count": 3,
-      "item": "productivetrees:juniper"
+      "item": "productivetrees:juniper_berry"
     }
   ],
   "water_mod": 3.0

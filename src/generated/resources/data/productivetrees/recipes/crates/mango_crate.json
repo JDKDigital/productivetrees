@@ -3,12 +3,15 @@
   "category": "misc",
   "key": {
     "#": {
+      "tag": "forge:fruits/mango"
+    },
+    "R": {
       "item": "productivetrees:mango"
     }
   },
   "pattern": [
     "###",
-    "###",
+    "#R#",
     "###"
   ],
   "result": {

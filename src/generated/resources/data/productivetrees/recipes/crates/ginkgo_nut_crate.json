@@ -3,12 +3,15 @@
   "category": "misc",
   "key": {
     "#": {
+      "tag": "forge:nuts/ginkgo_nut"
+    },
+    "R": {
       "item": "productivetrees:ginkgo_nut"
     }
   },
   "pattern": [
     "###",
-    "###",
+    "#R#",
     "###"
   ],
   "result": {

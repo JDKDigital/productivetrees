@@ -8,7 +8,7 @@
           "type": "minecraft:alternatives",
           "children": [
             {
-              "type": "productivebees:optional_loot_item",
+              "type": "productivelib:optional_loot_item",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
@@ -47,7 +47,7 @@
               "name": "productivetrees:advanced_candlenut_beehive"
             },
             {
-              "type": "productivebees:optional_loot_item",
+              "type": "productivelib:optional_loot_item",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"

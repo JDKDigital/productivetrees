@@ -3,12 +3,15 @@
   "category": "misc",
   "key": {
     "#": {
+      "tag": "forge:fruits/lime"
+    },
+    "R": {
       "item": "productivetrees:lime"
     }
   },
   "pattern": [
     "###",
-    "###",
+    "#R#",
     "###"
   ],
   "result": {

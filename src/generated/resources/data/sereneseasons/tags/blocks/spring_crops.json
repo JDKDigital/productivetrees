@@ -2,6 +2,10 @@
   "values": [
     "productivetrees:alder_sapling",
     "productivetrees:allspice_sapling",
+    {
+      "id": "productivetrees:allspice_fruit",
+      "required": false
+    },
     "productivetrees:almond_sapling",
     {
       "id": "productivetrees:almond_fruit",
@@ -170,6 +174,10 @@
       "required": false
     },
     "productivetrees:firecracker_sapling",
+    {
+      "id": "productivetrees:firecracker_fruit",
+      "required": false
+    },
     "productivetrees:flickering_sun_sapling",
     "productivetrees:flowering_crabapple_sapling",
     {
@@ -405,6 +413,10 @@
       "required": false
     },
     "productivetrees:sparkle_cherry_sapling",
+    {
+      "id": "productivetrees:sparkle_cherry_fruit",
+      "required": false
+    },
     "productivetrees:star_anise_sapling",
     {
       "id": "productivetrees:star_anise_fruit",

@@ -11,6 +11,13 @@
       "leafColor": "#62922f",
       "logColor": "#d2c8c7",
       "plankColor": "#ac7f56"
+    },
+    "fruit": {
+      "item": "productivetrees:allspice",
+      "count": 2,
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
     }
   },
   "almond": {
@@ -583,6 +590,12 @@
       "logColor": "#831e24",
       "plankColor": "#c40510"
     },
+    "fruit": {
+      "item": "minecraft:firework",
+      "growthSpeed": 0.5,
+      "unripeColor": "#8cab05",
+      "ripeColor": "#384c00"
+    },
     "fireproof": true
   },
   "flickering_sun": {
@@ -764,7 +777,7 @@
       "plankColor": "#85443a"
     },
     "fruit": {
-      "item": "productivetrees:juniper",
+      "item": "productivetrees:juniper_berry",
       "count": 3,
       "growthSpeed": 0.5,
       "unripeColor": "#9fb4a9",

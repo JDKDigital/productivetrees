@@ -36,6 +36,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -47,6 +48,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.fluids.FluidType;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -61,7 +63,7 @@ public class TreeRegistrator
     public static final RegistryObject<PoiType> ADVANCED_HIVES = ProductiveTrees.POI_TYPES.register("advanced_beehive", () -> {
         Set<BlockState> blockStates = new HashSet<>();
         TreeFinder.trees.forEach((id, treeObject) -> {
-            if (treeObject.getStyle().hiveStyle() != null) {
+            if (ModList.get().isLoaded("productivebees") && treeObject.getStyle().hiveStyle() != null) {
                 try {
                     blockStates.addAll(treeObject.getHiveBlock().get().getStateDefinition().getPossibleStates());
                 } catch (NullPointerException e) {
@@ -119,7 +121,7 @@ public class TreeRegistrator
     public static final RegistryObject<Item> DRACAENA_SAP = registerItem("dracaena_sap");
     public static final RegistryObject<Item> RUBBER = registerItem("rubber");
     public static final RegistryObject<Item> MAPLE_SYRUP = registerItem("maple_syrup", () -> new Item(new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE)));
-    public static final RegistryObject<Item> SANDALWOOD_OIL = registerItem("sandalwood_oil"); // TODO turn into potion?
+    public static final RegistryObject<Item> SANDALWOOD_OIL = registerItem("sandalwood_oil");
 
     public static final RegistryObject<RecipeSerializer<?>> TREE_POLLINATION = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_pollination", () -> new TreePollinationRecipe.Serializer<>(TreePollinationRecipe::new));
     public static final RegistryObject<RecipeType<TreePollinationRecipe>> TREE_POLLINATION_TYPE = ProductiveTrees.RECIPE_TYPES.register("tree_pollination", () -> new RecipeType<>() {});
@@ -146,11 +148,12 @@ public class TreeRegistrator
     static final FoodProperties CITRUS_FOOD = (new FoodProperties.Builder()).nutrition(2).saturationMod(0F).build();
     static final FoodProperties BIG_CITRUS_FOOD = (new FoodProperties.Builder()).nutrition(3).saturationMod(0F).build();
     static final FoodProperties NUT_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(1).saturationMod(0.1F).build();
+    static final FoodProperties ROASTED_NUT_FOOD = (new FoodProperties.Builder()).alwaysEat().fast().nutrition(1).saturationMod(0.3F).build();
 
     public static List<CropConfig> BERRIES = new ArrayList<>()
     {{
         add(new CropConfig("elderberry", BERRY_FOOD));
-        add(new CropConfig("juniper", BERRY_FOOD));
+        add(new CropConfig("juniper_berry", BERRY_FOOD));
         add(new CropConfig("sloe", BERRY_FOOD));
         add(new CropConfig("haw", BERRY_FOOD));
         add(new CropConfig("asai_berry", BERRY_FOOD));
@@ -219,7 +222,7 @@ public class TreeRegistrator
     public static List<CropConfig> NUTS = new ArrayList<>()
     {{
         add(new CropConfig("almond", NUT_FOOD));
-        add(new CropConfig("acorn", NUT_FOOD));
+//        add(new CropConfig("acorn", NUT_FOOD));
         add(new CropConfig("beechnut", NUT_FOOD));
         add(new CropConfig("brazil_nut", NUT_FOOD));
         add(new CropConfig("butternut", NUT_FOOD));
@@ -231,6 +234,24 @@ public class TreeRegistrator
         add(new CropConfig("pecan", NUT_FOOD));
         add(new CropConfig("pistachio", NUT_FOOD));
         add(new CropConfig("walnut", NUT_FOOD));
+    }};
+
+    public static List<CropConfig> ROASTED_NUTS = new ArrayList<>()
+    {{
+        add(new CropConfig("roasted_almond", ROASTED_NUT_FOOD));
+//        add(new CropConfig("roasted_acorn", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_beechnut", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_brazil_nut", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_butternut", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_candlenut", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_cashew", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_chestnut", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_ginkgo_nut", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_hazelnut", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_pecan", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_pistachio", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_walnut", ROASTED_NUT_FOOD));
+        add(new CropConfig("roasted_coffee_bean", null));
     }};
 
     public static List<ResourceLocation> CRATED_CROPS = new ArrayList<>();
@@ -248,8 +269,12 @@ public class TreeRegistrator
             registerItem(cropConfig.name(), cropConfig.food());
             CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
         });
+        ROASTED_NUTS.forEach(cropConfig -> {
+            registerItem(cropConfig.name(), cropConfig.food());
+            CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
+        });
         CRATED_CROPS.forEach(cropName -> {
-            registerBlock(cropName.getPath(), () -> new Block(BlockBehaviour.Properties.copy(Blocks.BARREL)), true);
+            registerBlock(cropName.getPath(), () -> new Block(BlockBehaviour.Properties.copy(Blocks.BARREL).sound(SoundType.SCAFFOLDING)), true);
         });
     }
 

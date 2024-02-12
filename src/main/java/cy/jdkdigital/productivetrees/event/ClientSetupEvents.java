@@ -28,6 +28,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -80,7 +81,7 @@ public class ClientSetupEvents
                 return tintIndex == 0 ? ColorUtil.getCacheColor(treeObject.getLeafColor()) : (treeObject.hasFruit() && tintIndex == 2 ? ColorUtil.getCacheColor(treeObject.getFruit().ripeColor()) : ColorUtil.getCacheColor(treeObject.getLogColor()));
             }, treeObject.getSaplingBlock().get(), treeObject.getPottedSaplingBlock().get());
 
-            if (treeObject.getStyle().hiveStyle() != null && treeObject.tintHives()) {
+            if (ModList.get().isLoaded("productivebees") && treeObject.getStyle().hiveStyle() != null && treeObject.tintHives()) {
                 event.register((stack, tintIndex) -> ColorUtil.getCacheColor(treeObject.getPlankColor()),
                         treeObject.getHiveBlock().get(),
                         treeObject.getExpansionBoxBlock().get()
@@ -127,7 +128,7 @@ public class ClientSetupEvents
                 return tintIndex == 0 ? ColorUtil.getCacheColor(treeObject.getLeafColor()) : (treeObject.hasFruit() && tintIndex == 2 ? ColorUtil.getCacheColor(treeObject.getFruit().ripeColor()) : ColorUtil.getCacheColor(treeObject.getLogColor()));
             }, treeObject.getSaplingBlock().get(), treeObject.getPottedSaplingBlock().get());
 
-            if (treeObject.getStyle().hiveStyle() != null && treeObject.tintHives()) {
+            if (ModList.get().isLoaded("productivebees") && treeObject.getStyle().hiveStyle() != null && treeObject.tintHives()) {
                 event.register((blockState, lightReader, pos, tintIndex) -> ColorUtil.getCacheColor(treeObject.getPlankColor()),
                         treeObject.getHiveBlock().get(),
                         treeObject.getExpansionBoxBlock().get()

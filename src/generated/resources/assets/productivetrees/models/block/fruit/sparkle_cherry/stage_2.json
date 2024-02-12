@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/sparkle_cherry",
+    "plant": "productivetrees:block/fruit/sparkle_cherry/stage_2"
+  }
+}

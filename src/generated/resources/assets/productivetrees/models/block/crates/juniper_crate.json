@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "productivetrees:block/crate/bottom",
-    "side": "productivetrees:block/crate/side",
-    "top": "productivetrees:block/crate/juniper_crate"
-  }
-}

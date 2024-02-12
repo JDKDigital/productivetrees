@@ -9,6 +9,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:allspice_fruit",
+      "required": false
+    },
+    {
       "id": "productivetrees:almond_sapling",
       "required": false
     },
@@ -330,6 +334,10 @@
     },
     {
       "id": "productivetrees:firecracker_sapling",
+      "required": false
+    },
+    {
+      "id": "productivetrees:firecracker_fruit",
       "required": false
     },
     {
@@ -802,6 +810,10 @@
     },
     {
       "id": "productivetrees:sparkle_cherry_sapling",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_fruit",
       "required": false
     },
     {

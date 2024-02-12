@@ -3,12 +3,15 @@
   "category": "misc",
   "key": {
     "#": {
+      "tag": "forge:fruits/beliy_naliv_apple"
+    },
+    "R": {
       "item": "productivetrees:beliy_naliv_apple"
     }
   },
   "pattern": [
     "###",
-    "###",
+    "#R#",
     "###"
   ],
   "result": {

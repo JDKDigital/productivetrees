@@ -42,6 +42,15 @@
         "count": 1,
         "item": "productivetrees:allspice_sapling"
       }
+    },
+    {
+      "chance": 0.5,
+      "maxRolls": 2,
+      "minRolls": 1,
+      "output": {
+        "count": 1,
+        "item": "productivetrees:allspice"
+      }
     }
   ],
   "growthTicks": 2400,

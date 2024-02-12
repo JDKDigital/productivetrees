@@ -1,13 +1,17 @@
 package cy.jdkdigital.productivetrees.datagen;
 
+import cy.jdkdigital.productivelib.util.LangUtil;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.registry.WoodObject;
+import cy.jdkdigital.productivetrees.util.CropConfig;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LanguageProvider extends net.minecraftforge.common.data.LanguageProvider
@@ -40,6 +44,8 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add(TreeRegistrator.POLLEN.get(), "Pollen");
         add(TreeRegistrator.SAWDUST.get(), "Sawdust");
         add(TreeRegistrator.ALLSPICE.get(), "Allspice");
+        add(TreeRegistrator.CAROB.get(), "Carob");
+        add(TreeRegistrator.COFFEE_BEAN.get(), "Coffee Beans");
         add(TreeRegistrator.CLOVE.get(), "Clove");
         add(TreeRegistrator.CINNAMON.get(), "Cinnamon");
         add(TreeRegistrator.NUTMEG.get(), "Nutmeg");
@@ -53,21 +59,21 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
 
         ProductiveTrees.ITEMS.getEntries().forEach(itemRegistryObject -> {
             if (itemRegistryObject.get().getFoodProperties() != null) {
-                add(itemRegistryObject.get(), capName(ForgeRegistries.ITEMS.getKey(itemRegistryObject.get()).getPath()));
+                add(itemRegistryObject.get(), LangUtil.capName(ForgeRegistries.ITEMS.getKey(itemRegistryObject.get()).getPath()));
             }
         });
 
         TreeRegistrator.CRATED_CROPS.forEach(crate -> {
-            add(ForgeRegistries.BLOCKS.getValue(crate), capName(crate.getPath()));
+            add(ForgeRegistries.BLOCKS.getValue(crate), "Crate of " + LangUtil.pluralCapName(crate.getPath().replace("_crate", "")));
         });
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             String name = id.getPath();
-            add(treeObject.getLeafBlock().get(), capName(name) + " Leaves");
-            add(treeObject.getSaplingBlock().get(), capName(name) + " Sapling");
-            add(treeObject.getPottedSaplingBlock().get(), capName(name) + " Potted Sapling");
+            add(treeObject.getLeafBlock().get(), LangUtil.capName(name) + " Leaves");
+            add(treeObject.getSaplingBlock().get(), LangUtil.capName(name) + " Sapling");
+            add(treeObject.getPottedSaplingBlock().get(), LangUtil.capName(name) + " Potted Sapling");
             if (treeObject.hasFruit()) {
-                add(treeObject.getFruitBlock().get(), capName(name) + " Fruiting Leaves");
+                add(treeObject.getFruitBlock().get(), LangUtil.capName(name) + " Fruiting Leaves");
             }
             addWoodStuff(treeObject, name);
             add("block.productivetrees." + name + ".latin", getLatinName(name));
@@ -75,44 +81,31 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
     }
 
     private void addWoodStuff(WoodObject woodObject, String name) {
-        add(woodObject.getLogBlock().get(), capName(name) + " Log");
-        add(woodObject.getWoodBlock().get(), capName(name) + " Wood");
-        add(woodObject.getStrippedLogBlock().get(), capName(name) + " Stripped Log");
-        add(woodObject.getStrippedWoodBlock().get(), capName(name) + " Stripped Wood");
-        add(woodObject.getPlankBlock().get(), capName(name) + " Planks");
-        add(woodObject.getStairsBlock().get(), capName(name) + " Stairs");
-        add(woodObject.getSlabBlock().get(), capName(name) + " Slab");
-        add(woodObject.getFenceBlock().get(), capName(name) + " Fence");
-        add(woodObject.getFenceGateBlock().get(), capName(name) + " Fence Gate");
-        add(woodObject.getButtonBlock().get(), capName(name) + " Button");
-        add(woodObject.getPressurePlateBlock().get(), capName(name) + " Pressure Plate");
-        add(woodObject.getDoorBlock().get(), capName(name) + " Door");
-        add(woodObject.getTrapdoorBlock().get(), capName(name) + " Trapdoor");
-        add(woodObject.getBookshelfBlock().get(), capName(name) + " Bookshelf");
-        add(woodObject.getSignBlock().get(), capName(name) + " Sign");
-        add(woodObject.getHangingSignBlock().get(), capName(name) + " Hanging Sign");
+        add(woodObject.getLogBlock().get(), LangUtil.capName(name) + " Log");
+        add(woodObject.getWoodBlock().get(), LangUtil.capName(name) + " Wood");
+        add(woodObject.getStrippedLogBlock().get(), LangUtil.capName(name) + " Stripped Log");
+        add(woodObject.getStrippedWoodBlock().get(), LangUtil.capName(name) + " Stripped Wood");
+        add(woodObject.getPlankBlock().get(), LangUtil.capName(name) + " Planks");
+        add(woodObject.getStairsBlock().get(), LangUtil.capName(name) + " Stairs");
+        add(woodObject.getSlabBlock().get(), LangUtil.capName(name) + " Slab");
+        add(woodObject.getFenceBlock().get(), LangUtil.capName(name) + " Fence");
+        add(woodObject.getFenceGateBlock().get(), LangUtil.capName(name) + " Fence Gate");
+        add(woodObject.getButtonBlock().get(), LangUtil.capName(name) + " Button");
+        add(woodObject.getPressurePlateBlock().get(), LangUtil.capName(name) + " Pressure Plate");
+        add(woodObject.getDoorBlock().get(), LangUtil.capName(name) + " Door");
+        add(woodObject.getTrapdoorBlock().get(), LangUtil.capName(name) + " Trapdoor");
+        add(woodObject.getBookshelfBlock().get(), LangUtil.capName(name) + " Bookshelf");
+        add(woodObject.getSignBlock().get(), LangUtil.capName(name) + " Sign");
+        add(woodObject.getHangingSignBlock().get(), LangUtil.capName(name) + " Hanging Sign");
         if (woodObject.getStyle().hiveStyle() != null) {
-            add(woodObject.getHiveBlock().get(), "Advanced " + capName(name) + " Beehive");
-            add(woodObject.getExpansionBoxBlock().get(), capName(name) + " Expansion Box");
+            add(woodObject.getHiveBlock().get(), "Advanced " + LangUtil.capName(name) + " Beehive");
+            add(woodObject.getExpansionBoxBlock().get(), LangUtil.capName(name) + " Expansion Box");
         }
     }
 
     @Override
     public String getName() {
         return "Productive Trees translation provider";
-    }
-
-    private String capName(String name) {
-        String[] nameParts = name.split("_");
-
-        for (int i = 0; i < nameParts.length; i++) {
-            if (nameParts[i].equals("asai")) {
-                nameParts[i] = "açaí";
-            }
-            nameParts[i] = nameParts[i].substring(0, 1).toUpperCase() + nameParts[i].substring(1);
-        }
-
-        return String.join(" ", nameParts);
     }
 
     private static String getLatinName(String name) {
@@ -175,7 +168,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("cedar", "Cedrus libani");
             put("great_sallow", "Salix caprea");
             put("greenheart", "Chlorocardium rodiei");
-            put("hawthorn", "Crataegus rhipidophylla");
+            put("hawthorn", "Crataegus pinnatifida");
             put("hazel", "Corylus avellana");
             put("holly", "Ilex aquifolium");
             put("hornbeam", "Carpinus betulus");

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 180,
+  "experience": 0.9,
+  "ingredient": [],
+  "result": "productivetrees:roasted_coffee_bean_crate"
+}

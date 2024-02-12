@@ -25,7 +25,8 @@ public class BlockTagProvider extends BlockTagsProvider
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        var axe = tag(BlockTags.MINEABLE_WITH_AXE);
+        var axeMineable = tag(BlockTags.MINEABLE_WITH_AXE);
+        var storageBlocks = tag(Tags.Blocks.STORAGE_BLOCKS);
 
         var dof = tag(ModTags.DIRT_OR_FARMLAND);
         var pollinatable = tag(ModTags.POLLINATABLE);
@@ -45,6 +46,7 @@ public class BlockTagProvider extends BlockTagsProvider
         var doors = tag(BlockTags.WOODEN_DOORS);
         var trapdoors = tag(BlockTags.WOODEN_TRAPDOORS);
         var bookshelves = tag(Tags.Blocks.BOOKSHELVES);
+        var enchantment = tag(BlockTags.ENCHANTMENT_POWER_PROVIDER);
         var signs = tag(BlockTags.STANDING_SIGNS);
         var hangingSigns = tag(BlockTags.CEILING_HANGING_SIGNS);
         var wallHangingSigns = tag(BlockTags.WALL_HANGING_SIGNS);
@@ -78,11 +80,11 @@ public class BlockTagProvider extends BlockTagsProvider
                 flowers.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getLeafBlock().get())));
             }
 
-            axe.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getPlankBlock().get())));
-            axe.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getLogBlock().get())));
-            axe.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getWoodBlock().get())));
-            axe.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getStrippedLogBlock().get())));
-            axe.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getStrippedWoodBlock().get())));
+            axeMineable.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getPlankBlock().get())));
+            axeMineable.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getLogBlock().get())));
+            axeMineable.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getWoodBlock().get())));
+            axeMineable.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getStrippedLogBlock().get())));
+            axeMineable.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getStrippedWoodBlock().get())));
 
             planks.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getPlankBlock().get())));
             if (treeObject.isFireProof()) {
@@ -106,6 +108,7 @@ public class BlockTagProvider extends BlockTagsProvider
             trapdoors.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getTrapdoorBlock().get())));
             signs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getSignBlock().get())));
             bookshelves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getBookshelfBlock().get())));
+            enchantment.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getBookshelfBlock().get())));
             hangingSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getHangingSignBlock().get())));
             wallSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getWallSignBlock().get())));
             wallHangingSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(treeObject.getWallHangingSignBlock().get())));
@@ -120,6 +123,14 @@ public class BlockTagProvider extends BlockTagsProvider
         dof.addTag(BlockTags.DIRT).add(Blocks.FARMLAND);
 
         pollinatable.addTag(BlockTags.LEAVES).add(Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);
+
+        TreeRegistrator.CRATED_CROPS.forEach(cratePath ->  {
+            var crateBlock = ForgeRegistries.BLOCKS.getValue(cratePath);
+            var blockTagKey = BlockTags.create(new ResourceLocation("forge", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
+            tag(blockTagKey).add(crateBlock);
+            storageBlocks.addTag(blockTagKey);
+            axeMineable.addTag(blockTagKey);
+        });
     }
 
     @Override

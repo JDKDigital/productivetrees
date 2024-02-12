@@ -145,6 +145,8 @@ dependencies {
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 
     implementation fg.deobf("curse.maven:corail-woodcutter-331983:4637053")
+    implementation fg.deobf("curse.maven:selene-499980:5068161")
+    implementation fg.deobf("curse.maven:sawmill-964817:5088192")
     implementation fg.deobf("curse.maven:bookshelf-228525:4668763")
     implementation fg.deobf("curse.maven:botany-pots-353928:4703902")
     implementation fg.deobf("curse.maven:botany-trees-411357:4694737")

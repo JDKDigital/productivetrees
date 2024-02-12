@@ -11,6 +11,7 @@ import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
@@ -149,6 +150,27 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         SingleConditionalRecipe.builder().addCondition(modLoaded("treetap"))
                 .setRecipe(TreetapRecipeBuilder.direct(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ProductiveTrees.MODID, "sugar_maple_log")), new ItemStack(TreeRegistrator.MAPLE_SAP_BUCKET.get()), new FluidStack(TreeRegistrator.MAPLE_SAP.get(), 1000), 2400)::save)
                 .build(consumer, new ResourceLocation(ProductiveTrees.MODID, "treetap/maple_sap"));
+
+        // Nut toasting
+        TreeRegistrator.ROASTED_NUTS.forEach(cropConfig -> {
+            var roastedNut = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name()));
+            var rawNut = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name().replace("roasted_", "")));
+            SimpleCookingRecipeBuilder.smelting(Ingredient.of(rawNut), RecipeCategory.FOOD, roastedNut, 0.1F, 120)
+                    .unlockedBy(getHasName(rawNut), has(rawNut))
+                    .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_smelting"));
+            SimpleCookingRecipeBuilder.smoking(Ingredient.of(rawNut), RecipeCategory.FOOD, roastedNut, 0.1F, 20)
+                    .unlockedBy(getHasName(rawNut), has(rawNut))
+                    .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_smoking"));
+
+            var roastedNutCrate = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
+            var rawNutCrate = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name().replace("roasted_", "") + "_crate"));
+            SimpleCookingRecipeBuilder.smelting(Ingredient.of(rawNutCrate), RecipeCategory.FOOD, roastedNutCrate, 0.9F, 1080)
+                    .unlockedBy(getHasName(rawNutCrate), has(rawNutCrate))
+                    .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smelting"));
+            SimpleCookingRecipeBuilder.smoking(Ingredient.of(rawNutCrate), RecipeCategory.FOOD, roastedNutCrate, 0.9F, 180)
+                    .unlockedBy(getHasName(rawNutCrate), has(rawNutCrate))
+                    .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smoking"));
+        });
     }
 
     private static void planksFromLogs(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike... ingredients) {
@@ -201,8 +223,16 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
 
     private void buildCrateRecipes(Consumer<FinishedRecipe> consumer) {
         TreeRegistrator.CRATED_CROPS.forEach(crate -> {
+            var cropName = crate.getPath().replace("_crate", "");
             var crateItem = ForgeRegistries.ITEMS.getValue(crate);
-            var cropItem = ForgeRegistries.ITEMS.getValue(crate.withPath(p -> p.replace("_crate", "")));
+            var cropItem = ForgeRegistries.ITEMS.getValue(crate.withPath(p -> cropName));
+
+            var cropTag = ItemTags.create(new ResourceLocation("forge", "fruits/" + cropName));
+            if (TreeRegistrator.BERRIES.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0) {
+                cropTag = ItemTags.create(new ResourceLocation("forge", "berries/" + cropName));
+            } else if (TreeRegistrator.NUTS.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0 || TreeRegistrator.ROASTED_NUTS.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0) {
+                cropTag = ItemTags.create(new ResourceLocation("forge", "nuts/" + cropName));
+            }
 
             ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, cropItem, 9)
                     .unlockedBy(getHasName(cropItem), has(cropItem))
@@ -211,9 +241,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             ShapedRecipeBuilder.shaped(RecipeCategory.MISC, crateItem)
                     .unlockedBy(getHasName(cropItem), has(cropItem))
                     .pattern("###")
+                    .pattern("#R#")
                     .pattern("###")
-                    .pattern("###")
-                    .define('#', cropItem)
+                    .define('R', cropItem)
+                    .define('#', cropTag)
                     .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "crates/" + crate.getPath()));
         });
     }

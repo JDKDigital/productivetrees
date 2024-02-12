@@ -1,0 +1,9 @@
+{
+  "parent": "productivetrees:block/base_crate",
+  "textures": {
+    "bottom": "productivetrees:block/crate/teak/bottom",
+    "crop": "productivetrees:block/crate/roasted_brazil_nut",
+    "side": "productivetrees:block/crate/teak/side",
+    "top": "productivetrees:block/crate/teak/top"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "productivetrees:block/crates/roasted_coffee_bean_crate"
+    }
+  }
+}

@@ -78,6 +78,11 @@ public class ItemTagProvider extends ItemTagsProvider
             tag(tagKey).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.NUTS).addTag(tagKey);
         });
+        TreeRegistrator.ROASTED_NUTS.forEach(cropConfig ->  {
+            var tagKey = ItemTags.create(new ResourceLocation("forge", "nuts/" + cropConfig.name()));
+            tag(tagKey).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            tag(ModTags.NUTS).addTag(tagKey);
+        });
 
         tag(ModTags.FRUITS_APPLE).add(
                 Items.APPLE,
@@ -91,6 +96,13 @@ public class ItemTagProvider extends ItemTagsProvider
                 ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "flowering_crabapple"))
         );
         tag(ModTags.FRUITS).addTags(ModTags.FRUITS_APPLE, ModTags.FRUITS_CRABAPPLE);
+
+        copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
+        TreeRegistrator.CRATED_CROPS.forEach(cratePath ->  {
+            var blockTagKey = BlockTags.create(new ResourceLocation("forge", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
+            var tagKey = ItemTags.create(new ResourceLocation("forge", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
+            copy(blockTagKey, tagKey);
+        });
     }
 
     @Override

@@ -83,19 +83,6 @@ public class ProductiveTrees
         TreeRegistrator.init();
         ClientRegistration.init();
 
-        // TODO alpha
-        //  fruiting textures
-        //  dangler models (red banana, plantain, coconut, breadfruit, cempedak, jackfruit and hala fruit)
-        //  add stages to banana, copoazu and planet peach
-        //  door textures
-        //  replace WoodSet entries with tree configs
-        //  redo blue_yonder, sequoia hanging sign texture, thunder bolt and night fuchsia
-        // TODO beta
-        //  tree features
-        //  mega and special features
-        // TODO v2
-        //  wood worker for making combination blocks and panels
-
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
     }
 }

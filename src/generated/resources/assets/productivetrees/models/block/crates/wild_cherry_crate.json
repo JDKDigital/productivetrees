@@ -1,8 +1,9 @@
 {
-  "parent": "minecraft:block/cube_bottom_top",
+  "parent": "productivetrees:block/base_crate",
   "textures": {
-    "bottom": "productivetrees:block/crate/bottom",
-    "side": "productivetrees:block/crate/side",
-    "top": "productivetrees:block/crate/wild_cherry_crate"
+    "bottom": "productivetrees:block/crate/ash/bottom",
+    "crop": "productivetrees:block/crate/wild_cherry",
+    "side": "productivetrees:block/crate/ash/side",
+    "top": "productivetrees:block/crate/ash/top"
   }
 }

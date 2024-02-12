@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "forge:nuts/roasted_ginkgo_nut"
+    },
+    "R": {
+      "item": "productivetrees:roasted_ginkgo_nut"
+    }
+  },
+  "pattern": [
+    "###",
+    "#R#",
+    "###"
+  ],
+  "result": {
+    "item": "productivetrees:roasted_ginkgo_nut_crate"
+  },
+  "show_notification": true
+}

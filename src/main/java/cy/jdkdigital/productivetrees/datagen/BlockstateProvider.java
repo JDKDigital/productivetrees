@@ -118,6 +118,9 @@ public class BlockstateProvider implements DataProvider
         TreeRegistrator.NUTS.forEach(cropConfig ->  {
             generateFruitItem(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())), modelOutput);
         });
+        TreeRegistrator.ROASTED_NUTS.forEach(cropConfig ->  {
+            generateFruitItem(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())), modelOutput);
+        });
 
         TreeRegistrator.CRATED_CROPS.forEach(crate -> {
             addBlockItemParentModel(ForgeRegistries.BLOCKS.getValue(crate), "crates/", itemModels);
@@ -218,7 +221,7 @@ public class BlockstateProvider implements DataProvider
         Item item = Item.BY_BLOCK.get(block);
         if (item != null) {
             var rl = ForgeRegistries.BLOCKS.getKey(block);
-            addItemModel(item, new DelegatedModel(new ResourceLocation(rl.getNamespace(), "block/" + rl.getPath())), itemModels);
+            addItemModel(item, new DelegatedModel(new ResourceLocation(rl.getNamespace(), "block/" + prefix + rl.getPath())), itemModels);
         }
     }
 
@@ -270,10 +273,6 @@ public class BlockstateProvider implements DataProvider
             hiveBlockStates.forEach((resourceLocation, stateGenerator) -> {
                 this.blockStateOutput.accept(stateGenerator);
             });
-
-            TreeRegistrator.CRATED_CROPS.forEach(crate -> {
-                createCrate(ForgeRegistries.BLOCKS.getValue(crate));
-            });
         }
 
         private void createSapling(TreeObject treeObject) {
@@ -293,10 +292,17 @@ public class BlockstateProvider implements DataProvider
             this.blockStateOutput.accept(createSimpleBlock(block, new ResourceLocation(ProductiveTrees.MODID, "block/sapling/base_" + baseSapling + treeObject.getStyle().saplingStyle())));
         }
 
-        static ModelTemplate crateModel = new ModelTemplate(Optional.of(new ResourceLocation("block/cube_bottom_top")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.SIDE, TextureSlot.TOP);
-        private void createCrate(Block block) {
-            ResourceLocation top = ForgeRegistries.BLOCKS.getKey(block).withPath((p) -> "block/crate/" + p);
-            var textureMapping = (new TextureMapping()).put(TextureSlot.SIDE, new ResourceLocation(ProductiveTrees.MODID, "block/crate/side")).put(TextureSlot.TOP, top).put(TextureSlot.BOTTOM, new ResourceLocation(ProductiveTrees.MODID, "block/crate/bottom"));
+        static ModelTemplate crateModel = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/base_crate")), Optional.empty(), TextureSlot.BOTTOM, TextureSlot.SIDE, TextureSlot.TOP, TextureSlot.CROP);
+        private void createCrate(TreeObject treeObject, Block block) {
+            if (treeObject.getStyle().crateStyle() == null) {
+                throw new RuntimeException(treeObject.getId() + " is missing a crate style");
+            }
+            ResourceLocation top = ForgeRegistries.BLOCKS.getKey(block).withPath((p) -> "block/crate/" + p.replace("_crate", ""));
+            var textureMapping = (new TextureMapping())
+                    .put(TextureSlot.SIDE, new ResourceLocation(ProductiveTrees.MODID, "block/crate/" + treeObject.getStyle().crateStyle() + "/side"))
+                    .put(TextureSlot.TOP, new ResourceLocation(ProductiveTrees.MODID, "block/crate/" + treeObject.getStyle().crateStyle() + "/top"))
+                    .put(TextureSlot.BOTTOM, new ResourceLocation(ProductiveTrees.MODID, "block/crate/" + treeObject.getStyle().crateStyle() + "/bottom"))
+                    .put(TextureSlot.CROP, top);
             this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, crateModel.create(ForgeRegistries.BLOCKS.getKey(block).withPath((p) -> "block/crates/" + p), textureMapping, this.modelOutput))));
         }
 
@@ -330,6 +336,15 @@ public class BlockstateProvider implements DataProvider
                 var template = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + fruitStyle + "/fruit_" + age)), Optional.empty(), TextureSlot.ALL);
                 return Variant.variant().with(VariantProperties.MODEL, template.create(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/" + age), (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + treeObject.getStyle().leafStyle())), modelOutput));
             })));
+
+            var cratePath = treeObject.getFruit().fruitItem().withPath(p -> p + "_crate");
+            if (TreeRegistrator.CRATED_CROPS.contains(cratePath) && !treeObject.getId().getPath().contains("copper_beech") && !treeObject.getId().getPath().contains("purple_blackthorn")) {
+                createCrate(treeObject, ForgeRegistries.BLOCKS.getValue(cratePath));
+            };
+            var roastedCratePath = treeObject.getFruit().fruitItem().withPath(p -> "roasted_" + p + "_crate");
+            if (TreeRegistrator.CRATED_CROPS.contains(roastedCratePath) && !treeObject.getId().getPath().contains("copper_beech") && !treeObject.getId().getPath().contains("purple_blackthorn")) {
+                createCrate(treeObject, ForgeRegistries.BLOCKS.getValue(roastedCratePath));
+            };
         }
 
         private void createStairsBlock(WoodObject treeObject) {

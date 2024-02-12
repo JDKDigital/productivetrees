@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 20,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "productivetrees:pistachio"
+  },
+  "result": "productivetrees:roasted_pistachio"
+}

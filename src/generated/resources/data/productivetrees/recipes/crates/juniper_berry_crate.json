@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "forge:berries/juniper_berry"
+    },
+    "R": {
+      "item": "productivetrees:juniper_berry"
+    }
+  },
+  "pattern": [
+    "###",
+    "#R#",
+    "###"
+  ],
+  "result": {
+    "item": "productivetrees:juniper_berry_crate"
+  },
+  "show_notification": true
+}

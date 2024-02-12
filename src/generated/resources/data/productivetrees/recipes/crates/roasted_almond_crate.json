@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "forge:nuts/roasted_almond"
+    },
+    "R": {
+      "item": "productivetrees:roasted_almond"
+    }
+  },
+  "pattern": [
+    "###",
+    "#R#",
+    "###"
+  ],
+  "result": {
+    "item": "productivetrees:roasted_almond_crate"
+  },
+  "show_notification": true
+}

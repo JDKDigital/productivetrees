@@ -1,0 +1,640 @@
+{
+  "values": [
+    {
+      "id": "productivetrees:alder_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:allspice_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:almond_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:apricot_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:aquilaria_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:asai_palm_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ash_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:aspen_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:avocado_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsa_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:balsam_fir_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:banana_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beech_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:beliy_naliv_apple_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blackthorn_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_cherry_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_ember_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_locust_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_mahoe_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:boxwood_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazilwood_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brazil_nut_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:breadfruit_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:brown_amber_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:buddhas_hand_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:bull_pine_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:butternut_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cacao_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:candlenut_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:carob_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cashew_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cedar_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cempedak_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ceylon_ebony_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cherry_plum_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cinnamon_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:citron_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:clove_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cocobolo_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coconut_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:coffea_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copoazu_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:copper_beech_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cork_oak_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cultivated_pear_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:date_palm_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:dogwood_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:douglas_fir_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elderberry_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:elm_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:european_larch_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:finger_lime_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:firecracker_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flowering_crabapple_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:foggy_blast_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ginkgo_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:golden_delicious_apple_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grandidiers_baobab_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:granny_smith_apple_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:grapefruit_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:great_sallow_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:greenheart_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hawthorn_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hazel_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:holly_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:hornbeam_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:ipe_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:iroko_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:jackfruit_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:juniper_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kapok_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:key_lime_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:kumquat_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lawson_cypress_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lemon_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:lime_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:loblolly_pine_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:logwood_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mahogany_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mandarin_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:mango_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:monkey_puzzle_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:moonlight_magic_crepe_myrtle_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:myrtle_ebony_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nectarine_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:night_fuchsia_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:nutmeg_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:old_fustic_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:olive_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:orange_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:osange_orange_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:padauk_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pandanus_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:papaya_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:peach_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pecan_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:persimmon_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pink_ivory_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pistachio_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plantain_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:plum_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomegranate_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:pomelo_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:prairie_crabapple_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purpleheart_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_blackthorn_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_crepe_myrtle_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_spiral_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rainbow_gum_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_banana_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_crepe_myrtle_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_delicious_apple_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:red_maple_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rippling_willow_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rosewood_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rose_gum_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rowan_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rubber_tree_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:salak_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sandalwood_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sand_pear_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:satsuma_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sequoia_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_fir_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:silver_lime_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:slimy_delight_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:socotra_dragon_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soul_tree_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soursop_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sour_cherry_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:star_anise_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:star_fruit_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_apple_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sugar_maple_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:swamp_gum_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweetgum_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_chestnut_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sweet_crabapple_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sycamore_fig_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tangerine_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:teak_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:thunder_bolt_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:time_traveller_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:tuscarora_crepe_myrtle_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_yonder_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:walnut_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wenge_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:western_hemlock_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:whitebeam_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_poplar_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:white_willow_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:wild_cherry_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yellow_meranti_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:yew_bookshelf",
+      "required": false
+    },
+    {
+      "id": "productivetrees:zebrano_bookshelf",
+      "required": false
+    }
+  ]
+}
