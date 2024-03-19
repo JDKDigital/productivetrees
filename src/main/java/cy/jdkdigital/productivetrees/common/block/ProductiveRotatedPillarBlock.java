@@ -20,7 +20,7 @@ public class ProductiveRotatedPillarBlock extends RotatedPillarBlock
     @Override
     public boolean hidesNeighborFace(BlockGetter level, BlockPos pos, BlockState state, BlockState neighborState, Direction dir) {
         String name = treeObject.getId().getPath();
-        return TreeUtil.isTranslucentTree(name) && neighborState.getBlock() instanceof ProductiveRotatedPillarBlock;
+        return !TreeUtil.isTranslucentTree(name);
     }
 
     public WoodObject getTree() {

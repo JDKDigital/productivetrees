@@ -1396,8 +1396,7 @@
       "leafColor": "#ccc8c5",
       "logColor": "#d2d2d2",
       "plankColor": "#efefef"
-    },
-    "fallingLeaves": true
+    }
   },
   "soursop": {
     "colors": {
@@ -1576,8 +1575,7 @@
       "leafColor": "#338285",
       "logColor": "#001d1d",
       "plankColor": "#3fb4af"
-    },
-    "fallingLeaves": true
+    }
   },
   "tuscarora_crepe_myrtle": {
     "colors": {
