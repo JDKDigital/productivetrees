@@ -5,13 +5,10 @@ import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.registry.WoodObject;
-import cy.jdkdigital.productivetrees.util.CropConfig;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class LanguageProvider extends net.minecraftforge.common.data.LanguageProvider
@@ -32,6 +29,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add("productivetrees.screen.progress", "Progress: %s");
         add("productivetrees.information.upgrade.upgrade_pollen_sieve", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
         add("productivetrees.information.pollen", "Use on a leaf to manually pollinate it.");
+        add("productivetrees.sapling.configurations", "Configurations: %s");
 
         add(TreeRegistrator.POLLINATED_LEAVES.get(), "Pollinated Leaves");
         add(TreeRegistrator.STRIPPER.get(), "Stripper");
@@ -39,6 +37,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add(TreeRegistrator.WOOD_WORKER.get(), "Carpentry Bench");
         add(TreeRegistrator.POLLEN_SIFTER.get(), "Pollen Sifter");
         add(TreeRegistrator.TIME_TRAVELLER_DISPLAY.get(), "Time Traveller Display");
+        add(TreeRegistrator.COCONUT_SPROUT.get(), "Coconut Sprout");
 
         add(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get(), "Upgrade: Pollen Sieve");
         add(TreeRegistrator.POLLEN.get(), "Pollen");
@@ -123,12 +122,9 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("balsam_fir", "Abies balsamea");
             put("banana", "Musa acuminata");
             put("beech", "Fagus sylvatica");
-            put("blackberry", "Rubus fruticosus");
-            put("blackcurrant", "Ribes nigrum");
             put("blackthorn", "Prunus spinosa");
             put("black_cherry", "Prunus serotina");
             put("black_locust", "Robinia pseudoacacia");
-            put("blueberry", "Vaccinium angustifolium");
             put("blue_mahoe", "Talipariti elatum");
             put("boxwood", "Buxus sempervirens");
             put("brazilwood", "Paubrasilia echinata");
@@ -141,23 +137,25 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("candlenut", "Aleurites moluccanus");
             put("carob", "Ceratonia siliqua");
             put("cashew", "Anacardium occidentale");
+            put("cedar", "Cedrus libani");
+            put("cempedak", "Artocarpus integer");
+            put("ceylon_ebony", "Diospyros ebenum");
             put("cherry_plum", "Prunus cerasifera");
             put("cinnamon", "Cinnamomum verum");
             put("citron", "Citrus medica");
+            put("copper_beech", "Fagus sylvatica purpurea");
+            put("cork_oak", "Quercus suber");
             put("clove", "Syzygium aromaticum");
             put("cocobolo", "Dalbergia retusa");
             put("coconut", "Cocos nucifera");
             put("coffea", "Coffea arabica");
             put("copoazu", "Theobroma grandiflorum");
-            put("copper_beech", "Fagus sylvatica purpurea");
-            put("cork_oak", "Quercus suber");
-            put("cranberry", "Vaccinium oxycoccos");
             put("cultivated_pear", "Pyrus communis");
             put("date_palm", "Phoenix dactylifera");
             put("dogwood", "Cornus florida");
             put("douglas_fir", "Pseudotsuga menziesii");
-            put("elderberry", "Sambucus nigra");
             put("elm", "Ulmus laevis");
+            put("european_larch", "Larix decidua");
             put("finger_lime", "Citrus australasica");
             put("flowering_crabapple", "Malus floribunda");
             put("ginkgo", "Ginkgo biloba");
@@ -165,7 +163,6 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("gooseberry", "Ribes uva-crispa");
             put("grandidiers_baobab", "Adansonia grandidieri");
             put("grapefruit", "Citrus paradisi");
-            put("cedar", "Cedrus libani");
             put("great_sallow", "Salix caprea");
             put("greenheart", "Chlorocardium rodiei");
             put("hawthorn", "Crataegus pinnatifida");
@@ -190,8 +187,6 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("mango", "Mangifera indica");
             put("miracle_berry", "Synsepalum dulcificum");
             put("monkey_puzzle", "Araucaria araucana");
-            put("european_larch", "Larix decidua");
-            put("ceylon_ebony", "Diospyros ebenum");
             put("myrtle_ebony", "Diospyros pentamera");
             put("purple_crepe_myrtle", "Lagerstroemia indica");
             put("moonlight_magic_crepe_myrtle", "Lagerstroemia indica 'PIILAG-IV'");
@@ -220,8 +215,8 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("pomegranate", "Punica granatum");
             put("pomelo", "Citrus maxima");
             put("prairie_crabapple", "Malus ioensis");
-            put("purple_blackthorn", "Prunus spinosa purpurea");
             put("purpleheart", "Peltogyne purpurea");
+            put("purple_blackthorn", "Prunus spinosa purpurea");
             put("rainbow_gum", "Eucalyptus deglupta");
             put("raspberry", "Rubus idaeus");
             put("redcurrant", "Ribes rubrum");
@@ -239,29 +234,31 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("silver_fir", "Abies alba");
             put("silver_lime", "Tilia tomentosa");
             put("socotra_dragon", "Dracaena cinnabari");
+            put("soursop", "Annona muricata");
             put("sour_cherry", "Prunus cerasus");
             put("starfruit", "Averrhoa carambola");
             put("star_anise", "Illicium verum");
-            put("soursop", "Annona muricata");
             put("sugar_apple", "Annona squamosa");
             put("sugar_maple", "Acer saccharum");
             put("swamp_gum", "Eucalyptus camphora");
+            put("sweetgum", "Liquidambar styraciflua");
             put("sweet_chestnut", "Castanea sativa");
             put("sweet_crabapple", "Malus coronaria");
-            put("sweetgum", "Liquidambar styraciflua");
             put("sycamore_fig", "Ficus sycomorus");
             put("tangerine", "Citrus tangerina");
             put("teak", "Tectona grandis");
             put("walnut", "Juglans regia");
             put("wenge", "Millettia laurentii");
             put("western_hemlock", "Tsuga heterophylla");
-            put("whitebeam", "Sorbus aria");
+            put("whitebeam", "Aria edulis");
             put("white_poplar", "Populus alba");
             put("white_willow", "Salix alba");
             put("wild_cherry", "Prunus avium");
             put("yellow_meranti", "Shorea faguetiana");
             put("yew", "Taxus baccata");
             put("zebrano", "Microberlinia brazzavillensis");
+            put("elderberry", "Sambucus nigra");
+            put("star_fruit", "Averrhoa carambola");
 
             put("black_ember", "Ignis obscurum");
             put("brown_amber", "Umbra electri");
@@ -269,7 +266,6 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("firecracker", "Scintillat calamus");
             put("flickering_sun", "Stella coruscatio");
             put("foggy_blast", "Nebula inflatus");
-            put("night_fuscia", "");
             put("purple_spiral", "Ysabella purpurea");
             put("rippling_willow", "Salix fluctus");
             put("slimy_delight", "Salivarius delicium");
@@ -279,6 +275,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("blue_yonder", "Stella caelus");
             put("time_traveller", "Aevum viatora");
             put("water_wonder", "Aevum viatora");
+            put("night_fuchsia", "Fuchsia nox");
         }};
 
         return names.get(name);

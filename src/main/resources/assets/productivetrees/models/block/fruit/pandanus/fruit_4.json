@@ -1,0 +1,34 @@
+{
+  "textures": {
+    "3": "productivetrees:block/fruit/pandanus/pandanus_fruit_mid",
+    "particle": "productivetrees:block/fruit/pandanus/pandanus_fruit_mid"
+  },
+  "elements": [
+    {
+      "name": "fruit",
+      "from": [6, 10, 6],
+      "to": [10, 14, 10],
+      "faces": {
+        "north": {"uv": [5, 0, 9, 4], "texture": "#3"},
+        "east": {"uv": [5, 0, 9, 4], "texture": "#3"},
+        "south": {"uv": [5, 0, 9, 4], "texture": "#3"},
+        "west": {"uv": [5, 0, 9, 4], "texture": "#3"},
+        "up": {"uv": [5, 4, 9, 8], "texture": "#3"},
+        "down": {"uv": [5, 8, 9, 12], "texture": "#3"}
+      }
+    },
+    {
+      "name": "stem",
+      "from": [7.5, 14, 7.5],
+      "to": [8.5, 16, 8.5],
+      "faces": {
+        "north": {"uv": [13, 0, 14, 2], "texture": "#3"},
+        "east": {"uv": [13, 0, 14, 2], "texture": "#3"},
+        "south": {"uv": [13, 0, 14, 2], "texture": "#3"},
+        "west": {"uv": [13, 0, 14, 2], "texture": "#3"},
+        "up": {"uv": [13, 2, 14, 3], "texture": "#3"},
+        "down": {"uv": [13, 3, 14, 4], "texture": "#3"}
+      }
+    }
+  ]
+}

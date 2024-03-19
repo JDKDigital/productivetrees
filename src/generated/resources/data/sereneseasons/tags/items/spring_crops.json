@@ -196,6 +196,10 @@
       "required": false
     },
     "productivetrees:grandidiers_baobab_sapling",
+    {
+      "id": "productivetrees:grandidiers_baobab_fruit",
+      "required": false
+    },
     "productivetrees:granny_smith_apple_sapling",
     {
       "id": "productivetrees:granny_smith_apple_fruit",

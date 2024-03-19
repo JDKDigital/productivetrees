@@ -1,0 +1,48 @@
+{
+  "textures": {
+    "1": "productivetrees:block/fruit/jackfruit/jackfruit_young",
+    "5": "productivetrees:block/fruit/jackfruit/petals",
+    "particle": "productivetrees:block/fruit/jackfruit/petals"
+  },
+  "elements": [
+    {
+      "name": "stem",
+      "from": [7.5, 14, 6.5],
+      "to": [8.5, 16, 7.5],
+      "faces": {
+        "north": {"uv": [15, 0, 16, 1], "texture": "#1"},
+        "east": {"uv": [15, 0, 16, 1], "texture": "#1"},
+        "south": {"uv": [15, 0, 16, 1], "texture": "#1"},
+        "west": {"uv": [15, 0, 16, 1], "texture": "#1"},
+        "up": {"uv": [15, 1, 16, 2], "texture": "#1"},
+        "down": {"uv": [15, 0, 16, 1], "texture": "#1"}
+      }
+    },
+    {
+      "name": "fruit_big",
+      "from": [7.5, 11, 6.5],
+      "to": [8.5, 14, 7.5],
+      "faces": {
+        "north": {"uv": [2, 0, 3, 7], "texture": "#1"},
+        "east": {"uv": [2, 0, 3, 7], "texture": "#1"},
+        "south": {"uv": [2, 0, 3, 7], "texture": "#1"},
+        "west": {"uv": [2, 0, 3, 7], "texture": "#1"},
+        "up": {"uv": [2, 7, 3, 8], "texture": "#1"},
+        "down": {"uv": [2, 7, 3, 8], "texture": "#1"}
+      }
+    },
+    {
+      "name": "petal",
+      "from": [6, 11, 5],
+      "to": [10, 12, 9],
+      "faces": {
+        "north": {"uv": [0, 4, 4, 5], "texture": "#5"},
+        "east": {"uv": [0, 6, 4, 7], "texture": "#5"},
+        "south": {"uv": [0, 7, 4, 8], "texture": "#5"},
+        "west": {"uv": [0, 5, 4, 6], "texture": "#5"},
+        "up": {"uv": [4, 4, 0, 0], "texture": "#5"},
+        "down": {"uv": [4, 8, 0, 12], "texture": "#5"}
+      }
+    }
+  ]
+}

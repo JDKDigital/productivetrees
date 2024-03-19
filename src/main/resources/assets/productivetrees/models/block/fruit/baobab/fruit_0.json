@@ -1,0 +1,33 @@
+{
+  "textures": {
+    "4": "productivetrees:block/fruit/baobab/petals",
+    "particle": "#4"
+  },
+  "elements": [
+    {
+      "name": "fruit_big",
+      "from": [7.5, 12, 7.5],
+      "to": [8.5, 16, 8.5],
+      "faces": {
+        "north": {"uv": [0, 0, 1, 4], "texture": "#4"},
+        "east": {"uv": [0, 0, 1, 4], "texture": "#4"},
+        "south": {"uv": [0, 0, 1, 4], "texture": "#4"},
+        "west": {"uv": [0, 0, 1, 4], "texture": "#4"},
+        "up": {"uv": [0, 7, 1, 8], "texture": "#4"},
+        "down": {"uv": [0, 7, 1, 8], "texture": "#4"}
+      }
+    },
+    {
+      "from": [7, 13, 7],
+      "to": [9, 14, 9],
+      "faces": {
+        "north": {"uv": [0, 7, 2, 8], "texture": "#4"},
+        "east": {"uv": [0, 7, 2, 8], "texture": "#4"},
+        "south": {"uv": [0, 7, 2, 8], "texture": "#4"},
+        "west": {"uv": [0, 7, 2, 8], "texture": "#4"},
+        "up": {"uv": [0, 5, 2, 7], "texture": "#4"},
+        "down": {"uv": [0, 5, 2, 7], "texture": "#4"}
+      }
+    }
+  ]
+}

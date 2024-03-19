@@ -15,6 +15,7 @@
     "item": "productivetrees:sugar_maple_log"
   },
   "processing_time": 2400,
+  "required_block_count": 5,
   "result": {
     "item": "productivetrees:maple_sap_bucket"
   }

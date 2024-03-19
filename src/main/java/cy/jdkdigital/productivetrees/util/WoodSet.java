@@ -61,7 +61,7 @@ public record WoodSet(String woodStyle, String plankStyle, String leafStyle, Str
         put("flowering_crabapple", new WoodSet("flowering_crabapple", "flowering_crabapple", "flowering_crabapple", "flowering_crabapple", "cherry", "dead", "walnut"));
         put("ginkgo", new WoodSet("ginkgo", "ginkgo", "ginkgo", "ginkgo", "cherry", "grimwood", "whitebeam"));
         put("golden_delicious_apple", new WoodSet("golden_delicious_apple", "golden_delicious_apple", "golden_delicious_apple", "golden_delicious_apple", "oak", "aspen", "ash"));
-        put("grandidiers_baobab", new WoodSet("grandidiers_baobab", "grandidiers_baobab", "grandidiers_baobab", "grandidiers_baobab", "dark_oak", "hellbark", null));
+        put("grandidiers_baobab", new WoodSet("grandidiers_baobab", "grandidiers_baobab", "grandidiers_baobab", "grandidiers_baobab", "dark_oak", "hellbark", "walnut"));
         put("granny_smith_apple", new WoodSet("granny_smith_apple", "granny_smith_apple", "granny_smith_apple", "granny_smith_apple", "oak", "redwood", "teak"));
         put("grapefruit", new WoodSet("grapefruit", "grapefruit", "grapefruit", "grapefruit", "oak", "driftwood", "whitebeam"));
         put("great_sallow", new WoodSet("great_sallow", "great_sallow", "great_sallow", "great_sallow", "mangrove", "bamboo", null));

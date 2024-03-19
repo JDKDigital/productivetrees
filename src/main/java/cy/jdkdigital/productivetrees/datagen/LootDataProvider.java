@@ -32,6 +32,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.common.loot.CanToolPerformAction;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -95,6 +96,7 @@ public class LootDataProvider implements DataProvider
             dropSelf(TreeRegistrator.WOOD_WORKER.get());
             dropSelf(TreeRegistrator.POLLEN_SIFTER.get());
             dropSelf(TreeRegistrator.TIME_TRAVELLER_DISPLAY.get());
+            dropSelf(TreeRegistrator.COCONUT_SPROUT.get());
 
             TreeFinder.trees.forEach((id, treeObject) -> {
                 var saplingChance = treeObject.getStyle().saplingStyle().equals("jungle") ? JUNGLE_LEAVES_SAPLING_CHANGES : NORMAL_LEAVES_SAPLING_CHANCES;
@@ -124,6 +126,10 @@ public class LootDataProvider implements DataProvider
                     Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(treeObject.getExpansionBoxBlock().get(), BlockLootProvider::genExpansionDrop);
                     this.add(treeObject.getExpansionBoxBlock().get(), expansionFunc.apply(treeObject.getExpansionBoxBlock().get()));
                 }
+            });
+
+            TreeRegistrator.CRATED_CROPS.forEach(cratePath -> {
+                dropSelf(ForgeRegistries.BLOCKS.getValue(cratePath));
             });
         }
 

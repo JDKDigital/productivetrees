@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:golden_delicious_apple_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:granny_smith_apple_leaves"
+  },
+  "result": {
+    "item": "productivetrees:beliy_naliv_apple_sapling"
+  }
+}

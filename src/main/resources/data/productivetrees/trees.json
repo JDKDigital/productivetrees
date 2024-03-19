@@ -242,6 +242,7 @@
     },
     "fruit": {
       "item": "productivetrees:breadfruit",
+      "style": "breadfruit",
       "growthSpeed": 0.3,
       "unripeColor": "#7ab450",
       "ripeColor": "#d9cb5e"
@@ -368,6 +369,7 @@
     },
     "fruit": {
       "item": "productivetrees:cempedak",
+      "style": "cempedak",
       "growthSpeed": 0.2,
       "unripeColor": "#926e10",
       "ripeColor": "#663710"
@@ -445,6 +447,7 @@
     },
     "fruit": {
       "item": "productivetrees:coconut",
+      "style": "coconut",
       "growthSpeed": 0.3,
       "unripeColor": "#6e7d08",
       "ripeColor": "#6d813b"
@@ -659,6 +662,13 @@
       "leafColor": "#4e6e03",
       "logColor": "#e8dd00",
       "plankColor": "#78573e"
+    },
+    "fruit": {
+      "item": "productivetrees:baobab_fruit",
+      "style": "baobab",
+      "growthSpeed": 0.5,
+      "unripeColor": "#bdcaa0",
+      "ripeColor": "#824f12"
     }
   },
   "granny_smith_apple": {
@@ -765,6 +775,7 @@
     },
     "fruit": {
       "item": "productivetrees:jackfruit",
+      "style": "jackfruit",
       "growthSpeed": 0.2,
       "unripeColor": "#7ab450",
       "ripeColor": "#d9cb5e"
@@ -1015,6 +1026,7 @@
     },
     "fruit": {
       "item": "productivetrees:hala_fruit",
+      "style": "pandanus",
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"

@@ -150,6 +150,9 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         SingleConditionalRecipe.builder().addCondition(modLoaded("treetap"))
                 .setRecipe(TreetapRecipeBuilder.direct(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ProductiveTrees.MODID, "sugar_maple_log")), new ItemStack(TreeRegistrator.MAPLE_SAP_BUCKET.get()), new FluidStack(TreeRegistrator.MAPLE_SAP.get(), 1000), 2400)::save)
                 .build(consumer, new ResourceLocation(ProductiveTrees.MODID, "treetap/maple_sap"));
+        SingleConditionalRecipe.builder().addCondition(modLoaded("treetap"))
+                .setRecipe(TreetapRecipeBuilder.direct(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ProductiveTrees.MODID, "date_palm_log")), new ItemStack(TreeRegistrator.DATE_PALM_JUICE.get()), new ItemStack(Items.GLASS_BOTTLE), "#cd7408", 2400)::save)
+                .build(consumer, new ResourceLocation(ProductiveTrees.MODID, "treetap/date_palm_juice"));
 
         // Nut toasting
         TreeRegistrator.ROASTED_NUTS.forEach(cropConfig -> {
@@ -382,9 +385,13 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "date_palm", "papaya", "cacao", 5);
         treeBreeding(consumer, "asai_palm", "date_palm", "black_cherry", 5);
         treeBreeding(consumer, "persimmon", "ceylon_ebony", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 5);
+        treeBreeding(consumer, "myrtle_ebony", "ceylon_ebony", "persimmon", 5);
         treeBreeding(consumer, "pomegranate", "holly", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 5);
         treeBreeding(consumer, "white_poplar", "white_willow", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, getLeafIngredient("silver_lime").getItems()[0].getItem()), 5);
         treeBreeding(consumer, "red_delicious_apple", Ingredient.of(Blocks.CHERRY_LEAVES), Ingredient.of(Blocks.OAK_LEAVES, Blocks.DARK_OAK_LEAVES), 10);
+        treeBreeding(consumer, "granny_smith_apple", "red_delicious_apple", Ingredient.of(Blocks.CHERRY_LEAVES), 10);
+        treeBreeding(consumer, "golden_delicious_apple", "red_delicious_apple", "granny_smith_apple", 10);
+        treeBreeding(consumer, "beliy_naliv_apple", "golden_delicious_apple", "granny_smith_apple", 10);
         treeBreeding(consumer, "sweet_crabapple", "red_delicious_apple", "sugar_maple", 10);
         treeBreeding(consumer, "flowering_crabapple", "sweet_crabapple", Blocks.FLOWERING_AZALEA_LEAVES, 10);
         treeBreeding(consumer, "prairie_crabapple", "red_delicious_apple", Ingredient.of(Blocks.BIRCH_LEAVES), 10);
@@ -427,6 +434,8 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "hazel", "aspen", "beech", 10);
         treeBreeding(consumer, "sycamore_fig", "ash", "sugar_maple", 10);
         treeBreeding(consumer, "breadfruit", "sycamore_fig", "sugar_maple", 10);
+        treeBreeding(consumer, "cempedak", "sycamore_fig", "breadfruit", 10);
+        treeBreeding(consumer, "jackfruit", "cempedak", "breadfruit", 10);
         treeBreeding(consumer, "whitebeam", "ash", Blocks.BIRCH_LEAVES, 10);
         treeBreeding(consumer, "hawthorn", "rowan", "beech", 10);
         treeBreeding(consumer, "pecan", "beech", Blocks.BIRCH_LEAVES, 10);
@@ -444,6 +453,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "balsam_fir", "alder", "european_larch", 10);
         treeBreeding(consumer, "loblolly_pine", "bull_pine", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "sweetgum", "european_larch", "sugar_maple", 10);
+        treeBreeding(consumer, "rubber_tree", "sweetgum", "loblolly_pine", 10);
         treeBreeding(consumer, "black_locust", "balsa", "silver_lime", 10);
         treeBreeding(consumer, "sand_pear", "red_delicious_apple", Blocks.FLOWERING_AZALEA_LEAVES, 10);
         treeBreeding(consumer, "cultivated_pear", "red_delicious_apple", "sand_pear", 10);
@@ -480,6 +490,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "copoazu", "cacao", "candlenut", 10);
         treeBreeding(consumer, "carob", "sweet_chestnut", "copoazu", 10);
         treeBreeding(consumer, "pandanus", "walnut", "coconut", 10);
+        treeBreeding(consumer, "salak", "pandanus", "coconut", 10);
 
         treeBreeding(consumer, "purple_spiral", "blue_yonder", "firecracker", 5);
         treeBreeding(consumer, "cave_dweller", "black_ember", "soul_tree", 5);

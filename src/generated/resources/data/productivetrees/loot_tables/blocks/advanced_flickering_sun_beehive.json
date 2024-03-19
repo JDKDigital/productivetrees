@@ -38,7 +38,7 @@
                 },
                 {
                   "block": "productivetrees:advanced_flickering_sun_beehive",
-                  "function": "productivebees:optional_copy_block_state",
+                  "function": "productivelib:optional_copy_block_state",
                   "properties": [
                     "honey_level"
                   ]

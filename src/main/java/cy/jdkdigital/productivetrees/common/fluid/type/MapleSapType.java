@@ -10,7 +10,6 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidType;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 

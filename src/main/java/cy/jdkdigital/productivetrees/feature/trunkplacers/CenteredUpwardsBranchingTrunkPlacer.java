@@ -43,21 +43,21 @@ public class CenteredUpwardsBranchingTrunkPlacer extends UpwardsBranchingTrunkPl
     @Override
     public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> list = Lists.newArrayList();
-        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
 
         int bleed = pFreeTreeHeight / 3;
         for (int i = bleed; i < pFreeTreeHeight - bleed; ++i) {
             int j = pPos.getY() + i;
-            if (this.placeLog(pLevel, pBlockSetter, pRandom, blockpos$mutableblockpos.set(pPos.getX(), j, pPos.getZ()), pConfig) && i < pFreeTreeHeight - 1 && pRandom.nextFloat() < this.placeBranchPerLogProbability) {
+            if (this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.set(pPos.getX(), j, pPos.getZ()), pConfig) && i < pFreeTreeHeight - 1 && pRandom.nextFloat() < this.placeBranchPerLogProbability) {
                 Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(pRandom);
                 int k = this.extraBranchLength.sample(pRandom);
                 int l = Math.max(0, k - this.extraBranchLength.sample(pRandom) - 1);
                 int i1 = this.extraBranchSteps.sample(pRandom);
-                this.placeBranch(pLevel, pBlockSetter, pRandom, pFreeTreeHeight, pConfig, list, blockpos$mutableblockpos, j, direction, l, i1);
+                this.placeBranch(pLevel, pBlockSetter, pRandom, pFreeTreeHeight, pConfig, list, mutableBlockPos, j, direction, l, i1);
             }
 
             if (i == pFreeTreeHeight - 1) {
-                list.add(new FoliagePlacer.FoliageAttachment(blockpos$mutableblockpos.set(pPos.getX(), j + 1, pPos.getZ()), 0, false));
+                list.add(new FoliagePlacer.FoliageAttachment(mutableBlockPos.set(pPos.getX(), j + 1, pPos.getZ()), 0, false));
             }
         }
 

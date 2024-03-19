@@ -2,6 +2,7 @@ package cy.jdkdigital.productivetrees.common.block;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
+import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -48,8 +49,20 @@ public class ProductiveSaplingBlock extends SaplingBlock
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> tooltips, TooltipFlag flag) {
         if (stack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveSaplingBlock saplingBlock) {
             tooltips.add(Component.translatable("block." + ProductiveTrees.MODID + "." + saplingBlock.treeObject.getId().getPath() + ".latin").withStyle(ChatFormatting.DARK_GREEN).withStyle(ChatFormatting.ITALIC));
+            super.appendHoverText(stack, blockGetter, tooltips, flag);
+            String configurations = "";
+            if (!saplingBlock.treeObject.getFeature().equals(TreeRegistrator.NULL_FEATURE)) {
+                configurations += "1x1 ";
+            }
+            if (!saplingBlock.treeObject.getMegaFeature().equals(TreeRegistrator.NULL_FEATURE)) {
+                configurations += "2x2 ";
+            }
+            if (!configurations.isEmpty()) {
+                tooltips.add(Component.translatable(ProductiveTrees.MODID + ".sapling.configurations", configurations).withStyle(ChatFormatting.GOLD));
+            }
+        } else {
+            super.appendHoverText(stack, blockGetter, tooltips, flag);
         }
-        super.appendHoverText(stack, blockGetter, tooltips, flag);
     }
 
     @Override

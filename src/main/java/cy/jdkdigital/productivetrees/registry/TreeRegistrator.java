@@ -13,6 +13,7 @@ import cy.jdkdigital.productivetrees.common.item.PollenItem;
 import cy.jdkdigital.productivetrees.common.item.SieveUpgradeItem;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.TaperedFoliagePlacer;
 import cy.jdkdigital.productivetrees.feature.trunkplacers.CenteredUpwardsBranchingTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.UnlimitedStraightTrunkPlacer;
 import cy.jdkdigital.productivetrees.inventory.PollenSifterContainer;
 import cy.jdkdigital.productivetrees.inventory.SawmillContainer;
 import cy.jdkdigital.productivetrees.inventory.StripperContainer;
@@ -36,6 +37,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -80,7 +82,7 @@ public class TreeRegistrator
                 .title(Component.translatable("itemGroup." + ProductiveTrees.MODID))
                 .build();
     });
-    public static final RegistryObject<Block> POLLINATED_LEAVES = ProductiveTrees.BLOCKS.register("pollinated_leaves", () -> new PollinatedLeaves(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
+    public static final RegistryObject<Block> POLLINATED_LEAVES = registerBlock("pollinated_leaves", () -> new PollinatedLeaves(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)), false);
     public static final RegistryObject<BlockEntityType<PollinatedLeavesBlockEntity>> POLLINATED_LEAVES_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("pollinated_leaves", () -> BlockEntityType.Builder.of(PollinatedLeavesBlockEntity::new, POLLINATED_LEAVES.get()).build(null));
     public static final RegistryObject<Block> STRIPPER = registerBlock("stripper", () -> new Stripper(BlockBehaviour.Properties.copy(Blocks.STONECUTTER).noOcclusion()), true);
     public static final RegistryObject<BlockEntityType<StripperBlockEntity>> STRIPPER_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("stripper", () -> BlockEntityType.Builder.of(StripperBlockEntity::new, STRIPPER.get()).build(null));
@@ -92,7 +94,7 @@ public class TreeRegistrator
     public static final RegistryObject<BlockEntityType<PollenSifterBlockEntity>> POLLEN_SIFTER_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("pollen_sifter", () -> BlockEntityType.Builder.of(PollenSifterBlockEntity::new, POLLEN_SIFTER.get()).build(null));
     public static final RegistryObject<Block> ENTITY_SPAWNER = ProductiveTrees.BLOCKS.register("entity_spawner", () -> new EntitySpawner(BlockBehaviour.Properties.copy(Blocks.AIR)));
     public static final RegistryObject<BlockEntityType<EntitySpawnerBlockEntity>> ENTITY_SPAWNER_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("entity_spawner", () -> BlockEntityType.Builder.of(EntitySpawnerBlockEntity::new, ENTITY_SPAWNER.get()).build(null));
-    public static final RegistryObject<Block> TIME_TRAVELLER_DISPLAY = registerBlock("time_traveller_display", () -> new TimeTravellerDisplay(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)), true);
+    public static final RegistryObject<Block> TIME_TRAVELLER_DISPLAY = registerBlock("time_traveller_display", () -> new TimeTravellerDisplay(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).noOcclusion()), true);
     public static final RegistryObject<BlockEntityType<TimeTravellerDisplayBlockEntity>> TIME_TRAVELLER_DISPLAY_BLOCK_ENTITY = ProductiveTrees.BLOCK_ENTITIES.register("time_traveller_display", () -> BlockEntityType.Builder.of(TimeTravellerDisplayBlockEntity::new, TIME_TRAVELLER_DISPLAY.get()).build(null));
 
     public static final RegistryObject<MenuType<StripperContainer>> STRIPPER_MENU = ProductiveTrees.CONTAINER_TYPES.register("stripper", () ->
@@ -122,6 +124,7 @@ public class TreeRegistrator
     public static final RegistryObject<Item> RUBBER = registerItem("rubber");
     public static final RegistryObject<Item> MAPLE_SYRUP = registerItem("maple_syrup", () -> new Item(new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE)));
     public static final RegistryObject<Item> SANDALWOOD_OIL = registerItem("sandalwood_oil");
+    public static final RegistryObject<Item> DATE_PALM_JUICE = registerItem("date_palm_juice", () -> new Item(new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE)));
 
     public static final RegistryObject<RecipeSerializer<?>> TREE_POLLINATION = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_pollination", () -> new TreePollinationRecipe.Serializer<>(TreePollinationRecipe::new));
     public static final RegistryObject<RecipeType<TreePollinationRecipe>> TREE_POLLINATION_TYPE = ProductiveTrees.RECIPE_TYPES.register("tree_pollination", () -> new RecipeType<>() {});
@@ -134,6 +137,7 @@ public class TreeRegistrator
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> NULL_FEATURE = FeatureUtils.createKey(ProductiveTrees.MODID + ":null");
     public static final RegistryObject<TrunkPlacerType<CenteredUpwardsBranchingTrunkPlacer>> CENTERED_UPWARDS_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("centered_upwards_branching_trunk_placer", () -> new TrunkPlacerType<>(CenteredUpwardsBranchingTrunkPlacer.CODEC));
+    public static final RegistryObject<TrunkPlacerType<UnlimitedStraightTrunkPlacer>> UNLIMITED_STRAIGHT_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("unlimited_straight_trunk_placer", () -> new TrunkPlacerType<>(UnlimitedStraightTrunkPlacer.CODEC));
     public static final RegistryObject<FoliagePlacerType<TaperedFoliagePlacer>> TAPERED_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("tapered_foliage_placer", () -> new FoliagePlacerType<>(TaperedFoliagePlacer.CODEC));
     public static final RegistryObject<TreeDecoratorType<FruitLeafReplacerDecorator>> FRUIT_LEAF_REPLACER = ProductiveTrees.TREE_DECORATORS.register("fruit_leaf_replacer", () -> new TreeDecoratorType<>(FruitLeafReplacerDecorator.CODEC));
     public static final RegistryObject<TreeDecoratorType<FruitLeafPlacerDecorator>> FRUIT_LEAF_PLACER = ProductiveTrees.TREE_DECORATORS.register("fruit_leaf_placer", () -> new TreeDecoratorType<>(FruitLeafPlacerDecorator.CODEC));
@@ -207,6 +211,7 @@ public class TreeRegistrator
         add(new CropConfig("jackfruit", BIG_FRUIT_FOOD));
         add(new CropConfig("hala_fruit", BIG_FRUIT_FOOD));
         add(new CropConfig("soursop", BIG_FRUIT_FOOD));
+        add(new CropConfig("baobab_fruit", BIG_FRUIT_FOOD));
 
         add(new CropConfig("lime", CITRUS_FOOD));
         add(new CropConfig("key_lime", CITRUS_FOOD));
@@ -287,7 +292,11 @@ public class TreeRegistrator
     public static final RegistryObject<Item> NUTMEG = registerItem("nutmeg");
     public static final RegistryObject<Item> STAR_ANISE = registerItem("star_anise");
     public static final RegistryObject<Item> CORK = registerItem("cork");
-    public static final RegistryObject<Item> PLANET_PEACH = registerItem("planet_peach");
+    public static final RegistryObject<Item> PLANET_PEACH = registerItem("planet_peach", Foods.GOLDEN_CARROT);
+
+    // Various
+    public static final RegistryObject<Block> AMBER_PUDDLE = registerBlock("brown_amber_puddle", () -> new SnowLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW).noOcclusion().sound(SoundType.SLIME_BLOCK)), false);
+    public static final RegistryObject<Block> COCONUT_SPROUT = registerBlock("coconut_sprout", () -> new CoconutSproutBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape()), true);
 
     public static RegistryObject<Item> registerItem(String name) {
         return registerItem(name, () -> new Item(new Item.Properties()));

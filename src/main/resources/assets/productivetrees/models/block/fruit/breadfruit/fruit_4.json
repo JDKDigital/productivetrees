@@ -1,0 +1,60 @@
+{
+  "textures": {
+    "6": "productivetrees:block/fruit/breadfruit/breadfruit_mid",
+    "particle": "#6"
+  },
+  "elements": [
+    {
+      "name": "stalk",
+      "from": [6.5, 13, 6.5],
+      "to": [7.5, 16, 7.5],
+      "faces": {
+        "north": {"uv": [14, 0, 15, 3], "texture": "#6"},
+        "east": {"uv": [14, 0, 15, 3], "texture": "#6"},
+        "south": {"uv": [14, 0, 15, 3], "texture": "#6"},
+        "west": {"uv": [14, 0, 15, 3], "texture": "#6"},
+        "up": {"uv": [14, 3, 15, 4], "texture": "#6"},
+        "down": {"uv": [14, 3, 15, 4], "texture": "#6"}
+      }
+    },
+    {
+      "name": "fruit",
+      "from": [5, 9, 5],
+      "to": [9, 13, 9],
+      "faces": {
+        "north": {"uv": [0, 0, 4, 4], "texture": "#6"},
+        "east": {"uv": [0, 0, 4, 4], "texture": "#6"},
+        "south": {"uv": [0, 0, 4, 4], "texture": "#6"},
+        "west": {"uv": [0, 0, 4, 4], "texture": "#6"},
+        "up": {"uv": [0, 4, 4, 8], "texture": "#6"},
+        "down": {"uv": [0, 8, 4, 12], "texture": "#6"}
+      }
+    },
+    {
+      "name": "stalk",
+      "from": [11.5, 14, 11.5],
+      "to": [12.5, 16, 12.5],
+      "faces": {
+        "north": {"uv": [15, 0, 16, 2], "texture": "#6"},
+        "east": {"uv": [15, 0, 16, 2], "texture": "#6"},
+        "south": {"uv": [15, 0, 16, 2], "texture": "#6"},
+        "west": {"uv": [15, 0, 16, 2], "texture": "#6"},
+        "up": {"uv": [15, 2, 16, 3], "texture": "#6"},
+        "down": {"uv": [15, 2, 16, 3], "texture": "#6"}
+      }
+    },
+    {
+      "name": "fruit",
+      "from": [10, 10, 10],
+      "to": [14, 14, 14],
+      "faces": {
+        "north": {"uv": [4, 0, 8, 4], "texture": "#6"},
+        "east": {"uv": [4, 0, 8, 4], "texture": "#6"},
+        "south": {"uv": [4, 0, 8, 4], "texture": "#6"},
+        "west": {"uv": [4, 0, 8, 4], "texture": "#6"},
+        "up": {"uv": [4, 4, 8, 8], "texture": "#6"},
+        "down": {"uv": [4, 8, 8, 12], "texture": "#6"}
+      }
+    }
+  ]
+}

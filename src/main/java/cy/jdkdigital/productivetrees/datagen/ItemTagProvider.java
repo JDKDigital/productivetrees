@@ -2,6 +2,7 @@ package cy.jdkdigital.productivetrees.datagen;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.ModTags;
+import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -46,16 +47,31 @@ public class ItemTagProvider extends ItemTagsProvider
         copy(cy.jdkdigital.productivebees.init.ModTags.HIVES_BLOCK, cy.jdkdigital.productivebees.init.ModTags.HIVES);
         copy(cy.jdkdigital.productivebees.init.ModTags.BOXES_BLOCK, cy.jdkdigital.productivebees.init.ModTags.BOXES);
 
+        // Serene seasons compat
         copy(BlockTags.create(new ResourceLocation("sereneseasons:spring_crops")), ItemTags.create(new ResourceLocation("sereneseasons:spring_crops")));
         copy(BlockTags.create(new ResourceLocation("sereneseasons:summer_crops")), ItemTags.create(new ResourceLocation("sereneseasons:summer_crops")));
         copy(BlockTags.create(new ResourceLocation("sereneseasons:autumn_crops")), ItemTags.create(new ResourceLocation("sereneseasons:autumn_crops")));
         copy(BlockTags.create(new ResourceLocation("sereneseasons:winter_crops")), ItemTags.create(new ResourceLocation("sereneseasons:winter_crops")));
+
+        // Diet compat
+        var dietFruitsTag = tag(ItemTags.create(new ResourceLocation("diet:fruits")));
+        var dietProteinsTag = tag(ItemTags.create(new ResourceLocation("diet:proteins")));
+        var dietIngredientsTag = tag(ItemTags.create(new ResourceLocation("diet:ingredients")));
+
+        // Create compat
+        var moddedStrippedLogs = tag(ItemTags.create(new ResourceLocation("create:modded_stripped_logs")));
+        var moddedStrippedWood = tag(ItemTags.create(new ResourceLocation("create:modded_stripped_wood")));
+        TreeFinder.trees.forEach((id, treeObject) -> {
+            moddedStrippedLogs.add(treeObject.getStrippedLogBlock().get().asItem());
+            moddedStrippedWood.add(treeObject.getStrippedWoodBlock().get().asItem());
+        });
 
         tag(ModTags.SAWDUST).add(TreeRegistrator.SAWDUST.get());
         tag(ModTags.DUSTS_WOOD).addTag(ModTags.SAWDUST);
         tag(ModTags.DUSTS).addTag(ModTags.DUSTS_WOOD);
         tag(ModTags.CINNAMON).add(TreeRegistrator.CINNAMON.get());
         tag(ModTags.MAPLE_SYRUP).add(TreeRegistrator.MAPLE_SYRUP.get());
+        tag(ModTags.DATE_PALM_JUICE).add(TreeRegistrator.DATE_PALM_JUICE.get());
         tag(ModTags.CORK).add(TreeRegistrator.CORK.get());
         tag(ModTags.RUBBER).add(TreeRegistrator.RUBBER.get());
         tag(Tags.Items.DYES_YELLOW).add(TreeRegistrator.FUSTIC.get());
@@ -64,24 +80,40 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(Tags.Items.DYES_RED).add(TreeRegistrator.DRACAENA_SAP.get(), TreeRegistrator.HAEMATOXYLIN.get());
 
         TreeRegistrator.BERRIES.forEach(cropConfig ->  {
-            var tagKey = ItemTags.create(new ResourceLocation("forge", "berries/" + cropConfig.name()));
+            var tagKey = ItemTags.create(new ResourceLocation("forge", "berries/" + tagName(cropConfig.name())));
+            var tagKeyFruit = ItemTags.create(new ResourceLocation("forge", "fruits/" + tagName(cropConfig.name())));
+            var tagKeyCrop = ItemTags.create(new ResourceLocation("forge", "crops/" + tagName(cropConfig.name())));
             tag(tagKey).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.BERRIES).addTag(tagKey);
+            dietFruitsTag.addTag(tagKey);
+            tag(tagKeyFruit).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            tag(ModTags.FRUITS).addTag(tagKeyFruit);
+            tag(tagKeyCrop).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            tag(ModTags.CROPS).addTag(tagKeyCrop);
         });
         TreeRegistrator.FRUITS.forEach(cropConfig ->  {
-            var tagKey = ItemTags.create(new ResourceLocation("forge", "fruits/" + cropConfig.name()));
+            var tagKey = ItemTags.create(new ResourceLocation("forge", "fruits/" + tagName(cropConfig.name())));
+            var tagKeyCrop = ItemTags.create(new ResourceLocation("forge", "crops/" + tagName(cropConfig.name())));
             tag(tagKey).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.FRUITS).addTag(tagKey);
+            dietFruitsTag.addTag(tagKey);
+            tag(tagKeyCrop).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            tag(ModTags.CROPS).addTag(tagKeyCrop);
         });
         TreeRegistrator.NUTS.forEach(cropConfig ->  {
-            var tagKey = ItemTags.create(new ResourceLocation("forge", "nuts/" + cropConfig.name()));
+            var tagKey = ItemTags.create(new ResourceLocation("forge", "nuts/" + tagName(cropConfig.name())));
+            var tagKeyCrop = ItemTags.create(new ResourceLocation("forge", "crops/" + tagName(cropConfig.name())));
             tag(tagKey).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.NUTS).addTag(tagKey);
+            dietProteinsTag.addTag(tagKey);
+            tag(tagKeyCrop).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            tag(ModTags.CROPS).addTag(tagKeyCrop);
         });
         TreeRegistrator.ROASTED_NUTS.forEach(cropConfig ->  {
-            var tagKey = ItemTags.create(new ResourceLocation("forge", "nuts/" + cropConfig.name()));
+            var tagKey = ItemTags.create(new ResourceLocation("forge", "nuts/" + tagName(cropConfig.name())));
             tag(tagKey).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.NUTS).addTag(tagKey);
+            dietProteinsTag.addTag(tagKey);
         });
 
         tag(ModTags.FRUITS_APPLE).add(
@@ -95,7 +127,23 @@ public class ItemTagProvider extends ItemTagsProvider
                 ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "prairie_crabapple")),
                 ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "flowering_crabapple"))
         );
-        tag(ModTags.FRUITS).addTags(ModTags.FRUITS_APPLE, ModTags.FRUITS_CRABAPPLE);
+        tag(ModTags.FRUITS_CHERRY).add(
+                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "black_cherry")),
+                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "sour_cherry")),
+                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "sparkling_cherry")),
+                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "wild_cherry"))
+        );
+        tag(ModTags.FRUITS).addTags(ModTags.FRUITS_APPLE, ModTags.FRUITS_CRABAPPLE, ModTags.FRUITS_CHERRY);
+
+        dietIngredientsTag.add(
+                TreeRegistrator.ALLSPICE.get(),
+                TreeRegistrator.CAROB.get(),
+                TreeRegistrator.COFFEE_BEAN.get(),
+                TreeRegistrator.CLOVE.get(),
+                TreeRegistrator.CINNAMON.get(),
+                TreeRegistrator.NUTMEG.get(),
+                TreeRegistrator.STAR_ANISE.get()
+        );
 
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
         TreeRegistrator.CRATED_CROPS.forEach(cratePath ->  {
@@ -103,6 +151,16 @@ public class ItemTagProvider extends ItemTagsProvider
             var tagKey = ItemTags.create(new ResourceLocation("forge", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
             copy(blockTagKey, tagKey);
         });
+    }
+
+    private String tagName(String cropName) {
+        if (cropName.equals("star_fruit")) {
+            return "starfruit";
+        }
+        if (cropName.equals("juniper_berry")) {
+            return "juniperberry";
+        }
+        return cropName;
     }
 
     @Override

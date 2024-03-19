@@ -1,7 +1,0 @@
-{
-  "parent": "productivetrees:block/fruit/base_fruit",
-  "textures": {
-    "all": "productivetrees:block/leaves/coconut",
-    "plant": "productivetrees:block/fruit/coconut/stage_6"
-  }
-}

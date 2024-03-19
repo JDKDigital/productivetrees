@@ -28,9 +28,10 @@ public final class TreetapRecipeBuilder implements RecipeBuilder
     private final FluidStack displayFluid;
     private final boolean collectBucket;
     private final int processingTime;
+    private final int blocksRequired;
     public final Advancement.Builder advancement = Advancement.Builder.recipeAdvancement();
 
-    private TreetapRecipeBuilder(Ingredient log, ItemStack result, ItemStack harvestItem, String fluidColor, FluidStack displayFluid, boolean collectBucket, int processingTime) {
+    private TreetapRecipeBuilder(Ingredient log, ItemStack result, ItemStack harvestItem, String fluidColor, FluidStack displayFluid, boolean collectBucket, int processingTime, int blocksRequired) {
         this.log = log;
         this.result = result;
         this.harvestItem = harvestItem;
@@ -38,10 +39,11 @@ public final class TreetapRecipeBuilder implements RecipeBuilder
         this.displayFluid = displayFluid;
         this.collectBucket = collectBucket;
         this.processingTime = processingTime;
+        this.blocksRequired = blocksRequired;
     }
 
     public static TreetapRecipeBuilder direct(Ingredient log, ItemStack result, ItemStack harvestItem, String fluidColor, FluidStack displayFluid, boolean collectBucket, int processingTime) {
-        return new TreetapRecipeBuilder(log, result, harvestItem, fluidColor, displayFluid, collectBucket, processingTime);
+        return new TreetapRecipeBuilder(log, result, harvestItem, fluidColor, displayFluid, collectBucket, processingTime, 5);
     }
 
     public static TreetapRecipeBuilder direct(Block log, ItemStack result, FluidStack fluid, int processingTime) {
@@ -74,11 +76,11 @@ public final class TreetapRecipeBuilder implements RecipeBuilder
 
     @Override
     public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
-        consumer.accept(new Result(id, log, result, harvestItem, fluidColor, displayFluid, collectBucket, processingTime, this.advancement));
+        consumer.accept(new Result(id, log, result, harvestItem, fluidColor, displayFluid, collectBucket, processingTime, blocksRequired, this.advancement));
     }
 
     record Result(ResourceLocation id, Ingredient log, ItemStack result, ItemStack harvestItem, String fluidColor,
-                  FluidStack displayFluid, boolean collectBucket, int processingTime,
+                  FluidStack displayFluid, boolean collectBucket, int processingTime, int blocksRequired,
                   Advancement.Builder advancement) implements FinishedRecipe
     {
         @Override
@@ -91,6 +93,9 @@ public final class TreetapRecipeBuilder implements RecipeBuilder
             }
             if (collectBucket) {
                 json.addProperty("collect_bucket", true);
+            }
+            if (blocksRequired > 1) {
+                json.addProperty("required_block_count", blocksRequired);
             }
             if (!displayFluid.isEmpty()) {
                 json.add("display_fluid", RecipeUtil.fluidToJson(displayFluid));

@@ -1,0 +1,60 @@
+{
+  "textures": {
+    "8": "productivetrees:block/fruit/cempedak/cempedak_almost_mature",
+    "particle": "productivetrees:block/fruit/cempedak/cempedak_almost_mature"
+  },
+  "elements": [
+    {
+      "name": "fruit_small",
+      "from": [1.5, 5, 3.5],
+      "to": [6.5, 15, 8.5],
+      "faces": {
+        "north": {"uv": [5, 0, 10, 10], "texture": "#8"},
+        "east": {"uv": [5, 0, 10, 10], "texture": "#8"},
+        "south": {"uv": [5, 0, 10, 10], "texture": "#8"},
+        "west": {"uv": [5, 0, 10, 10], "texture": "#8"},
+        "up": {"uv": [10, 5, 15, 10], "texture": "#8"},
+        "down": {"uv": [10, 5, 15, 10], "texture": "#8"}
+      }
+    },
+    {
+      "name": "stem",
+      "from": [10.5, 14, 10.5],
+      "to": [11.5, 16, 11.5],
+      "faces": {
+        "north": {"uv": [15, 0, 16, 2], "texture": "#8"},
+        "east": {"uv": [15, 0, 16, 2], "texture": "#8"},
+        "south": {"uv": [15, 0, 16, 2], "texture": "#8"},
+        "west": {"uv": [15, 0, 16, 2], "texture": "#8"},
+        "up": {"uv": [15, 1, 16, 2], "texture": "#8"},
+        "down": {"uv": [15, 0, 16, 1], "texture": "#8"}
+      }
+    },
+    {
+      "name": "fruit_big",
+      "from": [8.5, 1, 8.5],
+      "to": [13.5, 14, 13.5],
+      "faces": {
+        "north": {"uv": [0, 0, 5, 13], "texture": "#8"},
+        "east": {"uv": [0, 0, 5, 13], "texture": "#8"},
+        "south": {"uv": [0, 0, 5, 13], "texture": "#8"},
+        "west": {"uv": [0, 0, 5, 13], "texture": "#8"},
+        "up": {"uv": [10, 0, 15, 5], "texture": "#8"},
+        "down": {"uv": [10, 0, 15, 5], "texture": "#8"}
+      }
+    },
+    {
+      "name": "stem",
+      "from": [3.5, 15, 5.5],
+      "to": [4.5, 16, 6.5],
+      "faces": {
+        "north": {"uv": [15, 1, 16, 2], "texture": "#8"},
+        "east": {"uv": [15, 0, 16, 1], "texture": "#8"},
+        "south": {"uv": [15, 0, 16, 1], "texture": "#8"},
+        "west": {"uv": [15, 0, 16, 1], "texture": "#8"},
+        "up": {"uv": [15, 0, 16, 1], "texture": "#8"},
+        "down": {"uv": [15, 0, 16, 1], "texture": "#8"}
+      }
+    }
+  ]
+}

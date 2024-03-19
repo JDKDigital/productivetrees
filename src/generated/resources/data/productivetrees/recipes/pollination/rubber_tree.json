@@ -1,0 +1,13 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 10,
+  "leafA": {
+    "item": "productivetrees:sweetgum_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:loblolly_pine_leaves"
+  },
+  "result": {
+    "item": "productivetrees:rubber_tree_sapling"
+  }
+}

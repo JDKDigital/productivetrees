@@ -107,6 +107,7 @@ public class BlockstateProvider implements DataProvider
         generateFlatItem(TreeRegistrator.RUBBER.get(), "item/", modelOutput);
         generateFlatItem(TreeRegistrator.MAPLE_SAP_BUCKET.get(), "item/", modelOutput);
         generateFlatItem(TreeRegistrator.MAPLE_SYRUP.get(), "item/", modelOutput);
+        generateFlatItem(TreeRegistrator.DATE_PALM_JUICE.get(), "item/", modelOutput);
         generateFlatItem(TreeRegistrator.SANDALWOOD_OIL.get(), "item/", modelOutput);
 
         TreeRegistrator.BERRIES.forEach(cropConfig ->  {

@@ -6,17 +6,13 @@ import cy.jdkdigital.productivetrees.registry.TreeObject;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.phys.BlockHitResult;
 
 public class ProductiveLeavesBlock extends LeavesBlock
 {
@@ -41,14 +37,28 @@ public class ProductiveLeavesBlock extends LeavesBlock
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        // TODO remove before launch
-        if (pPlayer.getItemInHand(pHand).is(Items.BONE_MEAL) && pState.getBlock() instanceof ProductiveLeavesBlock leaf) {
-            if (leaf.getTree().hasFruit()) {
-                pLevel.setBlockAndUpdate(pPos, leaf.getTree().getFruitBlock().get().defaultBlockState().setValue(BlockStateProperties.PERSISTENT, true));
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        pLevel.setBlock(pPos, updateDistance(pState, pLevel, pPos), 3);
+    }
+
+    private static BlockState updateDistance(BlockState pState, LevelAccessor pLevel, BlockPos pPos) {
+        int i = 7;
+        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
+
+        for (var x = -1; x <= 1; x++) {
+            for (var y = -1; y <= 1; y++) {
+                for (var z = -1; z <= 1; z++) {
+                    if (z == 0 && x == 0 && y == 0) continue;
+                    mutableBlockPos.setWithOffset(pPos, x, y, z);
+                    i = Math.min(i, getOptionalDistanceAt(pLevel.getBlockState(mutableBlockPos)).orElse(7) + 1);
+                    if (i == 1) {
+                        break;
+                    }
+                }
             }
         }
-        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+
+        return pState.setValue(DISTANCE, i);
     }
 
     public TreeObject getTree() {

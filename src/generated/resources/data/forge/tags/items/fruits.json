@@ -1,5 +1,10 @@
 {
   "values": [
+    "#forge:fruits/elderberry",
+    "#forge:fruits/juniperberry",
+    "#forge:fruits/sloe",
+    "#forge:fruits/haw",
+    "#forge:fruits/asai_berry",
     "#forge:fruits/apricot",
     "#forge:fruits/black_cherry",
     "#forge:fruits/cherry_plum",
@@ -31,7 +36,7 @@
     "#forge:fruits/sand_pear",
     "#forge:fruits/satsuma",
     "#forge:fruits/snake_fruit",
-    "#forge:fruits/star_fruit",
+    "#forge:fruits/starfruit",
     "#forge:fruits/tangerine",
     "#forge:fruits/sweetsop",
     "#forge:fruits/coconut",
@@ -44,6 +49,7 @@
     "#forge:fruits/jackfruit",
     "#forge:fruits/hala_fruit",
     "#forge:fruits/soursop",
+    "#forge:fruits/baobab_fruit",
     "#forge:fruits/lime",
     "#forge:fruits/key_lime",
     "#forge:fruits/finger_lime",
@@ -53,6 +59,7 @@
     "#forge:fruits/mandarin",
     "#forge:fruits/buddhas_hand",
     "#forge:fruits/apple",
-    "#forge:fruits/crabapple"
+    "#forge:fruits/crabapple",
+    "#forge:fruits/cherry"
   ]
 }

@@ -81,8 +81,12 @@ public class TreeCreator
             treeObject.setLeafBlock(registerBlock(name + "_leaves", () -> new ProductiveLeavesBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject)));
             // Register fruit block + BE
             if (treeObject.hasFruit()) {
-                if (name.equals("brown_amber")) {
-                    treeObject.setFruitBlock(ProductiveTrees.BLOCKS.register(name + "_fruit", () -> new ProductiveDrippyFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject)));
+                if (name.equals("coconut")) {
+                    treeObject.setFruitBlock(ProductiveTrees.BLOCKS.register(name + "_fruit", () -> new ProductiveDroppyFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject, TreeRegistrator.COCONUT_SPROUT)));
+                } else if (name.equals("brown_amber")) {
+                    treeObject.setFruitBlock(ProductiveTrees.BLOCKS.register(name + "_fruit", () -> new ProductiveDrippyFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject, TreeRegistrator.AMBER_PUDDLE)));
+                } else if (!treeObject.getFruit().style().equals("default")) {
+                    treeObject.setFruitBlock(ProductiveTrees.BLOCKS.register(name + "_fruit", () -> new ProductiveDanglerFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null).offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape(), treeObject)));
                 } else {
                     treeObject.setFruitBlock(ProductiveTrees.BLOCKS.register(name + "_fruit", () -> new ProductiveFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject)));
                 }
@@ -136,9 +140,6 @@ public class TreeCreator
                 registerBlock("monkey_puzzle_small_leaves", () -> new ProductiveDirectionalLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), treeObject));
                 registerBlock("monkey_puzzle_medium_leaves", () -> new ProductiveDirectionalLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), treeObject));
             }
-            if (name.equals("brown_amber")) {
-                registerBlock("brown_amber_puddle", () -> new SnowLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW).noOcclusion().sound(SoundType.SLIME_BLOCK)), false);
-            }
 
             return treeObject;
         } else {
@@ -179,5 +180,4 @@ public class TreeCreator
         }
         return behavior;
     }
-
 }

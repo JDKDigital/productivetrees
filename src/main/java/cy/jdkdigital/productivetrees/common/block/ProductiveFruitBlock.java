@@ -61,7 +61,7 @@ public class ProductiveFruitBlock extends ProductiveLeavesBlock
 
     @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
-        return new ItemStack(treeObject.getLeafBlock().get());
+        return new ItemStack(treeObject.getFruit().getItem().getItem());
     }
 
     public BlockState getStateForAge(BlockState currentState, int age) {

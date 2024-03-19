@@ -150,14 +150,21 @@ dependencies {
     implementation fg.deobf("curse.maven:bookshelf-228525:4668763")
     implementation fg.deobf("curse.maven:botany-pots-353928:4703902")
     implementation fg.deobf("curse.maven:botany-trees-411357:4694737")
+    implementation fg.deobf("curse.maven:cofh-core-69162:4970669")
+    implementation fg.deobf("curse.maven:thermal-foundation-222880:4970702")
+    implementation fg.deobf("curse.maven:thermal-expansion-69163:4970700")
 
     implementation fg.deobf("curse.maven:jei-238222:4712868")
     implementation fg.deobf("curse.maven:the-one-probe-245211:4629624")
     implementation fg.deobf("curse.maven:fast-leaf-decay-230976:4620069")
 
-    implementation fg.deobf("curse.maven:cofh-core-69162:4970669")
-    implementation fg.deobf("curse.maven:thermal-foundation-222880:4970702")
-    implementation fg.deobf("curse.maven:thermal-expansion-69163:4970700")
+    implementation fg.deobf("curse.maven:farmers-delight-398521:5051242")
+    implementation fg.deobf("curse.maven:epherolib-885449:4889101")
+    implementation fg.deobf("curse.maven:croptopia-415438:4997459")
+    implementation fg.deobf("curse.maven:pams-harvestcraft-2-food-core-372534:5020789")
+    implementation fg.deobf("curse.maven:pams-harvestcraft-2-crops-361385:4687624")
+    implementation fg.deobf("curse.maven:pams-harvestcraft-2-pams-harvestcraft-2-trees-365460:4625518")
+    implementation fg.deobf("curse.maven:pams-harvestcraft-2-food-extended-402231:4606448")
 }
 
 def resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta']

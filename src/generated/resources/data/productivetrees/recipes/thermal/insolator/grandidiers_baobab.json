@@ -18,6 +18,10 @@
     {
       "chance": 1.1,
       "item": "productivetrees:grandidiers_baobab_sapling"
+    },
+    {
+      "chance": 0.5,
+      "item": "productivetrees:baobab_fruit"
     }
   ],
   "water_mod": 3.0

@@ -1,0 +1,29 @@
+{
+  "values": [
+    "#forge:nuts/almond",
+    "#forge:nuts/beechnut",
+    "#forge:nuts/brazil_nut",
+    "#forge:nuts/butternut",
+    "#forge:nuts/candlenut",
+    "#forge:nuts/cashew",
+    "#forge:nuts/chestnut",
+    "#forge:nuts/ginkgo_nut",
+    "#forge:nuts/hazelnut",
+    "#forge:nuts/pecan",
+    "#forge:nuts/pistachio",
+    "#forge:nuts/walnut",
+    "#forge:nuts/roasted_almond",
+    "#forge:nuts/roasted_beechnut",
+    "#forge:nuts/roasted_brazil_nut",
+    "#forge:nuts/roasted_butternut",
+    "#forge:nuts/roasted_candlenut",
+    "#forge:nuts/roasted_cashew",
+    "#forge:nuts/roasted_chestnut",
+    "#forge:nuts/roasted_ginkgo_nut",
+    "#forge:nuts/roasted_hazelnut",
+    "#forge:nuts/roasted_pecan",
+    "#forge:nuts/roasted_pistachio",
+    "#forge:nuts/roasted_walnut",
+    "#forge:nuts/roasted_coffee_bean"
+  ]
+}

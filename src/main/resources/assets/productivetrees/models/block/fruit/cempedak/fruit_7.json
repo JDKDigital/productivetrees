@@ -1,0 +1,60 @@
+{
+  "textures": {
+    "7": "productivetrees:block/fruit/cempedak/cempedak_mature",
+    "particle": "productivetrees:block/fruit/cempedak/cempedak_mature"
+  },
+  "elements": [
+    {
+      "name": "fruit_small",
+      "from": [1.5, 4, 3.5],
+      "to": [6.5, 16, 8.5],
+      "faces": {
+        "north": {"uv": [5, 0, 10, 11], "texture": "#7"},
+        "east": {"uv": [5, 0, 10, 11], "texture": "#7"},
+        "south": {"uv": [5, 0, 10, 11], "texture": "#7"},
+        "west": {"uv": [5, 0, 10, 11], "texture": "#7"},
+        "up": {"uv": [10, 5, 15, 10], "texture": "#7"},
+        "down": {"uv": [10, 5, 15, 10], "texture": "#7"}
+      }
+    },
+    {
+      "name": "stem",
+      "from": [10.5, 14, 10.5],
+      "to": [11.5, 17, 11.5],
+      "faces": {
+        "north": {"uv": [15, 0, 16, 2], "texture": "#7"},
+        "east": {"uv": [15, 0, 16, 2], "texture": "#7"},
+        "south": {"uv": [15, 0, 16, 2], "texture": "#7"},
+        "west": {"uv": [15, 0, 16, 2], "texture": "#7"},
+        "up": {"uv": [15, 1, 16, 2], "texture": "#7"},
+        "down": {"uv": [15, 0, 16, 1], "texture": "#7"}
+      }
+    },
+    {
+      "name": "fruit_big",
+      "from": [8.5, 0, 8.5],
+      "to": [13.5, 15, 13.5],
+      "faces": {
+        "north": {"uv": [0, 0, 5, 14], "texture": "#7"},
+        "east": {"uv": [0, 0, 5, 14], "texture": "#7"},
+        "south": {"uv": [0, 0, 5, 14], "texture": "#7"},
+        "west": {"uv": [0, 0, 5, 14], "texture": "#7"},
+        "up": {"uv": [10, 0, 15, 5], "texture": "#7"},
+        "down": {"uv": [10, 0, 15, 5], "texture": "#7"}
+      }
+    },
+    {
+      "name": "stem",
+      "from": [3.5, 15, 5.5],
+      "to": [4.5, 17, 6.5],
+      "faces": {
+        "north": {"uv": [15, 1, 16, 2], "texture": "#7"},
+        "east": {"uv": [15, 0, 16, 1], "texture": "#7"},
+        "south": {"uv": [15, 0, 16, 1], "texture": "#7"},
+        "west": {"uv": [15, 0, 16, 1], "texture": "#7"},
+        "up": {"uv": [15, 0, 16, 1], "texture": "#7"},
+        "down": {"uv": [15, 0, 16, 1], "texture": "#7"}
+      }
+    }
+  ]
+}

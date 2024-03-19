@@ -1,0 +1,60 @@
+{
+  "textures": {
+    "6": "productivetrees:block/fruit/cempedak/cempedak_mid",
+    "particle": "productivetrees:block/fruit/cempedak/cempedak_mid"
+  },
+  "elements": [
+    {
+      "name": "fruit_small",
+      "from": [1.5, 6, 3.5],
+      "to": [6.5, 15, 8.5],
+      "faces": {
+        "north": {"uv": [5, 0, 10, 9], "texture": "#6"},
+        "east": {"uv": [5, 0, 10, 9], "texture": "#6"},
+        "south": {"uv": [5, 0, 10, 9], "texture": "#6"},
+        "west": {"uv": [5, 0, 10, 9], "texture": "#6"},
+        "up": {"uv": [5, 9, 10, 14], "texture": "#6"},
+        "down": {"uv": [5, 9, 10, 14], "texture": "#6"}
+      }
+    },
+    {
+      "name": "stem",
+      "from": [10.5, 14, 10.5],
+      "to": [11.5, 16, 11.5],
+      "faces": {
+        "north": {"uv": [15, 0, 16, 2], "texture": "#6"},
+        "east": {"uv": [15, 0, 16, 2], "texture": "#6"},
+        "south": {"uv": [15, 0, 16, 2], "texture": "#6"},
+        "west": {"uv": [15, 0, 16, 2], "texture": "#6"},
+        "up": {"uv": [15, 1, 16, 2], "texture": "#6"},
+        "down": {"uv": [15, 0, 16, 1], "texture": "#6"}
+      }
+    },
+    {
+      "name": "fruit_big",
+      "from": [8.5, 3, 8.5],
+      "to": [13.5, 14, 13.5],
+      "faces": {
+        "north": {"uv": [0, 0, 5, 11], "texture": "#6"},
+        "east": {"uv": [0, 0, 5, 11], "texture": "#6"},
+        "south": {"uv": [0, 0, 5, 11], "texture": "#6"},
+        "west": {"uv": [0, 0, 5, 11], "texture": "#6"},
+        "up": {"uv": [0, 11, 5, 16], "texture": "#6"},
+        "down": {"uv": [0, 11, 5, 16], "texture": "#6"}
+      }
+    },
+    {
+      "name": "stem",
+      "from": [3.5, 15, 5.5],
+      "to": [4.5, 16, 6.5],
+      "faces": {
+        "north": {"uv": [15, 1, 16, 2], "texture": "#6"},
+        "east": {"uv": [15, 0, 16, 1], "texture": "#6"},
+        "south": {"uv": [15, 0, 16, 1], "texture": "#6"},
+        "west": {"uv": [15, 0, 16, 1], "texture": "#6"},
+        "up": {"uv": [15, 0, 16, 1], "texture": "#6"},
+        "down": {"uv": [15, 0, 16, 1], "texture": "#6"}
+      }
+    }
+  ]
+}

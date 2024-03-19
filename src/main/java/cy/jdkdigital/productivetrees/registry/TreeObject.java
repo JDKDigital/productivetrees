@@ -59,7 +59,7 @@ public class TreeObject extends WoodObject
     public static Codec<TreeObject> codec(ResourceLocation id) {
         return RecordCodecBuilder.create(instance -> instance.group(
                 ResourceLocation.CODEC.fieldOf("id").orElse(id).forGetter(TreeObject::getId),
-                ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").orElse(null).forGetter(TreeObject::getFeature),
+                ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").orElse(TreeRegistrator.NULL_FEATURE).forGetter(TreeObject::getFeature),
                 ResourceLocation.CODEC.fieldOf("megaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : TreeRegistrator.NULL_FEATURE, (value) -> value != null ? value.location() : null).forGetter(TreeObject::getMegaFeature),
                 Codec.STRING.fieldOf("style").orElse(id.getPath()).forGetter(TreeObject::getStyleName),
                 TreeUtil.ITEM_STACK_CODEC.fieldOf("stripDrop").orElse(() -> ItemStack.EMPTY).forGetter(TreeObject::getStripDrop),

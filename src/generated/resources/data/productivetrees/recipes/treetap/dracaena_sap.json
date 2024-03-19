@@ -14,6 +14,7 @@
     "item": "productivetrees:socotra_dragon_log"
   },
   "processing_time": 1200,
+  "required_block_count": 5,
   "result": {
     "item": "productivetrees:dracaena_sap"
   }

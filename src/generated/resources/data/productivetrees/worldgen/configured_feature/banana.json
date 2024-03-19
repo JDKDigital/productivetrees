@@ -4,7 +4,7 @@
     "decorators": [
       {
         "type": "productivetrees:fruit_leaf_placer",
-        "density": 0.2,
+        "density": 0.4,
         "fruit_provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
@@ -17,7 +17,7 @@
             }
           }
         },
-        "max_fruits": 3
+        "max_fruits": 4
       }
     ],
     "dirt_provider": {
@@ -52,7 +52,7 @@
       "upper_size": 1
     },
     "trunk_placer": {
-      "type": "minecraft:straight_trunk_placer",
+      "type": "productivetrees:unlimited_straight_trunk_placer",
       "base_height": 5,
       "height_rand_a": 6,
       "height_rand_b": 0

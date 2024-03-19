@@ -2,7 +2,6 @@ package cy.jdkdigital.productivetrees.integrations.jei;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.recipe.TreeFruitingRecipe;
-import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
