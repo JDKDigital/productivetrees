@@ -186,11 +186,15 @@
     }
   },
   "black_ember": {
+    "decoration": {
+      "lightLevel": 11
+    },
     "colors": {
       "leafColor": "#af1502",
       "logColor": "#882309",
       "plankColor": "#2c0808"
-    }
+    },
+    "fireproof": true
   },
   "black_locust": {
     "colors": {
@@ -352,6 +356,7 @@
       "logColor": "#4a4c4e",
       "plankColor": "#515151"
     },
+    "fireproof": true,
     "fallingLeaves": true
   },
   "cedar": {
@@ -606,7 +611,8 @@
       "leafColor": "#fcbb43",
       "logColor": "#ffdb8b",
       "plankColor": "#fef0af"
-    }
+    },
+    "fireproof": true
   },
   "flowering_crabapple": {
     "colors": {
@@ -948,7 +954,8 @@
       "leafColor": "#651a00",
       "logColor": "#140302",
       "plankColor": "#b24629"
-    }
+    },
+    "fireproof": true
   },
   "nutmeg": {
     "colors": {
@@ -1215,6 +1222,7 @@
       "logColor": "#370073",
       "plankColor": "#d2a6fd"
     },
+    "fireproof": true,
     "fallingLeaves": true
   },
   "rainbow_gum": {
@@ -1276,7 +1284,8 @@
       "leafColor": "#233308",
       "logColor": "#1d3f1b",
       "plankColor": "#5b6f4f"
-    }
+    },
+    "fireproof": true
   },
   "rosewood": {
     "colors": {
@@ -1379,7 +1388,8 @@
       "leafColor": "#00db01",
       "logColor": "#0b7c00",
       "plankColor": "#27bb0f"
-    }
+    },
+    "fireproof": true
   },
   "socotra_dragon": {
     "colors": {
@@ -1396,7 +1406,8 @@
       "leafColor": "#ccc8c5",
       "logColor": "#d2d2d2",
       "plankColor": "#efefef"
-    }
+    },
+    "fireproof": true
   },
   "soursop": {
     "colors": {
@@ -1436,7 +1447,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fireproof": true
   },
   "star_anise": {
     "colors": {
@@ -1565,7 +1577,8 @@
       "leafColor": "#651a00",
       "logColor": "#140302",
       "plankColor": "#b24629"
-    }
+    },
+    "fireproof": true
   },
   "time_traveller": {
     "decoration": {
@@ -1575,7 +1588,8 @@
       "leafColor": "#338285",
       "logColor": "#001d1d",
       "plankColor": "#3fb4af"
-    }
+    },
+    "fireproof": true
   },
   "tuscarora_crepe_myrtle": {
     "colors": {
@@ -1597,6 +1611,7 @@
       "logColor": "#161530",
       "plankColor": "#0e4873"
     },
+    "fireproof": true,
     "fruit": {
       "style": "planet_peach",
       "item": "productivetrees:planet_peach",
@@ -1624,6 +1639,7 @@
     "decoration": {
       "lightLevel": 11
     },
+    "fireproof": true,
     "colors": {
       "leafColor": "#82b3f4",
       "logColor": "#116879",

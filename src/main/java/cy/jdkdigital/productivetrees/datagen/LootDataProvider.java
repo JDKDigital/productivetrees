@@ -113,7 +113,7 @@ public class LootDataProvider implements DataProvider
                 dropSelf(treeObject.getFenceGateBlock().get());
                 dropSelf(treeObject.getPressurePlateBlock().get());
                 dropSelf(treeObject.getButtonBlock().get());
-                createDoorTable(treeObject.getDoorBlock().get());
+                dropDoor(treeObject.getDoorBlock().get());
                 dropSelf(treeObject.getTrapdoorBlock().get());
                 dropSelf(treeObject.getBookshelfBlock().get());
                 dropSelf(treeObject.getSignBlock().get());
@@ -151,6 +151,10 @@ public class LootDataProvider implements DataProvider
         public void dropSelf(@NotNull Block block) {
             Function<Block, LootTable.Builder> func = functionTable.getOrDefault(block, LootProvider::genOptionalBlockDrop);
             this.add(block, func.apply(block));
+        }
+
+        public void dropDoor(@NotNull Block block) {
+            this.add(block, this::createDoorTable);
         }
 
         protected static @NotNull LootTable.Builder createOptionalLeavesDrops(Block block, Block sapling, float... dropChances) {

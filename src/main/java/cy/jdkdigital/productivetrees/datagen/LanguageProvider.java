@@ -30,6 +30,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add("productivetrees.information.upgrade.upgrade_pollen_sieve", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
         add("productivetrees.information.pollen", "Use on a leaf to manually pollinate it.");
         add("productivetrees.sapling.configurations", "Configurations: %s");
+        add("item.productivetrees.roasted_coffee_bean", "Roasted Coffee Beans");
 
         add(TreeRegistrator.POLLINATED_LEAVES.get(), "Pollinated Leaves");
         add(TreeRegistrator.STRIPPER.get(), "Stripper");
@@ -55,6 +56,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add(TreeRegistrator.DRACAENA_SAP.get(), "Dracaena Sap");
         add(TreeRegistrator.MAPLE_SAP_BUCKET.get(), "Maple Sap");
         add(TreeRegistrator.RUBBER.get(), "Rubber");
+        add(TreeRegistrator.SANDALWOOD_OIL.get(), "Sandalwood Oil");
 
         ProductiveTrees.ITEMS.getEntries().forEach(itemRegistryObject -> {
             if (itemRegistryObject.get().getFoodProperties() != null) {

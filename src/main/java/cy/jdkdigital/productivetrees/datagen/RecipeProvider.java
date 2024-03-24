@@ -167,12 +167,14 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
 
             var roastedNutCrate = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
             var rawNutCrate = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name().replace("roasted_", "") + "_crate"));
-            SimpleCookingRecipeBuilder.smelting(Ingredient.of(rawNutCrate), RecipeCategory.FOOD, roastedNutCrate, 0.9F, 1080)
-                    .unlockedBy(getHasName(rawNutCrate), has(rawNutCrate))
-                    .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smelting"));
-            SimpleCookingRecipeBuilder.smoking(Ingredient.of(rawNutCrate), RecipeCategory.FOOD, roastedNutCrate, 0.9F, 180)
-                    .unlockedBy(getHasName(rawNutCrate), has(rawNutCrate))
-                    .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smoking"));
+            if (rawNutCrate != null) {
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(rawNutCrate), RecipeCategory.FOOD, roastedNutCrate, 0.9F, 1080)
+                        .unlockedBy(getHasName(rawNutCrate), has(rawNutCrate))
+                        .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smelting"));
+                SimpleCookingRecipeBuilder.smoking(Ingredient.of(rawNutCrate), RecipeCategory.FOOD, roastedNutCrate, 0.9F, 180)
+                        .unlockedBy(getHasName(rawNutCrate), has(rawNutCrate))
+                        .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smoking"));
+            }
         });
     }
 

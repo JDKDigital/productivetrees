@@ -1,6 +1,22 @@
 {
   "values": [
     {
+      "id": "productivetrees:black_ember_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_ember_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_ember_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:black_ember_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:brown_amber_log",
       "required": false
     },
@@ -17,6 +33,22 @@
       "required": false
     },
     {
+      "id": "productivetrees:cave_dweller_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:cave_dweller_stripped_wood",
+      "required": false
+    },
+    {
       "id": "productivetrees:firecracker_log",
       "required": false
     },
@@ -30,6 +62,182 @@
     },
     {
       "id": "productivetrees:firecracker_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:flickering_sun_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:night_fuchsia_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:night_fuchsia_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:night_fuchsia_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:night_fuchsia_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_spiral_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_spiral_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_spiral_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:purple_spiral_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rippling_willow_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rippling_willow_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rippling_willow_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:rippling_willow_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:slimy_delight_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:slimy_delight_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:slimy_delight_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:slimy_delight_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soul_tree_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soul_tree_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soul_tree_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:soul_tree_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:sparkle_cherry_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:thunder_bolt_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:thunder_bolt_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:thunder_bolt_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:thunder_bolt_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:time_traveller_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:time_traveller_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:time_traveller_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:time_traveller_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_yonder_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_yonder_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_yonder_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:blue_yonder_stripped_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_wood",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_stripped_log",
+      "required": false
+    },
+    {
+      "id": "productivetrees:water_wonder_stripped_wood",
       "required": false
     }
   ]

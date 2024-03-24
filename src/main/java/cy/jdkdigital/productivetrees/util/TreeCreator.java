@@ -42,6 +42,7 @@ public class TreeCreator
             var name = treeObject.getId().getPath();
 
             boolean noOcclusion = TreeUtil.isTranslucentTree(name);
+            final ToIntFunction<BlockState> lightLevel = state -> treeObject.getDecoration().lightLevel();
 
             // Validate colors
             ColorUtil.getCacheColor(treeObject.getLeafColor());
@@ -78,7 +79,7 @@ public class TreeCreator
             treeObject.setPottedSaplingBlock(registerBlock(name + "_potted_sapling", () -> new FlowerPotBlock(null, treeObject.getSaplingBlock(), BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)), false));
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(ProductiveTrees.MODID, name + "_sapling"), treeObject.getPottedSaplingBlock());
             // Register leaf block
-            treeObject.setLeafBlock(registerBlock(name + "_leaves", () -> new ProductiveLeavesBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject)));
+            treeObject.setLeafBlock(registerBlock(name + "_leaves", () -> new ProductiveLeavesBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, lightLevel), treeObject)));
             // Register fruit block + BE
             if (treeObject.hasFruit()) {
                 if (name.equals("coconut")) {
@@ -94,8 +95,6 @@ public class TreeCreator
 
             // TODO don't use wood type
             var woodType = WoodType.register(new WoodType(ProductiveTrees.MODID + ":" + name, BlockSetType.register(new BlockSetType(ProductiveTrees.MODID + ":" + name))));
-
-            final ToIntFunction<BlockState> lightLevel = state -> treeObject.getDecoration().lightLevel();
 
             // Register log block TODO map colors and properties
             treeObject.setLogBlock(registerBlock(name + "_log", () -> new ProductiveLogBlock(getProperties(treeObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_LOG, noOcclusion, lightLevel), treeObject)));

@@ -5,8 +5,8 @@ import cy.jdkdigital.productivebees.common.block.AdvancedBeehive;
 import cy.jdkdigital.productivebees.common.block.ExpansionBox;
 import cy.jdkdigital.productivebees.common.block.entity.AdvancedBeehiveBlockEntity;
 import cy.jdkdigital.productivebees.common.block.entity.ExpansionBoxBlockEntity;
-import cy.jdkdigital.productivebees.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivebees.init.ModItems;
+import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
 import cy.jdkdigital.productivetrees.Config;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
@@ -68,7 +68,7 @@ public class CompatHandler
                         BlockState pollenLeaf = uniqueLeaves.get(level.random.nextInt(uniqueLeaves.size()));
                         advancedBeehiveBlockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(inv -> {
                             var pollenStack = TreeUtil.getPollen(pollenLeaf.getBlock());
-                            ((InventoryHandlerHelper.ItemHandler) inv).addOutput(pollenStack);
+                            ((InventoryHandlerHelper.BlockEntityItemStackHandler) inv).addOutput(pollenStack);
                         });
                     }
 

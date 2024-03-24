@@ -333,22 +333,22 @@ public class FeatureProvider implements DataProvider
         put("zebrano", createFoliage(3, 3));
     }};
     private final Map<String, JsonElement> trunkPlacers = new HashMap<>() {{
-        put("default", createStraightTrunk(6, 2, 0));
-        put("alder", createBranchingTrunk(24, 2, 2, UniformInt.of(1, 6), 0.5F, UniformInt.of(0, 1)));
-        put("aspen", createStraightTrunk(25, 15, 0));
+        put("default", createStraightTrunk(10, 3, 0));
+//        put("alder", createBranchingTrunk(24, 2, 2, UniformInt.of(1, 6), 0.5F, UniformInt.of(0, 1)));
+//        put("aspen", createStraightTrunk(25, 15, 0));
         put("avocado", createStraightTrunk(9, 10, 0));
         put("banana", createStraightTrunk(5, 6, 0));
-        put("balsa", createBranchingTrunk(20, 7, 2, UniformInt.of(1, 6), 0.5F, UniformInt.of(0, 1)));
+//        put("balsa", createBranchingTrunk(20, 7, 2, UniformInt.of(1, 6), 0.5F, UniformInt.of(0, 1)));
         put("balsam_fir", createStraightTrunk(14, 6, 0));
-        put("beech", createStraightTrunk(25, 10, 0));
+//        put("beech", createStraightTrunk(25, 10, 0));
         put("black_locust", createStraightTrunk(12, 18, 0));
         put("blue_mahoe", createStraightTrunk(15, 5, 0));
         put("boxwood", createStraightTrunk(3, 6, 0));
         put("brazilwood", createStraightTrunk(12, 4, 0));
-        put("brazil_nut", createStraightTrunk(30, 20, 0));
-        put("bull_pine", createStraightTrunk(33, 24, 0));
-        put("butternut", createStraightTrunk(15, 5, 0));
-        put("candlenut", createStraightTrunk(25, 5, 0));
+//        put("brazil_nut", createStraightTrunk(30, 20, 0));
+//        put("bull_pine", createStraightTrunk(33, 24, 0));
+//        put("butternut", createStraightTrunk(15, 5, 0));
+//        put("candlenut", createStraightTrunk(25, 5, 0));
         put("cashew", createStraightTrunk(6, 8, 0));
         put("cinnamon", createStraightTrunk(10, 5, 0));
         put("clove", createStraightTrunk(8, 4, 0));
@@ -369,40 +369,40 @@ public class FeatureProvider implements DataProvider
         put("ash", createStraightTrunk(12, 6, 0)); // mega is 43
         put("beliy_naliv_apple", createStraightTrunk(6, 2, 0));
         put("blackthorn", createStraightTrunk(5, 1, 1));
-        put("black_cherry", createStraightTrunk(15, 9, 0));
-        put("breadfruit", createStraightTrunk(20, 6, 0));
+//        put("black_cherry", createStraightTrunk(15, 9, 0));
+//        put("breadfruit", createStraightTrunk(20, 6, 0));
         put("buddhas_hand", createStraightTrunk(8, 2, 0));
         put("cacao", createStraightTrunk(6, 6, 0));
-        put("carob", createStraightTrunk(10, 5, 1));
-        put("cedar", createStraightTrunk(20, 20, 0));
-        put("cempedak", createStraightTrunk(12, 8, 2));
+//        put("carob", createStraightTrunk(10, 5, 1));
+//        put("cedar", createStraightTrunk(20, 20, 0));
+//        put("cempedak", createStraightTrunk(12, 8, 2));
         put("ceylon_ebony", createStraightTrunk(10, 15, 0));
         put("cherry_plum", createStraightTrunk(8, 4, 0));
         put("citron", createStraightTrunk(4, 2, 0));
-        put("copper_beech", createStraightTrunk(25, 10, 0));
-        put("cork_oak", createStraightTrunk(10, 5, 0));
+//        put("copper_beech", createStraightTrunk(25, 10, 0));
+//        put("cork_oak", createStraightTrunk(10, 5, 0));
         put("cultivated_pear", createStraightTrunk(8, 2, 0));
         put("dogwood", createStraightTrunk(6, 5, 0));
-        put("douglas_fir", createStraightTrunk(20, 10, 0)); // mega is 100
-        put("elm", createStraightTrunk(15, 10, 0));
-        put("european_larch", createStraightTrunk(25, 20, 0)); // mega is 53
+//        put("douglas_fir", createStraightTrunk(20, 10, 0)); // mega is 100
+//        put("elm", createStraightTrunk(15, 10, 0));
+//        put("european_larch", createStraightTrunk(25, 20, 0)); // mega is 53
         put("finger_lime", createStraightTrunk(4, 3, 0));
         put("flowering_crabapple", createStraightTrunk(8, 4, 0));
-        put("ginkgo", createStraightTrunk(20, 15, 0));
+//        put("ginkgo", createStraightTrunk(20, 15, 0));
         put("golden_delicious_apple", createStraightTrunk(7, 4, 0));
-        put("grandidiers_baobab", createStraightTrunk(25, 5, 0));
+//        put("grandidiers_baobab", createStraightTrunk(25, 5, 0));
         put("granny_smith_apple", createStraightTrunk(7, 4, 0));
         put("grapefruit", createStraightTrunk(8, 2, 0));
         put("great_sallow", createStraightTrunk(4, 2, 0));
-        put("greenheart", createStraightTrunk(15, 15, 0));
+//        put("greenheart", createStraightTrunk(15, 15, 0));
         put("hawthorn", createStraightTrunk(8, 2, 0));
         put("hazel", createStraightTrunk(3, 5, 0));
         put("holly", createStraightTrunk(8, 15, 0));
         put("hornbeam", createStraightTrunk(15, 10, 0));
         put("ipe", createStraightTrunk(8, 5, 0));
-        put("iroko", createStraightTrunk(20, 30, 0));
+//        put("iroko", createStraightTrunk(20, 30, 0));
         put("jackfruit", createStraightTrunk(9, 12, 0));
-        put("kapok", createStraightTrunk(15, 7, 0)); // mega is 60
+//        put("kapok", createStraightTrunk(15, 7, 0)); // mega is 60
         put("key_lime", createStraightTrunk(6, 2, 0));
         put("kumquat", createStraightTrunk(8, 2, 0));
         put("lawson_cypress", createStraightTrunk(40, 20, 0)); // mega is 60
@@ -410,9 +410,9 @@ public class FeatureProvider implements DataProvider
         put("lime", createStraightTrunk(6, 2, 0));
         put("loblolly_pine", createStraightTrunk(25, 10, 0)); // mega is 50
         put("logwood", createStraightTrunk(5, 10, 0));
-        put("mahogany", createStraightTrunk(30, 5, 0));
+//        put("mahogany", createStraightTrunk(30, 5, 0));
         put("mandarin", createStraightTrunk(8, 2, 0));
-        put("mango", createStraightTrunk(15, 15, 0));
+//        put("mango", createStraightTrunk(15, 15, 0));
         put("monkey_puzzle", createStraightTrunk(8, 2, 0));
         put("moonlight_magic_crepe_myrtle", createStraightTrunk(8, 2, 0));
         put("myrtle_ebony", createStraightTrunk(6, 34, 0));
@@ -422,11 +422,11 @@ public class FeatureProvider implements DataProvider
         put("olive", createStraightTrunk(5, 2, 0));
         put("orange", createStraightTrunk(7, 2, 0));
         put("osange_orange", createStraightTrunk(8, 2, 0));
-        put("padauk", createStraightTrunk(27, 7, 0));
+//        put("padauk", createStraightTrunk(27, 7, 0));
         put("pandanus", createStraightTrunk(4, 10, 0));
         put("papaya", createStraightTrunk(5, 5, 0));
         put("peach", createStraightTrunk(8, 2, 0));
-        put("pecan", createStraightTrunk(20, 20, 0));
+//        put("pecan", createStraightTrunk(20, 20, 0));
         put("persimmon", createStraightTrunk(8, 2, 0));
         put("pink_ivory", createStraightTrunk(8, 2, 0));
         put("pistachio", createStraightTrunk(8, 2, 0));
@@ -434,24 +434,24 @@ public class FeatureProvider implements DataProvider
         put("pomegranate", createStraightTrunk(8, 2, 0));
         put("pomelo", createStraightTrunk(8, 2, 0));
         put("prairie_crabapple", createStraightTrunk(8, 2, 0));
-        put("purpleheart", createStraightTrunk(40, 10, 0));
+//        put("purpleheart", createStraightTrunk(40, 10, 0));
         put("purple_blackthorn", createStraightTrunk(5, 1, 1));
         put("purple_crepe_myrtle", createStraightTrunk(9, 2, 0));
-        put("rainbow_gum", createStraightTrunk(60, 15, 10));
+//        put("rainbow_gum", createStraightTrunk(60, 15, 10));
         put("red_crepe_myrtle", createStraightTrunk(8, 2, 0));
         put("red_delicious_apple", createStraightTrunk(7, 4, 0));
-        put("red_maple", createStraightTrunk(27, 11, 0));
-        put("rosewood", createStraightTrunk(15, 10, 0));
-        put("rose_gum", createStraightTrunk(40, 10, 0)); // mega is 70
+//        put("red_maple", createStraightTrunk(27, 11, 0));
+//        put("rosewood", createStraightTrunk(15, 10, 0));
+//        put("rose_gum", createStraightTrunk(40, 10, 0)); // mega is 70
         put("rowan", createStraightTrunk(5, 10, 0));
         put("rubber_tree", createStraightTrunk(38, 5, 0));
         put("salak", createStraightTrunk(1, 2, 0));
         put("sandalwood", createStraightTrunk(4, 8, 0));
         put("sand_pear", createStraightTrunk(8, 2, 0));
         put("satsuma", createStraightTrunk(7, 2, 0));
-        put("sequoia", createStraightTrunk(40, 20, 0)); // mega is 80-100
-        put("silver_fir", createStraightTrunk(30, 20, 0));
-        put("silver_lime", createStraightTrunk(20, 15, 0));
+//        put("sequoia", createStraightTrunk(40, 20, 0)); // mega is 80-100
+//        put("silver_fir", createStraightTrunk(30, 20, 0));
+//        put("silver_lime", createStraightTrunk(20, 15, 0));
         put("socotra_dragon", createStraightTrunk(9, 3, 0));
         put("soursop", createStraightTrunk(7, 2, 0));
         put("sour_cherry", createStraightTrunk(8, 2, 0));
@@ -459,23 +459,23 @@ public class FeatureProvider implements DataProvider
         put("star_fruit", createStraightTrunk(8, 2, 0));
         put("sugar_apple", createStraightTrunk(8, 2, 0));
         put("sugar_maple", createStraightTrunk(10, 2, 0));
-        put("swamp_gum", createStraightTrunk(20, 5, 0));
-        put("sweetgum", createStraightTrunk(15, 5, 0)); // 45 mega
+//        put("swamp_gum", createStraightTrunk(20, 5, 0));
+//        put("sweetgum", createStraightTrunk(15, 5, 0)); // 45 mega
         put("sweet_chestnut", createStraightTrunk(20, 15, 0));
         put("sweet_crabapple", createStraightTrunk(8, 2, 0));
         put("sycamore_fig", createStraightTrunk(8, 2, 0));
         put("tangerine", createStraightTrunk(8, 2, 0));
-        put("teak", createStraightTrunk(30, 10, 0));
+//        put("teak", createStraightTrunk(30, 10, 0));
         put("tuscarora_crepe_myrtle", createStraightTrunk(8, 2, 0));
-        put("walnut", createStraightTrunk(25, 10, 0));
-        put("wenge", createStraightTrunk(20, 10, 0));
-        put("western_hemlock", createStraightTrunk(40, 10, 0)); // mega 70-80
+//        put("walnut", createStraightTrunk(25, 10, 0));
+//        put("wenge", createStraightTrunk(20, 10, 0));
+//        put("western_hemlock", createStraightTrunk(40, 10, 0)); // mega 70-80
         put("whitebeam", createStraightTrunk(13, 7, 0));
         put("white_poplar", createStraightTrunk(15, 15, 0));
         put("white_willow", createStraightTrunk(10, 20, 0));
         put("wild_cherry", createStraightTrunk(5, 13, 0));
         put("yellow_meranti", createStraightTrunk(40, 30, 0)); // mega is 100
         put("yew", createStraightTrunk(10, 10, 0));
-        put("zebrano", createStraightTrunk(30, 10, 0));
+//        put("zebrano", createStraightTrunk(30, 10, 0));
     }};
 }

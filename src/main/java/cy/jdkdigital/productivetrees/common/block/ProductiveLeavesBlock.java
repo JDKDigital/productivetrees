@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees.common.block;
 
 import cy.jdkdigital.productivelib.util.ColorUtil;
+import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.ClientRegistration;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
 import net.minecraft.core.BlockPos;
