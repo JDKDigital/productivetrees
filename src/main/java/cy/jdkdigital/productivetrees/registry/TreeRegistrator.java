@@ -1,5 +1,6 @@
 package cy.jdkdigital.productivetrees.registry;
 
+import com.google.errorprone.annotations.SuppressPackageLocation;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.*;
@@ -14,6 +15,7 @@ import cy.jdkdigital.productivetrees.common.item.SieveUpgradeItem;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.TaperedFoliagePlacer;
 import cy.jdkdigital.productivetrees.feature.trunkplacers.CenteredUpwardsBranchingTrunkPlacer;
 import cy.jdkdigital.productivetrees.feature.trunkplacers.UnlimitedStraightTrunkPlacer;
+import cy.jdkdigital.productivetrees.integrations.productivebees.CompatHandler;
 import cy.jdkdigital.productivetrees.inventory.PollenSifterContainer;
 import cy.jdkdigital.productivetrees.inventory.SawmillContainer;
 import cy.jdkdigital.productivetrees.inventory.StripperContainer;
@@ -23,11 +25,13 @@ import cy.jdkdigital.productivetrees.recipe.SawmillRecipe;
 import cy.jdkdigital.productivetrees.recipe.TreeFruitingRecipe;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
 import cy.jdkdigital.productivetrees.util.CropConfig;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
@@ -35,14 +39,15 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SnowLayerBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.grower.AbstractMegaTreeGrower;
+import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
@@ -53,12 +58,14 @@ import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
 
 public class TreeRegistrator
 {
@@ -67,7 +74,8 @@ public class TreeRegistrator
         TreeFinder.trees.forEach((id, treeObject) -> {
             if (ModList.get().isLoaded("productivebees") && treeObject.getStyle().hiveStyle() != null) {
                 try {
-                    blockStates.addAll(treeObject.getHiveBlock().get().getStateDefinition().getPossibleStates());
+                    Block hive = ForgeRegistries.BLOCKS.getValue(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
+                    blockStates.addAll(hive.getStateDefinition().getPossibleStates());
                 } catch (NullPointerException e) {
                     throw new RuntimeException(treeObject.getId() + " failed hive");
                 }
@@ -298,6 +306,118 @@ public class TreeRegistrator
     public static final RegistryObject<Block> AMBER_PUDDLE = registerBlock("brown_amber_puddle", () -> new SnowLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW).noOcclusion().sound(SoundType.SLIME_BLOCK)), false);
     public static final RegistryObject<Block> COCONUT_SPROUT = registerBlock("coconut_sprout", () -> new CoconutSproutBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape()), true);
 
+    private static List<RegistryObject<Block>> SIGNS = new ArrayList<>();
+    private static List<RegistryObject<Block>> HANGING_SIGNS = new ArrayList<>();
+
+    public static void registerTree(TreeObject treeObject) {
+        var name = treeObject.getId().getPath();
+
+        boolean noOcclusion = TreeUtil.isTranslucentTree(name);
+        final ToIntFunction<BlockState> lightLevel = state -> treeObject.getDecoration().lightLevel();
+
+        // Create grower
+        var grower = treeObject.getMegaFeature().equals(TreeRegistrator.NULL_FEATURE) ? new AbstractTreeGrower()
+        {
+            @Override
+            protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource rand, boolean hasFlowers) {
+                return treeObject.getFeature();
+            }
+        } : new AbstractMegaTreeGrower()
+        {
+            @Override
+            protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource rand, boolean hasFlowers) {
+                return treeObject.getFeature();
+            }
+
+            @Nullable
+            @Override
+            protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredMegaFeature(RandomSource rand) {
+                return treeObject.getMegaFeature();
+            }
+        };
+
+        // Register sapling block
+        var sapling = registerBlock(name + "_sapling", () -> new ProductiveSaplingBlock(grower, BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING), treeObject));
+        // Potted sapling
+        var pottedSapling = registerBlock(name + "_potted_sapling", () -> new FlowerPotBlock(null, sapling, BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)), false);
+        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(ProductiveTrees.MODID, name + "_sapling"), pottedSapling);
+        // Register leaf block
+        registerBlock(name + "_leaves", () -> new ProductiveLeavesBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, lightLevel), treeObject));
+        // Register fruit block + BE
+        if (treeObject.hasFruit()) {
+            if (name.equals("coconut")) {
+                registerBlock(name + "_fruit", () -> new ProductiveDroppyFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject, COCONUT_SPROUT), false);
+            } else if (name.equals("brown_amber")) {
+                registerBlock(name + "_fruit", () -> new ProductiveDrippyFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject, AMBER_PUDDLE), false);
+            } else if (!treeObject.getFruit().style().equals("default")) {
+                registerBlock(name + "_fruit", () -> new ProductiveDanglerFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null).offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape(), treeObject), false);
+            } else {
+                registerBlock(name + "_fruit", () -> new ProductiveFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject), false);
+            }
+        }
+
+        // TODO map colors and properties
+        // Register log block
+        registerBlock(name + "_log", () -> new ProductiveLogBlock(getProperties(treeObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_LOG, noOcclusion, lightLevel)));
+        // Stripped log
+        registerBlock(name + "_stripped_log", () -> new ProductiveRotatedPillarBlock(getProperties(treeObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_LOG, noOcclusion, lightLevel)));
+        // Wood block
+        registerBlock(name + "_wood", () -> new ProductiveWoodBlock(getProperties(treeObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_WOOD, noOcclusion, lightLevel)));
+        // Stripped wood
+        registerBlock(name + "_stripped_wood", () -> new ProductiveRotatedPillarBlock(getProperties(treeObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_WOOD, noOcclusion, lightLevel)));
+        // Register planks block
+        var plank = registerBlock(name + "_planks", () -> new ProductivePlankBlock(getProperties(treeObject.isFireProof() ? Blocks.WARPED_PLANKS : Blocks.OAK_PLANKS, noOcclusion, lightLevel), name));
+        // Stairs
+        registerBlock(name + "_stairs", () -> new StairBlock(() -> plank.get().defaultBlockState(), getProperties(Blocks.OAK_STAIRS, noOcclusion, lightLevel)));
+        // Slab
+        registerBlock(name + "_slab", () -> new SlabBlock(getProperties(Blocks.OAK_SLAB, noOcclusion, lightLevel)));
+        // Fence
+        registerBlock(name + "_fence", () -> new FenceBlock(getProperties(Blocks.OAK_FENCE, noOcclusion, lightLevel)));
+        // Fence gate
+        registerBlock(name + "_fence_gate", () -> new FenceGateBlock(getProperties(Blocks.OAK_FENCE_GATE, noOcclusion, lightLevel), WoodType.OAK));
+        // Pressure plate
+        registerBlock(name + "_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, getProperties(Blocks.OAK_PRESSURE_PLATE, noOcclusion, lightLevel), BlockSetType.OAK));
+        // Button
+        registerBlock(name + "_button", () -> new ButtonBlock(getProperties(Blocks.OAK_BUTTON, noOcclusion, lightLevel), BlockSetType.OAK, 30, true));
+        // Door
+        registerBlock(name + "_door", () -> new DoorBlock(getProperties(Blocks.OAK_DOOR, noOcclusion, lightLevel), BlockSetType.OAK));
+        // Trapdoor
+        registerBlock(name + "_trapdoor", () -> new TrapDoorBlock(getProperties(Blocks.ACACIA_TRAPDOOR, noOcclusion, lightLevel), BlockSetType.OAK));
+        // Bookshelf
+        registerBlock(name + "_bookshelf", () -> new Block(getProperties(Blocks.BOOKSHELF, noOcclusion, lightLevel)));
+        // Signs
+        var woodType = WoodType.register(new WoodType(ProductiveTrees.MODID + ":" + name, BlockSetType.register(new BlockSetType(ProductiveTrees.MODID + ":" + name))));
+        var signBlock = registerBlock(name + "_sign", () -> new ProductiveStandingSignBlock(getProperties(Blocks.OAK_SIGN, noOcclusion, lightLevel), woodType), false);
+        var wallSignBlock = registerBlock(name + "_wall_sign", () -> new ProductiveWallSignBlock(getProperties(Blocks.OAK_WALL_SIGN, noOcclusion, lightLevel), woodType), false);
+        var hangingSignBlock = registerBlock(name + "_hanging_sign", () -> new ProductiveCeilingHangingSignBlock(getProperties(Blocks.OAK_HANGING_SIGN, noOcclusion, lightLevel), woodType), false);
+        var wallHangingSignBlock = registerBlock(name + "_wall_hanging_sign", () -> new ProductiveWallHangingSignBlock(getProperties(Blocks.OAK_WALL_HANGING_SIGN, noOcclusion, lightLevel), woodType), false);
+
+        registerItem(name + "_sign", () -> new SignItem(new Item.Properties(), signBlock.get(), wallSignBlock.get()));
+        registerItem(name + "_hanging_sign", () -> new SignItem(new Item.Properties(), hangingSignBlock.get(), wallHangingSignBlock.get()));
+
+        SIGNS.add(signBlock);
+        SIGNS.add(wallSignBlock);
+        HANGING_SIGNS.add(hangingSignBlock);
+        HANGING_SIGNS.add(wallHangingSignBlock);
+
+        // Hives
+        if (treeObject.getStyle().hiveStyle() != null && ModList.get().isLoaded("productivebees")) {
+            CompatHandler.createHive(name, treeObject, lightLevel);
+        }
+
+        if (name.equals("monkey_puzzle")) {
+            registerBlock("monkey_puzzle_small_leaves", () -> new ProductiveDirectionalLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), treeObject));
+            registerBlock("monkey_puzzle_medium_leaves", () -> new ProductiveDirectionalLeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES), treeObject));
+        }
+    }
+
+    public static Supplier<BlockEntityType<ProductiveSignBlockEntity>> SIGN_BE;
+    public static Supplier<BlockEntityType<ProductiveHangingSignBlockEntity>> HANGING_SIGN_BE;
+    public static void registerSignBlockEntities() {
+        SIGN_BE = registerBlockEntity("productivetrees_sign", () -> createBlockEntityType(ProductiveSignBlockEntity::new, SIGNS.stream().map(RegistryObject::get).toList().toArray(new Block[0])));
+        HANGING_SIGN_BE = registerBlockEntity("productivetrees_hanging_sign", () -> createBlockEntityType(ProductiveHangingSignBlockEntity::new, HANGING_SIGNS.stream().map(RegistryObject::get).toList().toArray(new Block[0])));
+    }
+
     public static RegistryObject<Item> registerItem(String name) {
         return registerItem(name, () -> new Item(new Item.Properties()));
     }
@@ -318,11 +438,34 @@ public class TreeRegistrator
         return block;
     }
 
+    private static RegistryObject<Block> registerBlock(String name, Supplier<Block> blockSupplier) {
+        return registerBlock(name, blockSupplier, true);
+    }
+
+    private static RegistryObject<Block> registerBlock(String name, Supplier<Block> blockSupplier, Supplier<Item> itemSupplier) {
+        RegistryObject<Block> block = ProductiveTrees.BLOCKS.register(name, blockSupplier);
+
+        ProductiveTrees.ITEMS.register(name, itemSupplier);
+
+        return block;
+    }
+
     public static <E extends BlockEntity, T extends BlockEntityType<E>> Supplier<T> registerBlockEntity(String id, Supplier<T> supplier) {
         return ProductiveTrees.BLOCK_ENTITIES.register(id, supplier);
     }
 
     public static <E extends BlockEntity> BlockEntityType<E> createBlockEntityType(BlockEntityType.BlockEntitySupplier<E> factory, Block... blocks) {
         return BlockEntityType.Builder.of(factory, blocks).build(null);
+    }
+
+    private static BlockBehaviour.Properties getProperties(Block copyFrom, boolean noOcclusion, @Nullable ToIntFunction<BlockState> lightLevel) {
+        var behavior = BlockBehaviour.Properties.copy(copyFrom);
+        if (lightLevel != null) {
+            behavior = behavior.lightLevel(lightLevel);
+        }
+        if (noOcclusion) {
+            behavior = behavior.noOcclusion();
+        }
+        return behavior;
     }
 }

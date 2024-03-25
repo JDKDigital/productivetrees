@@ -2,7 +2,6 @@ package cy.jdkdigital.productivetrees.datagen.recipe;
 
 import com.google.gson.JsonObject;
 import cy.jdkdigital.productivelib.util.RecipeUtil;
-import cy.jdkdigital.productivetrees.registry.TreeObject;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -33,10 +32,6 @@ public final class ThermalExtractorRecipeBuilder implements RecipeBuilder
 
     public static ThermalExtractorRecipeBuilder direct(Block log, Block leaves, FluidStack fluid) {
         return new ThermalExtractorRecipeBuilder(log, leaves, fluid);
-    }
-
-    public static ThermalExtractorRecipeBuilder tree(TreeObject tree, FluidStack fluid) {
-        return direct(tree.getLogBlock().get(), tree.getLeafBlock().get(), fluid);
     }
 
     @Override

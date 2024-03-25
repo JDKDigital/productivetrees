@@ -3,7 +3,6 @@ package cy.jdkdigital.productivetrees.datagen.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import cy.jdkdigital.productivelib.util.RecipeUtil;
-import cy.jdkdigital.productivetrees.registry.TreeObject;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -14,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,12 +36,12 @@ public final class ThermalInsulatorRecipeBuilder implements RecipeBuilder
         this.fruitChance = fruitChance;
     }
 
-    public static ThermalInsulatorRecipeBuilder direct(Ingredient logs, ItemStack plank, ItemStack sapling, ItemStack fruit, float fruitChance) {
-        return new ThermalInsulatorRecipeBuilder(logs, plank, sapling, fruit, fruitChance);
+    public static ThermalInsulatorRecipeBuilder direct(Ingredient saplings, ItemStack log, ItemStack sapling, ItemStack fruit, float fruitChance) {
+        return new ThermalInsulatorRecipeBuilder(saplings, log, sapling, fruit, fruitChance);
     }
 
-    public static ThermalInsulatorRecipeBuilder tree(TreeObject tree) {
-        return direct(Ingredient.of(tree.getSaplingBlock().get()), new ItemStack(tree.getLogBlock().get()), new ItemStack(tree.getSaplingBlock().get()), tree.getFruit().getItem(), tree.getFruit().growthSpeed());
+    public static ThermalInsulatorRecipeBuilder tree(Block log, Block sapling, ItemStack fruit, float fruitChance) {
+        return direct(Ingredient.of(sapling), new ItemStack(log), new ItemStack(sapling), fruit, fruitChance);
     }
 
     @Override

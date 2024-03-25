@@ -37,11 +37,6 @@ public class TreeObject extends WoodObject
     private final GrowthCondition growthCondition;
     private final Decoration decoration;
 
-    private Supplier<Block> saplingBlock;
-    private Supplier<Block> pottedSaplingBlock;
-    private Supplier<Block> leafBlock;
-    private Supplier<Block> fruitBlock;
-
     public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, Supplier<ItemStack> stripDrop, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
         super(id, fireProof, colors, stripDrop);
         this.feature = feature;
@@ -133,38 +128,6 @@ public class TreeObject extends WoodObject
 
     public Decoration getDecoration() {
         return decoration;
-    }
-
-    public Supplier<Block> getSaplingBlock() {
-        return saplingBlock;
-    }
-
-    public void setSaplingBlock(Supplier<Block> saplingBlock) {
-        this.saplingBlock = saplingBlock;
-    }
-
-    public Supplier<Block> getPottedSaplingBlock() {
-        return pottedSaplingBlock;
-    }
-
-    public void setPottedSaplingBlock(Supplier<Block> pottedSaplingBlock) {
-        this.pottedSaplingBlock = pottedSaplingBlock;
-    }
-
-    public Supplier<Block> getLeafBlock() {
-        return leafBlock;
-    }
-
-    public void setLeafBlock(Supplier<Block> leafBlock) {
-        this.leafBlock = leafBlock;
-    }
-
-    public Supplier<Block> getFruitBlock() {
-        return fruitBlock;
-    }
-
-    public void setFruitBlock(Supplier<Block> fruitBlock) {
-        this.fruitBlock = fruitBlock;
     }
 
     public record GrowthCondition(boolean canForceGrowth, int minLight, int maxLight, Fluid fluid, Optional<HolderSet<Biome>> biome)

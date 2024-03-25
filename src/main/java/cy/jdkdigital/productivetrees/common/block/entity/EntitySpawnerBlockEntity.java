@@ -2,7 +2,7 @@ package cy.jdkdigital.productivetrees.common.block.entity;
 
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.feature.EntityPlacerDecorator;
-import cy.jdkdigital.productivetrees.registry.TreeObject;
+import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -30,8 +30,9 @@ public class EntitySpawnerBlockEntity extends BlockEntity
     public static void tick(Level level, BlockPos pos, BlockState state, EntitySpawnerBlockEntity blockEntity) {
         if (level instanceof ServerLevel serverLevel) {
             for (Direction dir : Direction.values()) {
-                if (level.getBlockState(pos.relative(dir)).getBlock() instanceof ProductiveLogBlock pLog && pLog.getTree() instanceof TreeObject treeObject) {
-                    var feature = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(treeObject.getFeature()).orElse(null);
+                if (level.getBlockState(pos.relative(dir)).getBlock() instanceof ProductiveLogBlock pLog) {
+                    var tree = TreeFinder.trees.get(ForgeRegistries.BLOCKS.getKey(pLog));
+                    var feature = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(tree.getFeature()).orElse(null);
                     if (feature != null) {
                         feature.value().getFeatures().forEach(configuredFeature -> {
                             if (configuredFeature.config() instanceof TreeConfiguration treeConfig) {

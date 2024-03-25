@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,8 +38,8 @@ public class CompatHandler
     public static void createHive(String name, WoodObject woodObject, ToIntFunction<BlockState> lightLevel) {
         String hiveName = "advanced_" + name + "_beehive";
         String boxName = "expansion_box_" + name;
-        woodObject.setHiveBlock(TreeCreator.registerBlock(hiveName, () -> new AdvancedBeehive(Block.Properties.copy(Blocks.BEEHIVE).lightLevel(lightLevel), TreeRegistrator.registerBlockEntity(hiveName, () -> TreeRegistrator.createBlockEntityType((pos, state) -> new AdvancedBeehiveBlockEntity((AdvancedBeehive) woodObject.getHiveBlock().get(), pos, state), woodObject.getHiveBlock().get()))), true));
-        woodObject.setExpansionBoxBlock(TreeCreator.registerBlock(boxName, () -> new ExpansionBox(Block.Properties.copy(Blocks.BEEHIVE).lightLevel(lightLevel), TreeRegistrator.registerBlockEntity(boxName, () -> TreeRegistrator.createBlockEntityType((pos, state) -> new ExpansionBoxBlockEntity((ExpansionBox) woodObject.getExpansionBoxBlock().get(), pos, state), woodObject.getExpansionBoxBlock().get()))), true));
+        TreeRegistrator.registerBlock(hiveName, () -> new AdvancedBeehive(Block.Properties.copy(Blocks.BEEHIVE).lightLevel(lightLevel), TreeRegistrator.registerBlockEntity(hiveName, () -> TreeRegistrator.createBlockEntityType((pos, state) -> new AdvancedBeehiveBlockEntity((AdvancedBeehive) ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p -> "advanced_" + p + "_beehive")), pos, state), ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p -> "advanced_" + p + "_beehive"))))), true);
+        TreeRegistrator.registerBlock(boxName, () -> new ExpansionBox(Block.Properties.copy(Blocks.BEEHIVE).lightLevel(lightLevel), TreeRegistrator.registerBlockEntity(boxName, () -> TreeRegistrator.createBlockEntityType((pos, state) -> new ExpansionBoxBlockEntity((ExpansionBox) ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p -> "expansion_box_" + p)), pos, state), ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p -> "expansion_box_" + p))))), true);
     }
 
     public static void beeRelease(BeeReleaseEvent event) {

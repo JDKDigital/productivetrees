@@ -22,6 +22,7 @@ public class TreeFinder
     public static void discoverTrees() {
         try {
             discoverTreeFiles();
+            TreeRegistrator.registerSignBlockEntities();
         } catch (IOException e) {
             e.printStackTrace();
         }

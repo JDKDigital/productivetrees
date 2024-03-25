@@ -1,22 +1,24 @@
 package cy.jdkdigital.productivetrees.common.block;
 
-import cy.jdkdigital.productivetrees.registry.WoodObject;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 public class ProductiveLogBlock extends ProductiveRotatedPillarBlock
 {
-    public ProductiveLogBlock(Properties properties, WoodObject treeObject) {
-        super(properties, treeObject);
+    public ProductiveLogBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
     public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction toolAction, boolean simulate) {
         if (ToolActions.AXE_STRIP == toolAction) {
-            return treeObject.getStrippedLogBlock().get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            var key = ForgeRegistries.BLOCKS.getKey(state.getBlock());
+            var block = ForgeRegistries.BLOCKS.getValue(key.withPath(p -> p.replace("_log", "_stripped_log")));
+            return block.defaultBlockState().setValue(AXIS, state.getValue(AXIS));
         }
         return super.getToolModifiedState(state, context, toolAction, simulate);
     }

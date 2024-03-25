@@ -8,6 +8,7 @@ import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEn
 import cy.jdkdigital.productivetrees.integrations.productivebees.CompatHandler;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -35,8 +36,8 @@ public class EventHandler
     public static void onCommonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             TreeFinder.trees.forEach((id, treeObject) -> {
-                ComposterBlock.COMPOSTABLES.put(treeObject.getSaplingBlock().get(), 0.3f);
-                ComposterBlock.COMPOSTABLES.put(treeObject.getLeafBlock().get(), 0.3f);
+                ComposterBlock.COMPOSTABLES.put(TreeUtil.getBlock(id, "_sapling"), 0.3f);
+                ComposterBlock.COMPOSTABLES.put(TreeUtil.getBlock(id, "_leaves"), 0.3f);
                 if (treeObject.hasFruit()) {
                     ComposterBlock.COMPOSTABLES.put(treeObject.getFruit().getItem().getItem(), 0.65F);
                 }
@@ -54,8 +55,11 @@ public class EventHandler
     @SubscribeEvent
     public static void blockToolModified(BlockEvent.BlockToolModificationEvent event) {
         if (!event.isSimulated() && event.getToolAction().equals(ToolActions.AXE_STRIP) && event.getLevel() instanceof ServerLevel level) {
-            if (event.getLevel().getBlockState(event.getPos()).getBlock() instanceof ProductiveLogBlock logBlock && !logBlock.getTree().getStripDrop().get().isEmpty()) {
-                Block.popResource(level, event.getPos(), logBlock.getTree().getStripDrop().get().copy());
+            if (event.getLevel().getBlockState(event.getPos()).getBlock() instanceof ProductiveLogBlock logBlock) {
+                var tree = TreeUtil.getTree(logBlock);
+                if (!tree.getStripDrop().get().isEmpty()) {
+                    Block.popResource(level, event.getPos(), tree.getStripDrop().get().copy());
+                }
             }
         }
     }

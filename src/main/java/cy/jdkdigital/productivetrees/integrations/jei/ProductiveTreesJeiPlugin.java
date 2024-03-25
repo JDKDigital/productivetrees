@@ -75,9 +75,9 @@ public class ProductiveTreesJeiPlugin implements IModPlugin
 
         // Tree fruiting recipes
         List<TreeFruitingRecipe> fruitingRecipeList = new ArrayList<>();
-        TreeFinder.trees.forEach((resourceLocation, treeObject) -> {
+        TreeFinder.trees.forEach((id, treeObject) -> {
             if (treeObject.hasFruit()) {
-                fruitingRecipeList.add(new TreeFruitingRecipe(new ResourceLocation(ProductiveTrees.MODID, ""), Ingredient.of(treeObject.getSaplingBlock().get()), treeObject.getFruit().getItem().copy()));
+                fruitingRecipeList.add(new TreeFruitingRecipe(new ResourceLocation(ProductiveTrees.MODID, ""), Ingredient.of(TreeUtil.getBlock(id, "_sapling")), treeObject.getFruit().getItem().copy()));
             }
         });
         registration.addRecipes(TREE_FRUITING_TYPE, fruitingRecipeList);

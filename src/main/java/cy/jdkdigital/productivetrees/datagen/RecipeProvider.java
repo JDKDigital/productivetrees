@@ -4,6 +4,7 @@ import cy.jdkdigital.productivelib.datagen.recipe.SingleConditionalRecipe;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.datagen.recipe.*;
 import cy.jdkdigital.productivetrees.registry.*;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.darkhax.botanypots.data.recipes.crop.HarvestEntry;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -67,18 +68,18 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         Block THERMAL_EXTRACTOR = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("thermal:tree_extractor"));
 
         TreeFinder.trees.forEach((id, treeObject) -> {
-            planksFromLogs(consumer, treeObject.getPlankBlock().get(), treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get());
-            woodFromLogs(consumer, treeObject.getWoodBlock().get(), treeObject.getLogBlock().get());
-            shapedVariant(consumer, BlockFamily.Variant.STAIRS, treeObject.getStairsBlock().get(), treeObject.getPlankBlock().get());
-            shapedVariant(consumer, BlockFamily.Variant.SLAB, treeObject.getSlabBlock().get(), treeObject.getPlankBlock().get());
-            shapedVariant(consumer, BlockFamily.Variant.PRESSURE_PLATE, treeObject.getPressurePlateBlock().get(), treeObject.getPlankBlock().get());
-            shapedVariant(consumer, BlockFamily.Variant.BUTTON, treeObject.getButtonBlock().get(), treeObject.getPlankBlock().get());
-            shapedVariant(consumer, BlockFamily.Variant.FENCE, treeObject.getFenceBlock().get(), treeObject.getPlankBlock().get());
-            shapedVariant(consumer, BlockFamily.Variant.FENCE_GATE, treeObject.getFenceGateBlock().get(), treeObject.getPlankBlock().get());
-            shapedVariant(consumer, BlockFamily.Variant.DOOR, treeObject.getDoorBlock().get(), treeObject.getPlankBlock().get());
-            shapedVariant(consumer, BlockFamily.Variant.TRAPDOOR, treeObject.getTrapdoorBlock().get(), treeObject.getPlankBlock().get());
-            shapedVariant(consumer, BlockFamily.Variant.SIGN, treeObject.getSignBlock().get(), treeObject.getPlankBlock().get());
-            hangingSign(consumer, treeObject.getHangingSignBlock().get(), treeObject.getPlankBlock().get());
+            planksFromLogs(consumer, TreeUtil.getBlock(treeObject.getId(), "_planks"), TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood"));
+            woodFromLogs(consumer, TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_log"));
+            shapedVariant(consumer, BlockFamily.Variant.STAIRS, TreeUtil.getBlock(treeObject.getId(), "_stairs"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
+            shapedVariant(consumer, BlockFamily.Variant.SLAB, TreeUtil.getBlock(treeObject.getId(), "_slab"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
+            shapedVariant(consumer, BlockFamily.Variant.PRESSURE_PLATE, TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
+            shapedVariant(consumer, BlockFamily.Variant.BUTTON, TreeUtil.getBlock(treeObject.getId(), "_button"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
+            shapedVariant(consumer, BlockFamily.Variant.FENCE, TreeUtil.getBlock(treeObject.getId(), "_fence"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
+            shapedVariant(consumer, BlockFamily.Variant.FENCE_GATE, TreeUtil.getBlock(treeObject.getId(), "_fence_gate"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
+            shapedVariant(consumer, BlockFamily.Variant.DOOR, TreeUtil.getBlock(treeObject.getId(), "_door"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
+            shapedVariant(consumer, BlockFamily.Variant.TRAPDOOR, TreeUtil.getBlock(treeObject.getId(), "_trapdoor"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
+            shapedVariant(consumer, BlockFamily.Variant.SIGN, TreeUtil.getBlock(treeObject.getId(), "_sign"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
+            hangingSign(consumer, TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
             buildSawmillRecipe(treeObject, consumer);
             buildCorailWoodcutterRecipes(treeObject, consumer);
             // arboreal extractor (for resin, sap and latex), insolator (logs, saplings and fruit)
@@ -86,8 +87,8 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 SingleConditionalRecipe.builder()
                         .addCondition(new ModLoadedCondition("thermal"))
                         .setRecipe(
-                                ThermalSawmilRecipeBuilder.tree(treeObject)
-                                        .unlockedBy("has_log", has(treeObject.getLogBlock().get()))
+                                ThermalSawmilRecipeBuilder.tree(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood"), TreeUtil.getBlock(treeObject.getId(), "_planks"))
+                                        .unlockedBy("has_log", has(TreeUtil.getBlock(treeObject.getId(), "_log")))
                                         .unlockedBy("has_sawmill", has(THERMAL_SAWMILL))
                                         ::save
                         )
@@ -97,8 +98,8 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 SingleConditionalRecipe.builder()
                         .addCondition(new ModLoadedCondition("thermal"))
                         .setRecipe(
-                                ThermalInsulatorRecipeBuilder.tree(treeObject)
-                                        .unlockedBy("has_sapling", has(treeObject.getSaplingBlock().get()))
+                                ThermalInsulatorRecipeBuilder.tree(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_sapling"), treeObject.getFruit().getItem().copy(), treeObject.getFruit().growthSpeed())
+                                        .unlockedBy("has_sapling", has(TreeUtil.getBlock(treeObject.getId(), "_planks")))
                                         .unlockedBy("has_insolator", has(THERMAL_INSOLATOR))
                                         ::save
                         )
@@ -120,8 +121,8 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 SingleConditionalRecipe.builder()
                         .addCondition(new ModLoadedCondition("thermal"))
                         .setRecipe(
-                                ThermalExtractorRecipeBuilder.tree(treeObject, fluid)
-                                        .unlockedBy("has_log", has(treeObject.getLogBlock().get()))
+                                ThermalExtractorRecipeBuilder.direct(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_leaves"), fluid)
+                                        .unlockedBy("has_log", has(TreeUtil.getBlock(treeObject.getId(), "_log")))
                                         .unlockedBy("has_tree_extractor", has(THERMAL_EXTRACTOR))
                                         ::save
                         )
@@ -210,7 +211,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
 
     private void buildSawmillRecipe(WoodObject treeObject, Consumer<FinishedRecipe> consumer) {
         String name = treeObject.getId().getPath();
-        SawmillRecipeBuilder.tree(treeObject).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/" + name + "_planks_from_log"));
+        SawmillRecipeBuilder.tree(treeObject, TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood"), TreeUtil.getBlock(treeObject.getId(), "_planks")).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/" + name + "_planks_from_log"));
     }
 
     private void buildVanillaSawmillRecipes(Consumer<FinishedRecipe> consumer) {
@@ -257,74 +258,74 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
     private void buildCorailWoodcutterRecipes(WoodObject treeObject, Consumer<FinishedRecipe> consumer) {
         String name = treeObject.getId().getPath();
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()), treeObject.getPlankBlock().get(), 4)
-                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_planks"), 4)
+                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_planks_from_logs"));
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()), treeObject.getButtonBlock().get(), 4)
-                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_button"), 4)
+                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_button_from_logs"));
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()), treeObject.getFenceBlock().get(), 4)
-                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_fence"), 4)
+                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_fence_from_logs"));
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()), treeObject.getFenceGateBlock().get(), 1)
-                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_fence_gate"), 1)
+                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_fence_gate_from_logs"));
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()), treeObject.getPressurePlateBlock().get(), 4)
-                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), 4)
+                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_pressure_plate_from_logs"));
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()), treeObject.getSlabBlock().get(), 8)
-                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_slab"), 8)
+                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_slab_from_logs"));
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()), treeObject.getStairsBlock().get(), 4)
-                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getLogBlock().get(), treeObject.getWoodBlock().get(), treeObject.getStrippedLogBlock().get(), treeObject.getStrippedWoodBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_stairs"), 4)
+                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_stairs_from_logs"));
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getPlankBlock().get()), treeObject.getButtonBlock().get(), 1)
-                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getPlankBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_planks")), TreeUtil.getBlock(treeObject.getId(), "_button"), 1)
+                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_planks")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_button_from_planks"));
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getPlankBlock().get()), treeObject.getFenceBlock().get(), 1)
-                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getPlankBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_planks")), TreeUtil.getBlock(treeObject.getId(), "_fence"), 1)
+                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_planks")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_fence_from_planks"));
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getPlankBlock().get()), treeObject.getPressurePlateBlock().get(), 1)
-                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getPlankBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_planks")), TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), 1)
+                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_planks")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_pressure_plate_from_planks"));
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getPlankBlock().get()), treeObject.getSlabBlock().get(), 2)
-                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getPlankBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_planks")), TreeUtil.getBlock(treeObject.getId(), "_slab"), 2)
+                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_planks")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_slab_from_planks"));
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
-                woodcutter(Ingredient.of(treeObject.getPlankBlock().get()), treeObject.getStairsBlock().get(), 1)
-                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(treeObject.getPlankBlock().get()).build()))
+                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_planks")), TreeUtil.getBlock(treeObject.getId(), "_stairs"), 1)
+                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_planks")).build()))
                         ::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_stairs_from_planks"));
     }
@@ -337,9 +338,9 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         String name = treeObject.getId().getPath();
         List<HarvestEntry> drops = new ArrayList<>()
         {{
-            add(new HarvestEntry(1.0F, new ItemStack(treeObject.getLogBlock().get()), 2, 4));
+            add(new HarvestEntry(1.0F, new ItemStack(TreeUtil.getBlock(treeObject.getId(), "_log")), 2, 4));
             add(new HarvestEntry(0.1F, new ItemStack(Items.STICK), 1, 2));
-            add(new HarvestEntry(0.15F, new ItemStack(treeObject.getSaplingBlock().get()), 1, 1));
+            add(new HarvestEntry(0.15F, new ItemStack(TreeUtil.getBlock(treeObject.getId(), "_sapling")), 1, 1));
         }};
         if (treeObject.hasFruit()) {
             ItemStack fruit = treeObject.getFruit().getItem();
@@ -349,7 +350,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         }
 
         SingleConditionalRecipe.builder().addCondition(modLoaded("botanytrees")).setRecipe(
-            BotanyPotCropRecipeBuilder.direct(Ingredient.of(treeObject.getSaplingBlock().get()), Set.of("dirt"), 2400, drops, treeObject.getSaplingBlock().get().defaultBlockState(), 0)::save
+            BotanyPotCropRecipeBuilder.direct(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_sapling")), Set.of("dirt"), 2400, drops, TreeUtil.getBlock(treeObject.getId(), "_sapling").defaultBlockState(), 0)::save
         ).build(consumer, new ResourceLocation(ProductiveTrees.MODID, "botanytrees/" + name));
     }
 
@@ -555,14 +556,14 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
     }
 
     public void buildHiveRecipe(String modid, WoodObject treeObject, Consumer<FinishedRecipe> consumer) {
-        Block hive = treeObject.getHiveBlock().get();
+        Block hive = ForgeRegistries.BLOCKS.getValue(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
         SingleConditionalRecipe.builder()
                 .addCondition(
                         modLoaded(modid)
                 )
                 .setRecipe(
                         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, hive).group("hives").pattern("WWW").pattern("CHC").pattern("FWS")
-                                .define('W', Ingredient.of(treeObject.getPlankBlock().get()))
+                                .define('W', Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_planks")))
                                 .define('H', Ingredient.of(cy.jdkdigital.productivebees.init.ModTags.Forge.HIVES))
                                 .define('C', Ingredient.of(cy.jdkdigital.productivebees.init.ModTags.Forge.HONEYCOMBS))
                                 .define('F', Ingredient.of(cy.jdkdigital.productivebees.init.ModTags.Forge.CAMPFIRES))
@@ -576,14 +577,14 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
     }
 
     public void buildBoxRecipe(String modid, WoodObject treeObject, Consumer<FinishedRecipe> consumer) {
-        Block box = treeObject.getExpansionBoxBlock().get();
+        Block box = ForgeRegistries.BLOCKS.getValue(treeObject.getId().withPath(p -> "expansion_box_" + p));
         SingleConditionalRecipe.builder()
                 .addCondition(
                         modLoaded(modid)
                 )
                 .setRecipe(
                         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, box).group("expansion_boxes").pattern("WWW").pattern("WCW").pattern("WWW")
-                                .define('W', treeObject.getPlankBlock().get())
+                                .define('W', TreeUtil.getBlock(treeObject.getId(), "_planks"))
                                 .define('C', Ingredient.of(cy.jdkdigital.productivebees.init.ModTags.Forge.HONEYCOMBS))
                                 .unlockedBy("has_hive", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BEEHIVE))
                                 ::save

@@ -6,8 +6,9 @@ import cy.jdkdigital.productivetrees.client.particle.PetalParticle;
 import cy.jdkdigital.productivetrees.client.render.block.PollinatedLeavesBlockEntityRenderer;
 import cy.jdkdigital.productivetrees.client.render.block.StripperBlockEntityRenderer;
 import cy.jdkdigital.productivetrees.client.render.block.TimeTravellerDisplayBlockEntityRenderer;
-import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
+import cy.jdkdigital.productivetrees.common.block.entity.ProductiveHangingSignBlockEntity;
+import cy.jdkdigital.productivetrees.common.block.entity.ProductiveSignBlockEntity;
 import cy.jdkdigital.productivetrees.inventory.screen.PollenSifterScreen;
 import cy.jdkdigital.productivetrees.inventory.screen.SawmillScreen;
 import cy.jdkdigital.productivetrees.inventory.screen.StripperScreen;
@@ -23,6 +24,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
@@ -60,10 +62,8 @@ public class ClientSetupEvents
         event.registerBlockEntityRenderer(TreeRegistrator.TIME_TRAVELLER_DISPLAY_BLOCK_ENTITY.get(), TimeTravellerDisplayBlockEntityRenderer::new);
 
         TreeFinder.trees.forEach((id, treeObject) -> {
-            event.registerBlockEntityRenderer(((ProductiveStandingSignBlock) treeObject.getSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
-            event.registerBlockEntityRenderer(((ProductiveWallSignBlock) treeObject.getWallSignBlock().get()).getBlockEntity().get(), SignRenderer::new);
-            event.registerBlockEntityRenderer(((ProductiveCeilingHangingSignBlock) treeObject.getHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
-            event.registerBlockEntityRenderer(((ProductiveWallHangingSignBlock) treeObject.getWallHangingSignBlock().get()).getBlockEntity().get(), HangingSignRenderer::new);
+            event.registerBlockEntityRenderer(TreeRegistrator.SIGN_BE.get(), SignRenderer::new);
+            event.registerBlockEntityRenderer(TreeRegistrator.HANGING_SIGN_BE.get(), HangingSignRenderer::new);
         });
     }
 
@@ -79,12 +79,12 @@ public class ClientSetupEvents
         TreeFinder.trees.forEach((id, treeObject) -> {
             event.register((stack, tintIndex) -> {
                 return tintIndex == 0 ? ColorUtil.getCacheColor(treeObject.getLeafColor()) : (treeObject.hasFruit() && tintIndex == 2 ? ColorUtil.getCacheColor(treeObject.getFruit().ripeColor()) : ColorUtil.getCacheColor(treeObject.getLogColor()));
-            }, treeObject.getSaplingBlock().get(), treeObject.getPottedSaplingBlock().get());
+            }, TreeUtil.getBlock(treeObject.getId(), "_sapling"), TreeUtil.getBlock(treeObject.getId(), "_potted_sapling"));
 
             if (ModList.get().isLoaded("productivebees") && treeObject.getStyle().hiveStyle() != null && treeObject.tintHives()) {
                 event.register((stack, tintIndex) -> ColorUtil.getCacheColor(treeObject.getPlankColor()),
-                        treeObject.getHiveBlock().get(),
-                        treeObject.getExpansionBoxBlock().get()
+                        ForgeRegistries.BLOCKS.getValue(id.withPath(p -> "advanced_" + p + "_beehive")),
+                        ForgeRegistries.BLOCKS.getValue(id.withPath(p -> "expansion_box_" + p))
                 );
             }
         });
@@ -105,33 +105,14 @@ public class ClientSetupEvents
         }, TreeRegistrator.POLLINATED_LEAVES.get());
 
         TreeFinder.trees.forEach((id, treeObject) -> {
-            if (treeObject.tintFruit()) {
-                event.register((blockState, lightReader, pos, tintIndex) -> {
-                    if (tintIndex == 0) {
-                        return ColorUtil.getCacheColor(treeObject.getLeafColor());
-                    }
-
-                    int age = blockState.getValue(ProductiveFruitBlock.getAgeProperty());
-                    if (age < 3) {
-                        return ColorUtil.getCacheColor(treeObject.getFruit().flowerColor());
-                    } else if (age < ProductiveFruitBlock.getMaxAge()) {
-                        float agePercentage = (float) age / (float) ProductiveFruitBlock.getMaxAge();
-                        int colorA = ColorUtil.getCacheColor(treeObject.getFruit().unripeColor());
-                        int colorB = ColorUtil.getCacheColor(treeObject.getFruit().ripeColor());
-                        return ColorUtil.blend(colorA, colorB, agePercentage);
-                    }
-                    return ColorUtil.getCacheColor(treeObject.getFruit().ripeColor());
-                }, treeObject.getFruitBlock().get());
-            }
-
             event.register((blockState, lightReader, pos, tintIndex) -> {
                 return tintIndex == 0 ? ColorUtil.getCacheColor(treeObject.getLeafColor()) : (treeObject.hasFruit() && tintIndex == 2 ? ColorUtil.getCacheColor(treeObject.getFruit().ripeColor()) : ColorUtil.getCacheColor(treeObject.getLogColor()));
-            }, treeObject.getSaplingBlock().get(), treeObject.getPottedSaplingBlock().get());
+            }, TreeUtil.getBlock(treeObject.getId(), "_sapling"), TreeUtil.getBlock(treeObject.getId(), "_potted_sapling"));
 
             if (ModList.get().isLoaded("productivebees") && treeObject.getStyle().hiveStyle() != null && treeObject.tintHives()) {
                 event.register((blockState, lightReader, pos, tintIndex) -> ColorUtil.getCacheColor(treeObject.getPlankColor()),
-                        treeObject.getHiveBlock().get(),
-                        treeObject.getExpansionBoxBlock().get()
+                        ForgeRegistries.BLOCKS.getValue(id.withPath(p -> "advanced_" + p + "_beehive")),
+                        ForgeRegistries.BLOCKS.getValue(id.withPath(p -> "expansion_box_" + p))
                 );
             }
         });

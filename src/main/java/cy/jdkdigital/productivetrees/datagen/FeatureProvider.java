@@ -21,7 +21,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSize;
@@ -35,6 +35,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,6 +51,10 @@ public class FeatureProvider implements DataProvider
 
     public FeatureProvider(PackOutput output) {
         this.output = output;
+    }
+
+    private static Block getBlock(ResourceLocation tree, String name) {
+        return ForgeRegistries.BLOCKS.getValue(tree.withPath(p -> p + name));
     }
 
     @Override
@@ -85,7 +90,7 @@ public class FeatureProvider implements DataProvider
 
     private Supplier<JsonElement> getPlacedFeature(TreeObject treeObject) {
         return () -> {
-            JsonElement placement = PlacementModifier.CODEC.encodeStart(JsonOps.INSTANCE, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(treeObject.getSaplingBlock().get().defaultBlockState(), Vec3i.ZERO))).getOrThrow(false, ProductiveTrees.LOGGER::error);
+            JsonElement placement = PlacementModifier.CODEC.encodeStart(JsonOps.INSTANCE, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(TreeUtil.getBlock(treeObject.getId(), "_sapling").defaultBlockState(), Vec3i.ZERO))).getOrThrow(false, ProductiveTrees.LOGGER::error);
             JsonArray placementArray = new JsonArray();
             placementArray.add(placement);
 
@@ -104,7 +109,7 @@ public class FeatureProvider implements DataProvider
             // decorators
             JsonArray decoratorArray = new JsonArray();
             if (treeObject.hasFruit()) {
-                var state = treeObject.getFruitBlock().get().defaultBlockState();
+                var state = TreeUtil.getBlock(treeObject.getId(), "_fruit").defaultBlockState();
                 if (treeObject.getId().getPath().equals("banana")) {
                     state = state.setValue(ProductiveFruitBlock.getAgeProperty(), 1);
                 }
@@ -116,14 +121,14 @@ public class FeatureProvider implements DataProvider
             // foliage_placer
             config.add("foliage_placer", foliagePlacers.containsKey(name) ? foliagePlacers.get(name) : foliagePlacers.get("default"));
             // foliage_provider
-            config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(treeObject.getLeafBlock().get())).getOrThrow(false, ProductiveTrees.LOGGER::error));
+            config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(TreeUtil.getBlock(treeObject.getId(), "_leaves"))).getOrThrow(false, ProductiveTrees.LOGGER::error));
 //            config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(Blocks.AIR)).getOrThrow(false, ProductiveTrees.LOGGER::error));
             // minimum_size
             config.add("minimum_size", FeatureSize.CODEC.encodeStart(JsonOps.INSTANCE, new TwoLayersFeatureSize(1, 0, 1)).getOrThrow(false, ProductiveTrees.LOGGER::error));
             // trunk_placer
             config.add("trunk_placer", trunkPlacers.containsKey(name) ? trunkPlacers.get(name) : trunkPlacers.get("default"));
             // trunk_provider
-            config.add("trunk_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(treeObject.getLogBlock().get())).getOrThrow(false, ProductiveTrees.LOGGER::error));
+            config.add("trunk_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(TreeUtil.getBlock(treeObject.getId(), "_log"))).getOrThrow(false, ProductiveTrees.LOGGER::error));
 
             config.addProperty("force_dirt", false);
             config.addProperty("ignore_vines", true);

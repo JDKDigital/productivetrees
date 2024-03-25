@@ -5,6 +5,7 @@ import cy.jdkdigital.productivelib.common.block.entity.CapabilityBlockEntity;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.inventory.StripperContainer;
+import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
@@ -28,6 +29,7 @@ import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemHandlerHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -110,8 +112,11 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
                 if (!log.isEmpty() && !axe.isEmpty() && (output.getCount() < output.getMaxStackSize())) {
                     var strippedLogItem = TreeUtil.getStrippedItem(blockEntity, serverLevel, log);
                     if (!strippedLogItem.isEmpty() && inv.insertItem(SLOT_OUT, strippedLogItem, false).isEmpty()) {
-                        if (log.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock && !logBlock.getTree().getStripDrop().get().isEmpty()) {
-                            inv.insertItem(SLOT_BARK, logBlock.getTree().getStripDrop().get().copy(), false);
+                        if (log.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock) {
+                            var treeObject = TreeFinder.trees.get(ForgeRegistries.BLOCKS.getKey(logBlock));
+                            if (!treeObject.getStripDrop().get().isEmpty()) {
+                                inv.insertItem(SLOT_BARK, treeObject.getStripDrop().get().copy(), false);
+                            }
                         }
                         log.shrink(1);
                         if (axe.isDamageableItem()) {

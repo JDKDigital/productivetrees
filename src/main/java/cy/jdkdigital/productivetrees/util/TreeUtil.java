@@ -11,6 +11,8 @@ import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveWoodBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
 import cy.jdkdigital.productivetrees.recipe.SawmillRecipe;
+import cy.jdkdigital.productivetrees.registry.TreeFinder;
+import cy.jdkdigital.productivetrees.registry.TreeObject;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
@@ -120,7 +122,8 @@ public class TreeUtil
 
     public static ItemStack getLeafFromSapling(ItemStack saplingStack) {
         if (saplingStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveSaplingBlock saplingBlock) {
-            return new ItemStack(saplingBlock.getTree().getLeafBlock().get());
+            var tree = TreeUtil.getTree(saplingBlock);
+            return new ItemStack(getBlock(tree.getId(), "_leaves"));
         }
         var resourceLocation = ForgeRegistries.ITEMS.getKey(saplingStack.getItem());
         if (resourceLocation != null) {
@@ -134,7 +137,8 @@ public class TreeUtil
 
     public static ItemStack getSaplingFromLeaf(ItemStack leafStack) {
         if (leafStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLeavesBlock leavesBlock) {
-            return new ItemStack(leavesBlock.getTree().getSaplingBlock().get());
+            var tree = TreeUtil.getTree(leavesBlock);
+            return new ItemStack(getBlock(tree.getId(), "_sapling"));
         }
         var resourceLocation = ForgeRegistries.ITEMS.getKey(leafStack.getItem());
         if (resourceLocation != null) {
@@ -170,10 +174,12 @@ public class TreeUtil
                 return new ItemStack(stripState.getBlock());
             }
             if (initialState.getBlock() instanceof ProductiveLogBlock pLog) {
-                return new ItemStack(pLog.getTree().getStrippedLogBlock().get());
+                var tree = TreeUtil.getTree(pLog);
+                return new ItemStack(getBlock(tree.getId(), "_stripped_log"));
             }
-            if (initialState.getBlock() instanceof ProductiveWoodBlock pLog) {
-                return new ItemStack(pLog.getTree().getStrippedWoodBlock().get());
+            if (initialState.getBlock() instanceof ProductiveWoodBlock pWood) {
+                var tree = TreeUtil.getTree(pWood);
+                return new ItemStack(getBlock(tree.getId(), "_stripped_wood"));
             }
         }
         return ItemStack.EMPTY;
@@ -226,5 +232,17 @@ public class TreeUtil
 
     public static boolean isTranslucentTree(String name) {
         return name.equals("brown_amber") || name.equals("slimy_delight") || name.equals("foggy_blast") || name.equals("soul_tree") || name.equals("water_wonder");
+    }
+
+    public static Block getBlock(ResourceLocation tree, String name) {
+        Block block = ForgeRegistries.BLOCKS.getValue(tree.withPath(p -> p + name));
+        if (block == null) {
+            throw new RuntimeException("block not found " + name + " for tree " + tree.getPath());
+        }
+        return block;
+    }
+
+    public static TreeObject getTree(Block block) {
+        return TreeFinder.trees.get(ForgeRegistries.BLOCKS.getKey(block));
     }
 }

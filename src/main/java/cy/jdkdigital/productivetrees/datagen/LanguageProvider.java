@@ -5,7 +5,9 @@ import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.registry.WoodObject;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
@@ -70,11 +72,11 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             String name = id.getPath();
-            add(treeObject.getLeafBlock().get(), LangUtil.capName(name) + " Leaves");
-            add(treeObject.getSaplingBlock().get(), LangUtil.capName(name) + " Sapling");
-            add(treeObject.getPottedSaplingBlock().get(), LangUtil.capName(name) + " Potted Sapling");
+            add(TreeUtil.getBlock(id, "_leaves"), LangUtil.capName(name) + " Leaves");
+            add(TreeUtil.getBlock(id, "_sapling"), LangUtil.capName(name) + " Sapling");
+            add(TreeUtil.getBlock(id, "_potted_sapling"), LangUtil.capName(name) + " Potted Sapling");
             if (treeObject.hasFruit()) {
-                add(treeObject.getFruitBlock().get(), LangUtil.capName(name) + " Fruiting Leaves");
+                add(TreeUtil.getBlock(id, "_fruit"), LangUtil.capName(name) + " Fruiting Leaves");
             }
             addWoodStuff(treeObject, name);
             add("block.productivetrees." + name + ".latin", getLatinName(name));
@@ -82,25 +84,27 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
     }
 
     private void addWoodStuff(WoodObject woodObject, String name) {
-        add(woodObject.getLogBlock().get(), LangUtil.capName(name) + " Log");
-        add(woodObject.getWoodBlock().get(), LangUtil.capName(name) + " Wood");
-        add(woodObject.getStrippedLogBlock().get(), LangUtil.capName(name) + " Stripped Log");
-        add(woodObject.getStrippedWoodBlock().get(), LangUtil.capName(name) + " Stripped Wood");
-        add(woodObject.getPlankBlock().get(), LangUtil.capName(name) + " Planks");
-        add(woodObject.getStairsBlock().get(), LangUtil.capName(name) + " Stairs");
-        add(woodObject.getSlabBlock().get(), LangUtil.capName(name) + " Slab");
-        add(woodObject.getFenceBlock().get(), LangUtil.capName(name) + " Fence");
-        add(woodObject.getFenceGateBlock().get(), LangUtil.capName(name) + " Fence Gate");
-        add(woodObject.getButtonBlock().get(), LangUtil.capName(name) + " Button");
-        add(woodObject.getPressurePlateBlock().get(), LangUtil.capName(name) + " Pressure Plate");
-        add(woodObject.getDoorBlock().get(), LangUtil.capName(name) + " Door");
-        add(woodObject.getTrapdoorBlock().get(), LangUtil.capName(name) + " Trapdoor");
-        add(woodObject.getBookshelfBlock().get(), LangUtil.capName(name) + " Bookshelf");
-        add(woodObject.getSignBlock().get(), LangUtil.capName(name) + " Sign");
-        add(woodObject.getHangingSignBlock().get(), LangUtil.capName(name) + " Hanging Sign");
+        add(TreeUtil.getBlock(woodObject.getId(), "_log"), LangUtil.capName(name) + " Log");
+        add(TreeUtil.getBlock(woodObject.getId(), "_wood"), LangUtil.capName(name) + " Wood");
+        add(TreeUtil.getBlock(woodObject.getId(), "_stripped_log"), LangUtil.capName(name) + " Stripped Log");
+        add(TreeUtil.getBlock(woodObject.getId(), "_stripped_wood"), LangUtil.capName(name) + " Stripped Wood");
+        add(TreeUtil.getBlock(woodObject.getId(), "_planks"), LangUtil.capName(name) + " Planks");
+        add(TreeUtil.getBlock(woodObject.getId(), "_stairs"), LangUtil.capName(name) + " Stairs");
+        add(TreeUtil.getBlock(woodObject.getId(), "_slab"), LangUtil.capName(name) + " Slab");
+        add(TreeUtil.getBlock(woodObject.getId(), "_fence"), LangUtil.capName(name) + " Fence");
+        add(TreeUtil.getBlock(woodObject.getId(), "_fence_gate"), LangUtil.capName(name) + " Fence Gate");
+        add(TreeUtil.getBlock(woodObject.getId(), "_button"), LangUtil.capName(name) + " Button");
+        add(TreeUtil.getBlock(woodObject.getId(), "_pressure_plate"), LangUtil.capName(name) + " Pressure Plate");
+        add(TreeUtil.getBlock(woodObject.getId(), "_door"), LangUtil.capName(name) + " Door");
+        add(TreeUtil.getBlock(woodObject.getId(), "_trapdoor"), LangUtil.capName(name) + " Trapdoor");
+        add(TreeUtil.getBlock(woodObject.getId(), "_bookshelf"), LangUtil.capName(name) + " Bookshelf");
+        add(TreeUtil.getBlock(woodObject.getId(), "_sign"), LangUtil.capName(name) + " Sign");
+        add(TreeUtil.getBlock(woodObject.getId(), "_hanging_sign"), LangUtil.capName(name) + " Hanging Sign");
         if (woodObject.getStyle().hiveStyle() != null) {
-            add(woodObject.getHiveBlock().get(), "Advanced " + LangUtil.capName(name) + " Beehive");
-            add(woodObject.getExpansionBoxBlock().get(), LangUtil.capName(name) + " Expansion Box");
+            Block hive = ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
+            add(hive, "Advanced " + LangUtil.capName(name) + " Beehive");
+            Block box = ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p ->  "expansion_box_" + p));
+            add(box, LangUtil.capName(name) + " Expansion Box");
         }
     }
 

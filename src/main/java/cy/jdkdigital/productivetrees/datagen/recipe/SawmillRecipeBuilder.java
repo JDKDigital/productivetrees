@@ -13,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,12 +25,12 @@ public record SawmillRecipeBuilder(Ingredient log, ItemStack plank, ItemStack se
         return new SawmillRecipeBuilder(logs, plank, secondary, tertiary);
     }
 
-    public static SawmillRecipeBuilder tree(WoodObject tree) {
+    public static SawmillRecipeBuilder tree(WoodObject tree, Block log, Block strippedLog, Block wood, Block strippedWood, Block plank) {
         ItemStack tertiary =
                 tree.getId().getPath().equals("old_fustic") ? new ItemStack(TreeRegistrator.FUSTIC.get()) :
                 (tree.getId().getPath().equals("logwood") || tree.getId().getPath().equals("brazilwood")) ? new ItemStack(TreeRegistrator.HAEMATOXYLIN.get()) :
                 ItemStack.EMPTY;
-        return direct(Ingredient.of(tree.getLogBlock().get(), tree.getStrippedLogBlock().get(), tree.getWoodBlock().get(), tree.getStrippedWoodBlock().get()), new ItemStack(tree.getPlankBlock().get(), 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), tertiary);
+        return direct(Ingredient.of(log, strippedLog, wood, strippedWood), new ItemStack(plank, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), tertiary);
     }
 
     @Override

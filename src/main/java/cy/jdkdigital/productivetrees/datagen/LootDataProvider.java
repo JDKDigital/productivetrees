@@ -5,6 +5,7 @@ import cy.jdkdigital.productivebees.datagen.BlockLootProvider;
 import cy.jdkdigital.productivelib.loot.OptionalLootItem;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
@@ -100,31 +101,33 @@ public class LootDataProvider implements DataProvider
 
             TreeFinder.trees.forEach((id, treeObject) -> {
                 var saplingChance = treeObject.getStyle().saplingStyle().equals("jungle") ? JUNGLE_LEAVES_SAPLING_CHANGES : NORMAL_LEAVES_SAPLING_CHANCES;
-                add(treeObject.getLeafBlock().get(), leaf -> createOptionalLeavesDrops(leaf, treeObject.getSaplingBlock().get(), saplingChance));
-                dropSelf(treeObject.getSaplingBlock().get());
-                dropSelf(treeObject.getLogBlock().get());
-                dropSelf(treeObject.getPlankBlock().get());
-                dropSelf(treeObject.getWoodBlock().get());
-                dropSelf(treeObject.getStrippedLogBlock().get());
-                dropSelf(treeObject.getStrippedWoodBlock().get());
-                dropSelf(treeObject.getSlabBlock().get());
-                dropSelf(treeObject.getStairsBlock().get());
-                dropSelf(treeObject.getFenceBlock().get());
-                dropSelf(treeObject.getFenceGateBlock().get());
-                dropSelf(treeObject.getPressurePlateBlock().get());
-                dropSelf(treeObject.getButtonBlock().get());
-                dropDoor(treeObject.getDoorBlock().get());
-                dropSelf(treeObject.getTrapdoorBlock().get());
-                dropSelf(treeObject.getBookshelfBlock().get());
-                dropSelf(treeObject.getSignBlock().get());
-                dropOther(treeObject.getWallSignBlock().get(), treeObject.getSignBlock().get());
-                dropSelf(treeObject.getHangingSignBlock().get());
-                dropOther(treeObject.getWallHangingSignBlock().get(), treeObject.getHangingSignBlock().get());
+                add(TreeUtil.getBlock(id, "_leaves"), leaf -> createOptionalLeavesDrops(leaf, TreeUtil.getBlock(id, "_sapling"), saplingChance));
+                dropSelf(TreeUtil.getBlock(id, "_sapling"));
+                dropSelf(TreeUtil.getBlock(id, "_log"));
+                dropSelf(TreeUtil.getBlock(id, "_planks"));
+                dropSelf(TreeUtil.getBlock(id, "_wood"));
+                dropSelf(TreeUtil.getBlock(id, "_stripped_log"));
+                dropSelf(TreeUtil.getBlock(id, "_stripped_wood"));
+                dropSelf(TreeUtil.getBlock(id, "_slab"));
+                dropSelf(TreeUtil.getBlock(id, "_stairs"));
+                dropSelf(TreeUtil.getBlock(id, "_fence"));
+                dropSelf(TreeUtil.getBlock(id, "_fence_gate"));
+                dropSelf(TreeUtil.getBlock(id, "_pressure_plate"));
+                dropSelf(TreeUtil.getBlock(id, "_button"));
+                dropDoor(TreeUtil.getBlock(id, "_door"));
+                dropSelf(TreeUtil.getBlock(id, "_trapdoor"));
+                dropSelf(TreeUtil.getBlock(id, "_bookshelf"));
+                dropSelf(TreeUtil.getBlock(id, "_sign"));
+                dropOther(TreeUtil.getBlock(id, "_wall_sign"), TreeUtil.getBlock(id, "_sign"));
+                dropSelf(TreeUtil.getBlock(id, "_hanging_sign"));
+                dropOther(TreeUtil.getBlock(id, "_wall_hanging_sign"), TreeUtil.getBlock(id, "_hanging_sign"));
                 if (treeObject.getStyle().hiveStyle() != null) {
-                    Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(treeObject.getHiveBlock().get(), BlockLootProvider::genHiveDrop);
-                    this.add(treeObject.getHiveBlock().get(), hiveFunc.apply(treeObject.getHiveBlock().get()));
-                    Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(treeObject.getExpansionBoxBlock().get(), BlockLootProvider::genExpansionDrop);
-                    this.add(treeObject.getExpansionBoxBlock().get(), expansionFunc.apply(treeObject.getExpansionBoxBlock().get()));
+                    Block hive = ForgeRegistries.BLOCKS.getValue(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
+                    Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(hive, BlockLootProvider::genHiveDrop);
+                    this.add(hive, hiveFunc.apply(hive));
+                    Block box = ForgeRegistries.BLOCKS.getValue(treeObject.getId().withPath(p ->  "expansion_box_" + p));
+                    Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(box, BlockLootProvider::genExpansionDrop);
+                    this.add(box, expansionFunc.apply(box));
                 }
             });
 

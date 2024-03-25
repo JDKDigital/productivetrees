@@ -4,6 +4,7 @@ import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -62,8 +63,8 @@ public class ItemTagProvider extends ItemTagsProvider
         var moddedStrippedLogs = tag(ItemTags.create(new ResourceLocation("create:modded_stripped_logs")));
         var moddedStrippedWood = tag(ItemTags.create(new ResourceLocation("create:modded_stripped_wood")));
         TreeFinder.trees.forEach((id, treeObject) -> {
-            moddedStrippedLogs.add(treeObject.getStrippedLogBlock().get().asItem());
-            moddedStrippedWood.add(treeObject.getStrippedWoodBlock().get().asItem());
+            moddedStrippedLogs.add(TreeUtil.getBlock(id, "_stripped_log").asItem());
+            moddedStrippedWood.add(TreeUtil.getBlock(id, "_stripped_wood").asItem());
         });
 
         tag(ModTags.SAWDUST).add(TreeRegistrator.SAWDUST.get());

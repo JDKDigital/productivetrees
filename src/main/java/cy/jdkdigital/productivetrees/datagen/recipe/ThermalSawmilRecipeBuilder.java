@@ -3,7 +3,6 @@ package cy.jdkdigital.productivetrees.datagen.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import cy.jdkdigital.productivelib.util.RecipeUtil;
-import cy.jdkdigital.productivetrees.registry.WoodObject;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -14,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,8 +36,8 @@ public final class ThermalSawmilRecipeBuilder implements RecipeBuilder
         return new ThermalSawmilRecipeBuilder(logs, plank, secondary);
     }
 
-    public static ThermalSawmilRecipeBuilder tree(WoodObject tree) {
-        return direct(Ingredient.of(tree.getLogBlock().get(), tree.getStrippedLogBlock().get(), tree.getWoodBlock().get(), tree.getStrippedWoodBlock().get()), new ItemStack(tree.getPlankBlock().get(), 6), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("thermal:sawdust")), 1));
+    public static ThermalSawmilRecipeBuilder tree(Block log, Block strippedLog, Block wood, Block strippedwood, Block plank) {
+        return direct(Ingredient.of(log, strippedLog, wood, strippedwood), new ItemStack(plank, 6), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("thermal:sawdust")), 1));
     }
 
     @Override

@@ -1,7 +1,6 @@
 package cy.jdkdigital.productivetrees.datagen.recipe;
 
 import com.google.gson.JsonObject;
-import cy.jdkdigital.productivetrees.registry.TreeObject;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -18,10 +17,6 @@ public record TreePollinationRecipeBuilder(Ingredient leafA, Ingredient leafB, I
 {
     public static TreePollinationRecipeBuilder direct(Ingredient leafA, Ingredient leafB, Ingredient result, int chance) {
         return new TreePollinationRecipeBuilder(leafA, leafB, result, chance);
-    }
-
-    public static TreePollinationRecipeBuilder trees(TreeObject treeA, TreeObject treeB, TreeObject result, int chance) {
-        return direct(Ingredient.of(treeA.getLeafBlock().get()), Ingredient.of(treeB.getLeafBlock().get()), Ingredient.of(result.getSaplingBlock().get()), chance);
     }
 
     @Override

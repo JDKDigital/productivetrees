@@ -43,6 +43,10 @@ public class BlockstateProvider implements DataProvider
         this.packOutput = packOutput;
     }
 
+    private static Block getBlock(ResourceLocation tree, String name) {
+        return ForgeRegistries.BLOCKS.getValue(tree.withPath(p -> p + name));
+    }
+
     @Override
     public CompletableFuture<?> run(CachedOutput cache) {
         Map<Block, BlockStateGenerator> blockModels = Maps.newHashMap();
@@ -72,23 +76,23 @@ public class BlockstateProvider implements DataProvider
         PackOutput.PathProvider modelPathProvider = packOutput.createPathProvider(PackOutput.Target.RESOURCE_PACK, "models");
 
         TreeFinder.trees.forEach((id, treeObject) -> {
-            addBlockItemModel(treeObject.getLeafBlock().get(), "leaves/" + treeObject.getStyle().leafStyle(), itemModels);
-            addBlockItemModel(treeObject.getPlankBlock().get(), "planks/" + treeObject.getStyle().plankStyle(), itemModels);
-            addBlockItemModel(treeObject.getLogBlock().get(), "log/" + treeObject.getStyle().woodStyle() + "_log", itemModels);
-            addBlockItemModel(treeObject.getStrippedLogBlock().get(), "log/" + treeObject.getStyle().woodStyle() + "_stripped_log", itemModels);
-            addBlockItemModel(treeObject.getWoodBlock().get(), "log/" + treeObject.getStyle().woodStyle() + "_wood", itemModels);
-            addBlockItemModel(treeObject.getStrippedWoodBlock().get(), "log/" + treeObject.getStyle().woodStyle() + "_stripped_wood", itemModels);
-            addBlockItemModel(treeObject.getSlabBlock().get(), "slab/" + treeObject.getStyle().plankStyle() + "_slab", itemModels);
-            addBlockItemModel(treeObject.getStairsBlock().get(), "stairs/" + treeObject.getStyle().plankStyle() + "_stairs", itemModels);
-            addBlockItemModel(treeObject.getButtonBlock().get(), "button/" + treeObject.getStyle().plankStyle() + "_button_inventory", itemModels);
-            addBlockItemModel(treeObject.getPressurePlateBlock().get(), "pressure_plate/" + treeObject.getStyle().plankStyle() + "_pressure_plate", itemModels);
-            addBlockItemModel(treeObject.getFenceBlock().get(), "fence/" + treeObject.getStyle().plankStyle() + "_fence_inventory", itemModels);
-            addBlockItemModel(treeObject.getFenceGateBlock().get(), "fence_gate/" + treeObject.getStyle().plankStyle() + "_fence_gate", itemModels);
-            ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(treeObject.getDoorBlock().get().asItem()), (new TextureMapping()).put(TextureSlot.LAYER0, new ResourceLocation(ProductiveTrees.MODID, "item/door/" + treeObject.getStyle().doorStyle())), modelOutput);
-            addBlockItemModel(treeObject.getTrapdoorBlock().get(), "trapdoor/" + treeObject.getStyle().doorStyle() + "_bottom", itemModels);
-            addBlockItemModel(treeObject.getBookshelfBlock().get(), "bookshelf/" + treeObject.getStyle().plankStyle(), itemModels);
-            generateFlatItem(treeObject.getSignBlock().get().asItem(), "item/sign/", modelOutput);
-            generateFlatItem(treeObject.getHangingSignBlock().get().asItem(), "item/hanging_sign/", modelOutput);
+            addBlockItemModel(TreeUtil.getBlock(id, "_leaves"), "leaves/" + treeObject.getStyle().leafStyle(), itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_planks"), "planks/" + treeObject.getStyle().plankStyle(), itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_log"), "log/" + treeObject.getStyle().woodStyle() + "_log", itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_stripped_log"), "log/" + treeObject.getStyle().woodStyle() + "_stripped_log", itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_wood"), "log/" + treeObject.getStyle().woodStyle() + "_wood", itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_stripped_wood"), "log/" + treeObject.getStyle().woodStyle() + "_stripped_wood", itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_slab"), "slab/" + treeObject.getStyle().plankStyle() + "_slab", itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_stairs"), "stairs/" + treeObject.getStyle().plankStyle() + "_stairs", itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_button"), "button/" + treeObject.getStyle().plankStyle() + "_button_inventory", itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_pressure_plate"), "pressure_plate/" + treeObject.getStyle().plankStyle() + "_pressure_plate", itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_fence"), "fence/" + treeObject.getStyle().plankStyle() + "_fence_inventory", itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_fence_gate"), "fence_gate/" + treeObject.getStyle().plankStyle() + "_fence_gate", itemModels);
+            ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(TreeUtil.getBlock(id, "_door").asItem()), (new TextureMapping()).put(TextureSlot.LAYER0, new ResourceLocation(ProductiveTrees.MODID, "item/door/" + treeObject.getStyle().doorStyle())), modelOutput);
+            addBlockItemModel(TreeUtil.getBlock(id, "_trapdoor"), "trapdoor/" + treeObject.getStyle().doorStyle() + "_bottom", itemModels);
+            addBlockItemModel(TreeUtil.getBlock(id, "_bookshelf"), "bookshelf/" + treeObject.getStyle().plankStyle(), itemModels);
+            generateFlatItem(TreeUtil.getBlock(id, "_sign").asItem(), "item/sign/", modelOutput);
+            generateFlatItem(TreeUtil.getBlock(id, "_hanging_sign").asItem(), "item/hanging_sign/", modelOutput);
         });
 
         generateFruitItem(TreeRegistrator.COFFEE_BEAN.get(), modelOutput);
@@ -243,13 +247,13 @@ public class BlockstateProvider implements DataProvider
 
             TreeFinder.trees.forEach((id, treeObject) -> {
                 this.createSapling(treeObject);
-                this.createBaseBlock(treeObject.getLeafBlock().get(), "leaves/" + treeObject.getStyle().leafStyle());
+                this.createBaseBlock(TreeUtil.getBlock(id, "_leaves"), "leaves/" + treeObject.getStyle().leafStyle());
                 if (treeObject.hasFruit()) {
                     this.createFruitBlock(treeObject);
                 }
-                new WoodProvider().logWithHorizontal(treeObject.getStyle().woodStyle(), treeObject.getLogBlock().get(), false).wood(treeObject.getStyle().woodStyle(), treeObject.getWoodBlock().get(), false);
-                new WoodProvider().logWithHorizontal(treeObject.getStyle().woodStyle(), treeObject.getStrippedLogBlock().get(), true).wood(treeObject.getStyle().woodStyle(), treeObject.getStrippedWoodBlock().get(), true);
-                this.createBaseBlock(treeObject.getPlankBlock().get(), "planks/" + treeObject.getStyle().plankStyle());
+                new WoodProvider().logWithHorizontal(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_log"), false).wood(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_wood"), false);
+                new WoodProvider().logWithHorizontal(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_stripped_log"), true).wood(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_stripped_wood"), true);
+                this.createBaseBlock(TreeUtil.getBlock(id, "_planks"), "planks/" + treeObject.getStyle().plankStyle());
                 this.createStairsBlock(treeObject);
                 this.createSlabBlock(treeObject);
                 this.createPressurePlateBlock(treeObject);
@@ -258,14 +262,16 @@ public class BlockstateProvider implements DataProvider
                 this.createFenceBlock(treeObject);
                 this.createDoorBlock(treeObject);
                 this.createTrapdoorBlock(treeObject);
-                this.blockStateOutput.accept(createSimpleBlock(treeObject.getBookshelfBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/bookshelf/" + treeObject.getStyle().plankStyle())));
-                this.blockStateOutput.accept(createSimpleBlock(treeObject.getSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + treeObject.getStyle().plankStyle())));
-                this.blockStateOutput.accept(createSimpleBlock(treeObject.getWallSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + treeObject.getStyle().plankStyle())));
-                this.blockStateOutput.accept(createSimpleBlock(treeObject.getHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + treeObject.getStyle().plankStyle())));
-                this.blockStateOutput.accept(createSimpleBlock(treeObject.getWallHangingSignBlock().get(), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + treeObject.getStyle().plankStyle())));
+                this.blockStateOutput.accept(createSimpleBlock(TreeUtil.getBlock(id, "_bookshelf"), new ResourceLocation(ProductiveTrees.MODID, "block/bookshelf/" + treeObject.getStyle().plankStyle())));
+                this.blockStateOutput.accept(createSimpleBlock(TreeUtil.getBlock(id, "_sign"), new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + treeObject.getStyle().plankStyle())));
+                this.blockStateOutput.accept(createSimpleBlock(TreeUtil.getBlock(id, "_wall_sign"), new ResourceLocation(ProductiveTrees.MODID, "block/sign/" + treeObject.getStyle().plankStyle())));
+                this.blockStateOutput.accept(createSimpleBlock(TreeUtil.getBlock(id, "_hanging_sign"), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + treeObject.getStyle().plankStyle())));
+                this.blockStateOutput.accept(createSimpleBlock(TreeUtil.getBlock(id, "_wall_hanging_sign"), new ResourceLocation(ProductiveTrees.MODID, "block/sign/hanging_" + treeObject.getStyle().plankStyle())));
 
                 if (treeObject.getStyle().hiveStyle() != null) {
-                    cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(treeObject.getHiveBlock().get(), treeObject.getExpansionBoxBlock().get(), id.getPath(), new HiveType(false, treeObject.getPlankColor(), treeObject.getStyle().hiveStyle(), Ingredient.of(treeObject.getPlankBlock().get())), hiveBlockStates, this.modelOutput);
+                    Block hive = ForgeRegistries.BLOCKS.getValue(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
+                    Block box = ForgeRegistries.BLOCKS.getValue(treeObject.getId().withPath(p ->  "expansion_box_" + p));
+                    cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(hive, box, id.getPath(), new HiveType(false, treeObject.getPlankColor(), treeObject.getStyle().hiveStyle(), Ingredient.of(TreeUtil.getBlock(id, "_planks"))), hiveBlockStates, this.modelOutput);
                 }
             });
 
@@ -277,8 +283,8 @@ public class BlockstateProvider implements DataProvider
         }
 
         private void createSapling(TreeObject treeObject) {
-            Block block = treeObject.getSaplingBlock().get();
-            Block pottedBlock = treeObject.getPottedSaplingBlock().get();
+            Block block = TreeUtil.getBlock(treeObject.getId(), "_sapling");
+            Block pottedBlock = TreeUtil.getBlock(treeObject.getId(), "_potted_sapling");
 
             String baseSapling = "";
             if (treeObject.hasFruit()) {
@@ -328,7 +334,7 @@ public class BlockstateProvider implements DataProvider
         }
 
         private void createFruitBlock(TreeObject treeObject) {
-            this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(treeObject.getFruitBlock().get()).with(PropertyDispatch.property(ProductiveFruitBlock.getAgeProperty()).generate(age -> {
+            this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(TreeUtil.getBlock(treeObject.getId(), "_fruit")).with(PropertyDispatch.property(ProductiveFruitBlock.getAgeProperty()).generate(age -> {
                 String fruitStyle = treeObject.getFruit().style();
                 if (fruitStyle.equals("default")) {
                     var template = new ModelTemplate(Optional.of(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/base_fruit")), Optional.empty(), TextureSlot.ALL, TextureSlot.PLANT);
@@ -349,7 +355,7 @@ public class BlockstateProvider implements DataProvider
         }
 
         private void createStairsBlock(WoodObject treeObject) {
-            Block block = treeObject.getStairsBlock().get();
+            Block block = TreeUtil.getBlock(treeObject.getId(), "_stairs");
             ResourceLocation stairs = new ResourceLocation(ProductiveTrees.MODID, "block/stairs/" + treeObject.getStyle().plankStyle() + "_stairs");
             ResourceLocation stairsInner = new ResourceLocation(ProductiveTrees.MODID, "block/stairs/" + treeObject.getStyle().plankStyle() + "_stairs_inner");
             ResourceLocation stairsOuter = new ResourceLocation(ProductiveTrees.MODID, "block/stairs/" + treeObject.getStyle().plankStyle() + "_stairs_outer");
@@ -389,7 +395,7 @@ public class BlockstateProvider implements DataProvider
         }
 
         private void createSlabBlock(WoodObject treeObject) {
-            Block block = treeObject.getSlabBlock().get();
+            Block block = TreeUtil.getBlock(treeObject.getId(), "_slab");
             ResourceLocation slab = new ResourceLocation(ProductiveTrees.MODID, "block/slab/" + treeObject.getStyle().plankStyle() + "_slab");
             ResourceLocation planks = new ResourceLocation(ProductiveTrees.MODID, "block/planks/" + treeObject.getStyle().plankStyle());
             ResourceLocation slabTop = new ResourceLocation(ProductiveTrees.MODID, "block/slab/" + treeObject.getStyle().plankStyle() + "_slab_top");
@@ -397,14 +403,14 @@ public class BlockstateProvider implements DataProvider
         }
 
         private void createPressurePlateBlock(WoodObject treeObject) {
-            Block block = treeObject.getPressurePlateBlock().get();
+            Block block = TreeUtil.getBlock(treeObject.getId(), "_pressure_plate");
             ResourceLocation plate = new ResourceLocation(ProductiveTrees.MODID, "block/pressure_plate/" + treeObject.getStyle().plankStyle() + "_pressure_plate");
             ResourceLocation plateDown = new ResourceLocation(ProductiveTrees.MODID, "block/pressure_plate/" + treeObject.getStyle().plankStyle() + "_pressure_plate_down");
             this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(PropertyDispatch.property(BlockStateProperties.POWERED).generate(powered -> Variant.variant().with(VariantProperties.MODEL, powered ? plateDown : plate))));
         }
 
         private void createButtonBlock(WoodObject treeObject) {
-            Block block = treeObject.getButtonBlock().get();
+            Block block = TreeUtil.getBlock(treeObject.getId(), "_button");
             ResourceLocation button = new ResourceLocation(ProductiveTrees.MODID, "block/button/" + treeObject.getStyle().plankStyle() + "_button");
             ResourceLocation buttonPressed = new ResourceLocation(ProductiveTrees.MODID, "block/button/" + treeObject.getStyle().plankStyle() + "_button_pressed");
             this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(PropertyDispatch.properties(ButtonBlock.FACING, ButtonBlock.FACE, ButtonBlock.POWERED)
@@ -434,7 +440,7 @@ public class BlockstateProvider implements DataProvider
         }
 
         private void createFenceGateBlock(WoodObject treeObject) {
-            Block block = treeObject.getFenceGateBlock().get();
+            Block block = TreeUtil.getBlock(treeObject.getId(), "_fence_gate");
             ResourceLocation fenceGate = new ResourceLocation(ProductiveTrees.MODID, "block/fence_gate/" + treeObject.getStyle().plankStyle() + "_fence_gate");
             ResourceLocation fenceGateOpen = new ResourceLocation(ProductiveTrees.MODID, "block/fence_gate/" + treeObject.getStyle().plankStyle() + "_fence_gate_open");
             ResourceLocation fenceGateWall = new ResourceLocation(ProductiveTrees.MODID, "block/fence_gate/" + treeObject.getStyle().plankStyle() + "_fence_gate_wall");
@@ -460,10 +466,10 @@ public class BlockstateProvider implements DataProvider
                     })));
         }
 
-        private void createFenceBlock(WoodObject woodObject) {
-            Block block = woodObject.getFenceBlock().get();
-            ResourceLocation fencePost = new ResourceLocation(ProductiveTrees.MODID, "block/fence/" + woodObject.getStyle().plankStyle() + "_fence_post");
-            ResourceLocation fenceSide = new ResourceLocation(ProductiveTrees.MODID, "block/fence/" + woodObject.getStyle().plankStyle() + "_fence_side");
+        private void createFenceBlock(WoodObject treeObject) {
+            Block block = TreeUtil.getBlock(treeObject.getId(), "_fence");
+            ResourceLocation fencePost = new ResourceLocation(ProductiveTrees.MODID, "block/fence/" + treeObject.getStyle().plankStyle() + "_fence_post");
+            ResourceLocation fenceSide = new ResourceLocation(ProductiveTrees.MODID, "block/fence/" + treeObject.getStyle().plankStyle() + "_fence_side");
             this.blockStateOutput.accept(
                     MultiPartGenerator.multiPart(block)
                             .with(Variant.variant().with(VariantProperties.MODEL, fencePost))
@@ -474,16 +480,16 @@ public class BlockstateProvider implements DataProvider
             );
         }
 
-        private void createDoorBlock(WoodObject woodObject) {
-            Block block = woodObject.getDoorBlock().get();
-            ResourceLocation bottomLeft = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_bottom_left");
-            ResourceLocation bottomLeftOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_bottom_left_open");
-            ResourceLocation bottomRight = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_bottom_right");
-            ResourceLocation bottomRightOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_bottom_right_open");
-            ResourceLocation topLeft = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_top_left");
-            ResourceLocation topLeftOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_top_left_open");
-            ResourceLocation topRight = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_top_right");
-            ResourceLocation topRightOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + woodObject.getStyle().doorStyle() + "_top_right_open");
+        private void createDoorBlock(WoodObject treeObject) {
+            Block block = TreeUtil.getBlock(treeObject.getId(), "_door");
+            ResourceLocation bottomLeft = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_bottom_left");
+            ResourceLocation bottomLeftOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_bottom_left_open");
+            ResourceLocation bottomRight = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_bottom_right");
+            ResourceLocation bottomRightOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_bottom_right_open");
+            ResourceLocation topLeft = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_top_left");
+            ResourceLocation topLeftOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_top_left_open");
+            ResourceLocation topRight = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_top_right");
+            ResourceLocation topRightOpen = new ResourceLocation(ProductiveTrees.MODID, "block/door/" + treeObject.getStyle().doorStyle() + "_top_right_open");
 
             this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(configureDoorHalf(configureDoorHalf(PropertyDispatch.properties(DoorBlock.FACING, DoorBlock.HALF, DoorBlock.HINGE, DoorBlock.OPEN), DoubleBlockHalf.LOWER, bottomLeft, bottomLeftOpen, bottomRight, bottomRightOpen), DoubleBlockHalf.UPPER, topLeft, topLeftOpen, topRight, topRightOpen)));
         }
@@ -540,7 +546,7 @@ public class BlockstateProvider implements DataProvider
         }
 
         private void createTrapdoorBlock(WoodObject treeObject) {
-            Block block = treeObject.getTrapdoorBlock().get();
+            Block block = TreeUtil.getBlock(treeObject.getId(), "_trapdoor");
             ResourceLocation top = new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + treeObject.getStyle().doorStyle() + "_top");
             ResourceLocation bottom = new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + treeObject.getStyle().doorStyle() + "_bottom");
             ResourceLocation open = new ResourceLocation(ProductiveTrees.MODID, "block/trapdoor/" + treeObject.getStyle().doorStyle() + "_open");
