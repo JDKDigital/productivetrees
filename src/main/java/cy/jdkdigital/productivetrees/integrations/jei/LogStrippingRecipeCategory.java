@@ -3,6 +3,7 @@ package cy.jdkdigital.productivetrees.integrations.jei;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.recipe.LogStrippingRecipe;
+import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import mezz.jei.api.constants.VanillaTypes;
@@ -64,7 +65,7 @@ public class LogStrippingRecipeCategory implements IRecipeCategory<LogStrippingR
                 .setSlotName("log");
 
         builder.addSlot(RecipeIngredientRole.INPUT, 30, 34)
-                .addIngredients(VanillaTypes.ITEM_STACK, Arrays.asList(Ingredient.of(ItemTags.AXES).getItems()))
+                .addIngredients(VanillaTypes.ITEM_STACK, Arrays.asList(Ingredient.of(ModTags.STRIPPER_TOOLS).getItems()))
                 .setSlotName("axe");
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 15)
@@ -73,7 +74,7 @@ public class LogStrippingRecipeCategory implements IRecipeCategory<LogStrippingR
 
         if (recipe.log.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock) {
             var tree = TreeUtil.getTree(logBlock);
-            if (!tree.getStripDrop().get().isEmpty()) {
+            if (tree != null && !tree.getStripDrop().get().isEmpty()) {
                 builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 15)
                         .addItemStack(tree.getStripDrop().get())
                         .setSlotName("bark");

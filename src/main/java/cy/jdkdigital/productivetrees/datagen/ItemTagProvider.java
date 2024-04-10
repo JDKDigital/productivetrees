@@ -27,12 +27,17 @@ public class ItemTagProvider extends ItemTagsProvider
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        copy(BlockTags.FLOWERS, ItemTags.FLOWERS);
+        TreeFinder.trees.forEach((id, treeObject) -> {
+            if (!TreeUtil.isSpecialTree(id)) {
+                tag(ItemTags.SAPLINGS).add(TreeUtil.getBlock(id, "_sapling").asItem());
+            }
+        });
+
         copy(BlockTags.LEAVES, ItemTags.LEAVES);
+        copy(BlockTags.FLOWERS, ItemTags.FLOWERS);
         copy(BlockTags.LOGS, ItemTags.LOGS);
         copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
         copy(BlockTags.PLANKS, ItemTags.PLANKS);
-        copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
         copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
         copy(BlockTags.WOODEN_FENCES, ItemTags.WOODEN_FENCES);
         copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
@@ -44,6 +49,11 @@ public class ItemTagProvider extends ItemTagsProvider
         copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
         copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
 
+        tag(ModTags.STRIPPER_TOOLS).addTag(ItemTags.AXES)
+                .addOptional(new ResourceLocation("allthemodium:alloy_axe"))
+                .addOptional(new ResourceLocation("allthemodium:unobtainium_axe"))
+                .addOptional(new ResourceLocation("allthemodium:vibranium_axe"))
+                .addOptional(new ResourceLocation("allthemodium:allthemodium_axe"));
         copy(ModTags.POLLINATABLE, ModTags.POLLINATABLE_ITEM);
         copy(cy.jdkdigital.productivebees.init.ModTags.HIVES_BLOCK, cy.jdkdigital.productivebees.init.ModTags.HIVES);
         copy(cy.jdkdigital.productivebees.init.ModTags.BOXES_BLOCK, cy.jdkdigital.productivebees.init.ModTags.BOXES);
@@ -68,9 +78,12 @@ public class ItemTagProvider extends ItemTagsProvider
         });
 
         tag(ModTags.SAWDUST).add(TreeRegistrator.SAWDUST.get());
-        tag(ModTags.DUSTS_WOOD).addTag(ModTags.SAWDUST);
+        tag(ModTags.DUSTS_WOOD).add(TreeRegistrator.SAWDUST.get());
         tag(ModTags.DUSTS).addTag(ModTags.DUSTS_WOOD);
         tag(ModTags.CINNAMON).add(TreeRegistrator.CINNAMON.get());
+        tag(ModTags.NUTMEG).add(TreeRegistrator.NUTMEG.get());
+        tag(ModTags.COFFEE_BEANS).add(TreeRegistrator.COFFEE_BEAN.get());
+        tag(ModTags.ROASTED_COFFEE_BEANS).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "roasted_coffee_bean")));
         tag(ModTags.MAPLE_SYRUP).add(TreeRegistrator.MAPLE_SYRUP.get());
         tag(ModTags.DATE_PALM_JUICE).add(TreeRegistrator.DATE_PALM_JUICE.get());
         tag(ModTags.CORK).add(TreeRegistrator.CORK.get());
@@ -154,7 +167,7 @@ public class ItemTagProvider extends ItemTagsProvider
         });
     }
 
-    private String tagName(String cropName) {
+    public static String tagName(String cropName) {
         if (cropName.equals("star_fruit")) {
             return "starfruit";
         }

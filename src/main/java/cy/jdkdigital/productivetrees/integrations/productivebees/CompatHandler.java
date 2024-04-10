@@ -5,6 +5,7 @@ import cy.jdkdigital.productivebees.common.block.AdvancedBeehive;
 import cy.jdkdigital.productivebees.common.block.ExpansionBox;
 import cy.jdkdigital.productivebees.common.block.entity.AdvancedBeehiveBlockEntity;
 import cy.jdkdigital.productivebees.common.block.entity.ExpansionBoxBlockEntity;
+import cy.jdkdigital.productivebees.common.entity.bee.ProductiveBee;
 import cy.jdkdigital.productivebees.init.ModItems;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
@@ -14,7 +15,6 @@ import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
 import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.registry.WoodObject;
-import cy.jdkdigital.productivetrees.util.TreeCreator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +36,8 @@ import java.util.stream.Collectors;
 
 public class CompatHandler
 {
+    private static List<RegistryObject<Block>> HIVES = new ArrayList<>();
+    private static List<RegistryObject<Block>> BOXES = new ArrayList<>();
     public static void createHive(String name, WoodObject woodObject, ToIntFunction<BlockState> lightLevel) {
         String hiveName = "advanced_" + name + "_beehive";
         String boxName = "expansion_box_" + name;
@@ -63,9 +66,10 @@ public class CompatHandler
                 });
 
                 if (uniqueLeaves.size() > 0) {
+                    boolean isSpecialPollinator = event.getBee() instanceof ProductiveBee pBee && pBee.getBeeName().equals("allergy");
                     // Check for pollen sieve upgrade and collect pollen from nearby leaf
                     int sieveUpgrades = advancedBeehiveBlockEntity.getUpgradeCount(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get());
-                    if (sieveUpgrades > 0 && level.random.nextInt(100) < Config.SERVER.pollenChanceFromSieve.get()) {
+                    if (sieveUpgrades > 0 && level.random.nextInt(100) < (Config.SERVER.pollenChanceFromSieve.get() * (isSpecialPollinator ? 5 : 1))) {
                         BlockState pollenLeaf = uniqueLeaves.get(level.random.nextInt(uniqueLeaves.size()));
                         advancedBeehiveBlockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(inv -> {
                             var pollenStack = TreeUtil.getPollen(pollenLeaf.getBlock());
@@ -92,7 +96,7 @@ public class CompatHandler
 
                         BlockPos posA = level.random.nextBoolean() ? leafMap.get(states.getFirst()) : leafMap.get(states.getSecond());
 
-                        if (level.random.nextInt(100) <= pickedRecipe.chance && level.getBlockState(posA).is(BlockTags.LEAVES)) {
+                        if (level.random.nextInt(100) <= (pickedRecipe.chance * (isSpecialPollinator ? 5 : 1)) && level.getBlockState(posA).is(BlockTags.LEAVES)) {
                             level.setBlock(posA, TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
                             if (level.getBlockEntity(posA) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
                                 pollinatedLeavesBlockEntity.setLeafA(states.getFirst().getBlock());
@@ -105,5 +109,9 @@ public class CompatHandler
                 }
             }
         }
+    }
+
+    public static void registerBlockEntities() {
+
     }
 }

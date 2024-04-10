@@ -3,6 +3,7 @@ package cy.jdkdigital.productivetrees.common.block.entity;
 import cy.jdkdigital.productivelib.common.block.entity.CapabilityBlockEntity;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivetrees.inventory.WoodWorkerContainer;
+import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
@@ -40,21 +41,11 @@ public class WoodWorkerBlockEntity extends CapabilityBlockEntity implements Menu
             if (isInputSlotItem(slot, stack)) {
                 return true;
             }
-            if (slot == SLOT_OUT && !stack.is(ItemTags.AXES)) {
-                var currentOutStack = getStackInSlot(slot);
-                if (currentOutStack.isEmpty() || currentOutStack.getCount() < currentOutStack.getMaxStackSize()) {
-                    return ItemHandlerHelper.canItemStacksStack(stack, currentOutStack) && !canProcess(stack);
-                }
-            }
             return false;
         }
 
         @Override
         public boolean isInputSlotItem(int slot, ItemStack stack) {
-            if ((slot == SLOT_IN && stack.is(ItemTags.LOGS)) || (slot == SLOT_AXE && stack.is(ItemTags.AXES))) {
-                var currentOutStack = getStackInSlot(slot);
-                return currentOutStack.isEmpty() || (currentOutStack.getCount() < currentOutStack.getMaxStackSize() && ItemHandlerHelper.canItemStacksStack(stack, currentOutStack));
-            }
             return false;
         }
 

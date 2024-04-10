@@ -1,0 +1,21 @@
+{
+  "values": [
+    "#minecraft:axes",
+    {
+      "id": "allthemodium:alloy_axe",
+      "required": false
+    },
+    {
+      "id": "allthemodium:unobtainium_axe",
+      "required": false
+    },
+    {
+      "id": "allthemodium:vibranium_axe",
+      "required": false
+    },
+    {
+      "id": "allthemodium:allthemodium_axe",
+      "required": false
+    }
+  ]
+}

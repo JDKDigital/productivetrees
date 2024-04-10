@@ -6,7 +6,7 @@
         {
             "type": "patchouli:text",
             "flag": "mod:productivebees",
-            "text": "Put one tree next to another tree near some bees, profit.$(br2)Please not that this mod is in beta and not feature complete.$(br1)Specifically the growth features for the trees (how they look when grown) are under development."
+            "text": "Put one tree next to another tree near some bees, profit.$(br)The hive can be simulated and range upgrades increase the working area by 2 blocks per upgrade. Base range is 4.$(br2)Please note that this mod is in beta and not feature complete.$(br)Specifically the growth features for the trees (how they look when grown) are under development."
         },
         {
             "type": "patchouli:text",

@@ -132,6 +132,10 @@
       "logColor": "#776f62",
       "plankColor": "#d0ad91"
     },
+    "mutation_info": {
+      "target": "productivetrees:copper_beech",
+      "chance": 0.05
+    },
     "fruit": {
       "item": "productivetrees:beechnut",
       "count": 3,

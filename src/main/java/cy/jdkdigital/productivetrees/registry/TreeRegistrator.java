@@ -286,6 +286,11 @@ public class TreeRegistrator
             registerItem(cropConfig.name(), cropConfig.food());
             CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
         });
+        CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, "coffee_bean_crate"));
+        CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, "clove_crate"));
+        CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, "cinnamon_crate"));
+        CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, "nutmeg_crate"));
+        CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, "star_anise_crate"));
         CRATED_CROPS.forEach(cropName -> {
             registerBlock(cropName.getPath(), () -> new Block(BlockBehaviour.Properties.copy(Blocks.BARREL).sound(SoundType.SCAFFOLDING)), true);
         });
@@ -416,6 +421,9 @@ public class TreeRegistrator
     public static void registerSignBlockEntities() {
         SIGN_BE = registerBlockEntity("productivetrees_sign", () -> createBlockEntityType(ProductiveSignBlockEntity::new, SIGNS.stream().map(RegistryObject::get).toList().toArray(new Block[0])));
         HANGING_SIGN_BE = registerBlockEntity("productivetrees_hanging_sign", () -> createBlockEntityType(ProductiveHangingSignBlockEntity::new, HANGING_SIGNS.stream().map(RegistryObject::get).toList().toArray(new Block[0])));
+        if (ModList.get().isLoaded("productivebees")) {
+            CompatHandler.registerBlockEntities();
+        }
     }
 
     public static RegistryObject<Item> registerItem(String name) {
@@ -440,14 +448,6 @@ public class TreeRegistrator
 
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> blockSupplier) {
         return registerBlock(name, blockSupplier, true);
-    }
-
-    private static RegistryObject<Block> registerBlock(String name, Supplier<Block> blockSupplier, Supplier<Item> itemSupplier) {
-        RegistryObject<Block> block = ProductiveTrees.BLOCKS.register(name, blockSupplier);
-
-        ProductiveTrees.ITEMS.register(name, itemSupplier);
-
-        return block;
     }
 
     public static <E extends BlockEntity, T extends BlockEntityType<E>> Supplier<T> registerBlockEntity(String id, Supplier<T> supplier) {

@@ -43,10 +43,6 @@ public class BlockstateProvider implements DataProvider
         this.packOutput = packOutput;
     }
 
-    private static Block getBlock(ResourceLocation tree, String name) {
-        return ForgeRegistries.BLOCKS.getValue(tree.withPath(p -> p + name));
-    }
-
     @Override
     public CompletableFuture<?> run(CachedOutput cache) {
         Map<Block, BlockStateGenerator> blockModels = Maps.newHashMap();

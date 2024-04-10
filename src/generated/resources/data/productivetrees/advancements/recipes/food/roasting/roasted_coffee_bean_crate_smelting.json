@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_air": {
+    "has_coffee_bean_crate": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:air"
+              "productivetrees:coffee_bean_crate"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_air",
+      "has_coffee_bean_crate",
       "has_the_recipe"
     ]
   ],

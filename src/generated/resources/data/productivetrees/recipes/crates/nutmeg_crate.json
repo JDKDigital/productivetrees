@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "forge:fruits/nutmeg"
+    },
+    "R": {
+      "item": "productivetrees:nutmeg"
+    }
+  },
+  "pattern": [
+    "###",
+    "#R#",
+    "###"
+  ],
+  "result": {
+    "item": "productivetrees:nutmeg_crate"
+  },
+  "show_notification": true
+}

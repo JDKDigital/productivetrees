@@ -12,11 +12,20 @@ import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.FallingBlockEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.event.AddReloadListenerEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.level.SaplingGrowTreeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -57,7 +66,7 @@ public class EventHandler
         if (!event.isSimulated() && event.getToolAction().equals(ToolActions.AXE_STRIP) && event.getLevel() instanceof ServerLevel level) {
             if (event.getLevel().getBlockState(event.getPos()).getBlock() instanceof ProductiveLogBlock logBlock) {
                 var tree = TreeUtil.getTree(logBlock);
-                if (!tree.getStripDrop().get().isEmpty()) {
+                if (tree != null && !tree.getStripDrop().get().isEmpty()) {
                     Block.popResource(level, event.getPos(), tree.getStripDrop().get().copy());
                 }
             }
@@ -82,4 +91,22 @@ public class EventHandler
             }
         }
     }
+
+//    @SubscribeEvent
+//    private void onEntityDeath(LivingDeathEvent event) {
+//        if (event.getEntity() instanceof Player player && event.getSource().is(DamageTypeTags.IS_FALL)) {
+//            if (event.getSource().getEntity() instanceof FallingBlockEntity fallingBlock && fallingBlock.getBlockState().is(TreeRegistrator.COCONUT_SPROUT.get())) {
+//
+//            }
+//        }
+//    }
+//
+//    @SubscribeEvent
+//    private void onEntityHurt(LivingHurtEvent event) {
+//        if (event.getEntity() instanceof Player player && event.getSource().is(DamageTypeTags.IS_FALL)) {
+//            if (event.getSource().getEntity() instanceof FallingBlockEntity fallingBlock && fallingBlock.getBlockState().is(TreeRegistrator.COCONUT_SPROUT.get())) {
+//
+//            }
+//        }
+//    }
 }

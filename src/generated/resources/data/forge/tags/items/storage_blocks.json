@@ -82,6 +82,11 @@
     "#forge:storage_blocks/roasted_pecan",
     "#forge:storage_blocks/roasted_pistachio",
     "#forge:storage_blocks/roasted_walnut",
-    "#forge:storage_blocks/roasted_coffee_bean"
+    "#forge:storage_blocks/roasted_coffee_bean",
+    "#forge:storage_blocks/coffee_bean",
+    "#forge:storage_blocks/clove",
+    "#forge:storage_blocks/cinnamon",
+    "#forge:storage_blocks/nutmeg",
+    "#forge:storage_blocks/star_anise"
   ]
 }

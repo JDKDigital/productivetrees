@@ -65,55 +65,56 @@ public class BlockTagProvider extends BlockTagsProvider
         var winter_crops = tag(BlockTags.create(new ResourceLocation("sereneseasons:winter_crops")));
 
         TreeFinder.trees.forEach((id, treeObject) -> {
-            sapling.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_sapling"))));
+            sapling.add(TreeUtil.getBlock(id, "_sapling"));
+
             spring_crops.add(TreeUtil.getBlock(id, "_sapling"));
-            summer_crops.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_sapling"))));
-            autumn_crops.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_sapling"))));
-            winter_crops.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_sapling"))));
-            leaves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_leaves"))));
+            summer_crops.add(TreeUtil.getBlock(id, "_sapling"));
+            autumn_crops.add(TreeUtil.getBlock(id, "_sapling"));
+            winter_crops.add(TreeUtil.getBlock(id, "_sapling"));
+            leaves.add(TreeUtil.getBlock(id, "_leaves"));
             if (treeObject.hasFruit()) {
-                leaves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_fruit"))));
-                spring_crops.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_fruit"))));
-                summer_crops.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_fruit"))));
-                autumn_crops.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_fruit"))));
+                leaves.add(TreeUtil.getBlock(id, "_fruit"));
+                spring_crops.add(TreeUtil.getBlock(id, "_fruit"));
+                summer_crops.add(TreeUtil.getBlock(id, "_fruit"));
+                autumn_crops.add(TreeUtil.getBlock(id, "_fruit"));
             }
 
             if (id.getPath().equals("purple_spiral")) {
-                flowers.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_leaves"))));
+                flowers.add(TreeUtil.getBlock(id, "_leaves"));
             }
 
-            axeMineable.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_planks"))));
-            axeMineable.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_log"))));
-            axeMineable.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_wood"))));
-            axeMineable.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_stripped_log"))));
-            axeMineable.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_stripped_wood"))));
+            axeMineable.add(TreeUtil.getBlock(id, "_planks"));
+            axeMineable.add(TreeUtil.getBlock(id, "_log"));
+            axeMineable.add(TreeUtil.getBlock(id, "_wood"));
+            axeMineable.add(TreeUtil.getBlock(id, "_stripped_log"));
+            axeMineable.add(TreeUtil.getBlock(id, "_stripped_wood"));
 
-            planks.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_planks"))));
+            planks.add(TreeUtil.getBlock(id, "_planks"));
             if (treeObject.isFireProof()) {
-                logs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_log"))));
-                logs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_wood"))));
-                logs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_stripped_log"))));
-                logs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_stripped_wood"))));
+                logs.add(TreeUtil.getBlock(id, "_log"));
+                logs.add(TreeUtil.getBlock(id, "_wood"));
+                logs.add(TreeUtil.getBlock(id, "_stripped_log"));
+                logs.add(TreeUtil.getBlock(id, "_stripped_wood"));
             } else {
-                logsThatBurn.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_log"))));
-                logsThatBurn.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_wood"))));
-                logsThatBurn.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_stripped_log"))));
-                logsThatBurn.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_stripped_wood"))));
+                logsThatBurn.add(TreeUtil.getBlock(id, "_log"));
+                logsThatBurn.add(TreeUtil.getBlock(id, "_wood"));
+                logsThatBurn.add(TreeUtil.getBlock(id, "_stripped_log"));
+                logsThatBurn.add(TreeUtil.getBlock(id, "_stripped_wood"));
             }
-            stairs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_stairs"))));
-            slabs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_slab"))));
-            fences.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_fence"))));
-            fenceGates.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_fence_gate"))));
-            pressurePlates.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_pressure_plate"))));
-            buttons.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_button"))));
-            doors.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_door"))));
-            trapdoors.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_trapdoor"))));
-            signs.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_sign"))));
-            bookshelves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_bookshelf"))));
-            enchantment.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_bookshelf"))));
-            hangingSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_hanging_sign"))));
-            wallSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_wall_sign"))));
-            wallHangingSigns.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeUtil.getBlock(id, "_wall_hanging_sign"))));
+            stairs.add(TreeUtil.getBlock(id, "_stairs"));
+            slabs.add(TreeUtil.getBlock(id, "_slab"));
+            fences.add(TreeUtil.getBlock(id, "_fence"));
+            fenceGates.add(TreeUtil.getBlock(id, "_fence_gate"));
+            pressurePlates.add(TreeUtil.getBlock(id, "_pressure_plate"));
+            buttons.add(TreeUtil.getBlock(id, "_button"));
+            doors.add(TreeUtil.getBlock(id, "_door"));
+            trapdoors.add(TreeUtil.getBlock(id, "_trapdoor"));
+            signs.add(TreeUtil.getBlock(id, "_sign"));
+            bookshelves.add(TreeUtil.getBlock(id, "_bookshelf"));
+            enchantment.add(TreeUtil.getBlock(id, "_bookshelf"));
+            hangingSigns.add(TreeUtil.getBlock(id, "_hanging_sign"));
+            wallSigns.add(TreeUtil.getBlock(id, "_wall_sign"));
+            wallHangingSigns.add(TreeUtil.getBlock(id, "_wall_hanging_sign"));
 
             if (treeObject.getStyle().hiveStyle() != null) {
                 hives.addOptional(Objects.requireNonNull(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive")));
@@ -121,7 +122,7 @@ public class BlockTagProvider extends BlockTagsProvider
             }
         });
 
-        leaves.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(TreeRegistrator.POLLINATED_LEAVES.get())));
+        leaves.add(TreeRegistrator.POLLINATED_LEAVES.get());
         dof.addTag(BlockTags.DIRT).add(Blocks.FARMLAND);
 
         pollinatable.addTag(BlockTags.LEAVES).add(Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);

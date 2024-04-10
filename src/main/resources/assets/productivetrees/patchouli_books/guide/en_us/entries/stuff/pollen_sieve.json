@@ -7,7 +7,7 @@
         {
             "type": "patchouli:spotlight",
             "item": "productivetrees:upgrade_pollen_sieve",
-            "text": "Install in an advanced beehive from Productive Bees to have the bees collect pollen from nearby trees. The collection area is affected by range upgrades."
+            "text": "Install in an advanced beehive from Productive Bees to have the bees collect pollen from nearby trees. The collection area is affected by range upgrades. More than one sieve upgrade will not increase the yield."
         },
         {
             "type": "patchouli:crafting",

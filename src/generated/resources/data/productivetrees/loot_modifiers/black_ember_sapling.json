@@ -1,7 +1,7 @@
 {
   "type": "productivelib:item_modifier",
   "addition": "productivetrees:black_ember_sapling",
-  "chance": 0.1,
+  "chance": 0.3,
   "conditions": [
     {
       "condition": "forge:loot_table_id",

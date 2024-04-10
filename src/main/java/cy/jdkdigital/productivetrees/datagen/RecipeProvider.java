@@ -233,11 +233,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             var crateItem = ForgeRegistries.ITEMS.getValue(crate);
             var cropItem = ForgeRegistries.ITEMS.getValue(crate.withPath(p -> cropName));
 
-            var cropTag = ItemTags.create(new ResourceLocation("forge", "fruits/" + cropName));
+            var cropTag = ItemTags.create(new ResourceLocation("forge", "fruits/" + ItemTagProvider.tagName(cropName)));
             if (TreeRegistrator.BERRIES.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0) {
-                cropTag = ItemTags.create(new ResourceLocation("forge", "berries/" + cropName));
+                cropTag = ItemTags.create(new ResourceLocation("forge", "berries/" + ItemTagProvider.tagName(cropName)));
             } else if (TreeRegistrator.NUTS.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0 || TreeRegistrator.ROASTED_NUTS.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0) {
-                cropTag = ItemTags.create(new ResourceLocation("forge", "nuts/" + cropName));
+                cropTag = ItemTags.create(new ResourceLocation("forge", "nuts/" + ItemTagProvider.tagName(cropName)));
             }
 
             ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, cropItem, 9)
@@ -428,7 +428,6 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "ash", "silver_lime", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "alder", "beech", Blocks.BIRCH_LEAVES, 10);
         treeBreeding(consumer, "beech", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 10);
-        treeBreeding(consumer, "copper_beech", "beech", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "aspen", "beech", "alder", 10);
         treeBreeding(consumer, "yew", "european_larch", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "lawson_cypress", "bull_pine", Blocks.SPRUCE_LEAVES, 10);

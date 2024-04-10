@@ -123,7 +123,9 @@ public class TreeUtil
     public static ItemStack getLeafFromSapling(ItemStack saplingStack) {
         if (saplingStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveSaplingBlock saplingBlock) {
             var tree = TreeUtil.getTree(saplingBlock);
-            return new ItemStack(getBlock(tree.getId(), "_leaves"));
+            if (tree != null) {
+                return new ItemStack(getBlock(tree.getId(), "_leaves"));
+            }
         }
         var resourceLocation = ForgeRegistries.ITEMS.getKey(saplingStack.getItem());
         if (resourceLocation != null) {
@@ -138,7 +140,9 @@ public class TreeUtil
     public static ItemStack getSaplingFromLeaf(ItemStack leafStack) {
         if (leafStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLeavesBlock leavesBlock) {
             var tree = TreeUtil.getTree(leavesBlock);
-            return new ItemStack(getBlock(tree.getId(), "_sapling"));
+            if (tree != null) {
+                return new ItemStack(getBlock(tree.getId(), "_sapling"));
+            }
         }
         var resourceLocation = ForgeRegistries.ITEMS.getKey(leafStack.getItem());
         if (resourceLocation != null) {
@@ -175,11 +179,15 @@ public class TreeUtil
             }
             if (initialState.getBlock() instanceof ProductiveLogBlock pLog) {
                 var tree = TreeUtil.getTree(pLog);
-                return new ItemStack(getBlock(tree.getId(), "_stripped_log"));
+                if (tree != null) {
+                    return new ItemStack(getBlock(tree.getId(), "_stripped_log"));
+                }
             }
             if (initialState.getBlock() instanceof ProductiveWoodBlock pWood) {
                 var tree = TreeUtil.getTree(pWood);
-                return new ItemStack(getBlock(tree.getId(), "_stripped_wood"));
+                if (tree != null) {
+                    return new ItemStack(getBlock(tree.getId(), "_stripped_wood"));
+                }
             }
         }
         return ItemStack.EMPTY;
@@ -235,14 +243,10 @@ public class TreeUtil
     }
 
     public static Block getBlock(ResourceLocation tree, String name) {
-        Block block = ForgeRegistries.BLOCKS.getValue(tree.withPath(p -> p + name));
-        if (block == null) {
-            throw new RuntimeException("block not found " + name + " for tree " + tree.getPath());
-        }
-        return block;
+        return ForgeRegistries.BLOCKS.getValue(tree.withPath(p -> p + name));
     }
 
     public static TreeObject getTree(Block block) {
-        return TreeFinder.trees.get(ForgeRegistries.BLOCKS.getKey(block));
+        return TreeFinder.trees.get(ForgeRegistries.BLOCKS.getKey(block).withPath(p -> p.replace("_log", "").replace("_wood", "").replace("_sapling", "").replace("_leaves", "")));
     }
 }

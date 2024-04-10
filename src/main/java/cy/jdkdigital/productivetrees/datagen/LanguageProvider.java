@@ -34,6 +34,9 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add("productivetrees.sapling.configurations", "Configurations: %s");
         add("item.productivetrees.roasted_coffee_bean", "Roasted Coffee Beans");
 
+        add("entity.productivebees.allergy_bee", "Allergy Bee");
+        add("productivebees.ingredient.description.allergy_bee", "Puts in an extra effort to collect pollen so your allergies don't act up while working with trees.");
+
         add(TreeRegistrator.POLLINATED_LEAVES.get(), "Pollinated Leaves");
         add(TreeRegistrator.STRIPPER.get(), "Stripper");
         add(TreeRegistrator.SAWMILL.get(), "Sawmill");

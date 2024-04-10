@@ -32,6 +32,8 @@ public class ProductiveTreesDataProvider
         gen.addProvider(event.includeServer(), new LootModifierProvider(output));
         gen.addProvider(event.includeServer(), new FeatureProvider(output));
         gen.addProvider(event.includeServer(), new RecipeProvider(output));
+        gen.addProvider(event.includeServer(), new BeeProvider(output));
+        gen.addProvider(event.includeServer(), new AdvancementProvider(output, provider, helper));
 
         BlockTagProvider blockTags = new BlockTagProvider(output, provider, helper);
         gen.addProvider(event.includeServer(), blockTags);

@@ -12,12 +12,16 @@ public class ModTags
     public static final TagKey<Block> DIRT_OR_FARMLAND = TagKey.create(Registries.BLOCK, new ResourceLocation(ProductiveTrees.MODID, "dirt_or_farmland"));
     public static final TagKey<Block> POLLINATABLE = TagKey.create(Registries.BLOCK, new ResourceLocation(ProductiveTrees.MODID, "pollinatable"));
     public static final TagKey<Item> POLLINATABLE_ITEM = TagKey.create(Registries.ITEM, new ResourceLocation(ProductiveTrees.MODID, "pollinatable"));
+    public static final TagKey<Item> STRIPPER_TOOLS = TagKey.create(Registries.ITEM, new ResourceLocation(ProductiveTrees.MODID, "stripper_tools"));
 
     public static final TagKey<Item> DUSTS = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "dusts"));
     public static final TagKey<Item> DUSTS_WOOD = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "dusts/wood"));
     public static final TagKey<Item> SAWDUST = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "sawdust"));
 
     public static final TagKey<Item> CINNAMON = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "cinnamon"));
+    public static final TagKey<Item> NUTMEG = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "nutmeg"));
+    public static final TagKey<Item> COFFEE_BEANS = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "coffee_beans"));
+    public static final TagKey<Item> ROASTED_COFFEE_BEANS = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "roasted_coffee_beans"));
     public static final TagKey<Item> MAPLE_SYRUP = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "maple_syrup"));
     public static final TagKey<Item> DATE_PALM_JUICE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "date_palm_juice"));
     public static final TagKey<Item> CORK = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "cork"));

@@ -5,6 +5,7 @@ import cy.jdkdigital.productivelib.common.block.entity.CapabilityBlockEntity;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.inventory.StripperContainer;
+import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
@@ -48,7 +49,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
             if (isInputSlotItem(slot, stack)) {
                 return true;
             }
-            if ((slot == SLOT_OUT || slot == SLOT_BARK) && !stack.is(ItemTags.AXES)) {
+            if ((slot == SLOT_OUT || slot == SLOT_BARK) && !stack.is(ModTags.STRIPPER_TOOLS)) {
                 var currentOutStack = getStackInSlot(slot);
                 if (currentOutStack.isEmpty()) {
                     return true;
@@ -62,7 +63,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
 
         @Override
         public boolean isInputSlotItem(int slot, ItemStack stack) {
-            if ((slot == SLOT_IN && stack.is(ItemTags.LOGS)) || (slot == SLOT_AXE && stack.is(ItemTags.AXES))) {
+            if ((slot == SLOT_IN && stack.is(ItemTags.LOGS)) || (slot == SLOT_AXE && stack.is(ModTags.STRIPPER_TOOLS))) {
                 var currentOutStack = getStackInSlot(slot);
                 return currentOutStack.isEmpty() || (currentOutStack.getCount() < currentOutStack.getMaxStackSize() && ItemHandlerHelper.canItemStacksStack(stack, currentOutStack));
             }
@@ -113,8 +114,8 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
                     var strippedLogItem = TreeUtil.getStrippedItem(blockEntity, serverLevel, log);
                     if (!strippedLogItem.isEmpty() && inv.insertItem(SLOT_OUT, strippedLogItem, false).isEmpty()) {
                         if (log.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock) {
-                            var treeObject = TreeFinder.trees.get(ForgeRegistries.BLOCKS.getKey(logBlock));
-                            if (!treeObject.getStripDrop().get().isEmpty()) {
+                            var treeObject = TreeUtil.getTree(logBlock);
+                            if (treeObject != null && !treeObject.getStripDrop().get().isEmpty()) {
                                 inv.insertItem(SLOT_BARK, treeObject.getStripDrop().get().copy(), false);
                             }
                         }

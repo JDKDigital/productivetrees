@@ -4,6 +4,7 @@ import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.feature.EntityPlacerDecorator;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
@@ -31,22 +32,24 @@ public class EntitySpawnerBlockEntity extends BlockEntity
         if (level instanceof ServerLevel serverLevel) {
             for (Direction dir : Direction.values()) {
                 if (level.getBlockState(pos.relative(dir)).getBlock() instanceof ProductiveLogBlock pLog) {
-                    var tree = TreeFinder.trees.get(ForgeRegistries.BLOCKS.getKey(pLog));
-                    var feature = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(tree.getFeature()).orElse(null);
-                    if (feature != null) {
-                        feature.value().getFeatures().forEach(configuredFeature -> {
-                            if (configuredFeature.config() instanceof TreeConfiguration treeConfig) {
-                                List<TreeDecorator> decorators = new ArrayList<>(treeConfig.decorators);
-                                for (TreeDecorator decorator : decorators) {
-                                    if (decorator instanceof EntityPlacerDecorator entityPlacerDecorator) {
-                                        var entityType = ForgeRegistries.ENTITY_TYPES.getValue(entityPlacerDecorator.getEntity());
-                                        if (entityType != null) {
-                                            entityType.spawn(serverLevel, pos, MobSpawnType.NATURAL);
+                    var tree = TreeUtil.getTree(pLog);
+                    if (tree != null) {
+                        var feature = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(tree.getFeature()).orElse(null);
+                        if (feature != null) {
+                            feature.value().getFeatures().forEach(configuredFeature -> {
+                                if (configuredFeature.config() instanceof TreeConfiguration treeConfig) {
+                                    List<TreeDecorator> decorators = new ArrayList<>(treeConfig.decorators);
+                                    for (TreeDecorator decorator : decorators) {
+                                        if (decorator instanceof EntityPlacerDecorator entityPlacerDecorator) {
+                                            var entityType = ForgeRegistries.ENTITY_TYPES.getValue(entityPlacerDecorator.getEntity());
+                                            if (entityType != null) {
+                                                entityType.spawn(serverLevel, pos, MobSpawnType.NATURAL);
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        });
+                            });
+                        }
                     }
                 }
             }

@@ -3,6 +3,8 @@
   "category": "food",
   "cookingtime": 180,
   "experience": 0.9,
-  "ingredient": [],
+  "ingredient": {
+    "item": "productivetrees:coffee_bean_crate"
+  },
   "result": "productivetrees:roasted_coffee_bean_crate"
 }

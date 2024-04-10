@@ -5,17 +5,20 @@ import cy.jdkdigital.productivetrees.recipe.LogStrippingRecipe;
 import cy.jdkdigital.productivetrees.recipe.SawmillRecipe;
 import cy.jdkdigital.productivetrees.recipe.TreeFruitingRecipe;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
+import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.IRuntimeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -49,8 +52,8 @@ public class ProductiveTreesJeiPlugin implements IModPlugin
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(TreeRegistrator.POLLEN.get()), TREE_POLLINATION_TYPE);
         registration.addRecipeCatalyst(new ItemStack(TreeRegistrator.STRIPPER.get()), LOG_STRIPPING_TYPE);
-        Arrays.stream(Ingredient.of(ItemTags.AXES).getItems()).forEach(itemStack -> {
-            registration.addRecipeCatalyst(itemStack, LOG_STRIPPING_TYPE);
+        Arrays.stream(Ingredient.of(ModTags.STRIPPER_TOOLS).getItems()).forEach(itemStack -> {
+            registration.addRecipeCatalyst(itemStack.copy(), LOG_STRIPPING_TYPE);
         });
         registration.addRecipeCatalyst(new ItemStack(TreeRegistrator.SAWMILL.get()), SAWMILL_TYPE);
     }
@@ -67,11 +70,26 @@ public class ProductiveTreesJeiPlugin implements IModPlugin
     }
 
     @Override
+    public void registerRuntime(IRuntimeRegistration registration) {
+        List<ItemStack> hiddenTrees = new ArrayList<>();
+        TreeFinder.trees.forEach((id, treeObject) -> {
+            if (!treeObject.getMutationInfo().target().equals(ProductiveTrees.EMPTY_RL)) {
+                ProductiveTrees.ITEMS.getEntries().forEach(item -> {
+                    if (item.getId().getPath().contains(treeObject.getId().getPath())) {
+                        hiddenTrees.add(new ItemStack(item.get()));
+                    }
+                });
+            }
+        });
+        registration.getIngredientManager().removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK, hiddenTrees);
+    }
+
+    @Override
     public void registerRecipes(IRecipeRegistration registration) {
         RecipeManager recipeManager = Minecraft.getInstance().level.getRecipeManager();
 
-        List<TreePollinationRecipe> pollinatioonRecipeList = recipeManager.getAllRecipesFor(TreeRegistrator.TREE_POLLINATION_TYPE.get());
-        registration.addRecipes(TREE_POLLINATION_TYPE, pollinatioonRecipeList);
+        List<TreePollinationRecipe> pollinationRecipeList = recipeManager.getAllRecipesFor(TreeRegistrator.TREE_POLLINATION_TYPE.get());
+        registration.addRecipes(TREE_POLLINATION_TYPE, pollinationRecipeList);
 
         // Tree fruiting recipes
         List<TreeFruitingRecipe> fruitingRecipeList = new ArrayList<>();

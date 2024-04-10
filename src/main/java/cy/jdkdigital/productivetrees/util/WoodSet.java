@@ -41,9 +41,9 @@ public record WoodSet(String woodStyle, String plankStyle, String leafStyle, Str
         put("cempedak", new WoodSet("cempedak", "cempedak", "cempedak", "cempedak", "jungle", "bamboo", "walnut"));
         put("ceylon_ebony", new WoodSet("ceylon_ebony", "ceylon_ebony", "ceylon_ebony", "ceylon_ebony", "dark_oak", "cherry", null));
         put("cherry_plum", new WoodSet("cherry_plum", "cherry_plum", "cherry_plum", "cherry_plum", "cherry", "umbran", "pomegranate"));
-        put("cinnamon", new WoodSet("cinnamon", "cinnamon", "cinnamon", "cinnamon", "acacia", "mangrove", null));
+        put("cinnamon", new WoodSet("cinnamon", "cinnamon", "cinnamon", "cinnamon", "acacia", "mangrove", "whitebeam"));
         put("citron", new WoodSet("citron", "citron", "citron", "citron", "oak", "willow", "ash"));
-        put("clove", new WoodSet("clove", "clove", "clove", "clove", "bush", "wisteria", null));
+        put("clove", new WoodSet("clove", "clove", "clove", "clove", "bush", "wisteria", "whitebeam"));
         put("cocobolo", new WoodSet("cocobolo", "cocobolo", "cocobolo", "cocobolo", "dark_oak", "driftwood", null));
         put("coconut", new WoodSet("coconut", "coconut", "coconut", "coconut", "mangrove", "rosewood", "whitebeam"));
         put("coffea", new WoodSet("coffea", "coffea", "coffea", "coffea", "bush", "umbran", "teak"));
@@ -89,7 +89,7 @@ public record WoodSet(String woodStyle, String plankStyle, String leafStyle, Str
         put("moonlight_magic_crepe_myrtle", new WoodSet("moonlight_magic_crepe_myrtle", "moonlight_magic_crepe_myrtle", "moonlight_magic_crepe_myrtle", "moonlight_magic_crepe_myrtle", "dark_oak", "river", null));
         put("myrtle_ebony", new WoodSet("myrtle_ebony", "myrtle_ebony", "myrtle_ebony", "myrtle_ebony", "dark_oak", "mangrove", null));
         put("nectarine", new WoodSet("nectarine", "nectarine", "nectarine", "nectarine", "oak", "fir", "walnut"));
-        put("nutmeg", new WoodSet("nutmeg", "nutmeg", "nutmeg", "nutmeg", "oak", "aspen", null));
+        put("nutmeg", new WoodSet("nutmeg", "nutmeg", "nutmeg", "nutmeg", "oak", "aspen", "ash"));
         put("old_fustic", new WoodSet("old_fustic", "old_fustic", "old_fustic", "old_fustic", "acacia", "acacia", null));
         put("olive", new WoodSet("olive", "olive", "olive", "olive", "acacia", "driftwood", "teak"));
         put("orange", new WoodSet("orange", "orange", "orange", "orange", "oak", "yucca", "pomegranate"));

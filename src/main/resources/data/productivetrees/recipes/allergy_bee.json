@@ -1,0 +1,19 @@
+{
+  "type": "productivebees:bee_conversion",
+  "source": "minecraft:bee",
+  "result": "productivebees:allergy",
+  "item": {
+    "item": "productivetrees:pollen"
+  },
+  "chance": 10,
+  "conditions": [
+    {
+      "type": "productivebees:bee_exists",
+      "bee": "productivebees:allergy"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "productivebees"
+    }
+  ]
+}
