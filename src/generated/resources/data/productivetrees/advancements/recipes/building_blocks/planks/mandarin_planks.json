@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:mandarin_log",
-              "productivetrees:mandarin_wood",
-              "productivetrees:mandarin_stripped_log",
-              "productivetrees:mandarin_stripped_wood"
-            ]
+            "tag": "productivetrees:mandarin_logs"
           }
         ]
       },

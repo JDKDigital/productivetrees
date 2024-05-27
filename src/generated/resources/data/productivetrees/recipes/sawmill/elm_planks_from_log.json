@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:elm_log"
-    },
-    {
-      "item": "productivetrees:elm_stripped_log"
-    },
-    {
-      "item": "productivetrees:elm_wood"
-    },
-    {
-      "item": "productivetrees:elm_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:elm_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:elm_planks"

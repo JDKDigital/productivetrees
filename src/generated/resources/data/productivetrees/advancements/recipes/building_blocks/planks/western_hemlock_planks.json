@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:western_hemlock_log",
-              "productivetrees:western_hemlock_wood",
-              "productivetrees:western_hemlock_stripped_log",
-              "productivetrees:western_hemlock_stripped_wood"
-            ]
+            "tag": "productivetrees:western_hemlock_logs"
           }
         ]
       },

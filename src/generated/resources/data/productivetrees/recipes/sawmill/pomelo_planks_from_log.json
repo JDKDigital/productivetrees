@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:pomelo_log"
-    },
-    {
-      "item": "productivetrees:pomelo_stripped_log"
-    },
-    {
-      "item": "productivetrees:pomelo_wood"
-    },
-    {
-      "item": "productivetrees:pomelo_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:pomelo_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:pomelo_planks"

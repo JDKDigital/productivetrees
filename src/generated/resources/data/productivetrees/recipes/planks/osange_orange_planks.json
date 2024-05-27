@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:osange_orange_log"
-      },
-      {
-        "item": "productivetrees:osange_orange_wood"
-      },
-      {
-        "item": "productivetrees:osange_orange_stripped_log"
-      },
-      {
-        "item": "productivetrees:osange_orange_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:osange_orange_logs"
+    }
   ],
   "result": {
     "count": 4,

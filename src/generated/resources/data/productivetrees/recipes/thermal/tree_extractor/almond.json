@@ -6,10 +6,32 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:almond_leaves",
+  "leaves": [
+    {
+      "Name": "productivetrees:almond_leaves",
+      "Properties": {
+        "persistent": "false"
+      }
+    },
+    {
+      "Name": "productivetrees:almond_fruit",
+      "Properties": {
+        "persistent": "false"
+      }
+    }
+  ],
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:almond_log"
+  "trunk": {
+    "Name": "productivetrees:almond_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

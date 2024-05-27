@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:night_fuchsia_log"
-      },
-      {
-        "item": "productivetrees:night_fuchsia_wood"
-      },
-      {
-        "item": "productivetrees:night_fuchsia_stripped_log"
-      },
-      {
-        "item": "productivetrees:night_fuchsia_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:night_fuchsia_logs"
+    }
   ],
   "result": {
     "count": 4,

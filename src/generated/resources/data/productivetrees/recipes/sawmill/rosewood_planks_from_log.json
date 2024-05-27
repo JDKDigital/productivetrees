@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:rosewood_log"
-    },
-    {
-      "item": "productivetrees:rosewood_stripped_log"
-    },
-    {
-      "item": "productivetrees:rosewood_wood"
-    },
-    {
-      "item": "productivetrees:rosewood_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:rosewood_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:rosewood_planks"

@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:boxwood_log",
-              "productivetrees:boxwood_wood",
-              "productivetrees:boxwood_stripped_log",
-              "productivetrees:boxwood_stripped_wood"
-            ]
+            "tag": "productivetrees:boxwood_logs"
           }
         ]
       },

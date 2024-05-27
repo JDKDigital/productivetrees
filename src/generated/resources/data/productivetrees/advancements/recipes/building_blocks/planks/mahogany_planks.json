@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:mahogany_log",
-              "productivetrees:mahogany_wood",
-              "productivetrees:mahogany_stripped_log",
-              "productivetrees:mahogany_stripped_wood"
-            ]
+            "tag": "productivetrees:mahogany_logs"
           }
         ]
       },

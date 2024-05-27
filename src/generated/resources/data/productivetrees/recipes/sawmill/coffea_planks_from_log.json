@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:coffea_log"
-    },
-    {
-      "item": "productivetrees:coffea_stripped_log"
-    },
-    {
-      "item": "productivetrees:coffea_wood"
-    },
-    {
-      "item": "productivetrees:coffea_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:coffea_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:coffea_planks"

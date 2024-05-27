@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:yew_log"
-      },
-      {
-        "item": "productivetrees:yew_wood"
-      },
-      {
-        "item": "productivetrees:yew_stripped_log"
-      },
-      {
-        "item": "productivetrees:yew_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:yew_logs"
+    }
   ],
   "result": {
     "count": 4,

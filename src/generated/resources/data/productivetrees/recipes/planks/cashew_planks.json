@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:cashew_log"
-      },
-      {
-        "item": "productivetrees:cashew_wood"
-      },
-      {
-        "item": "productivetrees:cashew_stripped_log"
-      },
-      {
-        "item": "productivetrees:cashew_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:cashew_logs"
+    }
   ],
   "result": {
     "count": 4,

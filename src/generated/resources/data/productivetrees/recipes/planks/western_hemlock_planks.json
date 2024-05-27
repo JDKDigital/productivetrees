@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:western_hemlock_log"
-      },
-      {
-        "item": "productivetrees:western_hemlock_wood"
-      },
-      {
-        "item": "productivetrees:western_hemlock_stripped_log"
-      },
-      {
-        "item": "productivetrees:western_hemlock_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:western_hemlock_logs"
+    }
   ],
   "result": {
     "count": 4,

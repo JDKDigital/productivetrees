@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:osange_orange_log"
-    },
-    {
-      "item": "productivetrees:osange_orange_stripped_log"
-    },
-    {
-      "item": "productivetrees:osange_orange_wood"
-    },
-    {
-      "item": "productivetrees:osange_orange_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:osange_orange_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:osange_orange_planks"

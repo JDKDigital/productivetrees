@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:red_banana_log",
-              "productivetrees:red_banana_wood",
-              "productivetrees:red_banana_stripped_log",
-              "productivetrees:red_banana_stripped_wood"
-            ]
+            "tag": "productivetrees:red_banana_logs"
           }
         ]
       },

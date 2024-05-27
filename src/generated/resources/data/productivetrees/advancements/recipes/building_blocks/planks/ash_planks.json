@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:ash_log",
-              "productivetrees:ash_wood",
-              "productivetrees:ash_stripped_log",
-              "productivetrees:ash_stripped_wood"
-            ]
+            "tag": "productivetrees:ash_logs"
           }
         ]
       },

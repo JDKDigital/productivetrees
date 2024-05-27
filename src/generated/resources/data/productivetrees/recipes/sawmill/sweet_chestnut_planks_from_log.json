@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:sweet_chestnut_log"
-    },
-    {
-      "item": "productivetrees:sweet_chestnut_stripped_log"
-    },
-    {
-      "item": "productivetrees:sweet_chestnut_wood"
-    },
-    {
-      "item": "productivetrees:sweet_chestnut_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:sweet_chestnut_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:sweet_chestnut_planks"

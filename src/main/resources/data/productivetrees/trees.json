@@ -602,6 +602,9 @@
       "logColor": "#831e24",
       "plankColor": "#c40510"
     },
+    "decoration": {
+      "lightLevel": 11
+    },
     "fruit": {
       "item": "minecraft:firework",
       "growthSpeed": 0.5,
@@ -615,6 +618,9 @@
       "leafColor": "#fcbb43",
       "logColor": "#ffdb8b",
       "plankColor": "#fef0af"
+    },
+    "decoration": {
+      "lightLevel": 14
     },
     "fireproof": true
   },
@@ -768,6 +774,39 @@
       "leafColor": "#eaaf00",
       "logColor": "#603c00",
       "plankColor": "#715146"
+    },
+    "mutation_info": {
+      "target": "productivetrees:white_ipe",
+      "chance": 0.05
+    }
+  },
+  "white_ipe": {
+    "colors": {
+      "leafColor": "#ededed",
+      "logColor": "#333032",
+      "plankColor": "#765742"
+    },
+    "mutation_info": {
+      "target": "productivetrees:pink_ipe",
+      "chance": 0.05
+    }
+  },
+  "pink_ipe": {
+    "colors": {
+      "leafColor": "#db6eb8",
+      "logColor": "#807679",
+      "plankColor": "#ae886e"
+    },
+    "mutation_info": {
+      "target": "productivetrees:purple_ipe",
+      "chance": 0.05
+    }
+  },
+  "purple_ipe": {
+    "colors": {
+      "leafColor": "#bea9df",
+      "logColor": "#2c1c1e",
+      "plankColor": "#a2694c"
     }
   },
   "iroko": {
@@ -958,6 +997,9 @@
       "leafColor": "#651a00",
       "logColor": "#140302",
       "plankColor": "#b24629"
+    },
+    "decoration": {
+      "lightLevel": 11
     },
     "fireproof": true
   },
@@ -1289,6 +1331,9 @@
       "logColor": "#1d3f1b",
       "plankColor": "#5b6f4f"
     },
+    "decoration": {
+      "lightLevel": 11
+    },
     "fireproof": true
   },
   "rosewood": {
@@ -1310,6 +1355,12 @@
       "leafColor": "#5b7e67",
       "logColor": "#211a10",
       "plankColor": "#d2b190"
+    },
+    "fruit": {
+      "item": "productivetrees:rowan",
+      "growthSpeed": 0.5,
+      "unripeColor": "#8fa425",
+      "ripeColor": "#7b411f"
     }
   },
   "rubber_tree": {
@@ -1393,6 +1444,12 @@
       "logColor": "#0b7c00",
       "plankColor": "#27bb0f"
     },
+    "decoration": {
+      "lightLevel": 11
+    },
+    "stripDrop": {
+      "item": "minecraft:slime_ball"
+    },
     "fireproof": true
   },
   "socotra_dragon": {
@@ -1444,6 +1501,9 @@
       "leafColor": "#eee4ed",
       "logColor": "#30121b",
       "plankColor": "#fbd6de"
+    },
+    "decoration": {
+      "lightLevel": 11
     },
     "fruit": {
       "item": "productivetrees:sparkling_cherry",

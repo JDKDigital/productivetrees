@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:cinnamon_log"
-      },
-      {
-        "item": "productivetrees:cinnamon_wood"
-      },
-      {
-        "item": "productivetrees:cinnamon_stripped_log"
-      },
-      {
-        "item": "productivetrees:cinnamon_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:cinnamon_logs"
+    }
   ],
   "result": {
     "count": 4,

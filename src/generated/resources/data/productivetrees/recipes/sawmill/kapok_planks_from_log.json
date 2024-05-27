@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:kapok_log"
-    },
-    {
-      "item": "productivetrees:kapok_stripped_log"
-    },
-    {
-      "item": "productivetrees:kapok_wood"
-    },
-    {
-      "item": "productivetrees:kapok_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:kapok_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:kapok_planks"

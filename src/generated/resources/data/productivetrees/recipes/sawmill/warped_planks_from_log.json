@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "minecraft:warped_stem"
-    },
-    {
-      "item": "minecraft:stripped_warped_stem"
-    },
-    {
-      "item": "minecraft:warped_hyphae"
-    },
-    {
-      "item": "minecraft:stripped_warped_hyphae"
-    }
-  ],
+  "log": {
+    "tag": "minecraft:warped_stems"
+  },
   "planks": {
     "count": 6,
     "item": "minecraft:warped_planks"

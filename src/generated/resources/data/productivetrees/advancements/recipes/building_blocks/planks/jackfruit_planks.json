@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:jackfruit_log",
-              "productivetrees:jackfruit_wood",
-              "productivetrees:jackfruit_stripped_log",
-              "productivetrees:jackfruit_stripped_wood"
-            ]
+            "tag": "productivetrees:jackfruit_logs"
           }
         ]
       },

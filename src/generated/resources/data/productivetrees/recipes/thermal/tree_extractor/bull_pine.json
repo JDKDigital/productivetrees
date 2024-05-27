@@ -6,10 +6,24 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:bull_pine_leaves",
+  "leaves": {
+    "Name": "productivetrees:bull_pine_leaves",
+    "Properties": {
+      "persistent": "false"
+    }
+  },
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:resin"
   },
-  "trunk": "productivetrees:bull_pine_log"
+  "trunk": {
+    "Name": "productivetrees:bull_pine_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

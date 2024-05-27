@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:blue_mahoe_log"
-      },
-      {
-        "item": "productivetrees:blue_mahoe_wood"
-      },
-      {
-        "item": "productivetrees:blue_mahoe_stripped_log"
-      },
-      {
-        "item": "productivetrees:blue_mahoe_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:blue_mahoe_logs"
+    }
   ],
   "result": {
     "count": 4,

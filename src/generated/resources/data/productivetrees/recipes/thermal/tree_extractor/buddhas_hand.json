@@ -6,10 +6,32 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:buddhas_hand_leaves",
+  "leaves": [
+    {
+      "Name": "productivetrees:buddhas_hand_leaves",
+      "Properties": {
+        "persistent": "false"
+      }
+    },
+    {
+      "Name": "productivetrees:buddhas_hand_fruit",
+      "Properties": {
+        "persistent": "false"
+      }
+    }
+  ],
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:buddhas_hand_log"
+  "trunk": {
+    "Name": "productivetrees:buddhas_hand_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

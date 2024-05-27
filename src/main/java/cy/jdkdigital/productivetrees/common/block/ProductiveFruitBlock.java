@@ -104,9 +104,14 @@ public class ProductiveFruitBlock extends ProductiveLeavesBlock
             return InteractionResult.SUCCESS;
         }
 
-        if (player.getItemInHand(hand).is(Items.BONE_MEAL)) {
+        var heldItem = player.getItemInHand(hand);
+        if (heldItem.is(Items.BONE_MEAL)) {
             int i = this.getAge(state);
             level.setBlock(pos, this.getStateForAge(state, i + 1), 2);
+            if (!player.isCreative()) {
+                heldItem.shrink(1);
+            }
+            player.swing(hand);
             return InteractionResult.SUCCESS;
         }
 

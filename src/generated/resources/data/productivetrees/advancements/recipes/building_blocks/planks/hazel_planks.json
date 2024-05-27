@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:hazel_log",
-              "productivetrees:hazel_wood",
-              "productivetrees:hazel_stripped_log",
-              "productivetrees:hazel_stripped_wood"
-            ]
+            "tag": "productivetrees:hazel_logs"
           }
         ]
       },

@@ -6,10 +6,32 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:sweet_chestnut_leaves",
+  "leaves": [
+    {
+      "Name": "productivetrees:sweet_chestnut_leaves",
+      "Properties": {
+        "persistent": "false"
+      }
+    },
+    {
+      "Name": "productivetrees:sweet_chestnut_fruit",
+      "Properties": {
+        "persistent": "false"
+      }
+    }
+  ],
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:sweet_chestnut_log"
+  "trunk": {
+    "Name": "productivetrees:sweet_chestnut_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

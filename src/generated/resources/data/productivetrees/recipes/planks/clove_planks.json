@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:clove_log"
-      },
-      {
-        "item": "productivetrees:clove_wood"
-      },
-      {
-        "item": "productivetrees:clove_stripped_log"
-      },
-      {
-        "item": "productivetrees:clove_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:clove_logs"
+    }
   ],
   "result": {
     "count": 4,

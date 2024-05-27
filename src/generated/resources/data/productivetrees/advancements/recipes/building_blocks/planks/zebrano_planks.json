@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:zebrano_log",
-              "productivetrees:zebrano_wood",
-              "productivetrees:zebrano_stripped_log",
-              "productivetrees:zebrano_stripped_wood"
-            ]
+            "tag": "productivetrees:zebrano_logs"
           }
         ]
       },

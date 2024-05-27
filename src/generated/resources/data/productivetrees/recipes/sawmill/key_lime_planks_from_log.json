@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:key_lime_log"
-    },
-    {
-      "item": "productivetrees:key_lime_stripped_log"
-    },
-    {
-      "item": "productivetrees:key_lime_wood"
-    },
-    {
-      "item": "productivetrees:key_lime_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:key_lime_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:key_lime_planks"

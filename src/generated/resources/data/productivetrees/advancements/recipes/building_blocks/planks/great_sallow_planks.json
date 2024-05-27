@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:great_sallow_log",
-              "productivetrees:great_sallow_wood",
-              "productivetrees:great_sallow_stripped_log",
-              "productivetrees:great_sallow_stripped_wood"
-            ]
+            "tag": "productivetrees:great_sallow_logs"
           }
         ]
       },

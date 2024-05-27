@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:blue_yonder_log",
-              "productivetrees:blue_yonder_wood",
-              "productivetrees:blue_yonder_stripped_log",
-              "productivetrees:blue_yonder_stripped_wood"
-            ]
+            "tag": "productivetrees:blue_yonder_logs"
           }
         ]
       },

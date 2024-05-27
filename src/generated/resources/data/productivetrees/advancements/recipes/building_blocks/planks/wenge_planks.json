@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:wenge_log",
-              "productivetrees:wenge_wood",
-              "productivetrees:wenge_stripped_log",
-              "productivetrees:wenge_stripped_wood"
-            ]
+            "tag": "productivetrees:wenge_logs"
           }
         ]
       },

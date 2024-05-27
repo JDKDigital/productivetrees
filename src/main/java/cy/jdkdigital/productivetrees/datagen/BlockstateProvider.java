@@ -247,6 +247,9 @@ public class BlockstateProvider implements DataProvider
                 if (treeObject.hasFruit()) {
                     this.createFruitBlock(treeObject);
                 }
+                if (treeObject.getId().getPath().equals("cinnamon")) {
+                    createCrate(treeObject, new ResourceLocation(ProductiveTrees.MODID, "cinnamon"));
+                }
                 new WoodProvider().logWithHorizontal(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_log"), false).wood(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_wood"), false);
                 new WoodProvider().logWithHorizontal(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_stripped_log"), true).wood(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_stripped_wood"), true);
                 this.createBaseBlock(TreeUtil.getBlock(id, "_planks"), "planks/" + treeObject.getStyle().plankStyle());
@@ -340,11 +343,15 @@ public class BlockstateProvider implements DataProvider
                 return Variant.variant().with(VariantProperties.MODEL, template.create(new ResourceLocation(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/" + age), (new TextureMapping()).put(TextureSlot.ALL, new ResourceLocation(ProductiveTrees.MODID, "block/leaves/" + treeObject.getStyle().leafStyle())), modelOutput));
             })));
 
-            var cratePath = treeObject.getFruit().fruitItem().withPath(p -> p + "_crate");
+            createCrate(treeObject, treeObject.getFruit().fruitItem());
+        }
+
+        private void createCrate(TreeObject treeObject, ResourceLocation item) {
+            var cratePath = item.withPath(p -> p + "_crate");
             if (TreeRegistrator.CRATED_CROPS.contains(cratePath) && !treeObject.getId().getPath().contains("copper_beech") && !treeObject.getId().getPath().contains("purple_blackthorn")) {
                 createCrate(treeObject, ForgeRegistries.BLOCKS.getValue(cratePath));
             };
-            var roastedCratePath = treeObject.getFruit().fruitItem().withPath(p -> "roasted_" + p + "_crate");
+            var roastedCratePath = item.withPath(p -> "roasted_" + p + "_crate");
             if (TreeRegistrator.CRATED_CROPS.contains(roastedCratePath) && !treeObject.getId().getPath().contains("copper_beech") && !treeObject.getId().getPath().contains("purple_blackthorn")) {
                 createCrate(treeObject, ForgeRegistries.BLOCKS.getValue(roastedCratePath));
             };

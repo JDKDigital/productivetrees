@@ -6,10 +6,24 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:water_wonder_leaves",
+  "leaves": {
+    "Name": "productivetrees:water_wonder_leaves",
+    "Properties": {
+      "persistent": "false"
+    }
+  },
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:water_wonder_log"
+  "trunk": {
+    "Name": "productivetrees:water_wonder_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

@@ -6,10 +6,24 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:padauk_leaves",
+  "leaves": {
+    "Name": "productivetrees:padauk_leaves",
+    "Properties": {
+      "persistent": "false"
+    }
+  },
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:padauk_log"
+  "trunk": {
+    "Name": "productivetrees:padauk_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

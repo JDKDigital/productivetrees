@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:nutmeg_log",
-              "productivetrees:nutmeg_wood",
-              "productivetrees:nutmeg_stripped_log",
-              "productivetrees:nutmeg_stripped_wood"
-            ]
+            "tag": "productivetrees:nutmeg_logs"
           }
         ]
       },

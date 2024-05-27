@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:swamp_gum_log"
-    },
-    {
-      "item": "productivetrees:swamp_gum_stripped_log"
-    },
-    {
-      "item": "productivetrees:swamp_gum_wood"
-    },
-    {
-      "item": "productivetrees:swamp_gum_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:swamp_gum_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:swamp_gum_planks"

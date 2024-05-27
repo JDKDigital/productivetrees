@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:black_ember_log",
-              "productivetrees:black_ember_wood",
-              "productivetrees:black_ember_stripped_log",
-              "productivetrees:black_ember_stripped_wood"
-            ]
+            "tag": "productivetrees:black_ember_logs"
           }
         ]
       },

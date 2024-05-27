@@ -13,6 +13,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
@@ -68,20 +70,22 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         Block THERMAL_EXTRACTOR = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("thermal:tree_extractor"));
 
         TreeFinder.trees.forEach((id, treeObject) -> {
-            planksFromLogs(consumer, TreeUtil.getBlock(treeObject.getId(), "_planks"), TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood"));
+            var planks = TreeUtil.getBlock(treeObject.getId(), "_planks");
+            planksFromLogs(consumer, TreeUtil.getBlock(treeObject.getId(), "_planks"), ItemTags.create(new ResourceLocation(ProductiveTrees.MODID, id.getPath() + "_logs")));
             woodFromLogs(consumer, TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_log"));
-            shapedVariant(consumer, BlockFamily.Variant.STAIRS, TreeUtil.getBlock(treeObject.getId(), "_stairs"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
-            shapedVariant(consumer, BlockFamily.Variant.SLAB, TreeUtil.getBlock(treeObject.getId(), "_slab"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
-            shapedVariant(consumer, BlockFamily.Variant.PRESSURE_PLATE, TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
-            shapedVariant(consumer, BlockFamily.Variant.BUTTON, TreeUtil.getBlock(treeObject.getId(), "_button"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
-            shapedVariant(consumer, BlockFamily.Variant.FENCE, TreeUtil.getBlock(treeObject.getId(), "_fence"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
-            shapedVariant(consumer, BlockFamily.Variant.FENCE_GATE, TreeUtil.getBlock(treeObject.getId(), "_fence_gate"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
-            shapedVariant(consumer, BlockFamily.Variant.DOOR, TreeUtil.getBlock(treeObject.getId(), "_door"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
-            shapedVariant(consumer, BlockFamily.Variant.TRAPDOOR, TreeUtil.getBlock(treeObject.getId(), "_trapdoor"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
-            shapedVariant(consumer, BlockFamily.Variant.SIGN, TreeUtil.getBlock(treeObject.getId(), "_sign"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
-            hangingSign(consumer, TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), TreeUtil.getBlock(treeObject.getId(), "_planks"));
+            shapedVariant(consumer, BlockFamily.Variant.STAIRS, TreeUtil.getBlock(treeObject.getId(), "_stairs"), planks);
+            shapedVariant(consumer, BlockFamily.Variant.SLAB, TreeUtil.getBlock(treeObject.getId(), "_slab"), planks);
+            shapedVariant(consumer, BlockFamily.Variant.PRESSURE_PLATE, TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), planks);
+            shapedVariant(consumer, BlockFamily.Variant.BUTTON, TreeUtil.getBlock(treeObject.getId(), "_button"), planks);
+            shapedVariant(consumer, BlockFamily.Variant.FENCE, TreeUtil.getBlock(treeObject.getId(), "_fence"), planks);
+            shapedVariant(consumer, BlockFamily.Variant.FENCE_GATE, TreeUtil.getBlock(treeObject.getId(), "_fence_gate"), planks);
+            shapedVariant(consumer, BlockFamily.Variant.DOOR, TreeUtil.getBlock(treeObject.getId(), "_door"), planks);
+            shapedVariant(consumer, BlockFamily.Variant.TRAPDOOR, TreeUtil.getBlock(treeObject.getId(), "_trapdoor"), planks);
+            shapedVariant(consumer, BlockFamily.Variant.SIGN, TreeUtil.getBlock(treeObject.getId(), "_sign"), planks);
+            hangingSign(consumer, TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), planks);
             buildSawmillRecipe(treeObject, consumer);
             buildCorailWoodcutterRecipes(treeObject, consumer);
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(consumer, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf"));
             // arboreal extractor (for resin, sap and latex), insolator (logs, saplings and fruit)
             if (THERMAL_SAWMILL != null) {
                 SingleConditionalRecipe.builder()
@@ -179,11 +183,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         });
     }
 
-    private static void planksFromLogs(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike... ingredients) {
+    private static void planksFromLogs(Consumer<FinishedRecipe> consumer, ItemLike result, TagKey<Item> pLogs) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, result, 4)
-                .requires(Ingredient.of(ingredients))
+                .requires(Ingredient.of(pLogs))
                 .group("planks")
-                .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(ingredients).build()))
+                .unlockedBy("has_logs", has(pLogs))
                 .save(consumer, prefixedRecipeId(result, "planks/"));
     }
 
@@ -211,20 +215,21 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
 
     private void buildSawmillRecipe(WoodObject treeObject, Consumer<FinishedRecipe> consumer) {
         String name = treeObject.getId().getPath();
-        SawmillRecipeBuilder.tree(treeObject, TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood"), TreeUtil.getBlock(treeObject.getId(), "_planks")).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/" + name + "_planks_from_log"));
+        SawmillRecipeBuilder.tree(treeObject, ItemTags.create(new ResourceLocation(ProductiveTrees.MODID, treeObject.getId().getPath() + "_logs")), TreeUtil.getBlock(treeObject.getId(), "_planks")).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/" + name + "_planks_from_log"));
     }
 
     private void buildVanillaSawmillRecipes(Consumer<FinishedRecipe> consumer) {
-        SawmillRecipeBuilder.direct(Ingredient.of(Items.OAK_LOG, Items.STRIPPED_OAK_LOG, Items.OAK_WOOD, Items.STRIPPED_OAK_WOOD), new ItemStack(Items.OAK_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/oak_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(Items.SPRUCE_LOG, Items.STRIPPED_SPRUCE_LOG, Items.SPRUCE_WOOD, Items.STRIPPED_SPRUCE_WOOD), new ItemStack(Items.SPRUCE_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/spruce_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(Items.ACACIA_LOG, Items.STRIPPED_ACACIA_LOG, Items.ACACIA_WOOD, Items.STRIPPED_ACACIA_WOOD), new ItemStack(Items.ACACIA_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/acacia_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(Items.BIRCH_LOG, Items.STRIPPED_BIRCH_LOG, Items.BIRCH_WOOD, Items.STRIPPED_BIRCH_WOOD), new ItemStack(Items.BIRCH_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/birch_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(Items.JUNGLE_LOG, Items.STRIPPED_JUNGLE_LOG, Items.JUNGLE_WOOD, Items.STRIPPED_JUNGLE_WOOD), new ItemStack(Items.JUNGLE_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/jungle_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(Items.CHERRY_LOG, Items.STRIPPED_CHERRY_LOG, Items.CHERRY_WOOD, Items.STRIPPED_CHERRY_WOOD), new ItemStack(Items.CHERRY_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/cherry_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(Items.MANGROVE_LOG, Items.STRIPPED_MANGROVE_LOG, Items.MANGROVE_WOOD, Items.STRIPPED_MANGROVE_WOOD), new ItemStack(Items.MANGROVE_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/mangrove_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(Items.DARK_OAK_LOG, Items.STRIPPED_DARK_OAK_LOG, Items.DARK_OAK_WOOD, Items.STRIPPED_DARK_OAK_WOOD), new ItemStack(Items.DARK_OAK_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/dark_oak_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(Items.CRIMSON_STEM, Items.STRIPPED_CRIMSON_STEM, Items.CRIMSON_HYPHAE, Items.STRIPPED_CRIMSON_HYPHAE), new ItemStack(Items.CRIMSON_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/crimson_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(Items.WARPED_STEM, Items.STRIPPED_WARPED_STEM, Items.WARPED_HYPHAE, Items.STRIPPED_WARPED_HYPHAE), new ItemStack(Items.WARPED_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/warped_planks_from_log"));
+        // TODO tags
+        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.OAK_LOGS), new ItemStack(Items.OAK_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/oak_planks_from_log"));
+        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.SPRUCE_LOGS), new ItemStack(Items.SPRUCE_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/spruce_planks_from_log"));
+        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.ACACIA_LOGS), new ItemStack(Items.ACACIA_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/acacia_planks_from_log"));
+        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.BIRCH_LOGS), new ItemStack(Items.BIRCH_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/birch_planks_from_log"));
+        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.JUNGLE_LOGS), new ItemStack(Items.JUNGLE_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/jungle_planks_from_log"));
+        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.CHERRY_LOGS), new ItemStack(Items.CHERRY_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/cherry_planks_from_log"));
+        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.MANGROVE_LOGS), new ItemStack(Items.MANGROVE_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/mangrove_planks_from_log"));
+        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.DARK_OAK_LOGS), new ItemStack(Items.DARK_OAK_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/dark_oak_planks_from_log"));
+        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.CRIMSON_STEMS), new ItemStack(Items.CRIMSON_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/crimson_planks_from_log"));
+        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.WARPED_STEMS), new ItemStack(Items.WARPED_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/warped_planks_from_log"));
     }
 
     private void buildCrateRecipes(Consumer<FinishedRecipe> consumer) {
@@ -360,7 +365,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "walnut", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 10);
         treeBreeding(consumer, "sweet_chestnut", "walnut", RecipeProvider.getLeafIngredient("wild_cherry", "silver_lime"), 10);
         treeBreeding(consumer, "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), Ingredient.of(Blocks.BIRCH_LEAVES), 10);
-        treeBreeding(consumer, "sugar_maple", "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), 5);
+        treeBreeding(consumer, "sugar_maple", "european_larch", "red_maple", 5);
         treeBreeding(consumer, "citron", "silver_lime", "sour_cherry", 5);
         treeBreeding(consumer, "plum", "citron", "wild_cherry", 5);
         treeBreeding(consumer, "bull_pine", "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), 10);
@@ -374,7 +379,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "zebrano", "white_poplar", "ceylon_ebony", 5);
         treeBreeding(consumer, "yellow_meranti", "ceylon_ebony", "kapok", 10);
         treeBreeding(consumer, "mahogany", "yellow_meranti", "kapok", 10);
-        treeBreeding(consumer, "padauk", Ingredient.of(Blocks.ACACIA_LEAVES), Ingredient.of(Blocks.JUNGLE_LEAVES), 5);
+        treeBreeding(consumer, "padauk", "red_maple", Ingredient.of(Blocks.JUNGLE_LEAVES), 5);
         treeBreeding(consumer, "dogwood", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 5);
         treeBreeding(consumer, "balsa", "teak", Ingredient.of(Blocks.ACACIA_LEAVES), 10);
         treeBreeding(consumer, "cocobolo", "balsa", Ingredient.of(Blocks.DARK_OAK_LEAVES), 10);
@@ -443,15 +448,15 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "pecan", "beech", Blocks.BIRCH_LEAVES, 10);
         treeBreeding(consumer, "sugar_apple", "pecan", "wild_cherry", 10);
         treeBreeding(consumer, "soursop", "sugar_apple", "banana", 10);
-        treeBreeding(consumer, "elm", "ash", "bull_pine", 10);
+        treeBreeding(consumer, "elm", "ash", "silver_lime", 10);
         treeBreeding(consumer, "elderberry", "aspen", "alder", 10);
         treeBreeding(consumer, "holly", "alder", "rowan", 10);
-        treeBreeding(consumer, "hornbeam", "ash", "european_larch", 10);
+        treeBreeding(consumer, "hornbeam", "ash", "whitebeam", 10);
         treeBreeding(consumer, "great_sallow", "white_willow", "aspen", 10);
         treeBreeding(consumer, "silver_fir", "balsam_fir", "bull_pine", 10);
         treeBreeding(consumer, "cedar", "silver_fir", "european_larch", 10);
         treeBreeding(consumer, "olive", "alder", "wild_cherry", 10);
-        treeBreeding(consumer, "red_maple", "silver_lime", "sugar_maple", 10);
+        treeBreeding(consumer, "red_maple", "silver_lime", "european_larch", 10);
         treeBreeding(consumer, "balsam_fir", "alder", "european_larch", 10);
         treeBreeding(consumer, "loblolly_pine", "bull_pine", Blocks.SPRUCE_LEAVES, 10);
         treeBreeding(consumer, "sweetgum", "european_larch", "sugar_maple", 10);

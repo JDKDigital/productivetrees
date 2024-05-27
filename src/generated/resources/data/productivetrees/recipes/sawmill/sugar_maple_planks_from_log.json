@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:sugar_maple_log"
-    },
-    {
-      "item": "productivetrees:sugar_maple_stripped_log"
-    },
-    {
-      "item": "productivetrees:sugar_maple_wood"
-    },
-    {
-      "item": "productivetrees:sugar_maple_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:sugar_maple_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:sugar_maple_planks"

@@ -52,7 +52,7 @@ public final class ThermalInsulatorRecipeBuilder implements RecipeBuilder
 
     @Override
     public RecipeBuilder group(@Nullable String p_176495_) {
-        return null;
+        return this;
     }
 
     @Override

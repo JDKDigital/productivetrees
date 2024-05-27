@@ -6,10 +6,32 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:cashew_leaves",
+  "leaves": [
+    {
+      "Name": "productivetrees:cashew_leaves",
+      "Properties": {
+        "persistent": "false"
+      }
+    },
+    {
+      "Name": "productivetrees:cashew_fruit",
+      "Properties": {
+        "persistent": "false"
+      }
+    }
+  ],
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:cashew_log"
+  "trunk": {
+    "Name": "productivetrees:cashew_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

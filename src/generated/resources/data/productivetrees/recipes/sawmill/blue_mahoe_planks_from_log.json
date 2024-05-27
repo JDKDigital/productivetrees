@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:blue_mahoe_log"
-    },
-    {
-      "item": "productivetrees:blue_mahoe_stripped_log"
-    },
-    {
-      "item": "productivetrees:blue_mahoe_wood"
-    },
-    {
-      "item": "productivetrees:blue_mahoe_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:blue_mahoe_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:blue_mahoe_planks"

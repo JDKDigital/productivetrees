@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:grandidiers_baobab_log"
-    },
-    {
-      "item": "productivetrees:grandidiers_baobab_stripped_log"
-    },
-    {
-      "item": "productivetrees:grandidiers_baobab_wood"
-    },
-    {
-      "item": "productivetrees:grandidiers_baobab_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:grandidiers_baobab_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:grandidiers_baobab_planks"

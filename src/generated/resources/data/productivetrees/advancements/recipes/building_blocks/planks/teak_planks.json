@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:teak_log",
-              "productivetrees:teak_wood",
-              "productivetrees:teak_stripped_log",
-              "productivetrees:teak_stripped_wood"
-            ]
+            "tag": "productivetrees:teak_logs"
           }
         ]
       },

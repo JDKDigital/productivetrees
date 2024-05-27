@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:carob_log",
-              "productivetrees:carob_wood",
-              "productivetrees:carob_stripped_log",
-              "productivetrees:carob_stripped_wood"
-            ]
+            "tag": "productivetrees:carob_logs"
           }
         ]
       },

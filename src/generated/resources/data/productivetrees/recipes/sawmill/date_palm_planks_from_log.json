@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:date_palm_log"
-    },
-    {
-      "item": "productivetrees:date_palm_stripped_log"
-    },
-    {
-      "item": "productivetrees:date_palm_wood"
-    },
-    {
-      "item": "productivetrees:date_palm_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:date_palm_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:date_palm_planks"

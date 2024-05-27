@@ -6,10 +6,32 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:purple_blackthorn_leaves",
+  "leaves": [
+    {
+      "Name": "productivetrees:purple_blackthorn_leaves",
+      "Properties": {
+        "persistent": "false"
+      }
+    },
+    {
+      "Name": "productivetrees:purple_blackthorn_fruit",
+      "Properties": {
+        "persistent": "false"
+      }
+    }
+  ],
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:purple_blackthorn_log"
+  "trunk": {
+    "Name": "productivetrees:purple_blackthorn_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

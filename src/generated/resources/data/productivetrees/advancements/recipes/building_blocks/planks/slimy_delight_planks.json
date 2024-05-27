@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:slimy_delight_log",
-              "productivetrees:slimy_delight_wood",
-              "productivetrees:slimy_delight_stripped_log",
-              "productivetrees:slimy_delight_stripped_wood"
-            ]
+            "tag": "productivetrees:slimy_delight_logs"
           }
         ]
       },

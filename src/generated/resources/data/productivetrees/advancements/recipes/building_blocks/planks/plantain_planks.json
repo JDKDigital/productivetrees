@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:plantain_log",
-              "productivetrees:plantain_wood",
-              "productivetrees:plantain_stripped_log",
-              "productivetrees:plantain_stripped_wood"
-            ]
+            "tag": "productivetrees:plantain_logs"
           }
         ]
       },

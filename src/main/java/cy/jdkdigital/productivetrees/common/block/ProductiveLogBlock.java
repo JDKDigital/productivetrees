@@ -1,5 +1,6 @@
 package cy.jdkdigital.productivetrees.common.block;
 
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolAction;
@@ -21,5 +22,10 @@ public class ProductiveLogBlock extends ProductiveRotatedPillarBlock
             return block.defaultBlockState().setValue(AXIS, state.getValue(AXIS));
         }
         return super.getToolModifiedState(state, context, toolAction, simulate);
+    }
+
+    @Override
+    public float getSpeedFactor() {
+        return TreeUtil.getTree(this).getId().getPath().equals("black_ember") ? 1.1f : super.getSpeedFactor();
     }
 }

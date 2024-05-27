@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:cinnamon_log",
-              "productivetrees:cinnamon_wood",
-              "productivetrees:cinnamon_stripped_log",
-              "productivetrees:cinnamon_stripped_wood"
-            ]
+            "tag": "productivetrees:cinnamon_logs"
           }
         ]
       },

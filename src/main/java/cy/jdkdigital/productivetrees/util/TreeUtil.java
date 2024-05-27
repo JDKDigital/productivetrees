@@ -129,7 +129,10 @@ public class TreeUtil
         }
         var resourceLocation = ForgeRegistries.ITEMS.getKey(saplingStack.getItem());
         if (resourceLocation != null) {
-            var block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(resourceLocation.getPath().replace("sapling", "leaves")));
+            var block = ForgeRegistries.BLOCKS.getValue(resourceLocation.withPath(p -> p.replace("_sapling", "_propagule").replace("_sapling", "_leaves")));
+            if (block.equals(Blocks.AIR)) {
+                block = ForgeRegistries.BLOCKS.getValue(resourceLocation.withPath(p -> p + "_leaves"));
+            }
             if (block != null) {
                 return new ItemStack(block);
             }
@@ -146,7 +149,13 @@ public class TreeUtil
         }
         var resourceLocation = ForgeRegistries.ITEMS.getKey(leafStack.getItem());
         if (resourceLocation != null) {
-            var block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(resourceLocation.getPath().replace("leaves", "sapling")));
+            var block = ForgeRegistries.BLOCKS.getValue(resourceLocation.withPath(p -> p.replace("_leaves", "_sapling")));
+            if (block.equals(Blocks.AIR)) {
+                block = ForgeRegistries.BLOCKS.getValue(resourceLocation.withPath(p -> p.replace("_leaves", "_propagule")));
+            }
+            if (block.equals(Blocks.AIR)) {
+                block = ForgeRegistries.BLOCKS.getValue(resourceLocation.withPath(p -> p.replace("_leaves", "")));
+            }
             if (block != null) {
                 return new ItemStack(block);
             }

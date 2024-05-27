@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:loblolly_pine_log"
-      },
-      {
-        "item": "productivetrees:loblolly_pine_wood"
-      },
-      {
-        "item": "productivetrees:loblolly_pine_stripped_log"
-      },
-      {
-        "item": "productivetrees:loblolly_pine_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:loblolly_pine_logs"
+    }
   ],
   "result": {
     "count": 4,

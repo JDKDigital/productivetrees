@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:pandanus_log"
-    },
-    {
-      "item": "productivetrees:pandanus_stripped_log"
-    },
-    {
-      "item": "productivetrees:pandanus_wood"
-    },
-    {
-      "item": "productivetrees:pandanus_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:pandanus_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:pandanus_planks"

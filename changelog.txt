@@ -1,3 +1,30 @@
+1.20.1-0.2.4
+
+- Updated Fluid Extractor recipes to match the new format in Thermal
+- Added Rowan fruits
+- Added slime ball strip drop to Slimy Delight
+
+
+1.20.1-0.2.3
+
+- Added bookshelf recipes
+- Fixed output access for machines
+- Some texture updates
+
+
+1.20.1-0.2.2
+
+- Added log tags for easier recipes
+- Fixed some trees missing in JEI
+- Fixed sapling dupe from flowerpots
+
+
+1.20.1-0.2.1
+
+- Added 3 new Ipe tree species with new wood sets
+- Improved EMI recipe lookup-chart-thing for tree recipes
+
+
 1.20.1-0.2.0
 
 - Added a few more crates

@@ -6,10 +6,32 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:allspice_leaves",
+  "leaves": [
+    {
+      "Name": "productivetrees:allspice_leaves",
+      "Properties": {
+        "persistent": "false"
+      }
+    },
+    {
+      "Name": "productivetrees:allspice_fruit",
+      "Properties": {
+        "persistent": "false"
+      }
+    }
+  ],
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:allspice_log"
+  "trunk": {
+    "Name": "productivetrees:allspice_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

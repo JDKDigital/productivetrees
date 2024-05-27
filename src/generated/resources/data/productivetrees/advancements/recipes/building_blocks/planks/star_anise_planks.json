@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:star_anise_log",
-              "productivetrees:star_anise_wood",
-              "productivetrees:star_anise_stripped_log",
-              "productivetrees:star_anise_stripped_wood"
-            ]
+            "tag": "productivetrees:star_anise_logs"
           }
         ]
       },

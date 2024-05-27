@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:thunder_bolt_log",
-              "productivetrees:thunder_bolt_wood",
-              "productivetrees:thunder_bolt_stripped_log",
-              "productivetrees:thunder_bolt_stripped_wood"
-            ]
+            "tag": "productivetrees:thunder_bolt_logs"
           }
         ]
       },

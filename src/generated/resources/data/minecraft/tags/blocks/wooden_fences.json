@@ -1,640 +1,166 @@
 {
   "values": [
-    {
-      "id": "productivetrees:alder_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:allspice_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:almond_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:apricot_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:aquilaria_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:asai_palm_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ash_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:aspen_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:avocado_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:balsa_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:balsam_fir_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:banana_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:beech_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:beliy_naliv_apple_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:blackthorn_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:black_cherry_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:black_ember_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:black_locust_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:blue_mahoe_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:boxwood_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:brazilwood_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:brazil_nut_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:breadfruit_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:brown_amber_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:buddhas_hand_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bull_pine_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:butternut_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cacao_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:candlenut_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:carob_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cashew_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cave_dweller_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cedar_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cempedak_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ceylon_ebony_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cherry_plum_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cinnamon_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:citron_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:clove_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cocobolo_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:coconut_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:coffea_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:copoazu_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:copper_beech_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cork_oak_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cultivated_pear_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:date_palm_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:dogwood_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:douglas_fir_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:elderberry_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:elm_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:european_larch_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:finger_lime_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:firecracker_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:flickering_sun_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:flowering_crabapple_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:foggy_blast_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ginkgo_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:golden_delicious_apple_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:grandidiers_baobab_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:granny_smith_apple_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:grapefruit_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:great_sallow_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:greenheart_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:hawthorn_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:hazel_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:holly_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:hornbeam_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ipe_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:iroko_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:jackfruit_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:juniper_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:kapok_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:key_lime_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:kumquat_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:lawson_cypress_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:lemon_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:lime_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:loblolly_pine_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:logwood_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:mahogany_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:mandarin_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:mango_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:monkey_puzzle_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:moonlight_magic_crepe_myrtle_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:myrtle_ebony_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:nectarine_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:night_fuchsia_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:nutmeg_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:old_fustic_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:olive_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:orange_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:osange_orange_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:padauk_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pandanus_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:papaya_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:peach_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pecan_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:persimmon_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pink_ivory_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pistachio_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:plantain_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:plum_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pomegranate_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pomelo_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:prairie_crabapple_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:purpleheart_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:purple_blackthorn_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:purple_crepe_myrtle_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:purple_spiral_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rainbow_gum_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:red_banana_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:red_crepe_myrtle_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:red_delicious_apple_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:red_maple_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rippling_willow_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rosewood_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rose_gum_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rowan_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rubber_tree_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:salak_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sandalwood_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sand_pear_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:satsuma_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sequoia_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:silver_fir_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:silver_lime_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:slimy_delight_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:socotra_dragon_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:soul_tree_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:soursop_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sour_cherry_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sparkle_cherry_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:star_anise_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:star_fruit_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sugar_apple_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sugar_maple_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:swamp_gum_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sweetgum_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sweet_chestnut_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sweet_crabapple_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sycamore_fig_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:tangerine_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:teak_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:thunder_bolt_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:time_traveller_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:tuscarora_crepe_myrtle_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:blue_yonder_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:walnut_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:water_wonder_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:wenge_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:western_hemlock_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:whitebeam_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:white_poplar_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:white_willow_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:wild_cherry_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:yellow_meranti_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:yew_fence",
-      "required": false
-    },
-    {
-      "id": "productivetrees:zebrano_fence",
-      "required": false
-    }
+    "productivetrees:alder_fence",
+    "productivetrees:allspice_fence",
+    "productivetrees:almond_fence",
+    "productivetrees:apricot_fence",
+    "productivetrees:aquilaria_fence",
+    "productivetrees:asai_palm_fence",
+    "productivetrees:ash_fence",
+    "productivetrees:aspen_fence",
+    "productivetrees:avocado_fence",
+    "productivetrees:balsa_fence",
+    "productivetrees:balsam_fir_fence",
+    "productivetrees:banana_fence",
+    "productivetrees:beech_fence",
+    "productivetrees:beliy_naliv_apple_fence",
+    "productivetrees:blackthorn_fence",
+    "productivetrees:black_cherry_fence",
+    "productivetrees:black_ember_fence",
+    "productivetrees:black_locust_fence",
+    "productivetrees:blue_mahoe_fence",
+    "productivetrees:boxwood_fence",
+    "productivetrees:brazilwood_fence",
+    "productivetrees:brazil_nut_fence",
+    "productivetrees:breadfruit_fence",
+    "productivetrees:brown_amber_fence",
+    "productivetrees:buddhas_hand_fence",
+    "productivetrees:bull_pine_fence",
+    "productivetrees:butternut_fence",
+    "productivetrees:cacao_fence",
+    "productivetrees:candlenut_fence",
+    "productivetrees:carob_fence",
+    "productivetrees:cashew_fence",
+    "productivetrees:cave_dweller_fence",
+    "productivetrees:cedar_fence",
+    "productivetrees:cempedak_fence",
+    "productivetrees:ceylon_ebony_fence",
+    "productivetrees:cherry_plum_fence",
+    "productivetrees:cinnamon_fence",
+    "productivetrees:citron_fence",
+    "productivetrees:clove_fence",
+    "productivetrees:cocobolo_fence",
+    "productivetrees:coconut_fence",
+    "productivetrees:coffea_fence",
+    "productivetrees:copoazu_fence",
+    "productivetrees:copper_beech_fence",
+    "productivetrees:cork_oak_fence",
+    "productivetrees:cultivated_pear_fence",
+    "productivetrees:date_palm_fence",
+    "productivetrees:dogwood_fence",
+    "productivetrees:douglas_fir_fence",
+    "productivetrees:elderberry_fence",
+    "productivetrees:elm_fence",
+    "productivetrees:european_larch_fence",
+    "productivetrees:finger_lime_fence",
+    "productivetrees:firecracker_fence",
+    "productivetrees:flickering_sun_fence",
+    "productivetrees:flowering_crabapple_fence",
+    "productivetrees:foggy_blast_fence",
+    "productivetrees:ginkgo_fence",
+    "productivetrees:golden_delicious_apple_fence",
+    "productivetrees:grandidiers_baobab_fence",
+    "productivetrees:granny_smith_apple_fence",
+    "productivetrees:grapefruit_fence",
+    "productivetrees:great_sallow_fence",
+    "productivetrees:greenheart_fence",
+    "productivetrees:hawthorn_fence",
+    "productivetrees:hazel_fence",
+    "productivetrees:holly_fence",
+    "productivetrees:hornbeam_fence",
+    "productivetrees:ipe_fence",
+    "productivetrees:white_ipe_fence",
+    "productivetrees:pink_ipe_fence",
+    "productivetrees:purple_ipe_fence",
+    "productivetrees:iroko_fence",
+    "productivetrees:jackfruit_fence",
+    "productivetrees:juniper_fence",
+    "productivetrees:kapok_fence",
+    "productivetrees:key_lime_fence",
+    "productivetrees:kumquat_fence",
+    "productivetrees:lawson_cypress_fence",
+    "productivetrees:lemon_fence",
+    "productivetrees:lime_fence",
+    "productivetrees:loblolly_pine_fence",
+    "productivetrees:logwood_fence",
+    "productivetrees:mahogany_fence",
+    "productivetrees:mandarin_fence",
+    "productivetrees:mango_fence",
+    "productivetrees:monkey_puzzle_fence",
+    "productivetrees:moonlight_magic_crepe_myrtle_fence",
+    "productivetrees:myrtle_ebony_fence",
+    "productivetrees:nectarine_fence",
+    "productivetrees:night_fuchsia_fence",
+    "productivetrees:nutmeg_fence",
+    "productivetrees:old_fustic_fence",
+    "productivetrees:olive_fence",
+    "productivetrees:orange_fence",
+    "productivetrees:osange_orange_fence",
+    "productivetrees:padauk_fence",
+    "productivetrees:pandanus_fence",
+    "productivetrees:papaya_fence",
+    "productivetrees:peach_fence",
+    "productivetrees:pecan_fence",
+    "productivetrees:persimmon_fence",
+    "productivetrees:pink_ivory_fence",
+    "productivetrees:pistachio_fence",
+    "productivetrees:plantain_fence",
+    "productivetrees:plum_fence",
+    "productivetrees:pomegranate_fence",
+    "productivetrees:pomelo_fence",
+    "productivetrees:prairie_crabapple_fence",
+    "productivetrees:purpleheart_fence",
+    "productivetrees:purple_blackthorn_fence",
+    "productivetrees:purple_crepe_myrtle_fence",
+    "productivetrees:purple_spiral_fence",
+    "productivetrees:rainbow_gum_fence",
+    "productivetrees:red_banana_fence",
+    "productivetrees:red_crepe_myrtle_fence",
+    "productivetrees:red_delicious_apple_fence",
+    "productivetrees:red_maple_fence",
+    "productivetrees:rippling_willow_fence",
+    "productivetrees:rosewood_fence",
+    "productivetrees:rose_gum_fence",
+    "productivetrees:rowan_fence",
+    "productivetrees:rubber_tree_fence",
+    "productivetrees:salak_fence",
+    "productivetrees:sandalwood_fence",
+    "productivetrees:sand_pear_fence",
+    "productivetrees:satsuma_fence",
+    "productivetrees:sequoia_fence",
+    "productivetrees:silver_fir_fence",
+    "productivetrees:silver_lime_fence",
+    "productivetrees:slimy_delight_fence",
+    "productivetrees:socotra_dragon_fence",
+    "productivetrees:soul_tree_fence",
+    "productivetrees:soursop_fence",
+    "productivetrees:sour_cherry_fence",
+    "productivetrees:sparkle_cherry_fence",
+    "productivetrees:star_anise_fence",
+    "productivetrees:star_fruit_fence",
+    "productivetrees:sugar_apple_fence",
+    "productivetrees:sugar_maple_fence",
+    "productivetrees:swamp_gum_fence",
+    "productivetrees:sweetgum_fence",
+    "productivetrees:sweet_chestnut_fence",
+    "productivetrees:sweet_crabapple_fence",
+    "productivetrees:sycamore_fig_fence",
+    "productivetrees:tangerine_fence",
+    "productivetrees:teak_fence",
+    "productivetrees:thunder_bolt_fence",
+    "productivetrees:time_traveller_fence",
+    "productivetrees:tuscarora_crepe_myrtle_fence",
+    "productivetrees:blue_yonder_fence",
+    "productivetrees:walnut_fence",
+    "productivetrees:water_wonder_fence",
+    "productivetrees:wenge_fence",
+    "productivetrees:western_hemlock_fence",
+    "productivetrees:whitebeam_fence",
+    "productivetrees:white_poplar_fence",
+    "productivetrees:white_willow_fence",
+    "productivetrees:wild_cherry_fence",
+    "productivetrees:yellow_meranti_fence",
+    "productivetrees:yew_fence",
+    "productivetrees:zebrano_fence"
   ]
 }

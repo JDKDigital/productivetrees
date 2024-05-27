@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:allspice_log"
-    },
-    {
-      "item": "productivetrees:allspice_stripped_log"
-    },
-    {
-      "item": "productivetrees:allspice_wood"
-    },
-    {
-      "item": "productivetrees:allspice_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:allspice_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:allspice_planks"

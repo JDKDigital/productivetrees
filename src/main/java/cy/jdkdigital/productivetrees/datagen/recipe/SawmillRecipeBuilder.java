@@ -9,6 +9,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -25,12 +26,12 @@ public record SawmillRecipeBuilder(Ingredient log, ItemStack plank, ItemStack se
         return new SawmillRecipeBuilder(logs, plank, secondary, tertiary);
     }
 
-    public static SawmillRecipeBuilder tree(WoodObject tree, Block log, Block strippedLog, Block wood, Block strippedWood, Block plank) {
+    public static SawmillRecipeBuilder tree(WoodObject tree, TagKey<Item> woodTag, Block plank) {
         ItemStack tertiary =
                 tree.getId().getPath().equals("old_fustic") ? new ItemStack(TreeRegistrator.FUSTIC.get()) :
                 (tree.getId().getPath().equals("logwood") || tree.getId().getPath().equals("brazilwood")) ? new ItemStack(TreeRegistrator.HAEMATOXYLIN.get()) :
                 ItemStack.EMPTY;
-        return direct(Ingredient.of(log, strippedLog, wood, strippedWood), new ItemStack(plank, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), tertiary);
+        return direct(Ingredient.of(woodTag), new ItemStack(plank, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), tertiary);
     }
 
     @Override

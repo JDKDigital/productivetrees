@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:silver_lime_log",
-              "productivetrees:silver_lime_wood",
-              "productivetrees:silver_lime_stripped_log",
-              "productivetrees:silver_lime_stripped_wood"
-            ]
+            "tag": "productivetrees:silver_lime_logs"
           }
         ]
       },

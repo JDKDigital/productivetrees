@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:sequoia_log",
-              "productivetrees:sequoia_wood",
-              "productivetrees:sequoia_stripped_log",
-              "productivetrees:sequoia_stripped_wood"
-            ]
+            "tag": "productivetrees:sequoia_logs"
           }
         ]
       },

@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:ginkgo_log",
-              "productivetrees:ginkgo_wood",
-              "productivetrees:ginkgo_stripped_log",
-              "productivetrees:ginkgo_stripped_wood"
-            ]
+            "tag": "productivetrees:ginkgo_logs"
           }
         ]
       },

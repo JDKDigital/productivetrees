@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:whitebeam_log"
-    },
-    {
-      "item": "productivetrees:whitebeam_stripped_log"
-    },
-    {
-      "item": "productivetrees:whitebeam_wood"
-    },
-    {
-      "item": "productivetrees:whitebeam_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:whitebeam_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:whitebeam_planks"

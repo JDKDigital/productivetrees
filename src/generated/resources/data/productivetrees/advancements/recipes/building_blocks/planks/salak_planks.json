@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:salak_log",
-              "productivetrees:salak_wood",
-              "productivetrees:salak_stripped_log",
-              "productivetrees:salak_stripped_wood"
-            ]
+            "tag": "productivetrees:salak_logs"
           }
         ]
       },

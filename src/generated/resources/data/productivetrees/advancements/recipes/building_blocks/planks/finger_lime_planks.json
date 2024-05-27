@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:finger_lime_log",
-              "productivetrees:finger_lime_wood",
-              "productivetrees:finger_lime_stripped_log",
-              "productivetrees:finger_lime_stripped_wood"
-            ]
+            "tag": "productivetrees:finger_lime_logs"
           }
         ]
       },

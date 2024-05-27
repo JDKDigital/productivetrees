@@ -5,7 +5,7 @@
     "item": "productivetrees:european_larch_leaves"
   },
   "leafB": {
-    "item": "minecraft:spruce_leaves"
+    "item": "productivetrees:red_maple_leaves"
   },
   "result": {
     "item": "productivetrees:sugar_maple_sapling"

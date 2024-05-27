@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:plum_log"
-      },
-      {
-        "item": "productivetrees:plum_wood"
-      },
-      {
-        "item": "productivetrees:plum_stripped_log"
-      },
-      {
-        "item": "productivetrees:plum_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:plum_logs"
+    }
   ],
   "result": {
     "count": 4,

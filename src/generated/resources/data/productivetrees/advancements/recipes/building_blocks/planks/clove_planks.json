@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:clove_log",
-              "productivetrees:clove_wood",
-              "productivetrees:clove_stripped_log",
-              "productivetrees:clove_stripped_wood"
-            ]
+            "tag": "productivetrees:clove_logs"
           }
         ]
       },

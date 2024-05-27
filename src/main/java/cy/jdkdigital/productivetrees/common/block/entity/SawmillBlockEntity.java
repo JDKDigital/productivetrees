@@ -57,6 +57,11 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
         }
 
         @Override
+        public boolean isInputSlot(int slot) {
+            return slot == SLOT_IN;
+        }
+
+        @Override
         public boolean isInsertableSlot(int slot) {
             return slot == SLOT_IN;
         }

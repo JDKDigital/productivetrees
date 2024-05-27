@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:nutmeg_log"
-      },
-      {
-        "item": "productivetrees:nutmeg_wood"
-      },
-      {
-        "item": "productivetrees:nutmeg_stripped_log"
-      },
-      {
-        "item": "productivetrees:nutmeg_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:nutmeg_logs"
+    }
   ],
   "result": {
     "count": 4,

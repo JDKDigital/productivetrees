@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:cork_oak_log"
-    },
-    {
-      "item": "productivetrees:cork_oak_stripped_log"
-    },
-    {
-      "item": "productivetrees:cork_oak_wood"
-    },
-    {
-      "item": "productivetrees:cork_oak_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:cork_oak_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:cork_oak_planks"

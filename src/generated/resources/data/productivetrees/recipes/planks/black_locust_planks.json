@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:black_locust_log"
-      },
-      {
-        "item": "productivetrees:black_locust_wood"
-      },
-      {
-        "item": "productivetrees:black_locust_stripped_log"
-      },
-      {
-        "item": "productivetrees:black_locust_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:black_locust_logs"
+    }
   ],
   "result": {
     "count": 4,

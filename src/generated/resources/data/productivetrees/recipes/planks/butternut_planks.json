@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:butternut_log"
-      },
-      {
-        "item": "productivetrees:butternut_wood"
-      },
-      {
-        "item": "productivetrees:butternut_stripped_log"
-      },
-      {
-        "item": "productivetrees:butternut_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:butternut_logs"
+    }
   ],
   "result": {
     "count": 4,

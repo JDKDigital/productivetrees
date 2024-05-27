@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:avocado_log"
-      },
-      {
-        "item": "productivetrees:avocado_wood"
-      },
-      {
-        "item": "productivetrees:avocado_stripped_log"
-      },
-      {
-        "item": "productivetrees:avocado_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:avocado_logs"
+    }
   ],
   "result": {
     "count": 4,

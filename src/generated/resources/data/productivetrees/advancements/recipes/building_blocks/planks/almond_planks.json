@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:almond_log",
-              "productivetrees:almond_wood",
-              "productivetrees:almond_stripped_log",
-              "productivetrees:almond_stripped_wood"
-            ]
+            "tag": "productivetrees:almond_logs"
           }
         ]
       },

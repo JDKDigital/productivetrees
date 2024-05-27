@@ -273,6 +273,18 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_white_ipe",
+      "required": false
+    },
+    {
+      "id": "productivetrees:expansion_box_pink_ipe",
+      "required": false
+    },
+    {
+      "id": "productivetrees:expansion_box_purple_ipe",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_iroko",
       "required": false
     },

@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:alder_log"
-      },
-      {
-        "item": "productivetrees:alder_wood"
-      },
-      {
-        "item": "productivetrees:alder_stripped_log"
-      },
-      {
-        "item": "productivetrees:alder_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:alder_logs"
+    }
   ],
   "result": {
     "count": 4,

@@ -1,9 +1,15 @@
 package cy.jdkdigital.productivetrees.datagen.recipe;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.JsonOps;
 import cy.jdkdigital.productivelib.util.RecipeUtil;
+import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -11,6 +17,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
@@ -60,8 +68,35 @@ public final class ThermalExtractorRecipeBuilder implements RecipeBuilder
     {
         @Override
         public void serializeRecipeData(JsonObject json) {
-            json.addProperty("trunk", ForgeRegistries.BLOCKS.getKey(log).toString());
-            json.addProperty("leaves", ForgeRegistries.BLOCKS.getKey(leaves).toString());
+            var tree = TreeUtil.getTree(log);
+            json.add("trunk", BlockState.CODEC.encodeStart(JsonOps.INSTANCE, log.defaultBlockState()).getOrThrow(false, ProductiveTrees.LOGGER::error));
+
+            var leafJson = BlockState.CODEC.encodeStart(JsonOps.INSTANCE, leaves.defaultBlockState()).getOrThrow(false, ProductiveTrees.LOGGER::error).getAsJsonObject();
+            var properties = leafJson.get("Properties").getAsJsonObject();
+            properties.remove("distance");
+            properties.remove("waterlogged");
+            leafJson.add("Properties", properties);
+            if (tree.hasFruit()) {
+                var fruit = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(ProductiveTrees.MODID, tree.getId().getPath() + "_fruit"));
+                var fruitJson = BlockState.CODEC.encodeStart(JsonOps.INSTANCE, fruit.defaultBlockState()).getOrThrow(false, ProductiveTrees.LOGGER::error).getAsJsonObject();
+                var fruitProperties = fruitJson.get("Properties").getAsJsonObject();
+                fruitProperties.remove("distance");
+                fruitProperties.remove("waterlogged");
+                fruitProperties.remove("age");
+                fruitJson.add("Properties", fruitProperties);
+                var leaves = new JsonArray();
+                leaves.add(leafJson);
+                leaves.add(fruitJson);
+                json.add("leaves", leaves);
+            } else {
+                json.add("leaves", leafJson);
+            }
+
+            // TODO read tree size from tree feature
+            json.addProperty("min_height", 4);
+            json.addProperty("max_height", 20);
+            json.addProperty("min_leaves", 10);
+            json.addProperty("max_leaves", 10);
 
             json.add("result", RecipeUtil.fluidToJson(fluid));
         }

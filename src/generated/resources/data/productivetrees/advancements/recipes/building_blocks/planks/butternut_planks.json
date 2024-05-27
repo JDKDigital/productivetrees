@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:butternut_log",
-              "productivetrees:butternut_wood",
-              "productivetrees:butternut_stripped_log",
-              "productivetrees:butternut_stripped_wood"
-            ]
+            "tag": "productivetrees:butternut_logs"
           }
         ]
       },

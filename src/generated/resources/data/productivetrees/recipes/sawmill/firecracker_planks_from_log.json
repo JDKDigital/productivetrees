@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:firecracker_log"
-    },
-    {
-      "item": "productivetrees:firecracker_stripped_log"
-    },
-    {
-      "item": "productivetrees:firecracker_wood"
-    },
-    {
-      "item": "productivetrees:firecracker_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:firecracker_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:firecracker_planks"

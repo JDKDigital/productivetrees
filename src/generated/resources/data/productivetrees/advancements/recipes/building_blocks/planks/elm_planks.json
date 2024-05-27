@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:elm_log",
-              "productivetrees:elm_wood",
-              "productivetrees:elm_stripped_log",
-              "productivetrees:elm_stripped_wood"
-            ]
+            "tag": "productivetrees:elm_logs"
           }
         ]
       },

@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:alder_log",
-              "productivetrees:alder_wood",
-              "productivetrees:alder_stripped_log",
-              "productivetrees:alder_stripped_wood"
-            ]
+            "tag": "productivetrees:alder_logs"
           }
         ]
       },

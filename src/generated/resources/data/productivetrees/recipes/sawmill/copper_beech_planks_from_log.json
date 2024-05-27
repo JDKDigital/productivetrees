@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:copper_beech_log"
-    },
-    {
-      "item": "productivetrees:copper_beech_stripped_log"
-    },
-    {
-      "item": "productivetrees:copper_beech_wood"
-    },
-    {
-      "item": "productivetrees:copper_beech_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:copper_beech_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:copper_beech_planks"

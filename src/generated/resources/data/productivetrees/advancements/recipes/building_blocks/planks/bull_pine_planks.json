@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:bull_pine_log",
-              "productivetrees:bull_pine_wood",
-              "productivetrees:bull_pine_stripped_log",
-              "productivetrees:bull_pine_stripped_wood"
-            ]
+            "tag": "productivetrees:bull_pine_logs"
           }
         ]
       },

@@ -6,10 +6,24 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:aquilaria_leaves",
+  "leaves": {
+    "Name": "productivetrees:aquilaria_leaves",
+    "Properties": {
+      "persistent": "false"
+    }
+  },
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:aquilaria_log"
+  "trunk": {
+    "Name": "productivetrees:aquilaria_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

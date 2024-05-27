@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:breadfruit_log"
-    },
-    {
-      "item": "productivetrees:breadfruit_stripped_log"
-    },
-    {
-      "item": "productivetrees:breadfruit_wood"
-    },
-    {
-      "item": "productivetrees:breadfruit_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:breadfruit_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:breadfruit_planks"

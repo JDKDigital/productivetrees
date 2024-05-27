@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:sweetgum_log",
-              "productivetrees:sweetgum_wood",
-              "productivetrees:sweetgum_stripped_log",
-              "productivetrees:sweetgum_stripped_wood"
-            ]
+            "tag": "productivetrees:sweetgum_logs"
           }
         ]
       },

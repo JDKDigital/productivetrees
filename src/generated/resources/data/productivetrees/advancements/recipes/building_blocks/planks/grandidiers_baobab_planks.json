@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:grandidiers_baobab_log",
-              "productivetrees:grandidiers_baobab_wood",
-              "productivetrees:grandidiers_baobab_stripped_log",
-              "productivetrees:grandidiers_baobab_stripped_wood"
-            ]
+            "tag": "productivetrees:grandidiers_baobab_logs"
           }
         ]
       },

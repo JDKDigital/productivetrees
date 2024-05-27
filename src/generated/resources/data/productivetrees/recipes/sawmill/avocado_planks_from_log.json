@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:avocado_log"
-    },
-    {
-      "item": "productivetrees:avocado_stripped_log"
-    },
-    {
-      "item": "productivetrees:avocado_wood"
-    },
-    {
-      "item": "productivetrees:avocado_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:avocado_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:avocado_planks"

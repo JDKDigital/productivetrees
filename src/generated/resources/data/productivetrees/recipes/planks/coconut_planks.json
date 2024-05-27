@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:coconut_log"
-      },
-      {
-        "item": "productivetrees:coconut_wood"
-      },
-      {
-        "item": "productivetrees:coconut_stripped_log"
-      },
-      {
-        "item": "productivetrees:coconut_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:coconut_logs"
+    }
   ],
   "result": {
     "count": 4,

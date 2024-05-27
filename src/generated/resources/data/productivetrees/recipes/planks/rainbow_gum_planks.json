@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:rainbow_gum_log"
-      },
-      {
-        "item": "productivetrees:rainbow_gum_wood"
-      },
-      {
-        "item": "productivetrees:rainbow_gum_stripped_log"
-      },
-      {
-        "item": "productivetrees:rainbow_gum_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:rainbow_gum_logs"
+    }
   ],
   "result": {
     "count": 4,

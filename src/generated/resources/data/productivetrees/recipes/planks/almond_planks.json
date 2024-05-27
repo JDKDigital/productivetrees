@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:almond_log"
-      },
-      {
-        "item": "productivetrees:almond_wood"
-      },
-      {
-        "item": "productivetrees:almond_stripped_log"
-      },
-      {
-        "item": "productivetrees:almond_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:almond_logs"
+    }
   ],
   "result": {
     "count": 4,

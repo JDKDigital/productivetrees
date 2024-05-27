@@ -6,10 +6,24 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:moonlight_magic_crepe_myrtle_leaves",
+  "leaves": {
+    "Name": "productivetrees:moonlight_magic_crepe_myrtle_leaves",
+    "Properties": {
+      "persistent": "false"
+    }
+  },
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:moonlight_magic_crepe_myrtle_log"
+  "trunk": {
+    "Name": "productivetrees:moonlight_magic_crepe_myrtle_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

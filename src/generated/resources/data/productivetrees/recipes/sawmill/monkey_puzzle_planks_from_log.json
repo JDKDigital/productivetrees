@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:monkey_puzzle_log"
-    },
-    {
-      "item": "productivetrees:monkey_puzzle_stripped_log"
-    },
-    {
-      "item": "productivetrees:monkey_puzzle_wood"
-    },
-    {
-      "item": "productivetrees:monkey_puzzle_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:monkey_puzzle_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:monkey_puzzle_planks"

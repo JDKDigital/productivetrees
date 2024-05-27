@@ -71,16 +71,21 @@ public class ProductiveTreesJeiPlugin implements IModPlugin
 
     @Override
     public void registerRuntime(IRuntimeRegistration registration) {
-        List<ItemStack> hiddenTrees = new ArrayList<>();
+        List<String> mutationTrees = new ArrayList<>();
         TreeFinder.trees.forEach((id, treeObject) -> {
             if (!treeObject.getMutationInfo().target().equals(ProductiveTrees.EMPTY_RL)) {
-                ProductiveTrees.ITEMS.getEntries().forEach(item -> {
-                    if (item.getId().getPath().contains(treeObject.getId().getPath())) {
-                        hiddenTrees.add(new ItemStack(item.get()));
-                    }
-                });
+                mutationTrees.add(treeObject.getMutationInfo().target().getPath());
             }
         });
+        List<ItemStack> hiddenTrees = new ArrayList<>();
+        ProductiveTrees.ITEMS.getEntries().forEach(item -> {
+            mutationTrees.forEach(s -> {
+                if (item.getId().getPath().startsWith(s)) {
+                    hiddenTrees.add(new ItemStack(item.get()));
+                }
+            });
+        });
+
         registration.getIngredientManager().removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK, hiddenTrees);
     }
 

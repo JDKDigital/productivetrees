@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:pink_ipe_log"
+    },
+    {
+      "item": "productivetrees:pink_ipe_wood"
+    },
+    {
+      "item": "productivetrees:pink_ipe_stripped_log"
+    },
+    {
+      "item": "productivetrees:pink_ipe_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:pink_ipe_stairs"
+}

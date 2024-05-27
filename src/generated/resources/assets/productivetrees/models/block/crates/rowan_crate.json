@@ -1,0 +1,9 @@
+{
+  "parent": "productivetrees:block/base_crate",
+  "textures": {
+    "bottom": "productivetrees:block/crate/ash/bottom",
+    "crop": "productivetrees:block/crate/rowan",
+    "side": "productivetrees:block/crate/ash/side",
+    "top": "productivetrees:block/crate/ash/top"
+  }
+}

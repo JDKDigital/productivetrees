@@ -6,10 +6,24 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:mahogany_leaves",
+  "leaves": {
+    "Name": "productivetrees:mahogany_leaves",
+    "Properties": {
+      "persistent": "false"
+    }
+  },
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:mahogany_log"
+  "trunk": {
+    "Name": "productivetrees:mahogany_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

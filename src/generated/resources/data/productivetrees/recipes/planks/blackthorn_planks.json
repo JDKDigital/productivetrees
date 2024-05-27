@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:blackthorn_log"
-      },
-      {
-        "item": "productivetrees:blackthorn_wood"
-      },
-      {
-        "item": "productivetrees:blackthorn_stripped_log"
-      },
-      {
-        "item": "productivetrees:blackthorn_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:blackthorn_logs"
+    }
   ],
   "result": {
     "count": 4,

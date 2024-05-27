@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:asai_palm_log",
-              "productivetrees:asai_palm_wood",
-              "productivetrees:asai_palm_stripped_log",
-              "productivetrees:asai_palm_stripped_wood"
-            ]
+            "tag": "productivetrees:asai_palm_logs"
           }
         ]
       },

@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:whitebeam_log"
-      },
-      {
-        "item": "productivetrees:whitebeam_wood"
-      },
-      {
-        "item": "productivetrees:whitebeam_stripped_log"
-      },
-      {
-        "item": "productivetrees:whitebeam_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:whitebeam_logs"
+    }
   ],
   "result": {
     "count": 4,

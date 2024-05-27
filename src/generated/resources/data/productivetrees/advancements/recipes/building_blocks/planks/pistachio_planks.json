@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:pistachio_log",
-              "productivetrees:pistachio_wood",
-              "productivetrees:pistachio_stripped_log",
-              "productivetrees:pistachio_stripped_wood"
-            ]
+            "tag": "productivetrees:pistachio_logs"
           }
         ]
       },

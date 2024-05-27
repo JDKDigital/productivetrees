@@ -6,10 +6,32 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:cherry_plum_leaves",
+  "leaves": [
+    {
+      "Name": "productivetrees:cherry_plum_leaves",
+      "Properties": {
+        "persistent": "false"
+      }
+    },
+    {
+      "Name": "productivetrees:cherry_plum_fruit",
+      "Properties": {
+        "persistent": "false"
+      }
+    }
+  ],
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:cherry_plum_log"
+  "trunk": {
+    "Name": "productivetrees:cherry_plum_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:pink_ivory_log"
-    },
-    {
-      "item": "productivetrees:pink_ivory_stripped_log"
-    },
-    {
-      "item": "productivetrees:pink_ivory_wood"
-    },
-    {
-      "item": "productivetrees:pink_ivory_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:pink_ivory_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:pink_ivory_planks"

@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:copoazu_log"
-    },
-    {
-      "item": "productivetrees:copoazu_stripped_log"
-    },
-    {
-      "item": "productivetrees:copoazu_wood"
-    },
-    {
-      "item": "productivetrees:copoazu_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:copoazu_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:copoazu_planks"

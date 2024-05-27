@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:pecan_log",
-              "productivetrees:pecan_wood",
-              "productivetrees:pecan_stripped_log",
-              "productivetrees:pecan_stripped_wood"
-            ]
+            "tag": "productivetrees:pecan_logs"
           }
         ]
       },

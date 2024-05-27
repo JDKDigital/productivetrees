@@ -47,6 +47,11 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
         }
 
         @Override
+        public boolean isInputSlot(int slot) {
+            return slot == SLOT_IN;
+        }
+
+        @Override
         public boolean isInputSlotItem(int slot, ItemStack stack) {
             if (slot == SLOT_IN && canProcess(stack)) {
                 var currentOutStack = getStackInSlot(slot);

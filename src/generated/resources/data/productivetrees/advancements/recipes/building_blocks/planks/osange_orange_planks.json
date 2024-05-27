@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:osange_orange_log",
-              "productivetrees:osange_orange_wood",
-              "productivetrees:osange_orange_stripped_log",
-              "productivetrees:osange_orange_stripped_wood"
-            ]
+            "tag": "productivetrees:osange_orange_logs"
           }
         ]
       },

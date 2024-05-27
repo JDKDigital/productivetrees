@@ -136,6 +136,7 @@ dependencies {
     implementation fg.deobf("local.libs:productivelib-${minecraft_version}:${lib_version}")
     implementation fg.deobf("local.libs:productivebees-${minecraft_version}:${pb_version}")
     implementation fg.deobf("local.libs:treetap-${minecraft_version}:${treetap_version}")
+    implementation fg.deobf("curse.maven:emi-580555:5204261")
 
     jarJar(group: 'cy.jdkdigital.productivelib', name: 'productivelib', version: '[0.0.1,)') {
         transitive(false)
@@ -146,15 +147,16 @@ dependencies {
 
     implementation fg.deobf("curse.maven:corail-woodcutter-331983:4637053")
     implementation fg.deobf("curse.maven:selene-499980:5068161")
-    implementation fg.deobf("curse.maven:sawmill-964817:5088192")
+    implementation fg.deobf("curse.maven:sawmill-964817:5306900")
     implementation fg.deobf("curse.maven:bookshelf-228525:4668763")
     implementation fg.deobf("curse.maven:botany-pots-353928:4703902")
     implementation fg.deobf("curse.maven:botany-trees-411357:4694737")
-    implementation fg.deobf("curse.maven:cofh-core-69162:4970669")
-    implementation fg.deobf("curse.maven:thermal-foundation-222880:4970702")
-    implementation fg.deobf("curse.maven:thermal-expansion-69163:4970700")
+    implementation fg.deobf("curse.maven:cofh-core-69162:5374122")
+    implementation fg.deobf("curse.maven:thermal-foundation-222880:5374123")
+    implementation fg.deobf("curse.maven:thermal-expansion-69163:5372749")
 
     implementation fg.deobf("curse.maven:jei-238222:4712868")
+    implementation fg.deobf("curse.maven:jade-324717:5072729")
     implementation fg.deobf("curse.maven:the-one-probe-245211:4629624")
     implementation fg.deobf("curse.maven:fast-leaf-decay-230976:4620069")
 

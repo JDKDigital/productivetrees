@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:nectarine_log"
-    },
-    {
-      "item": "productivetrees:nectarine_stripped_log"
-    },
-    {
-      "item": "productivetrees:nectarine_wood"
-    },
-    {
-      "item": "productivetrees:nectarine_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:nectarine_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:nectarine_planks"

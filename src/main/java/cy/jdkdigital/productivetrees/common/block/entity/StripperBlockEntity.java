@@ -34,6 +34,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 public class StripperBlockEntity extends CapabilityBlockEntity implements MenuProvider
 {
     protected int tickCounter = 0;
@@ -59,6 +61,11 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
                 }
             }
             return false;
+        }
+
+        @Override
+        public boolean isInputSlot(int slot) {
+            return slot == SLOT_AXE || slot == SLOT_IN;
         }
 
         @Override

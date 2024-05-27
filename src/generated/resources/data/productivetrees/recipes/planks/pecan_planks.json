@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:pecan_log"
-      },
-      {
-        "item": "productivetrees:pecan_wood"
-      },
-      {
-        "item": "productivetrees:pecan_stripped_log"
-      },
-      {
-        "item": "productivetrees:pecan_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:pecan_logs"
+    }
   ],
   "result": {
     "count": 4,

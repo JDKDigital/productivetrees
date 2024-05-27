@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:rippling_willow_log"
-      },
-      {
-        "item": "productivetrees:rippling_willow_wood"
-      },
-      {
-        "item": "productivetrees:rippling_willow_stripped_log"
-      },
-      {
-        "item": "productivetrees:rippling_willow_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:rippling_willow_logs"
+    }
   ],
   "result": {
     "count": 4,

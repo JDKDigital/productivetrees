@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:greenheart_log"
-    },
-    {
-      "item": "productivetrees:greenheart_stripped_log"
-    },
-    {
-      "item": "productivetrees:greenheart_wood"
-    },
-    {
-      "item": "productivetrees:greenheart_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:greenheart_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:greenheart_planks"

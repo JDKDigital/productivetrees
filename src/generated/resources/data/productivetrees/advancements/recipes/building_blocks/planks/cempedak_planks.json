@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:cempedak_log",
-              "productivetrees:cempedak_wood",
-              "productivetrees:cempedak_stripped_log",
-              "productivetrees:cempedak_stripped_wood"
-            ]
+            "tag": "productivetrees:cempedak_logs"
           }
         ]
       },

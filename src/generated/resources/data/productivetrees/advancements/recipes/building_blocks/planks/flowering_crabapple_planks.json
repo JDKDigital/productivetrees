@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:flowering_crabapple_log",
-              "productivetrees:flowering_crabapple_wood",
-              "productivetrees:flowering_crabapple_stripped_log",
-              "productivetrees:flowering_crabapple_stripped_wood"
-            ]
+            "tag": "productivetrees:flowering_crabapple_logs"
           }
         ]
       },

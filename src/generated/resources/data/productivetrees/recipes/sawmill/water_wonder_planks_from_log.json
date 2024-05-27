@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:water_wonder_log"
-    },
-    {
-      "item": "productivetrees:water_wonder_stripped_log"
-    },
-    {
-      "item": "productivetrees:water_wonder_wood"
-    },
-    {
-      "item": "productivetrees:water_wonder_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:water_wonder_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:water_wonder_planks"

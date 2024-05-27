@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:teak_log"
-      },
-      {
-        "item": "productivetrees:teak_wood"
-      },
-      {
-        "item": "productivetrees:teak_stripped_log"
-      },
-      {
-        "item": "productivetrees:teak_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:teak_logs"
+    }
   ],
   "result": {
     "count": 4,

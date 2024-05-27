@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:pandanus_log"
-      },
-      {
-        "item": "productivetrees:pandanus_wood"
-      },
-      {
-        "item": "productivetrees:pandanus_stripped_log"
-      },
-      {
-        "item": "productivetrees:pandanus_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:pandanus_logs"
+    }
   ],
   "result": {
     "count": 4,

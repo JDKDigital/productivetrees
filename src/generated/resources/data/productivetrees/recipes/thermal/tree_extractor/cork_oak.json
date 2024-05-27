@@ -6,10 +6,24 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:cork_oak_leaves",
+  "leaves": {
+    "Name": "productivetrees:cork_oak_leaves",
+    "Properties": {
+      "persistent": "false"
+    }
+  },
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:cork_oak_log"
+  "trunk": {
+    "Name": "productivetrees:cork_oak_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

@@ -6,10 +6,24 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:red_maple_leaves",
+  "leaves": {
+    "Name": "productivetrees:red_maple_leaves",
+    "Properties": {
+      "persistent": "false"
+    }
+  },
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:red_maple_log"
+  "trunk": {
+    "Name": "productivetrees:red_maple_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

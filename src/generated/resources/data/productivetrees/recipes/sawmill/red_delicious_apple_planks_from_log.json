@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:red_delicious_apple_log"
-    },
-    {
-      "item": "productivetrees:red_delicious_apple_stripped_log"
-    },
-    {
-      "item": "productivetrees:red_delicious_apple_wood"
-    },
-    {
-      "item": "productivetrees:red_delicious_apple_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:red_delicious_apple_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:red_delicious_apple_planks"

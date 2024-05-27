@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:old_fustic_log",
-              "productivetrees:old_fustic_wood",
-              "productivetrees:old_fustic_stripped_log",
-              "productivetrees:old_fustic_stripped_wood"
-            ]
+            "tag": "productivetrees:old_fustic_logs"
           }
         ]
       },

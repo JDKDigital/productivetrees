@@ -1,640 +1,166 @@
 {
   "values": [
-    {
-      "id": "productivetrees:alder_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:allspice_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:almond_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:apricot_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:aquilaria_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:asai_palm_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ash_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:aspen_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:avocado_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:balsa_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:balsam_fir_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:banana_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:beech_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:beliy_naliv_apple_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:blackthorn_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:black_cherry_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:black_ember_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:black_locust_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:blue_mahoe_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:boxwood_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:brazilwood_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:brazil_nut_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:breadfruit_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:brown_amber_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:buddhas_hand_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:bull_pine_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:butternut_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cacao_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:candlenut_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:carob_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cashew_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cave_dweller_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cedar_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cempedak_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ceylon_ebony_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cherry_plum_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cinnamon_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:citron_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:clove_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cocobolo_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:coconut_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:coffea_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:copoazu_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:copper_beech_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cork_oak_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:cultivated_pear_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:date_palm_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:dogwood_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:douglas_fir_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:elderberry_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:elm_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:european_larch_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:finger_lime_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:firecracker_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:flickering_sun_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:flowering_crabapple_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:foggy_blast_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ginkgo_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:golden_delicious_apple_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:grandidiers_baobab_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:granny_smith_apple_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:grapefruit_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:great_sallow_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:greenheart_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:hawthorn_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:hazel_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:holly_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:hornbeam_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:ipe_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:iroko_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:jackfruit_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:juniper_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:kapok_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:key_lime_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:kumquat_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:lawson_cypress_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:lemon_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:lime_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:loblolly_pine_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:logwood_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:mahogany_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:mandarin_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:mango_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:monkey_puzzle_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:moonlight_magic_crepe_myrtle_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:myrtle_ebony_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:nectarine_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:night_fuchsia_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:nutmeg_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:old_fustic_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:olive_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:orange_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:osange_orange_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:padauk_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pandanus_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:papaya_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:peach_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pecan_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:persimmon_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pink_ivory_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pistachio_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:plantain_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:plum_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pomegranate_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:pomelo_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:prairie_crabapple_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:purpleheart_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:purple_blackthorn_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:purple_crepe_myrtle_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:purple_spiral_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rainbow_gum_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:red_banana_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:red_crepe_myrtle_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:red_delicious_apple_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:red_maple_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rippling_willow_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rosewood_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rose_gum_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rowan_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:rubber_tree_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:salak_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sandalwood_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sand_pear_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:satsuma_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sequoia_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:silver_fir_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:silver_lime_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:slimy_delight_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:socotra_dragon_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:soul_tree_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:soursop_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sour_cherry_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sparkle_cherry_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:star_anise_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:star_fruit_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sugar_apple_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sugar_maple_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:swamp_gum_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sweetgum_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sweet_chestnut_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sweet_crabapple_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:sycamore_fig_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:tangerine_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:teak_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:thunder_bolt_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:time_traveller_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:tuscarora_crepe_myrtle_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:blue_yonder_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:walnut_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:water_wonder_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:wenge_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:western_hemlock_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:whitebeam_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:white_poplar_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:white_willow_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:wild_cherry_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:yellow_meranti_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:yew_slab",
-      "required": false
-    },
-    {
-      "id": "productivetrees:zebrano_slab",
-      "required": false
-    }
+    "productivetrees:alder_slab",
+    "productivetrees:allspice_slab",
+    "productivetrees:almond_slab",
+    "productivetrees:apricot_slab",
+    "productivetrees:aquilaria_slab",
+    "productivetrees:asai_palm_slab",
+    "productivetrees:ash_slab",
+    "productivetrees:aspen_slab",
+    "productivetrees:avocado_slab",
+    "productivetrees:balsa_slab",
+    "productivetrees:balsam_fir_slab",
+    "productivetrees:banana_slab",
+    "productivetrees:beech_slab",
+    "productivetrees:beliy_naliv_apple_slab",
+    "productivetrees:blackthorn_slab",
+    "productivetrees:black_cherry_slab",
+    "productivetrees:black_ember_slab",
+    "productivetrees:black_locust_slab",
+    "productivetrees:blue_mahoe_slab",
+    "productivetrees:boxwood_slab",
+    "productivetrees:brazilwood_slab",
+    "productivetrees:brazil_nut_slab",
+    "productivetrees:breadfruit_slab",
+    "productivetrees:brown_amber_slab",
+    "productivetrees:buddhas_hand_slab",
+    "productivetrees:bull_pine_slab",
+    "productivetrees:butternut_slab",
+    "productivetrees:cacao_slab",
+    "productivetrees:candlenut_slab",
+    "productivetrees:carob_slab",
+    "productivetrees:cashew_slab",
+    "productivetrees:cave_dweller_slab",
+    "productivetrees:cedar_slab",
+    "productivetrees:cempedak_slab",
+    "productivetrees:ceylon_ebony_slab",
+    "productivetrees:cherry_plum_slab",
+    "productivetrees:cinnamon_slab",
+    "productivetrees:citron_slab",
+    "productivetrees:clove_slab",
+    "productivetrees:cocobolo_slab",
+    "productivetrees:coconut_slab",
+    "productivetrees:coffea_slab",
+    "productivetrees:copoazu_slab",
+    "productivetrees:copper_beech_slab",
+    "productivetrees:cork_oak_slab",
+    "productivetrees:cultivated_pear_slab",
+    "productivetrees:date_palm_slab",
+    "productivetrees:dogwood_slab",
+    "productivetrees:douglas_fir_slab",
+    "productivetrees:elderberry_slab",
+    "productivetrees:elm_slab",
+    "productivetrees:european_larch_slab",
+    "productivetrees:finger_lime_slab",
+    "productivetrees:firecracker_slab",
+    "productivetrees:flickering_sun_slab",
+    "productivetrees:flowering_crabapple_slab",
+    "productivetrees:foggy_blast_slab",
+    "productivetrees:ginkgo_slab",
+    "productivetrees:golden_delicious_apple_slab",
+    "productivetrees:grandidiers_baobab_slab",
+    "productivetrees:granny_smith_apple_slab",
+    "productivetrees:grapefruit_slab",
+    "productivetrees:great_sallow_slab",
+    "productivetrees:greenheart_slab",
+    "productivetrees:hawthorn_slab",
+    "productivetrees:hazel_slab",
+    "productivetrees:holly_slab",
+    "productivetrees:hornbeam_slab",
+    "productivetrees:ipe_slab",
+    "productivetrees:white_ipe_slab",
+    "productivetrees:pink_ipe_slab",
+    "productivetrees:purple_ipe_slab",
+    "productivetrees:iroko_slab",
+    "productivetrees:jackfruit_slab",
+    "productivetrees:juniper_slab",
+    "productivetrees:kapok_slab",
+    "productivetrees:key_lime_slab",
+    "productivetrees:kumquat_slab",
+    "productivetrees:lawson_cypress_slab",
+    "productivetrees:lemon_slab",
+    "productivetrees:lime_slab",
+    "productivetrees:loblolly_pine_slab",
+    "productivetrees:logwood_slab",
+    "productivetrees:mahogany_slab",
+    "productivetrees:mandarin_slab",
+    "productivetrees:mango_slab",
+    "productivetrees:monkey_puzzle_slab",
+    "productivetrees:moonlight_magic_crepe_myrtle_slab",
+    "productivetrees:myrtle_ebony_slab",
+    "productivetrees:nectarine_slab",
+    "productivetrees:night_fuchsia_slab",
+    "productivetrees:nutmeg_slab",
+    "productivetrees:old_fustic_slab",
+    "productivetrees:olive_slab",
+    "productivetrees:orange_slab",
+    "productivetrees:osange_orange_slab",
+    "productivetrees:padauk_slab",
+    "productivetrees:pandanus_slab",
+    "productivetrees:papaya_slab",
+    "productivetrees:peach_slab",
+    "productivetrees:pecan_slab",
+    "productivetrees:persimmon_slab",
+    "productivetrees:pink_ivory_slab",
+    "productivetrees:pistachio_slab",
+    "productivetrees:plantain_slab",
+    "productivetrees:plum_slab",
+    "productivetrees:pomegranate_slab",
+    "productivetrees:pomelo_slab",
+    "productivetrees:prairie_crabapple_slab",
+    "productivetrees:purpleheart_slab",
+    "productivetrees:purple_blackthorn_slab",
+    "productivetrees:purple_crepe_myrtle_slab",
+    "productivetrees:purple_spiral_slab",
+    "productivetrees:rainbow_gum_slab",
+    "productivetrees:red_banana_slab",
+    "productivetrees:red_crepe_myrtle_slab",
+    "productivetrees:red_delicious_apple_slab",
+    "productivetrees:red_maple_slab",
+    "productivetrees:rippling_willow_slab",
+    "productivetrees:rosewood_slab",
+    "productivetrees:rose_gum_slab",
+    "productivetrees:rowan_slab",
+    "productivetrees:rubber_tree_slab",
+    "productivetrees:salak_slab",
+    "productivetrees:sandalwood_slab",
+    "productivetrees:sand_pear_slab",
+    "productivetrees:satsuma_slab",
+    "productivetrees:sequoia_slab",
+    "productivetrees:silver_fir_slab",
+    "productivetrees:silver_lime_slab",
+    "productivetrees:slimy_delight_slab",
+    "productivetrees:socotra_dragon_slab",
+    "productivetrees:soul_tree_slab",
+    "productivetrees:soursop_slab",
+    "productivetrees:sour_cherry_slab",
+    "productivetrees:sparkle_cherry_slab",
+    "productivetrees:star_anise_slab",
+    "productivetrees:star_fruit_slab",
+    "productivetrees:sugar_apple_slab",
+    "productivetrees:sugar_maple_slab",
+    "productivetrees:swamp_gum_slab",
+    "productivetrees:sweetgum_slab",
+    "productivetrees:sweet_chestnut_slab",
+    "productivetrees:sweet_crabapple_slab",
+    "productivetrees:sycamore_fig_slab",
+    "productivetrees:tangerine_slab",
+    "productivetrees:teak_slab",
+    "productivetrees:thunder_bolt_slab",
+    "productivetrees:time_traveller_slab",
+    "productivetrees:tuscarora_crepe_myrtle_slab",
+    "productivetrees:blue_yonder_slab",
+    "productivetrees:walnut_slab",
+    "productivetrees:water_wonder_slab",
+    "productivetrees:wenge_slab",
+    "productivetrees:western_hemlock_slab",
+    "productivetrees:whitebeam_slab",
+    "productivetrees:white_poplar_slab",
+    "productivetrees:white_willow_slab",
+    "productivetrees:wild_cherry_slab",
+    "productivetrees:yellow_meranti_slab",
+    "productivetrees:yew_slab",
+    "productivetrees:zebrano_slab"
   ]
 }

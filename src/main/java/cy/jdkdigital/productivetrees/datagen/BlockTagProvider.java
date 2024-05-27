@@ -90,16 +90,13 @@ public class BlockTagProvider extends BlockTagsProvider
             axeMineable.add(TreeUtil.getBlock(id, "_stripped_wood"));
 
             planks.add(TreeUtil.getBlock(id, "_planks"));
+
+            var logTag = BlockTags.create(new ResourceLocation(ProductiveTrees.MODID, id.getPath() + "_logs"));
+            tag(logTag).add(TreeUtil.getBlock(id, "_log"), TreeUtil.getBlock(id, "_wood"), TreeUtil.getBlock(id, "_stripped_log"), TreeUtil.getBlock(id, "_stripped_wood"));
             if (treeObject.isFireProof()) {
-                logs.add(TreeUtil.getBlock(id, "_log"));
-                logs.add(TreeUtil.getBlock(id, "_wood"));
-                logs.add(TreeUtil.getBlock(id, "_stripped_log"));
-                logs.add(TreeUtil.getBlock(id, "_stripped_wood"));
+                logs.addTag(logTag);
             } else {
-                logsThatBurn.add(TreeUtil.getBlock(id, "_log"));
-                logsThatBurn.add(TreeUtil.getBlock(id, "_wood"));
-                logsThatBurn.add(TreeUtil.getBlock(id, "_stripped_log"));
-                logsThatBurn.add(TreeUtil.getBlock(id, "_stripped_wood"));
+                logs.addTag(logTag);
             }
             stairs.add(TreeUtil.getBlock(id, "_stairs"));
             slabs.add(TreeUtil.getBlock(id, "_slab"));

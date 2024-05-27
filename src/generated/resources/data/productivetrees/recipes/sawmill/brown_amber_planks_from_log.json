@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:brown_amber_log"
-    },
-    {
-      "item": "productivetrees:brown_amber_stripped_log"
-    },
-    {
-      "item": "productivetrees:brown_amber_wood"
-    },
-    {
-      "item": "productivetrees:brown_amber_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:brown_amber_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:brown_amber_planks"

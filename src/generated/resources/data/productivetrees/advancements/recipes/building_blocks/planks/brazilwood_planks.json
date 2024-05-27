@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:brazilwood_log",
-              "productivetrees:brazilwood_wood",
-              "productivetrees:brazilwood_stripped_log",
-              "productivetrees:brazilwood_stripped_wood"
-            ]
+            "tag": "productivetrees:brazilwood_logs"
           }
         ]
       },

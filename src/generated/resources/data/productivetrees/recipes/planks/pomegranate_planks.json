@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:pomegranate_log"
-      },
-      {
-        "item": "productivetrees:pomegranate_wood"
-      },
-      {
-        "item": "productivetrees:pomegranate_stripped_log"
-      },
-      {
-        "item": "productivetrees:pomegranate_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:pomegranate_logs"
+    }
   ],
   "result": {
     "count": 4,

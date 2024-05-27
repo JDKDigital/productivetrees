@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:rose_gum_log"
-    },
-    {
-      "item": "productivetrees:rose_gum_stripped_log"
-    },
-    {
-      "item": "productivetrees:rose_gum_wood"
-    },
-    {
-      "item": "productivetrees:rose_gum_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:rose_gum_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:rose_gum_planks"

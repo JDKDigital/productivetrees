@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": {
+    "tag": "productivetrees:pink_ipe_logs"
+  },
+  "planks": {
+    "count": 6,
+    "item": "productivetrees:pink_ipe_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "item": "productivetrees:sawdust"
+  }
+}

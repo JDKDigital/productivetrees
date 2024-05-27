@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:padauk_log",
-              "productivetrees:padauk_wood",
-              "productivetrees:padauk_stripped_log",
-              "productivetrees:padauk_stripped_wood"
-            ]
+            "tag": "productivetrees:padauk_logs"
           }
         ]
       },

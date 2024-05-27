@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:foggy_blast_log"
-    },
-    {
-      "item": "productivetrees:foggy_blast_stripped_log"
-    },
-    {
-      "item": "productivetrees:foggy_blast_wood"
-    },
-    {
-      "item": "productivetrees:foggy_blast_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:foggy_blast_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:foggy_blast_planks"

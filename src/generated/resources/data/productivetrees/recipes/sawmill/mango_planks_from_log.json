@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:mango_log"
-    },
-    {
-      "item": "productivetrees:mango_stripped_log"
-    },
-    {
-      "item": "productivetrees:mango_wood"
-    },
-    {
-      "item": "productivetrees:mango_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:mango_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:mango_planks"

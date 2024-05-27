@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:rosewood_log"
-      },
-      {
-        "item": "productivetrees:rosewood_wood"
-      },
-      {
-        "item": "productivetrees:rosewood_stripped_log"
-      },
-      {
-        "item": "productivetrees:rosewood_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:rosewood_logs"
+    }
   ],
   "result": {
     "count": 4,

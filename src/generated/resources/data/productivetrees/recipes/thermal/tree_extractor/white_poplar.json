@@ -6,10 +6,24 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:white_poplar_leaves",
+  "leaves": {
+    "Name": "productivetrees:white_poplar_leaves",
+    "Properties": {
+      "persistent": "false"
+    }
+  },
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:white_poplar_log"
+  "trunk": {
+    "Name": "productivetrees:white_poplar_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

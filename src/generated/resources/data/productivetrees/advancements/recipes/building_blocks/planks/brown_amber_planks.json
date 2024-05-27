@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:brown_amber_log",
-              "productivetrees:brown_amber_wood",
-              "productivetrees:brown_amber_stripped_log",
-              "productivetrees:brown_amber_stripped_wood"
-            ]
+            "tag": "productivetrees:brown_amber_logs"
           }
         ]
       },

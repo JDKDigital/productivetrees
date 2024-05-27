@@ -6,10 +6,32 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:coffea_leaves",
+  "leaves": [
+    {
+      "Name": "productivetrees:coffea_leaves",
+      "Properties": {
+        "persistent": "false"
+      }
+    },
+    {
+      "Name": "productivetrees:coffea_fruit",
+      "Properties": {
+        "persistent": "false"
+      }
+    }
+  ],
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:coffea_log"
+  "trunk": {
+    "Name": "productivetrees:coffea_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

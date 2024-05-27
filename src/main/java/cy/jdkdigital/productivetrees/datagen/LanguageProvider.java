@@ -179,6 +179,9 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("holly", "Ilex aquifolium");
             put("hornbeam", "Carpinus betulus");
             put("ipe", "Handroanthus albus");
+            put("pink_ipe", "Handroanthus impetiginosus");
+            put("purple_ipe", "Handroanthus impetiginosus");
+            put("white_ipe", "Tabebuia roseo-alba");
             put("iroko", "Milicia excelsa");
             put("jackfruit", "Artocarpus heterophyllus");
             put("juniper", "Juniperus communis");

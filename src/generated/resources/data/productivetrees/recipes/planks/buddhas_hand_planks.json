@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:buddhas_hand_log"
-      },
-      {
-        "item": "productivetrees:buddhas_hand_wood"
-      },
-      {
-        "item": "productivetrees:buddhas_hand_stripped_log"
-      },
-      {
-        "item": "productivetrees:buddhas_hand_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:buddhas_hand_logs"
+    }
   ],
   "result": {
     "count": 4,

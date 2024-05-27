@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:cacao_log",
-              "productivetrees:cacao_wood",
-              "productivetrees:cacao_stripped_log",
-              "productivetrees:cacao_stripped_wood"
-            ]
+            "tag": "productivetrees:cacao_logs"
           }
         ]
       },

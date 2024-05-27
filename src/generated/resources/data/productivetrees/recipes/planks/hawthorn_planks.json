@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:hawthorn_log"
-      },
-      {
-        "item": "productivetrees:hawthorn_wood"
-      },
-      {
-        "item": "productivetrees:hawthorn_stripped_log"
-      },
-      {
-        "item": "productivetrees:hawthorn_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:hawthorn_logs"
+    }
   ],
   "result": {
     "count": 4,

@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:sparkle_cherry_log",
-              "productivetrees:sparkle_cherry_wood",
-              "productivetrees:sparkle_cherry_stripped_log",
-              "productivetrees:sparkle_cherry_stripped_wood"
-            ]
+            "tag": "productivetrees:sparkle_cherry_logs"
           }
         ]
       },

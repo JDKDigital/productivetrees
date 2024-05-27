@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:clove_log"
-    },
-    {
-      "item": "productivetrees:clove_stripped_log"
-    },
-    {
-      "item": "productivetrees:clove_wood"
-    },
-    {
-      "item": "productivetrees:clove_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:clove_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:clove_planks"

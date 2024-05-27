@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:flickering_sun_log"
-    },
-    {
-      "item": "productivetrees:flickering_sun_stripped_log"
-    },
-    {
-      "item": "productivetrees:flickering_sun_wood"
-    },
-    {
-      "item": "productivetrees:flickering_sun_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:flickering_sun_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:flickering_sun_planks"

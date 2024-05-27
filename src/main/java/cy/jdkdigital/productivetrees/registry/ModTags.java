@@ -31,7 +31,7 @@ public class ModTags
     public static final TagKey<Item> NUTS = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "nuts"));
     public static final TagKey<Item> BERRIES = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "berries"));
     public static final TagKey<Item> FRUITS = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits"));
-    public static final TagKey<Item> FRUITS_APPLE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/apple"));
-    public static final TagKey<Item> FRUITS_CRABAPPLE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/crabapple"));
-    public static final TagKey<Item> FRUITS_CHERRY = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/cherry"));
+    public static final TagKey<Item> FRUITS_APPLE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/apples"));
+    public static final TagKey<Item> FRUITS_CRABAPPLE = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/crabapples"));
+    public static final TagKey<Item> FRUITS_CHERRY = TagKey.create(Registries.ITEM, new ResourceLocation("forge", "fruits/cherries"));
 }

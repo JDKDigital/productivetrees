@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:grapefruit_log",
-              "productivetrees:grapefruit_wood",
-              "productivetrees:grapefruit_stripped_log",
-              "productivetrees:grapefruit_stripped_wood"
-            ]
+            "tag": "productivetrees:grapefruit_logs"
           }
         ]
       },

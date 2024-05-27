@@ -39,6 +39,8 @@ public class AdvancementProvider extends ForgeAdvancementProvider
 //                        ItemPredicate.Builder.item().of(ItemTags.AXOLOTL_TEMPT_ITEMS).build()
 //                )).save(saver, amateurArcheologist, existingFileHelper);
 
+        // TODO advancements for hidden trees
+
         var coconutTag = new CompoundTag();
         coconutTag.put("BlockState", NbtUtils.writeBlockState(TreeRegistrator.COCONUT_SPROUT.get().defaultBlockState()));
         ResourceLocation chestSlayer = new ResourceLocation(ProductiveTrees.MODID, "adv2");

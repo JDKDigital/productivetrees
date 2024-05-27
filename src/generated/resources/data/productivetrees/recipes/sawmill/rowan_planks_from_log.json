@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:rowan_log"
-    },
-    {
-      "item": "productivetrees:rowan_stripped_log"
-    },
-    {
-      "item": "productivetrees:rowan_wood"
-    },
-    {
-      "item": "productivetrees:rowan_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:rowan_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:rowan_planks"

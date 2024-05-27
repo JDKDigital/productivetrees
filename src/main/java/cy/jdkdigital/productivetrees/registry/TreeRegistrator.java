@@ -169,6 +169,7 @@ public class TreeRegistrator
         add(new CropConfig("sloe", BERRY_FOOD));
         add(new CropConfig("haw", BERRY_FOOD));
         add(new CropConfig("asai_berry", BERRY_FOOD));
+        add(new CropConfig("rowan", BERRY_FOOD));
     }};
 
     public static List<CropConfig> FRUITS = new ArrayList<>()
@@ -344,11 +345,11 @@ public class TreeRegistrator
         // Register sapling block
         var sapling = registerBlock(name + "_sapling", () -> new ProductiveSaplingBlock(grower, BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING), treeObject));
         // Potted sapling
-        var pottedSapling = registerBlock(name + "_potted_sapling", () -> new FlowerPotBlock(null, sapling, BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)), false);
+        var pottedSapling = registerBlock(name + "_potted_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, sapling, BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)), false);
         ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(new ResourceLocation(ProductiveTrees.MODID, name + "_sapling"), pottedSapling);
         // Register leaf block
         registerBlock(name + "_leaves", () -> new ProductiveLeavesBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, lightLevel), treeObject));
-        // Register fruit block + BE
+        // Register fruit block
         if (treeObject.hasFruit()) {
             if (name.equals("coconut")) {
                 registerBlock(name + "_fruit", () -> new ProductiveDroppyFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject, COCONUT_SPROUT), false);

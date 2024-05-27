@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:black_locust_log"
-    },
-    {
-      "item": "productivetrees:black_locust_stripped_log"
-    },
-    {
-      "item": "productivetrees:black_locust_wood"
-    },
-    {
-      "item": "productivetrees:black_locust_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:black_locust_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:black_locust_planks"

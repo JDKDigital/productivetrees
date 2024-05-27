@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "minecraft:birch_log"
-    },
-    {
-      "item": "minecraft:stripped_birch_log"
-    },
-    {
-      "item": "minecraft:birch_wood"
-    },
-    {
-      "item": "minecraft:stripped_birch_wood"
-    }
-  ],
+  "log": {
+    "tag": "minecraft:birch_logs"
+  },
   "planks": {
     "count": 6,
     "item": "minecraft:birch_planks"

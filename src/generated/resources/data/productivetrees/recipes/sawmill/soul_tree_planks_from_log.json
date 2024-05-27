@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:soul_tree_log"
-    },
-    {
-      "item": "productivetrees:soul_tree_stripped_log"
-    },
-    {
-      "item": "productivetrees:soul_tree_wood"
-    },
-    {
-      "item": "productivetrees:soul_tree_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:soul_tree_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:soul_tree_planks"

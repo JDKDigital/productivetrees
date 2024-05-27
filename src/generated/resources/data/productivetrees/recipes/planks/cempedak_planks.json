@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:cempedak_log"
-      },
-      {
-        "item": "productivetrees:cempedak_wood"
-      },
-      {
-        "item": "productivetrees:cempedak_stripped_log"
-      },
-      {
-        "item": "productivetrees:cempedak_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:cempedak_logs"
+    }
   ],
   "result": {
     "count": 4,

@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:prairie_crabapple_log",
-              "productivetrees:prairie_crabapple_wood",
-              "productivetrees:prairie_crabapple_stripped_log",
-              "productivetrees:prairie_crabapple_stripped_wood"
-            ]
+            "tag": "productivetrees:prairie_crabapple_logs"
           }
         ]
       },

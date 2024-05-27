@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:apricot_log",
-              "productivetrees:apricot_wood",
-              "productivetrees:apricot_stripped_log",
-              "productivetrees:apricot_stripped_wood"
-            ]
+            "tag": "productivetrees:apricot_logs"
           }
         ]
       },

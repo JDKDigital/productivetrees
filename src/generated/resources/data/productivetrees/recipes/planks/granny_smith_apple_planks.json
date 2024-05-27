@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:granny_smith_apple_log"
-      },
-      {
-        "item": "productivetrees:granny_smith_apple_wood"
-      },
-      {
-        "item": "productivetrees:granny_smith_apple_stripped_log"
-      },
-      {
-        "item": "productivetrees:granny_smith_apple_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:granny_smith_apple_logs"
+    }
   ],
   "result": {
     "count": 4,

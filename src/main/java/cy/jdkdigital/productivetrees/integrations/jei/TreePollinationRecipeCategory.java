@@ -15,6 +15,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fml.ModList;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
@@ -57,20 +58,21 @@ public class TreePollinationRecipeCategory implements IRecipeCategory<TreePollin
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, TreePollinationRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 13, 27)
-                .addItemStacks(Arrays.asList(recipe.leafA.getItems()))
+                .addItemStacks(Arrays.stream(recipe.leafA.getItems()).map(TreeUtil::getSaplingFromLeaf).toList())
                 .setSlotName("leafA");
 
-        Arrays.stream(recipe.leafA.getItems()).forEach(itemStack -> {
-            builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStack(TreeUtil.getSaplingFromLeaf(itemStack));
-        });
+
+        if (!ModList.get().isLoaded("emi")) {
+            builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(Arrays.asList(recipe.leafA.getItems()));
+        }
 
         builder.addSlot(RecipeIngredientRole.INPUT, 56, 27)
-                .addItemStacks(Arrays.asList(recipe.leafB.getItems()))
+                .addItemStacks(Arrays.stream(recipe.leafB.getItems()).map(TreeUtil::getSaplingFromLeaf).toList())
                 .setSlotName("leafB");
 
-        Arrays.stream(recipe.leafB.getItems()).forEach(itemStack -> {
-            builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStack(TreeUtil.getSaplingFromLeaf(itemStack));
-        });
+        if (!ModList.get().isLoaded("emi")) {
+            builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(Arrays.asList(recipe.leafB.getItems()));
+        }
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 109, 27)
                 .addItemStacks(List.of(recipe.result))

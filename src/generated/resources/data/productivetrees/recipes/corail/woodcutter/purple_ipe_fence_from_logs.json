@@ -1,0 +1,25 @@
+{
+  "type": "corail_woodcutter:woodcutting",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "corail_woodcutter"
+    }
+  ],
+  "count": 4,
+  "ingredient": [
+    {
+      "item": "productivetrees:purple_ipe_log"
+    },
+    {
+      "item": "productivetrees:purple_ipe_wood"
+    },
+    {
+      "item": "productivetrees:purple_ipe_stripped_log"
+    },
+    {
+      "item": "productivetrees:purple_ipe_stripped_wood"
+    }
+  ],
+  "result": "productivetrees:purple_ipe_fence"
+}

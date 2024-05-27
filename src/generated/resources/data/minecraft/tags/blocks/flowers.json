@@ -1,8 +1,5 @@
 {
   "values": [
-    {
-      "id": "productivetrees:purple_spiral_leaves",
-      "required": false
-    }
+    "productivetrees:purple_spiral_leaves"
   ]
 }

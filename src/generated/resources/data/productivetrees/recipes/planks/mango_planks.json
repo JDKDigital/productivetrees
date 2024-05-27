@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:mango_log"
-      },
-      {
-        "item": "productivetrees:mango_wood"
-      },
-      {
-        "item": "productivetrees:mango_stripped_log"
-      },
-      {
-        "item": "productivetrees:mango_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:mango_logs"
+    }
   ],
   "result": {
     "count": 4,

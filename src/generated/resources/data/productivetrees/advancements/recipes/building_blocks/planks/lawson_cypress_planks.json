@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:lawson_cypress_log",
-              "productivetrees:lawson_cypress_wood",
-              "productivetrees:lawson_cypress_stripped_log",
-              "productivetrees:lawson_cypress_stripped_wood"
-            ]
+            "tag": "productivetrees:lawson_cypress_logs"
           }
         ]
       },

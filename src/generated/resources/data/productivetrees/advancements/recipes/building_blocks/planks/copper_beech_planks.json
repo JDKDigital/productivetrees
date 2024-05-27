@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:copper_beech_log",
-              "productivetrees:copper_beech_wood",
-              "productivetrees:copper_beech_stripped_log",
-              "productivetrees:copper_beech_stripped_wood"
-            ]
+            "tag": "productivetrees:copper_beech_logs"
           }
         ]
       },

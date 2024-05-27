@@ -18,6 +18,6 @@ public class ProductiveRotatedPillarBlock extends RotatedPillarBlock
     @Override
     public boolean hidesNeighborFace(BlockGetter level, BlockPos pos, BlockState state, BlockState neighborState, Direction dir) {
         ResourceLocation name = ForgeRegistries.BLOCKS.getKey(state.getBlock());
-        return !TreeUtil.isTranslucentTree(name.getPath());
+        return TreeUtil.isTranslucentTree(name.getPath()) && neighborState.getBlock() instanceof ProductiveRotatedPillarBlock;
     }
 }

@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:beech_log"
-      },
-      {
-        "item": "productivetrees:beech_wood"
-      },
-      {
-        "item": "productivetrees:beech_stripped_log"
-      },
-      {
-        "item": "productivetrees:beech_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:beech_logs"
+    }
   ],
   "result": {
     "count": 4,

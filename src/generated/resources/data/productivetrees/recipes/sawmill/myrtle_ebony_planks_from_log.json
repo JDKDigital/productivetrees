@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:myrtle_ebony_log"
-    },
-    {
-      "item": "productivetrees:myrtle_ebony_stripped_log"
-    },
-    {
-      "item": "productivetrees:myrtle_ebony_wood"
-    },
-    {
-      "item": "productivetrees:myrtle_ebony_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:myrtle_ebony_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:myrtle_ebony_planks"

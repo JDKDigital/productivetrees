@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:wenge_log"
-    },
-    {
-      "item": "productivetrees:wenge_stripped_log"
-    },
-    {
-      "item": "productivetrees:wenge_wood"
-    },
-    {
-      "item": "productivetrees:wenge_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:wenge_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:wenge_planks"

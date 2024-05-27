@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:iroko_log"
-      },
-      {
-        "item": "productivetrees:iroko_wood"
-      },
-      {
-        "item": "productivetrees:iroko_stripped_log"
-      },
-      {
-        "item": "productivetrees:iroko_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:iroko_logs"
+    }
   ],
   "result": {
     "count": 4,

@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:douglas_fir_log",
-              "productivetrees:douglas_fir_wood",
-              "productivetrees:douglas_fir_stripped_log",
-              "productivetrees:douglas_fir_stripped_wood"
-            ]
+            "tag": "productivetrees:douglas_fir_logs"
           }
         ]
       },

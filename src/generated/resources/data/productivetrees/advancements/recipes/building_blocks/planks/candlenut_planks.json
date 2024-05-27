@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:candlenut_log",
-              "productivetrees:candlenut_wood",
-              "productivetrees:candlenut_stripped_log",
-              "productivetrees:candlenut_stripped_wood"
-            ]
+            "tag": "productivetrees:candlenut_logs"
           }
         ]
       },

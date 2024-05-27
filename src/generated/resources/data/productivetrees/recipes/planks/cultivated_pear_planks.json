@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:cultivated_pear_log"
-      },
-      {
-        "item": "productivetrees:cultivated_pear_wood"
-      },
-      {
-        "item": "productivetrees:cultivated_pear_stripped_log"
-      },
-      {
-        "item": "productivetrees:cultivated_pear_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:cultivated_pear_logs"
+    }
   ],
   "result": {
     "count": 4,

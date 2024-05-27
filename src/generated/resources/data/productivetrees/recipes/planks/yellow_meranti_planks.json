@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:yellow_meranti_log"
-      },
-      {
-        "item": "productivetrees:yellow_meranti_wood"
-      },
-      {
-        "item": "productivetrees:yellow_meranti_stripped_log"
-      },
-      {
-        "item": "productivetrees:yellow_meranti_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:yellow_meranti_logs"
+    }
   ],
   "result": {
     "count": 4,

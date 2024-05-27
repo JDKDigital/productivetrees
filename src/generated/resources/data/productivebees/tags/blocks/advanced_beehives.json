@@ -273,6 +273,18 @@
       "required": false
     },
     {
+      "id": "productivetrees:advanced_white_ipe_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_pink_ipe_beehive",
+      "required": false
+    },
+    {
+      "id": "productivetrees:advanced_purple_ipe_beehive",
+      "required": false
+    },
+    {
       "id": "productivetrees:advanced_iroko_beehive",
       "required": false
     },

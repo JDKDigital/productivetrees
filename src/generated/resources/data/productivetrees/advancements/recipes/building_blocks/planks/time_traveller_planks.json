@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:time_traveller_log",
-              "productivetrees:time_traveller_wood",
-              "productivetrees:time_traveller_stripped_log",
-              "productivetrees:time_traveller_stripped_wood"
-            ]
+            "tag": "productivetrees:time_traveller_logs"
           }
         ]
       },

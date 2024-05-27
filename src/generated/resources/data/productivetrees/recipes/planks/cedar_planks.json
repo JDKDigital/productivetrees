@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:cedar_log"
-      },
-      {
-        "item": "productivetrees:cedar_wood"
-      },
-      {
-        "item": "productivetrees:cedar_stripped_log"
-      },
-      {
-        "item": "productivetrees:cedar_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:cedar_logs"
+    }
   ],
   "result": {
     "count": 4,

@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:cashew_log",
-              "productivetrees:cashew_wood",
-              "productivetrees:cashew_stripped_log",
-              "productivetrees:cashew_stripped_wood"
-            ]
+            "tag": "productivetrees:cashew_logs"
           }
         ]
       },

@@ -5,6 +5,7 @@
     "#forge:fruits/sloe",
     "#forge:fruits/haw",
     "#forge:fruits/asai_berry",
+    "#forge:fruits/rowan",
     "#forge:fruits/apricot",
     "#forge:fruits/black_cherry",
     "#forge:fruits/cherry_plum",
@@ -58,8 +59,8 @@
     "#forge:fruits/orange",
     "#forge:fruits/mandarin",
     "#forge:fruits/buddhas_hand",
-    "#forge:fruits/apple",
-    "#forge:fruits/crabapple",
-    "#forge:fruits/cherry"
+    "#forge:fruits/apples",
+    "#forge:fruits/crabapples",
+    "#forge:fruits/cherries"
   ]
 }

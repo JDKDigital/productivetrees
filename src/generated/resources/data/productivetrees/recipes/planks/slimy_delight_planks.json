@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:slimy_delight_log"
-      },
-      {
-        "item": "productivetrees:slimy_delight_wood"
-      },
-      {
-        "item": "productivetrees:slimy_delight_stripped_log"
-      },
-      {
-        "item": "productivetrees:slimy_delight_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:slimy_delight_logs"
+    }
   ],
   "result": {
     "count": 4,

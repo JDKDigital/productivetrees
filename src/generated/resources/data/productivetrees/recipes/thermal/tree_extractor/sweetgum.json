@@ -6,10 +6,24 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:sweetgum_leaves",
+  "leaves": {
+    "Name": "productivetrees:sweetgum_leaves",
+    "Properties": {
+      "persistent": "false"
+    }
+  },
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:resin"
   },
-  "trunk": "productivetrees:sweetgum_log"
+  "trunk": {
+    "Name": "productivetrees:sweetgum_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

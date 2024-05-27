@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:yew_log"
-    },
-    {
-      "item": "productivetrees:yew_stripped_log"
-    },
-    {
-      "item": "productivetrees:yew_wood"
-    },
-    {
-      "item": "productivetrees:yew_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:yew_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:yew_planks"

@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:sweet_chestnut_log",
-              "productivetrees:sweet_chestnut_wood",
-              "productivetrees:sweet_chestnut_stripped_log",
-              "productivetrees:sweet_chestnut_stripped_wood"
-            ]
+            "tag": "productivetrees:sweet_chestnut_logs"
           }
         ]
       },

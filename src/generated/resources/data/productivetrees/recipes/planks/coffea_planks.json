@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:coffea_log"
-      },
-      {
-        "item": "productivetrees:coffea_wood"
-      },
-      {
-        "item": "productivetrees:coffea_stripped_log"
-      },
-      {
-        "item": "productivetrees:coffea_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:coffea_logs"
+    }
   ],
   "result": {
     "count": 4,

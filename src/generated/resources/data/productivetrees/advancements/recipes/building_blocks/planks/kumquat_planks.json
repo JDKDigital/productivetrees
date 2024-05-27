@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:kumquat_log",
-              "productivetrees:kumquat_wood",
-              "productivetrees:kumquat_stripped_log",
-              "productivetrees:kumquat_stripped_wood"
-            ]
+            "tag": "productivetrees:kumquat_logs"
           }
         ]
       },

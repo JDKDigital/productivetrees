@@ -6,10 +6,32 @@
       "modid": "thermal"
     }
   ],
-  "leaves": "productivetrees:sand_pear_leaves",
+  "leaves": [
+    {
+      "Name": "productivetrees:sand_pear_leaves",
+      "Properties": {
+        "persistent": "false"
+      }
+    },
+    {
+      "Name": "productivetrees:sand_pear_fruit",
+      "Properties": {
+        "persistent": "false"
+      }
+    }
+  ],
+  "max_height": 20,
+  "max_leaves": 10,
+  "min_height": 4,
+  "min_leaves": 10,
   "result": {
     "amount": 50,
     "fluid": "thermal:sap"
   },
-  "trunk": "productivetrees:sand_pear_log"
+  "trunk": {
+    "Name": "productivetrees:sand_pear_log",
+    "Properties": {
+      "axis": "y"
+    }
+  }
 }

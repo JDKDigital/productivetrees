@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:foggy_blast_log"
-      },
-      {
-        "item": "productivetrees:foggy_blast_wood"
-      },
-      {
-        "item": "productivetrees:foggy_blast_stripped_log"
-      },
-      {
-        "item": "productivetrees:foggy_blast_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:foggy_blast_logs"
+    }
   ],
   "result": {
     "count": 4,

@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:cave_dweller_log",
-              "productivetrees:cave_dweller_wood",
-              "productivetrees:cave_dweller_stripped_log",
-              "productivetrees:cave_dweller_stripped_wood"
-            ]
+            "tag": "productivetrees:cave_dweller_logs"
           }
         ]
       },

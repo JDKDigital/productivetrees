@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:hornbeam_log",
-              "productivetrees:hornbeam_wood",
-              "productivetrees:hornbeam_stripped_log",
-              "productivetrees:hornbeam_stripped_wood"
-            ]
+            "tag": "productivetrees:hornbeam_logs"
           }
         ]
       },

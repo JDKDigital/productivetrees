@@ -72,6 +72,9 @@ public record WoodSet(String woodStyle, String plankStyle, String leafStyle, Str
         put("holly", new WoodSet("holly", "holly", "holly", "holly", "bush", "umbran", null));
         put("hornbeam", new WoodSet("hornbeam", "hornbeam", "hornbeam", "hornbeam", "acacia", "aspen", null));
         put("ipe", new WoodSet("ipe", "ipe", "ipe", "ipe", "birch", "cherry", null));
+        put("pink_ipe", new WoodSet("pink_ipe", "pink_ipe", "pink_ipe", "pink_ipe", "birch", "umbran", null));
+        put("purple_ipe", new WoodSet("purple_ipe", "purple_ipe", "purple_ipe", "purple_ipe", "birch", "rosewood", null));
+        put("white_ipe", new WoodSet("white_ipe", "white_ipe", "white_ipe", "white_ipe", "birch", "birch", null));
         put("iroko", new WoodSet("iroko", "iroko", "iroko", "iroko", "birch", "jacaranda", null));
         put("jackfruit", new WoodSet("jackfruit", "jackfruit", "jackfruit", "jackfruit", "jungle", "fir", "pomegranate"));
         put("kapok", new WoodSet("kapok", "kapok", "kapok", "kapok", "oak", "grimwood", "ash"));
@@ -117,7 +120,7 @@ public record WoodSet(String woodStyle, String plankStyle, String leafStyle, Str
         put("red_maple", new WoodSet("red_maple", "red_maple", "red_maple", "red_maple", "birch", "maple", null));
         put("rose_gum", new WoodSet("rose_gum", "rose_gum", "rose_gum", "rose_gum", "jungle", "mahogany", null));
         put("rosewood", new WoodSet("rosewood", "rosewood", "rosewood", "rosewood", "birch", "rosewood", null));
-        put("rowan", new WoodSet("rowan", "rowan", "rowan", "rowan", "birch", "dark_oak", null));
+        put("rowan", new WoodSet("rowan", "rowan", "rowan", "rowan", "birch", "dark_oak", "ash"));
         put("rubber_tree", new WoodSet("rubber_tree", "rubber_tree", "rubber_tree", "rubber_tree", "jungle", "acacia", null));
         put("sandalwood", new WoodSet("sandalwood", "sandalwood", "sandalwood", "sandalwood", "acacia", "driftwood", null));
         put("sand_pear", new WoodSet("sand_pear", "sand_pear", "sand_pear", "sand_pear", "acacia", "jacaranda", "walnut"));

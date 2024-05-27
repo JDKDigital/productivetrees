@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:mango_log",
-              "productivetrees:mango_wood",
-              "productivetrees:mango_stripped_log",
-              "productivetrees:mango_stripped_wood"
-            ]
+            "tag": "productivetrees:mango_logs"
           }
         ]
       },

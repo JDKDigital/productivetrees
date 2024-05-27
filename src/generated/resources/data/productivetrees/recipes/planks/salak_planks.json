@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:salak_log"
-      },
-      {
-        "item": "productivetrees:salak_wood"
-      },
-      {
-        "item": "productivetrees:salak_stripped_log"
-      },
-      {
-        "item": "productivetrees:salak_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:salak_logs"
+    }
   ],
   "result": {
     "count": 4,

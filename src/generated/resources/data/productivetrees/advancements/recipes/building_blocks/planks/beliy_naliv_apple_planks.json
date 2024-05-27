@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:beliy_naliv_apple_log",
-              "productivetrees:beliy_naliv_apple_wood",
-              "productivetrees:beliy_naliv_apple_stripped_log",
-              "productivetrees:beliy_naliv_apple_stripped_wood"
-            ]
+            "tag": "productivetrees:beliy_naliv_apple_logs"
           }
         ]
       },

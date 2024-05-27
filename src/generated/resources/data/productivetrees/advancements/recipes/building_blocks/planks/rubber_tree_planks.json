@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:rubber_tree_log",
-              "productivetrees:rubber_tree_wood",
-              "productivetrees:rubber_tree_stripped_log",
-              "productivetrees:rubber_tree_stripped_wood"
-            ]
+            "tag": "productivetrees:rubber_tree_logs"
           }
         ]
       },

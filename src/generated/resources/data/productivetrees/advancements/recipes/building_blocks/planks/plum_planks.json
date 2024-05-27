@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:plum_log",
-              "productivetrees:plum_wood",
-              "productivetrees:plum_stripped_log",
-              "productivetrees:plum_stripped_wood"
-            ]
+            "tag": "productivetrees:plum_logs"
           }
         ]
       },

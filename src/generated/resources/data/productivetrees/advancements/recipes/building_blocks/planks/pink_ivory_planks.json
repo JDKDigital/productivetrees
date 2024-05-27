@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:pink_ivory_log",
-              "productivetrees:pink_ivory_wood",
-              "productivetrees:pink_ivory_stripped_log",
-              "productivetrees:pink_ivory_stripped_wood"
-            ]
+            "tag": "productivetrees:pink_ivory_logs"
           }
         ]
       },

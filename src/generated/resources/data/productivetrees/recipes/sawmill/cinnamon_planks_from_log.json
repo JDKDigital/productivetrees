@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:cinnamon_log"
-    },
-    {
-      "item": "productivetrees:cinnamon_stripped_log"
-    },
-    {
-      "item": "productivetrees:cinnamon_wood"
-    },
-    {
-      "item": "productivetrees:cinnamon_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:cinnamon_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:cinnamon_planks"

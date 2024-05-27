@@ -33,7 +33,10 @@ public class ItemTagProvider extends ItemTagsProvider
             }
         });
 
-        copy(BlockTags.LEAVES, ItemTags.LEAVES);
+        TreeFinder.trees.forEach((id, treeObject) -> {
+            tag(ItemTags.LEAVES).add(TreeUtil.getBlock(id, "_leaves").asItem());
+            copy(BlockTags.create(new ResourceLocation(ProductiveTrees.MODID, id.getPath() + "_logs")), ItemTags.create(new ResourceLocation(ProductiveTrees.MODID, id.getPath() + "_logs")));
+        });
         copy(BlockTags.FLOWERS, ItemTags.FLOWERS);
         copy(BlockTags.LOGS, ItemTags.LOGS);
         copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
@@ -57,12 +60,6 @@ public class ItemTagProvider extends ItemTagsProvider
         copy(ModTags.POLLINATABLE, ModTags.POLLINATABLE_ITEM);
         copy(cy.jdkdigital.productivebees.init.ModTags.HIVES_BLOCK, cy.jdkdigital.productivebees.init.ModTags.HIVES);
         copy(cy.jdkdigital.productivebees.init.ModTags.BOXES_BLOCK, cy.jdkdigital.productivebees.init.ModTags.BOXES);
-
-        // Serene seasons compat
-        copy(BlockTags.create(new ResourceLocation("sereneseasons:spring_crops")), ItemTags.create(new ResourceLocation("sereneseasons:spring_crops")));
-        copy(BlockTags.create(new ResourceLocation("sereneseasons:summer_crops")), ItemTags.create(new ResourceLocation("sereneseasons:summer_crops")));
-        copy(BlockTags.create(new ResourceLocation("sereneseasons:autumn_crops")), ItemTags.create(new ResourceLocation("sereneseasons:autumn_crops")));
-        copy(BlockTags.create(new ResourceLocation("sereneseasons:winter_crops")), ItemTags.create(new ResourceLocation("sereneseasons:winter_crops")));
 
         // Diet compat
         var dietFruitsTag = tag(ItemTags.create(new ResourceLocation("diet:fruits")));

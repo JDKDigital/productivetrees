@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:olive_log",
-              "productivetrees:olive_wood",
-              "productivetrees:olive_stripped_log",
-              "productivetrees:olive_stripped_wood"
-            ]
+            "tag": "productivetrees:olive_logs"
           }
         ]
       },

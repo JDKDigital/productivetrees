@@ -3,20 +3,9 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      {
-        "item": "productivetrees:purple_crepe_myrtle_log"
-      },
-      {
-        "item": "productivetrees:purple_crepe_myrtle_wood"
-      },
-      {
-        "item": "productivetrees:purple_crepe_myrtle_stripped_log"
-      },
-      {
-        "item": "productivetrees:purple_crepe_myrtle_stripped_wood"
-      }
-    ]
+    {
+      "tag": "productivetrees:purple_crepe_myrtle_logs"
+    }
   ],
   "result": {
     "count": 4,

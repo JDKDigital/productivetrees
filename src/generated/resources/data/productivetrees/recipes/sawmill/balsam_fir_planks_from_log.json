@@ -1,19 +1,8 @@
 {
   "type": "productivetrees:sawmill",
-  "log": [
-    {
-      "item": "productivetrees:balsam_fir_log"
-    },
-    {
-      "item": "productivetrees:balsam_fir_stripped_log"
-    },
-    {
-      "item": "productivetrees:balsam_fir_wood"
-    },
-    {
-      "item": "productivetrees:balsam_fir_stripped_wood"
-    }
-  ],
+  "log": {
+    "tag": "productivetrees:balsam_fir_logs"
+  },
   "planks": {
     "count": 6,
     "item": "productivetrees:balsam_fir_planks"

@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:purple_blackthorn_log",
-              "productivetrees:purple_blackthorn_wood",
-              "productivetrees:purple_blackthorn_stripped_log",
-              "productivetrees:purple_blackthorn_stripped_wood"
-            ]
+            "tag": "productivetrees:purple_blackthorn_logs"
           }
         ]
       },

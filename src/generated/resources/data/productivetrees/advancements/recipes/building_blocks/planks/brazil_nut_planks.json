@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:brazil_nut_log",
-              "productivetrees:brazil_nut_wood",
-              "productivetrees:brazil_nut_stripped_log",
-              "productivetrees:brazil_nut_stripped_wood"
-            ]
+            "tag": "productivetrees:brazil_nut_logs"
           }
         ]
       },

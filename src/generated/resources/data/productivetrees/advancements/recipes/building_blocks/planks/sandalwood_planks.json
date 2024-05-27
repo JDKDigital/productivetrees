@@ -5,12 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "productivetrees:sandalwood_log",
-              "productivetrees:sandalwood_wood",
-              "productivetrees:sandalwood_stripped_log",
-              "productivetrees:sandalwood_stripped_wood"
-            ]
+            "tag": "productivetrees:sandalwood_logs"
           }
         ]
       },
