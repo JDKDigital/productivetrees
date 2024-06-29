@@ -1,5 +1,6 @@
-1.20.1-0.2.5
+1.20.1-0.2.6
 
+- Fixed machines not dropping when mined
 - Added apple crate
 - Disabled pollen collection from fruits
 

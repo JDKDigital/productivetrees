@@ -348,10 +348,10 @@ public class BlockstateProvider implements DataProvider
         }
 
         private void createCrate(TreeObject treeObject, ResourceLocation item) {
-            var cratePath = item.withPath(p -> p + "_crate");
+            var cratePath = new ResourceLocation(ProductiveTrees.MODID, item.withPath(p -> p.equals("apple") ? "red_delicious_apple_crate" : p + "_crate").getPath());
             if (TreeRegistrator.CRATED_CROPS.contains(cratePath) && !treeObject.getId().getPath().contains("copper_beech") && !treeObject.getId().getPath().contains("purple_blackthorn")) {
                 createCrate(treeObject, ForgeRegistries.BLOCKS.getValue(cratePath));
-            };
+            }
             var roastedCratePath = item.withPath(p -> "roasted_" + p + "_crate");
             if (TreeRegistrator.CRATED_CROPS.contains(roastedCratePath) && !treeObject.getId().getPath().contains("copper_beech") && !treeObject.getId().getPath().contains("purple_blackthorn")) {
                 createCrate(treeObject, ForgeRegistries.BLOCKS.getValue(roastedCratePath));
