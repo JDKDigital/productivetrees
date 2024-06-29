@@ -88,6 +88,7 @@
     "#forge:storage_blocks/clove",
     "#forge:storage_blocks/cinnamon",
     "#forge:storage_blocks/nutmeg",
-    "#forge:storage_blocks/star_anise"
+    "#forge:storage_blocks/star_anise",
+    "#forge:storage_blocks/red_delicious_apple"
   ]
 }

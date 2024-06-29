@@ -61,6 +61,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add(TreeRegistrator.DRACAENA_SAP.get(), "Dracaena Sap");
         add(TreeRegistrator.MAPLE_SAP_BUCKET.get(), "Maple Sap");
         add(TreeRegistrator.RUBBER.get(), "Rubber");
+        add(TreeRegistrator.CURED_RUBBER.get(), "Cured Rubber");
         add(TreeRegistrator.SANDALWOOD_OIL.get(), "Sandalwood Oil");
 
         ProductiveTrees.ITEMS.getEntries().forEach(itemRegistryObject -> {

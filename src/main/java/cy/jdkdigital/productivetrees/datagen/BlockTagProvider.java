@@ -28,6 +28,7 @@ public class BlockTagProvider extends BlockTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         var axeMineable = tag(BlockTags.MINEABLE_WITH_AXE);
+        var pickaxeMineable = tag(BlockTags.MINEABLE_WITH_PICKAXE);
         var storageBlocks = tag(Tags.Blocks.STORAGE_BLOCKS);
 
         var dof = tag(ModTags.DIRT_OR_FARMLAND);
@@ -131,6 +132,12 @@ public class BlockTagProvider extends BlockTagsProvider
             storageBlocks.addTag(blockTagKey);
             axeMineable.addTag(blockTagKey);
         });
+
+        axeMineable.add(TreeRegistrator.TIME_TRAVELLER_DISPLAY.get());
+        pickaxeMineable.add(TreeRegistrator.STRIPPER.get());
+        pickaxeMineable.add(TreeRegistrator.SAWMILL.get());
+        pickaxeMineable.add(TreeRegistrator.WOOD_WORKER.get());
+        pickaxeMineable.add(TreeRegistrator.POLLEN_SIFTER.get());
     }
 
     @Override

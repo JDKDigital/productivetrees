@@ -3,12 +3,14 @@ package cy.jdkdigital.productivetrees.datagen;
 import com.google.common.collect.Maps;
 import cy.jdkdigital.productivebees.datagen.BlockLootProvider;
 import cy.jdkdigital.productivelib.loot.OptionalLootItem;
+import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
@@ -16,19 +18,19 @@ import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootDataType;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
-import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.common.ToolActions;
@@ -102,6 +104,9 @@ public class LootDataProvider implements DataProvider
             TreeFinder.trees.forEach((id, treeObject) -> {
                 var saplingChance = treeObject.getStyle().saplingStyle().equals("jungle") ? JUNGLE_LEAVES_SAPLING_CHANGES : NORMAL_LEAVES_SAPLING_CHANCES;
                 add(TreeUtil.getBlock(id, "_leaves"), leaf -> createOptionalLeavesDrops(leaf, TreeUtil.getBlock(id, "_sapling"), saplingChance));
+                if (treeObject.hasFruit()) {
+                    add(TreeUtil.getBlock(id, "_fruit"), leaf -> createFruitLeavesDrops(leaf, TreeUtil.getBlock(id, "_sapling"), treeObject.getFruit().getItem().getItem(), saplingChance));
+                }
                 dropSelf(TreeUtil.getBlock(id, "_sapling"));
                 dropSelf(TreeUtil.getBlock(id, "_log"));
                 dropSelf(TreeUtil.getBlock(id, "_planks"));
@@ -162,7 +167,7 @@ public class LootDataProvider implements DataProvider
 
         protected static @NotNull LootTable.Builder createOptionalLeavesDrops(Block block, Block sapling, float... dropChances) {
             return createSilkTouchOrShearsDispatchTable(block,
-                    OptionalLootItem.lootTableItem(sapling)
+                    LootItem.lootTableItem(sapling)
                             .when(ExplosionCondition.survivesExplosion())
                             .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, dropChances))
             )
@@ -170,19 +175,36 @@ public class LootDataProvider implements DataProvider
                             LootPool.lootPool()
                                     .setRolls(ConstantValue.exactly(1.0F))
                                     .when(SHEARS_OR_SILK.invert())
-                                    .add(OptionalLootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyExplosionDecay.explosionDecay()).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, NORMAL_LEAVES_STICK_CHANCES))));
+                                    .add(LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyExplosionDecay.explosionDecay()).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, NORMAL_LEAVES_STICK_CHANCES))));
         }
 
         protected static @NotNull LootTable.Builder createSilkTouchOrShearsDispatchTable(Block block, LootPoolEntryContainer.Builder<?> builder) {
             return createSelfDropDispatchTable(block, SHEARS_DIG.or(SILK_TOUCH), builder);
         }
 
+        protected static @NotNull LootTable.Builder createFruitLeavesDrops(Block block, Block sapling, Item fruit, float... dropChances) {
+            return LootTable.lootTable()
+                    .withPool(
+                            LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(
+                                    LootItem.lootTableItem(sapling).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, dropChances)).apply(ApplyExplosionDecay.explosionDecay())
+                            )
+                    ).withPool(
+                            LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(
+                                    LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyExplosionDecay.explosionDecay()).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, NORMAL_LEAVES_STICK_CHANCES))
+                            )
+                    ).withPool(
+                            LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(
+                                    LootItem.lootTableItem(fruit).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ProductiveFruitBlock.getAgeProperty(), ProductiveFruitBlock.getMaxAge()))).apply(ApplyExplosionDecay.explosionDecay())
+                            )
+                    );
+        }
+
         protected static @NotNull LootTable.Builder createSelfDropDispatchTable(Block block, LootItemCondition.Builder conditions, LootPoolEntryContainer.Builder<?> alternative) {
-            return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(OptionalLootItem.lootTableItem(block).when(conditions).otherwise(alternative)));
+            return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).when(conditions).otherwise(alternative)));
         }
 
         protected static LootTable.Builder genOptionalBlockDrop(Block block) {
-            LootPoolEntryContainer.Builder<?> builder = OptionalLootItem.lootTableItem(block).when(ExplosionCondition.survivesExplosion());
+            LootPoolEntryContainer.Builder<?> builder = LootItem.lootTableItem(block).when(ExplosionCondition.survivesExplosion());
 
             return LootTable.lootTable().withPool(
                     LootPool.lootPool().setRolls(ConstantValue.exactly(1))

@@ -10,6 +10,7 @@ import cy.jdkdigital.productivebees.init.ModItems;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
 import cy.jdkdigital.productivetrees.Config;
+import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
 import cy.jdkdigital.productivetrees.registry.ModTags;
@@ -57,7 +58,7 @@ public class CompatHandler
                 Map<BlockState, BlockPos> leafMap = new HashMap<>();
                 leaves.forEach(blockPos -> {
                     var state = level.getBlockState(blockPos);
-                    if (state.is(ModTags.POLLINATABLE) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get())) {
+                    if (state.is(ModTags.POLLINATABLE) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get()) && !(state.getBlock() instanceof ProductiveFruitBlock)) {
                         leafMap.put(state, blockPos);
                         if (!uniqueLeaves.contains(state)) {
                             uniqueLeaves.add(state);

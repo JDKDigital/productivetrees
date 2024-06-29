@@ -1,3 +1,9 @@
+1.20.1-0.2.5
+
+- Added apple crate
+- Disabled pollen collection from fruits
+
+
 1.20.1-0.2.4
 
 - Updated Fluid Extractor recipes to match the new format in Thermal

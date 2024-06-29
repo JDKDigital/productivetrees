@@ -84,7 +84,7 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(ModTags.MAPLE_SYRUP).add(TreeRegistrator.MAPLE_SYRUP.get());
         tag(ModTags.DATE_PALM_JUICE).add(TreeRegistrator.DATE_PALM_JUICE.get());
         tag(ModTags.CORK).add(TreeRegistrator.CORK.get());
-        tag(ModTags.RUBBER).add(TreeRegistrator.RUBBER.get());
+        tag(ModTags.RUBBER).add(TreeRegistrator.CURED_RUBBER.get());
         tag(Tags.Items.DYES_YELLOW).add(TreeRegistrator.FUSTIC.get());
         tag(Tags.Items.DYES_PURPLE).add(TreeRegistrator.HAEMATOXYLIN.get());
         tag(Tags.Items.DYES_BLUE).add(TreeRegistrator.HAEMATOXYLIN.get());

@@ -105,6 +105,7 @@ public class BlockstateProvider implements DataProvider
         generateFlatItem(TreeRegistrator.HAEMATOXYLIN.get(), "item/", modelOutput);
         generateFlatItem(TreeRegistrator.DRACAENA_SAP.get(), "item/", modelOutput);
         generateFlatItem(TreeRegistrator.RUBBER.get(), "item/", modelOutput);
+        generateFlatItem(TreeRegistrator.CURED_RUBBER.get(), "item/", modelOutput);
         generateFlatItem(TreeRegistrator.MAPLE_SAP_BUCKET.get(), "item/", modelOutput);
         generateFlatItem(TreeRegistrator.MAPLE_SYRUP.get(), "item/", modelOutput);
         generateFlatItem(TreeRegistrator.DATE_PALM_JUICE.get(), "item/", modelOutput);

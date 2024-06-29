@@ -181,6 +181,9 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                         .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smoking"));
             }
         });
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(TreeRegistrator.RUBBER.get()), RecipeCategory.FOOD, TreeRegistrator.CURED_RUBBER.get(), 0.1F, 120)
+                .unlockedBy(getHasName(TreeRegistrator.RUBBER.get()), has(TreeRegistrator.RUBBER.get()))
+                .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "cured_rubber"));
     }
 
     private static void planksFromLogs(Consumer<FinishedRecipe> consumer, ItemLike result, TagKey<Item> pLogs) {
@@ -219,7 +222,6 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
     }
 
     private void buildVanillaSawmillRecipes(Consumer<FinishedRecipe> consumer) {
-        // TODO tags
         SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.OAK_LOGS), new ItemStack(Items.OAK_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/oak_planks_from_log"));
         SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.SPRUCE_LOGS), new ItemStack(Items.SPRUCE_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/spruce_planks_from_log"));
         SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.ACACIA_LOGS), new ItemStack(Items.ACACIA_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, new ResourceLocation(ProductiveTrees.MODID, "sawmill/acacia_planks_from_log"));
@@ -245,18 +247,27 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 cropTag = ItemTags.create(new ResourceLocation("forge", "nuts/" + ItemTagProvider.tagName(cropName)));
             }
 
+            if (cropName.equals("red_delicious_apple")) {
+                cropItem = Items.APPLE;
+                cropTag = null;
+            }
+
             ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, cropItem, 9)
                     .unlockedBy(getHasName(cropItem), has(cropItem))
                     .requires(crateItem)
                     .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "crates/" + crate.getPath() + "_unpack"));
-            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, crateItem)
+            var rBuilder = ShapedRecipeBuilder.shaped(RecipeCategory.MISC, crateItem)
                     .unlockedBy(getHasName(cropItem), has(cropItem))
                     .pattern("###")
                     .pattern("#R#")
                     .pattern("###")
-                    .define('R', cropItem)
-                    .define('#', cropTag)
-                    .save(consumer, new ResourceLocation(ProductiveTrees.MODID, "crates/" + crate.getPath()));
+                    .define('R', cropItem);
+            if (cropTag != null) {
+                rBuilder.define('#', cropTag);
+            } else {
+                rBuilder.define('#', cropItem);
+            }
+            rBuilder.save(consumer, new ResourceLocation(ProductiveTrees.MODID, "crates/" + crate.getPath()));
         });
     }
 

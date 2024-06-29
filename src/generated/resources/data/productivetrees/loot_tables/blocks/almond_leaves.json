@@ -8,7 +8,7 @@
           "type": "minecraft:alternatives",
           "children": [
             {
-              "type": "productivelib:optional_loot_item",
+              "type": "minecraft:item",
               "conditions": [
                 {
                   "condition": "minecraft:any_of",
@@ -36,7 +36,7 @@
               "name": "productivetrees:almond_leaves"
             },
             {
-              "type": "productivelib:optional_loot_item",
+              "type": "minecraft:item",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"
@@ -90,7 +90,7 @@
       ],
       "entries": [
         {
-          "type": "productivelib:optional_loot_item",
+          "type": "minecraft:item",
           "conditions": [
             {
               "chances": [

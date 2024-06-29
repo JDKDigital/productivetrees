@@ -130,6 +130,7 @@ public class TreeRegistrator
     public static final RegistryObject<Item> HAEMATOXYLIN = registerItem("haematoxylin");
     public static final RegistryObject<Item> DRACAENA_SAP = registerItem("dracaena_sap");
     public static final RegistryObject<Item> RUBBER = registerItem("rubber");
+    public static final RegistryObject<Item> CURED_RUBBER = registerItem("cured_rubber");
     public static final RegistryObject<Item> MAPLE_SYRUP = registerItem("maple_syrup", () -> new Item(new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE)));
     public static final RegistryObject<Item> SANDALWOOD_OIL = registerItem("sandalwood_oil");
     public static final RegistryObject<Item> DATE_PALM_JUICE = registerItem("date_palm_juice", () -> new Item(new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE)));
@@ -292,6 +293,7 @@ public class TreeRegistrator
         CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, "cinnamon_crate"));
         CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, "nutmeg_crate"));
         CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, "star_anise_crate"));
+        CRATED_CROPS.add(new ResourceLocation(ProductiveTrees.MODID, "red_delicious_apple_crate"));
         CRATED_CROPS.forEach(cropName -> {
             registerBlock(cropName.getPath(), () -> new Block(BlockBehaviour.Properties.copy(Blocks.BARREL).sound(SoundType.SCAFFOLDING)), true);
         });
