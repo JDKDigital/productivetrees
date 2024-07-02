@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "trapdoor",
+  "key": {
+    "#": {
+      "item": "productivetrees:blue_yonder_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "id": "productivetrees:blue_yonder_trapdoor"
+  }
+}

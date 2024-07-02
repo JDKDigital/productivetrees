@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "trapdoor",
+  "key": {
+    "#": {
+      "item": "productivetrees:cherry_plum_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "id": "productivetrees:cherry_plum_trapdoor"
+  }
+}

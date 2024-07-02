@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cultivated_pear_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:cultivated_pear_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:door/cultivated_pear_door"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cultivated_pear_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:door/cultivated_pear_door"
+    ]
+  }
+}

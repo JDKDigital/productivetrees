@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "productivetrees:water_wonder_planks"
+    },
+    "X": {
+      "item": "minecraft:book"
+    }
+  },
+  "pattern": [
+    "###",
+    "XXX",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:water_wonder_bookshelf"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "door",
+  "key": {
+    "#": {
+      "item": "productivetrees:granny_smith_apple_planks"
+    }
+  },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "id": "productivetrees:granny_smith_apple_door"
+  }
+}

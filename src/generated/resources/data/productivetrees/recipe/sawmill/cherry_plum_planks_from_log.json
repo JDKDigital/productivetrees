@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": {
+    "tag": "productivetrees:cherry_plum_logs"
+  },
+  "planks": {
+    "count": 6,
+    "id": "productivetrees:cherry_plum_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  }
+}

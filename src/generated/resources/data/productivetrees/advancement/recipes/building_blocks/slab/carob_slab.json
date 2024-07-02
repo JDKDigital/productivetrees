@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_carob_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:carob_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:slab/carob_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_carob_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:slab/carob_slab"
+    ]
+  }
+}

@@ -5,7 +5,7 @@ import com.google.gson.JsonParser;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.util.TreeCreator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.crafting.conditions.ICondition;
+import net.neoforged.neoforge.common.conditions.ICondition;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public class TreeFinder
 
         for (var name : TREES_JSON.keySet()) {
             JsonObject json = TREES_JSON.get(name).getAsJsonObject();
-            ResourceLocation id = new ResourceLocation(ProductiveTrees.MODID, name);
+            ResourceLocation id = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, name);
 
             if (!json.has("feature")) {
                 json.addProperty("feature", id.toString());

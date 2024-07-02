@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_soursop": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:soursop"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/soursop_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_soursop"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/soursop_crate"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_persimmon_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:persimmon_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:trapdoor/persimmon_trapdoor"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_persimmon_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:trapdoor/persimmon_trapdoor"
+    ]
+  }
+}

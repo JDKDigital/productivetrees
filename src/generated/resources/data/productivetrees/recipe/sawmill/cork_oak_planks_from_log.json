@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": {
+    "tag": "productivetrees:cork_oak_logs"
+  },
+  "planks": {
+    "count": 6,
+    "id": "productivetrees:cork_oak_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  }
+}

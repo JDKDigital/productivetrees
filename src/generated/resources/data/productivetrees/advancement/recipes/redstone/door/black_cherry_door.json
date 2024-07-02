@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_black_cherry_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:black_cherry_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:door/black_cherry_door"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_black_cherry_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:door/black_cherry_door"
+    ]
+  }
+}

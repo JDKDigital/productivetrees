@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:nuts/roasted_cashew"
+    },
+    "R": {
+      "item": "productivetrees:roasted_cashew"
+    }
+  },
+  "pattern": [
+    "###",
+    "#R#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:roasted_cashew_crate"
+  }
+}

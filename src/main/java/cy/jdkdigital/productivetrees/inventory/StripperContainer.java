@@ -11,7 +11,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
@@ -32,16 +31,14 @@ public class StripperContainer extends AbstractContainer
         this.blockEntity = blockEntity;
         this.canInteractWithCallable = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
 
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(inv -> {
             // Input slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, StripperBlockEntity.SLOT_IN, 44, 25));
-            // Axe slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, StripperBlockEntity.SLOT_AXE, 44, 44));
-            // Output slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, StripperBlockEntity.SLOT_OUT, 116, 25));
-            // Bark slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, StripperBlockEntity.SLOT_BARK, 116, 44));
-        });
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_IN, 44, 25));
+        // Axe slot
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_AXE, 44, 44));
+        // Output slot
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_OUT, 116, 25));
+        // Bark slot
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_BARK, 116, 44));
 
         layoutPlayerInventorySlots(playerInventory, 0, 8, 84);
     }

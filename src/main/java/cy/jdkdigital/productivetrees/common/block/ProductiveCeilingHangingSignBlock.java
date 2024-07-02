@@ -9,8 +9,8 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 
 public class ProductiveCeilingHangingSignBlock extends CeilingHangingSignBlock
 {
-    public ProductiveCeilingHangingSignBlock(Properties properties, WoodType woodType) {
-        super(properties, woodType);
+    public ProductiveCeilingHangingSignBlock(WoodType woodType, Properties properties) {
+        super(woodType, properties);
     }
 
     @Override

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_avocado": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:avocado"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/avocado_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_avocado"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/avocado_crate"
+    ]
+  }
+}

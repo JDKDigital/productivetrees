@@ -24,17 +24,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.FakePlayerFactory;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.ItemHandlerHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.util.FakePlayerFactory;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class StripperBlockEntity extends CapabilityBlockEntity implements MenuProvider
 {
@@ -44,7 +39,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
     public static int SLOT_OUT = 1;
     public static int SLOT_AXE = 2;
     public static int SLOT_BARK = 3;
-    private final LazyOptional<IItemHandlerModifiable> inventoryHandler = LazyOptional.of(() -> new InventoryHandlerHelper.BlockEntityItemStackHandler(4, this)
+    public final IItemHandlerModifiable inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(4, this)
     {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
@@ -57,7 +52,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
                     return true;
                 }
                 if (currentOutStack.getCount() < currentOutStack.getMaxStackSize()) {
-                    return ItemHandlerHelper.canItemStacksStack(stack, currentOutStack) && !canProcess(stack);
+                    return ItemStack.isSameItemSameComponents(stack, currentOutStack) && !canProcess(stack);
                 }
             }
             return false;
@@ -72,7 +67,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
         public boolean isInputSlotItem(int slot, ItemStack stack) {
             if ((slot == SLOT_IN && stack.is(ItemTags.LOGS)) || (slot == SLOT_AXE && stack.is(ModTags.STRIPPER_TOOLS))) {
                 var currentOutStack = getStackInSlot(slot);
-                return currentOutStack.isEmpty() || (currentOutStack.getCount() < currentOutStack.getMaxStackSize() && ItemHandlerHelper.canItemStacksStack(stack, currentOutStack));
+                return currentOutStack.isEmpty() || (currentOutStack.getCount() < currentOutStack.getMaxStackSize() && ItemStack.isSameItemSameComponents(stack, currentOutStack));
             }
             return false;
         }
@@ -94,7 +89,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
                 serverLevel.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
             }
         }
-    });
+    };
 
     public StripperBlockEntity(BlockPos pos, BlockState state) {
         super(TreeRegistrator.STRIPPER_BLOCK_ENTITY.get(), pos, state);
@@ -103,7 +98,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
     private boolean canProcess(ItemStack stack) {
         var stripped = TreeUtil.getStrippedItem(stack);
 
-        return !stripped.isEmpty() && !ItemHandlerHelper.canItemStacksStack(stack, stripped);
+        return !stripped.isEmpty() && !ItemStack.isSameItemSameComponents(stack, stripped);
     }
 
     @Override
@@ -111,47 +106,42 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
         return Component.translatable(TreeRegistrator.STRIPPER.get().getDescriptionId());
     }
 
+    @Override
+    public IItemHandler getItemHandler() {
+        return inventoryHandler;
+    }
+
     public static void tick(Level level, BlockPos pos, BlockState state, StripperBlockEntity blockEntity) {
         if (++blockEntity.tickCounter % 10 == 0 && level instanceof ServerLevel serverLevel) {
-            blockEntity.inventoryHandler.ifPresent(inv -> {
-                var log = inv.getStackInSlot(SLOT_IN);
-                var axe = inv.getStackInSlot(SLOT_AXE);
-                var output = inv.getStackInSlot(SLOT_OUT);
-                if (!log.isEmpty() && !axe.isEmpty() && (output.getCount() < output.getMaxStackSize())) {
-                    var strippedLogItem = TreeUtil.getStrippedItem(blockEntity, serverLevel, log);
-                    if (!strippedLogItem.isEmpty() && inv.insertItem(SLOT_OUT, strippedLogItem, false).isEmpty()) {
-                        if (log.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock) {
-                            var treeObject = TreeUtil.getTree(logBlock);
-                            if (treeObject != null && !treeObject.getStripDrop().get().isEmpty()) {
-                                inv.insertItem(SLOT_BARK, treeObject.getStripDrop().get().copy(), false);
-                            }
-                        }
-                        log.shrink(1);
-                        if (axe.isDamageableItem()) {
-                            Player fakePlayer = FakePlayerFactory.get(serverLevel, new GameProfile(TreeUtil.STRIPPER_UUID, "stripper"));
-                            axe.hurtAndBreak(1, fakePlayer, e -> e.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+            var log = blockEntity.inventoryHandler.getStackInSlot(SLOT_IN);
+            var axe = blockEntity.inventoryHandler.getStackInSlot(SLOT_AXE);
+            var output = blockEntity.inventoryHandler.getStackInSlot(SLOT_OUT);
+            if (!log.isEmpty() && !axe.isEmpty() && (output.getCount() < output.getMaxStackSize())) {
+                var strippedLogItem = TreeUtil.getStrippedItem(blockEntity, serverLevel, log);
+                if (!strippedLogItem.isEmpty() && blockEntity.inventoryHandler.insertItem(SLOT_OUT, strippedLogItem, false).isEmpty()) {
+                    if (log.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock) {
+                        var treeObject = TreeUtil.getTree(logBlock);
+                        if (treeObject != null && treeObject.getStripDrop().isPresent()) {
+                            blockEntity.inventoryHandler.insertItem(SLOT_BARK, treeObject.getStripDropStack().copy(), false);
                         }
                     }
+                    log.shrink(1);
+                    if (axe.isDamageableItem()) {
+                        Player fakePlayer = FakePlayerFactory.get(serverLevel, new GameProfile(TreeUtil.STRIPPER_UUID, "stripper"));
+                        axe.hurtAndBreak(1, fakePlayer, EquipmentSlot.MAINHAND);
+                    }
                 }
-            });
+            }
         }
     }
 
     public ItemStack getAxe() {
-        return inventoryHandler.map(h -> h.getStackInSlot(SLOT_AXE)).orElse(ItemStack.EMPTY);
+        return inventoryHandler.getStackInSlot(SLOT_AXE);
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int windowId, Inventory playerInventory, Player player) {
         return new StripperContainer(windowId, playerInventory, this);
-    }
-
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(ForgeCapabilities.ITEM_HANDLER)) {
-            return inventoryHandler.cast();
-        }
-        return super.getCapability(cap, side);
     }
 }

@@ -9,8 +9,8 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 
 public class ProductiveWallSignBlock extends WallSignBlock
 {
-    public ProductiveWallSignBlock(Properties properties, WoodType woodType) {
-        super(properties, woodType);
+    public ProductiveWallSignBlock(WoodType woodType, Properties properties) {
+        super(woodType, properties);
     }
 
     @Override

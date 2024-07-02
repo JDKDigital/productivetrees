@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_butternut_crate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:butternut_crate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:roasting/roasted_butternut_crate_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_butternut_crate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:roasting/roasted_butternut_crate_smelting"
+    ]
+  }
+}

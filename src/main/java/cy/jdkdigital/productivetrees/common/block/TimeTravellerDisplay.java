@@ -1,11 +1,13 @@
 package cy.jdkdigital.productivetrees.common.block;
 
+import com.mojang.serialization.MapCodec;
 import cy.jdkdigital.productivelib.common.block.CapabilityContainerBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.TimeTravellerDisplayBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -20,9 +22,16 @@ import javax.annotation.Nonnull;
 
 public class TimeTravellerDisplay extends CapabilityContainerBlock
 {
+    public static final MapCodec<TimeTravellerDisplay> CODEC = simpleCodec(TimeTravellerDisplay::new);
+
     public TimeTravellerDisplay(Properties builder) {
         super(builder);
         this.registerDefaultState(this.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Y));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @SuppressWarnings("deprecation")

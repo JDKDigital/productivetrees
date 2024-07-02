@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:nuts/roasted_butternut"
+    },
+    "R": {
+      "item": "productivetrees:roasted_butternut"
+    }
+  },
+  "pattern": [
+    "###",
+    "#R#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:roasted_butternut_crate"
+  }
+}

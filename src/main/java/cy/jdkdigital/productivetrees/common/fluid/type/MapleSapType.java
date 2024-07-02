@@ -7,9 +7,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
-import net.minecraftforge.common.SoundActions;
-import net.minecraftforge.fluids.FluidType;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.neoforged.neoforge.common.SoundActions;
+import net.neoforged.neoforge.fluids.FluidType;
 
 import java.util.function.Consumer;
 
@@ -34,10 +34,10 @@ public class MapleSapType extends FluidType
         consumer.accept(new IClientFluidTypeExtensions()
         {
             private static final ResourceLocation
-                    UNDERWATER_LOCATION = new ResourceLocation("textures/misc/underwater.png"),
-                    WATER_STILL = new ResourceLocation("block/water_still"),
-                    WATER_FLOW = new ResourceLocation("block/water_flow"),
-                    WATER_OVERLAY = new ResourceLocation("block/water_overlay");
+                    UNDERWATER_LOCATION = ResourceLocation.withDefaultNamespace("textures/misc/underwater.png"),
+                    WATER_STILL = ResourceLocation.withDefaultNamespace("block/water_still"),
+                    WATER_FLOW = ResourceLocation.withDefaultNamespace("block/water_flow"),
+                    WATER_OVERLAY = ResourceLocation.withDefaultNamespace("block/water_overlay");
 
             @Override
             public ResourceLocation getStillTexture()

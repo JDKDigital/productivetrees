@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:nuts/roasted_pistachio"
+    },
+    "R": {
+      "item": "productivetrees:roasted_pistachio"
+    }
+  },
+  "pattern": [
+    "###",
+    "#R#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:roasted_pistachio_crate"
+  }
+}

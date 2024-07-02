@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_black_locust_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:black_locust_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:slab/black_locust_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_black_locust_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:slab/black_locust_slab"
+    ]
+  }
+}

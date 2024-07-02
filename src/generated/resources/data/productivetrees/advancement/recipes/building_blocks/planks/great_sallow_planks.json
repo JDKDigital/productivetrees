@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_logs": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#productivetrees:great_sallow_logs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:planks/great_sallow_planks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_logs"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:planks/great_sallow_planks"
+    ]
+  }
+}

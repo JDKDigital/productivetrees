@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": {
+    "tag": "productivetrees:star_fruit_logs"
+  },
+  "planks": {
+    "count": 6,
+    "id": "productivetrees:star_fruit_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  }
+}

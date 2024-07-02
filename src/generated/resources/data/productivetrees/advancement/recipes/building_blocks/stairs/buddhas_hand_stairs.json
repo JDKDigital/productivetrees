@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_buddhas_hand_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:buddhas_hand_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:stairs/buddhas_hand_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_buddhas_hand_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:stairs/buddhas_hand_stairs"
+    ]
+  }
+}

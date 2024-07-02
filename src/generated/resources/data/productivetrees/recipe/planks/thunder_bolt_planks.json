@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "productivetrees:thunder_bolt_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "productivetrees:thunder_bolt_planks"
+  }
+}

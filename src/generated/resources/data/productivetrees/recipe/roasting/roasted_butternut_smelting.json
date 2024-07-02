@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 120,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "productivetrees:butternut"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:roasted_butternut"
+  }
+}

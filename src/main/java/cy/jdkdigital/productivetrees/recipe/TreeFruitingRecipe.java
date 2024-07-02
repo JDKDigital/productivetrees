@@ -1,37 +1,39 @@
 package cy.jdkdigital.productivetrees.recipe;
 
-import com.google.gson.JsonObject;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.Container;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nonnull;
 
-public class TreeFruitingRecipe implements Recipe<Container>
+public class TreeFruitingRecipe implements Recipe<RecipeInput>
 {
-    public final ResourceLocation id;
     public final Ingredient tree;
     public final ItemStack result;
 
-    public TreeFruitingRecipe(ResourceLocation id, Ingredient tree, ItemStack result) {
-        this.id = id;
+    public TreeFruitingRecipe(Ingredient tree, ItemStack result) {
         this.tree = tree;
         this.result = result;
     }
 
     @Override
-    public boolean matches(Container container, Level level) {
+    public boolean isSpecial() {
+        return true;
+    }
+
+    @Override
+    public boolean matches(RecipeInput container, Level level) {
         return false;
     }
 
     @Override
-    public ItemStack assemble(Container container, RegistryAccess level) {
+    public ItemStack assemble(RecipeInput container, HolderLookup.Provider provider) {
         return ItemStack.EMPTY;
     }
 
@@ -41,13 +43,8 @@ public class TreeFruitingRecipe implements Recipe<Container>
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess level) {
+    public ItemStack getResultItem(HolderLookup.Provider provider) {
         return this.result.copy();
-    }
-
-    @Override
-    public ResourceLocation getId() {
-        return id;
     }
 
     @Override
@@ -60,48 +57,45 @@ public class TreeFruitingRecipe implements Recipe<Container>
         return TreeRegistrator.TREE_FRUITING_TYPE.get();
     }
 
-    public static class Serializer<T extends TreeFruitingRecipe> implements RecipeSerializer<T>
+    public static class Serializer implements RecipeSerializer<TreeFruitingRecipe>
     {
-        final TreeFruitingRecipe.Serializer.IRecipeFactory<T> factory;
+        private static final MapCodec<TreeFruitingRecipe> CODEC = RecordCodecBuilder.mapCodec(
+                builder -> builder.group(
+                                Ingredient.CODEC.fieldOf("tree").forGetter(recipe -> recipe.tree),
+                                ItemStack.CODEC.fieldOf("result").forGetter(recipe -> recipe.result)
+                        )
+                        .apply(builder, TreeFruitingRecipe::new)
+        );
 
-        public Serializer(TreeFruitingRecipe.Serializer.IRecipeFactory<T> factory) {
-            this.factory = factory;
-        }
+        public static final StreamCodec<RegistryFriendlyByteBuf, TreeFruitingRecipe> STREAM_CODEC = StreamCodec.of(
+                TreeFruitingRecipe.Serializer::toNetwork, TreeFruitingRecipe.Serializer::fromNetwork
+        );
 
-        @Nonnull
         @Override
-        public T fromJson(ResourceLocation id, JsonObject json) {
-            Ingredient tree;
-            if (GsonHelper.isArrayNode(json, "tree")) {
-                tree = Ingredient.fromJson(GsonHelper.getAsJsonArray(json, "tree"));
-            } else {
-                tree = Ingredient.fromJson(GsonHelper.getAsJsonObject(json, "tree"));
-            }
-            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
-
-            return this.factory.create(id, tree, output);
+        public MapCodec<TreeFruitingRecipe> codec() {
+            return CODEC;
         }
 
-        public T fromNetwork(@Nonnull ResourceLocation id, @Nonnull FriendlyByteBuf buffer) {
+        @Override
+        public StreamCodec<RegistryFriendlyByteBuf, TreeFruitingRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+        public static TreeFruitingRecipe fromNetwork(@Nonnull RegistryFriendlyByteBuf buffer) {
             try {
-                return this.factory.create(id, Ingredient.fromNetwork(buffer), buffer.readItem());
+                return new TreeFruitingRecipe(Ingredient.CONTENTS_STREAM_CODEC.decode(buffer), ItemStack.STREAM_CODEC.decode(buffer));
             } catch (Exception e) {
                 throw e;
             }
         }
 
-        public void toNetwork(@Nonnull FriendlyByteBuf buffer, T recipe) {
+        public static void toNetwork(@Nonnull RegistryFriendlyByteBuf buffer, TreeFruitingRecipe recipe) {
             try {
-                recipe.tree.toNetwork(buffer);
-                buffer.writeItem(recipe.result);
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.tree);
+                ItemStack.STREAM_CODEC.encode(buffer, recipe.result);
             } catch (Exception e) {
                 throw e;
             }
-        }
-
-        public interface IRecipeFactory<T extends TreeFruitingRecipe>
-        {
-            T create(ResourceLocation id, Ingredient tree, ItemStack result);
         }
     }
 }

@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "minecraft:oak_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:birch_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:beech_sapling"
+  }
+}

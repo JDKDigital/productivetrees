@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:white_willow_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:aspen_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:great_sallow_sapling"
+  }
+}

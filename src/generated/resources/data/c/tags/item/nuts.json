@@ -1,0 +1,29 @@
+{
+  "values": [
+    "#c:nuts/almond",
+    "#c:nuts/beechnut",
+    "#c:nuts/brazil_nut",
+    "#c:nuts/butternut",
+    "#c:nuts/candlenut",
+    "#c:nuts/cashew",
+    "#c:nuts/chestnut",
+    "#c:nuts/ginkgo_nut",
+    "#c:nuts/hazelnut",
+    "#c:nuts/pecan",
+    "#c:nuts/pistachio",
+    "#c:nuts/walnut",
+    "#c:nuts/roasted_almond",
+    "#c:nuts/roasted_beechnut",
+    "#c:nuts/roasted_brazil_nut",
+    "#c:nuts/roasted_butternut",
+    "#c:nuts/roasted_candlenut",
+    "#c:nuts/roasted_cashew",
+    "#c:nuts/roasted_chestnut",
+    "#c:nuts/roasted_ginkgo_nut",
+    "#c:nuts/roasted_hazelnut",
+    "#c:nuts/roasted_pecan",
+    "#c:nuts/roasted_pistachio",
+    "#c:nuts/roasted_walnut",
+    "#c:nuts/roasted_coffee_bean"
+  ]
+}

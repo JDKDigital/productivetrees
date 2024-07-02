@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "door",
+  "key": {
+    "#": {
+      "item": "productivetrees:black_cherry_planks"
+    }
+  },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "id": "productivetrees:black_cherry_door"
+  }
+}

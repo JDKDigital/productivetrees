@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_plantain_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:plantain_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:fence_gate/plantain_fence_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_plantain_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:fence_gate/plantain_fence_gate"
+    ]
+  }
+}

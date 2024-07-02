@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_flickering_sun_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:flickering_sun_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:slab/flickering_sun_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_flickering_sun_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:slab/flickering_sun_slab"
+    ]
+  }
+}

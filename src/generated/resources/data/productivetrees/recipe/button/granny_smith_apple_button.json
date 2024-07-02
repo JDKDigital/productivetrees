@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:granny_smith_apple_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:granny_smith_apple_button"
+  }
+}

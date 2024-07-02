@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cashew": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:cashew"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/cashew_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cashew"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/cashew_crate_unpack"
+    ]
+  }
+}

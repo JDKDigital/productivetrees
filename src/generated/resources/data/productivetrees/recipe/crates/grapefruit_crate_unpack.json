@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "productivetrees:grapefruit_crate"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "productivetrees:grapefruit"
+  }
+}

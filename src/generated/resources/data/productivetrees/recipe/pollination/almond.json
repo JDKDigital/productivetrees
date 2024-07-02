@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:plum_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:walnut_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:almond_sapling"
+  }
+}

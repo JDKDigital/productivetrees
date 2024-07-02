@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:cempedak_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:breadfruit_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:jackfruit_sapling"
+  }
+}

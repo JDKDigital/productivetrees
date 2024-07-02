@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:fruits/golden_delicious_apple"
+    },
+    "R": {
+      "item": "productivetrees:golden_delicious_apple"
+    }
+  },
+  "pattern": [
+    "###",
+    "#R#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:golden_delicious_apple_crate"
+  }
+}

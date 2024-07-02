@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "productivetrees:sparkling_cherry_crate"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "productivetrees:sparkling_cherry"
+  }
+}

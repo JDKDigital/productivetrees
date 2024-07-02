@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:teak_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:acacia_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:balsa_sapling"
+  }
+}

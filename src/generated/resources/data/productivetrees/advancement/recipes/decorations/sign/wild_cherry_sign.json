@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:sign/wild_cherry_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wild_cherry_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:wild_cherry_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wild_cherry_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:sign/wild_cherry_sign"
+    ]
+  }
+}

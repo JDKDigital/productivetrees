@@ -20,30 +20,44 @@ import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
 
 public class CompatHandler
 {
-    private static List<RegistryObject<Block>> HIVES = new ArrayList<>();
-    private static List<RegistryObject<Block>> BOXES = new ArrayList<>();
+    private static List<DeferredHolder<Block, Block>> HIVES = new ArrayList<>();
+    private static List<DeferredHolder<Block, Block>> BOXES = new ArrayList<>();
     public static void createHive(String name, WoodObject woodObject, ToIntFunction<BlockState> lightLevel) {
-        String hiveName = "advanced_" + name + "_beehive";
-        String boxName = "expansion_box_" + name;
-        TreeRegistrator.registerBlock(hiveName, () -> new AdvancedBeehive(Block.Properties.copy(Blocks.BEEHIVE).lightLevel(lightLevel), TreeRegistrator.registerBlockEntity(hiveName, () -> TreeRegistrator.createBlockEntityType((pos, state) -> new AdvancedBeehiveBlockEntity((AdvancedBeehive) ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p -> "advanced_" + p + "_beehive")), pos, state), ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p -> "advanced_" + p + "_beehive"))))), true);
-        TreeRegistrator.registerBlock(boxName, () -> new ExpansionBox(Block.Properties.copy(Blocks.BEEHIVE).lightLevel(lightLevel), TreeRegistrator.registerBlockEntity(boxName, () -> TreeRegistrator.createBlockEntityType((pos, state) -> new ExpansionBoxBlockEntity((ExpansionBox) ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p -> "expansion_box_" + p)), pos, state), ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p -> "expansion_box_" + p))))), true);
+        HIVES.add(TreeRegistrator.registerBlock("advanced_" + name + "_beehive", () -> new AdvancedBeehive(Block.Properties.ofFullCopy(Blocks.BEEHIVE).lightLevel(lightLevel)), true));
+        BOXES.add(TreeRegistrator.registerBlock("expansion_box_" + name, () -> new ExpansionBox(Block.Properties.ofFullCopy(Blocks.BEEHIVE).lightLevel(lightLevel)), true));
+    }
+
+    private static DeferredHolder<BlockEntityType<?>, BlockEntityType<AdvancedBeehiveBlockEntity>> HIVE_BLOCK_ENTITY;
+    public static void registerBlockEntities() {
+        HIVE_BLOCK_ENTITY = TreeRegistrator.registerBlockEntity("hives", () -> TreeRegistrator.createBlockEntityType(AdvancedBeehiveBlockEntity::new, HIVES.stream().map(DeferredHolder::get).toList().toArray(new Block[0])));
+        TreeRegistrator.registerBlockEntity("boxes", () -> TreeRegistrator.createBlockEntityType(ExpansionBoxBlockEntity::new, BOXES.stream().map(DeferredHolder::get).toList().toArray(new Block[0])));
+    }
+
+    public static void registerBlockEntityCapabilities(RegisterCapabilitiesEvent event) {
+        // Hives
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                HIVE_BLOCK_ENTITY.get(),
+                (myBlockEntity, side) -> myBlockEntity.inventoryHandler
+        );
     }
 
     public static void beeRelease(BeeReleaseEvent event) {
@@ -52,7 +66,7 @@ public class CompatHandler
                 // Scan for leaves blocks around the hive, 4 block radius + 2 per range upgrade
                 var pos = event.getBee().getHivePos();
                 int distance = 4 + (2 * advancedBeehiveBlockEntity.getUpgradeCount(ModItems.UPGRADE_RANGE.get()));
-                List<BlockPos> leaves = BlockPos.betweenClosedStream(pos.offset(-distance, -distance, -distance), pos.offset(distance, distance, distance)).map(BlockPos::immutable).collect(Collectors.toList());
+                List<BlockPos> leaves = BlockPos.betweenClosedStream(pos.offset(-distance, -distance, -distance), pos.offset(distance, distance, distance)).map(BlockPos::immutable).toList();
                 // Build permutation map
                 List<BlockState> uniqueLeaves = new ArrayList<>();
                 Map<BlockState, BlockPos> leafMap = new HashMap<>();
@@ -72,19 +86,17 @@ public class CompatHandler
                     int sieveUpgrades = advancedBeehiveBlockEntity.getUpgradeCount(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get());
                     if (sieveUpgrades > 0 && level.random.nextInt(100) < (Config.SERVER.pollenChanceFromSieve.get() * (isSpecialPollinator ? 5 : 1))) {
                         BlockState pollenLeaf = uniqueLeaves.get(level.random.nextInt(uniqueLeaves.size()));
-                        advancedBeehiveBlockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(inv -> {
-                            var pollenStack = TreeUtil.getPollen(pollenLeaf.getBlock());
-                            ((InventoryHandlerHelper.BlockEntityItemStackHandler) inv).addOutput(pollenStack);
-                        });
+                        var pollenStack = TreeUtil.getPollen(pollenLeaf.getBlock());
+                        ((InventoryHandlerHelper.BlockEntityItemStackHandler) advancedBeehiveBlockEntity.inventoryHandler).addOutput(pollenStack);
                     }
 
                     // Pollinate leaves
-                    Map<TreePollinationRecipe, Pair<BlockState, BlockState>> matchedRecipes = new HashMap<>();
+                    Map<RecipeHolder<TreePollinationRecipe>, Pair<BlockState, BlockState>> matchedRecipes = new HashMap<>();
                     var allRecipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.TREE_POLLINATION_TYPE.get());
                     allRecipes.forEach(treePollinationRecipe -> {
                         uniqueLeaves.forEach(stateA -> {
                             uniqueLeaves.forEach(stateB -> {
-                                if (!matchedRecipes.containsKey(treePollinationRecipe) && treePollinationRecipe.matches(stateA, stateB)) {
+                                if (!matchedRecipes.containsKey(treePollinationRecipe) && treePollinationRecipe.value().matches(stateA, stateB)) {
                                     matchedRecipes.put(treePollinationRecipe, Pair.of(stateA, stateB));
                                 }
                             });
@@ -92,17 +104,17 @@ public class CompatHandler
                     });
 
                     if (matchedRecipes.size() > 0) {
-                        TreePollinationRecipe pickedRecipe = (TreePollinationRecipe) matchedRecipes.keySet().toArray()[level.random.nextInt(matchedRecipes.size())];
+                        RecipeHolder<TreePollinationRecipe> pickedRecipe = (RecipeHolder<TreePollinationRecipe>) matchedRecipes.keySet().toArray()[level.random.nextInt(matchedRecipes.size())];
                         Pair<BlockState, BlockState> states = matchedRecipes.get(pickedRecipe);
 
                         BlockPos posA = level.random.nextBoolean() ? leafMap.get(states.getFirst()) : leafMap.get(states.getSecond());
 
-                        if (level.random.nextInt(100) <= (pickedRecipe.chance * (isSpecialPollinator ? 5 : 1)) && level.getBlockState(posA).is(BlockTags.LEAVES)) {
+                        if (level.random.nextInt(100) <= (pickedRecipe.value().chance * (isSpecialPollinator ? 5 : 1)) && level.getBlockState(posA).is(BlockTags.LEAVES)) {
                             level.setBlock(posA, TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
                             if (level.getBlockEntity(posA) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
                                 pollinatedLeavesBlockEntity.setLeafA(states.getFirst().getBlock());
                                 pollinatedLeavesBlockEntity.setLeafB(states.getSecond().getBlock());
-                                pollinatedLeavesBlockEntity.setResult(pickedRecipe.result);
+                                pollinatedLeavesBlockEntity.setResult(pickedRecipe.value().result);
                                 pollinatedLeavesBlockEntity.setChanged();
                             }
                         }
@@ -110,9 +122,5 @@ public class CompatHandler
                 }
             }
         }
-    }
-
-    public static void registerBlockEntities() {
-
     }
 }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_balsa_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:balsa_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:sign/balsa_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_balsa_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:sign/balsa_sign"
+    ]
+  }
+}

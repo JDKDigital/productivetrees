@@ -6,15 +6,15 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-@Mod.EventBusSubscriber(modid = ProductiveTrees.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ProductiveTrees.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ProductiveTreesDataProvider
 {
     @SubscribeEvent
@@ -28,12 +28,12 @@ public class ProductiveTreesDataProvider
 
         gen.addProvider(event.includeClient(), new BlockstateProvider(output));
 
-        gen.addProvider(event.includeServer(), new LootDataProvider(output, List.of(new LootTableProvider.SubProviderEntry(LootDataProvider.LootProvider::new, LootContextParamSets.BLOCK))));
-        gen.addProvider(event.includeServer(), new LootModifierProvider(output));
+        gen.addProvider(event.includeServer(), new LootDataProvider(output, List.of(new LootTableProvider.SubProviderEntry(LootDataProvider.LootProvider::new, LootContextParamSets.BLOCK)), provider));
+        gen.addProvider(event.includeServer(), new LootModifierProvider(output, provider));
         gen.addProvider(event.includeServer(), new FeatureProvider(output));
-        gen.addProvider(event.includeServer(), new RecipeProvider(output));
-        gen.addProvider(event.includeServer(), new BeeProvider(output));
-        gen.addProvider(event.includeServer(), new AdvancementProvider(output, provider, helper));
+        gen.addProvider(event.includeServer(), new RecipeProvider(output, provider));
+        gen.addProvider(event.includeServer(), new BeeProvider(output, provider));
+//        gen.addProvider(event.includeServer(), new AdvancementProvider(output, provider, helper));
 
         BlockTagProvider blockTags = new BlockTagProvider(output, provider, helper);
         gen.addProvider(event.includeServer(), blockTags);

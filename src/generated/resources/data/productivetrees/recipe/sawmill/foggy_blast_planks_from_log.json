@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": {
+    "tag": "productivetrees:foggy_blast_logs"
+  },
+  "planks": {
+    "count": 6,
+    "id": "productivetrees:foggy_blast_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  }
+}

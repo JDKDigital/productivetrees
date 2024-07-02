@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cedar_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:cedar_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:stairs/cedar_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cedar_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:stairs/cedar_stairs"
+    ]
+  }
+}

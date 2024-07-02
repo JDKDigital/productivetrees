@@ -10,10 +10,10 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
@@ -25,9 +25,9 @@ public class TreeFruitingRecipeCategory implements IRecipeCategory<TreeFruitingR
     private final IDrawable icon;
 
     public TreeFruitingRecipeCategory(IGuiHelper guiHelper) {
-        ResourceLocation location = new ResourceLocation(ProductiveTrees.MODID, "textures/gui/jei/tree_fruiting.png");
+        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/tree_fruiting.png");
         this.background = guiHelper.createDrawable(location, 0, 0, 130, 60);
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "haw"))));
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "haw"))));
     }
 
     @Override

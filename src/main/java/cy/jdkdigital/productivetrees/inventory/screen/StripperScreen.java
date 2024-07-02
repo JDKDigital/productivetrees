@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class StripperScreen extends AbstractContainerScreen<StripperContainer>
 {
-    private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(ProductiveTrees.MODID, "textures/gui/container/stripper.png");
+    private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/container/stripper.png");
 
     public StripperScreen(StripperContainer container, Inventory inv, Component titleIn) {
         super(container, inv, titleIn);
@@ -18,7 +18,7 @@ public class StripperScreen extends AbstractContainerScreen<StripperContainer>
 
     @Override
     public void render(GuiGraphics matrixStack, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(matrixStack);
+        this.renderBackground(matrixStack, mouseX, mouseY, partialTicks);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         this.renderTooltip(matrixStack, mouseX, mouseY);
     }

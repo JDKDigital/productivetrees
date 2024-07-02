@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "S": {
+      "item": "minecraft:sticky_piston"
+    },
+    "B": {
+      "item": "minecraft:brush"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "IBI",
+    "###"
+  ],
+  "result": {
+    "id": "productivetrees:pollen_sifter"
+  },
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:mod_loaded",
+        "modid": "productivebees"
+      }
+    }
+  ]
+}

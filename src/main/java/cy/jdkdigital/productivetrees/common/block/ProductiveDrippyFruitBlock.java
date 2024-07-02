@@ -64,7 +64,7 @@ public class ProductiveDrippyFruitBlock extends ProductiveFruitBlock
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
         return InteractionResult.SUCCESS;
     }
 }

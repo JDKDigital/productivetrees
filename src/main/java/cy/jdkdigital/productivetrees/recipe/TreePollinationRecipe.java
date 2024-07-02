@@ -1,12 +1,12 @@
 package cy.jdkdigital.productivetrees.recipe;
 
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.Container;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -14,16 +14,14 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nonnull;
 
-public class TreePollinationRecipe implements Recipe<Container>
+public class TreePollinationRecipe implements Recipe<RecipeInput>
 {
-    public final ResourceLocation id;
     public final Ingredient leafA;
     public final Ingredient leafB;
     public final ItemStack result;
-    public final Integer chance;
+    public final float chance;
 
-    public TreePollinationRecipe(ResourceLocation id, Ingredient leafA, Ingredient leafB, ItemStack result, Integer chance) {
-        this.id = id;
+    public TreePollinationRecipe(Ingredient leafA, Ingredient leafB, ItemStack result, float chance) {
         this.leafA = leafA;
         this.leafB = leafB;
         this.result = result;
@@ -31,7 +29,12 @@ public class TreePollinationRecipe implements Recipe<Container>
     }
 
     @Override
-    public boolean matches(Container container, Level level) {
+    public boolean isSpecial() {
+        return true;
+    }
+
+    @Override
+    public boolean matches(RecipeInput container, Level level) {
         return false;
     }
 
@@ -40,7 +43,7 @@ public class TreePollinationRecipe implements Recipe<Container>
     }
 
     @Override
-    public ItemStack assemble(Container container, RegistryAccess level) {
+    public ItemStack assemble(RecipeInput container, HolderLookup.Provider provider) {
         return ItemStack.EMPTY;
     }
 
@@ -50,13 +53,8 @@ public class TreePollinationRecipe implements Recipe<Container>
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess level) {
+    public ItemStack getResultItem(HolderLookup.Provider provider) {
         return ItemStack.EMPTY;
-    }
-
-    @Override
-    public ResourceLocation getId() {
-        return id;
     }
 
     @Override
@@ -69,58 +67,49 @@ public class TreePollinationRecipe implements Recipe<Container>
         return TreeRegistrator.TREE_POLLINATION_TYPE.get();
     }
 
-    public static class Serializer<T extends TreePollinationRecipe> implements RecipeSerializer<T>
+    public static class Serializer implements RecipeSerializer<TreePollinationRecipe>
     {
-        final TreePollinationRecipe.Serializer.IRecipeFactory<T> factory;
+        private static final MapCodec<TreePollinationRecipe> CODEC = RecordCodecBuilder.mapCodec(
+                builder -> builder.group(
+                                Ingredient.CODEC.fieldOf("leafA").forGetter(recipe -> recipe.leafA),
+                                Ingredient.CODEC.fieldOf("leafB").forGetter(recipe -> recipe.leafB),
+                                ItemStack.CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
+                                Codec.FLOAT.fieldOf("processingTime").orElse(0.1f).forGetter(recipe -> recipe.chance)
+                        )
+                        .apply(builder, TreePollinationRecipe::new)
+        );
 
-        public Serializer(TreePollinationRecipe.Serializer.IRecipeFactory<T> factory) {
-            this.factory = factory;
-        }
+        public static final StreamCodec<RegistryFriendlyByteBuf, TreePollinationRecipe> STREAM_CODEC = StreamCodec.of(
+                TreePollinationRecipe.Serializer::toNetwork, TreePollinationRecipe.Serializer::fromNetwork
+        );
 
-        @Nonnull
         @Override
-        public T fromJson(ResourceLocation id, JsonObject json) {
-            Ingredient inputA;
-            if (GsonHelper.isArrayNode(json, "leafA")) {
-                inputA = Ingredient.fromJson(GsonHelper.getAsJsonArray(json, "leafA"));
-            } else {
-                inputA = Ingredient.fromJson(GsonHelper.getAsJsonObject(json, "leafA"));
-            }
-            Ingredient inputB;
-            if (GsonHelper.isArrayNode(json, "leafB")) {
-                inputB = Ingredient.fromJson(GsonHelper.getAsJsonArray(json, "leafB"));
-            } else {
-                inputB = Ingredient.fromJson(GsonHelper.getAsJsonObject(json, "leafB"));
-            }
-            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
-
-            int chance = GsonHelper.getAsInt(json, "chance", 100);
-
-            return this.factory.create(id, inputA, inputB, output, chance);
+        public MapCodec<TreePollinationRecipe> codec() {
+            return CODEC;
         }
 
-        public T fromNetwork(@Nonnull ResourceLocation id, @Nonnull FriendlyByteBuf buffer) {
+        @Override
+        public StreamCodec<RegistryFriendlyByteBuf, TreePollinationRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+        public static TreePollinationRecipe fromNetwork(@Nonnull RegistryFriendlyByteBuf buffer) {
             try {
-                return this.factory.create(id, Ingredient.fromNetwork(buffer), Ingredient.fromNetwork(buffer), buffer.readItem(), buffer.readInt());
+                return new TreePollinationRecipe(Ingredient.CONTENTS_STREAM_CODEC.decode(buffer), Ingredient.CONTENTS_STREAM_CODEC.decode(buffer), ItemStack.STREAM_CODEC.decode(buffer), buffer.readFloat());
             } catch (Exception e) {
                 throw e;
             }
         }
 
-        public void toNetwork(@Nonnull FriendlyByteBuf buffer, T recipe) {
+        public static void toNetwork(@Nonnull RegistryFriendlyByteBuf buffer, TreePollinationRecipe recipe) {
             try {
-                recipe.leafA.toNetwork(buffer);
-                recipe.leafB.toNetwork(buffer);
-                buffer.writeItem(recipe.result);
-                buffer.writeInt(recipe.chance);
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.leafA);
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.leafB);
+                ItemStack.STREAM_CODEC.encode(buffer, recipe.result);
+                buffer.writeFloat(recipe.chance);
             } catch (Exception e) {
                 throw e;
             }
-        }
-
-        public interface IRecipeFactory<T extends TreePollinationRecipe>
-        {
-            T create(ResourceLocation id, Ingredient leafA, Ingredient leafB, ItemStack result, Integer chance);
         }
     }
 }

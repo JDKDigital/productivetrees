@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 20,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "productivetrees:beechnut"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:roasted_beechnut"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_myrtle_ebony_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:myrtle_ebony_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:sign/myrtle_ebony_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_myrtle_ebony_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:sign/myrtle_ebony_sign"
+    ]
+  }
+}

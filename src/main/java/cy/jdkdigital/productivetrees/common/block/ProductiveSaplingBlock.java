@@ -9,16 +9,16 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.SaplingBlock;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class ProductiveSaplingBlock extends SaplingBlock
 {
     private final TreeObject treeObject;
 
-    public ProductiveSaplingBlock(AbstractTreeGrower grower, Properties properties, TreeObject treeObject) {
+    public ProductiveSaplingBlock(TreeGrower grower, Properties properties, TreeObject treeObject) {
         super(grower, properties);
         this.treeObject = treeObject;
     }
@@ -37,7 +37,7 @@ public class ProductiveSaplingBlock extends SaplingBlock
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean p_55994_) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return treeObject.canForceGrowth();
     }
 
@@ -46,10 +46,10 @@ public class ProductiveSaplingBlock extends SaplingBlock
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> tooltips, TooltipFlag flag) {
-        if (stack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveSaplingBlock saplingBlock) {
-            tooltips.add(Component.translatable("block." + ProductiveTrees.MODID + "." + saplingBlock.treeObject.getId().getPath() + ".latin").withStyle(ChatFormatting.DARK_GREEN).withStyle(ChatFormatting.ITALIC));
-            super.appendHoverText(stack, blockGetter, tooltips, flag);
+    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTootipComponents, TooltipFlag pTooltipFlag) {
+        if (pStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveSaplingBlock saplingBlock) {
+            pTootipComponents.add(Component.translatable("block." + ProductiveTrees.MODID + "." + saplingBlock.treeObject.getId().getPath() + ".latin").withStyle(ChatFormatting.DARK_GREEN).withStyle(ChatFormatting.ITALIC));
+            super.appendHoverText(pStack, pContext, pTootipComponents, pTooltipFlag);
             String configurations = "";
             if (!saplingBlock.treeObject.getFeature().equals(TreeRegistrator.NULL_FEATURE)) {
                 configurations += "1x1 ";
@@ -58,10 +58,10 @@ public class ProductiveSaplingBlock extends SaplingBlock
                 configurations += "2x2 ";
             }
             if (!configurations.isEmpty()) {
-                tooltips.add(Component.translatable(ProductiveTrees.MODID + ".sapling.configurations", configurations).withStyle(ChatFormatting.GOLD));
+                pTootipComponents.add(Component.translatable(ProductiveTrees.MODID + ".sapling.configurations", configurations).withStyle(ChatFormatting.GOLD));
             }
         } else {
-            super.appendHoverText(stack, blockGetter, tooltips, flag);
+            super.appendHoverText(pStack, pContext, pTootipComponents, pTooltipFlag);
         }
     }
 
@@ -87,7 +87,7 @@ public class ProductiveSaplingBlock extends SaplingBlock
     private boolean canGrowAtPos(ServerLevel level, BlockPos pos) {
         int lightLevel = level.getMaxLocalRawBrightness(pos.above());
         if (lightLevel >= treeObject.getGrowthConditions().minLight() && lightLevel <= treeObject.getGrowthConditions().maxLight()) {
-            if (!treeObject.getGrowthConditions().fluid().equals(Fluids.EMPTY) && !level.getFluidState(pos).is(treeObject.getGrowthConditions().fluid())) {
+            if (!treeObject.getGrowthConditions().fluid().equals(Fluids.EMPTY) && !level.getFluidState(pos).is(treeObject.getGrowthConditions().fluid().getFluid())) {
                 return false;
             }
             var biome = level.getBiome(pos);

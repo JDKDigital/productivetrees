@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "slab",
+  "key": {
+    "#": {
+      "item": "productivetrees:old_fustic_planks"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "productivetrees:old_fustic_slab"
+  }
+}

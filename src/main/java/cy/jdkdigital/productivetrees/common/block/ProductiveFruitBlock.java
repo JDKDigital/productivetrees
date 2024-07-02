@@ -6,11 +6,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -20,7 +22,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 
 public class ProductiveFruitBlock extends ProductiveLeavesBlock
 {
@@ -60,7 +62,7 @@ public class ProductiveFruitBlock extends ProductiveLeavesBlock
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
         return new ItemStack(treeObject.getFruit().getItem().getItem());
     }
 
@@ -84,37 +86,40 @@ public class ProductiveFruitBlock extends ProductiveLeavesBlock
         if (light >= treeObject.getGrowthConditions().minLight() && light <= treeObject.getGrowthConditions().maxLight()) {
             int i = this.getAge(state);
             if (i < getMaxAge()) {
-                if (ForgeHooks.onCropsGrowPre(level, blockPos, state, random.nextInt((int)(25.0F / treeObject.getFruit().growthSpeed()) + 1) == 0)) {
+                if (CommonHooks.canCropGrow(level, blockPos, state, random.nextInt((int)(25.0F / treeObject.getFruit().growthSpeed()) + 1) == 0)) {
                     level.setBlock(blockPos, this.getStateForAge(state, i + 1), 2);
-                    ForgeHooks.onCropsGrowPost(level, blockPos, state);
+                    CommonHooks.fireCropGrowPost(level, blockPos, state);
                 }
             }
         }
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (level.isClientSide()) {
-            return InteractionResult.SUCCESS;
-        }
-
-        if (isMaxAge(state)) {
-            popResource(level, pos.relative(hitResult.getDirection()), treeObject.getFruit().getItem());
-            level.setBlock(pos, this.getStateForAge(state, 0), 2);
-            return InteractionResult.SUCCESS;
-        }
-
-        var heldItem = player.getItemInHand(hand);
-        if (heldItem.is(Items.BONE_MEAL)) {
-            int i = this.getAge(state);
-            level.setBlock(pos, this.getStateForAge(state, i + 1), 2);
-            if (!player.isCreative()) {
-                heldItem.shrink(1);
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+        if (pStack.is(Items.BONE_MEAL) && !isMaxAge(pState)) {
+            if (!pLevel.isClientSide) {
+                int i = this.getAge(pState);
+                pLevel.setBlock(pPos, this.getStateForAge(pState, i + 1), 2);
+                if (!pPlayer.isCreative()) {
+                    pStack.shrink(1);
+                }
             }
-            player.swing(hand);
+            pPlayer.swing(pHand);
+            return ItemInteractionResult.SUCCESS;
+        }
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+        if (isMaxAge(pState)) {
+            if (!pLevel.isClientSide) {
+                popResource(pLevel, pPos.relative(pHitResult.getDirection()), treeObject.getFruit().getItem());
+                pLevel.setBlock(pPos, this.getStateForAge(pState, 0), 2);
+            }
+            pPlayer.swing(InteractionHand.MAIN_HAND);
             return InteractionResult.SUCCESS;
         }
-
         return InteractionResult.PASS;
     }
 }

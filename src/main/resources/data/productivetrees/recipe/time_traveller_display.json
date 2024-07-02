@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "productivetrees:time_traveller_planks"
+    },
+    "I": {
+      "tag": "forge:glass/colorless"
+    },
+    "S": {
+      "tag": "forge:string"
+    }
+  },
+  "pattern": [
+    "###",
+    "SIS",
+    "###"
+  ],
+  "result": {
+    "id": "productivetrees:time_traveller_display"
+  }
+}

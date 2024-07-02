@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:kapok_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:old_fustic_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:osage_orange_sapling"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": {
+    "tag": "minecraft:crimson_stems"
+  },
+  "planks": {
+    "count": 6,
+    "id": "minecraft:crimson_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  }
+}

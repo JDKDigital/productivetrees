@@ -3,14 +3,16 @@ package cy.jdkdigital.productivetrees.datagen;
 import com.google.common.collect.Maps;
 import cy.jdkdigital.productivebees.datagen.BlockLootProvider;
 import cy.jdkdigital.productivelib.loot.OptionalLootItem;
+import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
-import net.minecraft.advancements.critereon.EnchantmentPredicate;
-import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.advancements.critereon.MinMaxBounds;
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.advancements.critereon.*;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
@@ -19,23 +21,24 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.BeehiveBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.storage.loot.LootDataType;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
+import net.minecraft.world.level.storage.loot.functions.CopyBlockState;
+import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.common.ToolActions;
-import net.minecraftforge.common.loot.CanToolPerformAction;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.loot.CanItemPerformAbility;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -46,10 +49,12 @@ public class LootDataProvider implements DataProvider
 {
     private final PackOutput.PathProvider pathProvider;
     private final List<LootTableProvider.SubProviderEntry> subProviders;
+    private final CompletableFuture<HolderLookup.Provider> registries;
 
-    public LootDataProvider(PackOutput output, List<LootTableProvider.SubProviderEntry> providers) {
-        this.pathProvider = output.createPathProvider(PackOutput.Target.DATA_PACK, "loot_tables");
+    public LootDataProvider(PackOutput output, List<LootTableProvider.SubProviderEntry> providers, CompletableFuture<HolderLookup.Provider> registries) {
+        this.pathProvider = output.createPathProvider(PackOutput.Target.DATA_PACK, "loot_table");
         this.subProviders = providers;
+        this.registries = registries;
     }
 
     @Override
@@ -58,19 +63,23 @@ public class LootDataProvider implements DataProvider
     }
 
     @Override
-    public CompletableFuture<?> run(CachedOutput cache) {
+    public CompletableFuture<?> run(CachedOutput pOutput) {
+        return this.registries.thenCompose(provider -> this.run(pOutput, provider));
+    }
+
+    private CompletableFuture<?> run(CachedOutput pOutput, HolderLookup.Provider pProvider) {
         final Map<ResourceLocation, LootTable> map = Maps.newHashMap();
         this.subProviders.forEach((providerEntry) -> {
-            providerEntry.provider().get().generate((resourceLocation, builder) -> {
-                builder.setRandomSequence(resourceLocation);
-                if (map.put(resourceLocation, builder.setParamSet(providerEntry.paramSet()).build()) != null) {
-                    throw new IllegalStateException("Duplicate loot table " + resourceLocation);
+            providerEntry.provider().apply(pProvider).generate((resourceKey, builder) -> {
+                builder.setRandomSequence(resourceKey.location());
+                if (map.put(resourceKey.location(), builder.setParamSet(providerEntry.paramSet()).build()) != null) {
+                    throw new IllegalStateException("Duplicate loot table " + resourceKey.location());
                 }
             });
         });
 
         return CompletableFuture.allOf(map.entrySet().stream().map((entry) -> {
-            return DataProvider.saveStable(cache, LootDataType.TABLE.parser().toJsonTree(entry.getValue()), this.pathProvider.json(entry.getKey()));
+            return DataProvider.saveStable(pOutput, pProvider, LootTable.DIRECT_CODEC, entry.getValue(), this.pathProvider.json(entry.getKey()));
         }).toArray(CompletableFuture[]::new));
     }
 
@@ -81,19 +90,21 @@ public class LootDataProvider implements DataProvider
         private static final float[] NORMAL_LEAVES_STICK_CHANCES = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
 
         private static final Map<Block, Function<Block, LootTable.Builder>> functionTable = new HashMap<>();
-        private static final LootItemCondition.Builder SHEARS_DIG = CanToolPerformAction.canToolPerformAction(ToolActions.SHEARS_DIG);
-        private static final LootItemCondition.Builder SILK_TOUCH = MatchTool.toolMatches(ItemPredicate.Builder.item()
-                .hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))));
-        private static final LootItemCondition.Builder SHEARS_OR_SILK = SHEARS_DIG.or(SILK_TOUCH);
+        private static final LootItemCondition.Builder SHEARS_DIG = CanItemPerformAbility.canItemPerformAbility(ItemAbilities.SHEARS_DIG);
+        private static LootItemCondition.Builder SILK_TOUCH;
+        private static LootItemCondition.Builder SHEARS_OR_SILK;
 
         private final List<Block> knownBlocks = new ArrayList<>();
 
-        public LootProvider() {
-            super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+        public LootProvider(HolderLookup.Provider provider) {
+            super(Set.of(), FeatureFlags.REGISTRY.allFlags(), provider);
         }
 
         @Override
         protected void generate() {
+            SILK_TOUCH = this.hasSilkTouch();
+            SHEARS_OR_SILK = SHEARS_DIG.or(SILK_TOUCH);
+
             dropSelf(TreeRegistrator.SAWMILL.get());
             dropSelf(TreeRegistrator.STRIPPER.get());
             dropSelf(TreeRegistrator.WOOD_WORKER.get());
@@ -127,17 +138,17 @@ public class LootDataProvider implements DataProvider
                 dropSelf(TreeUtil.getBlock(id, "_hanging_sign"));
                 dropOther(TreeUtil.getBlock(id, "_wall_hanging_sign"), TreeUtil.getBlock(id, "_hanging_sign"));
                 if (treeObject.getStyle().hiveStyle() != null) {
-                    Block hive = ForgeRegistries.BLOCKS.getValue(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
-                    Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(hive, BlockLootProvider::genHiveDrop);
+                    Block hive = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
+                    Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(hive, LootProvider::genHiveDrop);
                     this.add(hive, hiveFunc.apply(hive));
-                    Block box = ForgeRegistries.BLOCKS.getValue(treeObject.getId().withPath(p ->  "expansion_box_" + p));
-                    Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(box, BlockLootProvider::genExpansionDrop);
+                    Block box = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p ->  "expansion_box_" + p));
+                    Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(box, BlockLootProvider.LootProvider::genExpansionDrop);
                     this.add(box, expansionFunc.apply(box));
                 }
             });
 
             TreeRegistrator.CRATED_CROPS.forEach(cratePath -> {
-                dropSelf(ForgeRegistries.BLOCKS.getValue(cratePath));
+                dropSelf(BuiltInRegistries.BLOCK.get(cratePath));
             });
         }
 
@@ -165,32 +176,34 @@ public class LootDataProvider implements DataProvider
             this.add(block, this::createDoorTable);
         }
 
-        protected static @NotNull LootTable.Builder createOptionalLeavesDrops(Block block, Block sapling, float... dropChances) {
+        protected @NotNull LootTable.Builder createOptionalLeavesDrops(Block block, Block sapling, float... dropChances) {
+            HolderLookup.RegistryLookup<Enchantment> registryLookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
             return createSilkTouchOrShearsDispatchTable(block,
                     LootItem.lootTableItem(sapling)
                             .when(ExplosionCondition.survivesExplosion())
-                            .when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, dropChances))
+                            .when(BonusLevelTableCondition.bonusLevelFlatChance(registryLookup.getOrThrow(Enchantments.FORTUNE), dropChances))
             )
                     .withPool(
                             LootPool.lootPool()
                                     .setRolls(ConstantValue.exactly(1.0F))
                                     .when(SHEARS_OR_SILK.invert())
-                                    .add(LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyExplosionDecay.explosionDecay()).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, NORMAL_LEAVES_STICK_CHANCES))));
+                                    .add(LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyExplosionDecay.explosionDecay()).when(BonusLevelTableCondition.bonusLevelFlatChance(registryLookup.getOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_STICK_CHANCES))));
         }
 
-        protected static @NotNull LootTable.Builder createSilkTouchOrShearsDispatchTable(Block block, LootPoolEntryContainer.Builder<?> builder) {
-            return createSelfDropDispatchTable(block, SHEARS_DIG.or(SILK_TOUCH), builder);
+        protected @NotNull LootTable.Builder createSilkTouchOrShearsDispatchTable(Block block, LootPoolEntryContainer.Builder<?> builder) {
+            return createSelfDispatchTable(block, SHEARS_OR_SILK, builder);
         }
 
-        protected static @NotNull LootTable.Builder createFruitLeavesDrops(Block block, Block sapling, Item fruit, float... dropChances) {
+        protected @NotNull LootTable.Builder createFruitLeavesDrops(Block block, Block sapling, Item fruit, float... dropChances) {
+            HolderLookup.RegistryLookup<Enchantment> registryLookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
             return LootTable.lootTable()
                     .withPool(
                             LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(
-                                    LootItem.lootTableItem(sapling).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, dropChances)).apply(ApplyExplosionDecay.explosionDecay())
+                                    LootItem.lootTableItem(sapling).when(BonusLevelTableCondition.bonusLevelFlatChance(registryLookup.getOrThrow(Enchantments.FORTUNE), dropChances)).apply(ApplyExplosionDecay.explosionDecay())
                             )
                     ).withPool(
                             LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(
-                                    LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyExplosionDecay.explosionDecay()).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, NORMAL_LEAVES_STICK_CHANCES))
+                                    LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyExplosionDecay.explosionDecay()).when(BonusLevelTableCondition.bonusLevelFlatChance(registryLookup.getOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_STICK_CHANCES))
                             )
                     ).withPool(
                             LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(
@@ -199,7 +212,7 @@ public class LootDataProvider implements DataProvider
                     );
         }
 
-        protected static @NotNull LootTable.Builder createSelfDropDispatchTable(Block block, LootItemCondition.Builder conditions, LootPoolEntryContainer.Builder<?> alternative) {
+        protected @NotNull LootTable.Builder createSelfDispatchTable(Block block, LootItemCondition.Builder conditions, LootPoolEntryContainer.Builder<?> alternative) {
             return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).when(conditions).otherwise(alternative)));
         }
 
@@ -209,6 +222,25 @@ public class LootDataProvider implements DataProvider
             return LootTable.lootTable().withPool(
                     LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                             .add(builder));
+        }
+
+        public static LootTable.Builder genHiveDrop(Block hive) {
+            LootPoolEntryContainer.Builder<?> hiveNoHoney = OptionalLootItem.lootTableItem(hive).when(ExplosionCondition.survivesExplosion())
+                    .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.BEES));
+
+            LootPoolEntryContainer.Builder<?> hiveHoney;
+            if (hive.defaultBlockState().hasProperty(BeehiveBlock.HONEY_LEVEL)) {
+                hiveHoney = OptionalLootItem.lootTableItem(hive).when(SILK_TOUCH)
+                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.BEES))
+                        .apply(CopyBlockState.copyState(hive).copy(BeehiveBlock.HONEY_LEVEL));
+            } else {
+                hiveHoney = OptionalLootItem.lootTableItem(hive).when(SILK_TOUCH)
+                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.BEES));
+            }
+
+            return LootTable.lootTable().withPool(
+                    LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                            .add(hiveHoney.otherwise(hiveNoHoney)));
         }
     }
 }

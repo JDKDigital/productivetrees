@@ -1,8 +1,6 @@
 package cy.jdkdigital.productivetrees.util;
 
 import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivelib.util.ColorUtil;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLeavesBlock;
@@ -17,7 +15,7 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -26,6 +24,7 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.Level;
@@ -33,36 +32,21 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ToolActions;
-import net.minecraftforge.common.util.FakePlayerFactory;
-import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.FMLPaths;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.util.FakePlayerFactory;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
-import java.util.*;
-import java.util.function.Supplier;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class TreeUtil
 {
-    public static final Codec<Supplier<ItemStack>> ITEM_STACK_CODEC = RecordCodecBuilder.create((instance) -> {
-        return instance.group(ResourceLocation.CODEC.fieldOf("item").forGetter(stack -> {
-            return ForgeRegistries.ITEMS.getKey(stack.get().getItem());
-        }), Codec.INT.fieldOf("count").orElse(1).forGetter(stack -> stack.get().getCount()), CompoundTag.CODEC.optionalFieldOf("nbt").forGetter((stack) -> Optional.ofNullable(stack.get().getTag()))).apply(instance, (item, count, tag) -> {
-            return () -> {
-                var stack = new ItemStack(ForgeRegistries.ITEMS.getValue(item), count);
-                tag.ifPresent(stack::setTag);
-                return stack;
-            };
-        });
-    });
-
-    public static final Path TREE_PATH = createCustomPath("trees");
-    public static final Path INTERNAL_TREE_PATH = createModPath("/data/" + ProductiveTrees.MODID + "/trees");
-
     private static Path createCustomPath(String pathName) {
         Path customPath = Paths.get(FMLPaths.CONFIGDIR.get().toAbsolutePath().toString(), ProductiveTrees.MODID, pathName);
         createDirectory(customPath, pathName);
@@ -127,11 +111,11 @@ public class TreeUtil
                 return new ItemStack(getBlock(tree.getId(), "_leaves"));
             }
         }
-        var resourceLocation = ForgeRegistries.ITEMS.getKey(saplingStack.getItem());
+        var resourceLocation = BuiltInRegistries.ITEM.getKey(saplingStack.getItem());
         if (resourceLocation != null) {
-            var block = ForgeRegistries.BLOCKS.getValue(resourceLocation.withPath(p -> p.replace("_sapling", "_propagule").replace("_sapling", "_leaves")));
+            var block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_sapling", "_propagule").replace("_sapling", "_leaves")));
             if (block.equals(Blocks.AIR)) {
-                block = ForgeRegistries.BLOCKS.getValue(resourceLocation.withPath(p -> p + "_leaves"));
+                block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p + "_leaves"));
             }
             if (block != null) {
                 return new ItemStack(block);
@@ -147,14 +131,14 @@ public class TreeUtil
                 return new ItemStack(getBlock(tree.getId(), "_sapling"));
             }
         }
-        var resourceLocation = ForgeRegistries.ITEMS.getKey(leafStack.getItem());
+        var resourceLocation = BuiltInRegistries.ITEM.getKey(leafStack.getItem());
         if (resourceLocation != null) {
-            var block = ForgeRegistries.BLOCKS.getValue(resourceLocation.withPath(p -> p.replace("_leaves", "_sapling")));
+            var block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_leaves", "_sapling")));
             if (block.equals(Blocks.AIR)) {
-                block = ForgeRegistries.BLOCKS.getValue(resourceLocation.withPath(p -> p.replace("_leaves", "_propagule")));
+                block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_leaves", "_propagule")));
             }
             if (block.equals(Blocks.AIR)) {
-                block = ForgeRegistries.BLOCKS.getValue(resourceLocation.withPath(p -> p.replace("_leaves", "")));
+                block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_leaves", "")));
             }
             if (block != null) {
                 return new ItemStack(block);
@@ -169,11 +153,11 @@ public class TreeUtil
         if (stripped.isEmpty() && stack.getItem() instanceof BlockItem blockItem) {
             var initialState = blockItem.getBlock().defaultBlockState();
             var stripState = AxeItem.getAxeStrippingState(initialState);
-            Player fakePlayer = FakePlayerFactory.get(level, new GameProfile(STRIPPER_UUID, "stripper"));
-            var pos = blockEntity.getBlockPos();
-            var blockHit = new BlockHitResult(new Vec3(pos.getX(), pos.getY(), pos.getZ()), Direction.DOWN, pos, false);
-            UseOnContext context = new UseOnContext(fakePlayer, InteractionHand.MAIN_HAND, blockHit);
-            stripState = ForgeEventFactory.onToolUse(initialState, context, ToolActions.AXE_STRIP, true);
+//            Player fakePlayer = FakePlayerFactory.get(level, new GameProfile(STRIPPER_UUID, "stripper"));
+//            var pos = blockEntity.getBlockPos();
+//            var blockHit = new BlockHitResult(new Vec3(pos.getX(), pos.getY(), pos.getZ()), Direction.DOWN, pos, false);
+//            UseOnContext context = new UseOnContext(fakePlayer, InteractionHand.MAIN_HAND, blockHit);
+//            stripState = ForgeEventFactory.onToolUse(initialState, context, ItemAbilities.AXE_STRIP, true);
             return !stripState.equals(initialState) ? new ItemStack(initialState.getBlock()) : ItemStack.EMPTY;
         }
         return stripped;
@@ -202,8 +186,8 @@ public class TreeUtil
         return ItemStack.EMPTY;
     }
 
-    static Map<ItemStack, SawmillRecipe> sawmillRecipeCache = new HashMap<>();
-    public static SawmillRecipe getSawmillRecipe(Level level, ItemStack stack) {
+    static Map<ItemStack, RecipeHolder<SawmillRecipe>> sawmillRecipeCache = new HashMap<>();
+    public static RecipeHolder<SawmillRecipe> getSawmillRecipe(Level level, ItemStack stack) {
         if (!stack.isEmpty()) {
             var cacheItem = stack.copy();
             cacheItem.setCount(1);
@@ -211,9 +195,9 @@ public class TreeUtil
                 return sawmillRecipeCache.get(cacheItem);
             }
 
-            List<SawmillRecipe> recipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.SAW_MILLLING_TYPE.get());
-            for (SawmillRecipe recipe : recipes) {
-                if (recipe.log.test(stack)) {
+            List<RecipeHolder<SawmillRecipe>> recipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.SAW_MILLLING_TYPE.get());
+            for (RecipeHolder<SawmillRecipe> recipe : recipes) {
+                if (recipe.value().log.test(stack)) {
                     sawmillRecipeCache.put(cacheItem, recipe);
                     return recipe;
                 }
@@ -224,7 +208,7 @@ public class TreeUtil
 
     public static ItemStack getPollen(Block block) {
         var pollenStack = new ItemStack(TreeRegistrator.POLLEN.get());
-        pollenStack.getOrCreateTag().putString("Block", ForgeRegistries.BLOCKS.getKey(block).toString());
+        pollenStack.set(TreeRegistrator.POLLEN_BLOCK_COMPONENT, BuiltInRegistries.BLOCK.getKey(block));
         return pollenStack;
     }
 
@@ -252,10 +236,10 @@ public class TreeUtil
     }
 
     public static Block getBlock(ResourceLocation tree, String name) {
-        return ForgeRegistries.BLOCKS.getValue(tree.withPath(p -> p + name));
+        return BuiltInRegistries.BLOCK.get(tree.withPath(p -> p + name));
     }
 
     public static TreeObject getTree(Block block) {
-        return TreeFinder.trees.get(ForgeRegistries.BLOCKS.getKey(block).withPath(p -> p.replace("_log", "").replace("_wood", "").replace("_sapling", "").replace("_leaves", "")));
+        return TreeFinder.trees.get(BuiltInRegistries.BLOCK.getKey(block).withPath(p -> p.replace("_log", "").replace("_wood", "").replace("_sapling", "").replace("_leaves", "")));
     }
 }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cinnamon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:cinnamon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/cinnamon_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cinnamon"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/cinnamon_crate_unpack"
+    ]
+  }
+}

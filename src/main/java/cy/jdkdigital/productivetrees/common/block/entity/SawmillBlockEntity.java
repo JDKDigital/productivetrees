@@ -7,6 +7,7 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -17,11 +18,8 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,7 +35,7 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
     public static int SLOT_OUT = 1;
     public static int SLOT_SECONDARY = 2;
     public static int SLOT_TERTIARY = 3;
-    private final LazyOptional<IItemHandlerModifiable> inventoryHandler = LazyOptional.of(() -> new InventoryHandlerHelper.BlockEntityItemStackHandler(4, this)
+    public final IItemHandlerModifiable inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(4, this)
     {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
@@ -51,7 +49,7 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
         public boolean isInputSlotItem(int slot, ItemStack stack) {
             if ((slot == SLOT_IN && canProcess(stack))) {
                 var currentOutStack = getStackInSlot(slot);
-                return currentOutStack.isEmpty() || (currentOutStack.getCount() < currentOutStack.getMaxStackSize() && ItemHandlerHelper.canItemStacksStack(stack, currentOutStack));
+                return currentOutStack.isEmpty() || (currentOutStack.getCount() < currentOutStack.getMaxStackSize() && ItemStack.isSameItemSameComponents(stack, currentOutStack));
             }
             return false;
         }
@@ -70,7 +68,7 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
         public int[] getOutputSlots() {
             return new int[]{SLOT_OUT, SLOT_SECONDARY, SLOT_TERTIARY};
         }
-    });
+    };
 
     private boolean canProcess(ItemStack stack) {
         var recipe = TreeUtil.getSawmillRecipe(level, stack);
@@ -87,39 +85,42 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
         return Component.translatable(TreeRegistrator.SAWMILL.get().getDescriptionId());
     }
 
+    @Override
+    public IItemHandler getItemHandler() {
+        return inventoryHandler;
+    }
+
     public static void tick(Level level, BlockPos pos, BlockState state, SawmillBlockEntity blockEntity) {
         if (++blockEntity.tickCounter % blockEntity.tickRate == 0 && level instanceof ServerLevel serverLevel) {
-            blockEntity.inventoryHandler.ifPresent(inv -> {
-                var log = inv.getStackInSlot(SLOT_IN);
-                var output = inv.getStackInSlot(SLOT_OUT);
-                if (!blockEntity.buffer.isEmpty() && inv.insertItem(SLOT_OUT, blockEntity.buffer.copy(), true).isEmpty()) {
-                    inv.insertItem(SLOT_OUT, blockEntity.buffer.copy(), false);
-                    blockEntity.buffer = ItemStack.EMPTY;
-                } else if (!log.isEmpty() && (output.isEmpty() || output.getCount() < output.getMaxStackSize())) {
-                    blockEntity.progress+= blockEntity.tickRate;
-                    if (blockEntity.progress >= blockEntity.recipeTime) {
-                        var recipe = TreeUtil.getSawmillRecipe(level, log);
-                        if (recipe != null) {
-                            var leftOver = inv.insertItem(SLOT_OUT, recipe.planks.copy(), false);
-                            if (!leftOver.isEmpty()) {
-                                blockEntity.buffer = leftOver;
-                            }
-                            if (!recipe.secondary.isEmpty()) {
-                                var tLeftover = inv.insertItem(SLOT_SECONDARY, recipe.secondary.copy(), false);
-
-                                if (!recipe.tertiary.isEmpty()) {
-                                    inv.insertItem(SLOT_TERTIARY, recipe.tertiary.copy(), false);
-                                } else if(!tLeftover.isEmpty()) {
-                                    // Insert secondary output into tertiary slot
-                                    inv.insertItem(SLOT_TERTIARY, tLeftover, false);
-                                }
-                            }
-                            log.shrink(1);
+            var log = blockEntity.inventoryHandler.getStackInSlot(SLOT_IN);
+            var output = blockEntity.inventoryHandler.getStackInSlot(SLOT_OUT);
+            if (!blockEntity.buffer.isEmpty() && blockEntity.inventoryHandler.insertItem(SLOT_OUT, blockEntity.buffer.copy(), true).isEmpty()) {
+                blockEntity.inventoryHandler.insertItem(SLOT_OUT, blockEntity.buffer.copy(), false);
+                blockEntity.buffer = ItemStack.EMPTY;
+            } else if (!log.isEmpty() && (output.isEmpty() || output.getCount() < output.getMaxStackSize())) {
+                blockEntity.progress+= blockEntity.tickRate;
+                if (blockEntity.progress >= blockEntity.recipeTime) {
+                    var recipe = TreeUtil.getSawmillRecipe(level, log);
+                    if (recipe != null) {
+                        var leftOver = blockEntity.inventoryHandler.insertItem(SLOT_OUT, recipe.value().planks.copy(), false);
+                        if (!leftOver.isEmpty()) {
+                            blockEntity.buffer = leftOver;
                         }
-                        blockEntity.progress = 0;
+                        if (!recipe.value().secondary.isEmpty()) {
+                            var tLeftover = blockEntity.inventoryHandler.insertItem(SLOT_SECONDARY, recipe.value().secondary.get().copy(), false);
+
+                            if (!recipe.value().tertiary.isEmpty()) {
+                                blockEntity.inventoryHandler.insertItem(SLOT_TERTIARY, recipe.value().tertiary.get().copy(), false);
+                            } else if(!tLeftover.isEmpty()) {
+                                // Insert secondary output into tertiary slot
+                                blockEntity.inventoryHandler.insertItem(SLOT_TERTIARY, tLeftover, false);
+                            }
+                        }
+                        log.shrink(1);
                     }
+                    blockEntity.progress = 0;
                 }
-            });
+            }
         }
     }
 
@@ -130,22 +131,14 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
     }
 
     @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(ForgeCapabilities.ITEM_HANDLER)) {
-            return inventoryHandler.cast();
-        }
-        return super.getCapability(cap, side);
-    }
-
-    @Override
-    public void loadPacketNBT(CompoundTag tag) {
-        super.loadPacketNBT(tag);
+    public void loadPacketNBT(CompoundTag tag, HolderLookup.Provider provider) {
+        super.loadPacketNBT(tag, provider);
         this.progress = tag.getInt("RecipeProgress");
     }
 
     @Override
-    public void savePacketNBT(CompoundTag tag) {
-        super.savePacketNBT(tag);
+    public void savePacketNBT(CompoundTag tag, HolderLookup.Provider provider) {
+        super.savePacketNBT(tag, provider);
         tag.putInt("RecipeProgress", this.progress);
     }
 }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_teak_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:teak_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:door/teak_door"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_teak_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:door/teak_door"
+    ]
+  }
+}

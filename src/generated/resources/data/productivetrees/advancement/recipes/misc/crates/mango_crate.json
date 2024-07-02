@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mango": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:mango"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/mango_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mango"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/mango_crate"
+    ]
+  }
+}

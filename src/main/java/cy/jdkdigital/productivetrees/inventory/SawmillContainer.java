@@ -12,7 +12,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
@@ -46,12 +45,10 @@ public class SawmillContainer extends AbstractContainer
             }
         });
 
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(inv -> {
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, SawmillBlockEntity.SLOT_IN, 44, 34));
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, SawmillBlockEntity.SLOT_OUT, 116, 25));
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, SawmillBlockEntity.SLOT_SECONDARY, 107, 43));
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, SawmillBlockEntity.SLOT_TERTIARY, 125, 43));
-        });
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_IN, 44, 34));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_OUT, 116, 25));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_SECONDARY, 107, 43));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_TERTIARY, 125, 43));
 
         layoutPlayerInventorySlots(playerInventory, 0, 8, 84);
     }

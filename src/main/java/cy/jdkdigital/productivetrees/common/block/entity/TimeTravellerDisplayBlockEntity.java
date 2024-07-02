@@ -10,17 +10,14 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class TimeTravellerDisplayBlockEntity extends CapabilityBlockEntity
 {
     public static int SLOT_IN = 0;
-    private final LazyOptional<IItemHandlerModifiable> inventoryHandler = LazyOptional.of(() -> new InventoryHandlerHelper.BlockEntityItemStackHandler(1, this)
+    public final IItemHandlerModifiable inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(1, this)
     {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
@@ -39,7 +36,7 @@ public class TimeTravellerDisplayBlockEntity extends CapabilityBlockEntity
                 serverLevel.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
             }
         }
-    });
+    };
 
     public TimeTravellerDisplayBlockEntity(BlockPos pos, BlockState state) {
         super(TreeRegistrator.TIME_TRAVELLER_DISPLAY_BLOCK_ENTITY.get(), pos, state);
@@ -50,15 +47,12 @@ public class TimeTravellerDisplayBlockEntity extends CapabilityBlockEntity
         return Component.translatable(TreeRegistrator.TIME_TRAVELLER_DISPLAY.get().getDescriptionId());
     }
 
-    public ItemStack getItem() {
-        return inventoryHandler.map(h -> h.getStackInSlot(SLOT_IN)).orElse(ItemStack.EMPTY);
+    @Override
+    public IItemHandler getItemHandler() {
+        return inventoryHandler;
     }
 
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(ForgeCapabilities.ITEM_HANDLER)) {
-            return inventoryHandler.cast();
-        }
-        return super.getCapability(cap, side);
+    public ItemStack getItem() {
+        return inventoryHandler.getStackInSlot(SLOT_IN);
     }
 }

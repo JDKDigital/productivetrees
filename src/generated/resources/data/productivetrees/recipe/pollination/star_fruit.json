@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:mango_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:star_anise_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:star_fruit_sapling"
+  }
+}

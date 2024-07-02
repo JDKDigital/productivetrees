@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "productivetrees:slimy_delight_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "productivetrees:slimy_delight_planks"
+  }
+}

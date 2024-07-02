@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees.common.feature;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
@@ -13,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class TrunkVineDecorator extends TreeDecorator
 {
-    public static final Codec<TrunkVineDecorator> CODEC = RecordCodecBuilder.create((decoratorInstance) -> decoratorInstance.group(BlockStateProvider.CODEC.fieldOf("vine_provider").forGetter(TrunkVineDecorator::getVineProvider)).apply(decoratorInstance, TrunkVineDecorator::new));
+    public static final MapCodec<TrunkVineDecorator> CODEC = RecordCodecBuilder.mapCodec((decoratorInstance) -> decoratorInstance.group(BlockStateProvider.CODEC.fieldOf("vine_provider").forGetter(TrunkVineDecorator::getVineProvider)).apply(decoratorInstance, TrunkVineDecorator::new));
 
     public final BlockStateProvider vineProvider;
 

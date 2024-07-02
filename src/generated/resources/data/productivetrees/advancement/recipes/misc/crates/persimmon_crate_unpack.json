@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_persimmon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:persimmon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/persimmon_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_persimmon"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/persimmon_crate_unpack"
+    ]
+  }
+}

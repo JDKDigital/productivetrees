@@ -8,24 +8,14 @@ import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
 
 public class TreeCreator
 {
     public static TreeObject create(ResourceLocation id, JsonObject json) throws JsonSyntaxException {
-        var treeOptional = TreeObject.codec(id).parse(JsonOps.INSTANCE, json).result();
+        var treeOptional = TreeObject.codec(id).parse(JsonOps.INSTANCE, json);
 
-        if (treeOptional.isPresent()) {
-            var treeObject = treeOptional.get();
+        if (treeOptional.result().isPresent()) {
+            var treeObject = treeOptional.result().get();
 
             // Validate colors
             ColorUtil.getCacheColor(treeObject.getLeafColor());
@@ -40,7 +30,7 @@ public class TreeCreator
 
             return treeObject;
         } else {
-            ProductiveTrees.LOGGER.info("failed to read tree configuration for " + id);
+            ProductiveTrees.LOGGER.info("failed to read tree configuration for " + id + " " + treeOptional.error());
         }
         return null;
     }

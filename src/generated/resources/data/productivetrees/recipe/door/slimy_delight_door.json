@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "door",
+  "key": {
+    "#": {
+      "item": "productivetrees:slimy_delight_planks"
+    }
+  },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "id": "productivetrees:slimy_delight_door"
+  }
+}

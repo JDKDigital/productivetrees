@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_star_fruit_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:star_fruit_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:fence/star_fruit_fence"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_star_fruit_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:fence/star_fruit_fence"
+    ]
+  }
+}

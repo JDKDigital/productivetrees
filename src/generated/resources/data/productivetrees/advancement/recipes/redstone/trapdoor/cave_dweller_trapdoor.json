@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cave_dweller_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:cave_dweller_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:trapdoor/cave_dweller_trapdoor"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cave_dweller_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:trapdoor/cave_dweller_trapdoor"
+    ]
+  }
+}

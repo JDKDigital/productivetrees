@@ -6,15 +6,15 @@ import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
@@ -60,10 +60,10 @@ public class BlockTagProvider extends BlockTagsProvider
         var boxes = tag(cy.jdkdigital.productivebees.init.ModTags.BOXES_BLOCK);
 
         // Serene seasons
-        var spring_crops = tag(BlockTags.create(new ResourceLocation("sereneseasons:spring_crops")));
-        var summer_crops = tag(BlockTags.create(new ResourceLocation("sereneseasons:summer_crops")));
-        var autumn_crops = tag(BlockTags.create(new ResourceLocation("sereneseasons:autumn_crops")));
-        var winter_crops = tag(BlockTags.create(new ResourceLocation("sereneseasons:winter_crops")));
+        var spring_crops = tag(BlockTags.create(ResourceLocation.parse("sereneseasons:spring_crops")));
+        var summer_crops = tag(BlockTags.create(ResourceLocation.parse("sereneseasons:summer_crops")));
+        var autumn_crops = tag(BlockTags.create(ResourceLocation.parse("sereneseasons:autumn_crops")));
+        var winter_crops = tag(BlockTags.create(ResourceLocation.parse("sereneseasons:winter_crops")));
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             sapling.add(TreeUtil.getBlock(id, "_sapling"));
@@ -92,7 +92,7 @@ public class BlockTagProvider extends BlockTagsProvider
 
             planks.add(TreeUtil.getBlock(id, "_planks"));
 
-            var logTag = BlockTags.create(new ResourceLocation(ProductiveTrees.MODID, id.getPath() + "_logs"));
+            var logTag = BlockTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, id.getPath() + "_logs"));
             tag(logTag).add(TreeUtil.getBlock(id, "_log"), TreeUtil.getBlock(id, "_wood"), TreeUtil.getBlock(id, "_stripped_log"), TreeUtil.getBlock(id, "_stripped_wood"));
             if (treeObject.isFireProof()) {
                 logs.addTag(logTag);
@@ -126,8 +126,8 @@ public class BlockTagProvider extends BlockTagsProvider
         pollinatable.addTag(BlockTags.LEAVES).add(Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);
 
         TreeRegistrator.CRATED_CROPS.forEach(cratePath ->  {
-            var crateBlock = ForgeRegistries.BLOCKS.getValue(cratePath);
-            var blockTagKey = BlockTags.create(new ResourceLocation("forge", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
+            var crateBlock = BuiltInRegistries.BLOCK.get(cratePath);
+            var blockTagKey = BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
             tag(blockTagKey).add(crateBlock);
             storageBlocks.addTag(blockTagKey);
             axeMineable.addTag(blockTagKey);

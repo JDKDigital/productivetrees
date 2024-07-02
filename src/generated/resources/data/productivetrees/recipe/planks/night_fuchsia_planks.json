@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "productivetrees:night_fuchsia_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "productivetrees:night_fuchsia_planks"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "productivetrees:cherry_plum_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "productivetrees:cherry_plum_planks"
+  }
+}

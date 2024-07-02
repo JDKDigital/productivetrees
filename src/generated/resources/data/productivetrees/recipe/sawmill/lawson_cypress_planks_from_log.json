@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": {
+    "tag": "productivetrees:lawson_cypress_logs"
+  },
+  "planks": {
+    "count": 6,
+    "id": "productivetrees:lawson_cypress_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  }
+}

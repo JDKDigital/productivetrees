@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/log/osage_orange",
+    "side": "productivetrees:block/log/osage_orange"
+  }
+}

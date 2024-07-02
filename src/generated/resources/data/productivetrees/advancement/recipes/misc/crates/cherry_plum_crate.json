@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cherry_plum": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:cherry_plum"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/cherry_plum_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cherry_plum"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/cherry_plum_crate"
+    ]
+  }
+}

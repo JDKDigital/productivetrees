@@ -23,7 +23,7 @@ public class SawmillRecipeCategory implements IRecipeCategory<SawmillRecipe>
     private final IDrawable icon;
 
     public SawmillRecipeCategory(IGuiHelper guiHelper) {
-        ResourceLocation location = new ResourceLocation(ProductiveTrees.MODID, "textures/gui/jei/sawmill.png");
+        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/sawmill.png");
         this.background = guiHelper.createDrawable(location, 0, 0, 130, 60);
         this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TreeRegistrator.SAWMILL.get()));
     }
@@ -61,11 +61,15 @@ public class SawmillRecipeCategory implements IRecipeCategory<SawmillRecipe>
                 .addItemStack(recipe.planks)
                 .setSlotName("planks");
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 79, 33)
-                .addItemStack(recipe.secondary)
-                .setSlotName("secondary");
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 33)
-                .addItemStack(recipe.tertiary)
-                .setSlotName("tertiary");
+        if (recipe.secondary.isPresent()) {
+            builder.addSlot(RecipeIngredientRole.OUTPUT, 79, 33)
+                    .addItemStack(recipe.secondary.get())
+                    .setSlotName("secondary");
+        }
+        if (recipe.tertiary.isPresent()) {
+            builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 33)
+                    .addItemStack(recipe.tertiary.get())
+                    .setSlotName("tertiary");
+        }
     }
 }

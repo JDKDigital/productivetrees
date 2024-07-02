@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/osage_orange",
+    "plant": "productivetrees:block/fruit/osage_orange/stage_1"
+  }
+}

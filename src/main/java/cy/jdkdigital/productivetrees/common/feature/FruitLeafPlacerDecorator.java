@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees.common.feature;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
@@ -11,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class FruitLeafPlacerDecorator extends TreeDecorator
 {
-    public static final Codec<FruitLeafPlacerDecorator> CODEC = RecordCodecBuilder.create((decoratorInstance) -> decoratorInstance.group(Codec.FLOAT.fieldOf("density").orElse(0.5f).forGetter(FruitLeafPlacerDecorator::getDensity), Codec.INT.fieldOf("max_fruits").orElse(100).forGetter(FruitLeafPlacerDecorator::getMaxFruits), BlockStateProvider.CODEC.fieldOf("fruit_provider").forGetter(FruitLeafPlacerDecorator::getFruitProvider)).apply(decoratorInstance, FruitLeafPlacerDecorator::new));
+    public static final MapCodec<FruitLeafPlacerDecorator> CODEC = RecordCodecBuilder.mapCodec((decoratorInstance) -> decoratorInstance.group(Codec.FLOAT.fieldOf("density").orElse(0.5f).forGetter(FruitLeafPlacerDecorator::getDensity), Codec.INT.fieldOf("max_fruits").orElse(100).forGetter(FruitLeafPlacerDecorator::getMaxFruits), BlockStateProvider.CODEC.fieldOf("fruit_provider").forGetter(FruitLeafPlacerDecorator::getFruitProvider)).apply(decoratorInstance, FruitLeafPlacerDecorator::new));
 
     private final float density;
     private final int maxFruits;

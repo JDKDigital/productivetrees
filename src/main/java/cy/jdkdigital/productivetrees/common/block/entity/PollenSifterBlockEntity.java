@@ -8,6 +8,7 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -19,11 +20,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,7 +34,7 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
 
     public static int SLOT_IN = 0;
     public static int SLOT_OUT = 1;
-    private final LazyOptional<IItemHandlerModifiable> inventoryHandler = LazyOptional.of(() -> new InventoryHandlerHelper.BlockEntityItemStackHandler(2, this)
+    public final IItemHandlerModifiable inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(2, this)
     {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
@@ -55,7 +53,7 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
         public boolean isInputSlotItem(int slot, ItemStack stack) {
             if (slot == SLOT_IN && canProcess(stack)) {
                 var currentOutStack = getStackInSlot(slot);
-                return currentOutStack.isEmpty() || (currentOutStack.getCount() < currentOutStack.getMaxStackSize() && ItemHandlerHelper.canItemStacksStack(stack, currentOutStack));
+                return currentOutStack.isEmpty() || (currentOutStack.getCount() < currentOutStack.getMaxStackSize() && ItemStack.isSameItemSameComponents(stack, currentOutStack));
             }
             return false;
         }
@@ -69,7 +67,7 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
         public int[] getOutputSlots() {
             return new int[]{SLOT_OUT};
         }
-    });
+    };
 
     private boolean canProcess(ItemStack stack) {
         return stack.is(ModTags.POLLINATABLE_ITEM);
@@ -84,25 +82,28 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
         return Component.translatable(TreeRegistrator.POLLEN_SIFTER.get().getDescriptionId());
     }
 
+    @Override
+    public IItemHandler getItemHandler() {
+        return inventoryHandler;
+    }
+
     public static void tick(Level level, BlockPos pos, BlockState state, PollenSifterBlockEntity blockEntity) {
         if (++blockEntity.tickCounter % blockEntity.tickRate == 0 && level instanceof ServerLevel serverLevel) {
-            blockEntity.inventoryHandler.ifPresent(inv -> {
-                var leaf = inv.getStackInSlot(SLOT_IN);
-                    var output = inv.getStackInSlot(SLOT_OUT);
-                    if (!leaf.isEmpty() && leaf.getItem() instanceof BlockItem blockItem && (output.isEmpty() || output.is(TreeRegistrator.POLLEN.get()))) {
-                        var pollenStack = TreeUtil.getPollen(blockItem.getBlock());
-                        if (output.isEmpty() || ItemHandlerHelper.canItemStacksStack(output, pollenStack)) {
-                            blockEntity.progress += blockEntity.tickRate;
-                            if (blockEntity.progress >= blockEntity.recipeTime) {
-                                if (level.random.nextInt(100) <= 10) {
-                                    inv.insertItem(SLOT_OUT, pollenStack, false);
-                                }
-                                leaf.shrink(1);
-                                blockEntity.progress = 0;
-                            }
+            var leaf = blockEntity.inventoryHandler.getStackInSlot(SLOT_IN);
+            var output = blockEntity.inventoryHandler.getStackInSlot(SLOT_OUT);
+            if (!leaf.isEmpty() && leaf.getItem() instanceof BlockItem blockItem && (output.isEmpty() || output.is(TreeRegistrator.POLLEN.get()))) {
+                var pollenStack = TreeUtil.getPollen(blockItem.getBlock());
+                if (output.isEmpty() || ItemStack.isSameItemSameComponents(output, pollenStack)) {
+                    blockEntity.progress += blockEntity.tickRate;
+                    if (blockEntity.progress >= blockEntity.recipeTime) {
+                        if (level.random.nextInt(100) <= 10) {
+                            blockEntity.inventoryHandler.insertItem(SLOT_OUT, pollenStack, false);
                         }
+                        leaf.shrink(1);
+                        blockEntity.progress = 0;
                     }
-            });
+                }
+            }
         }
     }
 
@@ -113,22 +114,14 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
     }
 
     @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(ForgeCapabilities.ITEM_HANDLER)) {
-            return inventoryHandler.cast();
-        }
-        return super.getCapability(cap, side);
-    }
-
-    @Override
-    public void loadPacketNBT(CompoundTag tag) {
-        super.loadPacketNBT(tag);
+    public void loadPacketNBT(CompoundTag tag, HolderLookup.Provider provider) {
+        super.loadPacketNBT(tag, provider);
         this.progress = tag.getInt("RecipeProgress");
     }
 
     @Override
-    public void savePacketNBT(CompoundTag tag) {
-        super.savePacketNBT(tag);
+    public void savePacketNBT(CompoundTag tag, HolderLookup.Provider provider) {
+        super.savePacketNBT(tag, provider);
         tag.putInt("RecipeProgress", this.progress);
     }
 }

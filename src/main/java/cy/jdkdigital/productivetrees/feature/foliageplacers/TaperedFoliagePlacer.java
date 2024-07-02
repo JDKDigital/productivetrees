@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees.feature.foliageplacers;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
@@ -14,7 +15,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 
 public class TaperedFoliagePlacer extends BlobFoliagePlacer
 {
-    public static final Codec<TaperedFoliagePlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+    public static final MapCodec<TaperedFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return blobParts(instance).apply(instance, TaperedFoliagePlacer::new);
     });
 
@@ -27,7 +28,6 @@ public class TaperedFoliagePlacer extends BlobFoliagePlacer
     }
 
     protected void createFoliage(LevelSimulatedReader level, FoliagePlacer.FoliageSetter foliageSetter, RandomSource randomSource, TreeConfiguration treeConfiguration, int pMaxFreeTreeHeight, FoliagePlacer.FoliageAttachment pAttachment, int pFoliageHeight, int pFoliageRadius, int pOffset) {
-        ProductiveTrees.LOGGER.info("pos " + pAttachment.pos());
         for(int i = pOffset; i >= pOffset - pFoliageHeight; --i) {
             int j = pFoliageRadius + pAttachment.radiusOffset() - 1 - i;
             this.placeLeavesRow(level, foliageSetter, randomSource, treeConfiguration, pAttachment.pos(), j, i, pAttachment.doubleTrunk());

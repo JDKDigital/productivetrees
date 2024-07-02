@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivetrees"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "hives",
+  "ingredients": [
+    {
+      "item": "productivetrees:advanced_mandarin_beehive"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:advanced_mandarin_beehive"
+  }
+}

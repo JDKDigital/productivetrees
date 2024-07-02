@@ -1,0 +1,19 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:silver_lime_leaves"
+  },
+  "leafB": [
+    {
+      "item": "minecraft:oak_leaves"
+    },
+    {
+      "item": "minecraft:birch_leaves"
+    }
+  ],
+  "processingTime": 5.0,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:white_willow_sapling"
+  }
+}

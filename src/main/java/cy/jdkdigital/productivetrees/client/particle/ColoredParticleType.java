@@ -1,49 +1,51 @@
 package cy.jdkdigital.productivetrees.client.particle;
 
-import com.mojang.brigadier.StringReader;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 
 import javax.annotation.Nonnull;
 
 public class ColoredParticleType extends ParticleType<ColoredParticleType> implements ParticleOptions
 {
-    private float[] color = {0, 0, 0};
+    private final MapCodec<ColoredParticleType> codec = RecordCodecBuilder.mapCodec(
+            builder -> builder.group(
+                            Codec.INT.fieldOf("color").forGetter(particle -> particle.color)
+                    )
+                    .apply(builder, ColoredParticleType::new)
+    );
+    private final StreamCodec<RegistryFriendlyByteBuf, ColoredParticleType> streamCodec = StreamCodec.unit(this);
 
-    private static final Deserializer<ColoredParticleType> DESERIALIZER = new Deserializer<>()
-    {
-        @Nonnull
-        @Override
-        public ColoredParticleType fromCommand(@Nonnull ParticleType<ColoredParticleType> particleType, @Nonnull StringReader stringReader) {
-            return (ColoredParticleType) particleType;
-        }
+    private int color = 0;
 
-        @Nonnull
-        @Override
-        public ColoredParticleType fromNetwork(@Nonnull ParticleType<ColoredParticleType> particleType, @Nonnull FriendlyByteBuf buffer) {
-            return (ColoredParticleType) particleType;
-        }
-    };
-
-    private final Codec<ColoredParticleType> codec = Codec.unit(this::getType);
-    
     @Override
-    public Codec<ColoredParticleType> codec() {
+    public MapCodec<ColoredParticleType> codec() {
         return codec;
     }
 
-    public ColoredParticleType() {
-        super(false, DESERIALIZER);
+    @Override
+    public StreamCodec<? super RegistryFriendlyByteBuf, ColoredParticleType> streamCodec() {
+        return streamCodec;
     }
 
-    public void setColor(float[] color) {
+    public ColoredParticleType(int color) {
+        super(false);
         this.color = color;
     }
 
-    public float[] getColor() {
+    public ColoredParticleType() {
+        super(false);
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public int getColor() {
         return this.color;
     }
 
@@ -51,15 +53,5 @@ public class ColoredParticleType extends ParticleType<ColoredParticleType> imple
     @Override
     public ColoredParticleType getType() {
         return this;
-    }
-
-    @Override
-    public void writeToNetwork(@Nonnull FriendlyByteBuf packetBuffer) {
-    }
-
-    @Nonnull
-    @Override
-    public String writeToString() {
-        return ForgeRegistries.PARTICLE_TYPES.getKey(this).toString();
     }
 }

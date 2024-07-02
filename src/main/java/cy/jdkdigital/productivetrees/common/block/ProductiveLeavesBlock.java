@@ -30,7 +30,7 @@ public class ProductiveLeavesBlock extends LeavesBlock
             BlockState blockstate = level.getBlockState(blockpos);
             if (!isFaceFull(blockstate.getCollisionShape(level, blockpos), Direction.UP)) {
                 var particle = ClientRegistration.PETAL_PARTICLES.get();
-                particle.setColor(ColorUtil.getCacheColor(TextColor.parseColor(treeObject.getLeafColor()).getValue()));
+                particle.setColor(TextColor.parseColor(treeObject.getLeafColor()).result().get().getValue());
                 ParticleUtils.spawnParticleBelow(level, pos, rand, particle);
             }
         }

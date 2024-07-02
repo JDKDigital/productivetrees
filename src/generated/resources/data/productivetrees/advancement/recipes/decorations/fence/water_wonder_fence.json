@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:fence/water_wonder_fence"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_water_wonder_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:water_wonder_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_water_wonder_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:fence/water_wonder_fence"
+    ]
+  }
+}

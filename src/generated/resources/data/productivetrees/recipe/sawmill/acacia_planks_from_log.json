@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": {
+    "tag": "minecraft:acacia_logs"
+  },
+  "planks": {
+    "count": 6,
+    "id": "minecraft:acacia_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  }
+}

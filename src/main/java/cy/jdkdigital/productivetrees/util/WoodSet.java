@@ -96,7 +96,7 @@ public record WoodSet(String woodStyle, String plankStyle, String leafStyle, Str
         put("old_fustic", new WoodSet("old_fustic", "old_fustic", "old_fustic", "old_fustic", "acacia", "acacia", null));
         put("olive", new WoodSet("olive", "olive", "olive", "olive", "acacia", "driftwood", "teak"));
         put("orange", new WoodSet("orange", "orange", "orange", "orange", "oak", "yucca", "pomegranate"));
-        put("osange_orange", new WoodSet("osange_orange", "osange_orange", "osange_orange", "osange_orange", "oak", "wisteria", "whitebeam"));
+        put("osage_orange", new WoodSet("osage_orange", "osage_orange", "osage_orange", "osage_orange", "oak", "wisteria", "whitebeam"));
         put("padauk", new WoodSet("padauk", "padauk", "padauk", "padauk", "jungle", "jungle", null));
         put("pandanus", new WoodSet("pandanus", "pandanus", "pandanus", "pandanus", "mangrove", "jacaranda", "whitebeam"));
         put("papaya", new WoodSet("papaya", "papaya", "papaya", "papaya", "oak", "umbran", "pomegranate"));

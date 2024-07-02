@@ -7,8 +7,6 @@ import cy.jdkdigital.productivetrees.client.render.block.PollinatedLeavesBlockEn
 import cy.jdkdigital.productivetrees.client.render.block.StripperBlockEntityRenderer;
 import cy.jdkdigital.productivetrees.client.render.block.TimeTravellerDisplayBlockEntityRenderer;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
-import cy.jdkdigital.productivetrees.common.block.entity.ProductiveHangingSignBlockEntity;
-import cy.jdkdigital.productivetrees.common.block.entity.ProductiveSignBlockEntity;
 import cy.jdkdigital.productivetrees.inventory.screen.PollenSifterScreen;
 import cy.jdkdigital.productivetrees.inventory.screen.SawmillScreen;
 import cy.jdkdigital.productivetrees.inventory.screen.StripperScreen;
@@ -17,25 +15,24 @@ import cy.jdkdigital.productivetrees.registry.ClientRegistration;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
-@Mod.EventBusSubscriber(modid = ProductiveTrees.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ProductiveTrees.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class ClientSetupEvents
 {
     @SubscribeEvent
@@ -44,14 +41,18 @@ public class ClientSetupEvents
     }
 
     @SubscribeEvent
+    public static void clientSetupEvent(final RegisterMenuScreensEvent event) {
+        event.register(TreeRegistrator.STRIPPER_MENU.get(), StripperScreen::new);
+        event.register(TreeRegistrator.SAWMILL_MENU.get(), SawmillScreen::new);
+        event.register(TreeRegistrator.WOOD_WORKER_MENU.get(), WoodworkerScreen::new);
+        event.register(TreeRegistrator.POLLEN_SIFTER_MENU.get(), PollenSifterScreen::new);
+    }
+
+    @SubscribeEvent
     public static void clientSetupEvent(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            MenuScreens.register(TreeRegistrator.STRIPPER_MENU.get(), StripperScreen::new);
-            MenuScreens.register(TreeRegistrator.SAWMILL_MENU.get(), SawmillScreen::new);
-            MenuScreens.register(TreeRegistrator.WOOD_WORKER_MENU.get(), WoodworkerScreen::new);
-            MenuScreens.register(TreeRegistrator.POLLEN_SIFTER_MENU.get(), PollenSifterScreen::new);
             // Fruits with multi stack overrides
-            ItemProperties.register(TreeRegistrator.FUSTIC.get(), new ResourceLocation("count"), (stack, world, entity, i) -> stack.getCount());
+            ItemProperties.register(TreeRegistrator.FUSTIC.get(), ResourceLocation.withDefaultNamespace("count"), (stack, world, entity, i) -> stack.getCount());
         });
     }
 
@@ -70,8 +71,8 @@ public class ClientSetupEvents
     @SubscribeEvent
     public static void registerItemColors(final RegisterColorHandlersEvent.Item event) {
         event.register((stack, tintIndex) -> {
-            if (stack.getTag() != null && stack.getTag().contains("Block")) {
-                return TreeUtil.getLeafColor(ForgeRegistries.BLOCKS.getValue(new ResourceLocation(stack.getTag().getString("Block"))));
+            if (stack.has(TreeRegistrator.POLLEN_BLOCK_COMPONENT)) {
+                return TreeUtil.getLeafColor(BuiltInRegistries.BLOCK.get(stack.get(TreeRegistrator.POLLEN_BLOCK_COMPONENT)));
             }
             return FoliageColor.getDefaultColor();
         }, TreeRegistrator.POLLEN.get());
@@ -83,8 +84,8 @@ public class ClientSetupEvents
 
             if (ModList.get().isLoaded("productivebees") && treeObject.getStyle().hiveStyle() != null && treeObject.tintHives()) {
                 event.register((stack, tintIndex) -> ColorUtil.getCacheColor(treeObject.getPlankColor()),
-                        ForgeRegistries.BLOCKS.getValue(id.withPath(p -> "advanced_" + p + "_beehive")),
-                        ForgeRegistries.BLOCKS.getValue(id.withPath(p -> "expansion_box_" + p))
+                        BuiltInRegistries.BLOCK.get(id.withPath(p -> "advanced_" + p + "_beehive")),
+                        BuiltInRegistries.BLOCK.get(id.withPath(p -> "expansion_box_" + p))
                 );
             }
         });
@@ -111,8 +112,8 @@ public class ClientSetupEvents
 
             if (ModList.get().isLoaded("productivebees") && treeObject.getStyle().hiveStyle() != null && treeObject.tintHives()) {
                 event.register((blockState, lightReader, pos, tintIndex) -> ColorUtil.getCacheColor(treeObject.getPlankColor()),
-                        ForgeRegistries.BLOCKS.getValue(id.withPath(p -> "advanced_" + p + "_beehive")),
-                        ForgeRegistries.BLOCKS.getValue(id.withPath(p -> "expansion_box_" + p))
+                        BuiltInRegistries.BLOCK.get(id.withPath(p -> "advanced_" + p + "_beehive")),
+                        BuiltInRegistries.BLOCK.get(id.withPath(p -> "expansion_box_" + p))
                 );
             }
         });

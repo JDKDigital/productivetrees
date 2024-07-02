@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:banana_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:teak_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:plantain_sapling"
+  }
+}

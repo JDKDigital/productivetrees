@@ -1,13 +1,11 @@
 package cy.jdkdigital.productivetrees;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
-@Mod.EventBusSubscriber
 public class Config
 {
-    private static final ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
-    public static final ForgeConfigSpec SERVER_CONFIG;
+    private static final ModConfigSpec.Builder SERVER_BUILDER = new ModConfigSpec.Builder();
+    public static final ModConfigSpec SERVER_CONFIG;
     public static final Server SERVER = new Server(SERVER_BUILDER);
 
     static {
@@ -16,9 +14,9 @@ public class Config
 
     public static class Server
     {
-        public final ForgeConfigSpec.IntValue pollenChanceFromSieve;
+        public final ModConfigSpec.IntValue pollenChanceFromSieve;
 
-        public Server(ForgeConfigSpec.Builder builder) {
+        public Server(ModConfigSpec.Builder builder) {
             builder.push("General");
 
             pollenChanceFromSieve = builder

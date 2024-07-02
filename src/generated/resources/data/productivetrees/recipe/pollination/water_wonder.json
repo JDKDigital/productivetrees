@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:blue_yonder_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:soul_tree_leaves"
+  },
+  "processingTime": 0.05,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:water_wonder_sapling"
+  }
+}

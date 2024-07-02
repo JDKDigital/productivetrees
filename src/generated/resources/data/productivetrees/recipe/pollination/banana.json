@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:balsa_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:cacao_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:banana_sapling"
+  }
+}

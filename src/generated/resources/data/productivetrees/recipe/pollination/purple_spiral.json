@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:blue_yonder_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:firecracker_leaves"
+  },
+  "processingTime": 0.05,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:purple_spiral_sapling"
+  }
+}

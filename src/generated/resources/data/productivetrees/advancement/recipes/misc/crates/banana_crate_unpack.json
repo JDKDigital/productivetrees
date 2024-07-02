@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_banana": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:banana"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/banana_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_banana"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/banana_crate_unpack"
+    ]
+  }
+}

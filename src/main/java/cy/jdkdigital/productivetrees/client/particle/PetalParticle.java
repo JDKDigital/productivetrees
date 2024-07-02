@@ -1,5 +1,6 @@
 package cy.jdkdigital.productivetrees.client.particle;
 
+import cy.jdkdigital.productivelib.util.ColorUtil;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.CherryParticle;
 import net.minecraft.client.particle.Particle;
@@ -22,7 +23,7 @@ public class PetalParticle extends CherryParticle
 
         public Particle createParticle(ColoredParticleType particleType, ClientLevel level, double x, double y, double z, double dx, double dy, double dz) {
             PetalParticle petalParticle = new PetalParticle(level, x, y, z, this.spriteSet);
-            var color = particleType.getColor();
+            var color = ColorUtil.getCacheColor(particleType.getColor());
             petalParticle.setColor(color[0], color[1], color[2]);
             return petalParticle;
         }

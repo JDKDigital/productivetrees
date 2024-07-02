@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:wenge_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:oak_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:avocado_sapling"
+  }
+}

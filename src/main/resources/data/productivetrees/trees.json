@@ -410,9 +410,7 @@
       "logColor": "#3f3f37",
       "plankColor": "#cd4f18"
     },
-    "stripDrop": {
-      "item": "productivetrees:cinnamon"
-    }
+    "stripDrop": "productivetrees:cinnamon"
   },
   "citron": {
     "colors": {
@@ -510,9 +508,7 @@
       "logColor": "#bd9281",
       "plankColor": "#af947e"
     },
-    "stripDrop": {
-      "item": "productivetrees:cork"
-    }
+    "stripDrop": "productivetrees:cork"
   },
   "cultivated_pear": {
     "colors": {
@@ -1051,14 +1047,14 @@
       "ripeColor": "#824f12"
     }
   },
-  "osange_orange": {
+  "osage_orange": {
     "colors": {
       "leafColor": "#3b470a",
       "logColor": "#6d5650",
       "plankColor": "#afa16c"
     },
     "fruit": {
-      "item": "productivetrees:osange_orange",
+      "item": "productivetrees:osage_orange",
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
@@ -1447,9 +1443,7 @@
     "decoration": {
       "lightLevel": 11
     },
-    "stripDrop": {
-      "item": "minecraft:slime_ball"
-    },
+    "stripDrop": "minecraft:slime_ball",
     "fireproof": true
   },
   "socotra_dragon": {

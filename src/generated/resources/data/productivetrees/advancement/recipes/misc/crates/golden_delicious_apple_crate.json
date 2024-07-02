@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_golden_delicious_apple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:golden_delicious_apple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/golden_delicious_apple_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_golden_delicious_apple"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/golden_delicious_apple_crate"
+    ]
+  }
+}

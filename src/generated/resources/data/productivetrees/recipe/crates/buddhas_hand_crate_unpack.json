@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "productivetrees:buddhas_hand_crate"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "productivetrees:buddhas_hand"
+  }
+}

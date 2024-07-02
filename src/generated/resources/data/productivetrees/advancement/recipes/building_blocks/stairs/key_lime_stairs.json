@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_key_lime_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:key_lime_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:stairs/key_lime_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_key_lime_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:stairs/key_lime_stairs"
+    ]
+  }
+}

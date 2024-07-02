@@ -3,12 +3,12 @@ package cy.jdkdigital.productivetrees.common.fluid;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 
-public abstract class MapleSap extends ForgeFlowingFluid
+public abstract class MapleSap extends BaseFlowingFluid
 {
     protected MapleSap() {
-        super(new ForgeFlowingFluid.Properties(
+        super(new BaseFlowingFluid.Properties(
                 TreeRegistrator.MAPLE_SAP_TYPE,
                 TreeRegistrator.MAPLE_SAP,
                 TreeRegistrator.MAPLE_SAP_FLOWING

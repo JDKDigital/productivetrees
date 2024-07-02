@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_candlenut": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:candlenut"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/candlenut_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_candlenut"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/candlenut_crate_unpack"
+    ]
+  }
+}

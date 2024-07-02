@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_beliy_naliv_apple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:beliy_naliv_apple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/beliy_naliv_apple_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_beliy_naliv_apple"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/beliy_naliv_apple_crate"
+    ]
+  }
+}

@@ -1,28 +1,26 @@
 package cy.jdkdigital.productivetrees.recipe;
 
-import com.google.gson.JsonObject;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.Container;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nonnull;
+import java.util.Optional;
 
-public class SawmillRecipe implements Recipe<Container>
+public class SawmillRecipe implements Recipe<RecipeInput>
 {
-    public final ResourceLocation id;
     public final Ingredient log;
     public final ItemStack planks;
-    public final ItemStack secondary;
-    public final ItemStack tertiary;
+    public final Optional<ItemStack> secondary;
+    public final Optional<ItemStack> tertiary;
 
-    public SawmillRecipe(ResourceLocation id, Ingredient log, ItemStack planks, ItemStack secondary, ItemStack tertiary) {
-        this.id = id;
+    public SawmillRecipe(Ingredient log, ItemStack planks, Optional<ItemStack> secondary, Optional<ItemStack> tertiary) {
         this.log = log;
         this.planks = planks;
         this.secondary = secondary;
@@ -30,12 +28,17 @@ public class SawmillRecipe implements Recipe<Container>
     }
 
     @Override
-    public boolean matches(Container container, Level level) {
+    public boolean isSpecial() {
+        return true;
+    }
+
+    @Override
+    public boolean matches(RecipeInput container, Level level) {
         return false;
     }
 
     @Override
-    public ItemStack assemble(Container container, RegistryAccess level) {
+    public ItemStack assemble(RecipeInput container, HolderLookup.Provider provider) {
         return null;
     }
 
@@ -45,13 +48,8 @@ public class SawmillRecipe implements Recipe<Container>
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess level) {
+    public ItemStack getResultItem(HolderLookup.Provider provider) {
         return this.planks.copy();
-    }
-
-    @Override
-    public ResourceLocation getId() {
-        return id;
     }
 
     @Override
@@ -64,58 +62,54 @@ public class SawmillRecipe implements Recipe<Container>
         return TreeRegistrator.SAW_MILLLING_TYPE.get();
     }
 
-    public static class Serializer<T extends SawmillRecipe> implements RecipeSerializer<T>
+    public static class Serializer implements RecipeSerializer<SawmillRecipe>
     {
-        final SawmillRecipe.Serializer.IRecipeFactory<T> factory;
+        private static final MapCodec<SawmillRecipe> CODEC = RecordCodecBuilder.mapCodec(
+                builder -> builder.group(
+                        Ingredient.CODEC.fieldOf("log").forGetter(recipe -> recipe.log),
+                        ItemStack.CODEC.fieldOf("planks").forGetter(recipe -> recipe.planks),
+                        ItemStack.CODEC.optionalFieldOf("secondary").forGetter(recipe -> recipe.secondary),
+                        ItemStack.CODEC.optionalFieldOf("tertiary").forGetter(recipe -> recipe.tertiary)
+                )
+                .apply(builder, SawmillRecipe::new)
+        );
 
-        public Serializer(SawmillRecipe.Serializer.IRecipeFactory<T> factory) {
-            this.factory = factory;
-        }
+        public static final StreamCodec<RegistryFriendlyByteBuf, SawmillRecipe> STREAM_CODEC = StreamCodec.of(
+                SawmillRecipe.Serializer::toNetwork, SawmillRecipe.Serializer::fromNetwork
+        );
 
-        @Nonnull
         @Override
-        public T fromJson(ResourceLocation id, JsonObject json) {
-            Ingredient in;
-            if (GsonHelper.isArrayNode(json, "log")) {
-                in = Ingredient.fromJson(GsonHelper.getAsJsonArray(json, "log"));
-            } else {
-                in = Ingredient.fromJson(GsonHelper.getAsJsonObject(json, "log"));
-            }
-            ItemStack out = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "planks"));
-            ItemStack secondary = ItemStack.EMPTY;
-            if (json.has("secondary")) {
-                secondary = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "secondary"));
-            }
-            ItemStack tertiary = ItemStack.EMPTY;
-            if (json.has("tertiary")) {
-                tertiary = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "tertiary"));
-            }
-
-            return this.factory.create(id, in, out, secondary, tertiary);
+        public MapCodec<SawmillRecipe> codec() {
+            return CODEC;
         }
 
-        public T fromNetwork(@Nonnull ResourceLocation id, @Nonnull FriendlyByteBuf buffer) {
+        @Override
+        public StreamCodec<RegistryFriendlyByteBuf, SawmillRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+        public static SawmillRecipe fromNetwork(@Nonnull RegistryFriendlyByteBuf buffer) {
             try {
-                return this.factory.create(id, Ingredient.fromNetwork(buffer), buffer.readItem(), buffer.readItem(), buffer.readItem());
+                return new SawmillRecipe(
+                        Ingredient.CONTENTS_STREAM_CODEC.decode(buffer),
+                        ItemStack.STREAM_CODEC.decode(buffer),
+                        Optional.of(ItemStack.OPTIONAL_STREAM_CODEC.decode(buffer)),
+                        Optional.of(ItemStack.OPTIONAL_STREAM_CODEC.decode(buffer))
+                );
             } catch (Exception e) {
                 throw e;
             }
         }
 
-        public void toNetwork(@Nonnull FriendlyByteBuf buffer, T recipe) {
+        public static void toNetwork(@Nonnull RegistryFriendlyByteBuf buffer, SawmillRecipe recipe) {
             try {
-                recipe.log.toNetwork(buffer);
-                buffer.writeItem(recipe.planks);
-                buffer.writeItem(recipe.secondary);
-                buffer.writeItem(recipe.tertiary);
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.log);
+                ItemStack.STREAM_CODEC.encode(buffer, recipe.planks);
+                ItemStack.OPTIONAL_STREAM_CODEC.encode(buffer, recipe.secondary.orElse(ItemStack.EMPTY));
+                ItemStack.OPTIONAL_STREAM_CODEC.encode(buffer, recipe.tertiary.orElse(ItemStack.EMPTY));
             } catch (Exception e) {
                 throw e;
             }
-        }
-
-        public interface IRecipeFactory<T extends SawmillRecipe>
-        {
-            T create(ResourceLocation id, Ingredient in, ItemStack out, ItemStack out2, ItemStack out3);
         }
     }
 }

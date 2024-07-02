@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "productivetrees:salak_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "productivetrees:salak_planks"
+  }
+}

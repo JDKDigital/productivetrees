@@ -1,10 +1,14 @@
 package cy.jdkdigital.productivetrees.common.block;
 
+import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -37,10 +41,10 @@ public class PollinatedLeaves extends LeavesBlock implements EntityBlock
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         super.animateTick(pState, pLevel, pPos, pRandom);
-        if (pLevel.isClientSide && pLevel.random.nextBoolean()) {
+        if (pLevel.isClientSide && pLevel.random.nextBoolean() && pLevel.random.nextBoolean() && pLevel.random.nextBoolean()) {
             var hasSpyglass = Minecraft.getInstance().player.getItemInHand(InteractionHand.MAIN_HAND).is(Items.SPYGLASS) || Minecraft.getInstance().player.getItemInHand(InteractionHand.OFF_HAND).is(Items.SPYGLASS);
             if (hasSpyglass) {
-                pLevel.levelEvent(2005, pPos, 0);
+                ParticleUtils.spawnParticleInBlock(pLevel, pPos, 15, ParticleTypes.HAPPY_VILLAGER);
             }
         }
     }
@@ -51,8 +55,8 @@ public class PollinatedLeaves extends LeavesBlock implements EntityBlock
     }
 
     @Override
-    public ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
-        if (level.getBlockEntity(pos) instanceof PollinatedLeavesBlockEntity blockEntity) {
+    public ItemStack pickupBlock(@Nullable Player pPlayer, LevelAccessor pLevel, BlockPos pPos, BlockState pState) {
+        if (pLevel.getBlockEntity(pPos) instanceof PollinatedLeavesBlockEntity blockEntity) {
             return blockEntity.getResult();
         }
         return ItemStack.EMPTY;

@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:brazilwood_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:mahogany_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:sandalwood_sapling"
+  }
+}

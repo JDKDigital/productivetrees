@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees.common.feature;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.Direction;
@@ -10,7 +11,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorTy
 
 public class EntityPlacerDecorator extends TreeDecorator
 {
-    public static final Codec<EntityPlacerDecorator> CODEC = RecordCodecBuilder.create((decoratorInstance) -> decoratorInstance.group(ResourceLocation.CODEC.fieldOf("entity").forGetter(EntityPlacerDecorator::getEntity), Codec.INT.fieldOf("count").orElse(1).forGetter(EntityPlacerDecorator::getCount)).apply(decoratorInstance, EntityPlacerDecorator::new));
+    public static final MapCodec<EntityPlacerDecorator> CODEC = RecordCodecBuilder.mapCodec((decoratorInstance) -> decoratorInstance.group(ResourceLocation.CODEC.fieldOf("entity").forGetter(EntityPlacerDecorator::getEntity), Codec.INT.fieldOf("count").orElse(1).forGetter(EntityPlacerDecorator::getCount)).apply(decoratorInstance, EntityPlacerDecorator::new));
     private final ResourceLocation entity;
     private final int count;
 

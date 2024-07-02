@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": {
+    "tag": "productivetrees:prairie_crabapple_logs"
+  },
+  "planks": {
+    "count": 6,
+    "id": "productivetrees:prairie_crabapple_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  }
+}

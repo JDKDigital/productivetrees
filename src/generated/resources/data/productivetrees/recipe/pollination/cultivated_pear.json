@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:red_delicious_apple_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:sand_pear_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:cultivated_pear_sapling"
+  }
+}

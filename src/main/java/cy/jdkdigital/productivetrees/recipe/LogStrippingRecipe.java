@@ -1,41 +1,43 @@
 package cy.jdkdigital.productivetrees.recipe;
 
-import com.google.gson.JsonObject;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.Container;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nonnull;
 
-public class LogStrippingRecipe implements Recipe<Container>
+public class LogStrippingRecipe implements Recipe<RecipeInput>
 {
-    public final ResourceLocation id;
     public final ItemStack log;
     public final ItemStack stripped;
 
-    public LogStrippingRecipe(ResourceLocation id, ItemStack log, ItemStack stripped) {
-        this.id = id;
+    public LogStrippingRecipe(ItemStack log, ItemStack stripped) {
         this.log = log;
         this.stripped = stripped;
     }
 
     @Override
-    public boolean matches(Container container, Level level) {
+    public boolean isSpecial() {
+        return true;
+    }
+
+    @Override
+    public boolean matches(RecipeInput container, Level level) {
         return false;
     }
 
     @Override
-    public ItemStack assemble(Container container, RegistryAccess level) {
-        return null;
+    public ItemStack assemble(RecipeInput container, HolderLookup.Provider provider) {
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -44,13 +46,8 @@ public class LogStrippingRecipe implements Recipe<Container>
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess level) {
+    public ItemStack getResultItem(HolderLookup.Provider provider) {
         return this.stripped.copy();
-    }
-
-    @Override
-    public ResourceLocation getId() {
-        return id;
     }
 
     @Override
@@ -63,43 +60,45 @@ public class LogStrippingRecipe implements Recipe<Container>
         return TreeRegistrator.LOG_STRIPPING_TYPE.get();
     }
 
-    public static class Serializer<T extends LogStrippingRecipe> implements RecipeSerializer<T>
+    public static class Serializer implements RecipeSerializer<LogStrippingRecipe>
     {
-        final LogStrippingRecipe.Serializer.IRecipeFactory<T> factory;
+        private static final MapCodec<LogStrippingRecipe> CODEC = RecordCodecBuilder.mapCodec(
+                builder -> builder.group(
+                                ItemStack.CODEC.fieldOf("log").forGetter(recipe -> recipe.log),
+                                ItemStack.CODEC.fieldOf("stripped").forGetter(recipe -> recipe.stripped)
+                        )
+                        .apply(builder, LogStrippingRecipe::new)
+        );
 
-        public Serializer(LogStrippingRecipe.Serializer.IRecipeFactory<T> factory) {
-            this.factory = factory;
-        }
+        public static final StreamCodec<RegistryFriendlyByteBuf, LogStrippingRecipe> STREAM_CODEC = StreamCodec.of(
+                LogStrippingRecipe.Serializer::toNetwork, LogStrippingRecipe.Serializer::fromNetwork
+        );
 
-        @Nonnull
         @Override
-        public T fromJson(ResourceLocation id, JsonObject json) {
-            ItemStack in = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "log"));
-            ItemStack out = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "stripped"));
-
-            return this.factory.create(id, in, out);
+        public MapCodec<LogStrippingRecipe> codec() {
+            return CODEC;
         }
 
-        public T fromNetwork(@Nonnull ResourceLocation id, @Nonnull FriendlyByteBuf buffer) {
+        @Override
+        public StreamCodec<RegistryFriendlyByteBuf, LogStrippingRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+        public static LogStrippingRecipe fromNetwork(@Nonnull RegistryFriendlyByteBuf buffer) {
             try {
-                return this.factory.create(id, buffer.readItem(), buffer.readItem());
+                return new LogStrippingRecipe(ItemStack.STREAM_CODEC.decode(buffer), ItemStack.STREAM_CODEC.decode(buffer));
             } catch (Exception e) {
                 throw e;
             }
         }
 
-        public void toNetwork(@Nonnull FriendlyByteBuf buffer, T recipe) {
+        public static void toNetwork(@Nonnull RegistryFriendlyByteBuf buffer, LogStrippingRecipe recipe) {
             try {
-                buffer.writeItem(recipe.log);
-                buffer.writeItem(recipe.stripped);
+                ItemStack.STREAM_CODEC.encode(buffer, recipe.log);
+                ItemStack.STREAM_CODEC.encode(buffer, recipe.stripped);
             } catch (Exception e) {
                 throw e;
             }
-        }
-
-        public interface IRecipeFactory<T extends LogStrippingRecipe>
-        {
-            T create(ResourceLocation id, ItemStack in, ItemStack out);
         }
     }
 }

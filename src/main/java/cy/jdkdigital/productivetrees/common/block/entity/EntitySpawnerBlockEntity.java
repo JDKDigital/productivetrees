@@ -2,11 +2,11 @@ package cy.jdkdigital.productivetrees.common.block.entity;
 
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.feature.EntityPlacerDecorator;
-import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.MobSpawnType;
@@ -17,7 +17,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +40,7 @@ public class EntitySpawnerBlockEntity extends BlockEntity
                                     List<TreeDecorator> decorators = new ArrayList<>(treeConfig.decorators);
                                     for (TreeDecorator decorator : decorators) {
                                         if (decorator instanceof EntityPlacerDecorator entityPlacerDecorator) {
-                                            var entityType = ForgeRegistries.ENTITY_TYPES.getValue(entityPlacerDecorator.getEntity());
+                                            var entityType = BuiltInRegistries.ENTITY_TYPE.get(entityPlacerDecorator.getEntity());
                                             if (entityType != null) {
                                                 entityType.spawn(serverLevel, pos, MobSpawnType.NATURAL);
                                             }

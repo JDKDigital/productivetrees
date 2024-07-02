@@ -6,6 +6,7 @@ import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import cy.jdkdigital.productivetrees.util.WoodSet;
 import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +19,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
@@ -37,7 +38,7 @@ public class TreeObject extends WoodObject
     private final GrowthCondition growthCondition;
     private final Decoration decoration;
 
-    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, Supplier<ItemStack> stripDrop, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
+    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, Optional<ResourceLocation> stripDrop, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
         super(id, fireProof, colors, stripDrop);
         this.feature = feature;
         this.megaFeature = megaFeature;
@@ -57,7 +58,7 @@ public class TreeObject extends WoodObject
                 ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").orElse(TreeRegistrator.NULL_FEATURE).forGetter(TreeObject::getFeature),
                 ResourceLocation.CODEC.fieldOf("megaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : TreeRegistrator.NULL_FEATURE, (value) -> value != null ? value.location() : null).forGetter(TreeObject::getMegaFeature),
                 Codec.STRING.fieldOf("style").orElse(id.getPath()).forGetter(TreeObject::getStyleName),
-                TreeUtil.ITEM_STACK_CODEC.fieldOf("stripDrop").orElse(() -> ItemStack.EMPTY).forGetter(TreeObject::getStripDrop),
+                ResourceLocation.CODEC.optionalFieldOf("stripDrop").forGetter(TreeObject::getStripDrop),
                 TreeColors.CODEC.fieldOf("colors").orElse(TreeColors.DEFAULT).forGetter(TreeObject::getColors),
                 Fruit.CODEC.fieldOf("fruit").orElse(Fruit.DEFAULT).forGetter(TreeObject::getFruit),
                 MutationInfo.CODEC.fieldOf("mutation_info").orElse(MutationInfo.DEFAULT).forGetter(TreeObject::getMutationInfo),
@@ -130,14 +131,14 @@ public class TreeObject extends WoodObject
         return decoration;
     }
 
-    public record GrowthCondition(boolean canForceGrowth, int minLight, int maxLight, Fluid fluid, Optional<HolderSet<Biome>> biome)
+    public record GrowthCondition(boolean canForceGrowth, int minLight, int maxLight, FluidStack fluid, Optional<HolderSet<Biome>> biome)
     {
-        private static final GrowthCondition DEFAULT = new GrowthCondition(true, 9, 15, Fluids.EMPTY, null);
+        private static final GrowthCondition DEFAULT = new GrowthCondition(true, 9, 15, FluidStack.EMPTY, null);
         public static Codec<GrowthCondition> CODEC = RecordCodecBuilder.create(instance -> instance.group(
                 Codec.BOOL.fieldOf("canForceGrowth").orElse(true).forGetter(GrowthCondition::canForceGrowth),
                 ExtraCodecs.POSITIVE_INT.fieldOf("minLight").orElse(9).forGetter(GrowthCondition::minLight),
                 ExtraCodecs.POSITIVE_INT.fieldOf("maxLight").orElse(15).forGetter(GrowthCondition::maxLight),
-                ForgeRegistries.FLUIDS.getCodec().fieldOf("fluid").orElse(Fluids.EMPTY).forGetter(GrowthCondition::fluid),
+                FluidStack.CODEC.fieldOf("fluid").orElse(FluidStack.EMPTY).forGetter(GrowthCondition::fluid),
                 Biome.LIST_CODEC.optionalFieldOf("biome").forGetter(GrowthCondition::biome)
         ).apply(instance, GrowthCondition::new));
     }
@@ -165,7 +166,7 @@ public class TreeObject extends WoodObject
         ).apply(instance, Fruit::new));
 
         public ItemStack getItem() {
-            var item = ForgeRegistries.ITEMS.getValue(fruitItem);
+            var item = BuiltInRegistries.ITEM.get(fruitItem);
             return item != null ? new ItemStack(item, count) : ItemStack.EMPTY;
         }
     }

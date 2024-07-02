@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "productivetrees:asai_berry_crate"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "productivetrees:asai_berry"
+  }
+}

@@ -1,14 +1,16 @@
 package cy.jdkdigital.productivetrees.datagen;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class BeeProvider extends cy.jdkdigital.productivebees.datagen.BeeProvider
 {
-    public BeeProvider(PackOutput output) {
+    public BeeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output);
     }
 

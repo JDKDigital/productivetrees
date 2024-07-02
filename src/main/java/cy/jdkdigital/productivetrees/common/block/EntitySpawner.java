@@ -1,5 +1,6 @@
 package cy.jdkdigital.productivetrees.common.block;
 
+import com.mojang.serialization.MapCodec;
 import cy.jdkdigital.productivetrees.common.block.entity.EntitySpawnerBlockEntity;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
@@ -20,10 +21,17 @@ import javax.annotation.Nullable;
 
 public class EntitySpawner extends BaseEntityBlock
 {
+    public static final MapCodec<EntitySpawner> CODEC = simpleCodec(EntitySpawner::new);
+
     protected static final VoxelShape SHAPE = Shapes.box(0, 0, 0, 0, 0, 0);
 
     public EntitySpawner(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @SuppressWarnings("deprecation")
@@ -40,7 +48,7 @@ public class EntitySpawner extends BaseEntityBlock
         return RenderShape.INVISIBLE;
     }
 
-    @org.jetbrains.annotations.Nullable
+    @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new EntitySpawnerBlockEntity(pos, state);
@@ -51,5 +59,4 @@ public class EntitySpawner extends BaseEntityBlock
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         return level.isClientSide ? null : createTickerHelper(blockEntityType, TreeRegistrator.ENTITY_SPAWNER_BLOCK_ENTITY.get(), EntitySpawnerBlockEntity::tick);
     }
-
 }

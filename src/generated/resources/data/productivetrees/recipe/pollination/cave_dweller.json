@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:black_ember_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:soul_tree_leaves"
+  },
+  "processingTime": 0.05,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:cave_dweller_sapling"
+  }
+}

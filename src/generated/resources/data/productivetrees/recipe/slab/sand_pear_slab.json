@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "slab",
+  "key": {
+    "#": {
+      "item": "productivetrees:sand_pear_planks"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "productivetrees:sand_pear_slab"
+  }
+}

@@ -2,6 +2,7 @@ package cy.jdkdigital.productivetrees.feature.trunkplacers;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
@@ -21,7 +22,7 @@ import java.util.function.BiConsumer;
 
 public class CenteredUpwardsBranchingTrunkPlacer extends UpwardsBranchingTrunkPlacer
 {
-    public static final Codec<CenteredUpwardsBranchingTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+    public static final MapCodec<CenteredUpwardsBranchingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return trunkPlacerParts(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter((trunkPlacer) -> trunkPlacer.extraBranchSteps), Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter((trunkPlacer) -> trunkPlacer.placeBranchPerLogProbability), IntProvider.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter((trunkPlacer) -> trunkPlacer.extraBranchLength))).apply(instance, CenteredUpwardsBranchingTrunkPlacer::new);
     });
     private final IntProvider extraBranchSteps;

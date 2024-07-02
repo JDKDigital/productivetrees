@@ -30,7 +30,7 @@ public class LogStrippingRecipeCategory implements IRecipeCategory<LogStrippingR
     private final IDrawable icon;
 
     public LogStrippingRecipeCategory(IGuiHelper guiHelper) {
-        ResourceLocation location = new ResourceLocation(ProductiveTrees.MODID, "textures/gui/jei/stripping.png");
+        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/stripping.png");
         this.background = guiHelper.createDrawable(location, 0, 0, 130, 60);
         this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TreeRegistrator.STRIPPER.get()));
     }
@@ -74,9 +74,9 @@ public class LogStrippingRecipeCategory implements IRecipeCategory<LogStrippingR
 
         if (recipe.log.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock) {
             var tree = TreeUtil.getTree(logBlock);
-            if (tree != null && !tree.getStripDrop().get().isEmpty()) {
-                builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 15)
-                        .addItemStack(tree.getStripDrop().get())
+            if (tree != null && tree.getStripDrop().isPresent()) {
+                builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 34)
+                        .addItemStack(tree.getStripDropStack())
                         .setSlotName("bark");
             }
         }

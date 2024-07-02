@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": {
+    "tag": "productivetrees:brazil_nut_logs"
+  },
+  "planks": {
+    "count": 6,
+    "id": "productivetrees:brazil_nut_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  }
+}

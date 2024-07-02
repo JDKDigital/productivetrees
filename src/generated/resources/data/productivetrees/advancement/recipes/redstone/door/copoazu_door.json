@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_copoazu_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:copoazu_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:door/copoazu_door"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_copoazu_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:door/copoazu_door"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:sign/western_hemlock_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_western_hemlock_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:western_hemlock_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_western_hemlock_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:sign/western_hemlock_sign"
+    ]
+  }
+}

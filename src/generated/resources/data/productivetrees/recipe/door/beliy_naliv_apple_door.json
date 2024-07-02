@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "door",
+  "key": {
+    "#": {
+      "item": "productivetrees:beliy_naliv_apple_planks"
+    }
+  },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "id": "productivetrees:beliy_naliv_apple_door"
+  }
+}

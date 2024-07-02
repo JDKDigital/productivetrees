@@ -9,8 +9,8 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 
 public class ProductiveStandingSignBlock extends StandingSignBlock
 {
-    public ProductiveStandingSignBlock(Properties properties, WoodType woodType) {
-        super(properties, woodType);
+    public ProductiveStandingSignBlock(WoodType woodType, Properties properties) {
+        super(woodType, properties);
     }
 
     @Override

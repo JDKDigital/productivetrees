@@ -1,0 +1,18 @@
+{
+  "type": "productivetrees:sawmill",
+  "log": {
+    "tag": "productivetrees:logwood_logs"
+  },
+  "planks": {
+    "count": 6,
+    "id": "productivetrees:logwood_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  },
+  "tertiary": {
+    "count": 1,
+    "id": "productivetrees:haematoxylin"
+  }
+}

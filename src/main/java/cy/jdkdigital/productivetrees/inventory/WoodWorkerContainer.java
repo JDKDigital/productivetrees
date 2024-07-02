@@ -11,7 +11,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
@@ -32,14 +31,12 @@ public class WoodWorkerContainer extends AbstractContainer
         this.blockEntity = blockEntity;
         this.canInteractWithCallable = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
 
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(inv -> {
-            // Input slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, WoodWorkerBlockEntity.SLOT_IN, 44, 25));
-            // Axe slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, WoodWorkerBlockEntity.SLOT_AXE, 44, 44));
-            // Output slot
-            addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) inv, WoodWorkerBlockEntity.SLOT_OUT, 116, 34));
-        });
+        // Input slot
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, WoodWorkerBlockEntity.SLOT_IN, 44, 25));
+        // Axe slot
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, WoodWorkerBlockEntity.SLOT_AXE, 44, 44));
+        // Output slot
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, WoodWorkerBlockEntity.SLOT_OUT, 116, 34));
 
         layoutPlayerInventorySlots(playerInventory, 0, 8, 84);
     }

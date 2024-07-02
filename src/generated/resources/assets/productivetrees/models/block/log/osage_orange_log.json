@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log",
+  "textures": {
+    "end": "productivetrees:block/log_top/osage_orange",
+    "side": "productivetrees:block/log/osage_orange"
+  }
+}

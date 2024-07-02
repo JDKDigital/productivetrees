@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sand_pear_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:sand_pear_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:slab/sand_pear_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sand_pear_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:slab/sand_pear_slab"
+    ]
+  }
+}

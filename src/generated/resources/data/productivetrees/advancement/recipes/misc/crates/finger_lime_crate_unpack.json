@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_finger_lime": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:finger_lime"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/finger_lime_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_finger_lime"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/finger_lime_crate_unpack"
+    ]
+  }
+}

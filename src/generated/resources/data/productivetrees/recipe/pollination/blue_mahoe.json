@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:teak_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:balsa_leaves"
+  },
+  "processingTime": 5.0,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:blue_mahoe_sapling"
+  }
+}

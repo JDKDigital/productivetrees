@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees.integrations.jei;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.common.item.PollenItem;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
@@ -14,8 +15,9 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
@@ -27,7 +29,7 @@ public class TreePollinationRecipeCategory implements IRecipeCategory<TreePollin
     private final IDrawable icon;
 
     public TreePollinationRecipeCategory(IGuiHelper guiHelper) {
-        ResourceLocation location = new ResourceLocation(ProductiveTrees.MODID, "textures/gui/jei/tree_pollination.png");
+        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/tree_pollination.png");
         this.background = guiHelper.createDrawable(location, 0, 0, 130, 60);
         this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TreeRegistrator.POLLEN.get()));
     }
@@ -60,7 +62,7 @@ public class TreePollinationRecipeCategory implements IRecipeCategory<TreePollin
         builder.addSlot(RecipeIngredientRole.INPUT, 13, 27)
                 .addItemStacks(Arrays.stream(recipe.leafA.getItems()).map(TreeUtil::getSaplingFromLeaf).toList())
                 .setSlotName("leafA");
-
+        builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(Arrays.stream(recipe.leafA.getItems()).filter(itemStack -> itemStack.getItem() instanceof BlockItem).map(itemStack -> TreeUtil.getPollen(((BlockItem) itemStack.getItem()).getBlock())).toList());
 
         if (!ModList.get().isLoaded("emi")) {
             builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(Arrays.asList(recipe.leafA.getItems()));
@@ -69,6 +71,7 @@ public class TreePollinationRecipeCategory implements IRecipeCategory<TreePollin
         builder.addSlot(RecipeIngredientRole.INPUT, 56, 27)
                 .addItemStacks(Arrays.stream(recipe.leafB.getItems()).map(TreeUtil::getSaplingFromLeaf).toList())
                 .setSlotName("leafB");
+        builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(Arrays.stream(recipe.leafB.getItems()).filter(itemStack -> itemStack.getItem() instanceof BlockItem).map(itemStack -> TreeUtil.getPollen(((BlockItem) itemStack.getItem()).getBlock())).toList());
 
         if (!ModList.get().isLoaded("emi")) {
             builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(Arrays.asList(recipe.leafB.getItems()));

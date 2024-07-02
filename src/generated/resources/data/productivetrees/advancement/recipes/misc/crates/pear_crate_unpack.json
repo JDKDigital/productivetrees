@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pear": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:pear"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/pear_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pear"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/pear_crate_unpack"
+    ]
+  }
+}

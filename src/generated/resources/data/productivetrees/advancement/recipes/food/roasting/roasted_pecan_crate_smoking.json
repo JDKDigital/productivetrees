@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pecan_crate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:pecan_crate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:roasting/roasted_pecan_crate_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pecan_crate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:roasting/roasted_pecan_crate_smoking"
+    ]
+  }
+}

@@ -19,11 +19,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,7 +31,7 @@ public class WoodWorkerBlockEntity extends CapabilityBlockEntity implements Menu
     public static int SLOT_IN = 0;
     public static int SLOT_OUT = 1;
     public static int SLOT_AXE = 2;
-    private final LazyOptional<IItemHandlerModifiable> inventoryHandler = LazyOptional.of(() -> new InventoryHandlerHelper.BlockEntityItemStackHandler(3, this)
+    public final IItemHandlerModifiable inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(3, this)
     {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
@@ -66,12 +63,12 @@ public class WoodWorkerBlockEntity extends CapabilityBlockEntity implements Menu
                 serverLevel.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
             }
         }
-    });
+    };
 
     private boolean canProcess(ItemStack stack) {
         var stripped = TreeUtil.getStrippedItem(stack);
 
-        return !stripped.isEmpty() && !ItemHandlerHelper.canItemStacksStack(stack, stripped);
+        return !stripped.isEmpty() && !ItemStack.isSameItemSameComponents(stack, stripped);
     }
 
     public WoodWorkerBlockEntity(BlockPos pos, BlockState state) {
@@ -83,28 +80,23 @@ public class WoodWorkerBlockEntity extends CapabilityBlockEntity implements Menu
         return Component.translatable(TreeRegistrator.STRIPPER.get().getDescriptionId());
     }
 
+    @Override
+    public IItemHandler getItemHandler() {
+        return inventoryHandler;
+    }
+
     public static void tick(Level level, BlockPos pos, BlockState state, WoodWorkerBlockEntity blockEntity) {
         if (++blockEntity.tickCounter % 10 == 0 && level instanceof ServerLevel serverLevel) {
-            blockEntity.inventoryHandler.ifPresent(inv -> {
-            });
         }
     }
 
     public ItemStack getAxe() {
-        return inventoryHandler.map(h -> h.getStackInSlot(SLOT_AXE)).orElse(ItemStack.EMPTY);
+        return inventoryHandler.getStackInSlot(SLOT_AXE);
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int windowId, Inventory playerInventory, Player player) {
         return new WoodWorkerContainer(windowId, playerInventory, this);
-    }
-
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(ForgeCapabilities.ITEM_HANDLER)) {
-            return inventoryHandler.cast();
-        }
-        return super.getCapability(cap, side);
     }
 }

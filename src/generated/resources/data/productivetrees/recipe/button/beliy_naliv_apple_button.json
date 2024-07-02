@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:beliy_naliv_apple_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:beliy_naliv_apple_button"
+  }
+}

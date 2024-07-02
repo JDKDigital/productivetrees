@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_logwood_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:logwood_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:sign/logwood_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_logwood_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:sign/logwood_sign"
+    ]
+  }
+}

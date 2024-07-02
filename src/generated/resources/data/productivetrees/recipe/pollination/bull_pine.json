@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:european_larch_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:spruce_leaves"
+  },
+  "processingTime": 0.1,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:bull_pine_sapling"
+  }
+}

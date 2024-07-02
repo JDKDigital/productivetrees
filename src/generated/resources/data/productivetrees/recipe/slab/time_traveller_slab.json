@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "slab",
+  "key": {
+    "#": {
+      "item": "productivetrees:time_traveller_planks"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "productivetrees:time_traveller_slab"
+  }
+}

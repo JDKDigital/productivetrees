@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "productivetrees:loblolly_pine_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "productivetrees:loblolly_pine_planks"
+  }
+}

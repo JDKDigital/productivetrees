@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_flowering_crabapple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:flowering_crabapple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/flowering_crabapple_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_flowering_crabapple"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/flowering_crabapple_crate_unpack"
+    ]
+  }
+}

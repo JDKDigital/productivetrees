@@ -1,11 +1,13 @@
 package cy.jdkdigital.productivetrees.common.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -22,11 +24,18 @@ import org.jetbrains.annotations.Nullable;
 
 public class CoconutSproutBlock extends FallingBlock implements SimpleWaterloggedBlock
 {
+    public static final MapCodec<CoconutSproutBlock> CODEC = simpleCodec(CoconutSproutBlock::new);
+
     protected static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 6.0D, 11.0D);
 
     public CoconutSproutBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any().setValue(BlockStateProperties.WATERLOGGED, false));
+    }
+
+    @Override
+    protected MapCodec<? extends FallingBlock> codec() {
+        return CODEC;
     }
 
     @Override

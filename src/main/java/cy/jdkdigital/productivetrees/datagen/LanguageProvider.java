@@ -6,14 +6,16 @@ import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.registry.WoodObject;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LanguageProvider extends net.minecraftforge.common.data.LanguageProvider
+public class LanguageProvider extends net.neoforged.neoforge.common.data.LanguageProvider
 {
     public LanguageProvider(PackOutput output) {
         super(output, ProductiveTrees.MODID, "en_us");
@@ -64,14 +66,15 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add(TreeRegistrator.CURED_RUBBER.get(), "Cured Rubber");
         add(TreeRegistrator.SANDALWOOD_OIL.get(), "Sandalwood Oil");
 
-        ProductiveTrees.ITEMS.getEntries().forEach(itemRegistryObject -> {
-            if (itemRegistryObject.get().getFoodProperties() != null) {
-                add(itemRegistryObject.get(), LangUtil.capName(ForgeRegistries.ITEMS.getKey(itemRegistryObject.get()).getPath()));
+        ProductiveTrees.ITEMS.getEntries().forEach(itemDeferredHolder -> {
+            var stack = new ItemStack(itemDeferredHolder.get());
+            if (stack.has(DataComponents.FOOD)) {
+                add(itemDeferredHolder.get(), LangUtil.capName(BuiltInRegistries.ITEM.getKey(itemDeferredHolder.get()).getPath()));
             }
         });
 
         TreeRegistrator.CRATED_CROPS.forEach(crate -> {
-            add(ForgeRegistries.BLOCKS.getValue(crate), "Crate of " + LangUtil.pluralCapName(crate.getPath().replace("_crate", "")));
+            add(BuiltInRegistries.BLOCK.get(crate), "Crate of " + LangUtil.pluralCapName(crate.getPath().replace("_crate", "")));
         });
 
         TreeFinder.trees.forEach((id, treeObject) -> {
@@ -105,9 +108,9 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
         add(TreeUtil.getBlock(woodObject.getId(), "_sign"), LangUtil.capName(name) + " Sign");
         add(TreeUtil.getBlock(woodObject.getId(), "_hanging_sign"), LangUtil.capName(name) + " Hanging Sign");
         if (woodObject.getStyle().hiveStyle() != null) {
-            Block hive = ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
+            Block hive = BuiltInRegistries.BLOCK.get(woodObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
             add(hive, "Advanced " + LangUtil.capName(name) + " Beehive");
-            Block box = ForgeRegistries.BLOCKS.getValue(woodObject.getId().withPath(p ->  "expansion_box_" + p));
+            Block box = BuiltInRegistries.BLOCK.get(woodObject.getId().withPath(p ->  "expansion_box_" + p));
             add(box, LangUtil.capName(name) + " Expansion Box");
         }
     }
@@ -214,7 +217,7 @@ public class LanguageProvider extends net.minecraftforge.common.data.LanguagePro
             put("golden_delicious_apple", "Malus domestica 'Golden Delicious'");
             put("granny_smith_apple", "Malus domestica 'Granny Smith'");
             put("red_delicious_apple", "Malus domestica 'Red Delicious'");
-            put("osange_orange", "Maclura pomifera");
+            put("osage_orange", "Maclura pomifera");
             put("padauk", "Pterocarpus soyauxii");
             put("pandanus", "Pandanus tectorius");
             put("papaya", "Carica papaya");

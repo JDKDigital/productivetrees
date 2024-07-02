@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_asai_berry": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:asai_berry"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/asai_berry_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_asai_berry"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/asai_berry_crate"
+    ]
+  }
+}

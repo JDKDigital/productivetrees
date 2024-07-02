@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "slab",
+  "key": {
+    "#": {
+      "item": "productivetrees:granny_smith_apple_planks"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "productivetrees:granny_smith_apple_slab"
+  }
+}

@@ -1,6 +1,6 @@
 package cy.jdkdigital.productivetrees.feature.trunkplacers;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
@@ -8,7 +8,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 
 public class UnlimitedStraightTrunkPlacer extends StraightTrunkPlacer
 {
-    public static final Codec<UnlimitedStraightTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+    public static final MapCodec<UnlimitedStraightTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return TrunkPlacerCodecs.trunkPlacerParts(instance).apply(instance, UnlimitedStraightTrunkPlacer::new);
     });
 

@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "leafA": {
+    "item": "productivetrees:firecracker_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:flickering_sun_leaves"
+  },
+  "processingTime": 0.05,
+  "result": {
+    "count": 1,
+    "id": "productivetrees:thunder_bolt_sapling"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sparkle_cherry_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:sparkle_cherry_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:pressure_plate/sparkle_cherry_pressure_plate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sparkle_cherry_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:pressure_plate/sparkle_cherry_pressure_plate"
+    ]
+  }
+}

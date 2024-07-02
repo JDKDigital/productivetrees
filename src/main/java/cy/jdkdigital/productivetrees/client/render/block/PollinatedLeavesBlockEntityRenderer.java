@@ -8,8 +8,8 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraftforge.client.model.data.ModelData;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.client.model.data.ModelData;
 
 import javax.annotation.Nonnull;
 
@@ -22,7 +22,7 @@ public class PollinatedLeavesBlockEntityRenderer implements BlockEntityRenderer<
         if (blockEntity.getLeafA() != null && Minecraft.getInstance().level != null) {
             poseStack.pushPose();
             var pState = blockEntity.getLeafA().defaultBlockState();
-            var renderType = TreeUtil.isTranslucentTree(ForgeRegistries.BLOCKS.getKey(blockEntity.getLeafA()).getPath()) ? RenderType.translucent() : RenderType.cutout();
+            var renderType = TreeUtil.isTranslucentTree(BuiltInRegistries.BLOCK.getKey(blockEntity.getLeafA()).getPath()) ? RenderType.translucent() : RenderType.cutout();
             Minecraft.getInstance().getBlockRenderer().renderSingleBlock(pState, poseStack, bufferSource, combinedLightIn, combinedOverlayIn, ModelData.EMPTY, renderType);
             poseStack.popPose();
         }

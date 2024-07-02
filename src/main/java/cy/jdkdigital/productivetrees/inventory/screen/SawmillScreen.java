@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SawmillScreen extends AbstractContainerScreen<SawmillContainer>
 {
-    private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(ProductiveTrees.MODID, "textures/gui/container/sawmill.png");
+    private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/container/sawmill.png");
 
     public SawmillScreen(SawmillContainer container, Inventory inv, Component titleIn) {
         super(container, inv, titleIn);
@@ -22,7 +22,7 @@ public class SawmillScreen extends AbstractContainerScreen<SawmillContainer>
 
     @Override
     public void render(GuiGraphics matrixStack, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(matrixStack);
+        this.renderBackground(matrixStack, mouseX, mouseY, partialTicks);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         this.renderTooltip(matrixStack, mouseX, mouseY);
     }

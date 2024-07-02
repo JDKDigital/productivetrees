@@ -6,6 +6,7 @@ import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -13,9 +14,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -35,7 +35,7 @@ public class ItemTagProvider extends ItemTagsProvider
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             tag(ItemTags.LEAVES).add(TreeUtil.getBlock(id, "_leaves").asItem());
-            copy(BlockTags.create(new ResourceLocation(ProductiveTrees.MODID, id.getPath() + "_logs")), ItemTags.create(new ResourceLocation(ProductiveTrees.MODID, id.getPath() + "_logs")));
+            copy(BlockTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, id.getPath() + "_logs")), ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, id.getPath() + "_logs")));
         });
         copy(BlockTags.FLOWERS, ItemTags.FLOWERS);
         copy(BlockTags.LOGS, ItemTags.LOGS);
@@ -53,22 +53,22 @@ public class ItemTagProvider extends ItemTagsProvider
         copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
 
         tag(ModTags.STRIPPER_TOOLS).addTag(ItemTags.AXES)
-                .addOptional(new ResourceLocation("allthemodium:alloy_axe"))
-                .addOptional(new ResourceLocation("allthemodium:unobtainium_axe"))
-                .addOptional(new ResourceLocation("allthemodium:vibranium_axe"))
-                .addOptional(new ResourceLocation("allthemodium:allthemodium_axe"));
+                .addOptional(ResourceLocation.parse("allthemodium:alloy_axe"))
+                .addOptional(ResourceLocation.parse("allthemodium:unobtainium_axe"))
+                .addOptional(ResourceLocation.parse("allthemodium:vibranium_axe"))
+                .addOptional(ResourceLocation.parse("allthemodium:allthemodium_axe"));
         copy(ModTags.POLLINATABLE, ModTags.POLLINATABLE_ITEM);
         copy(cy.jdkdigital.productivebees.init.ModTags.HIVES_BLOCK, cy.jdkdigital.productivebees.init.ModTags.HIVES);
         copy(cy.jdkdigital.productivebees.init.ModTags.BOXES_BLOCK, cy.jdkdigital.productivebees.init.ModTags.BOXES);
 
         // Diet compat
-        var dietFruitsTag = tag(ItemTags.create(new ResourceLocation("diet:fruits")));
-        var dietProteinsTag = tag(ItemTags.create(new ResourceLocation("diet:proteins")));
-        var dietIngredientsTag = tag(ItemTags.create(new ResourceLocation("diet:ingredients")));
+        var dietFruitsTag = tag(ItemTags.create(ResourceLocation.parse("diet:fruits")));
+        var dietProteinsTag = tag(ItemTags.create(ResourceLocation.parse("diet:proteins")));
+        var dietIngredientsTag = tag(ItemTags.create(ResourceLocation.parse("diet:ingredients")));
 
         // Create compat
-        var moddedStrippedLogs = tag(ItemTags.create(new ResourceLocation("create:modded_stripped_logs")));
-        var moddedStrippedWood = tag(ItemTags.create(new ResourceLocation("create:modded_stripped_wood")));
+        var moddedStrippedLogs = tag(ItemTags.create(ResourceLocation.parse("create:modded_stripped_logs")));
+        var moddedStrippedWood = tag(ItemTags.create(ResourceLocation.parse("create:modded_stripped_wood")));
         TreeFinder.trees.forEach((id, treeObject) -> {
             moddedStrippedLogs.add(TreeUtil.getBlock(id, "_stripped_log").asItem());
             moddedStrippedWood.add(TreeUtil.getBlock(id, "_stripped_wood").asItem());
@@ -80,7 +80,7 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(ModTags.CINNAMON).add(TreeRegistrator.CINNAMON.get());
         tag(ModTags.NUTMEG).add(TreeRegistrator.NUTMEG.get());
         tag(ModTags.COFFEE_BEANS).add(TreeRegistrator.COFFEE_BEAN.get());
-        tag(ModTags.ROASTED_COFFEE_BEANS).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "roasted_coffee_bean")));
+        tag(ModTags.ROASTED_COFFEE_BEANS).add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasted_coffee_bean")));
         tag(ModTags.MAPLE_SYRUP).add(TreeRegistrator.MAPLE_SYRUP.get());
         tag(ModTags.DATE_PALM_JUICE).add(TreeRegistrator.DATE_PALM_JUICE.get());
         tag(ModTags.CORK).add(TreeRegistrator.CORK.get());
@@ -91,58 +91,58 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(Tags.Items.DYES_RED).add(TreeRegistrator.DRACAENA_SAP.get(), TreeRegistrator.HAEMATOXYLIN.get());
 
         TreeRegistrator.BERRIES.forEach(cropConfig ->  {
-            var tagKey = ItemTags.create(new ResourceLocation("forge", "berries/" + tagName(cropConfig.name())));
-            var tagKeyFruit = ItemTags.create(new ResourceLocation("forge", "fruits/" + tagName(cropConfig.name())));
-            var tagKeyCrop = ItemTags.create(new ResourceLocation("forge", "crops/" + tagName(cropConfig.name())));
-            tag(tagKey).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            var tagKey = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "berries/" + tagName(cropConfig.name())));
+            var tagKeyFruit = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "fruits/" + tagName(cropConfig.name())));
+            var tagKeyCrop = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "crops/" + tagName(cropConfig.name())));
+            tag(tagKey).add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.BERRIES).addTag(tagKey);
             dietFruitsTag.addTag(tagKey);
-            tag(tagKeyFruit).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            tag(tagKeyFruit).add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.FRUITS).addTag(tagKeyFruit);
-            tag(tagKeyCrop).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            tag(tagKeyCrop).add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.CROPS).addTag(tagKeyCrop);
         });
         TreeRegistrator.FRUITS.forEach(cropConfig ->  {
-            var tagKey = ItemTags.create(new ResourceLocation("forge", "fruits/" + tagName(cropConfig.name())));
-            var tagKeyCrop = ItemTags.create(new ResourceLocation("forge", "crops/" + tagName(cropConfig.name())));
-            tag(tagKey).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            var tagKey = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "fruits/" + tagName(cropConfig.name())));
+            var tagKeyCrop = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "crops/" + tagName(cropConfig.name())));
+            tag(tagKey).add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.FRUITS).addTag(tagKey);
             dietFruitsTag.addTag(tagKey);
-            tag(tagKeyCrop).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            tag(tagKeyCrop).add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.CROPS).addTag(tagKeyCrop);
         });
         TreeRegistrator.NUTS.forEach(cropConfig ->  {
-            var tagKey = ItemTags.create(new ResourceLocation("forge", "nuts/" + tagName(cropConfig.name())));
-            var tagKeyCrop = ItemTags.create(new ResourceLocation("forge", "crops/" + tagName(cropConfig.name())));
-            tag(tagKey).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            var tagKey = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "nuts/" + tagName(cropConfig.name())));
+            var tagKeyCrop = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "crops/" + tagName(cropConfig.name())));
+            tag(tagKey).add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.NUTS).addTag(tagKey);
             dietProteinsTag.addTag(tagKey);
-            tag(tagKeyCrop).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            tag(tagKeyCrop).add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.CROPS).addTag(tagKeyCrop);
         });
         TreeRegistrator.ROASTED_NUTS.forEach(cropConfig ->  {
-            var tagKey = ItemTags.create(new ResourceLocation("forge", "nuts/" + tagName(cropConfig.name())));
-            tag(tagKey).add(ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, cropConfig.name())));
+            var tagKey = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "nuts/" + tagName(cropConfig.name())));
+            tag(tagKey).add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name())));
             tag(ModTags.NUTS).addTag(tagKey);
             dietProteinsTag.addTag(tagKey);
         });
 
         tag(ModTags.FRUITS_APPLE).add(
                 Items.APPLE,
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "golden_delicious_apple")),
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "granny_smith_apple")),
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "beliy_naliv_apple"))
+                BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "golden_delicious_apple")),
+                BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "granny_smith_apple")),
+                BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "beliy_naliv_apple"))
         );
         tag(ModTags.FRUITS_CRABAPPLE).add(
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "sweet_crabapple")),
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "prairie_crabapple")),
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "flowering_crabapple"))
+                BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sweet_crabapple")),
+                BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "prairie_crabapple")),
+                BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "flowering_crabapple"))
         );
         tag(ModTags.FRUITS_CHERRY).add(
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "black_cherry")),
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "sour_cherry")),
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "sparkling_cherry")),
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation(ProductiveTrees.MODID, "wild_cherry"))
+                BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "black_cherry")),
+                BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sour_cherry")),
+                BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sparkling_cherry")),
+                BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "wild_cherry"))
         );
         tag(ModTags.FRUITS).addTags(ModTags.FRUITS_APPLE, ModTags.FRUITS_CRABAPPLE, ModTags.FRUITS_CHERRY);
 
@@ -158,8 +158,8 @@ public class ItemTagProvider extends ItemTagsProvider
 
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
         TreeRegistrator.CRATED_CROPS.forEach(cratePath ->  {
-            var blockTagKey = BlockTags.create(new ResourceLocation("forge", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
-            var tagKey = ItemTags.create(new ResourceLocation("forge", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
+            var blockTagKey = BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
+            var tagKey = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
             copy(blockTagKey, tagKey);
         });
     }

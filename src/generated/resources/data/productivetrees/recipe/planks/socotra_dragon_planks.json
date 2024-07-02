@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "productivetrees:socotra_dragon_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "productivetrees:socotra_dragon_planks"
+  }
+}
