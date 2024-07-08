@@ -40,7 +40,7 @@ license="${mod_license}"
     modId="productivebees"
     type="optional"
     versionRange="[${minecraft_version}-${pb_version},)"
-    ordering="NONE"
+    ordering="BEFORE"
     side="BOTH"
 [[dependencies.${mod_id}]]
     modId="treetap"

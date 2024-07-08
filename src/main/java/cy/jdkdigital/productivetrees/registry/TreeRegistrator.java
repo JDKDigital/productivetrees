@@ -66,20 +66,6 @@ public class TreeRegistrator
 {
     public static final Supplier<DataComponentType<ResourceLocation>> POLLEN_BLOCK_COMPONENT = ProductiveTrees.DATA_COMPONENTS.register("pollen_block", () -> DataComponentType.<ResourceLocation>builder().persistent(ResourceLocation.CODEC).networkSynchronized(ResourceLocation.STREAM_CODEC).build());
 
-    public static final DeferredHolder<PoiType, PoiType> ADVANCED_HIVES = ProductiveTrees.POI_TYPES.register("advanced_beehive", () -> {
-        Set<BlockState> blockStates = new HashSet<>();
-        TreeFinder.trees.forEach((id, treeObject) -> {
-            if (ModList.get().isLoaded("productivebees") && treeObject.getStyle().hiveStyle() != null) {
-                try {
-                    Block hive = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
-                    blockStates.addAll(hive.getStateDefinition().getPossibleStates());
-                } catch (NullPointerException e) {
-                    throw new RuntimeException(treeObject.getId() + " failed hive");
-                }
-            }
-        });
-        return new PoiType(blockStates, 1, 1);
-    });
     public static final ResourceKey<CreativeModeTab> TAB_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, ProductiveTrees.MODID));
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = ProductiveTrees.CREATIVE_MODE_TABS.register(ProductiveTrees.MODID, () -> {
         return CreativeModeTab.builder()
@@ -412,9 +398,6 @@ public class TreeRegistrator
     public static void registerSignBlockEntities() {
         SIGN_BE = registerBlockEntity("productivetrees_sign", () -> createBlockEntityType(ProductiveSignBlockEntity::new, SIGNS.stream().map(DeferredHolder::get).toList().toArray(new Block[0])));
         HANGING_SIGN_BE = registerBlockEntity("productivetrees_hanging_sign", () -> createBlockEntityType(ProductiveHangingSignBlockEntity::new, HANGING_SIGNS.stream().map(DeferredHolder::get).toList().toArray(new Block[0])));
-        if (ModList.get().isLoaded("productivebees")) {
-            CompatHandler.registerBlockEntities();
-        }
     }
 
     public static DeferredHolder<Item, Item> registerItem(String name) {

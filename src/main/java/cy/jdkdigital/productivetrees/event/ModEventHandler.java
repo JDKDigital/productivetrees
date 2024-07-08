@@ -28,9 +28,6 @@ public class ModEventHandler
 
     @SubscribeEvent
     public static void registerBlockEntityCapabilities(RegisterCapabilitiesEvent event) {
-        if (ModList.get().isLoaded("productivebees")) {
-            CompatHandler.registerBlockEntityCapabilities(event);
-        }
         // Stripper
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
