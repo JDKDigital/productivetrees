@@ -6,6 +6,7 @@ import cy.jdkdigital.productivebees.common.block.ExpansionBox;
 import cy.jdkdigital.productivebees.common.block.entity.AdvancedBeehiveBlockEntity;
 import cy.jdkdigital.productivebees.common.block.entity.ExpansionBoxBlockEntity;
 import cy.jdkdigital.productivebees.common.entity.bee.ProductiveBee;
+import cy.jdkdigital.productivebees.init.ModBlocks;
 import cy.jdkdigital.productivebees.init.ModItems;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
@@ -24,10 +25,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.ArrayList;
@@ -41,23 +39,8 @@ public class CompatHandler
     private static List<DeferredHolder<Block, Block>> HIVES = new ArrayList<>();
     private static List<DeferredHolder<Block, Block>> BOXES = new ArrayList<>();
     public static void createHive(String name, WoodObject woodObject, ToIntFunction<BlockState> lightLevel) {
-        HIVES.add(TreeRegistrator.registerBlock("advanced_" + name + "_beehive", () -> new AdvancedBeehive(Block.Properties.ofFullCopy(Blocks.BEEHIVE).lightLevel(lightLevel)), true));
-        BOXES.add(TreeRegistrator.registerBlock("expansion_box_" + name, () -> new ExpansionBox(Block.Properties.ofFullCopy(Blocks.BEEHIVE).lightLevel(lightLevel)), true));
-    }
-
-    private static DeferredHolder<BlockEntityType<?>, BlockEntityType<AdvancedBeehiveBlockEntity>> HIVE_BLOCK_ENTITY;
-    public static void registerBlockEntities() {
-        HIVE_BLOCK_ENTITY = TreeRegistrator.registerBlockEntity("hives", () -> TreeRegistrator.createBlockEntityType(AdvancedBeehiveBlockEntity::new, HIVES.stream().map(DeferredHolder::get).toList().toArray(new Block[0])));
-        TreeRegistrator.registerBlockEntity("boxes", () -> TreeRegistrator.createBlockEntityType(ExpansionBoxBlockEntity::new, BOXES.stream().map(DeferredHolder::get).toList().toArray(new Block[0])));
-    }
-
-    public static void registerBlockEntityCapabilities(RegisterCapabilitiesEvent event) {
-        // Hives
-        event.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
-                HIVE_BLOCK_ENTITY.get(),
-                (myBlockEntity, side) -> myBlockEntity.inventoryHandler
-        );
+        ModBlocks.HIVES.put("advanced_" + name + "_beehive", TreeRegistrator.registerBlock("advanced_" + name + "_beehive", () -> new AdvancedBeehive(Block.Properties.ofFullCopy(Blocks.BEEHIVE).lightLevel(lightLevel)), true));
+        ModBlocks.EXPANSIONS.put("expansion_box_" + name, TreeRegistrator.registerBlock("expansion_box_" + name, () -> new ExpansionBox(Block.Properties.ofFullCopy(Blocks.BEEHIVE).lightLevel(lightLevel)), true));
     }
 
     public static void beeRelease(BeeReleaseEvent event) {

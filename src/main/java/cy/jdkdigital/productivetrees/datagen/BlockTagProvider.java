@@ -45,6 +45,7 @@ public class BlockTagProvider extends BlockTagsProvider
         var stairs = tag(BlockTags.WOODEN_STAIRS);
         var fences = tag(BlockTags.WOODEN_FENCES);
         var fenceGates = tag(BlockTags.FENCE_GATES);
+        var woodenFenceGates = tag(Tags.Blocks.FENCE_GATES_WOODEN);
         var buttons = tag(BlockTags.WOODEN_BUTTONS);
         var doors = tag(BlockTags.WOODEN_DOORS);
         var trapdoors = tag(BlockTags.WOODEN_TRAPDOORS);
@@ -103,6 +104,7 @@ public class BlockTagProvider extends BlockTagsProvider
             slabs.add(TreeUtil.getBlock(id, "_slab"));
             fences.add(TreeUtil.getBlock(id, "_fence"));
             fenceGates.add(TreeUtil.getBlock(id, "_fence_gate"));
+            woodenFenceGates.add(TreeUtil.getBlock(id, "_fence_gate"));
             pressurePlates.add(TreeUtil.getBlock(id, "_pressure_plate"));
             buttons.add(TreeUtil.getBlock(id, "_button"));
             doors.add(TreeUtil.getBlock(id, "_door"));

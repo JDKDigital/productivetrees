@@ -6,10 +6,10 @@
       "item": "productivetrees:time_traveller_planks"
     },
     "I": {
-      "tag": "forge:glass/colorless"
+      "tag": "c:glass/colorless"
     },
     "S": {
-      "tag": "forge:string"
+      "tag": "c:strings"
     }
   },
   "pattern": [

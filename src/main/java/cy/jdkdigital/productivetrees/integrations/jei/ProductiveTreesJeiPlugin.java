@@ -23,6 +23,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -32,6 +33,7 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @JeiPlugin
 public class ProductiveTreesJeiPlugin implements IModPlugin
@@ -111,7 +113,14 @@ public class ProductiveTreesJeiPlugin implements IModPlugin
         Arrays.stream(Ingredient.of(ItemTags.LOGS).getItems()).forEach(itemStack -> {
             var stripped = TreeUtil.getStrippedItem(itemStack);
             if (!stripped.isEmpty() && !ItemStack.isSameItem(itemStack, stripped)) {
-                stripList.add(new LogStrippingRecipe(itemStack, stripped));
+                Optional<ItemStack> secondary = Optional.empty();
+                if (itemStack.getItem() instanceof BlockItem blockItem) {
+                    var tree = TreeUtil.getTree(blockItem.getBlock());
+                    if (tree != null && tree.getStripDrop().isPresent()) {
+                        secondary = Optional.of(tree.getStripDropStack());
+                    }
+                }
+                stripList.add(new LogStrippingRecipe(itemStack, stripped, secondary));
             }
         });
         registration.addRecipes(LOG_STRIPPING_TYPE, stripList);

@@ -57,7 +57,7 @@ public class TreeFruitingRecipeCategory implements IRecipeCategory<TreeFruitingR
     public void setRecipe(IRecipeLayoutBuilder builder, TreeFruitingRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 28, 27)
                 .addItemStacks(Arrays.asList(recipe.tree.getItems()))
-                .setSlotName("leafA");
+                .setSlotName("tree");
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 94, 27)
                 .addItemStacks(List.of(recipe.result))

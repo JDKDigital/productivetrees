@@ -29,6 +29,10 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add("jei.productivetrees.tree_fruiting", "Tree Fruiting");
         add("jei.productivetrees.log_stripping", "Log Stripping");
         add("jei.productivetrees.sawmill", "Sawmill");
+        add("emi.category.productivetrees.pollination", "Tree Pollination");
+        add("emi.category.productivetrees.fruiting", "Tree Fruiting");
+        add("emi.category.productivetrees.stripping", "Log Stripping");
+        add("emi.category.productivetrees.sawmill", "Sawmill");
         add("productivetrees.pollen.name", "%s");
         add("productivetrees.screen.progress", "Progress: %s");
         add("productivetrees.information.upgrade.upgrade_pollen_sieve", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
@@ -84,9 +88,13 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
             add(TreeUtil.getBlock(id, "_potted_sapling"), LangUtil.capName(name) + " Potted Sapling");
             if (treeObject.hasFruit()) {
                 add(TreeUtil.getBlock(id, "_fruit"), LangUtil.capName(name) + " Fruiting Leaves");
+                if (!treeObject.getId().getPath().contains("copper_beech") && !treeObject.getId().getPath().contains("purple_blackthorn")) {
+                    add("tag.item.c.storage_blocks." + treeObject.getFruit().fruitItem().getPath(), LangUtil.pluralCapName(treeObject.getFruit().fruitItem().getPath()));
+                }
             }
             addWoodStuff(treeObject, name);
             add("block.productivetrees." + name + ".latin", getLatinName(name));
+            add("tag.item.productivetrees." + name + "_logs", LangUtil.capName(name) + " Logs");
         });
     }
 

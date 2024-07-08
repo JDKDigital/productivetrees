@@ -6,7 +6,7 @@
       "tag": "minecraft:planks"
     },
     "I": {
-      "tag": "forge:ingots/iron"
+      "tag": "c:ingots/iron"
     },
     "S": {
       "item": "minecraft:sticky_piston"
@@ -23,11 +23,11 @@
   "result": {
     "id": "productivetrees:pollen_sifter"
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
-      "type": "forge:not",
+      "type": "neoforge:not",
       "value": {
-        "type": "forge:mod_loaded",
+        "type": "neoforge:mod_loaded",
         "modid": "productivebees"
       }
     }

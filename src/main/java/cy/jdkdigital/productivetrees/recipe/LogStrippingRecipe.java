@@ -14,15 +14,18 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nonnull;
+import java.util.Optional;
 
 public class LogStrippingRecipe implements Recipe<RecipeInput>
 {
     public final ItemStack log;
     public final ItemStack stripped;
+    public final Optional<ItemStack> secondary;
 
-    public LogStrippingRecipe(ItemStack log, ItemStack stripped) {
+    public LogStrippingRecipe(ItemStack log, ItemStack stripped, Optional<ItemStack> secondary) {
         this.log = log;
         this.stripped = stripped;
+        this.secondary = secondary;
     }
 
     @Override
@@ -65,7 +68,8 @@ public class LogStrippingRecipe implements Recipe<RecipeInput>
         private static final MapCodec<LogStrippingRecipe> CODEC = RecordCodecBuilder.mapCodec(
                 builder -> builder.group(
                                 ItemStack.CODEC.fieldOf("log").forGetter(recipe -> recipe.log),
-                                ItemStack.CODEC.fieldOf("stripped").forGetter(recipe -> recipe.stripped)
+                                ItemStack.CODEC.fieldOf("stripped").forGetter(recipe -> recipe.stripped),
+                                ItemStack.CODEC.optionalFieldOf("secondary").forGetter(recipe -> recipe.secondary)
                         )
                         .apply(builder, LogStrippingRecipe::new)
         );
@@ -86,7 +90,7 @@ public class LogStrippingRecipe implements Recipe<RecipeInput>
 
         public static LogStrippingRecipe fromNetwork(@Nonnull RegistryFriendlyByteBuf buffer) {
             try {
-                return new LogStrippingRecipe(ItemStack.STREAM_CODEC.decode(buffer), ItemStack.STREAM_CODEC.decode(buffer));
+                return new LogStrippingRecipe(ItemStack.STREAM_CODEC.decode(buffer), ItemStack.STREAM_CODEC.decode(buffer), Optional.of(ItemStack.OPTIONAL_STREAM_CODEC.decode(buffer)));
             } catch (Exception e) {
                 throw e;
             }
@@ -96,6 +100,7 @@ public class LogStrippingRecipe implements Recipe<RecipeInput>
             try {
                 ItemStack.STREAM_CODEC.encode(buffer, recipe.log);
                 ItemStack.STREAM_CODEC.encode(buffer, recipe.stripped);
+                ItemStack.OPTIONAL_STREAM_CODEC.encode(buffer, recipe.secondary.orElse(ItemStack.EMPTY));
             } catch (Exception e) {
                 throw e;
             }
