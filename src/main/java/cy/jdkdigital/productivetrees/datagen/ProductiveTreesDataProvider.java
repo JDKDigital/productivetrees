@@ -33,6 +33,7 @@ public class ProductiveTreesDataProvider
         gen.addProvider(event.includeServer(), new FeatureProvider(output));
         gen.addProvider(event.includeServer(), new RecipeProvider(output, provider));
         gen.addProvider(event.includeServer(), new BeeProvider(output, provider));
+        gen.addProvider(event.includeServer(), new DataMapProvider(output, provider));
 //        gen.addProvider(event.includeServer(), new AdvancementProvider(output, provider, helper));
 
         BlockTagProvider blockTags = new BlockTagProvider(output, provider, helper);

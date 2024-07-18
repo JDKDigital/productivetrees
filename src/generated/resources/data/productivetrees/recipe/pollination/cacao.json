@@ -6,7 +6,7 @@
   "leafB": {
     "item": "minecraft:cherry_leaves"
   },
-  "processingTime": 0.15,
+  "processingTime": 0.35,
   "result": {
     "count": 1,
     "id": "productivetrees:cacao_sapling"

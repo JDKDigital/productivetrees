@@ -1,0 +1,1210 @@
+{
+  "values": {
+    "productivetrees:alder_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:alder_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:allspice": {
+      "chance": 0.65
+    },
+    "productivetrees:allspice_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:allspice_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:almond": {
+      "chance": 0.65
+    },
+    "productivetrees:almond_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:almond_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:apricot": {
+      "chance": 0.65
+    },
+    "productivetrees:apricot_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:apricot_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:aquilaria_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:aquilaria_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:asai_berry": {
+      "chance": 0.65
+    },
+    "productivetrees:asai_palm_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:asai_palm_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:ash_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:ash_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:aspen_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:aspen_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:avocado": {
+      "chance": 0.65
+    },
+    "productivetrees:avocado_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:avocado_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:balsa_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:balsa_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:balsam_fir_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:balsam_fir_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:banana": {
+      "chance": 0.65
+    },
+    "productivetrees:banana_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:banana_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:baobab_fruit": {
+      "chance": 0.65
+    },
+    "productivetrees:beech_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:beech_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:beechnut": {
+      "chance": 0.65
+    },
+    "productivetrees:beliy_naliv_apple": {
+      "chance": 0.65
+    },
+    "productivetrees:beliy_naliv_apple_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:beliy_naliv_apple_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:black_cherry": {
+      "chance": 0.65
+    },
+    "productivetrees:black_cherry_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:black_cherry_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:black_ember_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:black_ember_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:black_locust_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:black_locust_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:blackthorn_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:blackthorn_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:blue_mahoe_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:blue_mahoe_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:blue_yonder_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:blue_yonder_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:boxwood_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:boxwood_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:brazil_nut": {
+      "chance": 0.65
+    },
+    "productivetrees:brazil_nut_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:brazil_nut_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:brazilwood_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:brazilwood_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:breadfruit": {
+      "chance": 0.65
+    },
+    "productivetrees:breadfruit_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:breadfruit_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:brown_amber_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:brown_amber_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:buddhas_hand": {
+      "chance": 0.65
+    },
+    "productivetrees:buddhas_hand_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:buddhas_hand_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:bull_pine_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:bull_pine_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:butternut": {
+      "chance": 0.65
+    },
+    "productivetrees:butternut_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:butternut_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:cacao_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:cacao_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:candlenut": {
+      "chance": 0.65
+    },
+    "productivetrees:candlenut_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:candlenut_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:carob": {
+      "chance": 0.65
+    },
+    "productivetrees:carob_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:carob_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:cashew": {
+      "chance": 0.65
+    },
+    "productivetrees:cashew_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:cashew_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:cave_dweller_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:cave_dweller_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:cedar_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:cedar_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:cempedak": {
+      "chance": 0.65
+    },
+    "productivetrees:cempedak_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:cempedak_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:ceylon_ebony_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:ceylon_ebony_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:cherry_plum": {
+      "chance": 0.65
+    },
+    "productivetrees:cherry_plum_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:cherry_plum_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:chestnut": {
+      "chance": 0.65
+    },
+    "productivetrees:cinnamon_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:cinnamon_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:citron": {
+      "chance": 0.65
+    },
+    "productivetrees:citron_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:citron_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:clove": {
+      "chance": 0.65
+    },
+    "productivetrees:clove_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:clove_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:cocobolo_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:cocobolo_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:coconut": {
+      "chance": 0.65
+    },
+    "productivetrees:coconut_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:coconut_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:coffea_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:coffea_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:coffee_bean": {
+      "chance": 0.65
+    },
+    "productivetrees:copoazu": {
+      "chance": 0.65
+    },
+    "productivetrees:copoazu_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:copoazu_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:copper_beech_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:copper_beech_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:cork_oak_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:cork_oak_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:cultivated_pear_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:cultivated_pear_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:date": {
+      "chance": 0.65
+    },
+    "productivetrees:date_palm_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:date_palm_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:dogwood_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:dogwood_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:douglas_fir_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:douglas_fir_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:elderberry": {
+      "chance": 0.65
+    },
+    "productivetrees:elderberry_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:elderberry_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:elm_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:elm_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:european_larch_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:european_larch_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:fig": {
+      "chance": 0.65
+    },
+    "productivetrees:finger_lime": {
+      "chance": 0.65
+    },
+    "productivetrees:finger_lime_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:finger_lime_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:firecracker_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:firecracker_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:flickering_sun_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:flickering_sun_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:flowering_crabapple": {
+      "chance": 0.65
+    },
+    "productivetrees:flowering_crabapple_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:flowering_crabapple_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:foggy_blast_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:foggy_blast_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:ginkgo_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:ginkgo_nut": {
+      "chance": 0.65
+    },
+    "productivetrees:ginkgo_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:golden_delicious_apple": {
+      "chance": 0.65
+    },
+    "productivetrees:golden_delicious_apple_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:golden_delicious_apple_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:grandidiers_baobab_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:grandidiers_baobab_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:granny_smith_apple": {
+      "chance": 0.65
+    },
+    "productivetrees:granny_smith_apple_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:granny_smith_apple_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:grapefruit": {
+      "chance": 0.65
+    },
+    "productivetrees:grapefruit_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:grapefruit_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:great_sallow_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:great_sallow_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:greenheart_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:greenheart_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:hala_fruit": {
+      "chance": 0.65
+    },
+    "productivetrees:haw": {
+      "chance": 0.65
+    },
+    "productivetrees:hawthorn_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:hawthorn_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:hazel_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:hazel_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:hazelnut": {
+      "chance": 0.65
+    },
+    "productivetrees:holly_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:holly_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:hornbeam_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:hornbeam_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:ipe_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:ipe_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:iroko_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:iroko_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:jackfruit": {
+      "chance": 0.65
+    },
+    "productivetrees:jackfruit_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:jackfruit_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:juniper_berry": {
+      "chance": 0.65
+    },
+    "productivetrees:juniper_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:juniper_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:kapok_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:kapok_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:key_lime": {
+      "chance": 0.65
+    },
+    "productivetrees:key_lime_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:key_lime_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:kumquat": {
+      "chance": 0.65
+    },
+    "productivetrees:kumquat_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:kumquat_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:lawson_cypress_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:lawson_cypress_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:lemon": {
+      "chance": 0.65
+    },
+    "productivetrees:lemon_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:lemon_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:lime": {
+      "chance": 0.65
+    },
+    "productivetrees:lime_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:lime_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:loblolly_pine_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:loblolly_pine_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:logwood_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:logwood_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:mahogany_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:mahogany_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:mandarin": {
+      "chance": 0.65
+    },
+    "productivetrees:mandarin_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:mandarin_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:mango": {
+      "chance": 0.65
+    },
+    "productivetrees:mango_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:mango_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:monkey_puzzle_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:monkey_puzzle_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:moonlight_magic_crepe_myrtle_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:moonlight_magic_crepe_myrtle_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:myrtle_ebony_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:myrtle_ebony_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:nectarine": {
+      "chance": 0.65
+    },
+    "productivetrees:nectarine_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:nectarine_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:night_fuchsia_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:night_fuchsia_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:nutmeg": {
+      "chance": 0.65
+    },
+    "productivetrees:nutmeg_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:nutmeg_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:old_fustic_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:old_fustic_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:olive": {
+      "chance": 0.65
+    },
+    "productivetrees:olive_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:olive_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:orange": {
+      "chance": 0.65
+    },
+    "productivetrees:orange_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:orange_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:osage_orange": {
+      "chance": 0.65
+    },
+    "productivetrees:osage_orange_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:osage_orange_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:padauk_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:padauk_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:pandanus_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:pandanus_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:papaya": {
+      "chance": 0.65
+    },
+    "productivetrees:papaya_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:papaya_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:peach": {
+      "chance": 0.65
+    },
+    "productivetrees:peach_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:peach_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:pear": {
+      "chance": 0.65
+    },
+    "productivetrees:pecan": {
+      "chance": 0.65
+    },
+    "productivetrees:pecan_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:pecan_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:persimmon": {
+      "chance": 0.65
+    },
+    "productivetrees:persimmon_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:persimmon_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:pink_ipe_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:pink_ipe_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:pink_ivory_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:pink_ivory_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:pistachio": {
+      "chance": 0.65
+    },
+    "productivetrees:pistachio_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:pistachio_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:planet_peach": {
+      "chance": 0.65
+    },
+    "productivetrees:plantain": {
+      "chance": 0.65
+    },
+    "productivetrees:plantain_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:plantain_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:plum": {
+      "chance": 0.65
+    },
+    "productivetrees:plum_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:plum_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:pomegranate": {
+      "chance": 0.65
+    },
+    "productivetrees:pomegranate_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:pomegranate_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:pomelo": {
+      "chance": 0.65
+    },
+    "productivetrees:pomelo_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:pomelo_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:prairie_crabapple": {
+      "chance": 0.65
+    },
+    "productivetrees:prairie_crabapple_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:prairie_crabapple_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:purple_blackthorn_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:purple_blackthorn_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:purple_crepe_myrtle_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:purple_crepe_myrtle_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:purple_ipe_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:purple_ipe_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:purple_spiral_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:purple_spiral_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:purpleheart_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:purpleheart_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:rainbow_gum_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:rainbow_gum_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:red_banana": {
+      "chance": 0.65
+    },
+    "productivetrees:red_banana_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:red_banana_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:red_crepe_myrtle_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:red_crepe_myrtle_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:red_delicious_apple_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:red_delicious_apple_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:red_maple_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:red_maple_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:rippling_willow_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:rippling_willow_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:rose_gum_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:rose_gum_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:rosewood_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:rosewood_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:rowan": {
+      "chance": 0.65
+    },
+    "productivetrees:rowan_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:rowan_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:rubber_tree_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:rubber_tree_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:salak_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:salak_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sand_pear": {
+      "chance": 0.65
+    },
+    "productivetrees:sand_pear_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:sand_pear_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sandalwood_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:sandalwood_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:satsuma": {
+      "chance": 0.65
+    },
+    "productivetrees:satsuma_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:satsuma_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sequoia_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:sequoia_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:silver_fir_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:silver_fir_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:silver_lime_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:silver_lime_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:slimy_delight_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:slimy_delight_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sloe": {
+      "chance": 0.65
+    },
+    "productivetrees:snake_fruit": {
+      "chance": 0.65
+    },
+    "productivetrees:socotra_dragon_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:socotra_dragon_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:soul_tree_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:soul_tree_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sour_cherry": {
+      "chance": 0.65
+    },
+    "productivetrees:sour_cherry_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:sour_cherry_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:soursop": {
+      "chance": 0.65
+    },
+    "productivetrees:soursop_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:soursop_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sparkle_cherry_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:sparkle_cherry_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sparkling_cherry": {
+      "chance": 0.65
+    },
+    "productivetrees:star_anise": {
+      "chance": 0.65
+    },
+    "productivetrees:star_anise_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:star_anise_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:star_fruit": {
+      "chance": 0.65
+    },
+    "productivetrees:star_fruit_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:star_fruit_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sugar_apple_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:sugar_apple_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sugar_maple_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:sugar_maple_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:swamp_gum_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:swamp_gum_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sweet_chestnut_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:sweet_chestnut_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sweet_crabapple": {
+      "chance": 0.65
+    },
+    "productivetrees:sweet_crabapple_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:sweet_crabapple_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sweetgum_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:sweetgum_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:sweetsop": {
+      "chance": 0.65
+    },
+    "productivetrees:sycamore_fig_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:sycamore_fig_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:tangerine": {
+      "chance": 0.65
+    },
+    "productivetrees:tangerine_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:tangerine_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:teak_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:teak_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:thunder_bolt_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:thunder_bolt_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:time_traveller_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:time_traveller_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:tuscarora_crepe_myrtle_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:tuscarora_crepe_myrtle_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:walnut": {
+      "chance": 0.65
+    },
+    "productivetrees:walnut_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:walnut_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:water_wonder_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:water_wonder_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:wenge_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:wenge_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:western_hemlock_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:western_hemlock_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:white_ipe_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:white_ipe_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:white_poplar_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:white_poplar_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:white_willow_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:white_willow_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:whitebeam_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:whitebeam_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:wild_cherry": {
+      "chance": 0.65
+    },
+    "productivetrees:wild_cherry_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:wild_cherry_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:yellow_meranti_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:yellow_meranti_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:yew_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:yew_sapling": {
+      "chance": 0.3
+    },
+    "productivetrees:zebrano_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:zebrano_sapling": {
+      "chance": 0.3
+    }
+  }
+}

@@ -6,7 +6,7 @@
   "leafB": {
     "item": "minecraft:birch_leaves"
   },
-  "processingTime": 0.15,
+  "processingTime": 0.55,
   "result": {
     "count": 1,
     "id": "productivetrees:silver_lime_sapling"

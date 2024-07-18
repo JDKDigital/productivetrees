@@ -78,17 +78,17 @@ public class ItemTagProvider extends ItemTagsProvider
         tag(ModTags.SAWDUST).add(TreeRegistrator.SAWDUST.get());
         tag(ModTags.DUSTS_WOOD).add(TreeRegistrator.SAWDUST.get());
         tag(ModTags.DUSTS).addTag(ModTags.DUSTS_WOOD);
+        tag(ModTags.COFFEE_BEANS).add(TreeRegistrator.COFFEE_BEAN.get());
+        tag(ModTags.CLOVE).add(TreeRegistrator.CLOVE.get());
         tag(ModTags.CINNAMON).add(TreeRegistrator.CINNAMON.get());
         tag(ModTags.NUTMEG).add(TreeRegistrator.NUTMEG.get());
-        tag(ModTags.COFFEE_BEANS).add(TreeRegistrator.COFFEE_BEAN.get());
+        tag(ModTags.STAR_ANISE).add(TreeRegistrator.STAR_ANISE.get());
         tag(ModTags.ROASTED_COFFEE_BEANS).add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasted_coffee_bean")));
         tag(ModTags.MAPLE_SYRUP).add(TreeRegistrator.MAPLE_SYRUP.get());
         tag(ModTags.DATE_PALM_JUICE).add(TreeRegistrator.DATE_PALM_JUICE.get());
         tag(ModTags.CORK).add(TreeRegistrator.CORK.get());
         tag(ModTags.RUBBER).add(TreeRegistrator.CURED_RUBBER.get());
         tag(Tags.Items.DYES_YELLOW).add(TreeRegistrator.FUSTIC.get());
-        tag(Tags.Items.DYES_PURPLE).add(TreeRegistrator.HAEMATOXYLIN.get());
-        tag(Tags.Items.DYES_BLUE).add(TreeRegistrator.HAEMATOXYLIN.get());
         tag(Tags.Items.DYES_RED).add(TreeRegistrator.DRACAENA_SAP.get(), TreeRegistrator.HAEMATOXYLIN.get());
 
         TreeRegistrator.BERRIES.forEach(cropConfig ->  {

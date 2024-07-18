@@ -6,7 +6,7 @@
   "leafB": {
     "item": "minecraft:jungle_leaves"
   },
-  "processingTime": 0.1,
+  "processingTime": 0.4,
   "result": {
     "count": 1,
     "id": "productivetrees:teak_sapling"

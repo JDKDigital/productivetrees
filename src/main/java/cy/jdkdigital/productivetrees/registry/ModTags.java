@@ -20,6 +20,8 @@ public class ModTags
 
     public static final TagKey<Item> CINNAMON = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "cinnamon"));
     public static final TagKey<Item> NUTMEG = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "nutmeg"));
+    public static final TagKey<Item> CLOVE = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "clove"));
+    public static final TagKey<Item> STAR_ANISE = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "star_anise"));
     public static final TagKey<Item> COFFEE_BEANS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "coffee_beans"));
     public static final TagKey<Item> ROASTED_COFFEE_BEANS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "roasted_coffee_beans"));
     public static final TagKey<Item> MAPLE_SYRUP = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "maple_syrup"));

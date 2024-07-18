@@ -7,6 +7,7 @@ import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
@@ -17,12 +18,15 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -39,18 +43,28 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
 
     @Override
     protected void buildRecipes(RecipeOutput pRecipeOutput) {
-//        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 2)
-//                .unlockedBy("has_sawdust", has(ModTags.SAWDUST))
-//                .pattern("###").pattern("#W#").pattern("###")
-//                .define('#', Ingredient.of(ModTags.SAWDUST))
-//                .define('W', StrictNBTIngredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER)))
-//                .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawdust_to_paper_water_bottle"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 2)
+                .unlockedBy("has_sawdust", has(ModTags.SAWDUST))
+                .pattern("###").pattern("#W#").pattern("###")
+                .define('#', Ingredient.of(ModTags.SAWDUST))
+                .define('W', DataComponentIngredient.of(false, PotionContents.createItemStack(Items.POTION, Potions.WATER)))
+                .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawdust_to_paper_water_bottle"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 2)
                 .unlockedBy("has_sawdust", has(ModTags.SAWDUST))
                 .pattern("###").pattern("#W#").pattern("###")
                 .define('#', Ingredient.of(ModTags.SAWDUST))
                 .define('W', Items.WATER_BUCKET)
                 .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawdust_to_paper"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.BLUE_DYE, 2)
+                .unlockedBy(getHasName(TreeRegistrator.HAEMATOXYLIN.get()), has(TreeRegistrator.HAEMATOXYLIN.get()))
+                .pattern("##")
+                .define('#', Ingredient.of(TreeRegistrator.HAEMATOXYLIN.get()))
+                .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "blue_dye_from_haematoxylin"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PURPLE_DYE, 2)
+                .unlockedBy(getHasName(TreeRegistrator.HAEMATOXYLIN.get()), has(TreeRegistrator.HAEMATOXYLIN.get()))
+                .pattern("#").pattern("#")
+                .define('#', Ingredient.of(TreeRegistrator.HAEMATOXYLIN.get()))
+                .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "purple_dye_from_haematoxylin"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.SUGAR, 3)
                 .unlockedBy("has_maple_syrup", has(ModTags.MAPLE_SYRUP))
@@ -215,8 +229,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             var crateItem = BuiltInRegistries.ITEM.get(crate);
             var cropItem = BuiltInRegistries.ITEM.get(crate.withPath(p -> cropName));
 
-            var cropTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "fruits/" + ItemTagProvider.tagName(cropName)));
-            if (TreeRegistrator.BERRIES.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0) {
+            var cropTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", ItemTagProvider.tagName(cropName)));
+            if (TreeRegistrator.FRUITS.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0) {
+                cropTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "fruits/" + ItemTagProvider.tagName(cropName)));
+            } else if (TreeRegistrator.BERRIES.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0) {
                 cropTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "berries/" + ItemTagProvider.tagName(cropName)));
             } else if (TreeRegistrator.NUTS.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0 || TreeRegistrator.ROASTED_NUTS.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0) {
                 cropTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "nuts/" + ItemTagProvider.tagName(cropName)));
@@ -346,8 +362,8 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
     }
 
     private void buildTreeBreedingRecipes(RecipeOutput consumer) {
-        treeBreeding(consumer, "silver_lime", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 0.15f);
-        treeBreeding(consumer, "cacao", Blocks.JUNGLE_LEAVES, Blocks.CHERRY_LEAVES, 0.15f);
+        treeBreeding(consumer, "silver_lime", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 0.55f);
+        treeBreeding(consumer, "cacao", Blocks.JUNGLE_LEAVES, Blocks.CHERRY_LEAVES, 0.35f);
         treeBreeding(consumer, "walnut", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
         treeBreeding(consumer, "sweet_chestnut", "walnut", RecipeProvider.getLeafIngredient("wild_cherry", "silver_lime"), 0.1f);
         treeBreeding(consumer, "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), Ingredient.of(Blocks.BIRCH_LEAVES), 0.1f);
@@ -356,7 +372,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "plum", "citron", "wild_cherry", 5);
         treeBreeding(consumer, "bull_pine", "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), 0.1f);
         treeBreeding(consumer, "sequoia", "european_larch", "bull_pine", 5);
-        treeBreeding(consumer, "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), Ingredient.of(Blocks.JUNGLE_LEAVES), 0.1f);
+        treeBreeding(consumer, "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), Ingredient.of(Blocks.JUNGLE_LEAVES), 0.40f);
         treeBreeding(consumer, "ipe", "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), 0.1f);
         treeBreeding(consumer, "aquilaria", "teak", "ipe", 0.1f);
         treeBreeding(consumer, "kapok", "teak", Ingredient.of(Blocks.JUNGLE_LEAVES), 0.1f);
@@ -418,7 +434,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "western_hemlock", "bull_pine", "silver_fir", 3);
         treeBreeding(consumer, "ash", "silver_lime", Blocks.SPRUCE_LEAVES, 0.1f);
         treeBreeding(consumer, "alder", "beech", Blocks.BIRCH_LEAVES, 0.1f);
-        treeBreeding(consumer, "beech", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 0.1f);
+        treeBreeding(consumer, "beech", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 0.50f);
         treeBreeding(consumer, "aspen", "beech", "alder", 0.1f);
         treeBreeding(consumer, "yew", "european_larch", Blocks.SPRUCE_LEAVES, 0.1f);
         treeBreeding(consumer, "lawson_cypress", "bull_pine", Blocks.SPRUCE_LEAVES, 0.1f);

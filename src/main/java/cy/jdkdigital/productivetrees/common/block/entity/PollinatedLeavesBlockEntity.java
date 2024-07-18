@@ -89,6 +89,8 @@ public class PollinatedLeavesBlockEntity extends BlockEntity
         }
         if (tag.contains("result")) {
             this.result = ItemStack.parse(pRegistries, tag.getCompound("result")).orElse(ItemStack.EMPTY);
+        } else {
+            this.result = ItemStack.EMPTY;
         }
     }
 
@@ -99,7 +101,7 @@ public class PollinatedLeavesBlockEntity extends BlockEntity
         if (leafB != null) {
             tag.putString("leafB", BuiltInRegistries.BLOCK.getKey(leafB).toString());
         }
-        if (result != null) {
+        if (result != null && !result.isEmpty()) {
             tag.put("result", result.save(pRegistries, new CompoundTag()));
         }
     }

@@ -1,3 +1,14 @@
+1.21.0-0.3.3
+
+- Added saplings, leaves and fruits to compostable datamap
+- Fixed some empty tags in recipes
+
+
+1.21.0-0.3.2
+
+- Bump lib version
+
+
 1.21.0-0.3.1
 
 - Fixed beehives not ticking

@@ -49,7 +49,9 @@ public class EventHandler
     @SubscribeEvent
     public static void blockBreak(BlockEvent.BreakEvent event) {
         if (event.getLevel() instanceof Level level && event.getState().is(TreeRegistrator.POLLINATED_LEAVES.get()) && level.getBlockEntity(event.getPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
-            Block.popResource(level, event.getPos(), pollinatedLeavesBlockEntity.getResult().copy());
+            if (!pollinatedLeavesBlockEntity.getResult().isEmpty()) {
+                Block.popResource(level, event.getPos(), pollinatedLeavesBlockEntity.getResult().copy());
+            }
         }
     }
 

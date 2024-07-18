@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_haematoxylin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:haematoxylin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:blue_dye_from_haematoxylin"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_haematoxylin"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:blue_dye_from_haematoxylin"
+    ]
+  }
+}
