@@ -46,10 +46,12 @@ public class PollenSifterContainer extends AbstractContainer
         });
 
 
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, PollenSifterBlockEntity.SLOT_IN, 44, 34));
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, PollenSifterBlockEntity.SLOT_OUT, 109, 34));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, PollenSifterBlockEntity.SLOT_IN, 44 - 13, 34));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, PollenSifterBlockEntity.SLOT_OUT, 109 - 13, 34));
 
-        layoutPlayerInventorySlots(playerInventory, 0, 8, 84);
+        addSlotBox(this.blockEntity.getUpgradeHandler(), 0, 178 - 13, 8, 1, 18, 4, 18);
+
+        layoutPlayerInventorySlots(playerInventory, 0, 8 - 13, 84);
     }
 
     private static PollenSifterBlockEntity getTileEntity(final Inventory playerInventory, final FriendlyByteBuf data) {

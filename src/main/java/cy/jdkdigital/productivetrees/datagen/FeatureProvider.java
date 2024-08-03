@@ -168,7 +168,7 @@ public class FeatureProvider implements DataProvider
         put("almond", MEDIUM_FRUIT_DISTRIBUTION);
         put("avocado", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafReplacerDecorator(0.3f, fruitProvider)).getOrThrow());
         put("banana", createDanglerFruitProvider(0.4f, 4));
-        put("baobab", createDanglerFruitProvider(0.3f, 6));
+        put("grandidiers_baobab", createDanglerFruitProvider(0.3f, 6));
         put("breadfruit", createDanglerFruitProvider(0.2f, 5));
         put("cempedak", createDanglerFruitProvider(0.2f, 3));
         put("coconut", createDanglerFruitProvider(0.2f, 4));

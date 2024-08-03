@@ -3,6 +3,7 @@ package cy.jdkdigital.productivetrees.common.block;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -51,7 +52,11 @@ public class CoconutSproutBlock extends FallingBlock implements SimpleWaterlogge
 
     @Override
     protected void falling(FallingBlockEntity pEntity) {
-        pEntity.setHurtsEntities(20F, 100);
+        if (pEntity.level().getDifficulty().equals(Difficulty.HARD)) {
+            pEntity.setHurtsEntities(2F, 10);
+        } else {
+            pEntity.setHurtsEntities(20F, 100);
+        }
     }
 
     @Override

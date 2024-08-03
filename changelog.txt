@@ -1,7 +1,32 @@
+1.21.0-0.4.0
+
+- Machines now take speed upgrades to increase processing speed
+
+
+1.21.0-0.3.6
+
+- Updated guide book recipe
+- Fixed stripper not accepting axes
+
+
+1.21.0-0.3.5
+
+- Disabled pollen sieve upgrade recipe when productive bees is not installed
+- Improved insertion logic for machines
+- Added EMI descriptions to loot saplings
+
+
+1.21.0-0.3.4
+
+- Fixed recipe errors when Productive Bees is not installed
+- Fixed crash when putting unstrippable blocks in a stripper
+
+
 1.21.0-0.3.3
 
 - Added saplings, leaves and fruits to compostable datamap
 - Fixed some empty tags in recipes
+- Guarded against crash when pollinated leaves are placed without correct data
 
 
 1.21.0-0.3.2

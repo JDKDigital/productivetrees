@@ -3,8 +3,8 @@
   "config": {
     "decorators": [
       {
-        "type": "productivetrees:fruit_leaf_replacer",
-        "density": 0.6,
+        "type": "productivetrees:fruit_leaf_placer",
+        "density": 0.3,
         "fruit_provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
@@ -16,7 +16,8 @@
               "waterlogged": "false"
             }
           }
-        }
+        },
+        "max_fruits": 6
       }
     ],
     "dirt_provider": {

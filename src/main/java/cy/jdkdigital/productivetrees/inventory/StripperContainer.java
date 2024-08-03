@@ -32,15 +32,17 @@ public class StripperContainer extends AbstractContainer
         this.canInteractWithCallable = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
 
             // Input slot
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_IN, 44, 25));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_IN, 44 - 13, 25));
         // Axe slot
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_AXE, 44, 44));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_AXE, 44 - 13, 44));
         // Output slot
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_OUT, 116, 25));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_OUT, 116 - 13, 25));
         // Bark slot
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_BARK, 116, 44));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, StripperBlockEntity.SLOT_BARK, 116 - 13, 44));
 
-        layoutPlayerInventorySlots(playerInventory, 0, 8, 84);
+        addSlotBox(this.blockEntity.getUpgradeHandler(), 0, 178 - 13, 8, 1, 18, 4, 18);
+
+        layoutPlayerInventorySlots(playerInventory, 0, 8 - 13, 84);
     }
 
     private static StripperBlockEntity getTileEntity(final Inventory playerInventory, final FriendlyByteBuf data) {

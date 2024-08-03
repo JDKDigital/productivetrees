@@ -271,7 +271,7 @@ public class BlockstateProvider implements DataProvider
                 if (treeObject.getStyle().hiveStyle() != null) {
                     Block hive = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
                     Block box = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p ->  "expansion_box_" + p));
-                    cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(hive, box, id.getPath(), new HiveType(false, treeObject.getPlankColor(), treeObject.getStyle().hiveStyle(), Ingredient.of(TreeUtil.getBlock(id, "_planks")), null), hiveBlockStates, this.modelOutput);
+                    cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(hive, box, id.getPath(), new HiveType(false, treeObject.getPlankColor(), treeObject.getStyle().hiveStyle(), TreeUtil.getBlock(id, "_planks"), null), hiveBlockStates, this.modelOutput);
                 }
             });
 

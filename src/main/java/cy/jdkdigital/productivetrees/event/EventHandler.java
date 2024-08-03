@@ -1,6 +1,8 @@
 package cy.jdkdigital.productivetrees.event;
 
 import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
+import cy.jdkdigital.productivelib.event.CollectValidUpgradesEvent;
+import cy.jdkdigital.productivelib.event.UpgradeTooltipEvent;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
@@ -9,16 +11,17 @@ import cy.jdkdigital.productivetrees.integrations.productivebees.CompatHandler;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ComposterBlock;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -32,19 +35,33 @@ public class EventHandler
         TreeFinder.context = event.getConditionContext();
     }
 
-//    @SubscribeEvent
-//    public static void onCommonSetup(FMLCommonSetupEvent event) {
-//        // TODO 1.21 move to datamap
-//        event.enqueueWork(() -> {
-//            TreeFinder.trees.forEach((id, treeObject) -> {
-//                ComposterBlock.COMPOSTABLES.put(TreeUtil.getBlock(id, "_sapling"), 0.3f);
-//                ComposterBlock.COMPOSTABLES.put(TreeUtil.getBlock(id, "_leaves"), 0.3f);
-//                if (treeObject.hasFruit()) {
-//                    ComposterBlock.COMPOSTABLES.put(treeObject.getFruit().getItem().getItem(), 0.65F);
-//                }
-//            });
-//        });
-//    }
+    @SubscribeEvent
+    public static void collectValidUpgrades(CollectValidUpgradesEvent event) {
+        CompatHandler.collectValidUpgrades(event);
+    }
+
+    @SubscribeEvent
+    public static void addUpgradeTooltip(UpgradeTooltipEvent event) {
+        if (event.getStack().is(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get())) {
+            event.getTooltipComponents().add(Component.translatable("productivetrees.information.upgrade.upgrade_pollen_sieve").withStyle(ChatFormatting.GOLD));
+        }
+
+        String upgradeType = BuiltInRegistries.ITEM.getKey(event.getStack().getItem()).getPath();
+        switch (upgradeType) {
+            case "upgrade_time" -> {
+                event.addValidBlock(Component.literal("Stripper"));
+                event.addValidBlock(Component.literal("Sawmill"));
+                if (!ModList.get().isLoaded("productivebees")) {
+                    event.addValidBlock(Component.literal("Pollen Sifter"));
+                }
+            }
+            case "upgrade_pollen_sieve" -> {
+                if (ModList.get().isLoaded("productivebees")) {
+                    event.addValidBlock(Component.literal("Advanced Beehive"));
+                }
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void blockBreak(BlockEvent.BreakEvent event) {

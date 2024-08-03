@@ -4,12 +4,12 @@ import com.mojang.datafixers.util.Pair;
 import cy.jdkdigital.productivebees.common.block.AdvancedBeehive;
 import cy.jdkdigital.productivebees.common.block.ExpansionBox;
 import cy.jdkdigital.productivebees.common.block.entity.AdvancedBeehiveBlockEntity;
-import cy.jdkdigital.productivebees.common.block.entity.ExpansionBoxBlockEntity;
 import cy.jdkdigital.productivebees.common.entity.bee.ProductiveBee;
 import cy.jdkdigital.productivebees.init.ModBlocks;
 import cy.jdkdigital.productivebees.init.ModItems;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
+import cy.jdkdigital.productivelib.event.CollectValidUpgradesEvent;
 import cy.jdkdigital.productivetrees.Config;
 import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
@@ -43,6 +43,12 @@ public class CompatHandler
         ModBlocks.EXPANSIONS.put("expansion_box_" + name, TreeRegistrator.registerBlock("expansion_box_" + name, () -> new ExpansionBox(Block.Properties.ofFullCopy(Blocks.BEEHIVE).lightLevel(lightLevel)), true));
     }
 
+    public static void collectValidUpgrades(CollectValidUpgradesEvent event) {
+        if (event.getBlockEntity() instanceof AdvancedBeehiveBlockEntity) {
+            event.addValidUpgrade(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get());
+        }
+    }
+
     public static void beeRelease(BeeReleaseEvent event) {
         if (event.getLevel() instanceof ServerLevel level && event.getBeeState().equals(BeehiveBlockEntity.BeeReleaseStatus.HONEY_DELIVERED) && event.getBlockEntity() instanceof AdvancedBeehiveBlockEntity advancedBeehiveBlockEntity) {
             if (event.getBee().getHivePos() != null) {
@@ -63,7 +69,7 @@ public class CompatHandler
                     }
                 });
 
-                if (uniqueLeaves.size() > 0) {
+                if (!uniqueLeaves.isEmpty()) {
                     boolean isSpecialPollinator = event.getBee() instanceof ProductiveBee pBee && pBee.getBeeName().equals("allergy");
                     // Check for pollen sieve upgrade and collect pollen from nearby leaf
                     int sieveUpgrades = advancedBeehiveBlockEntity.getUpgradeCount(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get());
@@ -77,13 +83,15 @@ public class CompatHandler
                     Map<RecipeHolder<TreePollinationRecipe>, Pair<BlockState, BlockState>> matchedRecipes = new HashMap<>();
                     var allRecipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.TREE_POLLINATION_TYPE.get());
                     allRecipes.forEach(treePollinationRecipe -> {
-                        uniqueLeaves.forEach(stateA -> {
-                            uniqueLeaves.forEach(stateB -> {
-                                if (!matchedRecipes.containsKey(treePollinationRecipe) && treePollinationRecipe.value().matches(stateA, stateB)) {
-                                    matchedRecipes.put(treePollinationRecipe, Pair.of(stateA, stateB));
-                                }
+                        if (!matchedRecipes.containsKey(treePollinationRecipe)) {
+                            uniqueLeaves.forEach(stateA -> {
+                                uniqueLeaves.forEach(stateB -> {
+                                    if (treePollinationRecipe.value().matches(stateA, stateB)) {
+                                        matchedRecipes.put(treePollinationRecipe, Pair.of(stateA, stateB));
+                                    }
+                                });
                             });
-                        });
+                        }
                     });
 
                     if (matchedRecipes.size() > 0) {

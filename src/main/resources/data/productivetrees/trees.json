@@ -613,7 +613,7 @@
     "colors": {
       "leafColor": "#fcbb43",
       "logColor": "#ffdb8b",
-      "plankColor": "#fef0af"
+      "plankColor": "#fdeb99"
     },
     "decoration": {
       "lightLevel": 14
@@ -1051,7 +1051,7 @@
     "colors": {
       "leafColor": "#3b470a",
       "logColor": "#6d5650",
-      "plankColor": "#afa16c"
+      "plankColor": "#c7aa42"
     },
     "fruit": {
       "item": "productivetrees:osage_orange",

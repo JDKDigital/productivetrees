@@ -42,7 +42,7 @@ public class Stripper extends CapabilityContainerBlock
             if (!pLevel.isClientSide()) {
                 openGui((ServerPlayer) pPlayer, blockEntity);
             }
-            return InteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS_NO_ITEM_USED;
         }
         return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
     }

@@ -36,10 +36,13 @@ public class PollenSifter extends CapabilityContainerBlock
 
     @Override
     protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
-        if (!pLevel.isClientSide() && pLevel.getBlockEntity(pPos) instanceof PollenSifterBlockEntity blockEntity) {
-            openGui((ServerPlayer) pPlayer, blockEntity);
+        if (pLevel.getBlockEntity(pPos) instanceof PollenSifterBlockEntity blockEntity) {
+            if (!pLevel.isClientSide()) {
+                openGui((ServerPlayer) pPlayer, blockEntity);
+            }
+            return InteractionResult.SUCCESS_NO_ITEM_USED;
         }
-        return InteractionResult.SUCCESS;
+        return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
     }
 
     @Nullable

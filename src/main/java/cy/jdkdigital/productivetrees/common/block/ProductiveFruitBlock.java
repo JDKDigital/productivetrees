@@ -118,8 +118,8 @@ public class ProductiveFruitBlock extends ProductiveLeavesBlock
                 pLevel.setBlock(pPos, this.getStateForAge(pState, 0), 2);
             }
             pPlayer.swing(InteractionHand.MAIN_HAND);
-            return InteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS_NO_ITEM_USED;
         }
-        return InteractionResult.PASS;
+        return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
     }
 }

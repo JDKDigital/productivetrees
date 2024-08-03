@@ -11,10 +11,12 @@ import cy.jdkdigital.productivetrees.util.TreeUtil;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
+import dev.emi.emi.api.recipe.EmiInfoRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.BlockItem;
@@ -22,7 +24,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.level.block.Block;
+import net.neoforged.fml.ModList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -61,6 +63,17 @@ public class ProductiveTreesEmiPlugin implements EmiPlugin
         registry.addCategory(FRUITING_CATEGORY);
 
         RecipeManager recipeManager = registry.getRecipeManager();
+
+        if (ModList.get().isLoaded("productivebees")) {
+            registry.removeEmiStacks(EmiStack.of(TreeRegistrator.POLLEN_SIFTER.get()));
+        } else {
+            registry.removeEmiStacks(EmiStack.of(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get()));
+        }
+        registry.removeEmiStacks(EmiStack.of(TreeRegistrator.WOOD_WORKER.get()));
+        registry.removeEmiStacks(EmiStack.of(TreeRegistrator.ENTITY_SPAWNER.get()));
+
+        registry.addWorkstation(STRIPPING_CATEGORY, EmiStack.of(TreeRegistrator.STRIPPER.get()));
+        registry.addWorkstation(SAWMILL_CATEGORY, EmiStack.of(TreeRegistrator.SAWMILL.get()));
 
         List<RecipeHolder<TreePollinationRecipe>> pollinationRecipeList = recipeManager.getAllRecipesFor(TreeRegistrator.TREE_POLLINATION_TYPE.get());
         pollinationRecipeList.forEach(recipeHolder -> {
@@ -102,5 +115,10 @@ public class ProductiveTreesEmiPlugin implements EmiPlugin
         sawmillRecipeList.forEach(recipeHolder -> {
             registry.addRecipe(new SawmillEmiRecipe(recipeHolder));
         });
+
+        // Special sapling info tabs
+        for (String name: List.of("black_ember", "blue_yonder", "firecracker", "flickering_sun", "soul_tree", "brown_amber")) {
+            registry.addRecipe(new EmiInfoRecipe(List.of(EmiStack.of(TreeUtil.getBlock(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, name), "_sapling"))), List.of(Component.translatable("productivetrees.sapling_description." + name)), null));
+        }
     }
 }

@@ -158,7 +158,7 @@ public class TreeUtil
 //            var blockHit = new BlockHitResult(new Vec3(pos.getX(), pos.getY(), pos.getZ()), Direction.DOWN, pos, false);
 //            UseOnContext context = new UseOnContext(fakePlayer, InteractionHand.MAIN_HAND, blockHit);
 //            stripState = ForgeEventFactory.onToolUse(initialState, context, ItemAbilities.AXE_STRIP, true);
-            return !stripState.equals(initialState) ? new ItemStack(initialState.getBlock()) : ItemStack.EMPTY;
+            return stripState != null && !stripState.equals(initialState) ? new ItemStack(initialState.getBlock()) : ItemStack.EMPTY;
         }
         return stripped;
     }

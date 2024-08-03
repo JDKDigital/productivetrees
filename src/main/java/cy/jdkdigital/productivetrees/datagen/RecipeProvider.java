@@ -1,5 +1,6 @@
 package cy.jdkdigital.productivetrees.datagen;
 
+import cy.jdkdigital.productivebees.ProductiveBees;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.datagen.recipe.*;
 import cy.jdkdigital.productivetrees.registry.*;
@@ -125,8 +126,8 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
 //                        .save(pRecipeOutput.withConditions(new ModLoadedCondition("thermal")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "thermal/tree_extractor/" + id.getPath()));
 //            }
             if (treeObject.getStyle().hiveStyle() != null) {
-                buildHiveRecipe(ProductiveTrees.MODID, treeObject, pRecipeOutput);
-                buildBoxRecipe(ProductiveTrees.MODID, treeObject, pRecipeOutput);
+                buildHiveRecipe(ProductiveBees.MODID, treeObject, pRecipeOutput);
+                buildBoxRecipe(ProductiveBees.MODID, treeObject, pRecipeOutput);
             }
             buildBotanyPotsRecipe(treeObject, pRecipeOutput);
         });

@@ -18,10 +18,15 @@ public class ModEventHandler
     @SubscribeEvent
     public static void buildContents(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey().equals(TreeRegistrator.TAB_KEY)) {
+            var hasBees = ModList.get().isLoaded("productivebees");
             for (DeferredHolder<Item, ? extends Item> item : ProductiveTrees.ITEMS.getEntries()) {
-                if (!item.getId().getPath().equals("pollen_sifter") || !ModList.get().isLoaded("productivebees")) {
-                    event.accept(item.get());
+                if (item.getId().getPath().equals("pollen_sifter") && hasBees) {
+                    continue;
                 }
+                if (item.getId().getPath().equals("upgrade_pollen_sieve") && !hasBees) {
+                    continue;
+                }
+                event.accept(item.get());
             }
         }
     }

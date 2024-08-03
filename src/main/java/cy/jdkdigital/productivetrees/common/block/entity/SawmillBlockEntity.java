@@ -2,6 +2,8 @@ package cy.jdkdigital.productivetrees.common.block.entity;
 
 import cy.jdkdigital.productivelib.common.block.entity.CapabilityBlockEntity;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
+import cy.jdkdigital.productivelib.common.block.entity.UpgradeableBlockEntity;
+import cy.jdkdigital.productivelib.registry.LibItems;
 import cy.jdkdigital.productivetrees.inventory.SawmillContainer;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
@@ -23,7 +25,9 @@ import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuProvider
+import java.util.List;
+
+public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuProvider, UpgradeableBlockEntity
 {
     protected int tickCounter = 0;
     public int tickRate = 10;
@@ -42,7 +46,7 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
             if (isInputSlotItem(slot, stack)) {
                 return true;
             }
-            return slot != SLOT_IN;
+            return slot != SLOT_IN && !canProcess(stack);
         }
 
         @Override
@@ -70,11 +74,9 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
         }
     };
 
-    private boolean canProcess(ItemStack stack) {
-        var recipe = TreeUtil.getSawmillRecipe(level, stack);
-
-        return recipe != null;
-    }
+    protected IItemHandlerModifiable upgradeHandler = new InventoryHandlerHelper.UpgradeHandler(4, this, List.of(
+            LibItems.UPGRADE_TIME.get()
+    ));
 
     public SawmillBlockEntity(BlockPos pos, BlockState state) {
         super(TreeRegistrator.SAWMILL_BLOCK_ENTITY.get(), pos, state);
@@ -85,9 +87,18 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
         return Component.translatable(TreeRegistrator.SAWMILL.get().getDescriptionId());
     }
 
+    private boolean canProcess(ItemStack stack) {
+        return TreeUtil.getSawmillRecipe(level, stack) != null;
+    }
+
     @Override
     public IItemHandler getItemHandler() {
         return inventoryHandler;
+    }
+
+    @Override
+    public IItemHandlerModifiable getUpgradeHandler() {
+        return upgradeHandler;
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, SawmillBlockEntity blockEntity) {
@@ -98,7 +109,8 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
                 blockEntity.inventoryHandler.insertItem(SLOT_OUT, blockEntity.buffer.copy(), false);
                 blockEntity.buffer = ItemStack.EMPTY;
             } else if (!log.isEmpty() && (output.isEmpty() || output.getCount() < output.getMaxStackSize())) {
-                blockEntity.progress+= blockEntity.tickRate;
+                var speedModifier = 1 + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get());
+                blockEntity.progress+= blockEntity.tickRate * speedModifier;
                 if (blockEntity.progress >= blockEntity.recipeTime) {
                     var recipe = TreeUtil.getSawmillRecipe(level, log);
                     if (recipe != null) {

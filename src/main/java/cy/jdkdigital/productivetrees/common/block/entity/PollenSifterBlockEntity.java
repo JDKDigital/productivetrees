@@ -2,6 +2,8 @@ package cy.jdkdigital.productivetrees.common.block.entity;
 
 import cy.jdkdigital.productivelib.common.block.entity.CapabilityBlockEntity;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
+import cy.jdkdigital.productivelib.common.block.entity.UpgradeableBlockEntity;
+import cy.jdkdigital.productivelib.registry.LibItems;
 import cy.jdkdigital.productivetrees.inventory.PollenSifterContainer;
 import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
@@ -25,7 +27,9 @@ import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class PollenSifterBlockEntity extends CapabilityBlockEntity implements MenuProvider
+import java.util.List;
+
+public class PollenSifterBlockEntity extends CapabilityBlockEntity implements MenuProvider, UpgradeableBlockEntity
 {
     protected int tickCounter = 0;
     public int tickRate = 10;
@@ -41,7 +45,7 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
             if (isInputSlotItem(slot, stack)) {
                 return true;
             }
-            return slot != SLOT_IN;
+            return slot != SLOT_IN && !canProcess(stack);
         }
 
         @Override
@@ -69,9 +73,9 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
         }
     };
 
-    private boolean canProcess(ItemStack stack) {
-        return stack.is(ModTags.POLLINATABLE_ITEM);
-    }
+    protected IItemHandlerModifiable upgradeHandler = new InventoryHandlerHelper.UpgradeHandler(4, this, List.of(
+            LibItems.UPGRADE_TIME.get()
+    ));
 
     public PollenSifterBlockEntity(BlockPos pos, BlockState state) {
         super(TreeRegistrator.POLLEN_SIFTER_BLOCK_ENTITY.get(), pos, state);
@@ -82,11 +86,20 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
         return Component.translatable(TreeRegistrator.POLLEN_SIFTER.get().getDescriptionId());
     }
 
+    private boolean canProcess(ItemStack stack) {
+        return stack.is(ModTags.POLLINATABLE_ITEM);
+    }
+
     @Override
     public IItemHandler getItemHandler() {
         return inventoryHandler;
     }
 
+    @Override
+    public IItemHandlerModifiable getUpgradeHandler() {
+        return upgradeHandler;
+    }
+    
     public static void tick(Level level, BlockPos pos, BlockState state, PollenSifterBlockEntity blockEntity) {
         if (++blockEntity.tickCounter % blockEntity.tickRate == 0 && level instanceof ServerLevel serverLevel) {
             var leaf = blockEntity.inventoryHandler.getStackInSlot(SLOT_IN);
@@ -94,7 +107,8 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
             if (!leaf.isEmpty() && leaf.getItem() instanceof BlockItem blockItem && (output.isEmpty() || output.is(TreeRegistrator.POLLEN.get()))) {
                 var pollenStack = TreeUtil.getPollen(blockItem.getBlock());
                 if (output.isEmpty() || ItemStack.isSameItemSameComponents(output, pollenStack)) {
-                    blockEntity.progress += blockEntity.tickRate;
+                    var speedModifier = 1 + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get());
+                    blockEntity.progress+= blockEntity.tickRate * speedModifier;
                     if (blockEntity.progress >= blockEntity.recipeTime) {
                         if (level.random.nextInt(100) <= 10) {
                             blockEntity.inventoryHandler.insertItem(SLOT_OUT, pollenStack, false);

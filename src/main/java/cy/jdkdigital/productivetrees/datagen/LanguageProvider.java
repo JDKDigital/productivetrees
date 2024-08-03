@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LanguageProvider extends net.neoforged.neoforge.common.data.LanguageProvider
@@ -39,6 +40,13 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add("productivetrees.information.pollen", "Use on a leaf to manually pollinate it.");
         add("productivetrees.sapling.configurations", "Configurations: %s");
         add("item.productivetrees.roasted_coffee_bean", "Roasted Coffee Beans");
+
+        add("productivetrees.sapling_description.black_ember", "Black Ember saplings can be found hidden away in bastion treasure chests in the Nether guarded by wild and hangry brutes.");
+        add("productivetrees.sapling_description.blue_yonder", "Blue Yonder saplings loved to travel and see the world. They were transported by ship because of their delicate roots and can still be found in the treasure chests of sunken galleons.");
+        add("productivetrees.sapling_description.firecracker", "These explosive trees were banned from parties eons ago but can still be found in ancient cities deep underground.");
+        add("productivetrees.sapling_description.flickering_sun", "In the treasure rooms of desert temples among the rotten flesh, bones and spider eyes you'll sometimes find this rare sapling.");
+        add("productivetrees.sapling_description.soul_tree", "Can be found where saplings go to die, in the far reached on the end in cities long forgotten.");
+        add("productivetrees.sapling_description.brown_amber", "Tucked beneath the crushing weight of the cold ocean water, this sapling is waiting to be unearthed.");
 
         add("entity.productivebees.allergy_bee", "Allergy Bee");
         add("productivebees.ingredient.description.allergy_bee", "Puts in an extra effort to collect pollen so your allergies don't act up while working with trees.");

@@ -1,5 +1,6 @@
 package cy.jdkdigital.productivetrees.registry;
 
+import cy.jdkdigital.productivelib.common.item.UpgradeItem;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.*;
@@ -10,7 +11,6 @@ import cy.jdkdigital.productivetrees.common.feature.TrunkVineDecorator;
 import cy.jdkdigital.productivetrees.common.fluid.MapleSap;
 import cy.jdkdigital.productivetrees.common.fluid.type.MapleSapType;
 import cy.jdkdigital.productivetrees.common.item.PollenItem;
-import cy.jdkdigital.productivetrees.common.item.SieveUpgradeItem;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.TaperedFoliagePlacer;
 import cy.jdkdigital.productivetrees.feature.trunkplacers.CenteredUpwardsBranchingTrunkPlacer;
 import cy.jdkdigital.productivetrees.feature.trunkplacers.UnlimitedStraightTrunkPlacer;
@@ -31,7 +31,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.inventory.MenuType;
@@ -106,7 +105,7 @@ public class TreeRegistrator
     public static final DeferredHolder<Fluid, BaseFlowingFluid> MAPLE_SAP_FLOWING = ProductiveTrees.FLUIDS.register("flowing_maple_sap", MapleSap.Flowing::new);
 
     public static final DeferredHolder<Item, Item> MAPLE_SAP_BUCKET = registerItem("maple_sap_bucket", () -> new BucketItem(MAPLE_SAP.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
-    public static final DeferredHolder<Item, Item> UPGRADE_POLLEN_SIEVE = registerItem("upgrade_pollen_sieve", () -> new SieveUpgradeItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredHolder<Item, Item> UPGRADE_POLLEN_SIEVE = registerItem("upgrade_pollen_sieve", () -> new UpgradeItem(new Item.Properties().stacksTo(1)));
     public static final DeferredHolder<Item, Item> POLLEN = registerItem("pollen", () -> new PollenItem(new Item.Properties()));
     public static final DeferredHolder<Item, Item> SAWDUST = registerItem("sawdust");
     public static final DeferredHolder<Item, Item> FUSTIC = registerItem("fustic");
@@ -300,6 +299,7 @@ public class TreeRegistrator
     private static List<DeferredHolder<Block, Block>> SIGNS = new ArrayList<>();
     private static List<DeferredHolder<Block, Block>> HANGING_SIGNS = new ArrayList<>();
 
+    private static final WoodType woodType = WoodType.register(new WoodType(ProductiveTrees.MODID + ":wood", BlockSetType.register(new BlockSetType(ProductiveTrees.MODID + ":wood"))));
     public static void registerTree(TreeObject treeObject) {
         var name = treeObject.getId().getPath();
 
@@ -368,7 +368,6 @@ public class TreeRegistrator
         // Bookshelf
         registerBlock(name + "_bookshelf", () -> new Block(getProperties(Blocks.BOOKSHELF, noOcclusion, lightLevel)));
         // Signs
-        var woodType = WoodType.register(new WoodType(ProductiveTrees.MODID + ":" + name, BlockSetType.register(new BlockSetType(ProductiveTrees.MODID + ":" + name))));
         var signBlock = registerBlock(name + "_sign", () -> new ProductiveStandingSignBlock(woodType, getProperties(Blocks.OAK_SIGN, noOcclusion, lightLevel)), false);
         var wallSignBlock = registerBlock(name + "_wall_sign", () -> new ProductiveWallSignBlock(woodType, getProperties(Blocks.OAK_WALL_SIGN, noOcclusion, lightLevel)), false);
         var hangingSignBlock = registerBlock(name + "_hanging_sign", () -> new ProductiveCeilingHangingSignBlock(woodType, getProperties(Blocks.OAK_HANGING_SIGN, noOcclusion, lightLevel)), false);

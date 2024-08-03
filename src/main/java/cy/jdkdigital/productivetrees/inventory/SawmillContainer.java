@@ -45,12 +45,14 @@ public class SawmillContainer extends AbstractContainer
             }
         });
 
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_IN, 44, 34));
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_OUT, 116, 25));
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_SECONDARY, 107, 43));
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_TERTIARY, 125, 43));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_IN, 44 - 13, 34));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_OUT, 116 - 13, 25));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_SECONDARY, 107 - 13, 43));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, SawmillBlockEntity.SLOT_TERTIARY, 125 - 13, 43));
 
-        layoutPlayerInventorySlots(playerInventory, 0, 8, 84);
+        addSlotBox(this.blockEntity.getUpgradeHandler(), 0, 178 - 13, 8, 1, 18, 4, 18);
+
+        layoutPlayerInventorySlots(playerInventory, 0, 8 - 13, 84);
     }
 
     private static SawmillBlockEntity getTileEntity(final Inventory playerInventory, final FriendlyByteBuf data) {

@@ -3,6 +3,7 @@ package cy.jdkdigital.productivetrees.datagen;
 import com.google.common.collect.Maps;
 import cy.jdkdigital.productivebees.datagen.BlockLootProvider;
 import cy.jdkdigital.productivelib.loot.OptionalLootItem;
+import cy.jdkdigital.productivelib.loot.condition.OptionalCopyBlockState;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
@@ -232,7 +233,7 @@ public class LootDataProvider implements DataProvider
             if (hive.defaultBlockState().hasProperty(BeehiveBlock.HONEY_LEVEL)) {
                 hiveHoney = OptionalLootItem.lootTableItem(hive).when(SILK_TOUCH)
                         .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.BEES))
-                        .apply(CopyBlockState.copyState(hive).copy(BeehiveBlock.HONEY_LEVEL));
+                        .apply(OptionalCopyBlockState.copyState(hive).copy(BeehiveBlock.HONEY_LEVEL));
             } else {
                 hiveHoney = OptionalLootItem.lootTableItem(hive).when(SILK_TOUCH)
                         .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.BEES));

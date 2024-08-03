@@ -25,13 +25,13 @@ public class StripperScreen extends AbstractContainerScreen<StripperContainer>
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        guiGraphics.drawString(font, this.title, 8, 6, 4210752, false);
-        guiGraphics.drawString(font, this.playerInventoryTitle, 8, (this.getYSize() - 96 + 2), 4210752, false);
+        guiGraphics.drawString(font, this.title, 8 - 13, 6, 4210752, false);
+        guiGraphics.drawString(font, this.playerInventoryTitle, 8 - 13, (this.getYSize() - 96 + 2), 4210752, false);
     }
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
         // Draw main screen
-        guiGraphics.blit(GUI_TEXTURE, this.getGuiLeft(), this.getGuiTop(), 0, 0, this.getXSize(), this.getYSize());
+        guiGraphics.blit(GUI_TEXTURE, this.getGuiLeft() - 13, this.getGuiTop(), 0, 0, this.getXSize() + 26, this.getYSize());
     }
 }
