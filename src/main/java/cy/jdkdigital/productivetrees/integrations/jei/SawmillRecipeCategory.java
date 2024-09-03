@@ -54,21 +54,21 @@ public class SawmillRecipeCategory implements IRecipeCategory<SawmillRecipe>
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, SawmillRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 30, 24)
-                .addIngredients(recipe.log)
+                .addIngredients(recipe.input())
                 .setSlotName("log");
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 88, 15)
-                .addItemStack(recipe.planks)
+                .addItemStack(recipe.output())
                 .setSlotName("planks");
 
-        if (recipe.secondary.isPresent()) {
+        if (!recipe.secondary().isEmpty()) {
             builder.addSlot(RecipeIngredientRole.OUTPUT, 79, 33)
-                    .addItemStack(recipe.secondary.get())
+                    .addItemStack(recipe.secondary())
                     .setSlotName("secondary");
         }
-        if (recipe.tertiary.isPresent()) {
+        if (!recipe.tertiary().isEmpty()) {
             builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 33)
-                    .addItemStack(recipe.tertiary.get())
+                    .addItemStack(recipe.tertiary())
                     .setSlotName("tertiary");
         }
     }

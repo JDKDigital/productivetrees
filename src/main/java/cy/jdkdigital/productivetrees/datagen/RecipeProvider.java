@@ -137,17 +137,17 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
 
         // vanilla wood sawmill processing
         buildVanillaSawmillRecipes(pRecipeOutput);
+        buildCompatSawmillRecipes(pRecipeOutput);
 
         // Treetap recipes
-        // TODO re-enable when it can handle empty fluids
-//        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "socotra_dragon_log")), new ItemStack(TreeRegistrator.DRACAENA_SAP.get()), new ItemStack(Items.GLASS_BOTTLE), "#9d0300", 1200)
-//                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/dracaena_sap"));
-//        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sandalwood_log")), new ItemStack(TreeRegistrator.SANDALWOOD_OIL.get()), new ItemStack(Items.GLASS_BOTTLE), "#f1eda6", 2400)
-//                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/sandalwood_oil"));
-//        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sugar_maple_log")), new ItemStack(TreeRegistrator.MAPLE_SAP_BUCKET.get()), new FluidStack(TreeRegistrator.MAPLE_SAP.get(), 1000), 2400)
-//                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/maple_sap"));
-//        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "date_palm_log")), new ItemStack(TreeRegistrator.DATE_PALM_JUICE.get()), new ItemStack(Items.GLASS_BOTTLE), "#cd7408", 2400)
-//                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/date_palm_juice"));
+        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "socotra_dragon_log")), new ItemStack(TreeRegistrator.DRACAENA_SAP.get()), new ItemStack(Items.GLASS_BOTTLE), "#9d0300", 1200)
+                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/dracaena_sap"));
+        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sandalwood_log")), new ItemStack(TreeRegistrator.SANDALWOOD_OIL.get()), new ItemStack(Items.GLASS_BOTTLE), "#f1eda6", 2400)
+                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/sandalwood_oil"));
+        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sugar_maple_log")), new ItemStack(TreeRegistrator.MAPLE_SAP_BUCKET.get()), new FluidStack(TreeRegistrator.MAPLE_SAP.get(), 1000), 2400)
+                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/maple_sap"));
+        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "date_palm_log")), new ItemStack(TreeRegistrator.DATE_PALM_JUICE.get()), new ItemStack(Items.GLASS_BOTTLE), "#cd7408", 2400)
+                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/date_palm_juice"));
 
         // Nut toasting
         TreeRegistrator.ROASTED_NUTS.forEach(cropConfig -> {
@@ -222,6 +222,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.DARK_OAK_LOGS), new ItemStack(Items.DARK_OAK_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/dark_oak_planks_from_log"));
         SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.CRIMSON_STEMS), new ItemStack(Items.CRIMSON_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/crimson_planks_from_log"));
         SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.WARPED_STEMS), new ItemStack(Items.WARPED_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/warped_planks_from_log"));
+    }
+
+    private void buildCompatSawmillRecipes(RecipeOutput consumer) {
+        // TODO BOP, RU, BYG etc.
     }
 
     private void buildCrateRecipes(RecipeOutput consumer) {

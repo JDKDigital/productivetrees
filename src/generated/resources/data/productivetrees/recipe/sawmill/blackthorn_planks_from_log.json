@@ -1,14 +1,15 @@
 {
   "type": "productivetrees:sawmill",
-  "log": {
+  "input": {
     "tag": "productivetrees:blackthorn_logs"
   },
-  "planks": {
+  "output": {
     "count": 6,
     "id": "productivetrees:blackthorn_planks"
   },
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  }
+  },
+  "tertiary": {}
 }

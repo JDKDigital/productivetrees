@@ -4,6 +4,7 @@ import cy.jdkdigital.productivelib.common.block.entity.CapabilityBlockEntity;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivelib.common.block.entity.UpgradeableBlockEntity;
 import cy.jdkdigital.productivelib.registry.LibItems;
+import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.inventory.SawmillContainer;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
@@ -51,6 +52,7 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
 
         @Override
         public boolean isInputSlotItem(int slot, ItemStack stack) {
+            ProductiveTrees.LOGGER.info("isInputSlotItem " + slot + " " + canProcess(stack));
             if ((slot == SLOT_IN && canProcess(stack))) {
                 var currentOutStack = getStackInSlot(slot);
                 return currentOutStack.isEmpty() || (currentOutStack.getCount() < currentOutStack.getMaxStackSize() && ItemStack.isSameItemSameComponents(stack, currentOutStack));
@@ -88,6 +90,7 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
     }
 
     private boolean canProcess(ItemStack stack) {
+        ProductiveTrees.LOGGER.info("can process");
         return TreeUtil.getSawmillRecipe(level, stack) != null;
     }
 
@@ -114,15 +117,15 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
                 if (blockEntity.progress >= blockEntity.recipeTime) {
                     var recipe = TreeUtil.getSawmillRecipe(level, log);
                     if (recipe != null) {
-                        var leftOver = blockEntity.inventoryHandler.insertItem(SLOT_OUT, recipe.value().planks.copy(), false);
+                        var leftOver = blockEntity.inventoryHandler.insertItem(SLOT_OUT, recipe.value().output().copy(), false);
                         if (!leftOver.isEmpty()) {
                             blockEntity.buffer = leftOver;
                         }
-                        if (!recipe.value().secondary.isEmpty()) {
-                            var tLeftover = blockEntity.inventoryHandler.insertItem(SLOT_SECONDARY, recipe.value().secondary.get().copy(), false);
+                        if (!recipe.value().secondary().isEmpty()) {
+                            var tLeftover = blockEntity.inventoryHandler.insertItem(SLOT_SECONDARY, recipe.value().secondary().copy(), false);
 
-                            if (!recipe.value().tertiary.isEmpty()) {
-                                blockEntity.inventoryHandler.insertItem(SLOT_TERTIARY, recipe.value().tertiary.get().copy(), false);
+                            if (!recipe.value().tertiary().isEmpty()) {
+                                blockEntity.inventoryHandler.insertItem(SLOT_TERTIARY, recipe.value().tertiary().copy(), false);
                             } else if(!tLeftover.isEmpty()) {
                                 // Insert secondary output into tertiary slot
                                 blockEntity.inventoryHandler.insertItem(SLOT_TERTIARY, tLeftover, false);

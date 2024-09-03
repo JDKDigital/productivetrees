@@ -20,15 +20,15 @@ public class SawmillEmiRecipe extends BasicEmiRecipe
     public SawmillEmiRecipe(RecipeHolder<SawmillRecipe> recipe) {
         super(ProductiveTreesEmiPlugin.SAWMILL_CATEGORY, recipe.id(), 130, 60);
 
-        this.inputs.add(EmiIngredient.of(Arrays.stream(recipe.value().log.getItems()).map(TreeUtil::getSaplingFromLeaf).map(EmiStack::of).toList()));
+        this.inputs.add(EmiIngredient.of(Arrays.stream(recipe.value().input().getItems()).map(TreeUtil::getSaplingFromLeaf).map(EmiStack::of).toList()));
 
-        this.outputs.add(EmiStack.of(recipe.value().planks));
-        recipe.value().secondary.ifPresent(itemStack -> {
-            this.outputs.add(EmiStack.of(itemStack));
-        });
-        recipe.value().tertiary.ifPresent(itemStack -> {
-            this.outputs.add(EmiStack.of(itemStack));
-        });
+        this.outputs.add(EmiStack.of(recipe.value().output()));
+        if (!recipe.value().secondary().isEmpty()) {
+            this.outputs.add(EmiStack.of(recipe.value().secondary()));
+        }
+        if (!recipe.value().tertiary().isEmpty()) {
+            this.outputs.add(EmiStack.of(recipe.value().tertiary()));
+        }
     }
 
     @Override

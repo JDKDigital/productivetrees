@@ -1,56 +1,18 @@
 package cy.jdkdigital.productivetrees.recipe;
 
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import cy.jdkdigital.productivelib.common.recipe.TripleOutputRecipe;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeInput;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.item.crafting.*;
 
-import javax.annotation.Nonnull;
-import java.util.Optional;
-
-public class LogStrippingRecipe implements Recipe<RecipeInput>
+public class LogStrippingRecipe extends TripleOutputRecipe
 {
-    public final ItemStack log;
-    public final ItemStack stripped;
-    public final Optional<ItemStack> secondary;
-
-    public LogStrippingRecipe(ItemStack log, ItemStack stripped, Optional<ItemStack> secondary) {
-        this.log = log;
-        this.stripped = stripped;
-        this.secondary = secondary;
+    public LogStrippingRecipe(Ingredient input, ItemStack output, ItemStack secondary, ItemStack tertiary) {
+        super(input, output, secondary, tertiary);
     }
 
-    @Override
-    public boolean isSpecial() {
-        return true;
-    }
-
-    @Override
-    public boolean matches(RecipeInput container, Level level) {
-        return false;
-    }
-
-    @Override
-    public ItemStack assemble(RecipeInput container, HolderLookup.Provider provider) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    public boolean canCraftInDimensions(int width, int height) {
-        return false;
-    }
-
-    @Override
-    public ItemStack getResultItem(HolderLookup.Provider provider) {
-        return this.stripped.copy();
+    public LogStrippingRecipe(ItemStack log, ItemStack stripped, ItemStack secondary) {
+        this(Ingredient.of(log), stripped, secondary, ItemStack.EMPTY);
     }
 
     @Override
@@ -61,49 +23,5 @@ public class LogStrippingRecipe implements Recipe<RecipeInput>
     @Override
     public RecipeType<?> getType() {
         return TreeRegistrator.LOG_STRIPPING_TYPE.get();
-    }
-
-    public static class Serializer implements RecipeSerializer<LogStrippingRecipe>
-    {
-        private static final MapCodec<LogStrippingRecipe> CODEC = RecordCodecBuilder.mapCodec(
-                builder -> builder.group(
-                                ItemStack.CODEC.fieldOf("log").forGetter(recipe -> recipe.log),
-                                ItemStack.CODEC.fieldOf("stripped").forGetter(recipe -> recipe.stripped),
-                                ItemStack.CODEC.optionalFieldOf("secondary").forGetter(recipe -> recipe.secondary)
-                        )
-                        .apply(builder, LogStrippingRecipe::new)
-        );
-
-        public static final StreamCodec<RegistryFriendlyByteBuf, LogStrippingRecipe> STREAM_CODEC = StreamCodec.of(
-                LogStrippingRecipe.Serializer::toNetwork, LogStrippingRecipe.Serializer::fromNetwork
-        );
-
-        @Override
-        public MapCodec<LogStrippingRecipe> codec() {
-            return CODEC;
-        }
-
-        @Override
-        public StreamCodec<RegistryFriendlyByteBuf, LogStrippingRecipe> streamCodec() {
-            return STREAM_CODEC;
-        }
-
-        public static LogStrippingRecipe fromNetwork(@Nonnull RegistryFriendlyByteBuf buffer) {
-            try {
-                return new LogStrippingRecipe(ItemStack.STREAM_CODEC.decode(buffer), ItemStack.STREAM_CODEC.decode(buffer), Optional.of(ItemStack.OPTIONAL_STREAM_CODEC.decode(buffer)));
-            } catch (Exception e) {
-                throw e;
-            }
-        }
-
-        public static void toNetwork(@Nonnull RegistryFriendlyByteBuf buffer, LogStrippingRecipe recipe) {
-            try {
-                ItemStack.STREAM_CODEC.encode(buffer, recipe.log);
-                ItemStack.STREAM_CODEC.encode(buffer, recipe.stripped);
-                ItemStack.OPTIONAL_STREAM_CODEC.encode(buffer, recipe.secondary.orElse(ItemStack.EMPTY));
-            } catch (Exception e) {
-                throw e;
-            }
-        }
     }
 }

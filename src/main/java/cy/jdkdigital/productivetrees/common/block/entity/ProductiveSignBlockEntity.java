@@ -17,4 +17,9 @@ public class ProductiveSignBlockEntity extends SignBlockEntity
     public @NotNull BlockEntityType<?> getType() {
         return TreeRegistrator.SIGN_BE.get();
     }
+
+    @Override
+    public boolean isValidBlockState(BlockState blockState) {
+        return getType().isValid(blockState);
+    }
 }

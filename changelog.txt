@@ -1,3 +1,20 @@
+1.21.1-0.5.0
+
+- Fix loading with 1.21.1. Mod can no longer load on 1.21.0.
+- Fixed sign textures not showing
+
+
+1.21.0-0.4.2
+
+- Fixed crash with inserting upgrades in machines when bees are not installed
+- Register LEVEL_FLOWING property on maple sap fluid
+
+
+1.21.0-0.4.1
+
+- Updated Lib mod
+
+
 1.21.0-0.4.0
 
 - Machines now take speed upgrades to increase processing speed

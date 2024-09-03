@@ -61,7 +61,7 @@ public class LogStrippingRecipeCategory implements IRecipeCategory<LogStrippingR
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, LogStrippingRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 30, 15)
-                .addItemStack(recipe.log)
+                .addIngredients(recipe.input())
                 .setSlotName("log");
 
         builder.addSlot(RecipeIngredientRole.INPUT, 30, 34)
@@ -69,10 +69,10 @@ public class LogStrippingRecipeCategory implements IRecipeCategory<LogStrippingR
                 .setSlotName("axe");
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 15)
-                .addItemStack(recipe.stripped)
+                .addItemStack(recipe.output())
                 .setSlotName("stripped");
 
-        if (recipe.log.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock) {
+        if (!recipe.input().isEmpty() && recipe.input().getItems()[0].getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock) {
             var tree = TreeUtil.getTree(logBlock);
             if (tree != null && tree.getStripDrop().isPresent()) {
                 builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 34)

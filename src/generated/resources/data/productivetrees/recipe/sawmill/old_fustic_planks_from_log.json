@@ -1,9 +1,9 @@
 {
   "type": "productivetrees:sawmill",
-  "log": {
+  "input": {
     "tag": "productivetrees:old_fustic_logs"
   },
-  "planks": {
+  "output": {
     "count": 6,
     "id": "productivetrees:old_fustic_planks"
   },

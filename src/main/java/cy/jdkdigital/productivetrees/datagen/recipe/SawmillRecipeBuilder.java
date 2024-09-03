@@ -47,6 +47,6 @@ public record SawmillRecipeBuilder(Ingredient log, ItemStack plank, ItemStack se
 
     @Override
     public void save(RecipeOutput pRecipeOutput, ResourceLocation pId) {
-        pRecipeOutput.accept(pId, new SawmillRecipe(log, plank, secondary.isEmpty() ? Optional.empty() : Optional.of(secondary), tertiary.isEmpty() ? Optional.empty() : Optional.of(tertiary)), null);
+        pRecipeOutput.accept(pId, new SawmillRecipe(log, plank, secondary, tertiary), null);
     }
 }

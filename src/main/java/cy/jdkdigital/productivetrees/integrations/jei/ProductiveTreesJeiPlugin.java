@@ -113,11 +113,11 @@ public class ProductiveTreesJeiPlugin implements IModPlugin
         Arrays.stream(Ingredient.of(ItemTags.LOGS).getItems()).forEach(itemStack -> {
             var stripped = TreeUtil.getStrippedItem(itemStack);
             if (!stripped.isEmpty() && !ItemStack.isSameItem(itemStack, stripped)) {
-                Optional<ItemStack> secondary = Optional.empty();
+                ItemStack secondary = ItemStack.EMPTY;
                 if (itemStack.getItem() instanceof BlockItem blockItem) {
                     var tree = TreeUtil.getTree(blockItem.getBlock());
                     if (tree != null && tree.getStripDrop().isPresent()) {
-                        secondary = Optional.of(tree.getStripDropStack());
+                        secondary = tree.getStripDropStack();
                     }
                 }
                 stripList.add(new LogStrippingRecipe(itemStack, stripped, secondary));

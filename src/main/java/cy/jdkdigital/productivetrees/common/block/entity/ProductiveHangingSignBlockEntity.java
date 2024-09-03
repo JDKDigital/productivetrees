@@ -17,4 +17,9 @@ public class ProductiveHangingSignBlockEntity extends HangingSignBlockEntity
     public @NotNull BlockEntityType<?> getType() {
         return TreeRegistrator.HANGING_SIGN_BE.get();
     }
+
+    @Override
+    public boolean isValidBlockState(BlockState blockState) {
+        return getType().isValid(blockState);
+    }
 }

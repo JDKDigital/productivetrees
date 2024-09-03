@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees.registry;
 
 import cy.jdkdigital.productivelib.common.item.UpgradeItem;
+import cy.jdkdigital.productivelib.common.recipe.TripleOutputRecipe;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.*;
@@ -119,11 +120,11 @@ public class TreeRegistrator
 
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> TREE_POLLINATION = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_pollination", TreePollinationRecipe.Serializer::new);
     public static final DeferredHolder<RecipeType<?>, RecipeType<TreePollinationRecipe>> TREE_POLLINATION_TYPE = ProductiveTrees.RECIPE_TYPES.register("tree_pollination", () -> new RecipeType<>() {});
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> TREE_FRUITING = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_fruiting",TreeFruitingRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> TREE_FRUITING = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_fruiting", TreeFruitingRecipe.Serializer::new);
     public static final DeferredHolder<RecipeType<?>, RecipeType<TreeFruitingRecipe>> TREE_FRUITING_TYPE = ProductiveTrees.RECIPE_TYPES.register("tree_fruiting", () -> new RecipeType<>() {});
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> LOG_STRIPPING = ProductiveTrees.RECIPE_SERIALIZERS.register("log_stripping", LogStrippingRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> LOG_STRIPPING = ProductiveTrees.RECIPE_SERIALIZERS.register("log_stripping", () -> new TripleOutputRecipe.Serializer<>(LogStrippingRecipe::new));
     public static final DeferredHolder<RecipeType<?>, RecipeType<LogStrippingRecipe>> LOG_STRIPPING_TYPE = ProductiveTrees.RECIPE_TYPES.register("log_stripping", () -> new RecipeType<>() {});
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> SAW_MILLLING = ProductiveTrees.RECIPE_SERIALIZERS.register("sawmill", SawmillRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> SAW_MILLLING = ProductiveTrees.RECIPE_SERIALIZERS.register("sawmill", () -> new TripleOutputRecipe.Serializer<>(SawmillRecipe::new));
     public static final DeferredHolder<RecipeType<?>, RecipeType<SawmillRecipe>> SAW_MILLLING_TYPE = ProductiveTrees.RECIPE_TYPES.register("sawmill", () -> new RecipeType<>() {});
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> NULL_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "null"));
@@ -299,7 +300,6 @@ public class TreeRegistrator
     private static List<DeferredHolder<Block, Block>> SIGNS = new ArrayList<>();
     private static List<DeferredHolder<Block, Block>> HANGING_SIGNS = new ArrayList<>();
 
-    private static final WoodType woodType = WoodType.register(new WoodType(ProductiveTrees.MODID + ":wood", BlockSetType.register(new BlockSetType(ProductiveTrees.MODID + ":wood"))));
     public static void registerTree(TreeObject treeObject) {
         var name = treeObject.getId().getPath();
 
@@ -368,10 +368,17 @@ public class TreeRegistrator
         // Bookshelf
         registerBlock(name + "_bookshelf", () -> new Block(getProperties(Blocks.BOOKSHELF, noOcclusion, lightLevel)));
         // Signs
-        var signBlock = registerBlock(name + "_sign", () -> new ProductiveStandingSignBlock(woodType, getProperties(Blocks.OAK_SIGN, noOcclusion, lightLevel)), false);
-        var wallSignBlock = registerBlock(name + "_wall_sign", () -> new ProductiveWallSignBlock(woodType, getProperties(Blocks.OAK_WALL_SIGN, noOcclusion, lightLevel)), false);
-        var hangingSignBlock = registerBlock(name + "_hanging_sign", () -> new ProductiveCeilingHangingSignBlock(woodType, getProperties(Blocks.OAK_HANGING_SIGN, noOcclusion, lightLevel)), false);
-        var wallHangingSignBlock = registerBlock(name + "_wall_hanging_sign", () -> new ProductiveWallHangingSignBlock(woodType, getProperties(Blocks.OAK_WALL_HANGING_SIGN, noOcclusion, lightLevel)), false);
+        var woodType = WoodType.OAK;
+        try {
+            woodType = WoodType.register(new WoodType(ProductiveTrees.MODID + ":" + name, BlockSetType.register(new BlockSetType(ProductiveTrees.MODID + ":" + name))));
+        } catch (Exception e) {
+            ProductiveTrees.LOGGER.warn("Unable to register woodtype for " + name + ". Error: " + e.getMessage());
+        }
+        WoodType finalWoodType = woodType;
+        var signBlock = registerBlock(name + "_sign", () -> new ProductiveStandingSignBlock(finalWoodType, getProperties(Blocks.OAK_SIGN, noOcclusion, lightLevel)), false);
+        var wallSignBlock = registerBlock(name + "_wall_sign", () -> new ProductiveWallSignBlock(finalWoodType, getProperties(Blocks.OAK_WALL_SIGN, noOcclusion, lightLevel)), false);
+        var hangingSignBlock = registerBlock(name + "_hanging_sign", () -> new ProductiveCeilingHangingSignBlock(finalWoodType, getProperties(Blocks.OAK_HANGING_SIGN, noOcclusion, lightLevel)), false);
+        var wallHangingSignBlock = registerBlock(name + "_wall_hanging_sign", () -> new ProductiveWallHangingSignBlock(finalWoodType, getProperties(Blocks.OAK_WALL_HANGING_SIGN, noOcclusion, lightLevel)), false);
 
         registerItem(name + "_sign", () -> new SignItem(new Item.Properties(), signBlock.get(), wallSignBlock.get()));
         registerItem(name + "_hanging_sign", () -> new SignItem(new Item.Properties(), hangingSignBlock.get(), wallHangingSignBlock.get()));

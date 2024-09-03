@@ -27,13 +27,13 @@ public class StripperEmiRecipe extends BasicEmiRecipe
     public StripperEmiRecipe(RecipeHolder<LogStrippingRecipe> recipe) {
         super(ProductiveTreesEmiPlugin.STRIPPING_CATEGORY, recipe.id(), 130, 60);
 
-        this.inputs.add(EmiStack.of(recipe.value().log));
+        this.inputs.add(EmiIngredient.of(recipe.value().input()));
         this.inputs.add(EmiIngredient.of(ModTags.STRIPPER_TOOLS));
 
-        this.outputs.add(EmiStack.of(recipe.value().stripped));
-        recipe.value().secondary.ifPresent(itemStack -> {
-            this.outputs.add(EmiStack.of(itemStack));
-        });
+        this.outputs.add(EmiStack.of(recipe.value().output()));
+        if (!recipe.value().secondary().isEmpty()) {
+            this.outputs.add(EmiStack.of(recipe.value().secondary()));
+        }
     }
 
     @Override

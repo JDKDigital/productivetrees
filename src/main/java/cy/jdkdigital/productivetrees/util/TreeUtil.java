@@ -15,6 +15,7 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.TypedDataComponent;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -186,18 +187,21 @@ public class TreeUtil
         return ItemStack.EMPTY;
     }
 
-    static Map<ItemStack, RecipeHolder<SawmillRecipe>> sawmillRecipeCache = new HashMap<>();
+    static Map<String, RecipeHolder<SawmillRecipe>> sawmillRecipeCache = new HashMap<>();
     public static RecipeHolder<SawmillRecipe> getSawmillRecipe(Level level, ItemStack stack) {
+        ProductiveTrees.LOGGER.info("getSawmillRecipe " + stack.isEmpty() + " " + stack);
         if (!stack.isEmpty()) {
-            var cacheItem = stack.copy();
-            cacheItem.setCount(1);
+            var cacheItem = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString() + (!stack.getComponents().isEmpty() ? stack.getComponents().stream().map(TypedDataComponent::toString).reduce((s, s2) -> s + s2) : "");
+            ProductiveTrees.LOGGER.info("cacheItem " + cacheItem);
             if (sawmillRecipeCache.containsKey(cacheItem)) {
                 return sawmillRecipeCache.get(cacheItem);
             }
 
             List<RecipeHolder<SawmillRecipe>> recipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.SAW_MILLLING_TYPE.get());
             for (RecipeHolder<SawmillRecipe> recipe : recipes) {
-                if (recipe.value().log.test(stack)) {
+                ProductiveTrees.LOGGER.info("test recipe " + recipe.id());
+                if (recipe.value().input().test(stack)) {
+                    ProductiveTrees.LOGGER.info(" match");
                     sawmillRecipeCache.put(cacheItem, recipe);
                     return recipe;
                 }

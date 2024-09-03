@@ -1,7 +1,10 @@
 package cy.jdkdigital.productivetrees.common.fluid;
 
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 
@@ -20,6 +23,12 @@ public abstract class MapleSap extends BaseFlowingFluid
         @Override
         public boolean isSource(FluidState pState) {
             return false;
+        }
+
+        @Override
+        protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
+            super.createFluidStateDefinition(builder);
+            builder.add(BlockStateProperties.LEVEL_FLOWING);
         }
 
         @Override

@@ -1,9 +1,9 @@
 {
   "type": "productivetrees:sawmill",
-  "log": {
+  "input": {
     "tag": "productivetrees:logwood_logs"
   },
-  "planks": {
+  "output": {
     "count": 6,
     "id": "productivetrees:logwood_planks"
   },

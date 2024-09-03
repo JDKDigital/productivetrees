@@ -37,7 +37,9 @@ public class EventHandler
 
     @SubscribeEvent
     public static void collectValidUpgrades(CollectValidUpgradesEvent event) {
-        CompatHandler.collectValidUpgrades(event);
+        if (ModList.get().isLoaded("productivebees")) {
+            CompatHandler.collectValidUpgrades(event);
+        }
     }
 
     @SubscribeEvent

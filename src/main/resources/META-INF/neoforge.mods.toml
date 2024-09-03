@@ -39,13 +39,13 @@ license="${mod_license}"
 [[dependencies.${mod_id}]]
     modId="productivelib"
     type="required"
-    versionRange="[${lib_version},)"
+    versionRange="lib_version_range"
     ordering="NONE"
     side="BOTH"
 [[dependencies.${mod_id}]]
     modId="productivebees"
     type="optional"
-    versionRange="[${minecraft_version}-${pb_version},)"
+    versionRange="${pb_version_range}"
     ordering="BEFORE"
     side="BOTH"
 [[dependencies.${mod_id}]]

@@ -1,14 +1,15 @@
 {
   "type": "productivetrees:sawmill",
-  "log": {
+  "input": {
     "tag": "productivetrees:breadfruit_logs"
   },
-  "planks": {
+  "output": {
     "count": 6,
     "id": "productivetrees:breadfruit_planks"
   },
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  }
+  },
+  "tertiary": {}
 }
