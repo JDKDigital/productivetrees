@@ -24,11 +24,11 @@ public class LootModifierProvider extends GlobalLootModifierProvider
 
     @Override
     protected void start() {
-        add("black_ember_sapling", new ItemLootModifier(lootConditions("chests/bastion_treasure"), new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "black_ember_sapling"))), 0.1f));
-        add("blue_yonder_sapling", new ItemLootModifier(lootConditions("chests/shipwreck_treasure"), new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "blue_yonder_sapling"))), 0.1f));
-        add("soul_tree_sapling", new ItemLootModifier(lootConditions("chests/end_city_treasure"), new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "soul_tree_sapling"))), 0.1f));
-        add("flickering_sun_sapling", new ItemLootModifier(lootConditions("chests/desert_pyramid"), new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "flickering_sun_sapling"))), 0.05f));
-        add("firecracker_sapling", new ItemLootModifier(lootConditions("chests/ancient_city"), new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "firecracker_sapling"))), 0.1f));
+        add("black_ember_sapling", new ItemLootModifier(lootConditions("chests/bastion_treasure", "chests/bastion_hoglin_stable"), new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "black_ember_sapling"))), 0.3f));
+        add("blue_yonder_sapling", new ItemLootModifier(lootConditions("chests/shipwreck_treasure"), new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "blue_yonder_sapling"))), 0.3f));
+        add("soul_tree_sapling", new ItemLootModifier(lootConditions("chests/end_city_treasure"), new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "soul_tree_sapling"))), 0.05f));
+        add("flickering_sun_sapling", new ItemLootModifier(lootConditions("chests/desert_pyramid"), new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "flickering_sun_sapling"))), 0.15f));
+        add("firecracker_sapling", new ItemLootModifier(lootConditions("chests/ancient_city"), new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "firecracker_sapling"))), 0.15f));
         add("brown_amber_sapling", new IngredientModifier(lootConditions("archaeology/ocean_ruin_cold"), Ingredient.of(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "brown_amber_sapling"))), 0.1f, true));
     }
 

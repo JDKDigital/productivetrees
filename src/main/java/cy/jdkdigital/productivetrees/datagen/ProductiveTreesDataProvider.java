@@ -26,7 +26,7 @@ public class ProductiveTreesDataProvider
 
         gen.addProvider(event.includeClient(), new LanguageProvider(output));
 
-        gen.addProvider(event.includeClient(), new BlockstateProvider(output));
+        gen.addProvider(event.includeClient(), new ModelProvider(output));
 
         gen.addProvider(event.includeServer(), new LootDataProvider(output, List.of(new LootTableProvider.SubProviderEntry(LootDataProvider.LootProvider::new, LootContextParamSets.BLOCK)), provider));
         gen.addProvider(event.includeServer(), new LootModifierProvider(output, provider));

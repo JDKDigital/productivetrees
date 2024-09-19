@@ -12,7 +12,7 @@
     "id": "productivetrees:maple_sap"
   },
   "fluid_color": "",
-  "harvest_item": [],
+  "harvest_item": {},
   "life_cycle": [],
   "log": {
     "item": "productivetrees:sugar_maple_log"

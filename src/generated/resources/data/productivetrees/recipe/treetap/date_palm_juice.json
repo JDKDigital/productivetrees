@@ -7,10 +7,14 @@
   ],
   "type": "treetap:tap_extract",
   "collect_bucket": false,
-  "display_fluid": {},
+  "display_fluid": {
+    "amount": 1000,
+    "id": "minecraft:water"
+  },
   "fluid_color": "#cd7408",
   "harvest_item": {
-    "item": "minecraft:glass_bottle"
+    "count": 1,
+    "id": "minecraft:glass_bottle"
   },
   "life_cycle": [],
   "log": {

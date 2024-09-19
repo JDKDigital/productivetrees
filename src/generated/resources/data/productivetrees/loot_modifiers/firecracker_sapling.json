@@ -4,7 +4,7 @@
     "count": 1,
     "id": "productivetrees:firecracker_sapling"
   },
-  "chance": 0.1,
+  "chance": 0.15,
   "conditions": [
     {
       "condition": "neoforge:loot_table_id",

@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,7 +20,7 @@ public final class TreetapRecipeBuilder implements RecipeBuilder
 {
     private final Ingredient log;
     private final ItemStack result;
-    private final Ingredient harvestItem;
+    private final ItemStack harvestItem;
     private final String fluidColor;
     private final FluidStack displayFluid;
     private final boolean collectBucket;
@@ -29,7 +30,7 @@ public final class TreetapRecipeBuilder implements RecipeBuilder
     private TreetapRecipeBuilder(Ingredient log, ItemStack result, ItemStack harvestItem, String fluidColor, FluidStack displayFluid, boolean collectBucket, int processingTime, int blocksRequired) {
         this.log = log;
         this.result = result;
-        this.harvestItem = Ingredient.of(harvestItem);
+        this.harvestItem = harvestItem;
         this.fluidColor = fluidColor;
         this.displayFluid = displayFluid;
         this.collectBucket = collectBucket;
@@ -46,11 +47,11 @@ public final class TreetapRecipeBuilder implements RecipeBuilder
     }
 
     public static TreetapRecipeBuilder direct(Block log, ItemStack result, String fluidColor, int processingTime) {
-        return direct(Ingredient.of(log), result, ItemStack.EMPTY, fluidColor, FluidStack.EMPTY, false, processingTime);
+        return direct(Ingredient.of(log), result, ItemStack.EMPTY, fluidColor, new FluidStack(Fluids.WATER, 1000), false, processingTime);
     }
 
     public static TreetapRecipeBuilder direct(Block log, ItemStack result, ItemStack harvestItem, String fluidColor, int processingTime) {
-        return direct(Ingredient.of(log), result, harvestItem, fluidColor, FluidStack.EMPTY, false, processingTime);
+        return direct(Ingredient.of(log), result, harvestItem, fluidColor, new FluidStack(Fluids.WATER, 1000), false, processingTime);
     }
 
     @Override

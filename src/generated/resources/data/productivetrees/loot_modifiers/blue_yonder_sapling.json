@@ -4,7 +4,7 @@
     "count": 1,
     "id": "productivetrees:blue_yonder_sapling"
   },
-  "chance": 0.1,
+  "chance": 0.3,
   "conditions": [
     {
       "condition": "neoforge:loot_table_id",

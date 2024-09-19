@@ -1,3 +1,8 @@
+1.21.1-0.5.1
+
+- Increased chance to find black ember and blue yonder saplings in loot
+
+
 1.21.1-0.5.0
 
 - Fix loading with 1.21.1. Mod can no longer load on 1.21.0.

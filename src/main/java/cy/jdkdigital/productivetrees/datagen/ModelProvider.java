@@ -23,7 +23,6 @@ import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.*;
 
@@ -33,13 +32,13 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class BlockstateProvider implements DataProvider
+public class ModelProvider implements DataProvider
 {
     protected final PackOutput packOutput;
 
     protected final Map<ResourceLocation, Supplier<JsonElement>> models = new HashMap<>();
 
-    public BlockstateProvider(PackOutput packOutput) {
+    public ModelProvider(PackOutput packOutput) {
         this.packOutput = packOutput;
     }
 
