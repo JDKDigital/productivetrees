@@ -52,7 +52,6 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
 
         @Override
         public boolean isInputSlotItem(int slot, ItemStack stack) {
-            ProductiveTrees.LOGGER.info("isInputSlotItem " + slot + " " + canProcess(stack));
             if ((slot == SLOT_IN && canProcess(stack))) {
                 var currentOutStack = getStackInSlot(slot);
                 return currentOutStack.isEmpty() || (currentOutStack.getCount() < currentOutStack.getMaxStackSize() && ItemStack.isSameItemSameComponents(stack, currentOutStack));
@@ -90,7 +89,6 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
     }
 
     private boolean canProcess(ItemStack stack) {
-        ProductiveTrees.LOGGER.info("can process");
         return TreeUtil.getSawmillRecipe(level, stack) != null;
     }
 

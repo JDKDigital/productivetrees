@@ -1,3 +1,15 @@
+1.21.1-0.5.3
+
+- Vanilla bee nests and hives can now pollinate leaves
+- Fixed in-world pollination not working for some pollination recipes
+
+
+1.21.1-0.5.2
+
+- Added Mekanism Sawmill compatibility
+- Removed some debug output
+
+
 1.21.1-0.5.1
 
 - Increased chance to find black ember and blue yonder saplings in loot

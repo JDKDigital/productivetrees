@@ -1,12 +1,12 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
   "leafA": {
     "item": "productivetrees:brazilwood_leaves"
   },
   "leafB": {
     "item": "productivetrees:rose_gum_leaves"
   },
-  "processingTime": 0.1,
   "result": {
     "count": 1,
     "id": "productivetrees:pink_ivory_sapling"

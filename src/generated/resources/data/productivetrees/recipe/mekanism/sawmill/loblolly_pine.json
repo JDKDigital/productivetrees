@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:sawing",
+  "input": {
+    "count": 1,
+    "tag": "productivetrees:loblolly_pine_logs"
+  },
+  "main_output": {
+    "count": 6,
+    "id": "productivetrees:loblolly_pine_planks"
+  }
+}

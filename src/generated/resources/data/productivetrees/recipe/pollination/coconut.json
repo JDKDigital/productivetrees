@@ -1,12 +1,12 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
   "leafA": {
     "item": "productivetrees:brazil_nut_leaves"
   },
   "leafB": {
     "item": "productivetrees:balsa_leaves"
   },
-  "processingTime": 0.1,
   "result": {
     "count": 1,
     "id": "productivetrees:coconut_sapling"

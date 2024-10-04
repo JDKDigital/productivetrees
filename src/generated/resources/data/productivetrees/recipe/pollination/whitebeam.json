@@ -1,12 +1,12 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
   "leafA": {
     "item": "productivetrees:ash_leaves"
   },
   "leafB": {
     "item": "minecraft:birch_leaves"
   },
-  "processingTime": 0.1,
   "result": {
     "count": 1,
     "id": "productivetrees:whitebeam_sapling"

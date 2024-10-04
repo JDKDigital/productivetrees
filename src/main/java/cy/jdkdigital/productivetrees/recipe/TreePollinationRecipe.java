@@ -74,7 +74,7 @@ public class TreePollinationRecipe implements Recipe<RecipeInput>
                                 Ingredient.CODEC.fieldOf("leafA").forGetter(recipe -> recipe.leafA),
                                 Ingredient.CODEC.fieldOf("leafB").forGetter(recipe -> recipe.leafB),
                                 ItemStack.CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
-                                Codec.FLOAT.fieldOf("processingTime").orElse(0.1f).forGetter(recipe -> recipe.chance)
+                                Codec.FLOAT.fieldOf("chance").orElse(0.1f).forGetter(recipe -> recipe.chance)
                         )
                         .apply(builder, TreePollinationRecipe::new)
         );

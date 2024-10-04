@@ -11,7 +11,12 @@
         {
             "type": "patchouli:text",
             "flag": "!mod:productivebees",
-            "text": "Collect leaves and run them through a pollen sifter to extract pollen. Use the pollen balls on a leaf to pollinate it and get a new tree species.$(br2)Please not that this mod is in beta and not feature complete.$(br1)Specifically the growth features for the trees (how they look when grown) are under development."
+            "text": "Put one tree next to another tree near some bees, profit.$(br)You can also collect leaves and run them through a pollen sifter to extract pollen. Use the pollen balls on a leaf to pollinate it and get a new tree species.$(br2)Please not that this mod is in beta and not feature complete.$(br1)Specifically the growth features for the trees (how they look when grown) are under development."
+        },
+        {
+            "type": "patchouli:text",
+            "flag": "!mod:productivebees",
+            "text": "If you use bees you need to make sure that the leaves of the two trees you want to breed are withing 4 blocks of the beenest/hive and that the bees have flowers nearby. Each trip to the hive from the flower will trigger a pollination attempt on a nearby leaf."
         },
         {
             "type": "patchouli:spotlight",

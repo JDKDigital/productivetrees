@@ -1,12 +1,12 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
   "leafA": {
     "item": "productivetrees:red_delicious_apple_leaves"
   },
   "leafB": {
     "item": "minecraft:flowering_azalea_leaves"
   },
-  "processingTime": 0.1,
   "result": {
     "count": 1,
     "id": "productivetrees:sand_pear_sapling"

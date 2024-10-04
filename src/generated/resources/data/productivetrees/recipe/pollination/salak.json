@@ -1,12 +1,12 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
   "leafA": {
     "item": "productivetrees:pandanus_leaves"
   },
   "leafB": {
     "item": "productivetrees:coconut_leaves"
   },
-  "processingTime": 0.1,
   "result": {
     "count": 1,
     "id": "productivetrees:salak_sapling"

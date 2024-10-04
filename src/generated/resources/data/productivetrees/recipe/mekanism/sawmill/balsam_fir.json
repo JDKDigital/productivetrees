@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:sawing",
+  "input": {
+    "count": 1,
+    "tag": "productivetrees:balsam_fir_logs"
+  },
+  "main_output": {
+    "count": 6,
+    "id": "productivetrees:balsam_fir_planks"
+  }
+}

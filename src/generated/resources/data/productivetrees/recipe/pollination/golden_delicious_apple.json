@@ -1,12 +1,12 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
   "leafA": {
     "item": "productivetrees:red_delicious_apple_leaves"
   },
   "leafB": {
     "item": "productivetrees:granny_smith_apple_leaves"
   },
-  "processingTime": 0.1,
   "result": {
     "count": 1,
     "id": "productivetrees:golden_delicious_apple_sapling"

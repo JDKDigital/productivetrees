@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:sawing",
+  "input": {
+    "count": 1,
+    "tag": "productivetrees:monkey_puzzle_logs"
+  },
+  "main_output": {
+    "count": 6,
+    "id": "productivetrees:monkey_puzzle_planks"
+  }
+}

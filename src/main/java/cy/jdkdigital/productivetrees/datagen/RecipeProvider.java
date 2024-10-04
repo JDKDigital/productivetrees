@@ -5,6 +5,7 @@ import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.datagen.recipe.*;
 import cy.jdkdigital.productivetrees.registry.*;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
+import mekanism.api.recipes.ingredients.ItemStackIngredient;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
@@ -28,6 +29,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -92,6 +94,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             hangingSign(pRecipeOutput, TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), planks);
             buildSawmillRecipe(treeObject, pRecipeOutput);
             buildCorailWoodcutterRecipes(treeObject, pRecipeOutput);
+            buildMekanismWoodcutterRecipes(treeObject, pRecipeOutput);
             ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(pRecipeOutput, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf"));
             
             // arboreal extractor (for resin, sap and latex), insolator (logs, saplings and fruit)
@@ -226,6 +229,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
 
     private void buildCompatSawmillRecipes(RecipeOutput consumer) {
         // TODO BOP, RU, BYG etc.
+
     }
 
     private void buildCrateRecipes(RecipeOutput consumer) {
@@ -265,6 +269,12 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             }
             rBuilder.save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "crates/" + crate.getPath()));
         });
+    }
+
+    private void buildMekanismWoodcutterRecipes(WoodObject treeObject, RecipeOutput consumer) {
+        var logTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, treeObject.getId().getPath() + "_logs"));
+        mekanism.api.datagen.recipe.builder.SawmillRecipeBuilder.sawing(ItemStackIngredient.of(SizedIngredient.of(logTag, 1)), new ItemStack(TreeUtil.getBlock(treeObject.getId(), "_planks"), 6))
+                .build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "mekanism/sawmill/" + treeObject.getId().getPath()));
     }
 
     private void buildCorailWoodcutterRecipes(WoodObject treeObject, RecipeOutput consumer) {
@@ -372,37 +382,37 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         treeBreeding(consumer, "walnut", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
         treeBreeding(consumer, "sweet_chestnut", "walnut", RecipeProvider.getLeafIngredient("wild_cherry", "silver_lime"), 0.1f);
         treeBreeding(consumer, "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), Ingredient.of(Blocks.BIRCH_LEAVES), 0.1f);
-        treeBreeding(consumer, "sugar_maple", "european_larch", "red_maple", 5);
-        treeBreeding(consumer, "citron", "silver_lime", "sour_cherry", 5);
-        treeBreeding(consumer, "plum", "citron", "wild_cherry", 5);
+        treeBreeding(consumer, "sugar_maple", "european_larch", "red_maple", 0.05f);
+        treeBreeding(consumer, "citron", "silver_lime", "sour_cherry", 0.05f);
+        treeBreeding(consumer, "plum", "citron", "wild_cherry", 0.05f);
         treeBreeding(consumer, "bull_pine", "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), 0.1f);
-        treeBreeding(consumer, "sequoia", "european_larch", "bull_pine", 5);
+        treeBreeding(consumer, "sequoia", "european_larch", "bull_pine", 0.05f);
         treeBreeding(consumer, "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), Ingredient.of(Blocks.JUNGLE_LEAVES), 0.40f);
         treeBreeding(consumer, "ipe", "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), 0.1f);
         treeBreeding(consumer, "aquilaria", "teak", "ipe", 0.1f);
         treeBreeding(consumer, "kapok", "teak", Ingredient.of(Blocks.JUNGLE_LEAVES), 0.1f);
         treeBreeding(consumer, "ceylon_ebony", "kapok", Ingredient.of(Blocks.DARK_OAK_LEAVES), 0.1f);
-        treeBreeding(consumer, "purple_crepe_myrtle", "ceylon_ebony", Ingredient.of(Blocks.CHERRY_LEAVES), 5);
-        treeBreeding(consumer, "zebrano", "white_poplar", "ceylon_ebony", 5);
+        treeBreeding(consumer, "purple_crepe_myrtle", "ceylon_ebony", Ingredient.of(Blocks.CHERRY_LEAVES), 0.05f);
+        treeBreeding(consumer, "zebrano", "white_poplar", "ceylon_ebony", 0.05f);
         treeBreeding(consumer, "yellow_meranti", "ceylon_ebony", "kapok", 0.1f);
         treeBreeding(consumer, "mahogany", "yellow_meranti", "kapok", 0.1f);
-        treeBreeding(consumer, "padauk", "red_maple", Ingredient.of(Blocks.JUNGLE_LEAVES), 5);
-        treeBreeding(consumer, "dogwood", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 5);
+        treeBreeding(consumer, "padauk", "red_maple", Ingredient.of(Blocks.JUNGLE_LEAVES), 0.05f);
+        treeBreeding(consumer, "dogwood", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 0.05f);
         treeBreeding(consumer, "balsa", "teak", Ingredient.of(Blocks.ACACIA_LEAVES), 0.1f);
         treeBreeding(consumer, "cocobolo", "balsa", Ingredient.of(Blocks.DARK_OAK_LEAVES), 0.1f);
         treeBreeding(consumer, "wenge", "balsa", "cocobolo", 0.1f);
         treeBreeding(consumer, "socotra_dragon", "wenge", "cocobolo", 0.1f);
         treeBreeding(consumer, "grandidiers_baobab", "balsa", "wenge", 0.1f);
-        treeBreeding(consumer, "blue_mahoe", "teak", "balsa", 5);
-        treeBreeding(consumer, "white_willow", "silver_lime", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES), 5);
+        treeBreeding(consumer, "blue_mahoe", "teak", "balsa", 0.05f);
+        treeBreeding(consumer, "white_willow", "silver_lime", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES), 0.05f);
         treeBreeding(consumer, "greenheart", "mahogany", "kapok", 0.1f);
-        treeBreeding(consumer, "papaya", "wild_cherry", "cacao", 5);
-        treeBreeding(consumer, "date_palm", "papaya", "cacao", 5);
-        treeBreeding(consumer, "asai_palm", "date_palm", "black_cherry", 5);
-        treeBreeding(consumer, "persimmon", "ceylon_ebony", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 5);
-        treeBreeding(consumer, "myrtle_ebony", "ceylon_ebony", "persimmon", 5);
-        treeBreeding(consumer, "pomegranate", "holly", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 5);
-        treeBreeding(consumer, "white_poplar", "white_willow", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, getLeafIngredient("silver_lime").getItems()[0].getItem()), 5);
+        treeBreeding(consumer, "papaya", "wild_cherry", "cacao", 0.05f);
+        treeBreeding(consumer, "date_palm", "papaya", "cacao", 0.05f);
+        treeBreeding(consumer, "asai_palm", "date_palm", "black_cherry", 0.05f);
+        treeBreeding(consumer, "persimmon", "ceylon_ebony", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 0.05f);
+        treeBreeding(consumer, "myrtle_ebony", "ceylon_ebony", "persimmon", 0.05f);
+        treeBreeding(consumer, "pomegranate", "holly", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 0.05f);
+        treeBreeding(consumer, "white_poplar", "white_willow", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, getLeafIngredient("silver_lime").getItems()[0].getItem()), 0.05f);
         treeBreeding(consumer, "red_delicious_apple", Ingredient.of(Blocks.CHERRY_LEAVES), Ingredient.of(Blocks.OAK_LEAVES, Blocks.DARK_OAK_LEAVES), 0.1f);
         treeBreeding(consumer, "granny_smith_apple", "red_delicious_apple", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
         treeBreeding(consumer, "golden_delicious_apple", "red_delicious_apple", "granny_smith_apple", 0.1f);

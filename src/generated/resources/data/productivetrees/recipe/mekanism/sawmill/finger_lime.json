@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:sawing",
+  "input": {
+    "count": 1,
+    "tag": "productivetrees:finger_lime_logs"
+  },
+  "main_output": {
+    "count": 6,
+    "id": "productivetrees:finger_lime_planks"
+  }
+}

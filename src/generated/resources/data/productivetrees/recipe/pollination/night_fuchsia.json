@@ -1,12 +1,12 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.05,
   "leafA": {
     "item": "productivetrees:purple_spiral_leaves"
   },
   "leafB": {
     "item": "productivetrees:sparkle_cherry_leaves"
   },
-  "processingTime": 0.05,
   "result": {
     "count": 1,
     "id": "productivetrees:night_fuchsia_sapling"

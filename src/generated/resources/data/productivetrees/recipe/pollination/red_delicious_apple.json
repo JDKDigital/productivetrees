@@ -1,5 +1,6 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
   "leafA": {
     "item": "minecraft:cherry_leaves"
   },
@@ -11,7 +12,6 @@
       "item": "minecraft:dark_oak_leaves"
     }
   ],
-  "processingTime": 0.1,
   "result": {
     "count": 1,
     "id": "productivetrees:red_delicious_apple_sapling"

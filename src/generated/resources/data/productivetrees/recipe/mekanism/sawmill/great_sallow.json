@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:sawing",
+  "input": {
+    "count": 1,
+    "tag": "productivetrees:great_sallow_logs"
+  },
+  "main_output": {
+    "count": 6,
+    "id": "productivetrees:great_sallow_planks"
+  }
+}

@@ -1,12 +1,12 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.05,
   "leafA": {
     "item": "productivetrees:holly_leaves"
   },
   "leafB": {
     "item": "productivetrees:purple_crepe_myrtle_leaves"
   },
-  "processingTime": 5.0,
   "result": {
     "count": 1,
     "id": "productivetrees:pomegranate_sapling"

@@ -1,12 +1,12 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.05,
   "leafA": {
     "item": "productivetrees:silver_lime_leaves"
   },
   "leafB": {
     "item": "minecraft:cherry_leaves"
   },
-  "processingTime": 5.0,
   "result": {
     "count": 1,
     "id": "productivetrees:dogwood_sapling"

@@ -132,7 +132,7 @@ dependencies {
     implementation "local.libs:productivebees-${pb_version}"
     implementation "local.libs:treetap-${treetap_version}"
 
-    jarJar(group: 'cy.jdkdigital.productivelib', name: 'productivelib', version: '[0.0.5,)') {
+    jarJar(group: 'cy.jdkdigital.productivelib', name: 'productivelib', version: '[0.1.4,)') {
         transitive(false)
     }
 
@@ -144,6 +144,7 @@ dependencies {
 
     compileOnly "com.almostreliable.mods:almostunified-neoforge:1.21-1.0.0:api"
 
+    implementation "curse.maven:mekanism-268560:5574951"
 //
 //    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
 //    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
@@ -159,7 +160,7 @@ dependencies {
 //    implementation fg.deobf("curse.maven:thermal-expansion-69163:5372749")
 //
 //    implementation fg.deobf("curse.maven:jei-238222:5491340")
-//    implementation fg.deobf("curse.maven:jade-324717:5072729")
+    implementation "curse.maven:jade-324717:5729884"
 //    implementation fg.deobf("curse.maven:the-one-probe-245211:4629624")
 //    implementation fg.deobf("curse.maven:fast-leaf-decay-230976:4620069")
 //

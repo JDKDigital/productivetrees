@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:sawing",
+  "input": {
+    "count": 1,
+    "tag": "productivetrees:pecan_logs"
+  },
+  "main_output": {
+    "count": 6,
+    "id": "productivetrees:pecan_planks"
+  }
+}

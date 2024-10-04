@@ -1,5 +1,6 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.05,
   "leafA": {
     "item": "productivetrees:white_willow_leaves"
   },
@@ -14,7 +15,6 @@
       "item": "productivetrees:silver_lime_leaves"
     }
   ],
-  "processingTime": 5.0,
   "result": {
     "count": 1,
     "id": "productivetrees:white_poplar_sapling"

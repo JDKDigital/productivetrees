@@ -1,5 +1,6 @@
 {
   "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
   "leafA": {
     "item": "productivetrees:walnut_leaves"
   },
@@ -11,7 +12,6 @@
       "item": "productivetrees:silver_lime_leaves"
     }
   ],
-  "processingTime": 0.1,
   "result": {
     "count": 1,
     "id": "productivetrees:sweet_chestnut_sapling"

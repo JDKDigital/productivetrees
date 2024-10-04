@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:sawing",
+  "input": {
+    "count": 1,
+    "tag": "productivetrees:prairie_crabapple_logs"
+  },
+  "main_output": {
+    "count": 6,
+    "id": "productivetrees:prairie_crabapple_planks"
+  }
+}

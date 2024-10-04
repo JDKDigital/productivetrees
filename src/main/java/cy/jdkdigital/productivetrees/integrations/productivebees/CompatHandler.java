@@ -11,6 +11,7 @@ import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
 import cy.jdkdigital.productivelib.event.CollectValidUpgradesEvent;
 import cy.jdkdigital.productivetrees.Config;
+import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
@@ -50,65 +51,21 @@ public class CompatHandler
     }
 
     public static void beeRelease(BeeReleaseEvent event) {
-        if (event.getLevel() instanceof ServerLevel level && event.getBeeState().equals(BeehiveBlockEntity.BeeReleaseStatus.HONEY_DELIVERED) && event.getBlockEntity() instanceof AdvancedBeehiveBlockEntity advancedBeehiveBlockEntity) {
-            if (event.getBee().getHivePos() != null) {
-                // Scan for leaves blocks around the hive, 4 block radius + 2 per range upgrade
-                var pos = event.getBee().getHivePos();
-                int distance = 4 + (2 * advancedBeehiveBlockEntity.getUpgradeCount(ModItems.UPGRADE_RANGE.get()));
-                List<BlockPos> leaves = BlockPos.betweenClosedStream(pos.offset(-distance, -distance, -distance), pos.offset(distance, distance, distance)).map(BlockPos::immutable).toList();
-                // Build permutation map
-                List<BlockState> uniqueLeaves = new ArrayList<>();
-                Map<BlockState, BlockPos> leafMap = new HashMap<>();
-                leaves.forEach(blockPos -> {
-                    var state = level.getBlockState(blockPos);
-                    if (state.is(ModTags.POLLINATABLE) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get()) && !(state.getBlock() instanceof ProductiveFruitBlock)) {
-                        leafMap.put(state, blockPos);
-                        if (!uniqueLeaves.contains(state)) {
-                            uniqueLeaves.add(state);
-                        }
-                    }
-                });
+        if (event.getLevel() instanceof ServerLevel level && event.getBeeState().equals(BeehiveBlockEntity.BeeReleaseStatus.HONEY_DELIVERED) && event.getBlockEntity() instanceof BeehiveBlockEntity beehiveBlockEntity && event.getBee().getHivePos() != null) {
+            // Scan for leaves blocks around the hive, 4 block radius + 2 per range upgrade
+            int distance = 4 + (beehiveBlockEntity instanceof AdvancedBeehiveBlockEntity advancedBeehiveBlockEntity ? (2 * advancedBeehiveBlockEntity.getUpgradeCount(ModItems.UPGRADE_RANGE.get())) : 0);
+            boolean isSpecialPollinator = event.getBee() instanceof ProductiveBee pBee && pBee.getBeeName().equals("allergy");
+            List<BlockState> uniqueLeaves = new ArrayList<>();
+            TreeUtil.pollinateLeaves(level, event.getBee().getHivePos(), distance, isSpecialPollinator, uniqueLeaves);
 
-                if (!uniqueLeaves.isEmpty()) {
-                    boolean isSpecialPollinator = event.getBee() instanceof ProductiveBee pBee && pBee.getBeeName().equals("allergy");
-                    // Check for pollen sieve upgrade and collect pollen from nearby leaf
+            if (!uniqueLeaves.isEmpty()) {
+                // Check for pollen sieve upgrade and collect pollen from nearby leaf
+                if (beehiveBlockEntity instanceof AdvancedBeehiveBlockEntity advancedBeehiveBlockEntity) {
                     int sieveUpgrades = advancedBeehiveBlockEntity.getUpgradeCount(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get());
                     if (sieveUpgrades > 0 && level.random.nextInt(100) < (Config.SERVER.pollenChanceFromSieve.get() * (isSpecialPollinator ? 5 : 1))) {
                         BlockState pollenLeaf = uniqueLeaves.get(level.random.nextInt(uniqueLeaves.size()));
                         var pollenStack = TreeUtil.getPollen(pollenLeaf.getBlock());
                         ((InventoryHandlerHelper.BlockEntityItemStackHandler) advancedBeehiveBlockEntity.inventoryHandler).addOutput(pollenStack);
-                    }
-
-                    // Pollinate leaves
-                    Map<RecipeHolder<TreePollinationRecipe>, Pair<BlockState, BlockState>> matchedRecipes = new HashMap<>();
-                    var allRecipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.TREE_POLLINATION_TYPE.get());
-                    allRecipes.forEach(treePollinationRecipe -> {
-                        if (!matchedRecipes.containsKey(treePollinationRecipe)) {
-                            uniqueLeaves.forEach(stateA -> {
-                                uniqueLeaves.forEach(stateB -> {
-                                    if (treePollinationRecipe.value().matches(stateA, stateB)) {
-                                        matchedRecipes.put(treePollinationRecipe, Pair.of(stateA, stateB));
-                                    }
-                                });
-                            });
-                        }
-                    });
-
-                    if (matchedRecipes.size() > 0) {
-                        RecipeHolder<TreePollinationRecipe> pickedRecipe = (RecipeHolder<TreePollinationRecipe>) matchedRecipes.keySet().toArray()[level.random.nextInt(matchedRecipes.size())];
-                        Pair<BlockState, BlockState> states = matchedRecipes.get(pickedRecipe);
-
-                        BlockPos posA = level.random.nextBoolean() ? leafMap.get(states.getFirst()) : leafMap.get(states.getSecond());
-
-                        if (level.random.nextInt(100) <= (pickedRecipe.value().chance * (isSpecialPollinator ? 5 : 1)) && level.getBlockState(posA).is(BlockTags.LEAVES)) {
-                            level.setBlock(posA, TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
-                            if (level.getBlockEntity(posA) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
-                                pollinatedLeavesBlockEntity.setLeafA(states.getFirst().getBlock());
-                                pollinatedLeavesBlockEntity.setLeafB(states.getSecond().getBlock());
-                                pollinatedLeavesBlockEntity.setResult(pickedRecipe.value().result);
-                                pollinatedLeavesBlockEntity.setChanged();
-                            }
-                        }
                     }
                 }
             }

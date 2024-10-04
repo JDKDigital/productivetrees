@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:sawing",
+  "input": {
+    "count": 1,
+    "tag": "productivetrees:red_maple_logs"
+  },
+  "main_output": {
+    "count": 6,
+    "id": "productivetrees:red_maple_planks"
+  }
+}

@@ -1,14 +1,15 @@
 package cy.jdkdigital.productivetrees.util;
 
 import com.mojang.authlib.GameProfile;
+import com.mojang.datafixers.util.Pair;
 import cy.jdkdigital.productivelib.util.ColorUtil;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
-import cy.jdkdigital.productivetrees.common.block.ProductiveLeavesBlock;
-import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
-import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
-import cy.jdkdigital.productivetrees.common.block.ProductiveWoodBlock;
+import cy.jdkdigital.productivetrees.common.block.*;
+import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
 import cy.jdkdigital.productivetrees.recipe.SawmillRecipe;
+import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
+import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
@@ -19,6 +20,7 @@ import net.minecraft.core.component.TypedDataComponent;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
@@ -31,6 +33,7 @@ import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.fml.ModList;
@@ -41,10 +44,7 @@ import net.neoforged.neoforge.common.util.FakePlayerFactory;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class TreeUtil
 {
@@ -189,19 +189,15 @@ public class TreeUtil
 
     static Map<String, RecipeHolder<SawmillRecipe>> sawmillRecipeCache = new HashMap<>();
     public static RecipeHolder<SawmillRecipe> getSawmillRecipe(Level level, ItemStack stack) {
-        ProductiveTrees.LOGGER.info("getSawmillRecipe " + stack.isEmpty() + " " + stack);
         if (!stack.isEmpty()) {
             var cacheItem = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString() + (!stack.getComponents().isEmpty() ? stack.getComponents().stream().map(TypedDataComponent::toString).reduce((s, s2) -> s + s2) : "");
-            ProductiveTrees.LOGGER.info("cacheItem " + cacheItem);
             if (sawmillRecipeCache.containsKey(cacheItem)) {
                 return sawmillRecipeCache.get(cacheItem);
             }
 
             List<RecipeHolder<SawmillRecipe>> recipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.SAW_MILLLING_TYPE.get());
             for (RecipeHolder<SawmillRecipe> recipe : recipes) {
-                ProductiveTrees.LOGGER.info("test recipe " + recipe.id());
                 if (recipe.value().input().test(stack)) {
-                    ProductiveTrees.LOGGER.info(" match");
                     sawmillRecipeCache.put(cacheItem, recipe);
                     return recipe;
                 }
@@ -245,5 +241,54 @@ public class TreeUtil
 
     public static TreeObject getTree(Block block) {
         return TreeFinder.trees.get(BuiltInRegistries.BLOCK.getKey(block).withPath(p -> p.replace("_log", "").replace("_wood", "").replace("_sapling", "").replace("_leaves", "")));
+    }
+
+    public static void pollinateLeaves(Level level, BlockPos pos, int distance, boolean isSpecialPollinator, List<BlockState> uniqueLeaves) {
+        List<BlockPos> leaves = BlockPos.betweenClosedStream(pos.offset(-distance, -distance, -distance), pos.offset(distance, distance, distance)).map(BlockPos::immutable).toList();
+        // Build permutation map
+        Map<BlockState, BlockPos> leafMap = new HashMap<>();
+        leaves.forEach(blockPos -> {
+            var state = level.getBlockState(blockPos);
+            if (state.is(ModTags.POLLINATABLE) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get()) && !(state.getBlock() instanceof ProductiveFruitBlock)) {
+                leafMap.put(state, blockPos);
+                if (!uniqueLeaves.contains(state)) {
+                    uniqueLeaves.add(state);
+                }
+            }
+        });
+
+        if (!uniqueLeaves.isEmpty()) {
+            // Pollinate leaves
+            Map<RecipeHolder<TreePollinationRecipe>, Pair<BlockState, BlockState>> matchedRecipes = new HashMap<>();
+            var allRecipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.TREE_POLLINATION_TYPE.get());
+            allRecipes.forEach(treePollinationRecipe -> {
+                if (!matchedRecipes.containsKey(treePollinationRecipe)) {
+                    uniqueLeaves.forEach(stateA -> {
+                        uniqueLeaves.forEach(stateB -> {
+                            if (treePollinationRecipe.value().matches(stateA, stateB)) {
+                                matchedRecipes.put(treePollinationRecipe, Pair.of(stateA, stateB));
+                            }
+                        });
+                    });
+                }
+            });
+
+            if (!matchedRecipes.isEmpty()) {
+                RecipeHolder<TreePollinationRecipe> pickedRecipe = (RecipeHolder<TreePollinationRecipe>) matchedRecipes.keySet().toArray()[level.random.nextInt(matchedRecipes.size())];
+                Pair<BlockState, BlockState> states = matchedRecipes.get(pickedRecipe);
+
+                BlockPos posA = level.random.nextBoolean() ? leafMap.get(states.getFirst()) : leafMap.get(states.getSecond());
+
+                if (level.random.nextFloat() <= (pickedRecipe.value().chance * (isSpecialPollinator ? 5 : 1)) && level.getBlockState(posA).is(BlockTags.LEAVES)) {
+                    level.setBlock(posA, TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
+                    if (level.getBlockEntity(posA) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
+                        pollinatedLeavesBlockEntity.setLeafA(states.getFirst().getBlock());
+                        pollinatedLeavesBlockEntity.setLeafB(states.getSecond().getBlock());
+                        pollinatedLeavesBlockEntity.setResult(pickedRecipe.value().result);
+                        pollinatedLeavesBlockEntity.setChanged();
+                    }
+                }
+            }
+        }
     }
 }

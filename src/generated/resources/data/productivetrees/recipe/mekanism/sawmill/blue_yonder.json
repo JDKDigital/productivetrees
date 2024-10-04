@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:sawing",
+  "input": {
+    "count": 1,
+    "tag": "productivetrees:blue_yonder_logs"
+  },
+  "main_output": {
+    "count": 6,
+    "id": "productivetrees:blue_yonder_planks"
+  }
+}
