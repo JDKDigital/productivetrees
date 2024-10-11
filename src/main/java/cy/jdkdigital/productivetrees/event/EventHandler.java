@@ -1,38 +1,25 @@
 package cy.jdkdigital.productivetrees.event;
 
-import com.mojang.datafixers.util.Pair;
-import cy.jdkdigital.productivebees.common.block.entity.AdvancedBeehiveBlockEntity;
-import cy.jdkdigital.productivebees.common.entity.bee.ProductiveBee;
-import cy.jdkdigital.productivebees.init.ModItems;
-import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
 import cy.jdkdigital.productivelib.event.CollectValidUpgradesEvent;
 import cy.jdkdigital.productivelib.event.UpgradeTooltipEvent;
-import cy.jdkdigital.productivetrees.Config;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
-import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.integrations.productivebees.CompatHandler;
-import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
-import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -42,9 +29,6 @@ import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.BlockGrowFeatureEvent;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @EventBusSubscriber(modid = ProductiveTrees.MODID)
 public class EventHandler

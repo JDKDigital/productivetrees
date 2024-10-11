@@ -1,6 +1,5 @@
 package cy.jdkdigital.productivetrees.integrations.productivebees;
 
-import com.mojang.datafixers.util.Pair;
 import cy.jdkdigital.productivebees.common.block.AdvancedBeehive;
 import cy.jdkdigital.productivebees.common.block.ExpansionBox;
 import cy.jdkdigital.productivebees.common.block.entity.AdvancedBeehiveBlockEntity;
@@ -11,18 +10,10 @@ import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
 import cy.jdkdigital.productivelib.event.CollectValidUpgradesEvent;
 import cy.jdkdigital.productivetrees.Config;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
-import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
-import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
-import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
-import cy.jdkdigital.productivetrees.registry.ModTags;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.registry.WoodObject;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
-import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
@@ -30,9 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.ToIntFunction;
 
 public class CompatHandler
