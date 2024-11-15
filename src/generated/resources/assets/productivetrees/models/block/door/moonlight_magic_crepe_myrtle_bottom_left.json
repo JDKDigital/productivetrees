@@ -1,7 +1,0 @@
-{
-  "parent": "productivetrees:block/door/bottom_left",
-  "textures": {
-    "bottom": "productivetrees:block/door/moonlight_magic_crepe_myrtle_bottom",
-    "top": "productivetrees:block/door/moonlight_magic_crepe_myrtle_top"
-  }
-}

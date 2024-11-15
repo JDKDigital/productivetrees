@@ -35,7 +35,10 @@ import net.neoforged.fml.loading.FMLPaths;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class TreeUtil
 {

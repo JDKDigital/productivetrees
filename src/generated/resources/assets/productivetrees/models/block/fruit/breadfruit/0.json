@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/fruit/breadfruit/fruit_0",
-  "textures": {
-    "all": "productivetrees:block/leaves/breadfruit"
-  }
-}

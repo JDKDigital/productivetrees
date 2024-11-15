@@ -1,6 +1,5 @@
 package cy.jdkdigital.productivetrees.common.block;
 
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;

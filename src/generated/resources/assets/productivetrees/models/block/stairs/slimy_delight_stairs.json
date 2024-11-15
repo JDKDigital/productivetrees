@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/stairs/translucent_base_stairs",
-  "textures": {
-    "texture": "productivetrees:block/planks/slimy_delight"
-  }
-}

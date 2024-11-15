@@ -1,7 +1,0 @@
-{
-  "parent": "productivetrees:block/log/base_log",
-  "textures": {
-    "end": "productivetrees:block/log_top/salak",
-    "side": "productivetrees:block/log/salak"
-  }
-}

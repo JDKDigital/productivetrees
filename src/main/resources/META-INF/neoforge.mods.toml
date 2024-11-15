@@ -39,7 +39,7 @@ license="${mod_license}"
 [[dependencies.${mod_id}]]
     modId="productivelib"
     type="required"
-    versionRange="lib_version_range"
+    versionRange="${lib_version_range}"
     ordering="NONE"
     side="BOTH"
 [[dependencies.${mod_id}]]

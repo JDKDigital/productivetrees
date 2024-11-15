@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/fruit/baobab/fruit_0",
-  "textures": {
-    "all": "productivetrees:block/leaves/grandidiers_baobab"
-  }
-}

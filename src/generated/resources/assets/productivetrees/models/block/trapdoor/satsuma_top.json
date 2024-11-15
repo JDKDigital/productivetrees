@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/trapdoor/template_orientable_trapdoor_top",
-  "textures": {
-    "texture": "productivetrees:block/trapdoor/satsuma"
-  }
-}

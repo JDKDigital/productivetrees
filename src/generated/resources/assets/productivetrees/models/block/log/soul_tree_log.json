@@ -1,7 +1,0 @@
-{
-  "parent": "productivetrees:block/log/translucent_base_log",
-  "textures": {
-    "end": "productivetrees:block/log_top/soul_tree",
-    "side": "productivetrees:block/log/soul_tree"
-  }
-}

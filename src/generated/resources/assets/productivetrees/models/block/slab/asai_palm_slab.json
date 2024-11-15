@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/slab/base_slab",
-  "textures": {
-    "texture": "productivetrees:block/planks/asai_palm"
-  }
-}

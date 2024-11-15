@@ -1,9 +1,7 @@
 package cy.jdkdigital.productivetrees.feature.foliageplacers;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;

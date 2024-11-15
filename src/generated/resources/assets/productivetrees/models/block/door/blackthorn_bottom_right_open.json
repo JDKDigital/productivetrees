@@ -1,7 +1,0 @@
-{
-  "parent": "productivetrees:block/door/bottom_right_open",
-  "textures": {
-    "bottom": "productivetrees:block/door/blackthorn_bottom",
-    "top": "productivetrees:block/door/blackthorn_top"
-  }
-}

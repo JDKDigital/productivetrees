@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/leaves/base_leaves",
-  "textures": {
-    "all": "productivetrees:block/leaves/greenheart"
-  }
-}

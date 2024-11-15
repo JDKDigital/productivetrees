@@ -1,7 +1,0 @@
-{
-  "parent": "productivetrees:block/cube_column",
-  "textures": {
-    "end": "productivetrees:block/log/swamp_gum",
-    "side": "productivetrees:block/log/swamp_gum"
-  }
-}

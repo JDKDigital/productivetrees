@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "productivetrees:item/hanging_sign/peach_hanging_sign"
-  }
-}

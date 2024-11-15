@@ -1,7 +1,0 @@
-{
-  "parent": "productivetrees:block/cube_column",
-  "textures": {
-    "end": "productivetrees:block/stripped/sweet_chestnut",
-    "side": "productivetrees:block/stripped/sweet_chestnut"
-  }
-}

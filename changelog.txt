@@ -1,3 +1,25 @@
+1.21.1-0.5.7
+
+- Fixed loot conditions for black ember saplings
+
+
+1.21.1-0.5.6
+
+- Added a second tier of speed upgrades
+
+
+1.21.1-0.5.5
+
+- Less noisy recipe conditions on allergy bee
+- Added conditions to mekanism sawmill recipes
+
+
+1.21.1-0.5.4
+
+- Removed fireproof logs from fuel tag
+- Removed debug output from lib
+
+
 1.21.1-0.5.3
 
 - Vanilla bee nests and hives can now pollinate leaves

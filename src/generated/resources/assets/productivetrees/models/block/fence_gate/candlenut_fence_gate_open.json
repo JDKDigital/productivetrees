@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/fence_gate/base_fence_gate_open",
-  "textures": {
-    "texture": "productivetrees:block/planks/candlenut"
-  }
-}

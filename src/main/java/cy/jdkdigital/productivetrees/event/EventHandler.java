@@ -3,6 +3,7 @@ package cy.jdkdigital.productivetrees.event;
 import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
 import cy.jdkdigital.productivelib.event.CollectValidUpgradesEvent;
 import cy.jdkdigital.productivelib.event.UpgradeTooltipEvent;
+import cy.jdkdigital.productivelib.registry.LibItems;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
@@ -50,10 +51,13 @@ public class EventHandler
         if (event.getStack().is(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get())) {
             event.getTooltipComponents().add(Component.translatable("productivetrees.information.upgrade.upgrade_pollen_sieve").withStyle(ChatFormatting.GOLD));
         }
-
         String upgradeType = BuiltInRegistries.ITEM.getKey(event.getStack().getItem()).getPath();
+        if (!ModList.get().isLoaded("productivebees") && (event.getStack().is(LibItems.UPGRADE_TIME.get()) || event.getStack().is(LibItems.UPGRADE_TIME_2.get()))) {
+            event.getTooltipComponents().add(Component.translatable("productivetrees.information.upgrade." + upgradeType).withStyle(ChatFormatting.GOLD));
+        }
+
         switch (upgradeType) {
-            case "upgrade_time" -> {
+            case "upgrade_time", "upgrade_time_2" -> {
                 event.addValidBlock(Component.literal("Stripper"));
                 event.addValidBlock(Component.literal("Sawmill"));
                 if (!ModList.get().isLoaded("productivebees")) {

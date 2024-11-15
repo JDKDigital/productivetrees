@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/fence/base_fence_side",
-  "textures": {
-    "texture": "productivetrees:block/planks/thunder_bolt"
-  }
-}

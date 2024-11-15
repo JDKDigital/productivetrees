@@ -3,7 +3,9 @@ package cy.jdkdigital.productivetrees.recipe;
 import cy.jdkdigital.productivelib.common.recipe.TripleOutputRecipe;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 
 public class LogStrippingRecipe extends TripleOutputRecipe
 {

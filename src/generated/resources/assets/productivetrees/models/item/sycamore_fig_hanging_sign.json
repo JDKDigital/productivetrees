@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "productivetrees:item/hanging_sign/sycamore_fig_hanging_sign"
-  }
-}

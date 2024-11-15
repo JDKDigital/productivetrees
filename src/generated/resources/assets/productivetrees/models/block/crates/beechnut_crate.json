@@ -1,9 +1,0 @@
-{
-  "parent": "productivetrees:block/base_crate",
-  "textures": {
-    "bottom": "productivetrees:block/crate/whitebeam/bottom",
-    "crop": "productivetrees:block/crate/beechnut",
-    "side": "productivetrees:block/crate/whitebeam/side",
-    "top": "productivetrees:block/crate/whitebeam/top"
-  }
-}

@@ -1,24 +1,14 @@
 package cy.jdkdigital.productivetrees.integrations.emi;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
-import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.recipe.LogStrippingRecipe;
-import cy.jdkdigital.productivetrees.recipe.SawmillRecipe;
 import cy.jdkdigital.productivetrees.registry.ModTags;
-import cy.jdkdigital.productivetrees.util.TreeUtil;
 import dev.emi.emi.api.recipe.BasicEmiRecipe;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
-import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
-
-import java.util.Arrays;
 
 public class StripperEmiRecipe extends BasicEmiRecipe
 {

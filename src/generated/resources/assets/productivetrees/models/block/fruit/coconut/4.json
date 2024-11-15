@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/fruit/coconut/fruit_4",
-  "textures": {
-    "all": "productivetrees:block/leaves/coconut"
-  }
-}

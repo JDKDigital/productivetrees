@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/fruit/copoazu/fruit_1",
-  "textures": {
-    "all": "productivetrees:block/leaves/copoazu"
-  }
-}

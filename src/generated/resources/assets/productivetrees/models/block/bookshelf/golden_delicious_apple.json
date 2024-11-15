@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/base_bookshelf",
-  "textures": {
-    "side": "productivetrees:block/planks/golden_delicious_apple"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "productivetrees:block/fruit/plantain/fruit_5",
-  "textures": {
-    "all": "productivetrees:block/leaves/plantain"
-  }
-}

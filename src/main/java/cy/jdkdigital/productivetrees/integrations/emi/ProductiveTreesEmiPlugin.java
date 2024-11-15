@@ -29,7 +29,6 @@ import net.neoforged.fml.ModList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @EmiEntrypoint
 public class ProductiveTreesEmiPlugin implements EmiPlugin
