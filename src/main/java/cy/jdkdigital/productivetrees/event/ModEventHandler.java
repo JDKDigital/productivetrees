@@ -1,14 +1,16 @@
 package cy.jdkdigital.productivetrees.event;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
-import cy.jdkdigital.productivetrees.integrations.productivebees.CompatHandler;
+import cy.jdkdigital.productivetrees.datagen.dynamic.DataGenPackFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
+import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -28,6 +30,17 @@ public class ModEventHandler
                 }
                 event.accept(item.get());
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void dynamicDatapack(AddPackFindersEvent event) {
+        ProductiveTrees.LOGGER.info("dynamicDatapack");
+        if (event.getPackType() == PackType.SERVER_DATA) {
+            event.addRepositorySource(new DataGenPackFinder(event.getPackType()));
+        }
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            event.addRepositorySource(new DataGenPackFinder(event.getPackType()));
         }
     }
 

@@ -5,17 +5,20 @@ import com.google.gson.JsonParser;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.util.TreeCreator;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.common.conditions.ICondition;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class TreeFinder
 {
+    public static Path DYNAMIC_RESOURCE_PATH = FMLPaths.CONFIGDIR.get().resolve("productivetrees/generated");
     public static ICondition.IContext context;
     public static Map<ResourceLocation, TreeObject> trees = new LinkedHashMap<>();
 

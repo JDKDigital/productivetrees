@@ -12,6 +12,7 @@ import cy.jdkdigital.productivetrees.common.feature.TrunkVineDecorator;
 import cy.jdkdigital.productivetrees.common.fluid.MapleSap;
 import cy.jdkdigital.productivetrees.common.fluid.type.MapleSapType;
 import cy.jdkdigital.productivetrees.common.item.PollenItem;
+import cy.jdkdigital.productivetrees.datagen.*;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.TaperedFoliagePlacer;
 import cy.jdkdigital.productivetrees.feature.trunkplacers.CenteredUpwardsBranchingTrunkPlacer;
 import cy.jdkdigital.productivetrees.feature.trunkplacers.UnlimitedStraightTrunkPlacer;
@@ -26,9 +27,13 @@ import cy.jdkdigital.productivetrees.recipe.TreeFruitingRecipe;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
 import cy.jdkdigital.productivetrees.util.CropConfig;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -451,5 +456,23 @@ public class TreeRegistrator
             behavior = behavior.noOcclusion();
         }
         return behavior;
+    }
+
+    public static void registerDatagen(DataGenerator generator, CompletableFuture<HolderLookup.Provider> provider) {
+        PackOutput output = generator.getPackOutput();
+//        ExistingFileHelper helper = event.getExistingFileHelper();
+        generator.addProvider(true, new LanguageProvider(output));
+
+        generator.addProvider(true, new ModelProvider(output));
+
+        generator.addProvider(true, new LootDataProvider(output, List.of(new LootTableProvider.SubProviderEntry(LootDataProvider.LootProvider::new, LootContextParamSets.BLOCK)), provider));
+        generator.addProvider(true, new LootModifierProvider(output, provider));
+        generator.addProvider(true, new FeatureProvider(output));
+        generator.addProvider(true, new RecipeProvider(output, provider));
+        generator.addProvider(true, new DataMapProvider(output, provider));
+
+        BlockTagProvider blockTags = new BlockTagProvider(output, provider, null);
+        generator.addProvider(true, blockTags);
+        generator.addProvider(true, new ItemTagProvider(output, provider, blockTags.contentsGetter(), null));
     }
 }

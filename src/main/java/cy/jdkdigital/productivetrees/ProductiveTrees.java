@@ -4,10 +4,15 @@ import com.mojang.logging.LogUtils;
 import cy.jdkdigital.productivetrees.registry.ClientRegistration;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
+import net.minecraft.SharedConstants;
+import net.minecraft.Util;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.registries.VanillaRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.inventory.MenuType;
@@ -27,11 +32,16 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.slf4j.Logger;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 
 @Mod(ProductiveTrees.MODID)
 public class ProductiveTrees
@@ -90,5 +100,27 @@ public class ProductiveTrees
         ClientRegistration.init();
 
         modContainer.registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
+    }
+
+    private static DataGenerator generator;
+    private static void registerDataGen() {
+        generator = new DataGenerator(TreeFinder.DYNAMIC_RESOURCE_PATH, SharedConstants.getCurrentVersion(), true);
+        CompletableFuture<HolderLookup.Provider> lookupProvider = CompletableFuture.supplyAsync(VanillaRegistries::createLookup, Util.backgroundExecutor());
+        TreeRegistrator.registerDatagen(generator, lookupProvider);
+    }
+
+    static boolean hasGenerated = false;
+    public static void generateData() {
+        if (!hasGenerated) {
+            try {
+                if(generator == null) {
+                    registerDataGen();
+                }
+                generator.run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            hasGenerated = true;
+        }
     }
 }
