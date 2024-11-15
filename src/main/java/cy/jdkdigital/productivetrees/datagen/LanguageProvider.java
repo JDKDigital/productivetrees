@@ -112,17 +112,19 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add(TreeUtil.getBlock(woodObject.getId(), "_stripped_log"), LangUtil.capName(name) + " Stripped Log");
         add(TreeUtil.getBlock(woodObject.getId(), "_stripped_wood"), LangUtil.capName(name) + " Stripped Wood");
         add(TreeUtil.getBlock(woodObject.getId(), "_planks"), LangUtil.capName(name) + " Planks");
-        add(TreeUtil.getBlock(woodObject.getId(), "_stairs"), LangUtil.capName(name) + " Stairs");
-        add(TreeUtil.getBlock(woodObject.getId(), "_slab"), LangUtil.capName(name) + " Slab");
-        add(TreeUtil.getBlock(woodObject.getId(), "_fence"), LangUtil.capName(name) + " Fence");
-        add(TreeUtil.getBlock(woodObject.getId(), "_fence_gate"), LangUtil.capName(name) + " Fence Gate");
-        add(TreeUtil.getBlock(woodObject.getId(), "_button"), LangUtil.capName(name) + " Button");
-        add(TreeUtil.getBlock(woodObject.getId(), "_pressure_plate"), LangUtil.capName(name) + " Pressure Plate");
-        add(TreeUtil.getBlock(woodObject.getId(), "_door"), LangUtil.capName(name) + " Door");
-        add(TreeUtil.getBlock(woodObject.getId(), "_trapdoor"), LangUtil.capName(name) + " Trapdoor");
-        add(TreeUtil.getBlock(woodObject.getId(), "_bookshelf"), LangUtil.capName(name) + " Bookshelf");
-        add(TreeUtil.getBlock(woodObject.getId(), "_sign"), LangUtil.capName(name) + " Sign");
-        add(TreeUtil.getBlock(woodObject.getId(), "_hanging_sign"), LangUtil.capName(name) + " Hanging Sign");
+        if (!ProductiveTrees.isMinimal) {
+            add(TreeUtil.getBlock(woodObject.getId(), "_stairs"), LangUtil.capName(name) + " Stairs");
+            add(TreeUtil.getBlock(woodObject.getId(), "_slab"), LangUtil.capName(name) + " Slab");
+            add(TreeUtil.getBlock(woodObject.getId(), "_fence"), LangUtil.capName(name) + " Fence");
+            add(TreeUtil.getBlock(woodObject.getId(), "_fence_gate"), LangUtil.capName(name) + " Fence Gate");
+            add(TreeUtil.getBlock(woodObject.getId(), "_button"), LangUtil.capName(name) + " Button");
+            add(TreeUtil.getBlock(woodObject.getId(), "_pressure_plate"), LangUtil.capName(name) + " Pressure Plate");
+            add(TreeUtil.getBlock(woodObject.getId(), "_door"), LangUtil.capName(name) + " Door");
+            add(TreeUtil.getBlock(woodObject.getId(), "_trapdoor"), LangUtil.capName(name) + " Trapdoor");
+            add(TreeUtil.getBlock(woodObject.getId(), "_bookshelf"), LangUtil.capName(name) + " Bookshelf");
+            add(TreeUtil.getBlock(woodObject.getId(), "_sign"), LangUtil.capName(name) + " Sign");
+            add(TreeUtil.getBlock(woodObject.getId(), "_hanging_sign"), LangUtil.capName(name) + " Hanging Sign");
+        }
         if (woodObject.getStyle().hiveStyle() != null) {
             Block hive = BuiltInRegistries.BLOCK.get(woodObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
             add(hive, "Advanced " + LangUtil.capName(name) + " Beehive");

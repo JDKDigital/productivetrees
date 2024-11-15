@@ -74,7 +74,8 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
     };
 
     protected IItemHandlerModifiable upgradeHandler = new InventoryHandlerHelper.UpgradeHandler(4, this, List.of(
-            LibItems.UPGRADE_TIME.get()
+            LibItems.UPGRADE_TIME.get(),
+            LibItems.UPGRADE_TIME_2.get()
     ));
 
     public PollenSifterBlockEntity(BlockPos pos, BlockState state) {
@@ -107,7 +108,7 @@ public class PollenSifterBlockEntity extends CapabilityBlockEntity implements Me
             if (!leaf.isEmpty() && leaf.getItem() instanceof BlockItem blockItem && (output.isEmpty() || output.is(TreeRegistrator.POLLEN.get()))) {
                 var pollenStack = TreeUtil.getPollen(blockItem.getBlock());
                 if (output.isEmpty() || ItemStack.isSameItemSameComponents(output, pollenStack)) {
-                    var speedModifier = 1 + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get());
+                    var speedModifier = 1 + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get()) + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME_2.get()) * 2;
                     blockEntity.progress+= blockEntity.tickRate * speedModifier;
                     if (blockEntity.progress >= blockEntity.recipeTime) {
                         if (level.random.nextInt(100) <= 10) {

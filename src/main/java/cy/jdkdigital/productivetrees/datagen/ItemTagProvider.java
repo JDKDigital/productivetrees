@@ -53,7 +53,7 @@ public class ItemTagProvider extends ItemTagsProvider
         copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
         copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
 
-        tag(ModTags.STRIPPER_TOOLS).addTag(ItemTags.AXES)
+        tag(ModTags.STRIPPER_TOOLS).addOptionalTag(ItemTags.AXES)
                 .addOptional(ResourceLocation.parse("allthemodium:alloy_axe"))
                 .addOptional(ResourceLocation.parse("allthemodium:unobtainium_axe"))
                 .addOptional(ResourceLocation.parse("allthemodium:vibranium_axe"))

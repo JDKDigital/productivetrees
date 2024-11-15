@@ -98,24 +98,25 @@ public class BlockTagProvider extends BlockTagsProvider
             if (treeObject.isFireProof()) {
                 logs.addTag(logTag);
             } else {
-                logs.addTag(logTag);
+                logsThatBurn.addTag(logTag);
             }
-            stairs.add(TreeUtil.getBlock(id, "_stairs"));
-            slabs.add(TreeUtil.getBlock(id, "_slab"));
-            fences.add(TreeUtil.getBlock(id, "_fence"));
-            fenceGates.add(TreeUtil.getBlock(id, "_fence_gate"));
-            woodenFenceGates.add(TreeUtil.getBlock(id, "_fence_gate"));
-            pressurePlates.add(TreeUtil.getBlock(id, "_pressure_plate"));
-            buttons.add(TreeUtil.getBlock(id, "_button"));
-            doors.add(TreeUtil.getBlock(id, "_door"));
-            trapdoors.add(TreeUtil.getBlock(id, "_trapdoor"));
-            signs.add(TreeUtil.getBlock(id, "_sign"));
-            bookshelves.add(TreeUtil.getBlock(id, "_bookshelf"));
-            enchantment.add(TreeUtil.getBlock(id, "_bookshelf"));
-            hangingSigns.add(TreeUtil.getBlock(id, "_hanging_sign"));
-            wallSigns.add(TreeUtil.getBlock(id, "_wall_sign"));
-            wallHangingSigns.add(TreeUtil.getBlock(id, "_wall_hanging_sign"));
-
+            if (!ProductiveTrees.isMinimal) {
+                stairs.add(TreeUtil.getBlock(id, "_stairs"));
+                slabs.add(TreeUtil.getBlock(id, "_slab"));
+                fences.add(TreeUtil.getBlock(id, "_fence"));
+                fenceGates.add(TreeUtil.getBlock(id, "_fence_gate"));
+                woodenFenceGates.add(TreeUtil.getBlock(id, "_fence_gate"));
+                pressurePlates.add(TreeUtil.getBlock(id, "_pressure_plate"));
+                buttons.add(TreeUtil.getBlock(id, "_button"));
+                doors.add(TreeUtil.getBlock(id, "_door"));
+                trapdoors.add(TreeUtil.getBlock(id, "_trapdoor"));
+                signs.add(TreeUtil.getBlock(id, "_sign"));
+                bookshelves.add(TreeUtil.getBlock(id, "_bookshelf"));
+                enchantment.add(TreeUtil.getBlock(id, "_bookshelf"));
+                hangingSigns.add(TreeUtil.getBlock(id, "_hanging_sign"));
+                wallSigns.add(TreeUtil.getBlock(id, "_wall_sign"));
+                wallHangingSigns.add(TreeUtil.getBlock(id, "_wall_hanging_sign"));
+            }
             if (treeObject.getStyle().hiveStyle() != null) {
                 hives.addOptional(Objects.requireNonNull(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive")));
                 boxes.addOptional(Objects.requireNonNull(treeObject.getId().withPath(p ->  "expansion_box_" + p)));
@@ -123,9 +124,10 @@ public class BlockTagProvider extends BlockTagsProvider
         });
 
         leaves.add(TreeRegistrator.POLLINATED_LEAVES.get());
-        dof.addTag(BlockTags.DIRT).add(Blocks.FARMLAND);
+        dof.addOptionalTag(BlockTags.create(ResourceLocation.withDefaultNamespace("dirt")));
+        dof.add(Blocks.FARMLAND);
 
-        pollinatable.addTag(BlockTags.LEAVES).add(Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);
+        pollinatable.addTag(BlockTags.create(ResourceLocation.withDefaultNamespace("leaves"))).add(Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);
 
         TreeRegistrator.CRATED_CROPS.forEach(cratePath ->  {
             var crateBlock = BuiltInRegistries.BLOCK.get(cratePath);

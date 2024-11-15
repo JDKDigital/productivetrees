@@ -125,19 +125,21 @@ public class LootDataProvider implements DataProvider
                 dropSelf(TreeUtil.getBlock(id, "_wood"));
                 dropSelf(TreeUtil.getBlock(id, "_stripped_log"));
                 dropSelf(TreeUtil.getBlock(id, "_stripped_wood"));
-                dropSelf(TreeUtil.getBlock(id, "_slab"));
-                dropSelf(TreeUtil.getBlock(id, "_stairs"));
-                dropSelf(TreeUtil.getBlock(id, "_fence"));
-                dropSelf(TreeUtil.getBlock(id, "_fence_gate"));
-                dropSelf(TreeUtil.getBlock(id, "_pressure_plate"));
-                dropSelf(TreeUtil.getBlock(id, "_button"));
-                dropDoor(TreeUtil.getBlock(id, "_door"));
-                dropSelf(TreeUtil.getBlock(id, "_trapdoor"));
-                dropSelf(TreeUtil.getBlock(id, "_bookshelf"));
-                dropSelf(TreeUtil.getBlock(id, "_sign"));
-                dropOther(TreeUtil.getBlock(id, "_wall_sign"), TreeUtil.getBlock(id, "_sign"));
-                dropSelf(TreeUtil.getBlock(id, "_hanging_sign"));
-                dropOther(TreeUtil.getBlock(id, "_wall_hanging_sign"), TreeUtil.getBlock(id, "_hanging_sign"));
+                if (!ProductiveTrees.isMinimal) {
+                    dropSelf(TreeUtil.getBlock(id, "_slab"));
+                    dropSelf(TreeUtil.getBlock(id, "_stairs"));
+                    dropSelf(TreeUtil.getBlock(id, "_fence"));
+                    dropSelf(TreeUtil.getBlock(id, "_fence_gate"));
+                    dropSelf(TreeUtil.getBlock(id, "_pressure_plate"));
+                    dropSelf(TreeUtil.getBlock(id, "_button"));
+                    dropDoor(TreeUtil.getBlock(id, "_door"));
+                    dropSelf(TreeUtil.getBlock(id, "_trapdoor"));
+                    dropSelf(TreeUtil.getBlock(id, "_bookshelf"));
+                    dropSelf(TreeUtil.getBlock(id, "_sign"));
+                    dropOther(TreeUtil.getBlock(id, "_wall_sign"), TreeUtil.getBlock(id, "_sign"));
+                    dropSelf(TreeUtil.getBlock(id, "_hanging_sign"));
+                    dropOther(TreeUtil.getBlock(id, "_wall_hanging_sign"), TreeUtil.getBlock(id, "_hanging_sign"));
+                }
                 if (treeObject.getStyle().hiveStyle() != null) {
                     Block hive = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
                     Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(hive, LootProvider::genHiveDrop);

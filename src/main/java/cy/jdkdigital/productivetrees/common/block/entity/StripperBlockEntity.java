@@ -95,7 +95,8 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
     };
 
     protected IItemHandlerModifiable upgradeHandler = new InventoryHandlerHelper.UpgradeHandler(4, this, List.of(
-            LibItems.UPGRADE_TIME.get()
+            LibItems.UPGRADE_TIME.get(),
+            LibItems.UPGRADE_TIME_2.get()
     ));
 
     public StripperBlockEntity(BlockPos pos, BlockState state) {
@@ -130,7 +131,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
             var output = blockEntity.inventoryHandler.getStackInSlot(SLOT_OUT);
             if (!log.isEmpty() && !axe.isEmpty() && (output.getCount() < output.getMaxStackSize())) {
                 var strippedLogItem = TreeUtil.getStrippedItem(blockEntity, serverLevel, log);
-                var speedModifier = 1 + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get());
+                var speedModifier = 1 + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get()) + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME_2.get()) * 2;
                 var itemCount = Math.min(Math.min(speedModifier, log.getCount()), output.getMaxStackSize() - output.getCount());
                 strippedLogItem.setCount(itemCount);
                 if (!strippedLogItem.isEmpty() && blockEntity.inventoryHandler.insertItem(SLOT_OUT, strippedLogItem, false).isEmpty()) {

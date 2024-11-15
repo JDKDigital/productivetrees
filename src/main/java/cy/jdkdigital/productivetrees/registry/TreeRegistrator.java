@@ -51,7 +51,9 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
@@ -59,6 +61,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
@@ -349,45 +352,46 @@ public class TreeRegistrator
         registerBlock(name + "_stripped_wood", () -> new ProductiveRotatedPillarBlock(getProperties(treeObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_WOOD, noOcclusion, lightLevel)));
         // Register planks block
         var plank = registerBlock(name + "_planks", () -> new ProductivePlankBlock(getProperties(treeObject.isFireProof() ? Blocks.WARPED_PLANKS : Blocks.OAK_PLANKS, noOcclusion, lightLevel), name));
-        // Stairs
-        registerBlock(name + "_stairs", () -> new StairBlock(plank.get().defaultBlockState(), getProperties(Blocks.OAK_STAIRS, noOcclusion, lightLevel)));
-        // Slab
-        registerBlock(name + "_slab", () -> new SlabBlock(getProperties(Blocks.OAK_SLAB, noOcclusion, lightLevel)));
-        // Fence
-        registerBlock(name + "_fence", () -> new FenceBlock(getProperties(Blocks.OAK_FENCE, noOcclusion, lightLevel)));
-        // Fence gate
-        registerBlock(name + "_fence_gate", () -> new FenceGateBlock(WoodType.OAK, getProperties(Blocks.OAK_FENCE_GATE, noOcclusion, lightLevel)));
-        // Pressure plate
-        registerBlock(name + "_pressure_plate", () -> new PressurePlateBlock(BlockSetType.OAK, getProperties(Blocks.OAK_PRESSURE_PLATE, noOcclusion, lightLevel)));
-        // Button
-        registerBlock(name + "_button", () -> new ButtonBlock(BlockSetType.OAK, 30, getProperties(Blocks.OAK_BUTTON, noOcclusion, lightLevel)));
-        // Door
-        registerBlock(name + "_door", () -> new DoorBlock(BlockSetType.OAK, getProperties(Blocks.OAK_DOOR, noOcclusion, lightLevel)));
-        // Trapdoor
-        registerBlock(name + "_trapdoor", () -> new TrapDoorBlock(BlockSetType.OAK, getProperties(Blocks.ACACIA_TRAPDOOR, noOcclusion, lightLevel)));
-        // Bookshelf
-        registerBlock(name + "_bookshelf", () -> new Block(getProperties(Blocks.BOOKSHELF, noOcclusion, lightLevel)));
-        // Signs
-        var woodType = WoodType.OAK;
-        try {
-            woodType = WoodType.register(new WoodType(ProductiveTrees.MODID + ":" + name, BlockSetType.register(new BlockSetType(ProductiveTrees.MODID + ":" + name))));
-        } catch (Exception e) {
-            ProductiveTrees.LOGGER.warn("Unable to register woodtype for " + name + ". Error: " + e.getMessage());
+        if (!ProductiveTrees.isMinimal) {
+            // Stairs
+            registerBlock(name + "_stairs", () -> new StairBlock(plank.get().defaultBlockState(), getProperties(Blocks.OAK_STAIRS, noOcclusion, lightLevel)));
+            // Slab
+            registerBlock(name + "_slab", () -> new SlabBlock(getProperties(Blocks.OAK_SLAB, noOcclusion, lightLevel)));
+            // Fence
+            registerBlock(name + "_fence", () -> new FenceBlock(getProperties(Blocks.OAK_FENCE, noOcclusion, lightLevel)));
+            // Fence gate
+            registerBlock(name + "_fence_gate", () -> new FenceGateBlock(WoodType.OAK, getProperties(Blocks.OAK_FENCE_GATE, noOcclusion, lightLevel)));
+            // Pressure plate
+            registerBlock(name + "_pressure_plate", () -> new PressurePlateBlock(BlockSetType.OAK, getProperties(Blocks.OAK_PRESSURE_PLATE, noOcclusion, lightLevel)));
+            // Button
+            registerBlock(name + "_button", () -> new ButtonBlock(BlockSetType.OAK, 30, getProperties(Blocks.OAK_BUTTON, noOcclusion, lightLevel)));
+            // Door
+            registerBlock(name + "_door", () -> new DoorBlock(BlockSetType.OAK, getProperties(Blocks.OAK_DOOR, noOcclusion, lightLevel)));
+            // Trapdoor
+            registerBlock(name + "_trapdoor", () -> new TrapDoorBlock(BlockSetType.OAK, getProperties(Blocks.ACACIA_TRAPDOOR, noOcclusion, lightLevel)));
+            // Bookshelf
+            registerBlock(name + "_bookshelf", () -> new Block(getProperties(Blocks.BOOKSHELF, noOcclusion, lightLevel)));
+            // Signs
+            var woodType = WoodType.OAK;
+            try {
+                woodType = WoodType.register(new WoodType(ProductiveTrees.MODID + ":" + name, BlockSetType.register(new BlockSetType(ProductiveTrees.MODID + ":" + name))));
+            } catch (Exception e) {
+                ProductiveTrees.LOGGER.warn("Unable to register woodtype for " + name + ". Error: " + e.getMessage());
+            }
+            WoodType finalWoodType = woodType;
+            var signBlock = registerBlock(name + "_sign", () -> new ProductiveStandingSignBlock(finalWoodType, getProperties(Blocks.OAK_SIGN, noOcclusion, lightLevel)), false);
+            var wallSignBlock = registerBlock(name + "_wall_sign", () -> new ProductiveWallSignBlock(finalWoodType, getProperties(Blocks.OAK_WALL_SIGN, noOcclusion, lightLevel)), false);
+            var hangingSignBlock = registerBlock(name + "_hanging_sign", () -> new ProductiveCeilingHangingSignBlock(finalWoodType, getProperties(Blocks.OAK_HANGING_SIGN, noOcclusion, lightLevel)), false);
+            var wallHangingSignBlock = registerBlock(name + "_wall_hanging_sign", () -> new ProductiveWallHangingSignBlock(finalWoodType, getProperties(Blocks.OAK_WALL_HANGING_SIGN, noOcclusion, lightLevel)), false);
+
+            registerItem(name + "_sign", () -> new SignItem(new Item.Properties(), signBlock.get(), wallSignBlock.get()));
+            registerItem(name + "_hanging_sign", () -> new SignItem(new Item.Properties(), hangingSignBlock.get(), wallHangingSignBlock.get()));
+
+            SIGNS.add(signBlock);
+            SIGNS.add(wallSignBlock);
+            HANGING_SIGNS.add(hangingSignBlock);
+            HANGING_SIGNS.add(wallHangingSignBlock);
         }
-        WoodType finalWoodType = woodType;
-        var signBlock = registerBlock(name + "_sign", () -> new ProductiveStandingSignBlock(finalWoodType, getProperties(Blocks.OAK_SIGN, noOcclusion, lightLevel)), false);
-        var wallSignBlock = registerBlock(name + "_wall_sign", () -> new ProductiveWallSignBlock(finalWoodType, getProperties(Blocks.OAK_WALL_SIGN, noOcclusion, lightLevel)), false);
-        var hangingSignBlock = registerBlock(name + "_hanging_sign", () -> new ProductiveCeilingHangingSignBlock(finalWoodType, getProperties(Blocks.OAK_HANGING_SIGN, noOcclusion, lightLevel)), false);
-        var wallHangingSignBlock = registerBlock(name + "_wall_hanging_sign", () -> new ProductiveWallHangingSignBlock(finalWoodType, getProperties(Blocks.OAK_WALL_HANGING_SIGN, noOcclusion, lightLevel)), false);
-
-        registerItem(name + "_sign", () -> new SignItem(new Item.Properties(), signBlock.get(), wallSignBlock.get()));
-        registerItem(name + "_hanging_sign", () -> new SignItem(new Item.Properties(), hangingSignBlock.get(), wallHangingSignBlock.get()));
-
-        SIGNS.add(signBlock);
-        SIGNS.add(wallSignBlock);
-        HANGING_SIGNS.add(hangingSignBlock);
-        HANGING_SIGNS.add(wallHangingSignBlock);
-
         // Hives
         if (treeObject.getStyle().hiveStyle() != null && ModList.get().isLoaded("productivebees")) {
             CompatHandler.createHive(name, treeObject, lightLevel);

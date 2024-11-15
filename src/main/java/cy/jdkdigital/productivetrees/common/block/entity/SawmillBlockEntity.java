@@ -76,7 +76,8 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
     };
 
     protected IItemHandlerModifiable upgradeHandler = new InventoryHandlerHelper.UpgradeHandler(4, this, List.of(
-            LibItems.UPGRADE_TIME.get()
+            LibItems.UPGRADE_TIME.get(),
+            LibItems.UPGRADE_TIME_2.get()
     ));
 
     public SawmillBlockEntity(BlockPos pos, BlockState state) {
@@ -110,7 +111,7 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
                 blockEntity.inventoryHandler.insertItem(SLOT_OUT, blockEntity.buffer.copy(), false);
                 blockEntity.buffer = ItemStack.EMPTY;
             } else if (!log.isEmpty() && (output.isEmpty() || output.getCount() < output.getMaxStackSize())) {
-                var speedModifier = 1 + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get());
+                var speedModifier = 1 + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get()) + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME_2.get()) * 2;
                 blockEntity.progress+= blockEntity.tickRate * speedModifier;
                 if (blockEntity.progress >= blockEntity.recipeTime) {
                     var recipe = TreeUtil.getSawmillRecipe(level, log);

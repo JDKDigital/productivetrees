@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -82,21 +83,23 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             var planks = TreeUtil.getBlock(treeObject.getId(), "_planks");
             planksFromLogs(pRecipeOutput, TreeUtil.getBlock(treeObject.getId(), "_planks"), ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, id.getPath() + "_logs")));
             woodFromLogs(pRecipeOutput, TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_log"));
-            shapedVariant(pRecipeOutput, BlockFamily.Variant.STAIRS, TreeUtil.getBlock(treeObject.getId(), "_stairs"), planks);
-            shapedVariant(pRecipeOutput, BlockFamily.Variant.SLAB, TreeUtil.getBlock(treeObject.getId(), "_slab"), planks);
-            shapedVariant(pRecipeOutput, BlockFamily.Variant.PRESSURE_PLATE, TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), planks);
-            shapedVariant(pRecipeOutput, BlockFamily.Variant.BUTTON, TreeUtil.getBlock(treeObject.getId(), "_button"), planks);
-            shapedVariant(pRecipeOutput, BlockFamily.Variant.FENCE, TreeUtil.getBlock(treeObject.getId(), "_fence"), planks);
-            shapedVariant(pRecipeOutput, BlockFamily.Variant.FENCE_GATE, TreeUtil.getBlock(treeObject.getId(), "_fence_gate"), planks);
-            shapedVariant(pRecipeOutput, BlockFamily.Variant.DOOR, TreeUtil.getBlock(treeObject.getId(), "_door"), planks);
-            shapedVariant(pRecipeOutput, BlockFamily.Variant.TRAPDOOR, TreeUtil.getBlock(treeObject.getId(), "_trapdoor"), planks);
-            shapedVariant(pRecipeOutput, BlockFamily.Variant.SIGN, TreeUtil.getBlock(treeObject.getId(), "_sign"), planks);
-            hangingSign(pRecipeOutput, TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), planks);
+            if (!ProductiveTrees.isMinimal) {
+                shapedVariant(pRecipeOutput, BlockFamily.Variant.STAIRS, TreeUtil.getBlock(treeObject.getId(), "_stairs"), planks);
+                shapedVariant(pRecipeOutput, BlockFamily.Variant.SLAB, TreeUtil.getBlock(treeObject.getId(), "_slab"), planks);
+                shapedVariant(pRecipeOutput, BlockFamily.Variant.PRESSURE_PLATE, TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), planks);
+                shapedVariant(pRecipeOutput, BlockFamily.Variant.BUTTON, TreeUtil.getBlock(treeObject.getId(), "_button"), planks);
+                shapedVariant(pRecipeOutput, BlockFamily.Variant.FENCE, TreeUtil.getBlock(treeObject.getId(), "_fence"), planks);
+                shapedVariant(pRecipeOutput, BlockFamily.Variant.FENCE_GATE, TreeUtil.getBlock(treeObject.getId(), "_fence_gate"), planks);
+                shapedVariant(pRecipeOutput, BlockFamily.Variant.DOOR, TreeUtil.getBlock(treeObject.getId(), "_door"), planks);
+                shapedVariant(pRecipeOutput, BlockFamily.Variant.TRAPDOOR, TreeUtil.getBlock(treeObject.getId(), "_trapdoor"), planks);
+                shapedVariant(pRecipeOutput, BlockFamily.Variant.SIGN, TreeUtil.getBlock(treeObject.getId(), "_sign"), planks);
+                hangingSign(pRecipeOutput, TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), planks);
+                ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(pRecipeOutput, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf"));
+            }
             buildSawmillRecipe(treeObject, pRecipeOutput);
             buildCorailWoodcutterRecipes(treeObject, pRecipeOutput);
             buildMekanismWoodcutterRecipes(treeObject, pRecipeOutput);
-            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(pRecipeOutput, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf"));
-            
+
             // arboreal extractor (for resin, sap and latex), insolator (logs, saplings and fruit)
 //            if (THERMAL_SAWMILL != null) {
 //                ThermalSawmilRecipeBuilder.tree(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood"), TreeUtil.getBlock(treeObject.getId(), "_planks"))
@@ -274,7 +277,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
     private void buildMekanismWoodcutterRecipes(WoodObject treeObject, RecipeOutput consumer) {
         var logTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, treeObject.getId().getPath() + "_logs"));
         mekanism.api.datagen.recipe.builder.SawmillRecipeBuilder.sawing(ItemStackIngredient.of(SizedIngredient.of(logTag, 1)), new ItemStack(TreeUtil.getBlock(treeObject.getId(), "_planks"), 6))
-                .build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "mekanism/sawmill/" + treeObject.getId().getPath()));
+                .build(consumer.withConditions(new ModLoadedCondition("mekanism")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "mekanism/sawmill/" + treeObject.getId().getPath()));
     }
 
     private void buildCorailWoodcutterRecipes(WoodObject treeObject, RecipeOutput consumer) {
