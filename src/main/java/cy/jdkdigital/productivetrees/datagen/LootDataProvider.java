@@ -1,7 +1,6 @@
 package cy.jdkdigital.productivetrees.datagen;
 
 import com.google.common.collect.Maps;
-import cy.jdkdigital.productivebees.datagen.BlockLootProvider;
 import cy.jdkdigital.productivelib.loot.OptionalLootItem;
 import cy.jdkdigital.productivelib.loot.condition.OptionalCopyBlockState;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
@@ -142,14 +141,6 @@ public class LootDataProvider implements DataProvider
                     dropSelf(TreeUtil.getBlock(id, "_hanging_sign"));
                     dropOther(TreeUtil.getBlock(id, "_wall_hanging_sign"), TreeUtil.getBlock(id, "_hanging_sign"));
                 }
-                if (treeObject.getStyle().hiveStyle() != null) {
-                    Block hive = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
-                    Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(hive, LootProvider::genHiveDrop);
-                    this.add(hive, hiveFunc.apply(hive));
-                    Block box = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p ->  "expansion_box_" + p));
-                    Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(box, BlockLootProvider.LootProvider::genExpansionDrop);
-                    this.add(box, expansionFunc.apply(box));
-                }
             });
 
             TreeRegistrator.CRATED_CROPS.forEach(cratePath -> {
@@ -227,25 +218,6 @@ public class LootDataProvider implements DataProvider
             return LootTable.lootTable().withPool(
                     LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                             .add(builder));
-        }
-
-        public static LootTable.Builder genHiveDrop(Block hive) {
-            LootPoolEntryContainer.Builder<?> hiveNoHoney = OptionalLootItem.lootTableItem(hive).when(ExplosionCondition.survivesExplosion())
-                    .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.BEES));
-
-            LootPoolEntryContainer.Builder<?> hiveHoney;
-            if (hive.defaultBlockState().hasProperty(BeehiveBlock.HONEY_LEVEL)) {
-                hiveHoney = OptionalLootItem.lootTableItem(hive).when(SILK_TOUCH)
-                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.BEES))
-                        .apply(OptionalCopyBlockState.copyState(hive).copy(BeehiveBlock.HONEY_LEVEL));
-            } else {
-                hiveHoney = OptionalLootItem.lootTableItem(hive).when(SILK_TOUCH)
-                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.BEES));
-            }
-
-            return LootTable.lootTable().withPool(
-                    LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                            .add(hiveHoney.otherwise(hiveNoHoney)));
         }
     }
 }

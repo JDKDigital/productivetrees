@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import cy.jdkdigital.productivebees.setup.HiveType;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
@@ -59,8 +58,6 @@ public class ModelProvider implements DataProvider
                 throw new IllegalStateException("Duplicate model definition for " + resourceLocation);
             }
         };
-
-        ProductiveTrees.LOGGER.info("MODELGENERATOR");
 
         ModelGenerator generator = new ModelGenerator();
         try {
@@ -243,7 +240,6 @@ public class ModelProvider implements DataProvider
         protected void registerStatesAndModels(Consumer<BlockStateGenerator> blockStateOutput, BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput) {
             this.blockStateOutput = blockStateOutput;
             this.modelOutput = modelOutput;
-            Map<ResourceLocation, BlockStateGenerator> hiveBlockStates = new HashMap<>();
 
             TreeFinder.trees.forEach((id, treeObject) -> {
                 this.createSapling(treeObject);
@@ -272,18 +268,9 @@ public class ModelProvider implements DataProvider
                     this.blockStateOutput.accept(createSimpleBlock(TreeUtil.getBlock(id, "_hanging_sign"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/sign/hanging_" + treeObject.getStyle().plankStyle())));
                     this.blockStateOutput.accept(createSimpleBlock(TreeUtil.getBlock(id, "_wall_hanging_sign"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/sign/hanging_" + treeObject.getStyle().plankStyle())));
                 }
-                if (treeObject.getStyle().hiveStyle() != null) {
-                    Block hive = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
-                    Block box = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p ->  "expansion_box_" + p));
-                    cy.jdkdigital.productivebees.datagen.BlockstateProvider.generateModels(hive, box, id.getPath(), new HiveType(false, treeObject.getPlankColor(), treeObject.getStyle().hiveStyle(), TreeUtil.getBlock(id, "_planks"), null), hiveBlockStates, this.modelOutput);
-                }
             });
 
             createBaseModels();
-
-            hiveBlockStates.forEach((resourceLocation, stateGenerator) -> {
-                this.blockStateOutput.accept(stateGenerator);
-            });
         }
 
         private void createSapling(TreeObject treeObject) {

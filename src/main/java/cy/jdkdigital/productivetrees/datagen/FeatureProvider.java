@@ -115,18 +115,11 @@ public class FeatureProvider implements DataProvider
                 decoratorArray.add(fruitDecorators.containsKey(name) ? fruitDecorators.get(name).apply(SimpleStateProvider.simple(state)) : fruitDecorators.get("default").apply(SimpleStateProvider.simple(state)));
             }
             config.add("decorators", decoratorArray);
-            // dirt_provider
             config.add("dirt_provider", DIRT_PROVIDER);
-            // foliage_placer
             config.add("foliage_placer", foliagePlacers.containsKey(name) ? foliagePlacers.get(name) : foliagePlacers.get("default"));
-            // foliage_provider
             config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(TreeUtil.getBlock(treeObject.getId(), "_leaves"))).getOrThrow());
-//            config.add("foliage_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(Blocks.AIR)).getOrThrow());
-            // minimum_size
             config.add("minimum_size", FeatureSize.CODEC.encodeStart(JsonOps.INSTANCE, new TwoLayersFeatureSize(1, 0, 1)).getOrThrow());
-            // trunk_placer
             config.add("trunk_placer", trunkPlacers.containsKey(name) ? trunkPlacers.get(name) : trunkPlacers.get("default"));
-            // trunk_provider
             config.add("trunk_provider", BlockStateProvider.CODEC.encodeStart(JsonOps.INSTANCE, SimpleStateProvider.simple(TreeUtil.getBlock(treeObject.getId(), "_log"))).getOrThrow());
 
             config.addProperty("force_dirt", false);

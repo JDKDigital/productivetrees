@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "type": "mekanism:sawing",
+  "input": {
+    "count": 1,
+    "tag": "productivetrees:aspen_logs"
+  },
+  "main_output": {
+    "count": 6,
+    "id": "productivetrees:aspen_planks"
+  }
+}

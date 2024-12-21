@@ -7,13 +7,13 @@
             "type": "patchouli:spotlight",
             "flag": "mod:productivebees",
             "item": "productivetrees:pollen",
-            "text": "Pollen collected by bees can be used to manually pollinates leaves and create new tree species."
+            "text": "Pollen collected by bees can be used to manually pollinates leaves and create new tree species. Check in JEI which trees to be bred together to know which pollen to use on which leaves."
         },
         {
             "type": "patchouli:spotlight",
             "flag": "!mod:productivebees",
             "item": "productivetrees:pollen",
-            "text": "Pollen collected by pollen sifters can be used to manually pollinates leaves and create new tree species."
+            "text": "Pollen collected by pollen sifters can be used to manually pollinates leaves and create new tree species. Check in JEI which trees to be bred together to know which pollen to use on which leaves."
         }
     ]
 }

@@ -56,8 +56,8 @@ public class BlockTagProvider extends BlockTagsProvider
         var wallSigns = tag(BlockTags.WALL_SIGNS);
 
         // PBees
-        var hives = tag(cy.jdkdigital.productivebees.init.ModTags.HIVES_BLOCK);
-        var boxes = tag(cy.jdkdigital.productivebees.init.ModTags.BOXES_BLOCK);
+        var hives = tag(BlockTags.create(ResourceLocation.parse("productivebees:advanced_beehives")));
+        var boxes = tag(BlockTags.create(ResourceLocation.parse("productivebees:expansion_boxes")));
 
         // Serene seasons
         var spring_crops = tag(BlockTags.create(ResourceLocation.parse("sereneseasons:spring_crops")));

@@ -125,10 +125,8 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
             add(TreeUtil.getBlock(woodObject.getId(), "_hanging_sign"), LangUtil.capName(name) + " Hanging Sign");
         }
         if (woodObject.getStyle().hiveStyle() != null) {
-            Block hive = BuiltInRegistries.BLOCK.get(woodObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
-            add(hive, "Advanced " + LangUtil.capName(name) + " Beehive");
-            Block box = BuiltInRegistries.BLOCK.get(woodObject.getId().withPath(p ->  "expansion_box_" + p));
-            add(box, LangUtil.capName(name) + " Expansion Box");
+            add("block.productivetrees." + woodObject.getId().withPath(p -> "advanced_" + p + "_beehive").getPath(), "Advanced " + LangUtil.capName(name) + " Beehive");
+            add("block.productivetrees." + woodObject.getId().withPath(p ->  "expansion_box_" + p).getPath(), LangUtil.capName(name) + " Expansion Box");
         }
     }
 

@@ -59,8 +59,8 @@ public class ItemTagProvider extends ItemTagsProvider
                 .addOptional(ResourceLocation.parse("allthemodium:vibranium_axe"))
                 .addOptional(ResourceLocation.parse("allthemodium:allthemodium_axe"));
         copy(ModTags.POLLINATABLE, ModTags.POLLINATABLE_ITEM);
-        copy(cy.jdkdigital.productivebees.init.ModTags.HIVES_BLOCK, cy.jdkdigital.productivebees.init.ModTags.HIVES);
-        copy(cy.jdkdigital.productivebees.init.ModTags.BOXES_BLOCK, cy.jdkdigital.productivebees.init.ModTags.BOXES);
+        copy(BlockTags.create(ResourceLocation.parse("productivebees:advanced_beehives")), ItemTags.create(ResourceLocation.parse("productivebees:advanced_beehives")));
+        copy(BlockTags.create(ResourceLocation.parse("productivebees:expansion_boxes")), ItemTags.create(ResourceLocation.parse("productivebees:expansion_boxes")));
 
         // Diet compat
         var dietFruitsTag = tag(ItemTags.create(ResourceLocation.parse("diet:fruits")));
