@@ -20,6 +20,7 @@
   "log": {
     "item": "productivetrees:sandalwood_log"
   },
+  "particle_color": "#f1eda6",
   "processing_time": 2400,
   "required_block_count": 5,
   "result": {

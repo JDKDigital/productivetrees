@@ -407,6 +407,11 @@ public class TreeRegistrator
             registerBlock("monkey_puzzle_small_leaves", () -> new ProductiveDirectionalLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), treeObject));
             registerBlock("monkey_puzzle_medium_leaves", () -> new ProductiveDirectionalLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), treeObject));
         }
+
+        ProductiveTrees.BLOCKS.addAlias(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_fruit"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_fruit"));
+        ProductiveTrees.BLOCKS.addAlias(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_log"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_log"));
+        ProductiveTrees.BLOCKS.addAlias(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_leaves"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_leaves"));
+        ProductiveTrees.BLOCKS.addAlias(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_sapling"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_sapling"));
     }
 
     public static Supplier<BlockEntityType<ProductiveSignBlockEntity>> SIGN_BE;

@@ -17,6 +17,7 @@
   "log": {
     "item": "productivetrees:sugar_maple_log"
   },
+  "particle_color": "",
   "processing_time": 2400,
   "required_block_count": 5,
   "result": {

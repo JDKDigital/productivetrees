@@ -1,6 +1,6 @@
 package cy.jdkdigital.productivetrees.datagen.recipe;
 
-import cy.jdkdigital.treetap.common.block.recipe.TapExtractRecipe;
+import cy.jdkdigital.treetap.common.recipe.TapExtractRecipe;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -70,6 +70,6 @@ public final class TreetapRecipeBuilder implements RecipeBuilder
 
     @Override
     public void save(RecipeOutput consumer, ResourceLocation id) {
-        consumer.accept(id, new TapExtractRecipe(log, result, ItemStack.EMPTY, harvestItem, collectBucket, processingTime, displayFluid, fluidColor, blocksRequired, List.of()), null);
+        consumer.accept(id, new TapExtractRecipe(log, result, ItemStack.EMPTY, harvestItem, collectBucket, processingTime, displayFluid, fluidColor, fluidColor, blocksRequired, List.of()), null);
     }
 }

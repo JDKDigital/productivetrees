@@ -20,6 +20,7 @@
   "log": {
     "item": "productivetrees:socotra_dragon_log"
   },
+  "particle_color": "#9d0300",
   "processing_time": 1200,
   "required_block_count": 5,
   "result": {
