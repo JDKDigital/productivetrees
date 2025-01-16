@@ -9,7 +9,9 @@ import cy.jdkdigital.productivetrees.common.block.ProductiveLeavesBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveWoodBlock;
+import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.common.block.entity.StripperBlockEntity;
+import cy.jdkdigital.productivetrees.recipe.RecipeHelper;
 import cy.jdkdigital.productivetrees.recipe.SawmillRecipe;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
@@ -31,6 +33,8 @@ import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LevelEvent;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ToolActions;
@@ -257,5 +261,22 @@ public class TreeUtil
 
     public static TreeObject getTree(Block block) {
         return TreeFinder.trees.get(ForgeRegistries.BLOCKS.getKey(block).withPath(p -> p.replace("_log", "").replace("_wood", "").replace("_sapling", "").replace("_leaves", "")));
+    }
+
+    public static boolean tryPollinatePosition(Level level, BlockPos pos, Block leafB) {
+        BlockState state = level.getBlockState(pos);
+        var recipe = RecipeHelper.getPollinationRecipe(level, state, leafB.defaultBlockState());
+        if (recipe != null) {
+            level.setBlock(pos, TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
+            if (level.getBlockEntity(pos) instanceof PollinatedLeavesBlockEntity leaves) {
+                leaves.setLeafA(state.getBlock());
+                leaves.setLeafB(leafB);
+                leaves.setResult(recipe.result);
+                leaves.setChanged();
+                level.levelEvent(LevelEvent.PARTICLES_PLANT_GROWTH, pos, 0);
+                return true;
+            }
+        }
+        return false;
     }
 }
