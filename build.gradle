@@ -125,6 +125,11 @@ repositories {
     flatDir {
         dir 'libs'
     }
+    maven {
+        name = 'ModKit'
+        url 'https://jitpack.io'
+        content { includeGroup 'com.github.thedarkcolour' }
+    }
 }
 
 dependencies {
@@ -167,6 +172,9 @@ dependencies {
     implementation fg.deobf("curse.maven:pams-harvestcraft-2-crops-361385:4687624")
     implementation fg.deobf("curse.maven:pams-harvestcraft-2-pams-harvestcraft-2-trees-365460:4625518")
     implementation fg.deobf("curse.maven:pams-harvestcraft-2-food-extended-402231:4606448")
+    implementation fg.deobf("curse.maven:forestry-community-edition-1056828:6085417")
+    implementation fg.deobf("curse.maven:gendustry-community-edition-1179084:6089265")
+    implementation fg.deobf('com.github.thedarkcolour:ModKit:0302f9aa42')
 }
 
 def resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta']
