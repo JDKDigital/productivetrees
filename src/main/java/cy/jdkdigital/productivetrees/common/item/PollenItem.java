@@ -4,6 +4,7 @@ import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.recipe.RecipeHelper;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -47,31 +48,11 @@ public class PollenItem extends Item
             BlockState state = level.getBlockState(context.getClickedPos());
             if (stack.getTag() != null && stack.getTag().contains("Block") && state.is(BlockTags.LEAVES) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get())) {
                 Block leafB = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(stack.getTag().getString("Block")));
-                if (leafB != null) {
-                    var recipe = RecipeHelper.getPollinationRecipe(level, state, leafB.defaultBlockState());
-                    level.setBlock(context.getClickedPos(), TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
-                    if (level.getBlockEntity(context.getClickedPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
-                        pollinatedLeavesBlockEntity.setLeafA(state.getBlock());
-                        pollinatedLeavesBlockEntity.setLeafB(leafB);
-
-                        ItemStack result = ItemStack.EMPTY;
-                        ResourceLocation backupItem = level.random.nextBoolean() ? ForgeRegistries.BLOCKS.getKey(state.getBlock()) : new ResourceLocation(stack.getTag().getString("Block"));
-                        if (recipe == null && backupItem != null) {
-                            var item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(backupItem.getNamespace(), backupItem.getPath().replace("leaves", "sapling")));
-                            if (item != null) {
-                                result = new ItemStack(item);
-                            }
-                        } else if (recipe != null){
-                            result = recipe.result;
-                        }
-                        pollinatedLeavesBlockEntity.setResult(result);
-                        pollinatedLeavesBlockEntity.setChanged();
-                        if (!context.getPlayer().isCreative()) {
-                            stack.shrink(1);
-                        }
-                        context.getPlayer().swing(context.getHand());
-                        level.levelEvent(2005, context.getClickedPos(), 0);
+                if (leafB != null && TreeUtil.tryPollinatePosition(level, context.getClickedPos(), leafB)) {
+                    if (!context.getPlayer().isCreative()) {
+                        stack.shrink(1);
                     }
+                    context.getPlayer().swing(context.getHand());
                 }
             }
         }
