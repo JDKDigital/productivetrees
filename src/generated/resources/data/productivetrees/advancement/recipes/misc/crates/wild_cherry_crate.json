@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/wild_cherry_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wild_cherry": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:wild_cherry"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wild_cherry"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/wild_cherry_crate"
+    ]
+  }
+}

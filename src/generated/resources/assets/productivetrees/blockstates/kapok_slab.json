@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/kapok_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/kapok"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/kapok_slab_top"
+    }
+  }
+}

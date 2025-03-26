@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/purple_spiral_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/purple_spiral"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/purple_spiral_slab_top"
+    }
+  }
+}

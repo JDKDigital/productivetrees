@@ -1,0 +1,15 @@
+{
+  "type": "productivetrees:sawmill",
+  "input": {
+    "tag": "productivetrees:rainbow_gum_logs"
+  },
+  "output": {
+    "count": 6,
+    "id": "productivetrees:rainbow_gum_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  },
+  "tertiary": {}
+}

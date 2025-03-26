@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log",
+  "textures": {
+    "end": "productivetrees:block/log_top/pink_ipe",
+    "side": "productivetrees:block/log/pink_ipe"
+  }
+}

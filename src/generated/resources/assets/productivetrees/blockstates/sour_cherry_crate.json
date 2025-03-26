@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "productivetrees:block/crates/sour_cherry_crate"
+    }
+  }
+}

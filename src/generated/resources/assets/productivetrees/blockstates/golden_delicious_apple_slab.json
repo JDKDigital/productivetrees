@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/golden_delicious_apple_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/golden_delicious_apple"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/golden_delicious_apple_slab_top"
+    }
+  }
+}

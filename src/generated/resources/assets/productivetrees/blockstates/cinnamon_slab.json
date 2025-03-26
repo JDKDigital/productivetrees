@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/cinnamon_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/cinnamon"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/cinnamon_slab_top"
+    }
+  }
+}

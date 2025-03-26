@@ -1,0 +1,15 @@
+{
+  "type": "productivetrees:sawmill",
+  "input": {
+    "tag": "productivetrees:moonlight_magic_crepe_myrtle_logs"
+  },
+  "output": {
+    "count": 6,
+    "id": "productivetrees:moonlight_magic_crepe_myrtle_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  },
+  "tertiary": {}
+}

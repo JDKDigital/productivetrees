@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_almond": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:almond"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:roasting/roasted_almond_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_almond"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:roasting/roasted_almond_smelting"
+    ]
+  }
+}

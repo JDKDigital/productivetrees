@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:sign/white_ipe_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_ipe_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:white_ipe_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_white_ipe_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:sign/white_ipe_sign"
+    ]
+  }
+}

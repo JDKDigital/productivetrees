@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 180,
+  "experience": 0.9,
+  "ingredient": {
+    "item": "productivetrees:ginkgo_nut_crate"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:roasted_ginkgo_nut_crate"
+  }
+}

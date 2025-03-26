@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_elm_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:elm_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:button/elm_button"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_elm_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:button/elm_button"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "productivetrees:sawmill",
+  "input": {
+    "tag": "productivetrees:slimy_delight_logs"
+  },
+  "output": {
+    "count": 6,
+    "id": "productivetrees:slimy_delight_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  },
+  "tertiary": {}
+}

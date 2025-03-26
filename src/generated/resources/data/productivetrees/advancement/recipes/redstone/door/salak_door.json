@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_salak_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:salak_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:door/salak_door"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_salak_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:door/salak_door"
+    ]
+  }
+}

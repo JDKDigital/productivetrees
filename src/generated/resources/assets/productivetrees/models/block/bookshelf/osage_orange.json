@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/base_bookshelf",
+  "textures": {
+    "side": "productivetrees:block/planks/osage_orange"
+  }
+}

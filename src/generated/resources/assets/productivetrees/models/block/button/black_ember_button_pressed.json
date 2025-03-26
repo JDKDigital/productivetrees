@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/button/base_button_pressed",
+  "textures": {
+    "texture": "productivetrees:block/planks/black_ember"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.05,
+  "leafA": {
+    "item": "productivetrees:cave_dweller_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:soul_tree_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:foggy_blast_sapling"
+  }
+}

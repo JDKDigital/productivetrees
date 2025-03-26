@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/nutmeg_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/nutmeg"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/nutmeg_slab_top"
+    }
+  }
+}

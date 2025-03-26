@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:balsa_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:dark_oak_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:cocobolo_sapling"
+  }
+}

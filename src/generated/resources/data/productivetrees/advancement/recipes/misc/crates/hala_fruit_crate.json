@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hala_fruit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:hala_fruit"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/hala_fruit_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hala_fruit"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/hala_fruit_crate"
+    ]
+  }
+}

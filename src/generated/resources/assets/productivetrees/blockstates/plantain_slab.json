@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/plantain_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/plantain"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/plantain_slab_top"
+    }
+  }
+}

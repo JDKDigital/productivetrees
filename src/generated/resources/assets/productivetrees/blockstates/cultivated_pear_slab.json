@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/cultivated_pear_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/cultivated_pear"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/cultivated_pear_slab_top"
+    }
+  }
+}

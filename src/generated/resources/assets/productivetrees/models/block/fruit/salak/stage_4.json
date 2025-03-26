@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/salak",
+    "plant": "productivetrees:block/fruit/salak/stage_4"
+  }
+}

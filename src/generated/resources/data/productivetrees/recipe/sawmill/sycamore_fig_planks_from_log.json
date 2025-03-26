@@ -1,0 +1,15 @@
+{
+  "type": "productivetrees:sawmill",
+  "input": {
+    "tag": "productivetrees:sycamore_fig_logs"
+  },
+  "output": {
+    "count": 6,
+    "id": "productivetrees:sycamore_fig_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  },
+  "tertiary": {}
+}

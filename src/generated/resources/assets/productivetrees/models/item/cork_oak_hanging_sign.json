@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "productivetrees:item/hanging_sign/cork_oak_hanging_sign"
+  }
+}

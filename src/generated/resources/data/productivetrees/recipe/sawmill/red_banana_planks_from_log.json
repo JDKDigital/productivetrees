@@ -1,0 +1,15 @@
+{
+  "type": "productivetrees:sawmill",
+  "input": {
+    "tag": "productivetrees:red_banana_logs"
+  },
+  "output": {
+    "count": 6,
+    "id": "productivetrees:red_banana_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  },
+  "tertiary": {}
+}

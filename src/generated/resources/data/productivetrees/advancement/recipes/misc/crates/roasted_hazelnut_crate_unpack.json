@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_roasted_hazelnut": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:roasted_hazelnut"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/roasted_hazelnut_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_roasted_hazelnut"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/roasted_hazelnut_crate_unpack"
+    ]
+  }
+}

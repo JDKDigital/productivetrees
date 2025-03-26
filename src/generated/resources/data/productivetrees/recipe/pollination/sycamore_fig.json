@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:ash_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:sugar_maple_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:sycamore_fig_sapling"
+  }
+}

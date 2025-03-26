@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:rubber_tree_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:rubber_tree_button"
+  }
+}

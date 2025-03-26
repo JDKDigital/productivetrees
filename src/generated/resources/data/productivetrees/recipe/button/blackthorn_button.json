@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:blackthorn_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:blackthorn_button"
+  }
+}

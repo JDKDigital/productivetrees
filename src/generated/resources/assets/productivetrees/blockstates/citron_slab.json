@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/citron_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/citron"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/citron_slab_top"
+    }
+  }
+}

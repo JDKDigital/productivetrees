@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/translucent_top_right",
+  "textures": {
+    "bottom": "productivetrees:block/door/water_wonder_bottom",
+    "top": "productivetrees:block/door/water_wonder_top"
+  }
+}

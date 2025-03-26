@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/sugar_apple",
+    "plant": "productivetrees:block/fruit/sugar_apple/stage_2"
+  }
+}

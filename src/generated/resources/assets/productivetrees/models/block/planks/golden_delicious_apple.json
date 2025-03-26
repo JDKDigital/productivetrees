@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/planks/base_planks",
+  "textures": {
+    "all": "productivetrees:block/planks/golden_delicious_apple"
+  }
+}

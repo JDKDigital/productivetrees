@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/wenge_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/wenge"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/wenge_slab_top"
+    }
+  }
+}

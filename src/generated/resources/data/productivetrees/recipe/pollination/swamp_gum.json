@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:yellow_meranti_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:rose_gum_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:swamp_gum_sapling"
+  }
+}

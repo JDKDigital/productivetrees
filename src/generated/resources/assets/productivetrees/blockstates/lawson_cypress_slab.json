@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/lawson_cypress_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/lawson_cypress"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/lawson_cypress_slab_top"
+    }
+  }
+}

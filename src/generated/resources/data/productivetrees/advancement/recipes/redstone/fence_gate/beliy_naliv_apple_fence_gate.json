@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_beliy_naliv_apple_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:beliy_naliv_apple_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:fence_gate/beliy_naliv_apple_fence_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_beliy_naliv_apple_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:fence_gate/beliy_naliv_apple_fence_gate"
+    ]
+  }
+}

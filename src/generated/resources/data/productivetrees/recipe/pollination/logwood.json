@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:kapok_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:rosewood_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:logwood_sapling"
+  }
+}

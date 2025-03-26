@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:sweet_chestnut_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:copoazu_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:carob_sapling"
+  }
+}

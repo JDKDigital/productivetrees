@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "productivetrees:block/fruit/cempedak/0"
+    },
+    "age=1": {
+      "model": "productivetrees:block/fruit/cempedak/1"
+    },
+    "age=2": {
+      "model": "productivetrees:block/fruit/cempedak/2"
+    },
+    "age=3": {
+      "model": "productivetrees:block/fruit/cempedak/3"
+    },
+    "age=4": {
+      "model": "productivetrees:block/fruit/cempedak/4"
+    },
+    "age=5": {
+      "model": "productivetrees:block/fruit/cempedak/5"
+    },
+    "age=6": {
+      "model": "productivetrees:block/fruit/cempedak/6"
+    },
+    "age=7": {
+      "model": "productivetrees:block/fruit/cempedak/7"
+    }
+  }
+}

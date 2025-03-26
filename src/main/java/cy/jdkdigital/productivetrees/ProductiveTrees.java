@@ -67,7 +67,6 @@ public class ProductiveTrees
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
     public static final DeferredRegister<FoliagePlacerType<?>> FOLIAGE_PLACERS = DeferredRegister.create(Registries.FOLIAGE_PLACER_TYPE, MODID);
     public static final DeferredRegister<TrunkPlacerType<?>> TRUNK_PLACERS = DeferredRegister.create(Registries.TRUNK_PLACER_TYPE, MODID);
-    public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, MODID);
     public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENTS = DeferredRegister.create(Registries.DATA_COMPONENT_TYPE, MODID);
     public static boolean isMinimal = false;
 
@@ -91,7 +90,6 @@ public class ProductiveTrees
         POI_TYPES.register(modEventBus);
         FOLIAGE_PLACERS.register(modEventBus);
         TRUNK_PLACERS.register(modEventBus);
-        ATTACHMENT_TYPES.register(modEventBus);
         DATA_COMPONENTS.register(modEventBus);
 
         TreeRegistrator.init();
@@ -109,16 +107,16 @@ public class ProductiveTrees
 
     static boolean hasGenerated = false;
     public static void generateData() {
-        if (!hasGenerated) {
-            try {
-                if(generator == null) {
-                    registerDataGen();
-                }
-                generator.run();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            hasGenerated = true;
-        }
+//        if (!hasGenerated) {
+//            try {
+//                if(generator == null) {
+//                    registerDataGen();
+//                }
+//                generator.run();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            hasGenerated = true;
+//        }
     }
 }

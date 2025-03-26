@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/firecracker",
+    "side": "productivetrees:block/stripped/firecracker"
+  }
+}

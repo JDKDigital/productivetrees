@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "productivetrees:block/pressure_plate/jackfruit_pressure_plate"
+    },
+    "powered=true": {
+      "model": "productivetrees:block/pressure_plate/jackfruit_pressure_plate_down"
+    }
+  }
+}

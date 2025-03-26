@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/pressure_plate/base_pressure_plate_down",
+  "textures": {
+    "texture": "productivetrees:block/planks/monkey_puzzle"
+  }
+}

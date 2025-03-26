@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_elderberry_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:elderberry_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:slab/elderberry_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_elderberry_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:slab/elderberry_slab"
+    ]
+  }
+}

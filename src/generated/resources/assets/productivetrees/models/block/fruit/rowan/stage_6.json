@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/rowan",
+    "plant": "productivetrees:block/fruit/rowan/stage_6"
+  }
+}

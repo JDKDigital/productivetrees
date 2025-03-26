@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/moonlight_magic_crepe_myrtle_top",
+    "side": "productivetrees:block/stripped/moonlight_magic_crepe_myrtle"
+  }
+}

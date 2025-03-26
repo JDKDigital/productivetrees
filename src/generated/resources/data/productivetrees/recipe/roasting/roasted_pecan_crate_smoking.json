@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 180,
+  "experience": 0.9,
+  "ingredient": {
+    "item": "productivetrees:pecan_crate"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:roasted_pecan_crate"
+  }
+}

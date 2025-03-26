@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/translucent_cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/water_wonder_top",
+    "side": "productivetrees:block/stripped/water_wonder"
+  }
+}

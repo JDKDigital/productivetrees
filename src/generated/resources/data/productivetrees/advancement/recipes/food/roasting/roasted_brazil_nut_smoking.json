@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_brazil_nut": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:brazil_nut"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:roasting/roasted_brazil_nut_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_brazil_nut"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:roasting/roasted_brazil_nut_smoking"
+    ]
+  }
+}

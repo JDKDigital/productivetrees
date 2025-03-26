@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/log/blue_mahoe",
+    "side": "productivetrees:block/log/blue_mahoe"
+  }
+}

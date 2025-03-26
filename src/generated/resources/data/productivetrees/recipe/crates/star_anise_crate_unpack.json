@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "productivetrees:star_anise_crate"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "productivetrees:star_anise"
+  }
+}

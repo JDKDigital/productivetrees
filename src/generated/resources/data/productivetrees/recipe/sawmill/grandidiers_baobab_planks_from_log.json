@@ -1,0 +1,15 @@
+{
+  "type": "productivetrees:sawmill",
+  "input": {
+    "tag": "productivetrees:grandidiers_baobab_logs"
+  },
+  "output": {
+    "count": 6,
+    "id": "productivetrees:grandidiers_baobab_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  },
+  "tertiary": {}
+}

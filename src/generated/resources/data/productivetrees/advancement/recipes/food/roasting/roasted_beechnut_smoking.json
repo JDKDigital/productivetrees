@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_beechnut": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:beechnut"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:roasting/roasted_beechnut_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_beechnut"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:roasting/roasted_beechnut_smoking"
+    ]
+  }
+}

@@ -1,2 +1,0 @@
-Leaves Color Code
-#70a25d

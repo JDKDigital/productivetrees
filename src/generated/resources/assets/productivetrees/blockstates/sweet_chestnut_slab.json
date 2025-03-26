@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/sweet_chestnut_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/sweet_chestnut"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/sweet_chestnut_slab_top"
+    }
+  }
+}

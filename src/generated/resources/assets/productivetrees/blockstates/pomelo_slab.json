@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/pomelo_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/pomelo"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/pomelo_slab_top"
+    }
+  }
+}

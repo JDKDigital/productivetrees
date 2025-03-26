@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:balsam_fir_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:bull_pine_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:silver_fir_sapling"
+  }
+}

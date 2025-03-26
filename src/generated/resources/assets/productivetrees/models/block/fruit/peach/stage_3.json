@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/peach",
+    "plant": "productivetrees:block/fruit/peach/stage_3"
+  }
+}

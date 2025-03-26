@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lime": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:lime"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/lime_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_lime"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/lime_crate"
+    ]
+  }
+}

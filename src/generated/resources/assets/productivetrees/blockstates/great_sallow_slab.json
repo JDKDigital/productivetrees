@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/great_sallow_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/great_sallow"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/great_sallow_slab_top"
+    }
+  }
+}

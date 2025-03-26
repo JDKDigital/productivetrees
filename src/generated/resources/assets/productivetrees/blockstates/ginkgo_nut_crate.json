@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "productivetrees:block/crates/ginkgo_nut_crate"
+    }
+  }
+}

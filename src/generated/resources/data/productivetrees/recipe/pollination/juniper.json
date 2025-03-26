@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:elderberry_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:silver_fir_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:juniper_sapling"
+  }
+}

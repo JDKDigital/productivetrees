@@ -1,0 +1,19 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:walnut_leaves"
+  },
+  "leafB": [
+    {
+      "item": "productivetrees:wild_cherry_leaves"
+    },
+    {
+      "item": "productivetrees:silver_lime_leaves"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:sweet_chestnut_sapling"
+  }
+}

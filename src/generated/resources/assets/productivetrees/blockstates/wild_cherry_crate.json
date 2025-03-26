@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "productivetrees:block/crates/wild_cherry_crate"
+    }
+  }
+}

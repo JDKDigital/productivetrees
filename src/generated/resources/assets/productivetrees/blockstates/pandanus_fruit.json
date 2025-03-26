@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "productivetrees:block/fruit/pandanus/0"
+    },
+    "age=1": {
+      "model": "productivetrees:block/fruit/pandanus/1"
+    },
+    "age=2": {
+      "model": "productivetrees:block/fruit/pandanus/2"
+    },
+    "age=3": {
+      "model": "productivetrees:block/fruit/pandanus/3"
+    },
+    "age=4": {
+      "model": "productivetrees:block/fruit/pandanus/4"
+    },
+    "age=5": {
+      "model": "productivetrees:block/fruit/pandanus/5"
+    },
+    "age=6": {
+      "model": "productivetrees:block/fruit/pandanus/6"
+    },
+    "age=7": {
+      "model": "productivetrees:block/fruit/pandanus/7"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rowan": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:rowan"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/rowan_crate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_rowan"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/rowan_crate"
+    ]
+  }
+}

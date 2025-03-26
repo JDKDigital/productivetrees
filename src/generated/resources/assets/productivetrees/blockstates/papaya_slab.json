@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/papaya_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/papaya"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/papaya_slab_top"
+    }
+  }
+}

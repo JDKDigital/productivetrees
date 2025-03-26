@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "productivetrees:item/hanging_sign/pink_ipe_hanging_sign"
+  }
+}

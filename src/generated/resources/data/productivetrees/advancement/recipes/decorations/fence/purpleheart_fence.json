@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_purpleheart_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:purpleheart_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:fence/purpleheart_fence"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_purpleheart_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:fence/purpleheart_fence"
+    ]
+  }
+}

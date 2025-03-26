@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_night_fuchsia_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:night_fuchsia_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:fence/night_fuchsia_fence"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_night_fuchsia_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:fence/night_fuchsia_fence"
+    ]
+  }
+}

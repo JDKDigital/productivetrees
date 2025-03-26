@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/sign/base_sign",
+  "textures": {
+    "particle": "productivetrees:block/stripped/elderberry"
+  }
+}

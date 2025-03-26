@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/leaves/base_leaves",
+  "textures": {
+    "all": "productivetrees:block/leaves/moonlight_magic_crepe_myrtle"
+  }
+}

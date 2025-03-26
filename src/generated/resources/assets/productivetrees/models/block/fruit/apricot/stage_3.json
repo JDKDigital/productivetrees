@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/apricot",
+    "plant": "productivetrees:block/fruit/apricot/stage_3"
+  }
+}

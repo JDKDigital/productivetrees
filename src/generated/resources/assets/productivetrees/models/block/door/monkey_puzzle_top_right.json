@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/top_right",
+  "textures": {
+    "bottom": "productivetrees:block/door/monkey_puzzle_bottom",
+    "top": "productivetrees:block/door/monkey_puzzle_top"
+  }
+}

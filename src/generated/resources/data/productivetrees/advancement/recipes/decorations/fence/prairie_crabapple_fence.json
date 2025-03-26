@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_prairie_crabapple_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:prairie_crabapple_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:fence/prairie_crabapple_fence"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_prairie_crabapple_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:fence/prairie_crabapple_fence"
+    ]
+  }
+}

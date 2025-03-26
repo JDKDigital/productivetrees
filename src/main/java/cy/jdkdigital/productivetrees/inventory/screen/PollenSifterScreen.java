@@ -34,7 +34,7 @@ public class PollenSifterScreen extends AbstractContainerScreen<PollenSifterCont
 
         if (isHovering(75 - 13, 33, 18, 18, mouseX, mouseY)) {
             List<FormattedCharSequence> tooltipList = new ArrayList<>();
-            tooltipList.add(Component.translatable(ProductiveTrees.MODID + ".screen.progress", this.menu.blockEntity.progress + "/200").getVisualOrderText());
+            tooltipList.add(Component.translatable(ProductiveTrees.MODID + ".screen.progress", this.menu.blockEntity.progress + "/" + this.menu.blockEntity.recipeTime).getVisualOrderText());
 
             guiGraphics.renderTooltip(font, tooltipList, mouseX - getGuiLeft(), mouseY - getGuiTop());
         }

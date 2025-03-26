@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cashew_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:cashew_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:pressure_plate/cashew_pressure_plate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cashew_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:pressure_plate/cashew_pressure_plate"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/top_left",
+  "textures": {
+    "bottom": "productivetrees:block/door/olive_bottom",
+    "top": "productivetrees:block/door/olive_top"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/bull_pine_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/bull_pine"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/bull_pine_slab_top"
+    }
+  }
+}

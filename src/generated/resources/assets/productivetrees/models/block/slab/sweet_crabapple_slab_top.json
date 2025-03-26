@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/slab/base_slab_top",
+  "textures": {
+    "texture": "productivetrees:block/planks/sweet_crabapple"
+  }
+}

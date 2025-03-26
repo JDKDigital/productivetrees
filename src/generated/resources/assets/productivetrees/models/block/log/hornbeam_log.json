@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log",
+  "textures": {
+    "end": "productivetrees:block/log_top/hornbeam",
+    "side": "productivetrees:block/log/hornbeam"
+  }
+}

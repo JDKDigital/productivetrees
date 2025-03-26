@@ -1,0 +1,18 @@
+{
+  "type": "productivetrees:sawmill",
+  "input": {
+    "tag": "productivetrees:brazilwood_logs"
+  },
+  "output": {
+    "count": 6,
+    "id": "productivetrees:brazilwood_planks"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "productivetrees:sawdust"
+  },
+  "tertiary": {
+    "count": 1,
+    "id": "productivetrees:haematoxylin"
+  }
+}

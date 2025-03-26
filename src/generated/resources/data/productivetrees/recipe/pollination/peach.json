@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:plum_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:sweet_chestnut_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:peach_sapling"
+  }
+}

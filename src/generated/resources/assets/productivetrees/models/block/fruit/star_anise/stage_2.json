@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/star_anise",
+    "plant": "productivetrees:block/fruit/star_anise/stage_2"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/top_left_open",
+  "textures": {
+    "bottom": "productivetrees:block/door/cempedak_bottom",
+    "top": "productivetrees:block/door/cempedak_top"
+  }
+}

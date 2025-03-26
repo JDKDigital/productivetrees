@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rose_gum_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:rose_gum_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:button/rose_gum_button"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_rose_gum_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:button/rose_gum_button"
+    ]
+  }
+}

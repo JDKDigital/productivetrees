@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.05,
+  "leafA": {
+    "item": "productivetrees:white_poplar_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:ceylon_ebony_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:zebrano_sapling"
+  }
+}

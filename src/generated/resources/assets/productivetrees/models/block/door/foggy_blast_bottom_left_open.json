@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/translucent_bottom_left_open",
+  "textures": {
+    "bottom": "productivetrees:block/door/foggy_blast_bottom",
+    "top": "productivetrees:block/door/foggy_blast_top"
+  }
+}

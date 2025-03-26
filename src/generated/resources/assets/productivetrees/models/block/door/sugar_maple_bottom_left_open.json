@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/bottom_left_open",
+  "textures": {
+    "bottom": "productivetrees:block/door/sugar_maple_bottom",
+    "top": "productivetrees:block/door/sugar_maple_top"
+  }
+}

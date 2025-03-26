@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/almond",
+    "plant": "productivetrees:block/fruit/almond/stage_4"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/cherry_plum",
+    "plant": "productivetrees:block/fruit/cherry_plum/stage_3"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/hazel_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/hazel"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/hazel_slab_top"
+    }
+  }
+}

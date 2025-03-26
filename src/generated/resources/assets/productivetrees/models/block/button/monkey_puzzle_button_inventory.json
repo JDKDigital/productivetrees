@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/button/base_button_inventory",
+  "textures": {
+    "texture": "productivetrees:block/planks/monkey_puzzle"
+  }
+}

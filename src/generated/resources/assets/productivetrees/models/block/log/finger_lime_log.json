@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log",
+  "textures": {
+    "end": "productivetrees:block/log_top/finger_lime",
+    "side": "productivetrees:block/log/finger_lime"
+  }
+}

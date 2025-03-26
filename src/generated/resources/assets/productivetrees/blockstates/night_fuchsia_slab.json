@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/night_fuchsia_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/night_fuchsia"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/night_fuchsia_slab_top"
+    }
+  }
+}

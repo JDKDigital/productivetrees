@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "productivetrees:baobab_fruit_crate"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "productivetrees:baobab_fruit"
+  }
+}

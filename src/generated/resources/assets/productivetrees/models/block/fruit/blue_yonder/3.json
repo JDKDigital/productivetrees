@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/fruit/planet_peach/fruit_3",
+  "textures": {
+    "all": "productivetrees:block/leaves/blue_yonder"
+  }
+}

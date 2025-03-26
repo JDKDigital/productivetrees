@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/fence_gate/translucent_base_fence_gate",
+  "textures": {
+    "texture": "productivetrees:block/planks/foggy_blast"
+  }
+}

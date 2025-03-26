@@ -33,6 +33,10 @@ public class CompatRecipeProvider extends net.minecraft.data.recipes.RecipeProvi
         super(gen, pRegistries);
     }
 
+    public String getName() {
+        return "Productive Tress Compat Recipes";
+    }
+
     @Override
     protected void buildRecipes(RecipeOutput pRecipeOutput) {
         Block THERMAL_SAWMILL = BuiltInRegistries.BLOCK.get(ResourceLocation.parse("thermal:sawmill"));

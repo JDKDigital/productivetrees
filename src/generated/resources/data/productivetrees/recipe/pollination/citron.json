@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.05,
+  "leafA": {
+    "item": "productivetrees:silver_lime_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:sour_cherry_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:citron_sapling"
+  }
+}

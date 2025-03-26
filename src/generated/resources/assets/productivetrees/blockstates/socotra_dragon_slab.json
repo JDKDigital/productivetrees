@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/socotra_dragon_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/socotra_dragon"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/socotra_dragon_slab_top"
+    }
+  }
+}

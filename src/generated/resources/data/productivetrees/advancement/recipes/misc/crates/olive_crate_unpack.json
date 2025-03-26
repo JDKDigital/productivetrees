@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_olive": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:olive"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/olive_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_olive"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/olive_crate_unpack"
+    ]
+  }
+}

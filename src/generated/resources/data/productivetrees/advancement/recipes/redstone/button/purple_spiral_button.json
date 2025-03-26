@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_purple_spiral_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:purple_spiral_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:button/purple_spiral_button"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_purple_spiral_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:button/purple_spiral_button"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/log/monkey_puzzle",
+    "side": "productivetrees:block/log/monkey_puzzle"
+  }
+}

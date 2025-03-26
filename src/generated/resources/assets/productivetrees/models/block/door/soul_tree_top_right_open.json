@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/translucent_top_right_open",
+  "textures": {
+    "bottom": "productivetrees:block/door/soul_tree_bottom",
+    "top": "productivetrees:block/door/soul_tree_top"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/hawthorn_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/hawthorn"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/hawthorn_slab_top"
+    }
+  }
+}

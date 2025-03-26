@@ -35,13 +35,13 @@ public class ModEventHandler
 
     @SubscribeEvent
     public static void dynamicDatapack(AddPackFindersEvent event) {
-        ProductiveTrees.LOGGER.info("dynamicDatapack");
-        if (event.getPackType() == PackType.SERVER_DATA) {
-            event.addRepositorySource(new DataGenPackFinder(event.getPackType()));
-        }
-        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-            event.addRepositorySource(new DataGenPackFinder(event.getPackType()));
-        }
+//        ProductiveTrees.LOGGER.info("dynamicDatapack");
+//        if (event.getPackType() == PackType.SERVER_DATA) {
+//            event.addRepositorySource(new DataGenPackFinder(event.getPackType()));
+//        }
+//        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+//            event.addRepositorySource(new DataGenPackFinder(event.getPackType()));
+//        }
     }
 
     @SubscribeEvent

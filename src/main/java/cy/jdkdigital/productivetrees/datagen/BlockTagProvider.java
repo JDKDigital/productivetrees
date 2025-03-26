@@ -84,11 +84,7 @@ public class BlockTagProvider extends BlockTagsProvider
                 flowers.add(TreeUtil.getBlock(id, "_leaves"));
             }
 
-            axeMineable.add(TreeUtil.getBlock(id, "_planks"));
-            axeMineable.add(TreeUtil.getBlock(id, "_log"));
-            axeMineable.add(TreeUtil.getBlock(id, "_wood"));
-            axeMineable.add(TreeUtil.getBlock(id, "_stripped_log"));
-            axeMineable.add(TreeUtil.getBlock(id, "_stripped_wood"));
+            axeMineable.add(TreeUtil.getBlock(id, "_bookshelf"));
 
             planks.add(TreeUtil.getBlock(id, "_planks"));
 

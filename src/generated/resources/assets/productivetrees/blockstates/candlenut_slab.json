@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/candlenut_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/candlenut"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/candlenut_slab_top"
+    }
+  }
+}

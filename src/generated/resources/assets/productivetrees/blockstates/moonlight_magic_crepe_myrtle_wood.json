@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "productivetrees:block/log/moonlight_magic_crepe_myrtle_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "productivetrees:block/log/moonlight_magic_crepe_myrtle_wood"
+    },
+    "axis=z": {
+      "model": "productivetrees:block/log/moonlight_magic_crepe_myrtle_wood",
+      "x": 90
+    }
+  }
+}

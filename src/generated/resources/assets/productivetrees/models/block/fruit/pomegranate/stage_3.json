@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/pomegranate",
+    "plant": "productivetrees:block/fruit/pomegranate/stage_3"
+  }
+}

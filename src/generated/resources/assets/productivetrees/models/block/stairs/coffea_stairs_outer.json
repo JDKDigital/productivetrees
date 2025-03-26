@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/stairs/base_stairs_outer",
+  "textures": {
+    "texture": "productivetrees:block/planks/coffea"
+  }
+}

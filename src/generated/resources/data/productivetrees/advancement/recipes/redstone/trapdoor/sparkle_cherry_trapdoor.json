@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sparkle_cherry_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:sparkle_cherry_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:trapdoor/sparkle_cherry_trapdoor"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sparkle_cherry_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:trapdoor/sparkle_cherry_trapdoor"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/buddhas_hand_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/buddhas_hand"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/buddhas_hand_slab_top"
+    }
+  }
+}

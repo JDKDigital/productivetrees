@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/fruit/brown_amber_drip/fruit_4",
+  "textures": {
+    "all": "productivetrees:block/leaves/brown_amber"
+  }
+}

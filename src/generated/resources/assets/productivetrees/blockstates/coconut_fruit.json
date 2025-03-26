@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "productivetrees:block/fruit/coconut/0"
+    },
+    "age=1": {
+      "model": "productivetrees:block/fruit/coconut/1"
+    },
+    "age=2": {
+      "model": "productivetrees:block/fruit/coconut/2"
+    },
+    "age=3": {
+      "model": "productivetrees:block/fruit/coconut/3"
+    },
+    "age=4": {
+      "model": "productivetrees:block/fruit/coconut/4"
+    },
+    "age=5": {
+      "model": "productivetrees:block/fruit/coconut/5"
+    },
+    "age=6": {
+      "model": "productivetrees:block/fruit/coconut/6"
+    },
+    "age=7": {
+      "model": "productivetrees:block/fruit/coconut/7"
+    }
+  }
+}

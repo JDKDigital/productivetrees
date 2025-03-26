@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/log/base_log_horizontal",
+  "textures": {
+    "end": "productivetrees:block/log_top/rainbow_gum",
+    "side": "productivetrees:block/log/rainbow_gum"
+  }
+}

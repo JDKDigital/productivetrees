@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/loblolly_pine_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/loblolly_pine"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/loblolly_pine_slab_top"
+    }
+  }
+}

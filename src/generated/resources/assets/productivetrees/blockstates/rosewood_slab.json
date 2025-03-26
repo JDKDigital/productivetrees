@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/rosewood_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/rosewood"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/rosewood_slab_top"
+    }
+  }
+}

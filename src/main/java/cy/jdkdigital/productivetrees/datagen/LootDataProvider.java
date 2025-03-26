@@ -135,7 +135,7 @@ public class LootDataProvider implements DataProvider
                     dropSelf(TreeUtil.getBlock(id, "_button"));
                     dropDoor(TreeUtil.getBlock(id, "_door"));
                     dropSelf(TreeUtil.getBlock(id, "_trapdoor"));
-                    dropSelf(TreeUtil.getBlock(id, "_bookshelf"));
+                    this.add(TreeUtil.getBlock(id, "_bookshelf"), createSingleItemTableWithSilkTouch(TreeUtil.getBlock(id, "_bookshelf"), Items.BOOK, ConstantValue.exactly(3.0F)));
                     dropSelf(TreeUtil.getBlock(id, "_sign"));
                     dropOther(TreeUtil.getBlock(id, "_wall_sign"), TreeUtil.getBlock(id, "_sign"));
                     dropSelf(TreeUtil.getBlock(id, "_hanging_sign"));

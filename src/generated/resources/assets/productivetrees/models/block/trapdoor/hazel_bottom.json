@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/trapdoor/template_orientable_trapdoor_bottom",
+  "textures": {
+    "texture": "productivetrees:block/trapdoor/hazel"
+  }
+}

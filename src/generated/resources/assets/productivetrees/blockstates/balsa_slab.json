@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/balsa_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/balsa"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/balsa_slab_top"
+    }
+  }
+}

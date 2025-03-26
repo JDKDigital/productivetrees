@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/date_palm",
+    "plant": "productivetrees:block/fruit/date_palm/stage_6"
+  }
+}

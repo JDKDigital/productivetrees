@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:slab/yew_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yew_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:yew_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_yew_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:slab/yew_slab"
+    ]
+  }
+}

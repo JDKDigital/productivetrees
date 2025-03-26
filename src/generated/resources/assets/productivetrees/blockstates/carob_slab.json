@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/carob_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/carob"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/carob_slab_top"
+    }
+  }
+}

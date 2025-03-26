@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/log/granny_smith_apple",
+    "side": "productivetrees:block/log/granny_smith_apple"
+  }
+}

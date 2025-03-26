@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/boxwood_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/boxwood"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/boxwood_slab_top"
+    }
+  }
+}

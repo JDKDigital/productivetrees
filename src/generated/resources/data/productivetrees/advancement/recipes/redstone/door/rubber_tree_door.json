@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rubber_tree_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:rubber_tree_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:door/rubber_tree_door"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_rubber_tree_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:door/rubber_tree_door"
+    ]
+  }
+}

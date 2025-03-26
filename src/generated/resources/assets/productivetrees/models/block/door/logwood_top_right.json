@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/top_right",
+  "textures": {
+    "bottom": "productivetrees:block/door/logwood_bottom",
+    "top": "productivetrees:block/door/logwood_top"
+  }
+}

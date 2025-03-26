@@ -1,3 +1,11 @@
+1.21.1-0.7.0
+
+- Disabled dynamic datagen, it's too much trouble.
+- Bookshelves now drop books when broken
+- Added bookshelves to axe mineable tag
+- Fixed sifter progress showing incorrect processing time
+
+
 1.21.1-0.6.1
 
 - Fixed crashing when compat mods are not installed

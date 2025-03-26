@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/hornbeam_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/hornbeam"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/hornbeam_slab_top"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/pistachio_top",
+    "side": "productivetrees:block/stripped/pistachio"
+  }
+}

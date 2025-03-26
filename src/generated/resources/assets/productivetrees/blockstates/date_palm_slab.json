@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/date_palm_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/date_palm"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/date_palm_slab_top"
+    }
+  }
+}

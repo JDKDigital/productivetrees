@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_grandidiers_baobab_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:grandidiers_baobab_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:button/grandidiers_baobab_button"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_grandidiers_baobab_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:button/grandidiers_baobab_button"
+    ]
+  }
+}

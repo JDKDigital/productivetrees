@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tangerine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:tangerine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/tangerine_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tangerine"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/tangerine_crate_unpack"
+    ]
+  }
+}

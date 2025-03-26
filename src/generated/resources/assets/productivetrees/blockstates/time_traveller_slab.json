@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/time_traveller_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/time_traveller"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/time_traveller_slab_top"
+    }
+  }
+}

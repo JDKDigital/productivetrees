@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:plum_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:plum_button"
+  }
+}

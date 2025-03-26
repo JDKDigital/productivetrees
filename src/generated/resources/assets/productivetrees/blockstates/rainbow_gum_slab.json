@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/rainbow_gum_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/rainbow_gum"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/rainbow_gum_slab_top"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/bottom_left",
+  "textures": {
+    "bottom": "productivetrees:block/door/western_hemlock_bottom",
+    "top": "productivetrees:block/door/western_hemlock_top"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/nectarine_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/nectarine"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/nectarine_slab_top"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/sand_pear_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/sand_pear"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/sand_pear_slab_top"
+    }
+  }
+}

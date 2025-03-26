@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/pink_ipe_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/pink_ipe"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/pink_ipe_slab_top"
+    }
+  }
+}

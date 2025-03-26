@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:western_hemlock_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:jungle_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:monkey_puzzle_sapling"
+  }
+}

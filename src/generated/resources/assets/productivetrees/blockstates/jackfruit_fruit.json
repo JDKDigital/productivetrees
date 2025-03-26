@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "productivetrees:block/fruit/jackfruit/0"
+    },
+    "age=1": {
+      "model": "productivetrees:block/fruit/jackfruit/1"
+    },
+    "age=2": {
+      "model": "productivetrees:block/fruit/jackfruit/2"
+    },
+    "age=3": {
+      "model": "productivetrees:block/fruit/jackfruit/3"
+    },
+    "age=4": {
+      "model": "productivetrees:block/fruit/jackfruit/4"
+    },
+    "age=5": {
+      "model": "productivetrees:block/fruit/jackfruit/5"
+    },
+    "age=6": {
+      "model": "productivetrees:block/fruit/jackfruit/6"
+    },
+    "age=7": {
+      "model": "productivetrees:block/fruit/jackfruit/7"
+    }
+  }
+}

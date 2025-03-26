@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:silver_lime_leaves"
+  },
+  "leafB": {
+    "item": "minecraft:spruce_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:ash_sapling"
+  }
+}

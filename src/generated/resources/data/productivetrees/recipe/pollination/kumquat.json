@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:mandarin_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:wild_cherry_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:kumquat_sapling"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:door/tuscarora_crepe_myrtle_door"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tuscarora_crepe_myrtle_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:tuscarora_crepe_myrtle_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tuscarora_crepe_myrtle_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:door/tuscarora_crepe_myrtle_door"
+    ]
+  }
+}

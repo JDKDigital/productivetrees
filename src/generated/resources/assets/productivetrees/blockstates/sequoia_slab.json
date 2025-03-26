@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/sequoia_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/sequoia"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/sequoia_slab_top"
+    }
+  }
+}

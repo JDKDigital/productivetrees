@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/star_anise_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/star_anise"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/star_anise_slab_top"
+    }
+  }
+}

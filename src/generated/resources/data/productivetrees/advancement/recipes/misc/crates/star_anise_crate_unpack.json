@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_star_anise": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:star_anise"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/star_anise_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_star_anise"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/star_anise_crate_unpack"
+    ]
+  }
+}

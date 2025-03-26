@@ -34,6 +34,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
         super(gen, pRegistries);
     }
 
+    public String getName() {
+        return "Productive Tress Recipes";
+    }
+
     @Override
     protected void buildRecipes(RecipeOutput pRecipeOutput) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 2)

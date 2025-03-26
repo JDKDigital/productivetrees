@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_granny_smith_apple_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:granny_smith_apple_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:stairs/granny_smith_apple_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_granny_smith_apple_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:stairs/granny_smith_apple_stairs"
+    ]
+  }
+}

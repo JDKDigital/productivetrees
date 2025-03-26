@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cherry_plum_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:cherry_plum_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:fence_gate/cherry_plum_fence_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cherry_plum_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:fence_gate/cherry_plum_fence_gate"
+    ]
+  }
+}

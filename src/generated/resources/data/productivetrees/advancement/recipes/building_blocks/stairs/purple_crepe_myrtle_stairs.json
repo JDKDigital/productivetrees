@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_purple_crepe_myrtle_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:purple_crepe_myrtle_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:stairs/purple_crepe_myrtle_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_purple_crepe_myrtle_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:stairs/purple_crepe_myrtle_stairs"
+    ]
+  }
+}

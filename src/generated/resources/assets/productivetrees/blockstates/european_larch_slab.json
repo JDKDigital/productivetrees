@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/european_larch_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/european_larch"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/european_larch_slab_top"
+    }
+  }
+}

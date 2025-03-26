@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:balsa_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:wenge_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:grandidiers_baobab_sapling"
+  }
+}

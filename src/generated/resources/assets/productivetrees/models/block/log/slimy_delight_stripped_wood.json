@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/translucent_cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/slimy_delight",
+    "side": "productivetrees:block/stripped/slimy_delight"
+  }
+}

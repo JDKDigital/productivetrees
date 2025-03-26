@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/fruit/cempedak/fruit_0",
+  "textures": {
+    "all": "productivetrees:block/leaves/cempedak"
+  }
+}

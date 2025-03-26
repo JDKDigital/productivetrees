@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/fruit/pandanus/fruit_2",
+  "textures": {
+    "all": "productivetrees:block/leaves/pandanus"
+  }
+}

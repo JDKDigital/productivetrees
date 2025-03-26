@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.05,
+  "leafA": {
+    "item": "productivetrees:date_palm_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:black_cherry_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:asai_palm_sapling"
+  }
+}

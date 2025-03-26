@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_brown_amber_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:brown_amber_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:button/brown_amber_button"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_brown_amber_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:button/brown_amber_button"
+    ]
+  }
+}

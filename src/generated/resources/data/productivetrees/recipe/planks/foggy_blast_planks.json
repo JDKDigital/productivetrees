@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "productivetrees:foggy_blast_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "productivetrees:foggy_blast_planks"
+  }
+}

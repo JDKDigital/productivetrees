@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/whitebeam_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/whitebeam"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/whitebeam_slab_top"
+    }
+  }
+}

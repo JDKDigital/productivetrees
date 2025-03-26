@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:breadfruit_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:breadfruit_button"
+  }
+}

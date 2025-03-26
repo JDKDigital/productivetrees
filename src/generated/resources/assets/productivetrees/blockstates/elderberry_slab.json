@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/elderberry_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/elderberry"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/elderberry_slab_top"
+    }
+  }
+}

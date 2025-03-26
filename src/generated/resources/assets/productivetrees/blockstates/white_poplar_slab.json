@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/white_poplar_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/white_poplar"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/white_poplar_slab_top"
+    }
+  }
+}

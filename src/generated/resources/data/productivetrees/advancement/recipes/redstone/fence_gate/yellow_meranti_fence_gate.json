@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:fence_gate/yellow_meranti_fence_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_yellow_meranti_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:yellow_meranti_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_yellow_meranti_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:fence_gate/yellow_meranti_fence_gate"
+    ]
+  }
+}

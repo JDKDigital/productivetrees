@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/mandarin",
+    "plant": "productivetrees:block/fruit/mandarin/stage_1"
+  }
+}

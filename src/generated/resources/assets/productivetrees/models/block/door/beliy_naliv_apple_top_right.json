@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/top_right",
+  "textures": {
+    "bottom": "productivetrees:block/door/beliy_naliv_apple_bottom",
+    "top": "productivetrees:block/door/beliy_naliv_apple_top"
+  }
+}

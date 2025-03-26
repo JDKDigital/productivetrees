@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/copoazu_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/copoazu"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/copoazu_slab_top"
+    }
+  }
+}

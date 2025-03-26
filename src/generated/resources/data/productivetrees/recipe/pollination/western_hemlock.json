@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 3.0,
+  "leafA": {
+    "item": "productivetrees:bull_pine_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:silver_fir_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:western_hemlock_sapling"
+  }
+}

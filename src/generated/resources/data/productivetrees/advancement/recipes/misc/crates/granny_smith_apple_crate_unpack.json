@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_granny_smith_apple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:granny_smith_apple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:crates/granny_smith_apple_crate_unpack"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_granny_smith_apple"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:crates/granny_smith_apple_crate_unpack"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/almond_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/almond"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/almond_slab_top"
+    }
+  }
+}

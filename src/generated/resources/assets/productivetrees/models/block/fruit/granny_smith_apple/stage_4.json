@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/granny_smith_apple",
+    "plant": "productivetrees:block/fruit/granny_smith_apple/stage_4"
+  }
+}

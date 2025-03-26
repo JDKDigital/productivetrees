@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/kumquat_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/kumquat"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/kumquat_slab_top"
+    }
+  }
+}

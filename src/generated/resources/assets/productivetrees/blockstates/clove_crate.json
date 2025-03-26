@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "productivetrees:block/crates/clove_crate"
+    }
+  }
+}

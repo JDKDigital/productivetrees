@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/myrtle_ebony_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/myrtle_ebony"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/myrtle_ebony_slab_top"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/elm_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/elm"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/elm_slab_top"
+    }
+  }
+}

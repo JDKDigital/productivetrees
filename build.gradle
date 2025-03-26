@@ -130,7 +130,7 @@ configurations {
 dependencies {
     implementation "local.libs:productivelib-${lib_version}"
 
-    jarJar(group: 'cy.jdkdigital.productivelib', name: 'productivelib', version: '[0.1.4,)') {
+    jarJar(group: 'cy.jdkdigital.productivelib', name: 'productivelib', version: "${lib_version_range}") {
         transitive(false)
     }
 
@@ -140,10 +140,9 @@ dependencies {
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
     runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
 
-    compileOnly "com.almostreliable.mods:almostunified-neoforge:1.21-1.0.0:api"
-
     implementation "curse.maven:productivebees-377897:6029033"
     implementation "curse.maven:treetap-927874:6026105"
+    implementation "curse.maven:almost-unified-633823:6014834"
     implementation "curse.maven:mekanism-268560:5574951"
 //
 //    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")

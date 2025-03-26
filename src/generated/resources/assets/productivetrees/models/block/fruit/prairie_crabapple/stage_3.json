@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/fruit/base_fruit",
+  "textures": {
+    "all": "productivetrees:block/leaves/prairie_crabapple",
+    "plant": "productivetrees:block/fruit/prairie_crabapple/stage_3"
+  }
+}

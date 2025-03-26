@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "productivetrees:purple_spiral_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "productivetrees:purple_spiral_button"
+  }
+}

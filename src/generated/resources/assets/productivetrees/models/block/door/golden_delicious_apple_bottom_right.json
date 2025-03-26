@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/bottom_right",
+  "textures": {
+    "bottom": "productivetrees:block/door/golden_delicious_apple_bottom",
+    "top": "productivetrees:block/door/golden_delicious_apple_top"
+  }
+}

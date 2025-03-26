@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/log/sparkle_cherry",
+    "side": "productivetrees:block/log/sparkle_cherry"
+  }
+}

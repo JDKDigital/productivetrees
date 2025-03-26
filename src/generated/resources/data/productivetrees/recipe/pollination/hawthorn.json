@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:rowan_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:beech_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:hawthorn_sapling"
+  }
+}

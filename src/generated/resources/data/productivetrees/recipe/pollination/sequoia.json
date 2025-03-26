@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.05,
+  "leafA": {
+    "item": "productivetrees:european_larch_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:bull_pine_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:sequoia_sapling"
+  }
+}

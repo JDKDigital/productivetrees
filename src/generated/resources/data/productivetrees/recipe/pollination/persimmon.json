@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.05,
+  "leafA": {
+    "item": "productivetrees:ceylon_ebony_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:purple_crepe_myrtle_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:persimmon_sapling"
+  }
+}

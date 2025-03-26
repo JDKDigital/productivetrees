@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/door/bottom_right_open",
+  "textures": {
+    "bottom": "productivetrees:block/door/thunder_bolt_bottom",
+    "top": "productivetrees:block/door/thunder_bolt_top"
+  }
+}

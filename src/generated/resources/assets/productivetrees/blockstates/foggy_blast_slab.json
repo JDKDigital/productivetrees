@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/foggy_blast_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/foggy_blast"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/foggy_blast_slab_top"
+    }
+  }
+}

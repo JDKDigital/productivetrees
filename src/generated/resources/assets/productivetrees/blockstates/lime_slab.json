@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/lime_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/lime"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/lime_slab_top"
+    }
+  }
+}

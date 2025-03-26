@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_brazil_nut_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "productivetrees:brazil_nut_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "productivetrees:fence_gate/brazil_nut_fence_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_brazil_nut_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "productivetrees:fence_gate/brazil_nut_fence_gate"
+    ]
+  }
+}

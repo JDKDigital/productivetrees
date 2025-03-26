@@ -1,0 +1,7 @@
+{
+  "parent": "productivetrees:block/cube_column",
+  "textures": {
+    "end": "productivetrees:block/stripped/lawson_cypress",
+    "side": "productivetrees:block/stripped/lawson_cypress"
+  }
+}

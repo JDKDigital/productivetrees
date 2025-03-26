@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.05,
+  "leafA": {
+    "item": "productivetrees:wild_cherry_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:cacao_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:papaya_sapling"
+  }
+}

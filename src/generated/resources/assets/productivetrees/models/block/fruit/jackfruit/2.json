@@ -1,0 +1,6 @@
+{
+  "parent": "productivetrees:block/fruit/jackfruit/fruit_2",
+  "textures": {
+    "all": "productivetrees:block/leaves/jackfruit"
+  }
+}

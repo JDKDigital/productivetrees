@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "productivetrees:block/slab/sycamore_fig_slab"
+    },
+    "type=double": {
+      "model": "productivetrees:block/planks/sycamore_fig"
+    },
+    "type=top": {
+      "model": "productivetrees:block/slab/sycamore_fig_slab_top"
+    }
+  }
+}

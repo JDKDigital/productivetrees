@@ -1,0 +1,14 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": {
+    "item": "productivetrees:silver_fir_leaves"
+  },
+  "leafB": {
+    "item": "productivetrees:european_larch_leaves"
+  },
+  "result": {
+    "count": 1,
+    "id": "productivetrees:cedar_sapling"
+  }
+}
