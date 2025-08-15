@@ -58,15 +58,15 @@ public class EventHandler
 
         switch (upgradeType) {
             case "upgrade_time", "upgrade_time_2" -> {
-                event.addValidBlock(Component.literal("Stripper"));
-                event.addValidBlock(Component.literal("Sawmill"));
+                event.addValidBlock(Component.translatable("productivetrees.devices.stripper"));
+                event.addValidBlock(Component.translatable("productivetrees.devices.sawmill"));
                 if (!ModList.get().isLoaded("productivebees")) {
-                    event.addValidBlock(Component.literal("Pollen Sifter"));
+                    event.addValidBlock(Component.translatable("productivetrees.devices.pollen_sifter"));
                 }
             }
             case "upgrade_pollen_sieve" -> {
                 if (ModList.get().isLoaded("productivebees")) {
-                    event.addValidBlock(Component.literal("Advanced Beehive"));
+                    event.addValidBlock(Component.translatable("productivebees.devices.advanced_beehive"));
                 }
             }
         }
