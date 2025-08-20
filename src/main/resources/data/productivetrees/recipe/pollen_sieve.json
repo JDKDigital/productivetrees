@@ -21,7 +21,7 @@
     "#L#"
   ],
   "result": {
-    "id": "productivetrees:upgrade_pollen_sieve"
+    "id": "productivelib:upgrade_pollen_sieve"
   },
   "neoforge:conditions": [
     {

@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
+  "type": "botanypots:crop",
+  "display": {
+    "type": "botanypots:aging",
+    "block": "productivetrees:elm_sapling",
+    "options": {}
+  },
+  "drops": {
+    "type": "botanypots:items",
+    "items": [
+      {
+        "result": {
+          "count": 2,
+          "id": "productivetrees:elm_log"
+        }
+      },
+      {
+        "chance": 0.05,
+        "result": {
+          "count": 1,
+          "id": "productivetrees:elm_sapling"
+        }
+      },
+      {
+        "result": {
+          "count": 1,
+          "id": "productivetrees:elm_leaves"
+        }
+      }
+    ]
+  },
+  "grow_time": 2400,
+  "input": {
+    "item": "productivetrees:elm_sapling"
+  }
+}

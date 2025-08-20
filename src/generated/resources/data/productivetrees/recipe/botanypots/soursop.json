@@ -1,0 +1,48 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
+  "type": "botanypots:crop",
+  "display": {
+    "type": "botanypots:aging",
+    "block": "productivetrees:soursop_sapling",
+    "options": {}
+  },
+  "drops": {
+    "type": "botanypots:items",
+    "items": [
+      {
+        "result": {
+          "count": 2,
+          "id": "productivetrees:soursop_log"
+        }
+      },
+      {
+        "chance": 0.05,
+        "result": {
+          "count": 1,
+          "id": "productivetrees:soursop_sapling"
+        }
+      },
+      {
+        "result": {
+          "count": 1,
+          "id": "productivetrees:soursop_leaves"
+        }
+      },
+      {
+        "result": {
+          "count": 1,
+          "id": "productivetrees:soursop"
+        }
+      }
+    ]
+  },
+  "grow_time": 2400,
+  "input": {
+    "item": "productivetrees:soursop_sapling"
+  }
+}

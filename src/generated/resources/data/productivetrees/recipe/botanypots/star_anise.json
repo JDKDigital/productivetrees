@@ -1,0 +1,48 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
+  "type": "botanypots:crop",
+  "display": {
+    "type": "botanypots:aging",
+    "block": "productivetrees:star_anise_sapling",
+    "options": {}
+  },
+  "drops": {
+    "type": "botanypots:items",
+    "items": [
+      {
+        "result": {
+          "count": 2,
+          "id": "productivetrees:star_anise_log"
+        }
+      },
+      {
+        "chance": 0.05,
+        "result": {
+          "count": 1,
+          "id": "productivetrees:star_anise_sapling"
+        }
+      },
+      {
+        "result": {
+          "count": 1,
+          "id": "productivetrees:star_anise_leaves"
+        }
+      },
+      {
+        "result": {
+          "count": 3,
+          "id": "productivetrees:star_anise"
+        }
+      }
+    ]
+  },
+  "grow_time": 2400,
+  "input": {
+    "item": "productivetrees:star_anise_sapling"
+  }
+}

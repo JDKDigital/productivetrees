@@ -1,0 +1,48 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
+  "type": "botanypots:crop",
+  "display": {
+    "type": "botanypots:aging",
+    "block": "productivetrees:jackfruit_sapling",
+    "options": {}
+  },
+  "drops": {
+    "type": "botanypots:items",
+    "items": [
+      {
+        "result": {
+          "count": 2,
+          "id": "productivetrees:jackfruit_log"
+        }
+      },
+      {
+        "chance": 0.05,
+        "result": {
+          "count": 1,
+          "id": "productivetrees:jackfruit_sapling"
+        }
+      },
+      {
+        "result": {
+          "count": 1,
+          "id": "productivetrees:jackfruit_leaves"
+        }
+      },
+      {
+        "result": {
+          "count": 1,
+          "id": "productivetrees:jackfruit"
+        }
+      }
+    ]
+  },
+  "grow_time": 2400,
+  "input": {
+    "item": "productivetrees:jackfruit_sapling"
+  }
+}

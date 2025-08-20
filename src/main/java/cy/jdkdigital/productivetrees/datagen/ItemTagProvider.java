@@ -28,9 +28,7 @@ public class ItemTagProvider extends ItemTagsProvider
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         TreeFinder.trees.forEach((id, treeObject) -> {
-            if (!TreeUtil.isSpecialTree(id)) {
-                tag(ItemTags.SAPLINGS).add(TreeUtil.getBlock(id, "_sapling").asItem());
-            }
+            tag(ItemTags.SAPLINGS).add(TreeUtil.getBlock(id, "_sapling").asItem());
         });
 
         TreeFinder.trees.forEach((id, treeObject) -> {
@@ -171,6 +169,9 @@ public class ItemTagProvider extends ItemTagsProvider
         }
         if (cropName.equals("juniper_berry")) {
             return "juniperberry";
+        }
+        if (cropName.equals("coffee_bean")) {
+            return "coffee_beans";
         }
         return cropName;
     }

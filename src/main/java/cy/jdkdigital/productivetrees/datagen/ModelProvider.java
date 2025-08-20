@@ -332,7 +332,9 @@ public class ModelProvider implements DataProvider
                     return Variant.variant().with(VariantProperties.MODEL, template.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/stage_" + age), (new TextureMapping()).put(TextureSlot.ALL, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/leaves/" + treeObject.getStyle().leafStyle())).put(TextureSlot.PLANT, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/stage_" + age)), modelOutput));
                 }
                 var template = new ModelTemplate(Optional.of(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/fruit/" + fruitStyle + "/fruit_" + age)), Optional.empty(), TextureSlot.ALL);
-                return Variant.variant().with(VariantProperties.MODEL, template.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/" + age), (new TextureMapping()).put(TextureSlot.ALL, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/leaves/" + treeObject.getStyle().leafStyle())), modelOutput));
+                return Variant.variant().with(
+                        VariantProperties.MODEL, template.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/fruit/" + treeObject.getId().getPath() + "/" + age), (new TextureMapping()).put(TextureSlot.ALL, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/leaves/" + treeObject.getStyle().leafStyle())), modelOutput)
+                );
             })));
 
             createCrate(treeObject, treeObject.getFruit().fruitItem());

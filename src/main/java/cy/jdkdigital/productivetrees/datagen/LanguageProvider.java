@@ -36,6 +36,8 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add("productivetrees.pollen.name", "%s");
         add("productivetrees.screen.progress", "Progress: %s");
         add("productivetrees.information.upgrade.upgrade_pollen_sieve", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
+        add("productivetrees.information.upgrade.upgrade_time", "Can be installed in machines for faster processing.\nMultiple upgrades can be installed for a greater time decrease.");
+        add("productivetrees.information.upgrade.upgrade_time_2", "It's twice as good as the other one.");
         add("productivetrees.information.pollen", "Use on a leaf to manually pollinate it.");
         add("productivetrees.sapling.configurations", "Configurations: %s");
         add("item.productivetrees.roasted_coffee_bean", "Roasted Coffee Beans");

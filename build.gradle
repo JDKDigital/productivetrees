@@ -140,10 +140,14 @@ dependencies {
     compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
     runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
 
-    implementation "curse.maven:productivebees-377897:6029033"
+    implementation "curse.maven:productivebees-377897:6684751"
     implementation "curse.maven:treetap-927874:6026105"
     implementation "curse.maven:almost-unified-633823:6014834"
     implementation "curse.maven:mekanism-268560:5574951"
+    implementation "curse.maven:botany-pots-353928:6895762"
+    implementation "curse.maven:botany-trees-411357:6895799"
+    implementation "curse.maven:prickle-1023259:6546240"
+    implementation "curse.maven:bookshelf-228525:6717571"
 //
 //    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
 //    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")

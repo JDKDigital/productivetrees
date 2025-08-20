@@ -1,3 +1,9 @@
+1.21.1-0.7.1
+
+- Added Botany Pots compat
+- Fixed some recipes
+
+
 1.21.1-0.7.0
 
 - Disabled dynamic datagen, it's too much trouble.

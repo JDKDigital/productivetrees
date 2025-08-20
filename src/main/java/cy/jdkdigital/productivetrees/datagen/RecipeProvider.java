@@ -1,10 +1,16 @@
 package cy.jdkdigital.productivetrees.datagen;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.datagen.recipe.BotanyPotBlockDerivedCropRecipeBuilder;
 import cy.jdkdigital.productivetrees.datagen.recipe.SawmillRecipeBuilder;
 import cy.jdkdigital.productivetrees.datagen.recipe.TreePollinationRecipeBuilder;
 import cy.jdkdigital.productivetrees.registry.*;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
+import net.darkhax.botanypots.common.impl.data.display.types.AgingDisplayState;
+import net.darkhax.botanypots.common.impl.data.display.types.BasicOptions;
+import net.darkhax.botanypots.common.impl.data.display.types.SimpleDisplayState;
+import net.darkhax.botanypots.common.impl.data.itemdrops.SimpleDropProvider;
+import net.darkhax.botanypots.common.impl.data.recipe.crop.BasicCrop;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.BlockFamily;
@@ -22,10 +28,16 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider implements IConditionBuilder
@@ -39,61 +51,61 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput pRecipeOutput) {
+    protected void buildRecipes(RecipeOutput recipeOutput) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 2)
                 .unlockedBy("has_sawdust", has(ModTags.SAWDUST))
                 .pattern("###").pattern("#W#").pattern("###")
                 .define('#', Ingredient.of(ModTags.SAWDUST))
                 .define('W', DataComponentIngredient.of(false, PotionContents.createItemStack(Items.POTION, Potions.WATER)))
-                .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawdust_to_paper_water_bottle"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawdust_to_paper_water_bottle"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 2)
                 .unlockedBy("has_sawdust", has(ModTags.SAWDUST))
                 .pattern("###").pattern("#W#").pattern("###")
                 .define('#', Ingredient.of(ModTags.SAWDUST))
                 .define('W', Items.WATER_BUCKET)
-                .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawdust_to_paper"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawdust_to_paper"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.BLUE_DYE, 2)
                 .unlockedBy(getHasName(TreeRegistrator.HAEMATOXYLIN.get()), has(TreeRegistrator.HAEMATOXYLIN.get()))
                 .pattern("##")
                 .define('#', Ingredient.of(TreeRegistrator.HAEMATOXYLIN.get()))
-                .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "blue_dye_from_haematoxylin"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "blue_dye_from_haematoxylin"));
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PURPLE_DYE, 2)
                 .unlockedBy(getHasName(TreeRegistrator.HAEMATOXYLIN.get()), has(TreeRegistrator.HAEMATOXYLIN.get()))
                 .pattern("#").pattern("#")
                 .define('#', Ingredient.of(TreeRegistrator.HAEMATOXYLIN.get()))
-                .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "purple_dye_from_haematoxylin"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "purple_dye_from_haematoxylin"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.SUGAR, 3)
                 .unlockedBy("has_maple_syrup", has(ModTags.MAPLE_SYRUP))
                 .requires(ModTags.MAPLE_SYRUP)
-                .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sugar_from_maple_syrup"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sugar_from_maple_syrup"));
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             var planks = TreeUtil.getBlock(treeObject.getId(), "_planks");
-            planksFromLogs(pRecipeOutput, TreeUtil.getBlock(treeObject.getId(), "_planks"), ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, id.getPath() + "_logs")));
-            woodFromLogs(pRecipeOutput, TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_log"));
+            planksFromLogs(recipeOutput, TreeUtil.getBlock(treeObject.getId(), "_planks"), ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, id.getPath() + "_logs")));
+            woodFromLogs(recipeOutput, TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_log"));
             if (!ProductiveTrees.isMinimal) {
-                shapedVariant(pRecipeOutput, BlockFamily.Variant.STAIRS, TreeUtil.getBlock(treeObject.getId(), "_stairs"), planks);
-                shapedVariant(pRecipeOutput, BlockFamily.Variant.SLAB, TreeUtil.getBlock(treeObject.getId(), "_slab"), planks);
-                shapedVariant(pRecipeOutput, BlockFamily.Variant.PRESSURE_PLATE, TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), planks);
-                shapedVariant(pRecipeOutput, BlockFamily.Variant.BUTTON, TreeUtil.getBlock(treeObject.getId(), "_button"), planks);
-                shapedVariant(pRecipeOutput, BlockFamily.Variant.FENCE, TreeUtil.getBlock(treeObject.getId(), "_fence"), planks);
-                shapedVariant(pRecipeOutput, BlockFamily.Variant.FENCE_GATE, TreeUtil.getBlock(treeObject.getId(), "_fence_gate"), planks);
-                shapedVariant(pRecipeOutput, BlockFamily.Variant.DOOR, TreeUtil.getBlock(treeObject.getId(), "_door"), planks);
-                shapedVariant(pRecipeOutput, BlockFamily.Variant.TRAPDOOR, TreeUtil.getBlock(treeObject.getId(), "_trapdoor"), planks);
-                shapedVariant(pRecipeOutput, BlockFamily.Variant.SIGN, TreeUtil.getBlock(treeObject.getId(), "_sign"), planks);
-                hangingSign(pRecipeOutput, TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), planks);
-                ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(pRecipeOutput, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf"));
+                shapedVariant(recipeOutput, BlockFamily.Variant.STAIRS, TreeUtil.getBlock(treeObject.getId(), "_stairs"), planks);
+                shapedVariant(recipeOutput, BlockFamily.Variant.SLAB, TreeUtil.getBlock(treeObject.getId(), "_slab"), planks);
+                shapedVariant(recipeOutput, BlockFamily.Variant.PRESSURE_PLATE, TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), planks);
+                shapedVariant(recipeOutput, BlockFamily.Variant.BUTTON, TreeUtil.getBlock(treeObject.getId(), "_button"), planks);
+                shapedVariant(recipeOutput, BlockFamily.Variant.FENCE, TreeUtil.getBlock(treeObject.getId(), "_fence"), planks);
+                shapedVariant(recipeOutput, BlockFamily.Variant.FENCE_GATE, TreeUtil.getBlock(treeObject.getId(), "_fence_gate"), planks);
+                shapedVariant(recipeOutput, BlockFamily.Variant.DOOR, TreeUtil.getBlock(treeObject.getId(), "_door"), planks);
+                shapedVariant(recipeOutput, BlockFamily.Variant.TRAPDOOR, TreeUtil.getBlock(treeObject.getId(), "_trapdoor"), planks);
+                shapedVariant(recipeOutput, BlockFamily.Variant.SIGN, TreeUtil.getBlock(treeObject.getId(), "_sign"), planks);
+                hangingSign(recipeOutput, TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), planks);
+                ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(recipeOutput, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf"));
             }
-            buildSawmillRecipe(treeObject, pRecipeOutput);
+            buildSawmillRecipe(treeObject, recipeOutput);
         });
-        buildCrateRecipes(pRecipeOutput);
+        buildCrateRecipes(recipeOutput);
 
-        buildTreeBreedingRecipes(pRecipeOutput);
+        buildTreeBreedingRecipes(recipeOutput);
 
         // vanilla wood sawmill processing
-        buildVanillaSawmillRecipes(pRecipeOutput);
-        buildCompatSawmillRecipes(pRecipeOutput);
+        buildVanillaSawmillRecipes(recipeOutput);
+        buildCompatSawmillRecipes(recipeOutput);
 
         // Nut toasting
         TreeRegistrator.ROASTED_NUTS.forEach(cropConfig -> {
@@ -101,25 +113,29 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             var rawNut = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name().replace("roasted_", "")));
             SimpleCookingRecipeBuilder.smelting(Ingredient.of(rawNut), RecipeCategory.FOOD, roastedNut, 0.1F, 120)
                     .unlockedBy(getHasName(rawNut), has(rawNut))
-                    .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_smelting"));
+                    .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_smelting"));
             SimpleCookingRecipeBuilder.smoking(Ingredient.of(rawNut), RecipeCategory.FOOD, roastedNut, 0.1F, 20)
                     .unlockedBy(getHasName(rawNut), has(rawNut))
-                    .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_smoking"));
+                    .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_smoking"));
 
             var roastedNutCrate = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
             var rawNutCrate = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name().replace("roasted_", "") + "_crate"));
             if (rawNutCrate != null) {
                 SimpleCookingRecipeBuilder.smelting(Ingredient.of(rawNutCrate), RecipeCategory.FOOD, roastedNutCrate, 0.9F, 1080)
                         .unlockedBy(getHasName(rawNutCrate), has(rawNutCrate))
-                        .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smelting"));
+                        .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smelting"));
                 SimpleCookingRecipeBuilder.smoking(Ingredient.of(rawNutCrate), RecipeCategory.FOOD, roastedNutCrate, 0.9F, 180)
                         .unlockedBy(getHasName(rawNutCrate), has(rawNutCrate))
-                        .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smoking"));
+                        .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smoking"));
             }
         });
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(TreeRegistrator.RUBBER.get()), RecipeCategory.FOOD, TreeRegistrator.CURED_RUBBER.get(), 0.1F, 120)
                 .unlockedBy(getHasName(TreeRegistrator.RUBBER.get()), has(TreeRegistrator.RUBBER.get()))
-                .save(pRecipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "cured_rubber"));
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "cured_rubber"));
+
+        if (ModList.get().isLoaded("botanypots")) {
+            BotanyPotsCompat.buildRecipes(recipeOutput);
+        }
     }
 
     private static void planksFromLogs(RecipeOutput consumer, ItemLike result, TagKey<Item> pLogs) {
@@ -412,5 +428,37 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             return new ItemStack(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, s + "_leaves")));
         });
         return Ingredient.of(leaves);
+    }
+
+    static class BotanyPotsCompat {
+        protected static void buildRecipes(RecipeOutput recipeOutput) {
+            TreeFinder.trees.forEach((resourceLocation, treeObject) -> {
+                treeCropRecipe(treeObject, recipeOutput);
+            });
+        }
+
+        private static void treeCropRecipe(TreeObject tree, RecipeOutput recipeOutput) {
+            var sapling = TreeUtil.getBlock(tree.getId(), "_sapling");
+            var wood = TreeUtil.getBlock(tree.getId(), "_log");
+            var leaves = TreeUtil.getBlock(tree.getId(), "_leaves");
+
+            ProductiveTrees.LOGGER.info(tree.getId() + " sapling " + sapling);
+            ProductiveTrees.LOGGER.info(tree.getId() + " wood " + wood);
+
+            List<SimpleDropProvider.SimpleDrop> drops = new ArrayList<>(){{
+                var woodDrop = wood.asItem().getDefaultInstance();
+                woodDrop.setCount(2);
+                add(new SimpleDropProvider.SimpleDrop(woodDrop, 1f));
+            }};
+            drops.add(new SimpleDropProvider.SimpleDrop(sapling.asItem().getDefaultInstance(), 0.05f));
+            drops.add(new SimpleDropProvider.SimpleDrop(leaves.asItem().getDefaultInstance(), 1.00f));
+            if (tree.hasFruit() && !tree.getFruit().getItem().isEmpty()) {
+                ProductiveTrees.LOGGER.info(tree.getId() + " fruit " + tree.getFruit().getItem());
+                drops.add(new SimpleDropProvider.SimpleDrop(tree.getFruit().getItem().copy(), 1.00f));
+            }
+
+            BotanyPotBlockDerivedCropRecipeBuilder.drops(wood, Ingredient.of(sapling), BasicCrop.DIRT, List.of(new SimpleDropProvider(drops)), List.of(new AgingDisplayState(sapling, BasicOptions.ofDefault())))
+                    .save(recipeOutput.withConditions(new ModLoadedCondition("botanypots")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "botanypots/" + tree.getId().getPath()));
+        }
     }
 }
