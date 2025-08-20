@@ -4111,5 +4111,9 @@
   "tag.item.productivetrees.wild_cherry_logs": "Wild Cherry Logs",
   "tag.item.productivetrees.yellow_meranti_logs": "Yellow Meranti Logs",
   "tag.item.productivetrees.yew_logs": "Yew Logs",
-  "tag.item.productivetrees.zebrano_logs": "Zebrano Logs"
+  "tag.item.productivetrees.zebrano_logs": "Zebrano Logs",
+
+  "productivetrees.devices.stripper": "Stripper",
+  "productivetrees.devices.sawmill": "Sawmill",
+  "productivetrees.devices.pollen_sifter": "Pollen Sifter"
 }
