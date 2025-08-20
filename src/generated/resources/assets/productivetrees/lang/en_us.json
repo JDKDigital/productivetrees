@@ -3849,7 +3849,7 @@
   "item.productivetrees.sweet_crabapple": "Sweet Crabapple",
   "item.productivetrees.sweetsop": "Sweetsop",
   "item.productivetrees.tangerine": "Tangerine",
-  "item.productivetrees.upgrade_pollen_sieve": "Upgrade: Pollen Sieve",
+  "item.productivetrees.upgrade_pollen_sieve": "Upgrade: Pollen Sieve (deprecated)",
   "item.productivetrees.walnut": "Walnut",
   "item.productivetrees.wild_cherry": "Wild Cherry",
   "itemGroup.productivetrees": "Productive Trees",
@@ -3857,9 +3857,14 @@
   "jei.productivetrees.sawmill": "Sawmill",
   "jei.productivetrees.tree_fruiting": "Tree Fruiting",
   "jei.productivetrees.tree_pollination": "Tree Pollination",
+  "productivebees.devices.advanced_beehive": "Advanced Beehive",
+  "productivebees.information.upgrade.upgrade_pollen_sieve": "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.",
   "productivebees.ingredient.description.allergy_bee": "Puts in an extra effort to collect pollen so your allergies don't act up while working with trees.",
+  "productivetrees.devices.pollen_sifter": "Pollen Sifter",
+  "productivetrees.devices.sawmill": "Sawmill",
+  "productivetrees.devices.stripper": "Stripper",
   "productivetrees.information.pollen": "Use on a leaf to manually pollinate it.",
-  "productivetrees.information.upgrade.upgrade_pollen_sieve": "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.",
+  "productivetrees.information.upgrade.upgrade_pollen_sieve": "Use the pollen sieve upgrade from Productive Lib",
   "productivetrees.information.upgrade.upgrade_time": "Can be installed in machines for faster processing.\nMultiple upgrades can be installed for a greater time decrease.",
   "productivetrees.information.upgrade.upgrade_time_2": "It's twice as good as the other one.",
   "productivetrees.pollen.name": "%s",
@@ -4113,9 +4118,5 @@
   "tag.item.productivetrees.wild_cherry_logs": "Wild Cherry Logs",
   "tag.item.productivetrees.yellow_meranti_logs": "Yellow Meranti Logs",
   "tag.item.productivetrees.yew_logs": "Yew Logs",
-  "tag.item.productivetrees.zebrano_logs": "Zebrano Logs",
-
-  "productivetrees.devices.stripper": "Stripper",
-  "productivetrees.devices.sawmill": "Sawmill",
-  "productivetrees.devices.pollen_sifter": "Pollen Sifter"
+  "tag.item.productivetrees.zebrano_logs": "Zebrano Logs"
 }

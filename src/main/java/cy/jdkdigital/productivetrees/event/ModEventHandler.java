@@ -1,5 +1,6 @@
 package cy.jdkdigital.productivetrees.event;
 
+import cy.jdkdigital.productivelib.registry.LibItems;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.datagen.dynamic.DataGenPackFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
@@ -30,6 +31,9 @@ public class ModEventHandler
                 }
                 event.accept(item.get());
             }
+            event.accept(LibItems.UPGRADE_POLLEN_SIEVE.get());
+            event.accept(LibItems.UPGRADE_TIME.get());
+            event.accept(LibItems.UPGRADE_TIME_2.get());
         }
     }
 

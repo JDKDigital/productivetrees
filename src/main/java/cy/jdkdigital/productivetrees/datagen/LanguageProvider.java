@@ -35,7 +35,8 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add("emi.category.productivetrees.sawmill", "Sawmill");
         add("productivetrees.pollen.name", "%s");
         add("productivetrees.screen.progress", "Progress: %s");
-        add("productivetrees.information.upgrade.upgrade_pollen_sieve", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
+        add("productivebees.information.upgrade.upgrade_pollen_sieve", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
+        add("productivetrees.information.upgrade.upgrade_pollen_sieve", "Use the pollen sieve upgrade from Productive Lib");
         add("productivetrees.information.upgrade.upgrade_time", "Can be installed in machines for faster processing.\nMultiple upgrades can be installed for a greater time decrease.");
         add("productivetrees.information.upgrade.upgrade_time_2", "It's twice as good as the other one.");
         add("productivetrees.information.pollen", "Use on a leaf to manually pollinate it.");
@@ -52,6 +53,11 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add("entity.productivebees.allergy_bee", "Allergy Bee");
         add("productivebees.ingredient.description.allergy_bee", "Puts in an extra effort to collect pollen so your allergies don't act up while working with trees.");
 
+        add("productivetrees.devices.stripper", "Stripper");
+        add("productivetrees.devices.sawmill", "Sawmill");
+        add("productivetrees.devices.pollen_sifter", "Pollen Sifter");
+        add("productivebees.devices.advanced_beehive", "Advanced Beehive");
+
         add(TreeRegistrator.POLLINATED_LEAVES.get(), "Pollinated Leaves");
         add(TreeRegistrator.STRIPPER.get(), "Stripper");
         add(TreeRegistrator.SAWMILL.get(), "Sawmill");
@@ -60,7 +66,7 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add(TreeRegistrator.TIME_TRAVELLER_DISPLAY.get(), "Time Traveller Display");
         add(TreeRegistrator.COCONUT_SPROUT.get(), "Coconut Sprout");
 
-        add(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get(), "Upgrade: Pollen Sieve");
+        add(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get(), "Upgrade: Pollen Sieve (deprecated)");
         add(TreeRegistrator.POLLEN.get(), "Pollen");
         add(TreeRegistrator.SAWDUST.get(), "Sawdust");
         add(TreeRegistrator.ALLSPICE.get(), "Allspice");

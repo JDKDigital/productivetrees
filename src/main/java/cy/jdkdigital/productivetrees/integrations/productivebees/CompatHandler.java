@@ -9,6 +9,7 @@ import cy.jdkdigital.productivebees.init.ModItems;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
 import cy.jdkdigital.productivelib.event.BeeReleaseEvent;
 import cy.jdkdigital.productivelib.event.CollectValidUpgradesEvent;
+import cy.jdkdigital.productivelib.registry.LibItems;
 import cy.jdkdigital.productivetrees.Config;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.registry.WoodObject;
@@ -35,7 +36,7 @@ public class CompatHandler
 
     public static void collectValidUpgrades(CollectValidUpgradesEvent event) {
         if (event.getBlockEntity() instanceof AdvancedBeehiveBlockEntity) {
-            event.addValidUpgrade(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get());
+            event.addValidUpgrade(LibItems.UPGRADE_POLLEN_SIEVE.get());
         }
     }
 
@@ -50,7 +51,7 @@ public class CompatHandler
             if (!uniqueLeaves.isEmpty()) {
                 // Check for pollen sieve upgrade and collect pollen from nearby leaf
                 if (beehiveBlockEntity instanceof AdvancedBeehiveBlockEntity advancedBeehiveBlockEntity) {
-                    int sieveUpgrades = advancedBeehiveBlockEntity.getUpgradeCount(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get());
+                    int sieveUpgrades = advancedBeehiveBlockEntity.getUpgradeCount(LibItems.UPGRADE_POLLEN_SIEVE.get());
                     if (sieveUpgrades > 0 && level.random.nextInt(100) < (Config.SERVER.pollenChanceFromSieve.get() * (isSpecialPollinator ? 5 : 1))) {
                         BlockState pollenLeaf = uniqueLeaves.get(level.random.nextInt(uniqueLeaves.size()));
                         var pollenStack = TreeUtil.getPollen(pollenLeaf.getBlock());

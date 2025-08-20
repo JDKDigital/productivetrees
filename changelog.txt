@@ -2,6 +2,7 @@
 
 - Added Botany Pots compat
 - Fixed some recipes
+- Switched to using Productive Lib pollen sieve upgrade
 
 
 1.21.1-0.7.0
