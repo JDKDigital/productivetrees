@@ -18,16 +18,22 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.BlockGrowFeatureEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.ArrayList;
 
@@ -48,26 +54,17 @@ public class EventHandler
 
     @SubscribeEvent
     public static void addUpgradeTooltip(UpgradeTooltipEvent event) {
-        if (event.getStack().is(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get())) {
-            event.getTooltipComponents().add(Component.translatable("productivetrees.information.upgrade.upgrade_pollen_sieve").withStyle(ChatFormatting.GOLD));
-        }
-        String upgradeType = BuiltInRegistries.ITEM.getKey(event.getStack().getItem()).getPath();
-        if (!ModList.get().isLoaded("productivebees") && (event.getStack().is(LibItems.UPGRADE_TIME.get()) || event.getStack().is(LibItems.UPGRADE_TIME_2.get()))) {
-            event.getTooltipComponents().add(Component.translatable("productivetrees.information.upgrade." + upgradeType).withStyle(ChatFormatting.GOLD));
-        }
+        var upgradeType = BuiltInRegistries.ITEM.getKey(event.getStack().getItem());
 
-        switch (upgradeType) {
+        String tPrefix = "productivetrees.information.upgrade." + upgradeType.getPath() + ".";
+        switch (upgradeType.getPath()) {
             case "upgrade_time", "upgrade_time_2" -> {
-                event.addValidBlock(Component.translatable("productivetrees.devices.stripper"));
-                event.addValidBlock(Component.translatable("productivetrees.devices.sawmill"));
-                if (!ModList.get().isLoaded("productivebees")) {
-                    event.addValidBlock(Component.translatable("productivetrees.devices.pollen_sifter"));
-                }
+                event.addValidBlock(Component.translatable("productivetrees.devices.stripper"), tPrefix + "stripper");
+                event.addValidBlock(Component.translatable("productivetrees.devices.sawmill"), tPrefix + "sawmill");
+                event.addValidBlock(Component.translatable("productivetrees.devices.pollen_sifter"), tPrefix + "pollen_sifter");
             }
             case "upgrade_pollen_sieve" -> {
-                if (ModList.get().isLoaded("productivebees")) {
-                    event.addValidBlock(Component.translatable("productivebees.devices.advanced_beehive"));
-                }
+                event.addValidBlock(Component.translatable("productivetrees.devices.advanced_beehive"), tPrefix + "advanced_beehive");
             }
         }
     }
@@ -112,5 +109,68 @@ public class EventHandler
                 }
             }
         }
+    }
+    @SubscribeEvent
+    public static void buildContents(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey().equals(TreeRegistrator.TAB_KEY)) {
+            var hasBees = ModList.get().isLoaded("productivebees");
+            for (DeferredHolder<Item, ? extends Item> item : ProductiveTrees.ITEMS.getEntries()) {
+                if (item.getId().getPath().equals("pollen_sifter") && hasBees) {
+                    continue;
+                }
+                if (item.getId().getPath().equals("upgrade_pollen_sieve") && !hasBees) {
+                    continue;
+                }
+                event.accept(item.get());
+            }
+            event.accept(LibItems.UPGRADE_POLLEN_SIEVE.get());
+            event.accept(LibItems.UPGRADE_TIME.get());
+            event.accept(LibItems.UPGRADE_TIME_2.get());
+        }
+    }
+
+    @SubscribeEvent
+    public static void dynamicDatapack(AddPackFindersEvent event) {
+//        ProductiveTrees.LOGGER.info("dynamicDatapack");
+//        if (event.getPackType() == PackType.SERVER_DATA) {
+//            event.addRepositorySource(new DataGenPackFinder(event.getPackType()));
+//        }
+//        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+//            event.addRepositorySource(new DataGenPackFinder(event.getPackType()));
+//        }
+    }
+
+    @SubscribeEvent
+    public static void registerBlockEntityCapabilities(RegisterCapabilitiesEvent event) {
+        // Stripper
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                TreeRegistrator.STRIPPER_BLOCK_ENTITY.get(),
+                (myBlockEntity, side) -> myBlockEntity.inventoryHandler
+        );
+        // Sawmill
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                TreeRegistrator.SAWMILL_BLOCK_ENTITY.get(),
+                (myBlockEntity, side) -> myBlockEntity.inventoryHandler
+        );
+        // Wood worker
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                TreeRegistrator.WOOD_WORKER_BLOCK_ENTITY.get(),
+                (myBlockEntity, side) -> myBlockEntity.inventoryHandler
+        );
+        // Pollen sifter
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                TreeRegistrator.POLLEN_SIFTER_BLOCK_ENTITY.get(),
+                (myBlockEntity, side) -> myBlockEntity.inventoryHandler
+        );
+        // Display
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                TreeRegistrator.TIME_TRAVELLER_DISPLAY_BLOCK_ENTITY.get(),
+                (myBlockEntity, side) -> myBlockEntity.inventoryHandler
+        );
     }
 }

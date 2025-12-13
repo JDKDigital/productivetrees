@@ -124,7 +124,7 @@ public class TreeRegistrator
     public static final DeferredHolder<Item, Item> RUBBER = registerItem("rubber");
     public static final DeferredHolder<Item, Item> CURED_RUBBER = registerItem("cured_rubber");
     public static final DeferredHolder<Item, Item> MAPLE_SYRUP = registerItem("maple_syrup", () -> new Item(new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE)));
-    public static final DeferredHolder<Item, Item> SANDALWOOD_OIL = registerItem("sandalwood_oil");
+    public static final DeferredHolder<Item, Item> SANDALWOOD_OIL = registerItem("sandalwood_oil", () -> new Item(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE)));
     public static final DeferredHolder<Item, Item> DATE_PALM_JUICE = registerItem("date_palm_juice", () -> new Item(new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE)));
 
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> TREE_POLLINATION = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_pollination", TreePollinationRecipe.Serializer::new);

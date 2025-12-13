@@ -4,7 +4,7 @@
     "fruit": "#plant",
     "particle": "#all"
   },
-  "render_type": "cutout",
+  "render_type": "cutout_mipped",
   "elements": [
     {
       "from": [ 0, 0, 0 ],

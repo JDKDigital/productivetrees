@@ -43,7 +43,7 @@ public class CompatHandler
     public static void beeRelease(BeeReleaseEvent event) {
         if (event.getLevel() instanceof ServerLevel level && event.getBeeState().equals(BeehiveBlockEntity.BeeReleaseStatus.HONEY_DELIVERED) && event.getBlockEntity() instanceof BeehiveBlockEntity beehiveBlockEntity && event.getBee().getHivePos() != null) {
             // Scan for leaves blocks around the hive, 4 block radius + 2 per range upgrade
-            int distance = 4 + (beehiveBlockEntity instanceof AdvancedBeehiveBlockEntity advancedBeehiveBlockEntity ? (2 * advancedBeehiveBlockEntity.getUpgradeCount(ModItems.UPGRADE_RANGE.get())) : 0);
+            int distance = 4 + (beehiveBlockEntity instanceof AdvancedBeehiveBlockEntity advancedBeehiveBlockEntity ? (2 * advancedBeehiveBlockEntity.getUpgradeCount(LibItems.UPGRADE_RANGE.get())) : 0);
             boolean isSpecialPollinator = event.getBee() instanceof ProductiveBee pBee && pBee.getBeeName().equals("allergy");
             List<BlockState> uniqueLeaves = new ArrayList<>();
             TreeUtil.pollinateLeaves(level, event.getBee().getHivePos(), distance, isSpecialPollinator, uniqueLeaves);

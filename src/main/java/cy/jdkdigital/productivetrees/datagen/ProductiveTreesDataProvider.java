@@ -17,7 +17,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(modid = ProductiveTrees.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ProductiveTrees.MODID)
 public class ProductiveTreesDataProvider
 {
     @SubscribeEvent

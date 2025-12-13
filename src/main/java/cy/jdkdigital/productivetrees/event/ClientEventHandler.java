@@ -32,8 +32,8 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
-@EventBusSubscriber(modid = ProductiveTrees.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
-public class ClientSetupEvents
+@EventBusSubscriber(modid = ProductiveTrees.MODID, value = Dist.CLIENT)
+public class ClientEventHandler
 {
     @SubscribeEvent
     public static void registerParticles(RegisterParticleProvidersEvent event) {

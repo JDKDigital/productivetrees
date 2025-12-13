@@ -1,3 +1,10 @@
+1.21.1-0.8.0
+
+- Upgrade item tooltip updates
+- Fixed range upgrades in hives not increasing the leaf pollination range
+- Leaves on fast graphics no longer turn white
+
+
 1.21.1-0.7.1
 
 - Added Botany Pots compat

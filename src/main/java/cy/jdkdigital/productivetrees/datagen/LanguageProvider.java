@@ -35,10 +35,14 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add("emi.category.productivetrees.sawmill", "Sawmill");
         add("productivetrees.pollen.name", "%s");
         add("productivetrees.screen.progress", "Progress: %s");
-        add("productivebees.information.upgrade.upgrade_pollen_sieve", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
-        add("productivetrees.information.upgrade.upgrade_pollen_sieve", "Use the pollen sieve upgrade from Productive Lib");
-        add("productivetrees.information.upgrade.upgrade_time", "Can be installed in machines for faster processing.\nMultiple upgrades can be installed for a greater time decrease.");
-        add("productivetrees.information.upgrade.upgrade_time_2", "It's twice as good as the other one.");
+        add("productivetrees.devices.advanced_beehive", "Advanced Beehive");
+        add("productivetrees.information.upgrade.upgrade_pollen_sieve.advanced_hive", "With this upgrade installed in the hive some pollen collected by bees will be sifted and deposited in the hive.");
+        add("productivetrees.information.upgrade.upgrade_time.stripper", "Each upgrade increases the number of items processed per operation by 4.\n   Multiple upgrades can be installed for a greater time decrease.");
+        add("productivetrees.information.upgrade.upgrade_time.sawmill", "Can be installed in machines for faster processing.\n   Multiple upgrades can be installed for a greater time decrease.");
+        add("productivetrees.information.upgrade.upgrade_time.pollen_sifter", "Can be installed in machines for faster processing.\n   Multiple upgrades can be installed for a greater time decrease.");
+        add("productivetrees.information.upgrade.upgrade_time_2.stripper", "It's twice as good as the other one.");
+        add("productivetrees.information.upgrade.upgrade_time_2.sawmill", "It's twice as good as the other one.");
+        add("productivetrees.information.upgrade.upgrade_time_2.pollen_sifter", "It's twice as good as the other one.");
         add("productivetrees.information.pollen", "Use on a leaf to manually pollinate it.");
         add("productivetrees.sapling.configurations", "Configurations: %s");
         add("item.productivetrees.roasted_coffee_bean", "Roasted Coffee Beans");
@@ -66,7 +70,6 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add(TreeRegistrator.TIME_TRAVELLER_DISPLAY.get(), "Time Traveller Display");
         add(TreeRegistrator.COCONUT_SPROUT.get(), "Coconut Sprout");
 
-        add(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get(), "Upgrade: Pollen Sieve (deprecated)");
         add(TreeRegistrator.POLLEN.get(), "Pollen");
         add(TreeRegistrator.SAWDUST.get(), "Sawdust");
         add(TreeRegistrator.ALLSPICE.get(), "Allspice");

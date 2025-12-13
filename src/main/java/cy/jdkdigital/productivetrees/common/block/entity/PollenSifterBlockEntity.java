@@ -2,7 +2,7 @@ package cy.jdkdigital.productivetrees.common.block.entity;
 
 import cy.jdkdigital.productivelib.common.block.entity.CapabilityBlockEntity;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
-import cy.jdkdigital.productivelib.common.block.entity.UpgradeableBlockEntity;
+import cy.jdkdigital.productivelib.common.block.entity.IUpgradeableBlockEntity;
 import cy.jdkdigital.productivelib.registry.LibItems;
 import cy.jdkdigital.productivetrees.inventory.PollenSifterContainer;
 import cy.jdkdigital.productivetrees.registry.ModTags;
@@ -28,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class PollenSifterBlockEntity extends CapabilityBlockEntity implements MenuProvider, UpgradeableBlockEntity
+public class PollenSifterBlockEntity extends CapabilityBlockEntity implements MenuProvider, IUpgradeableBlockEntity
 {
     protected int tickCounter = 0;
     public int tickRate = 10;

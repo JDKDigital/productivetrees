@@ -15,28 +15,21 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import javax.annotation.Nonnull;
 import java.util.Objects;
 
-public class WoodWorkerContainer extends AbstractContainer
+public class WoodWorkerContainer extends AbstractContainer<WoodWorkerBlockEntity>
 {
-    public final WoodWorkerBlockEntity blockEntity;
-
-    private final ContainerLevelAccess canInteractWithCallable;
-
     public WoodWorkerContainer(final int windowId, final Inventory playerInventory, final FriendlyByteBuf data) {
         this(windowId, playerInventory, getTileEntity(playerInventory, data));
     }
 
     public WoodWorkerContainer(final int windowId, final Inventory playerInventory, final WoodWorkerBlockEntity blockEntity) {
-        super(TreeRegistrator.STRIPPER_MENU.get(), windowId);
-
-        this.blockEntity = blockEntity;
-        this.canInteractWithCallable = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
+        super(TreeRegistrator.WOOD_WORKER_MENU.get(), blockEntity, windowId);
 
         // Input slot
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, WoodWorkerBlockEntity.SLOT_IN, 44, 25));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.getBlockEntity().getItemHandler(), WoodWorkerBlockEntity.SLOT_IN, 44, 25));
         // Axe slot
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, WoodWorkerBlockEntity.SLOT_AXE, 44, 44));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.getBlockEntity().getItemHandler(), WoodWorkerBlockEntity.SLOT_AXE, 44, 44));
         // Output slot
-        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.blockEntity.inventoryHandler, WoodWorkerBlockEntity.SLOT_OUT, 116, 34));
+        addSlot(new ManualSlotItemHandler((InventoryHandlerHelper.BlockEntityItemStackHandler) this.getBlockEntity().getItemHandler(), WoodWorkerBlockEntity.SLOT_OUT, 116, 34));
 
         layoutPlayerInventorySlots(playerInventory, 0, 8, 84);
     }
@@ -49,15 +42,5 @@ public class WoodWorkerContainer extends AbstractContainer
             return (WoodWorkerBlockEntity) tileAtPos;
         }
         throw new IllegalStateException("Block entity is not correct! " + tileAtPos);
-    }
-
-    @Override
-    public boolean stillValid(@Nonnull final Player player) {
-        return canInteractWithCallable.evaluate((world, pos) -> world.getBlockState(pos).getBlock() instanceof Stripper && player.distanceToSqr((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D) <= 64.0D, true);
-    }
-
-    @Override
-    protected BlockEntity getBlockEntity() {
-        return blockEntity;
     }
 }

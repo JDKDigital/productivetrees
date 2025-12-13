@@ -1,5 +1,6 @@
 package cy.jdkdigital.productivetrees.integrations.emi;
 
+import cy.jdkdigital.productivelib.registry.LibItems;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.recipe.LogStrippingRecipe;
 import cy.jdkdigital.productivetrees.recipe.SawmillRecipe;
@@ -65,8 +66,8 @@ public class ProductiveTreesEmiPlugin implements EmiPlugin
 
         if (ModList.get().isLoaded("productivebees")) {
             registry.removeEmiStacks(EmiStack.of(TreeRegistrator.POLLEN_SIFTER.get()));
-        } else {
-            registry.removeEmiStacks(EmiStack.of(TreeRegistrator.UPGRADE_POLLEN_SIEVE.get()));
+        } else if (!ModList.get().isLoaded("productivefarming")) {
+            registry.removeEmiStacks(EmiStack.of(LibItems.UPGRADE_POLLEN_SIEVE.get()));
         }
         registry.removeEmiStacks(EmiStack.of(TreeRegistrator.WOOD_WORKER.get()));
         registry.removeEmiStacks(EmiStack.of(TreeRegistrator.ENTITY_SPAWNER.get()));

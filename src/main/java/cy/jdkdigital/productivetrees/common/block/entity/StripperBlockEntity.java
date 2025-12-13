@@ -3,8 +3,9 @@ package cy.jdkdigital.productivetrees.common.block.entity;
 import com.mojang.authlib.GameProfile;
 import cy.jdkdigital.productivelib.common.block.entity.CapabilityBlockEntity;
 import cy.jdkdigital.productivelib.common.block.entity.InventoryHandlerHelper;
-import cy.jdkdigital.productivelib.common.block.entity.UpgradeableBlockEntity;
+import cy.jdkdigital.productivelib.common.block.entity.IUpgradeableBlockEntity;
 import cy.jdkdigital.productivelib.registry.LibItems;
+import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.inventory.StripperContainer;
 import cy.jdkdigital.productivetrees.registry.ModTags;
@@ -32,7 +33,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class StripperBlockEntity extends CapabilityBlockEntity implements MenuProvider, UpgradeableBlockEntity
+public class StripperBlockEntity extends CapabilityBlockEntity implements MenuProvider, IUpgradeableBlockEntity
 {
     protected int tickCounter = 0;
 
@@ -126,10 +127,10 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
             var log = blockEntity.inventoryHandler.getStackInSlot(SLOT_IN);
             var axe = blockEntity.inventoryHandler.getStackInSlot(SLOT_AXE);
             var output = blockEntity.inventoryHandler.getStackInSlot(SLOT_OUT);
-            if (!log.isEmpty() && !axe.isEmpty() && (output.getCount() < output.getMaxStackSize())) {
-                var strippedLogItem = TreeUtil.getStrippedItem(blockEntity, serverLevel, log);
-                var speedModifier = 1 + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get()) + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME_2.get()) * 2;
-                var itemCount = Math.min(Math.min(speedModifier, log.getCount()), output.getMaxStackSize() - output.getCount());
+            if (!log.isEmpty() && !axe.isEmpty() && (output.isEmpty() || (output.getCount() < output.getMaxStackSize()))) {
+                var strippedLogItem = TreeUtil.getStrippedItem(blockEntity, serverLevel, log).copy();
+                var speedModifier = Math.max(1, (blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get()) * 4) + (blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME_2.get()) * 8));
+                var itemCount = Math.min(Math.min(speedModifier, log.getCount()), strippedLogItem.getMaxStackSize() - output.getCount());
                 strippedLogItem.setCount(itemCount);
                 if (!strippedLogItem.isEmpty() && blockEntity.inventoryHandler.insertItem(SLOT_OUT, strippedLogItem, false).isEmpty()) {
                     if (log.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock) {
@@ -141,7 +142,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
                     log.shrink(itemCount);
                     if (axe.isDamageableItem()) {
                         Player fakePlayer = FakePlayerFactory.get(serverLevel, new GameProfile(TreeUtil.STRIPPER_UUID, "stripper"));
-                        axe.hurtAndBreak(1, fakePlayer, EquipmentSlot.MAINHAND);
+                        axe.hurtAndBreak(speedModifier, fakePlayer, EquipmentSlot.MAINHAND);
                     }
                 }
             }
