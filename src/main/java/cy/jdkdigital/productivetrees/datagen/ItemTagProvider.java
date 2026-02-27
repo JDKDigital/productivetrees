@@ -50,6 +50,8 @@ public class ItemTagProvider extends ItemTagsProvider
         copy(Tags.Blocks.FENCE_GATES_WOODEN, Tags.Items.FENCE_GATES_WOODEN);
         copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
         copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
+        copy(Tags.Blocks.STRIPPED_LOGS, Tags.Items.STRIPPED_LOGS);
+        copy(Tags.Blocks.STRIPPED_WOODS, Tags.Items.STRIPPED_WOODS);
 
         tag(ModTags.STRIPPER_TOOLS).addOptionalTag(ItemTags.AXES)
                 .addOptional(ResourceLocation.parse("allthemodium:alloy_axe"))
@@ -64,14 +66,6 @@ public class ItemTagProvider extends ItemTagsProvider
         var dietFruitsTag = tag(ItemTags.create(ResourceLocation.parse("diet:fruits")));
         var dietProteinsTag = tag(ItemTags.create(ResourceLocation.parse("diet:proteins")));
         var dietIngredientsTag = tag(ItemTags.create(ResourceLocation.parse("diet:ingredients")));
-
-        // Create compat
-        var moddedStrippedLogs = tag(ItemTags.create(ResourceLocation.parse("create:modded_stripped_logs")));
-        var moddedStrippedWood = tag(ItemTags.create(ResourceLocation.parse("create:modded_stripped_wood")));
-        TreeFinder.trees.forEach((id, treeObject) -> {
-            moddedStrippedLogs.add(TreeUtil.getBlock(id, "_stripped_log").asItem());
-            moddedStrippedWood.add(TreeUtil.getBlock(id, "_stripped_wood").asItem());
-        });
 
         tag(ModTags.SAWDUST).add(TreeRegistrator.SAWDUST.get());
         tag(ModTags.DUSTS_WOOD).add(TreeRegistrator.SAWDUST.get());

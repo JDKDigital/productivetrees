@@ -10,6 +10,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
@@ -54,6 +55,13 @@ public class BlockTagProvider extends BlockTagsProvider
         var hangingSigns = tag(BlockTags.CEILING_HANGING_SIGNS);
         var wallHangingSigns = tag(BlockTags.WALL_HANGING_SIGNS);
         var wallSigns = tag(BlockTags.WALL_SIGNS);
+
+        var moddedStrippedLogs = tag(Tags.Blocks.STRIPPED_LOGS);
+        var moddedStrippedWood = tag(Tags.Blocks.STRIPPED_WOODS);
+        TreeFinder.trees.forEach((id, treeObject) -> {
+            moddedStrippedLogs.add(TreeUtil.getBlock(id, "_stripped_log"));
+            moddedStrippedWood.add(TreeUtil.getBlock(id, "_stripped_wood"));
+        });
 
         // PBees
         var hives = tag(BlockTags.create(ResourceLocation.parse("productivebees:advanced_beehives")));

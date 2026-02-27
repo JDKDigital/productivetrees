@@ -10,7 +10,10 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorTy
 
 public class FruitLeafReplacerDecorator extends TreeDecorator
 {
-    public static final MapCodec<FruitLeafReplacerDecorator> CODEC = RecordCodecBuilder.mapCodec((decoratorInstance) -> decoratorInstance.group(Codec.FLOAT.fieldOf("density").orElse(0.5f).forGetter(FruitLeafReplacerDecorator::getDensity), BlockStateProvider.CODEC.fieldOf("fruit_provider").forGetter(FruitLeafReplacerDecorator::getFruitProvider)).apply(decoratorInstance, FruitLeafReplacerDecorator::new));
+    public static final MapCodec<FruitLeafReplacerDecorator> CODEC = RecordCodecBuilder.mapCodec((decoratorInstance) -> decoratorInstance.group(
+            Codec.FLOAT.fieldOf("density").orElse(0.5f).forGetter(FruitLeafReplacerDecorator::getDensity),
+            BlockStateProvider.CODEC.fieldOf("fruit_provider").forGetter(FruitLeafReplacerDecorator::getFruitProvider)
+    ).apply(decoratorInstance, FruitLeafReplacerDecorator::new));
 
     private final float density;
     public final BlockStateProvider fruitProvider;

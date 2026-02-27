@@ -348,6 +348,7 @@ public class TreeRegistrator
         }
 
         // TODO map colors and properties
+            // I don't know what this TODO means anymore
         // Register log block
         registerBlock(name + "_log", () -> new ProductiveLogBlock(getProperties(treeObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_LOG, noOcclusion, lightLevel)));
         // Stripped log

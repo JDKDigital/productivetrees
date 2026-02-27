@@ -225,7 +225,7 @@ public class FeatureProvider implements DataProvider
         put("clove", createFoliage(3, 3));
         put("cocobolo", createFoliage(3, 3));
         put("coconut", createFoliage(3, 3));
-        put("coffea", createFoliage(3, 3));
+        put("coffea", createFoliage(1, 3));
         put("copoazu", createFoliage(3, 3));
         put("copper_beech", createFoliage(3, 3));
         put("cork_oak", createFoliage(3, 3));
@@ -351,7 +351,7 @@ public class FeatureProvider implements DataProvider
         put("clove", createStraightTrunk(8, 4, 0));
         put("cocobolo", createStraightTrunk(20, 5, 0));
         put("coconut", createStraightTrunk(15, 10, 0));
-        put("coffea", createStraightTrunk(9, 3, 0));
+        put("coffea", createStraightTrunk(2, 1, 0));
         put("red_banana", createStraightTrunk(5, 6, 0));
         put("plantain", createStraightTrunk(5, 6, 0));
         put("asai_palm", createStraightTrunk(9, 5, 2));
