@@ -1,0 +1,70 @@
+{
+  "type": "minecraft:tree",
+  "config": {
+    "decorators": [
+      {
+        "type": "productivetrees:taper_decorator",
+        "place_chance": 0.7,
+        "wood_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "productivetrees:douglas_fir_wood",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        }
+      },
+      {
+        "type": "productivetrees:leaf_trim"
+      }
+    ],
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "foliage_placer": {
+      "type": "productivetrees:rough_foliage_placer",
+      "height": 2,
+      "offset": 0,
+      "radius": 3
+    },
+    "foliage_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "productivetrees:douglas_fir_leaves",
+        "Properties": {
+          "distance": "7",
+          "persistent": "false",
+          "waterlogged": "false"
+        }
+      }
+    },
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 1,
+      "upper_size": 2
+    },
+    "trunk_placer": {
+      "type": "productivetrees:wide_trunk_placer",
+      "base_height": 98,
+      "height_rand_a": 12,
+      "height_rand_b": 0,
+      "radius": 2
+    },
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "productivetrees:douglas_fir_log",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    }
+  }
+}

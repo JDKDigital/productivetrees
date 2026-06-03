@@ -93,6 +93,12 @@
     "productivetrees:baobab_fruit": {
       "chance": 0.65
     },
+    "productivetrees:bay_leaf_leaves": {
+      "chance": 0.3
+    },
+    "productivetrees:bay_leaf_sapling": {
+      "chance": 0.3
+    },
     "productivetrees:beech_leaves": {
       "chance": 0.3
     },

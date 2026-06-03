@@ -207,22 +207,8 @@ public class TreeUtil
     }
 
     public static boolean isSpecialTree(ResourceLocation id) {
-        return  id.getPath().equals("purple_spiral") || // purple
-                id.getPath().equals("cave_dweller") || // gray
-                id.getPath().equals("black_ember") || // black
-                id.getPath().equals("brown_amber") || // brown
-                id.getPath().equals("firecracker") || // red
-                id.getPath().equals("flickering_sun") || // yellow
-                id.getPath().equals("foggy_blast") || // light gray
-                id.getPath().equals("night_fuchsia") || // magenta
-                id.getPath().equals("time_traveller") || // cyan
-                id.getPath().equals("rippling_willow") || // green
-                id.getPath().equals("soul_tree") || // white
-                id.getPath().equals("sparkle_cherry") || // pink
-                id.getPath().equals("slimy_delight") || // lime
-                id.getPath().equals("thunder_bolt") || // orange
-                id.getPath().equals("blue_yonder") || // blue
-                id.getPath().equals("water_wonder"); // light blue
+        return  id.getPath().equals("cave_dweller") || // gray
+                id.getPath().equals("brown_amber"); // brown
     }
 
     public static boolean isTranslucentTree(String name) {

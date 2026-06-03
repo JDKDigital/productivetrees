@@ -20,6 +20,7 @@ public record WoodSet(String woodStyle, String plankStyle, String leafStyle, Str
         put("balsa", new WoodSet("balsa", "balsa", "balsa", "balsa", "oak", "warped", null));
         put("balsam_fir", new WoodSet("balsam_fir", "balsam_fir", "balsam_fir", "balsam_fir", "spruce", "jungle", null));
         put("banana", new WoodSet("banana", "banana", "banana", "banana", "mangrove", "bamboo", "teak"));
+        put("bay", new WoodSet("bay", "bay", "bay", "bay", "oak", "dark_oak", null));
         put("beech", new WoodSet("beech", "beech", "beech", "beech", "dark_oak", "redwood", "whitebeam"));
         put("beliy_naliv_apple", new WoodSet("beliy_naliv_apple", "beliy_naliv_apple", "beliy_naliv_apple", "beliy_naliv_apple", "oak", "umbran", "pomegranate"));
         put("black_cherry", new WoodSet("black_cherry", "black_cherry", "black_cherry", "black_cherry", "birch", "wisteria", "walnut"));

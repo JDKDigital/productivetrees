@@ -7,15 +7,48 @@ import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.*;
 import cy.jdkdigital.productivetrees.common.feature.EntityPlacerDecorator;
 import cy.jdkdigital.productivetrees.common.feature.FruitLeafPlacerDecorator;
+import cy.jdkdigital.productivetrees.common.feature.CocoaPodDecorator;
+import cy.jdkdigital.productivetrees.common.feature.FruitTrunkDanglerDecorator;
 import cy.jdkdigital.productivetrees.common.feature.FruitLeafReplacerDecorator;
+import cy.jdkdigital.productivetrees.common.feature.LeafTrimDecorator;
+import cy.jdkdigital.productivetrees.common.feature.RootDecorator;
+import cy.jdkdigital.productivetrees.common.feature.TaperDecorator;
+import cy.jdkdigital.productivetrees.common.feature.TemplateTreeFeature;
+import cy.jdkdigital.productivetrees.common.feature.TemplateTreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import cy.jdkdigital.productivetrees.common.feature.TrunkVineDecorator;
 import cy.jdkdigital.productivetrees.common.fluid.MapleSap;
 import cy.jdkdigital.productivetrees.common.fluid.type.MapleSapType;
 import cy.jdkdigital.productivetrees.common.item.PollenItem;
 import cy.jdkdigital.productivetrees.datagen.*;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.ConiferFoliagePlacer;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.PlumeFoliagePlacer;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.BallFoliagePlacer;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.FlameFoliagePlacer;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.DiamondFoliagePlacer;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.RayFoliagePlacer;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.FrondFoliagePlacer;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.RoughFoliagePlacer;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.TaperedFoliagePlacer;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.AspenFoliagePlacer;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.ConeFoliagePlacer;
+import cy.jdkdigital.productivetrees.feature.foliageplacers.WillowFoliagePlacer;
 import cy.jdkdigital.productivetrees.feature.trunkplacers.CenteredUpwardsBranchingTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.LayeredTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.SpreadingTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.UnlimitedGiantTrunkPlacer;
 import cy.jdkdigital.productivetrees.feature.trunkplacers.UnlimitedStraightTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.WideTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.ConiferTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.EmergentTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.StuddedTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.ParasolTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.SpiralTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.LightningTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.FlutedTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.MultiStemTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.TaperedMegaTrunkPlacer;
+import cy.jdkdigital.productivetrees.feature.trunkplacers.WhorledTrunkPlacer;
 import cy.jdkdigital.productivetrees.integrations.productivebees.CompatHandler;
 import cy.jdkdigital.productivetrees.inventory.PollenSifterContainer;
 import cy.jdkdigital.productivetrees.inventory.SawmillContainer;
@@ -139,11 +172,42 @@ public class TreeRegistrator
     public static final ResourceKey<ConfiguredFeature<?, ?>> NULL_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "null"));
     public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<CenteredUpwardsBranchingTrunkPlacer>> CENTERED_UPWARDS_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("centered_upwards_branching_trunk_placer", () -> new TrunkPlacerType<>(CenteredUpwardsBranchingTrunkPlacer.CODEC));
     public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<UnlimitedStraightTrunkPlacer>> UNLIMITED_STRAIGHT_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("unlimited_straight_trunk_placer", () -> new TrunkPlacerType<>(UnlimitedStraightTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<UnlimitedGiantTrunkPlacer>> UNLIMITED_GIANT_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("unlimited_giant_trunk_placer", () -> new TrunkPlacerType<>(UnlimitedGiantTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<WideTrunkPlacer>> WIDE_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("wide_trunk_placer", () -> new TrunkPlacerType<>(WideTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<SpreadingTrunkPlacer>> SPREADING_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("spreading_trunk_placer", () -> new TrunkPlacerType<>(SpreadingTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<LayeredTrunkPlacer>> LAYERED_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("layered_trunk_placer", () -> new TrunkPlacerType<>(LayeredTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<WhorledTrunkPlacer>> WHORLED_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("whorled_trunk_placer", () -> new TrunkPlacerType<>(WhorledTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<TaperedMegaTrunkPlacer>> TAPERED_MEGA_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("tapered_mega_trunk_placer", () -> new TrunkPlacerType<>(TaperedMegaTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<FlutedTrunkPlacer>> FLUTED_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("fluted_trunk_placer", () -> new TrunkPlacerType<>(FlutedTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<MultiStemTrunkPlacer>> MULTI_STEM_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("multi_stem_trunk_placer", () -> new TrunkPlacerType<>(MultiStemTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<ConiferTrunkPlacer>> CONIFER_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("conifer_trunk_placer", () -> new TrunkPlacerType<>(ConiferTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<EmergentTrunkPlacer>> EMERGENT_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("emergent_trunk_placer", () -> new TrunkPlacerType<>(EmergentTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<StuddedTrunkPlacer>> STUDDED_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("studded_trunk_placer", () -> new TrunkPlacerType<>(StuddedTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<ParasolTrunkPlacer>> PARASOL_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("parasol_trunk_placer", () -> new TrunkPlacerType<>(ParasolTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<SpiralTrunkPlacer>> SPIRAL_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("spiral_trunk_placer", () -> new TrunkPlacerType<>(SpiralTrunkPlacer.CODEC));
+    public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<LightningTrunkPlacer>> LIGHTNING_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("lightning_trunk_placer", () -> new TrunkPlacerType<>(LightningTrunkPlacer.CODEC));
     public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<TaperedFoliagePlacer>> TAPERED_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("tapered_foliage_placer", () -> new FoliagePlacerType<>(TaperedFoliagePlacer.CODEC));
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<ConiferFoliagePlacer>> CONIFER_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("conifer_foliage_placer", () -> new FoliagePlacerType<>(ConiferFoliagePlacer.CODEC));
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<RoughFoliagePlacer>> ROUGH_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("rough_foliage_placer", () -> new FoliagePlacerType<>(RoughFoliagePlacer.CODEC));
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<PlumeFoliagePlacer>> PLUME_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("plume_foliage_placer", () -> new FoliagePlacerType<>(PlumeFoliagePlacer.CODEC));
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<BallFoliagePlacer>> BALL_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("ball_foliage_placer", () -> new FoliagePlacerType<>(BallFoliagePlacer.CODEC));
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<FlameFoliagePlacer>> FLAME_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("flame_foliage_placer", () -> new FoliagePlacerType<>(FlameFoliagePlacer.CODEC));
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<DiamondFoliagePlacer>> DIAMOND_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("diamond_foliage_placer", () -> new FoliagePlacerType<>(DiamondFoliagePlacer.CODEC));
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<RayFoliagePlacer>> RAY_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("ray_foliage_placer", () -> new FoliagePlacerType<>(RayFoliagePlacer.CODEC));
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<FrondFoliagePlacer>> FROND_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("frond_foliage_placer", () -> new FoliagePlacerType<>(FrondFoliagePlacer.CODEC));
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<WillowFoliagePlacer>> WILLOW_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("willow_foliage_placer", () -> new FoliagePlacerType<>(WillowFoliagePlacer.CODEC));
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<AspenFoliagePlacer>> ASPEN_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("aspen_foliage_placer", () -> new FoliagePlacerType<>(AspenFoliagePlacer.CODEC));
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<ConeFoliagePlacer>> CONE_FOLIAGE_PLACER = ProductiveTrees.FOLIAGE_PLACERS.register("cone_foliage_placer", () -> new FoliagePlacerType<>(ConeFoliagePlacer.CODEC));
     public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<FruitLeafReplacerDecorator>> FRUIT_LEAF_REPLACER = ProductiveTrees.TREE_DECORATORS.register("fruit_leaf_replacer", () -> new TreeDecoratorType<>(FruitLeafReplacerDecorator.CODEC));
     public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<FruitLeafPlacerDecorator>> FRUIT_LEAF_PLACER = ProductiveTrees.TREE_DECORATORS.register("fruit_leaf_placer", () -> new TreeDecoratorType<>(FruitLeafPlacerDecorator.CODEC));
+    public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<FruitTrunkDanglerDecorator>> FRUIT_TRUNK_DANGLER = ProductiveTrees.TREE_DECORATORS.register("fruit_trunk_dangler", () -> new TreeDecoratorType<>(FruitTrunkDanglerDecorator.CODEC));
+    public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<CocoaPodDecorator>> COCOA_POD = ProductiveTrees.TREE_DECORATORS.register("cocoa_pod", () -> new TreeDecoratorType<>(CocoaPodDecorator.CODEC));
     public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<EntityPlacerDecorator>> ENTITY_PLACER = ProductiveTrees.TREE_DECORATORS.register("entity_placer", () -> new TreeDecoratorType<>(EntityPlacerDecorator.CODEC));
     public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<TrunkVineDecorator>> TRUNK_VINE = ProductiveTrees.TREE_DECORATORS.register("trunk_vine", () -> new TreeDecoratorType<>(TrunkVineDecorator.CODEC));
+    public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<RootDecorator>> ROOT_DECORATOR = ProductiveTrees.TREE_DECORATORS.register("root_decorator", () -> new TreeDecoratorType<>(RootDecorator.CODEC));
+    public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<TaperDecorator>> TAPER_DECORATOR = ProductiveTrees.TREE_DECORATORS.register("taper_decorator", () -> new TreeDecoratorType<>(TaperDecorator.CODEC));
+    public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<LeafTrimDecorator>> LEAF_TRIM = ProductiveTrees.TREE_DECORATORS.register("leaf_trim", () -> new TreeDecoratorType<>(LeafTrimDecorator.CODEC));
+    public static final DeferredHolder<Feature<?>, TemplateTreeFeature> TEMPLATE_TREE = ProductiveTrees.FEATURES.register("template_tree", () -> new TemplateTreeFeature(TemplateTreeConfiguration.CODEC));
 
     // Fruiting items
     static final FoodProperties BERRY_FOOD = (new FoodProperties.Builder()).alwaysEdible().fast().nutrition(1).saturationModifier(0.1F).build();
@@ -299,6 +363,7 @@ public class TreeRegistrator
     public static final DeferredHolder<Item, Item> CINNAMON = registerItem("cinnamon");
     public static final DeferredHolder<Item, Item> NUTMEG = registerItem("nutmeg");
     public static final DeferredHolder<Item, Item> STAR_ANISE = registerItem("star_anise");
+    public static final DeferredHolder<Item, Item> BAY_LEAF = registerItem("bay_leaf");
     public static final DeferredHolder<Item, Item> CORK = registerItem("cork");
     public static final DeferredHolder<Item, Item> PLANET_PEACH = registerItem("planet_peach", Foods.GOLDEN_CARROT);
 
@@ -315,13 +380,23 @@ public class TreeRegistrator
         boolean noOcclusion = TreeUtil.isTranslucentTree(name);
         final ToIntFunction<BlockState> lightLevel = state -> treeObject.getDecoration().lightLevel();
 
-        // Create grower
+        // Create grower. 3x3 megas are grown by ProductiveSaplingBlock, so they leave the vanilla 2x2 mega slot empty.
+        Optional<ResourceKey<ConfiguredFeature<?, ?>>> megaSlot;
+        if (treeObject.getMegaFeature().equals(TreeRegistrator.NULL_FEATURE)) {
+            megaSlot = Optional.of(treeObject.getFeature());
+        } else if (treeObject.getMegaConfiguration() == 3) {
+            megaSlot = Optional.empty();
+        } else {
+            megaSlot = Optional.of(treeObject.getMegaFeature());
+        }
+        // a null feature means the tree is mega-only, so it has no 1x1 sapling growth
+        Optional<ResourceKey<ConfiguredFeature<?, ?>>> treeSlot = treeObject.getFeature().equals(TreeRegistrator.NULL_FEATURE) ? Optional.empty() : Optional.of(treeObject.getFeature());
         var grower = new TreeGrower(
                 name,
                 0.1F,
-                treeObject.getMegaFeature().equals(TreeRegistrator.NULL_FEATURE) ? Optional.of(treeObject.getFeature()) : Optional.empty(),
+                megaSlot,
                 Optional.empty(),
-                Optional.of(treeObject.getFeature()),
+                treeSlot,
                 Optional.empty(),
                 Optional.empty(),
                 Optional.empty()
@@ -405,8 +480,9 @@ public class TreeRegistrator
         }
 
         if (name.equals("monkey_puzzle")) {
-            registerBlock("monkey_puzzle_small_leaves", () -> new ProductiveDirectionalLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), treeObject));
-            registerBlock("monkey_puzzle_medium_leaves", () -> new ProductiveDirectionalLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), treeObject));
+            // bending branch-leaf segments (radius = half-thickness); the small one won't join another of itself, so thin tips don't chain
+            registerBlock("monkey_puzzle_small_leaves", () -> new ProductiveBranchLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), treeObject, 2, false));
+            registerBlock("monkey_puzzle_medium_leaves", () -> new ProductiveBranchLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), treeObject, 4, true));
         }
 
         ProductiveTrees.BLOCKS.addAlias(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_fruit"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_fruit"));

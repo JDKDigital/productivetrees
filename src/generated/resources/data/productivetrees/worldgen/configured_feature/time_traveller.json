@@ -1,0 +1,10 @@
+{
+  "type": "productivetrees:template_tree",
+  "config": {
+    "templates": [
+      "productivetrees:time_traveller_1",
+      "productivetrees:time_traveller_2",
+      "productivetrees:time_traveller_3"
+    ]
+  }
+}

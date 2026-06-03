@@ -1,0 +1,9 @@
+{
+  "type": "productivetrees:template_tree",
+  "config": {
+    "templates": [
+      "productivetrees:flickering_sun_1",
+      "productivetrees:flickering_sun_2"
+    ]
+  }
+}

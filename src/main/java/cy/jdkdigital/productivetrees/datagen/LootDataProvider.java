@@ -90,6 +90,8 @@ public class LootDataProvider implements DataProvider
         private static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
         private static final float[] JUNGLE_LEAVES_SAPLING_CHANGES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
         private static final float[] NORMAL_LEAVES_STICK_CHANCES = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
+        // higher drop odds than sticks/saplings — bay leaves are the harvest
+        private static final float[] BAY_LEAF_CHANCES = new float[]{0.1F, 0.125F, 0.16666667F, 0.25F, 0.5F};
 
         private static final Map<Block, Function<Block, LootTable.Builder>> functionTable = new HashMap<>();
         private static final LootItemCondition.Builder SHEARS_DIG = CanItemPerformAbility.canItemPerformAbility(ItemAbilities.SHEARS_DIG);
@@ -116,7 +118,11 @@ public class LootDataProvider implements DataProvider
 
             TreeFinder.trees.forEach((id, treeObject) -> {
                 var saplingChance = treeObject.getStyle().saplingStyle().equals("jungle") ? JUNGLE_LEAVES_SAPLING_CHANGES : NORMAL_LEAVES_SAPLING_CHANCES;
-                add(TreeUtil.getBlock(id, "_leaves"), leaf -> createOptionalLeavesDrops(leaf, TreeUtil.getBlock(id, "_sapling"), saplingChance));
+                if (id.getPath().equals("bay_leaf")) {
+                    add(TreeUtil.getBlock(id, "_leaves"), leaf -> createHarvestLeavesDrops(leaf, TreeUtil.getBlock(id, "_sapling"), TreeRegistrator.BAY_LEAF.get(), BAY_LEAF_CHANCES, saplingChance));
+                } else {
+                    add(TreeUtil.getBlock(id, "_leaves"), leaf -> createOptionalLeavesDrops(leaf, TreeUtil.getBlock(id, "_sapling"), saplingChance));
+                }
                 if (treeObject.hasFruit()) {
                     add(TreeUtil.getBlock(id, "_fruit"), leaf -> createFruitLeavesDrops(leaf, TreeUtil.getBlock(id, "_sapling"), treeObject.getFruit().getItem().getItem(), saplingChance));
                 }
@@ -188,6 +194,17 @@ public class LootDataProvider implements DataProvider
 
         protected @NotNull LootTable.Builder createSilkTouchOrShearsDispatchTable(Block block, LootPoolEntryContainer.Builder<?> builder) {
             return createSelfDispatchTable(block, SHEARS_OR_SILK, builder);
+        }
+
+        // the normal leaf drops plus a harvest-item pool at its own rate
+        protected @NotNull LootTable.Builder createHarvestLeavesDrops(Block block, Block sapling, Item harvest, float[] harvestChances, float... saplingChances) {
+            HolderLookup.RegistryLookup<Enchantment> registryLookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+            return createOptionalLeavesDrops(block, sapling, saplingChances)
+                    .withPool(
+                            LootPool.lootPool()
+                                    .setRolls(ConstantValue.exactly(1.0F))
+                                    .when(SHEARS_OR_SILK.invert())
+                                    .add(LootItem.lootTableItem(harvest).apply(ApplyExplosionDecay.explosionDecay()).when(BonusLevelTableCondition.bonusLevelFlatChance(registryLookup.getOrThrow(Enchantments.FORTUNE), harvestChances))));
         }
 
         protected @NotNull LootTable.Builder createFruitLeavesDrops(Block block, Block sapling, Item fruit, float... dropChances) {

@@ -75,7 +75,8 @@ public class ProductiveFruitBlock extends ProductiveLeavesBlock
 
     @Override
     public boolean isRandomlyTicking(BlockState blockState) {
-        return !isMaxAge(blockState);
+        // keep ticking while growing, and also once cut off from logs so a broken-off (e.g. dangling) fruit can decay
+        return !isMaxAge(blockState) || (blockState.getValue(DISTANCE) == 7 && !blockState.getValue(PERSISTENT));
     }
 
     @Override

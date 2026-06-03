@@ -4,7 +4,7 @@
     "decorators": [
       {
         "type": "productivetrees:fruit_leaf_placer",
-        "density": 0.2,
+        "density": 0.25,
         "fruit_provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
@@ -17,7 +17,10 @@
             }
           }
         },
-        "max_fruits": 5
+        "max_fruits": 18
+      },
+      {
+        "type": "productivetrees:leaf_trim"
       }
     ],
     "dirt_provider": {
@@ -27,10 +30,10 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:blob_foliage_placer",
-      "height": 3,
+      "type": "productivetrees:rough_foliage_placer",
+      "height": 4,
       "offset": 0,
-      "radius": 3
+      "radius": 5
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
@@ -52,10 +55,22 @@
       "upper_size": 1
     },
     "trunk_placer": {
-      "type": "productivetrees:unlimited_straight_trunk_placer",
-      "base_height": 10,
-      "height_rand_a": 3,
-      "height_rand_b": 0
+      "type": "productivetrees:centered_upwards_branching_trunk_placer",
+      "base_height": 9,
+      "branch_start": 0.4,
+      "extra_branch_length": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 5,
+        "min_inclusive": 3
+      },
+      "extra_branch_steps": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 4,
+        "min_inclusive": 2
+      },
+      "height_rand_a": 2,
+      "height_rand_b": 0,
+      "place_branch_per_log_probability": 0.3
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",

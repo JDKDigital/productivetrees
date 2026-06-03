@@ -1,7 +1,11 @@
 {
   "type": "minecraft:tree",
   "config": {
-    "decorators": [],
+    "decorators": [
+      {
+        "type": "productivetrees:leaf_trim"
+      }
+    ],
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
@@ -9,10 +13,12 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:blob_foliage_placer",
-      "height": 3,
+      "type": "productivetrees:aspen_foliage_placer",
       "offset": 0,
-      "radius": 3
+      "radius": 2,
+      "section_count": 3,
+      "section_gap": 1,
+      "section_height": 2
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
@@ -35,8 +41,8 @@
     },
     "trunk_placer": {
       "type": "productivetrees:unlimited_straight_trunk_placer",
-      "base_height": 10,
-      "height_rand_a": 3,
+      "base_height": 12,
+      "height_rand_a": 1,
       "height_rand_b": 0
     },
     "trunk_provider": {

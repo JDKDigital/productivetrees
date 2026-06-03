@@ -1,0 +1,62 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "productivetrees:block/monkey_puzzle_small_leaves_node"
+      }
+    },
+    {
+      "apply": {
+        "model": "productivetrees:block/monkey_puzzle_small_leaves_arm"
+      },
+      "when": {
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "productivetrees:block/monkey_puzzle_small_leaves_arm",
+        "y": 90
+      },
+      "when": {
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "productivetrees:block/monkey_puzzle_small_leaves_arm",
+        "y": 180
+      },
+      "when": {
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "productivetrees:block/monkey_puzzle_small_leaves_arm",
+        "y": 270
+      },
+      "when": {
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "productivetrees:block/monkey_puzzle_small_leaves_arm",
+        "x": 270
+      },
+      "when": {
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "productivetrees:block/monkey_puzzle_small_leaves_arm",
+        "x": 90
+      },
+      "when": {
+        "down": "true"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "type": "productivetrees:template_tree",
+  "config": {
+    "templates": [
+      "productivetrees:blue_yonder_1",
+      "productivetrees:blue_yonder_2",
+      "productivetrees:blue_yonder_3"
+    ]
+  }
+}

@@ -17,6 +17,9 @@
             }
           }
         }
+      },
+      {
+        "type": "productivetrees:leaf_trim"
       }
     ],
     "dirt_provider": {
@@ -26,7 +29,7 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:blob_foliage_placer",
+      "type": "productivetrees:rough_foliage_placer",
       "height": 3,
       "offset": 0,
       "radius": 3
@@ -52,7 +55,7 @@
     },
     "trunk_placer": {
       "type": "productivetrees:unlimited_straight_trunk_placer",
-      "base_height": 8,
+      "base_height": 5,
       "height_rand_a": 2,
       "height_rand_b": 0
     },

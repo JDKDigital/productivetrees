@@ -1,0 +1,8 @@
+{
+  "type": "productivetrees:template_tree",
+  "config": {
+    "templates": [
+      "productivetrees:brown_amber_giga_1"
+    ]
+  }
+}

@@ -49,6 +49,10 @@
       "required": false
     },
     {
+      "id": "productivetrees:expansion_box_bay_leaf",
+      "required": false
+    },
+    {
       "id": "productivetrees:expansion_box_beech",
       "required": false
     },

@@ -101,6 +101,7 @@ public class ModelProvider implements DataProvider
         generateFruitItem(TreeRegistrator.PLANET_PEACH.get(), modelOutput);
 
         generateMultiItem(TreeRegistrator.FUSTIC.get(), "item/", modelOutput);
+        generateFlatItem(TreeRegistrator.BAY_LEAF.get(), "item/", modelOutput);
         generateFlatItem(TreeRegistrator.CORK.get(), "item/", modelOutput);
         generateFlatItem(TreeRegistrator.HAEMATOXYLIN.get(), "item/", modelOutput);
         generateFlatItem(TreeRegistrator.DRACAENA_SAP.get(), "item/", modelOutput);
@@ -250,6 +251,11 @@ public class ModelProvider implements DataProvider
                 if (treeObject.getId().getPath().equals("cinnamon")) {
                     createCrate(treeObject, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "cinnamon"));
                 }
+                if (treeObject.getId().getPath().equals("monkey_puzzle")) {
+                    // the bending branch-leaf segments
+                    createBranchLeaves(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "monkey_puzzle_small_leaves")), 2);
+                    createBranchLeaves(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "monkey_puzzle_medium_leaves")), 4);
+                }
                 new WoodProvider().logWithHorizontal(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_log"), false).wood(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_wood"), false);
                 new WoodProvider().logWithHorizontal(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_stripped_log"), true).wood(treeObject.getStyle().woodStyle(), TreeUtil.getBlock(id, "_stripped_wood"), true);
                 this.createBaseBlock(TreeUtil.getBlock(id, "_planks"), "planks/" + treeObject.getStyle().plankStyle());
@@ -271,6 +277,82 @@ public class ModelProvider implements DataProvider
             });
 
             createBaseModels();
+        }
+
+        // a connecting branch leaf: a node + an arm per connected side, via a multipart blockstate (radius = half-thickness)
+        private void createBranchLeaves(Block block, int radius) {
+            ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/leaves/monkey_puzzle");
+            String name = BuiltInRegistries.BLOCK.getKey(block).getPath();
+            ResourceLocation node = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/" + name + "_node");
+            ResourceLocation arm = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "block/" + name + "_arm");
+            int r = radius;
+            this.modelOutput.accept(node, boxModel(null, texture, new int[][]{{8 - r, 8 - r, 8 - r, 8 + r, 8 + r, 8 + r}}));
+            // arm: a uniform segment from the node out toward north; the blockstate rotates it to the other sides
+            this.modelOutput.accept(arm, boxModel(null, texture, new int[][]{
+                    {8 - r, 8 - r, 0, 8 + r, 8 + r, 8 - r}
+            }));
+            this.blockStateOutput.accept(MultiPartGenerator.multiPart(block)
+                    .with(Variant.variant().with(VariantProperties.MODEL, node))
+                    .with(Condition.condition().term(PipeBlock.NORTH, true), Variant.variant().with(VariantProperties.MODEL, arm))
+                    .with(Condition.condition().term(PipeBlock.EAST, true), Variant.variant().with(VariantProperties.MODEL, arm).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                    .with(Condition.condition().term(PipeBlock.SOUTH, true), Variant.variant().with(VariantProperties.MODEL, arm).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                    .with(Condition.condition().term(PipeBlock.WEST, true), Variant.variant().with(VariantProperties.MODEL, arm).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                    .with(Condition.condition().term(PipeBlock.UP, true), Variant.variant().with(VariantProperties.MODEL, arm).with(VariantProperties.X_ROT, VariantProperties.Rotation.R270))
+                    .with(Condition.condition().term(PipeBlock.DOWN, true), Variant.variant().with(VariantProperties.MODEL, arm).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90)));
+            // item icon: a straight segment
+            ResourceLocation itemModel = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "item/" + name);
+            this.modelOutput.accept(itemModel, boxModel("minecraft:block/block", texture, new int[][]{
+                    {8 - r, 8 - r, 0, 8 + r, 8 + r, 16}
+            }));
+        }
+
+        private static Supplier<JsonElement> boxModel(String parent, ResourceLocation texture, int[][] boxes) {
+            return () -> {
+                JsonObject model = new JsonObject();
+                if (parent != null) {
+                    model.addProperty("parent", parent);
+                }
+                JsonObject textures = new JsonObject();
+                textures.addProperty("texture", texture.toString());
+                textures.addProperty("particle", texture.toString());
+                model.add("textures", textures);
+                JsonArray elements = new JsonArray();
+                for (int[] box : boxes) {
+                    JsonObject element = new JsonObject();
+                    element.add("from", intArray(box[0], box[1], box[2]));
+                    element.add("to", intArray(box[3], box[4], box[5]));
+                    JsonObject faces = new JsonObject();
+                    for (String face : new String[]{"down", "up", "north", "south", "west", "east"}) {
+                        JsonObject faceObj = new JsonObject();
+                        // uv from the box extents so the texture maps 1:1 (no squashing)
+                        faceObj.add("uv", faceUv(face, box));
+                        faceObj.addProperty("texture", "#texture");
+                        faces.add(face, faceObj);
+                    }
+                    element.add("faces", faces);
+                    elements.add(element);
+                }
+                model.add("elements", elements);
+                return model;
+            };
+        }
+
+        // the texture region matching a face's box extents (1:1 texel mapping)
+        private static JsonArray faceUv(String face, int[] box) {
+            int x1 = box[0], y1 = box[1], z1 = box[2], x2 = box[3], y2 = box[4], z2 = box[5];
+            return switch (face) {
+                case "down", "up" -> intArray(x1, z1, x2, z2);
+                case "north", "south" -> intArray(x1, 16 - y2, x2, 16 - y1);
+                default -> intArray(z1, 16 - y2, z2, 16 - y1); // west, east
+            };
+        }
+
+        private static JsonArray intArray(int... values) {
+            JsonArray array = new JsonArray();
+            for (int value : values) {
+                array.add(value);
+            }
+            return array;
         }
 
         private void createSapling(TreeObject treeObject) {

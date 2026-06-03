@@ -17,6 +17,9 @@
             }
           }
         }
+      },
+      {
+        "type": "productivetrees:leaf_trim"
       }
     ],
     "dirt_provider": {
@@ -26,10 +29,10 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:blob_foliage_placer",
+      "type": "productivetrees:rough_foliage_placer",
       "height": 3,
       "offset": 0,
-      "radius": 3
+      "radius": 4
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
@@ -51,10 +54,17 @@
       "upper_size": 1
     },
     "trunk_placer": {
-      "type": "productivetrees:unlimited_straight_trunk_placer",
-      "base_height": 6,
-      "height_rand_a": 8,
-      "height_rand_b": 0
+      "type": "productivetrees:wide_trunk_placer",
+      "base_height": 7,
+      "branch_length": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 8,
+        "min_inclusive": 6
+      },
+      "branch_start": 0.3,
+      "height_rand_a": 3,
+      "height_rand_b": 0,
+      "radius": 0
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",

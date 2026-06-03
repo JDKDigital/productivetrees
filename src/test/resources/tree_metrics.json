@@ -1,0 +1,2057 @@
+{
+  "alder": {
+    "crown_radius": [
+      6,
+      6
+    ],
+    "height": [
+      13,
+      13
+    ],
+    "leaf_count": [
+      368,
+      368
+    ],
+    "samples": 1
+  },
+  "allspice": {
+    "crown_radius": [
+      5,
+      5
+    ],
+    "height": [
+      11,
+      11
+    ],
+    "leaf_count": [
+      203,
+      203
+    ],
+    "samples": 1
+  },
+  "almond": {
+    "crown_radius": [
+      4,
+      4
+    ],
+    "height": [
+      6,
+      6
+    ],
+    "leaf_count": [
+      79,
+      79
+    ],
+    "samples": 1
+  },
+  "apricot": {
+    "crown_radius": [
+      2,
+      6
+    ],
+    "height": [
+      4,
+      8
+    ],
+    "leaf_count": [
+      36,
+      264
+    ],
+    "samples": 3
+  },
+  "asai_palm": {
+    "crown_radius": [
+      3,
+      7
+    ],
+    "height": [
+      5,
+      22
+    ],
+    "leaf_count": [
+      30,
+      119
+    ],
+    "samples": 3
+  },
+  "ash": {
+    "crown_radius": [
+      10,
+      10
+    ],
+    "height": [
+      15,
+      15
+    ],
+    "leaf_count": [
+      792,
+      792
+    ],
+    "samples": 1
+  },
+  "aspen": {
+    "crown_radius": [
+      2,
+      2
+    ],
+    "height": [
+      13,
+      13
+    ],
+    "leaf_count": [
+      140,
+      140
+    ],
+    "samples": 1
+  },
+  "avocado": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      3,
+      8
+    ],
+    "leaf_count": [
+      35,
+      125
+    ],
+    "samples": 3
+  },
+  "balsa": {
+    "crown_radius": [
+      2,
+      3
+    ],
+    "height": [
+      4,
+      5
+    ],
+    "leaf_count": [
+      48,
+      61
+    ],
+    "samples": 2
+  },
+  "balsam_fir": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      3,
+      14
+    ],
+    "leaf_count": [
+      33,
+      237
+    ],
+    "samples": 6
+  },
+  "banana": {
+    "crown_radius": [
+      3,
+      6
+    ],
+    "height": [
+      5,
+      16
+    ],
+    "leaf_count": [
+      21,
+      89
+    ],
+    "samples": 3
+  },
+  "beech": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      11,
+      11
+    ],
+    "leaf_count": [
+      91,
+      91
+    ],
+    "samples": 1
+  },
+  "beliy_naliv_apple": {
+    "crown_radius": [
+      3,
+      5
+    ],
+    "height": [
+      5,
+      8
+    ],
+    "leaf_count": [
+      106,
+      138
+    ],
+    "samples": 3
+  },
+  "black_cherry": {
+    "crown_radius": [
+      5,
+      5
+    ],
+    "height": [
+      8,
+      9
+    ],
+    "leaf_count": [
+      114,
+      180
+    ],
+    "samples": 2
+  },
+  "black_ember": {
+    "crown_radius": [
+      7,
+      7
+    ],
+    "height": [
+      12,
+      12
+    ],
+    "leaf_count": [
+      223,
+      223
+    ],
+    "samples": 1
+  },
+  "black_locust": {
+    "crown_radius": [
+      4,
+      4
+    ],
+    "height": [
+      10,
+      10
+    ],
+    "leaf_count": [
+      140,
+      140
+    ],
+    "samples": 1
+  },
+  "blackthorn": {
+    "crown_radius": [
+      3,
+      5
+    ],
+    "height": [
+      4,
+      6
+    ],
+    "leaf_count": [
+      58,
+      108
+    ],
+    "samples": 3
+  },
+  "blue_mahoe": {
+    "crown_radius": [
+      9,
+      9
+    ],
+    "height": [
+      15,
+      15
+    ],
+    "leaf_count": [
+      371,
+      371
+    ],
+    "samples": 1
+  },
+  "blue_yonder": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      11,
+      16
+    ],
+    "leaf_count": [
+      155,
+      169
+    ],
+    "samples": 3
+  },
+  "boxwood": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      4,
+      9
+    ],
+    "leaf_count": [
+      22,
+      94
+    ],
+    "samples": 3
+  },
+  "brazilwood": {
+    "crown_radius": [
+      5,
+      6
+    ],
+    "height": [
+      9,
+      12
+    ],
+    "leaf_count": [
+      213,
+      276
+    ],
+    "samples": 2
+  },
+  "breadfruit": {
+    "crown_radius": [
+      7,
+      7
+    ],
+    "height": [
+      9,
+      10
+    ],
+    "leaf_count": [
+      196,
+      305
+    ],
+    "samples": 2
+  },
+  "buddhas_hand": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      3,
+      5
+    ],
+    "leaf_count": [
+      36,
+      48
+    ],
+    "samples": 3
+  },
+  "bull_pine": {
+    "crown_radius": [
+      4,
+      5
+    ],
+    "height": [
+      11,
+      13
+    ],
+    "leaf_count": [
+      108,
+      160
+    ],
+    "samples": 2
+  },
+  "butternut": {
+    "crown_radius": [
+      5,
+      7
+    ],
+    "height": [
+      5,
+      11
+    ],
+    "leaf_count": [
+      183,
+      462
+    ],
+    "samples": 2
+  },
+  "cacao": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      4,
+      6
+    ],
+    "leaf_count": [
+      50,
+      103
+    ],
+    "samples": 2
+  },
+  "candlenut": {
+    "crown_radius": [
+      5,
+      7
+    ],
+    "height": [
+      8,
+      11
+    ],
+    "leaf_count": [
+      158,
+      429
+    ],
+    "samples": 2
+  },
+  "carob": {
+    "crown_radius": [
+      3,
+      6
+    ],
+    "height": [
+      5,
+      9
+    ],
+    "leaf_count": [
+      81,
+      370
+    ],
+    "samples": 3
+  },
+  "cashew": {
+    "crown_radius": [
+      7,
+      9
+    ],
+    "height": [
+      8,
+      11
+    ],
+    "leaf_count": [
+      161,
+      411
+    ],
+    "samples": 2
+  },
+  "cedar": {
+    "crown_radius": [
+      5,
+      8
+    ],
+    "height": [
+      10,
+      17
+    ],
+    "leaf_count": [
+      92,
+      223
+    ],
+    "samples": 3
+  },
+  "cempedak": {
+    "crown_radius": [
+      4,
+      5
+    ],
+    "height": [
+      11,
+      13
+    ],
+    "leaf_count": [
+      81,
+      122
+    ],
+    "samples": 2
+  },
+  "ceylon_ebony": {
+    "crown_radius": [
+      6,
+      8
+    ],
+    "height": [
+      11,
+      15
+    ],
+    "leaf_count": [
+      407,
+      707
+    ],
+    "samples": 2
+  },
+  "cherry_plum": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      6,
+      8
+    ],
+    "leaf_count": [
+      88,
+      148
+    ],
+    "samples": 3
+  },
+  "cinnamon": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      6,
+      13
+    ],
+    "leaf_count": [
+      87,
+      364
+    ],
+    "samples": 2
+  },
+  "citron": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      5,
+      5
+    ],
+    "leaf_count": [
+      96,
+      96
+    ],
+    "samples": 2
+  },
+  "clove": {
+    "crown_radius": [
+      2,
+      2
+    ],
+    "height": [
+      8,
+      11
+    ],
+    "leaf_count": [
+      99,
+      137
+    ],
+    "samples": 2
+  },
+  "cocobolo": {
+    "crown_radius": [
+      5,
+      5
+    ],
+    "height": [
+      9,
+      12
+    ],
+    "leaf_count": [
+      123,
+      127
+    ],
+    "samples": 2
+  },
+  "coconut": {
+    "crown_radius": [
+      4,
+      6
+    ],
+    "height": [
+      13,
+      24
+    ],
+    "leaf_count": [
+      124,
+      160
+    ],
+    "samples": 3
+  },
+  "coffea": {
+    "crown_radius": [
+      1,
+      2
+    ],
+    "height": [
+      2,
+      4
+    ],
+    "leaf_count": [
+      17,
+      37
+    ],
+    "samples": 3
+  },
+  "copoazu": {
+    "crown_radius": [
+      3,
+      5
+    ],
+    "height": [
+      6,
+      16
+    ],
+    "leaf_count": [
+      56,
+      267
+    ],
+    "samples": 3
+  },
+  "copper_beech": {
+    "crown_radius": [
+      3,
+      6
+    ],
+    "height": [
+      8,
+      10
+    ],
+    "leaf_count": [
+      184,
+      425
+    ],
+    "samples": 2
+  },
+  "cork_oak": {
+    "crown_radius": [
+      4,
+      5
+    ],
+    "height": [
+      7,
+      10
+    ],
+    "leaf_count": [
+      99,
+      242
+    ],
+    "samples": 2
+  },
+  "cultivated_pear": {
+    "crown_radius": [
+      2,
+      3
+    ],
+    "height": [
+      8,
+      11
+    ],
+    "leaf_count": [
+      106,
+      194
+    ],
+    "samples": 3
+  },
+  "date_palm": {
+    "crown_radius": [
+      4,
+      5
+    ],
+    "height": [
+      9,
+      21
+    ],
+    "leaf_count": [
+      67,
+      90
+    ],
+    "samples": 4
+  },
+  "dogwood": {
+    "crown_radius": [
+      4,
+      6
+    ],
+    "height": [
+      6,
+      9
+    ],
+    "leaf_count": [
+      64,
+      109
+    ],
+    "samples": 3
+  },
+  "elderberry": {
+    "crown_radius": [
+      3,
+      5
+    ],
+    "height": [
+      3,
+      7
+    ],
+    "leaf_count": [
+      51,
+      192
+    ],
+    "samples": 3
+  },
+  "european_larch": {
+    "crown_radius": [
+      10,
+      11
+    ],
+    "height": [
+      20,
+      24
+    ],
+    "leaf_count": [
+      492,
+      733
+    ],
+    "samples": 2
+  },
+  "finger_lime": {
+    "crown_radius": [
+      2,
+      2
+    ],
+    "height": [
+      3,
+      4
+    ],
+    "leaf_count": [
+      24,
+      38
+    ],
+    "samples": 3
+  },
+  "firecracker": {
+    "crown_radius": [
+      3,
+      5
+    ],
+    "height": [
+      7,
+      12
+    ],
+    "leaf_count": [
+      109,
+      643
+    ],
+    "samples": 3
+  },
+  "flickering_sun": {
+    "crown_radius": [
+      6,
+      8
+    ],
+    "height": [
+      8,
+      12
+    ],
+    "leaf_count": [
+      158,
+      196
+    ],
+    "samples": 2
+  },
+  "flowering_crabapple": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      3,
+      5
+    ],
+    "leaf_count": [
+      39,
+      75
+    ],
+    "samples": 3
+  },
+  "foggy_blast": {
+    "crown_radius": [
+      3,
+      8
+    ],
+    "height": [
+      4,
+      7
+    ],
+    "leaf_count": [
+      43,
+      166
+    ],
+    "samples": 3
+  },
+  "ginkgo": {
+    "crown_radius": [
+      5,
+      6
+    ],
+    "height": [
+      12,
+      18
+    ],
+    "leaf_count": [
+      432,
+      701
+    ],
+    "samples": 2
+  },
+  "golden_delicious_apple": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      4,
+      7
+    ],
+    "leaf_count": [
+      76,
+      178
+    ],
+    "samples": 3
+  },
+  "granny_smith_apple": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      4,
+      5
+    ],
+    "leaf_count": [
+      85,
+      174
+    ],
+    "samples": 3
+  },
+  "grapefruit": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      4,
+      5
+    ],
+    "leaf_count": [
+      85,
+      89
+    ],
+    "samples": 3
+  },
+  "great_sallow": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      5,
+      5
+    ],
+    "leaf_count": [
+      51,
+      103
+    ],
+    "samples": 3
+  },
+  "hawthorn": {
+    "crown_radius": [
+      4,
+      6
+    ],
+    "height": [
+      5,
+      12
+    ],
+    "leaf_count": [
+      100,
+      384
+    ],
+    "samples": 3
+  },
+  "hazel": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      5,
+      8
+    ],
+    "leaf_count": [
+      81,
+      132
+    ],
+    "samples": 2
+  },
+  "holly": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      4,
+      7
+    ],
+    "leaf_count": [
+      37,
+      153
+    ],
+    "samples": 4
+  },
+  "hornbeam": {
+    "crown_radius": [
+      2,
+      3
+    ],
+    "height": [
+      5,
+      10
+    ],
+    "leaf_count": [
+      87,
+      222
+    ],
+    "samples": 3
+  },
+  "ipe": {
+    "crown_radius": [
+      4,
+      6
+    ],
+    "height": [
+      7,
+      11
+    ],
+    "leaf_count": [
+      131,
+      190
+    ],
+    "samples": 4
+  },
+  "jackfruit": {
+    "crown_radius": [
+      4,
+      5
+    ],
+    "height": [
+      11,
+      12
+    ],
+    "leaf_count": [
+      187,
+      259
+    ],
+    "samples": 2
+  },
+  "juniper": {
+    "crown_radius": [
+      1,
+      3
+    ],
+    "height": [
+      5,
+      8
+    ],
+    "leaf_count": [
+      22,
+      98
+    ],
+    "samples": 4
+  },
+  "key_lime": {
+    "crown_radius": [
+      2,
+      3
+    ],
+    "height": [
+      3,
+      4
+    ],
+    "leaf_count": [
+      37,
+      102
+    ],
+    "samples": 3
+  },
+  "kumquat": {
+    "crown_radius": [
+      2,
+      3
+    ],
+    "height": [
+      3,
+      4
+    ],
+    "leaf_count": [
+      38,
+      61
+    ],
+    "samples": 3
+  },
+  "lawson_cypress": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      8,
+      14
+    ],
+    "leaf_count": [
+      122,
+      234
+    ],
+    "samples": 3
+  },
+  "lemon": {
+    "crown_radius": [
+      3,
+      5
+    ],
+    "height": [
+      4,
+      7
+    ],
+    "leaf_count": [
+      66,
+      145
+    ],
+    "samples": 3
+  },
+  "lime": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      4,
+      6
+    ],
+    "leaf_count": [
+      120,
+      161
+    ],
+    "samples": 3
+  },
+  "loblolly_pine": {
+    "crown_radius": [
+      5,
+      5
+    ],
+    "height": [
+      13,
+      21
+    ],
+    "leaf_count": [
+      170,
+      345
+    ],
+    "samples": 3
+  },
+  "logwood": {
+    "crown_radius": [
+      5,
+      6
+    ],
+    "height": [
+      11,
+      14
+    ],
+    "leaf_count": [
+      147,
+      276
+    ],
+    "samples": 3
+  },
+  "mahogany": {
+    "crown_radius": [
+      4,
+      7
+    ],
+    "height": [
+      6,
+      14
+    ],
+    "leaf_count": [
+      128,
+      327
+    ],
+    "samples": 3
+  },
+  "mandarin": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      4,
+      5
+    ],
+    "leaf_count": [
+      58,
+      98
+    ],
+    "samples": 3
+  },
+  "mango": {
+    "crown_radius": [
+      3,
+      7
+    ],
+    "height": [
+      6,
+      10
+    ],
+    "leaf_count": [
+      75,
+      437
+    ],
+    "samples": 3
+  },
+  "moonlight_magic_crepe_myrtle": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      3,
+      6
+    ],
+    "leaf_count": [
+      23,
+      105
+    ],
+    "samples": 14
+  },
+  "myrtle_ebony": {
+    "crown_radius": [
+      5,
+      6
+    ],
+    "height": [
+      11,
+      15
+    ],
+    "leaf_count": [
+      150,
+      215
+    ],
+    "samples": 3
+  },
+  "nectarine": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      3,
+      3
+    ],
+    "leaf_count": [
+      62,
+      113
+    ],
+    "samples": 3
+  },
+  "night_fuchsia": {
+    "crown_radius": [
+      4,
+      4
+    ],
+    "height": [
+      6,
+      6
+    ],
+    "leaf_count": [
+      87,
+      87
+    ],
+    "samples": 1
+  },
+  "nutmeg": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      8,
+      11
+    ],
+    "leaf_count": [
+      111,
+      302
+    ],
+    "samples": 3
+  },
+  "olive": {
+    "crown_radius": [
+      3,
+      5
+    ],
+    "height": [
+      4,
+      6
+    ],
+    "leaf_count": [
+      103,
+      137
+    ],
+    "samples": 3
+  },
+  "orange": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      4,
+      6
+    ],
+    "leaf_count": [
+      103,
+      147
+    ],
+    "samples": 3
+  },
+  "osage_orange": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      5,
+      5
+    ],
+    "leaf_count": [
+      183,
+      183
+    ],
+    "samples": 1
+  },
+  "papaya": {
+    "crown_radius": [
+      5,
+      6
+    ],
+    "height": [
+      8,
+      10
+    ],
+    "leaf_count": [
+      93,
+      106
+    ],
+    "samples": 3
+  },
+  "peach": {
+    "crown_radius": [
+      4,
+      6
+    ],
+    "height": [
+      5,
+      7
+    ],
+    "leaf_count": [
+      76,
+      92
+    ],
+    "samples": 3
+  },
+  "persimmon": {
+    "crown_radius": [
+      4,
+      6
+    ],
+    "height": [
+      7,
+      12
+    ],
+    "leaf_count": [
+      69,
+      219
+    ],
+    "samples": 3
+  },
+  "pink_ipe": {
+    "crown_radius": [
+      4,
+      6
+    ],
+    "height": [
+      7,
+      11
+    ],
+    "leaf_count": [
+      131,
+      190
+    ],
+    "samples": 4
+  },
+  "pink_ivory": {
+    "crown_radius": [
+      5,
+      6
+    ],
+    "height": [
+      6,
+      9
+    ],
+    "leaf_count": [
+      131,
+      176
+    ],
+    "samples": 2
+  },
+  "pistachio": {
+    "crown_radius": [
+      3,
+      5
+    ],
+    "height": [
+      5,
+      6
+    ],
+    "leaf_count": [
+      97,
+      218
+    ],
+    "samples": 3
+  },
+  "plantain": {
+    "crown_radius": [
+      4,
+      4
+    ],
+    "height": [
+      4,
+      6
+    ],
+    "leaf_count": [
+      30,
+      44
+    ],
+    "samples": 3
+  },
+  "plum": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      3,
+      4
+    ],
+    "leaf_count": [
+      46,
+      101
+    ],
+    "samples": 3
+  },
+  "pomegranate": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      3,
+      4
+    ],
+    "leaf_count": [
+      32,
+      52
+    ],
+    "samples": 3
+  },
+  "pomelo": {
+    "crown_radius": [
+      4,
+      5
+    ],
+    "height": [
+      4,
+      5
+    ],
+    "leaf_count": [
+      74,
+      121
+    ],
+    "samples": 3
+  },
+  "prairie_crabapple": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      4,
+      5
+    ],
+    "leaf_count": [
+      35,
+      65
+    ],
+    "samples": 3
+  },
+  "purple_blackthorn": {
+    "crown_radius": [
+      3,
+      5
+    ],
+    "height": [
+      4,
+      6
+    ],
+    "leaf_count": [
+      62,
+      116
+    ],
+    "samples": 3
+  },
+  "purple_crepe_myrtle": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      3,
+      6
+    ],
+    "leaf_count": [
+      23,
+      105
+    ],
+    "samples": 14
+  },
+  "purple_ipe": {
+    "crown_radius": [
+      4,
+      6
+    ],
+    "height": [
+      7,
+      11
+    ],
+    "leaf_count": [
+      131,
+      190
+    ],
+    "samples": 4
+  },
+  "purple_spiral": {
+    "crown_radius": [
+      6,
+      8
+    ],
+    "height": [
+      10,
+      10
+    ],
+    "leaf_count": [
+      108,
+      134
+    ],
+    "samples": 2
+  },
+  "red_banana": {
+    "crown_radius": [
+      3,
+      6
+    ],
+    "height": [
+      6,
+      14
+    ],
+    "leaf_count": [
+      21,
+      81
+    ],
+    "samples": 3
+  },
+  "red_crepe_myrtle": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      3,
+      6
+    ],
+    "leaf_count": [
+      23,
+      105
+    ],
+    "samples": 14
+  },
+  "red_delicious_apple": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      4,
+      5
+    ],
+    "leaf_count": [
+      65,
+      80
+    ],
+    "samples": 3
+  },
+  "red_maple": {
+    "crown_radius": [
+      2,
+      3
+    ],
+    "height": [
+      7,
+      9
+    ],
+    "leaf_count": [
+      63,
+      135
+    ],
+    "samples": 3
+  },
+  "rippling_willow": {
+    "crown_radius": [
+      5,
+      7
+    ],
+    "height": [
+      7,
+      10
+    ],
+    "leaf_count": [
+      118,
+      284
+    ],
+    "samples": 3
+  },
+  "rosewood": {
+    "crown_radius": [
+      6,
+      8
+    ],
+    "height": [
+      14,
+      16
+    ],
+    "leaf_count": [
+      197,
+      309
+    ],
+    "samples": 2
+  },
+  "rowan": {
+    "crown_radius": [
+      4,
+      5
+    ],
+    "height": [
+      5,
+      6
+    ],
+    "leaf_count": [
+      87,
+      167
+    ],
+    "samples": 3
+  },
+  "salak": {
+    "crown_radius": [
+      2,
+      3
+    ],
+    "height": [
+      3,
+      3
+    ],
+    "leaf_count": [
+      20,
+      23
+    ],
+    "samples": 3
+  },
+  "sand_pear": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      3,
+      4
+    ],
+    "leaf_count": [
+      82,
+      116
+    ],
+    "samples": 3
+  },
+  "sandalwood": {
+    "crown_radius": [
+      3,
+      6
+    ],
+    "height": [
+      8,
+      9
+    ],
+    "leaf_count": [
+      71,
+      166
+    ],
+    "samples": 3
+  },
+  "satsuma": {
+    "crown_radius": [
+      2,
+      3
+    ],
+    "height": [
+      3,
+      4
+    ],
+    "leaf_count": [
+      41,
+      49
+    ],
+    "samples": 3
+  },
+  "silver_lime": {
+    "crown_radius": [
+      2,
+      5
+    ],
+    "height": [
+      6,
+      8
+    ],
+    "leaf_count": [
+      55,
+      248
+    ],
+    "samples": 3
+  },
+  "slimy_delight": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      7,
+      12
+    ],
+    "leaf_count": [
+      103,
+      211
+    ],
+    "samples": 3
+  },
+  "socotra_dragon": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      5,
+      6
+    ],
+    "leaf_count": [
+      30,
+      74
+    ],
+    "samples": 3
+  },
+  "soul_tree": {
+    "crown_radius": [
+      4,
+      6
+    ],
+    "height": [
+      8,
+      13
+    ],
+    "leaf_count": [
+      91,
+      193
+    ],
+    "samples": 3
+  },
+  "sour_cherry": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      3,
+      5
+    ],
+    "leaf_count": [
+      39,
+      80
+    ],
+    "samples": 3
+  },
+  "soursop": {
+    "crown_radius": [
+      2,
+      2
+    ],
+    "height": [
+      4,
+      5
+    ],
+    "leaf_count": [
+      18,
+      54
+    ],
+    "samples": 3
+  },
+  "sparkle_cherry": {
+    "crown_radius": [
+      5,
+      5
+    ],
+    "height": [
+      7,
+      10
+    ],
+    "leaf_count": [
+      154,
+      218
+    ],
+    "samples": 3
+  },
+  "star_anise": {
+    "crown_radius": [
+      2,
+      2
+    ],
+    "height": [
+      3,
+      4
+    ],
+    "leaf_count": [
+      25,
+      53
+    ],
+    "samples": 3
+  },
+  "star_fruit": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      4,
+      5
+    ],
+    "leaf_count": [
+      93,
+      146
+    ],
+    "samples": 3
+  },
+  "sugar_apple": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      2,
+      4
+    ],
+    "leaf_count": [
+      91,
+      103
+    ],
+    "samples": 3
+  },
+  "sugar_maple": {
+    "crown_radius": [
+      3,
+      7
+    ],
+    "height": [
+      14,
+      16
+    ],
+    "leaf_count": [
+      267,
+      939
+    ],
+    "samples": 3
+  },
+  "swamp_gum": {
+    "crown_radius": [
+      6,
+      6
+    ],
+    "height": [
+      11,
+      18
+    ],
+    "leaf_count": [
+      102,
+      215
+    ],
+    "samples": 3
+  },
+  "sweet_chestnut": {
+    "crown_radius": [
+      11,
+      12
+    ],
+    "height": [
+      22,
+      23
+    ],
+    "leaf_count": [
+      1385,
+      1837
+    ],
+    "samples": 2
+  },
+  "sweet_crabapple": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      4,
+      5
+    ],
+    "leaf_count": [
+      73,
+      140
+    ],
+    "samples": 3
+  },
+  "sweetgum": {
+    "crown_radius": [
+      4,
+      5
+    ],
+    "height": [
+      14,
+      16
+    ],
+    "leaf_count": [
+      371,
+      583
+    ],
+    "samples": 3
+  },
+  "sycamore_fig": {
+    "crown_radius": [
+      6,
+      8
+    ],
+    "height": [
+      7,
+      9
+    ],
+    "leaf_count": [
+      235,
+      560
+    ],
+    "samples": 3
+  },
+  "tangerine": {
+    "crown_radius": [
+      3,
+      3
+    ],
+    "height": [
+      3,
+      4
+    ],
+    "leaf_count": [
+      46,
+      108
+    ],
+    "samples": 3
+  },
+  "thunder_bolt": {
+    "crown_radius": [
+      9,
+      10
+    ],
+    "height": [
+      14,
+      18
+    ],
+    "leaf_count": [
+      94,
+      180
+    ],
+    "samples": 3
+  },
+  "time_traveller": {
+    "crown_radius": [
+      7,
+      8
+    ],
+    "height": [
+      13,
+      18
+    ],
+    "leaf_count": [
+      273,
+      555
+    ],
+    "samples": 3
+  },
+  "tuscarora_crepe_myrtle": {
+    "crown_radius": [
+      2,
+      4
+    ],
+    "height": [
+      3,
+      6
+    ],
+    "leaf_count": [
+      23,
+      105
+    ],
+    "samples": 14
+  },
+  "walnut": {
+    "crown_radius": [
+      5,
+      5
+    ],
+    "height": [
+      6,
+      10
+    ],
+    "leaf_count": [
+      264,
+      307
+    ],
+    "samples": 2
+  },
+  "water_wonder": {
+    "crown_radius": [
+      7,
+      10
+    ],
+    "height": [
+      10,
+      14
+    ],
+    "leaf_count": [
+      292,
+      846
+    ],
+    "samples": 3
+  },
+  "wenge": {
+    "crown_radius": [
+      5,
+      7
+    ],
+    "height": [
+      11,
+      17
+    ],
+    "leaf_count": [
+      143,
+      254
+    ],
+    "samples": 3
+  },
+  "white_ipe": {
+    "crown_radius": [
+      4,
+      6
+    ],
+    "height": [
+      7,
+      11
+    ],
+    "leaf_count": [
+      131,
+      190
+    ],
+    "samples": 4
+  },
+  "white_poplar": {
+    "crown_radius": [
+      3,
+      4
+    ],
+    "height": [
+      13,
+      21
+    ],
+    "leaf_count": [
+      178,
+      720
+    ],
+    "samples": 3
+  },
+  "white_willow": {
+    "crown_radius": [
+      4,
+      9
+    ],
+    "height": [
+      7,
+      12
+    ],
+    "leaf_count": [
+      125,
+      694
+    ],
+    "samples": 3
+  },
+  "whitebeam": {
+    "crown_radius": [
+      3,
+      6
+    ],
+    "height": [
+      7,
+      9
+    ],
+    "leaf_count": [
+      204,
+      453
+    ],
+    "samples": 3
+  },
+  "wild_cherry": {
+    "crown_radius": [
+      4,
+      6
+    ],
+    "height": [
+      4,
+      7
+    ],
+    "leaf_count": [
+      94,
+      270
+    ],
+    "samples": 3
+  },
+  "zebrano": {
+    "crown_radius": [
+      5,
+      6
+    ],
+    "height": [
+      10,
+      16
+    ],
+    "leaf_count": [
+      98,
+      197
+    ],
+    "samples": 3
+  }
+}

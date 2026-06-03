@@ -1,0 +1,76 @@
+{
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "texture": "#texture",
+          "uv": [
+            6,
+            0,
+            10,
+            6
+          ]
+        },
+        "east": {
+          "texture": "#texture",
+          "uv": [
+            0,
+            6,
+            6,
+            10
+          ]
+        },
+        "north": {
+          "texture": "#texture",
+          "uv": [
+            6,
+            6,
+            10,
+            10
+          ]
+        },
+        "south": {
+          "texture": "#texture",
+          "uv": [
+            6,
+            6,
+            10,
+            10
+          ]
+        },
+        "up": {
+          "texture": "#texture",
+          "uv": [
+            6,
+            0,
+            10,
+            6
+          ]
+        },
+        "west": {
+          "texture": "#texture",
+          "uv": [
+            0,
+            6,
+            6,
+            10
+          ]
+        }
+      },
+      "from": [
+        6,
+        6,
+        0
+      ],
+      "to": [
+        10,
+        10,
+        6
+      ]
+    }
+  ],
+  "textures": {
+    "particle": "productivetrees:block/leaves/monkey_puzzle",
+    "texture": "productivetrees:block/leaves/monkey_puzzle"
+  }
+}

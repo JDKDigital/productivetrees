@@ -1,0 +1,94 @@
+{
+  "type": "minecraft:tree",
+  "config": {
+    "decorators": [
+      {
+        "type": "productivetrees:root_decorator",
+        "length": {
+          "type": "minecraft:uniform",
+          "max_inclusive": 3,
+          "min_inclusive": 1
+        },
+        "place_chance": 0.6,
+        "root_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "productivetrees:rose_gum_wood",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        }
+      },
+      {
+        "type": "productivetrees:taper_decorator",
+        "place_chance": 0.7,
+        "wood_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "productivetrees:rose_gum_wood",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        }
+      },
+      {
+        "type": "productivetrees:leaf_trim"
+      }
+    ],
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "foliage_placer": {
+      "type": "productivetrees:rough_foliage_placer",
+      "height": 4,
+      "offset": 0,
+      "radius": 5
+    },
+    "foliage_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "productivetrees:rose_gum_leaves",
+        "Properties": {
+          "distance": "7",
+          "persistent": "false",
+          "waterlogged": "false"
+        }
+      }
+    },
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 1,
+      "upper_size": 2
+    },
+    "trunk_placer": {
+      "type": "productivetrees:wide_trunk_placer",
+      "base_height": 48,
+      "branch_length": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 8,
+        "min_inclusive": 4
+      },
+      "branch_start": 0.6,
+      "height_rand_a": 8,
+      "height_rand_b": 0,
+      "radius": 1
+    },
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "productivetrees:rose_gum_log",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    }
+  }
+}

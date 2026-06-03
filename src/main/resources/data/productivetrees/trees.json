@@ -76,6 +76,7 @@
     }
   },
   "aspen": {
+    "megaFeature": "productivetrees:aspen_mega",
     "colors": {
       "leafColor": "#82b884",
       "logColor": "#bba8a1",
@@ -96,6 +97,7 @@
     }
   },
   "balsa": {
+    "megaFeature": "productivetrees:balsa_mega",
     "colors": {
       "leafColor": "#35793c",
       "logColor": "#e1c8cb",
@@ -123,6 +125,14 @@
       "flowerColor": "#aa6ca6",
       "unripeColor": "#5a9c32",
       "ripeColor": "#e1f500"
+    }
+  },
+  "bay_leaf": {
+    "style": "bay",
+    "colors": {
+      "leafColor": "#385622",
+      "logColor": "#484336",
+      "plankColor": "#cbc9db"
     }
   },
   "beech": {
@@ -176,6 +186,7 @@
     }
   },
   "black_cherry": {
+    "megaFeature": "productivetrees:black_cherry_mega",
     "colors": {
       "leafColor": "#364e14",
       "logColor": "#6b5e43",
@@ -190,6 +201,7 @@
     }
   },
   "black_ember": {
+    "megaFeature": "productivetrees:black_ember_mega",
     "decoration": {
       "lightLevel": 11
     },
@@ -201,6 +213,7 @@
     "fireproof": true
   },
   "black_locust": {
+    "megaFeature": "productivetrees:black_locust_mega",
     "colors": {
       "leafColor": "#86ab9a",
       "logColor": "#767678",
@@ -229,6 +242,9 @@
     }
   },
   "brazil_nut": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:brazil_nut_mega",
+    "megaConfiguration": 5,
     "colors": {
       "leafColor": "#365c09",
       "logColor": "#4e433a",
@@ -243,6 +259,8 @@
     }
   },
   "breadfruit": {
+    "megaFeature": "productivetrees:breadfruit_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#447f58",
       "logColor": "#858881",
@@ -257,6 +275,10 @@
     }
   },
   "brown_amber": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:brown_amber_mega",
+    "megaConfiguration": 3,
+    "largeMegaFeature": "productivetrees:brown_amber_giga",
     "colors": {
       "leafColor": "#651a00",
       "logColor": "#140302",
@@ -283,6 +305,7 @@
     }
   },
   "bull_pine": {
+    "megaFeature": "productivetrees:bull_pine_mega",
     "colors": {
       "leafColor": "#7f963e",
       "logColor": "#5a2c12",
@@ -352,6 +375,10 @@
     }
   },
   "cave_dweller": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:cave_dweller_mega",
+    "megaConfiguration": 3,
+    "largeMegaFeature": "productivetrees:cave_dweller_giga",
     "decoration": {
       "lightLevel": 11
     },
@@ -364,6 +391,8 @@
     "fallingLeaves": true
   },
   "cedar": {
+    "megaFeature": "productivetrees:cedar_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#4d8119",
       "logColor": "#645d5f",
@@ -371,6 +400,7 @@
     }
   },
   "cempedak": {
+    "megaFeature": "productivetrees:cempedak_mega",
     "colors": {
       "leafColor": "#225618",
       "logColor": "#41270c",
@@ -385,6 +415,7 @@
     }
   },
   "ceylon_ebony": {
+    "megaFeature": "productivetrees:ceylon_ebony_mega",
     "colors": {
       "leafColor": "#6e8f48",
       "logColor": "#221d27",
@@ -440,6 +471,7 @@
     }
   },
   "cocobolo": {
+    "megaFeature": "productivetrees:cocobolo_mega",
     "colors": {
       "leafColor": "#749e4a",
       "logColor": "#85737f",
@@ -489,6 +521,7 @@
     }
   },
   "copper_beech": {
+    "megaFeature": "productivetrees:copper_beech_mega",
     "colors": {
       "leafColor": "#392838",
       "logColor": "#60493a",
@@ -503,6 +536,7 @@
     }
   },
   "cork_oak": {
+    "megaFeature": "productivetrees:cork_oak_mega",
     "colors": {
       "leafColor": "#19230b",
       "logColor": "#bd9281",
@@ -545,6 +579,8 @@
     }
   },
   "douglas_fir": {
+    "megaFeature": "productivetrees:douglas_fir_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#626b32",
       "logColor": "#593f3b",
@@ -566,6 +602,8 @@
     }
   },
   "elm": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:elm_mega",
     "colors": {
       "leafColor": "#21514f",
       "logColor": "#dfc19e",
@@ -573,6 +611,7 @@
     }
   },
   "european_larch": {
+    "megaFeature": "productivetrees:european_larch_mega",
     "colors": {
       "leafColor": "#a1d97f",
       "logColor": "#494440",
@@ -593,6 +632,8 @@
     }
   },
   "firecracker": {
+    "megaFeature": "productivetrees:firecracker_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#dcceb3",
       "logColor": "#831e24",
@@ -641,6 +682,8 @@
     }
   },
   "ginkgo": {
+    "megaFeature": "productivetrees:ginkgo_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#b9bd1a",
       "leafColorFall": "#e8dd00",
@@ -669,7 +712,9 @@
     }
   },
   "grandidiers_baobab": {
+    "feature": "productivetrees:null",
     "megaFeature": "productivetrees:grandidiers_baobab_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#4e6e03",
       "logColor": "#e8dd00",
@@ -710,6 +755,8 @@
     }
   },
   "great_sallow": {
+    "megaFeature": "productivetrees:great_sallow_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#3d5b29",
       "logColor": "#4c4942",
@@ -738,6 +785,7 @@
     }
   },
   "hazel": {
+    "megaFeature": "productivetrees:hazel_mega",
     "colors": {
       "leafColor": "#7b9677",
       "logColor": "#876943",
@@ -752,6 +800,7 @@
     }
   },
   "holly": {
+    "megaFeature": "productivetrees:holly_mega",
     "colors": {
       "leafColor": "#3c6b33",
       "logColor": "#5c483d",
@@ -766,6 +815,7 @@
     }
   },
   "ipe": {
+    "megaFeature": "productivetrees:ipe_mega",
     "colors": {
       "leafColor": "#eaaf00",
       "logColor": "#603c00",
@@ -777,6 +827,7 @@
     }
   },
   "white_ipe": {
+    "megaFeature": "productivetrees:white_ipe_mega",
     "colors": {
       "leafColor": "#ededed",
       "logColor": "#333032",
@@ -788,6 +839,7 @@
     }
   },
   "pink_ipe": {
+    "megaFeature": "productivetrees:pink_ipe_mega",
     "colors": {
       "leafColor": "#db6eb8",
       "logColor": "#807679",
@@ -799,6 +851,7 @@
     }
   },
   "purple_ipe": {
+    "megaFeature": "productivetrees:purple_ipe_mega",
     "colors": {
       "leafColor": "#bea9df",
       "logColor": "#2c1c1e",
@@ -806,6 +859,8 @@
     }
   },
   "iroko": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:iroko_mega",
     "colors": {
       "leafColor": "#5e635f",
       "logColor": "#929486",
@@ -813,6 +868,8 @@
     }
   },
   "jackfruit": {
+    "megaFeature": "productivetrees:jackfruit_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#477d03",
       "logColor": "#636051",
@@ -841,6 +898,12 @@
     }
   },
   "kapok": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:kapok_mega",
+    "megaConfiguration": 5,
+    "decoration": {
+      "vine": "minecraft:vine"
+    },
     "colors": {
       "leafColor": "#6cb57a",
       "logColor": "#fae7c9",
@@ -874,6 +937,8 @@
     }
   },
   "lawson_cypress": {
+    "megaFeature": "productivetrees:lawson_cypress_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#3d7925",
       "logColor": "#3e3224",
@@ -942,6 +1007,8 @@
     }
   },
   "mango": {
+    "megaFeature": "productivetrees:mango_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#2e4719",
       "logColor": "#c29f67",
@@ -989,6 +1056,8 @@
     }
   },
   "night_fuchsia": {
+    "megaFeature": "productivetrees:night_fuchsia_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#651a00",
       "logColor": "#140302",
@@ -1014,6 +1083,7 @@
     }
   },
   "old_fustic": {
+    "megaFeature": "productivetrees:old_fustic_mega",
     "colors": {
       "leafColor": "#8db092",
       "logColor": "#bba979",
@@ -1048,6 +1118,7 @@
     }
   },
   "osage_orange": {
+    "megaFeature": "productivetrees:osage_orange_mega",
     "colors": {
       "leafColor": "#3b470a",
       "logColor": "#6d5650",
@@ -1061,6 +1132,8 @@
     }
   },
   "padauk": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:padauk_mega",
     "colors": {
       "leafColor": "#69803c",
       "logColor": "#a18951",
@@ -1068,6 +1141,8 @@
     }
   },
   "pandanus": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:pandanus_mega",
     "colors": {
       "leafColor": "#80ae42",
       "logColor": "#846f4e",
@@ -1108,6 +1183,8 @@
     }
   },
   "pecan": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:pecan_mega",
     "colors": {
       "leafColor": "#498952",
       "logColor": "#878173",
@@ -1135,6 +1212,7 @@
     }
   },
   "pink_ivory": {
+    "megaFeature": "productivetrees:pink_ivory_mega",
     "colors": {
       "leafColor": "#6d924f",
       "logColor": "#3a3024",
@@ -1224,6 +1302,9 @@
     }
   },
   "purpleheart": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:purpleheart_mega",
+    "megaConfiguration": 5,
     "colors": {
       "leafColor": "#414d01",
       "logColor": "#c9b99f",
@@ -1256,6 +1337,7 @@
     }
   },
   "purple_spiral": {
+    "megaFeature": "productivetrees:purple_spiral_mega",
     "decoration": {
       "lightLevel": 11
     },
@@ -1268,6 +1350,9 @@
     "fallingLeaves": true
   },
   "rainbow_gum": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:rainbow_gum_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#55405b",
       "logColor": "#202e1d",
@@ -1333,6 +1418,7 @@
     "fireproof": true
   },
   "rosewood": {
+    "megaFeature": "productivetrees:rosewood_mega",
     "colors": {
       "leafColor": "#1f3413",
       "logColor": "#3a2a1d",
@@ -1340,6 +1426,9 @@
     }
   },
   "rose_gum": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:rose_gum_mega",
+    "megaConfiguration": 3,
     "colors": {
       "leafColor": "#3d5845",
       "logColor": "#271811",
@@ -1413,7 +1502,10 @@
     }
   },
   "sequoia": {
+    "feature": "productivetrees:null",
     "megaFeature": "productivetrees:sequoia_mega",
+    "megaConfiguration": 5,
+    "largeMegaFeature": "productivetrees:sequoia_giga",
     "colors": {
       "leafColor": "#75a277",
       "logColor": "#6b3e29",
@@ -1421,6 +1513,7 @@
     }
   },
   "silver_fir": {
+    "megaFeature": "productivetrees:silver_fir_mega",
     "colors": {
       "leafColor": "#4b6741",
       "logColor": "#606060",
@@ -1570,6 +1663,8 @@
     }
   },
   "sweet_chestnut": {
+    "megaFeature": "productivetrees:sweet_chestnut_mega",
+    "megaConfiguration": 5,
     "colors": {
       "leafColor": "#8a933a",
       "logColor": "#8e7658",
@@ -1680,6 +1775,7 @@
     "fallingLeaves": true
   },
   "walnut": {
+    "megaFeature": "productivetrees:walnut_mega",
     "colors": {
       "leafColor": "#648e20",
       "logColor": "#a4956d",
@@ -1713,6 +1809,9 @@
     }
   },
   "western_hemlock": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:western_hemlock_mega",
+    "megaConfiguration": 5,
     "colors": {
       "leafColor": "#8baf71",
       "logColor": "#4d4328",
@@ -1755,6 +1854,9 @@
     }
   },
   "yellow_meranti": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:yellow_meranti_mega",
+    "megaConfiguration": 5,
     "colors": {
       "leafColor": "#aacf5e",
       "logColor": "#423d01",
@@ -1762,6 +1864,9 @@
     }
   },
   "yew": {
+    "feature": "productivetrees:null",
+    "megaFeature": "productivetrees:yew_mega",
+    "largeMegaFeature": "productivetrees:yew_mega_large",
     "colors": {
       "leafColor": "#526d3a",
       "logColor": "#665754",

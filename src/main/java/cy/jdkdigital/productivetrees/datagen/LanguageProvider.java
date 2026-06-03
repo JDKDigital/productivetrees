@@ -79,6 +79,7 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add(TreeRegistrator.CINNAMON.get(), "Cinnamon");
         add(TreeRegistrator.NUTMEG.get(), "Nutmeg");
         add(TreeRegistrator.STAR_ANISE.get(), "Star Anise");
+        add(TreeRegistrator.BAY_LEAF.get(), "Bay Leaf");
         add(TreeRegistrator.CORK.get(), "Cork");
         add(TreeRegistrator.FUSTIC.get(), "Fustic");
         add(TreeRegistrator.HAEMATOXYLIN.get(), "Haematoxylin");
@@ -102,6 +103,10 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         TreeFinder.trees.forEach((id, treeObject) -> {
             String name = id.getPath();
             add(TreeUtil.getBlock(id, "_leaves"), LangUtil.capName(name) + " Leaves");
+            if (name.equals("monkey_puzzle")) {
+                add(TreeUtil.getBlock(id, "_small_leaves"), LangUtil.capName(name) + " Small Leaves");
+                add(TreeUtil.getBlock(id, "_medium_leaves"), LangUtil.capName(name) + " Medium Leaves");
+            }
             add(TreeUtil.getBlock(id, "_sapling"), LangUtil.capName(name) + " Sapling");
             add(TreeUtil.getBlock(id, "_potted_sapling"), LangUtil.capName(name) + " Potted Sapling");
             if (treeObject.hasFruit()) {
@@ -160,6 +165,7 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
             put("balsa", "Ochroma pyramidale");
             put("balsam_fir", "Abies balsamea");
             put("banana", "Musa acuminata");
+            put("bay_leaf", "Laurus nobilis");
             put("beech", "Fagus sylvatica");
             put("blackthorn", "Prunus spinosa");
             put("black_cherry", "Prunus serotina");

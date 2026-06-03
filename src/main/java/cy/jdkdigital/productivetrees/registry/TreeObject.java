@@ -25,6 +25,8 @@ public class TreeObject extends WoodObject
 {
     private final ResourceKey<ConfiguredFeature<?, ?>> feature;
     private final ResourceKey<ConfiguredFeature<?, ?>> megaFeature;
+    private final int megaConfiguration;
+    private final ResourceKey<ConfiguredFeature<?, ?>> largeMegaFeature;
     private final String style;
     private final Fruit fruit;
     private final MutationInfo mutationInfo;
@@ -34,10 +36,12 @@ public class TreeObject extends WoodObject
     private final GrowthCondition growthCondition;
     private final Decoration decoration;
 
-    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, String style, Optional<ResourceLocation> stripDrop, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
+    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, int megaConfiguration, ResourceKey<ConfiguredFeature<?, ?>> largeMegaFeature, String style, Optional<ResourceLocation> stripDrop, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
         super(id, fireProof, colors, stripDrop);
         this.feature = feature;
         this.megaFeature = megaFeature;
+        this.megaConfiguration = megaConfiguration;
+        this.largeMegaFeature = largeMegaFeature;
         this.style = style;
         this.fruit = fruit;
         this.mutationInfo = mutationInfo;
@@ -53,6 +57,8 @@ public class TreeObject extends WoodObject
                 ResourceLocation.CODEC.fieldOf("id").orElse(id).forGetter(TreeObject::getId),
                 ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").orElse(TreeRegistrator.NULL_FEATURE).forGetter(TreeObject::getFeature),
                 ResourceLocation.CODEC.fieldOf("megaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : TreeRegistrator.NULL_FEATURE, (value) -> value != null ? value.location() : null).forGetter(TreeObject::getMegaFeature),
+                Codec.INT.fieldOf("megaConfiguration").orElse(2).forGetter(TreeObject::getMegaConfiguration),
+                ResourceLocation.CODEC.fieldOf("largeMegaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : TreeRegistrator.NULL_FEATURE, (value) -> value != null ? value.location() : null).forGetter(TreeObject::getLargeMegaFeature),
                 Codec.STRING.fieldOf("style").orElse(id.getPath()).forGetter(TreeObject::getStyleName),
                 ResourceLocation.CODEC.optionalFieldOf("stripDrop").forGetter(TreeObject::getStripDrop),
                 TreeColors.CODEC.fieldOf("colors").orElse(TreeColors.DEFAULT).forGetter(TreeObject::getColors),
@@ -73,6 +79,14 @@ public class TreeObject extends WoodObject
 
     public ResourceKey<ConfiguredFeature<?, ?>> getMegaFeature() {
         return megaFeature;
+    }
+
+    public int getMegaConfiguration() {
+        return megaConfiguration;
+    }
+
+    public ResourceKey<ConfiguredFeature<?, ?>> getLargeMegaFeature() {
+        return largeMegaFeature;
     }
 
     public WoodSet getStyle() {

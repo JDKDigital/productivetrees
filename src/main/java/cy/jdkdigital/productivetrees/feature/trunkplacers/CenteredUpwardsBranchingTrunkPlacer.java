@@ -23,17 +23,19 @@ import java.util.function.BiConsumer;
 public class CenteredUpwardsBranchingTrunkPlacer extends UpwardsBranchingTrunkPlacer
 {
     public static final MapCodec<CenteredUpwardsBranchingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
-        return trunkPlacerParts(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter((trunkPlacer) -> trunkPlacer.extraBranchSteps), Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter((trunkPlacer) -> trunkPlacer.placeBranchPerLogProbability), IntProvider.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter((trunkPlacer) -> trunkPlacer.extraBranchLength))).apply(instance, CenteredUpwardsBranchingTrunkPlacer::new);
+        return trunkPlacerParts(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter((trunkPlacer) -> trunkPlacer.extraBranchSteps), Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter((trunkPlacer) -> trunkPlacer.placeBranchPerLogProbability), IntProvider.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter((trunkPlacer) -> trunkPlacer.extraBranchLength), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("branch_start", 0.33F).forGetter((trunkPlacer) -> trunkPlacer.branchStartFraction))).apply(instance, CenteredUpwardsBranchingTrunkPlacer::new);
     });
     private final IntProvider extraBranchSteps;
     private final float placeBranchPerLogProbability;
     private final IntProvider extraBranchLength;
+    private final float branchStartFraction;
 
-    public CenteredUpwardsBranchingTrunkPlacer(int height, int randA, int randB, IntProvider extraBranchSteps, float placeBranchPerLogProbability, IntProvider extraBranchLength) {
+    public CenteredUpwardsBranchingTrunkPlacer(int height, int randA, int randB, IntProvider extraBranchSteps, float placeBranchPerLogProbability, IntProvider extraBranchLength, float branchStartFraction) {
         super(height, randA, randB, extraBranchSteps, placeBranchPerLogProbability, extraBranchLength, HolderSet.direct());
         this.extraBranchSteps = extraBranchSteps;
         this.placeBranchPerLogProbability = placeBranchPerLogProbability;
         this.extraBranchLength = extraBranchLength;
+        this.branchStartFraction = branchStartFraction;
     }
 
     @Override
@@ -46,10 +48,11 @@ public class CenteredUpwardsBranchingTrunkPlacer extends UpwardsBranchingTrunkPl
         List<FoliagePlacer.FoliageAttachment> list = Lists.newArrayList();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
 
-        int bleed = pFreeTreeHeight / 3;
-        for (int i = bleed; i < pFreeTreeHeight - bleed; ++i) {
+        // branches start above this fraction of the trunk, and never on the bottom three logs (keeps a bare bole)
+        int branchStart = Math.max(3, Math.round(pFreeTreeHeight * this.branchStartFraction));
+        for (int i = 0; i < pFreeTreeHeight; ++i) {
             int j = pPos.getY() + i;
-            if (this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.set(pPos.getX(), j, pPos.getZ()), pConfig) && i < pFreeTreeHeight - 1 && pRandom.nextFloat() < this.placeBranchPerLogProbability) {
+            if (this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.set(pPos.getX(), j, pPos.getZ()), pConfig) && i >= branchStart && i < pFreeTreeHeight - 1 && pRandom.nextFloat() < this.placeBranchPerLogProbability) {
                 Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(pRandom);
                 int k = this.extraBranchLength.sample(pRandom);
                 int l = Math.max(0, k - this.extraBranchLength.sample(pRandom) - 1);

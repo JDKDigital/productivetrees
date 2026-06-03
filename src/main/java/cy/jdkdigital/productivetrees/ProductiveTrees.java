@@ -3,6 +3,7 @@ package cy.jdkdigital.productivetrees;
 import com.mojang.logging.LogUtils;
 import cy.jdkdigital.productivetrees.registry.ClientRegistration;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
+import cy.jdkdigital.productivetrees.util.TreeUtil;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.SharedConstants;
 import net.minecraft.Util;
@@ -21,6 +22,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
@@ -29,6 +32,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -95,7 +99,38 @@ public class ProductiveTrees
         TreeRegistrator.init();
         ClientRegistration.init();
 
+        modEventBus.addListener(this::commonSetup);
+
         modContainer.registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
+    }
+
+    private static final String[] FLAMMABLE_LOGS = {"_log", "_wood", "_stripped_log", "_stripped_wood"};
+    private static final String[] FLAMMABLE_PRODUCTS = {"_planks", "_stairs", "_slab", "_fence", "_fence_gate", "_door", "_trapdoor", "_pressure_plate", "_button", "_bookshelf"};
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            FireBlock fire = (FireBlock) Blocks.FIRE;
+            TreeFinder.trees.forEach((id, tree) -> {
+                if (tree.isFireProof()) {
+                    return;
+                }
+                setFlammable(fire, id, "_leaves", 30, 60);
+                setFlammable(fire, id, "_fruit", 30, 60);
+                for (String suffix : FLAMMABLE_LOGS) {
+                    setFlammable(fire, id, suffix, 5, 5);
+                }
+                for (String suffix : FLAMMABLE_PRODUCTS) {
+                    setFlammable(fire, id, suffix, 5, 20);
+                }
+            });
+        });
+    }
+
+    private static void setFlammable(FireBlock fire, ResourceLocation tree, String suffix, int encouragement, int flammability) {
+        Block block = TreeUtil.getBlock(tree, suffix);
+        if (block != Blocks.AIR) {
+            fire.setFlammable(block, encouragement, flammability);
+        }
     }
 
     private static DataGenerator generator;

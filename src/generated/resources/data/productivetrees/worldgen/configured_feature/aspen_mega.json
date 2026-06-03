@@ -1,0 +1,82 @@
+{
+  "type": "minecraft:tree",
+  "config": {
+    "decorators": [
+      {
+        "type": "productivetrees:taper_decorator",
+        "place_chance": 0.7,
+        "wood_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "productivetrees:aspen_wood",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        }
+      },
+      {
+        "type": "productivetrees:leaf_trim"
+      }
+    ],
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "foliage_placer": {
+      "type": "productivetrees:aspen_foliage_placer",
+      "offset": 0,
+      "radius": 2,
+      "section_count": 5,
+      "section_gap": 2,
+      "section_height": 2
+    },
+    "foliage_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "productivetrees:aspen_leaves",
+        "Properties": {
+          "distance": "7",
+          "persistent": "false",
+          "waterlogged": "false"
+        }
+      }
+    },
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 1,
+      "upper_size": 2
+    },
+    "trunk_placer": {
+      "type": "productivetrees:tapered_mega_trunk_placer",
+      "base_height": 24,
+      "branch_count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 0,
+        "min_inclusive": 0
+      },
+      "branch_length": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 1,
+        "min_inclusive": 1
+      },
+      "flare_height": 2,
+      "height_rand_a": 6,
+      "height_rand_b": 0
+    },
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "productivetrees:aspen_log",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    }
+  }
+}

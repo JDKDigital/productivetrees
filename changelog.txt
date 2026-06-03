@@ -1,3 +1,10 @@
+1.21.1-1.0.0
+
+- Added new custom tree features for each tree
+- Fixed flammability of wood and leaves
+- Added Bay Leaf tree
+
+
 1.21.1-0.8.1
 
 - Populate c:stripped_logs and c:stripped_woods tags
