@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:socotra_dragon_planks"
-    }
+    "#": "productivetrees:socotra_dragon_planks"
   },
   "pattern": [
     "###",

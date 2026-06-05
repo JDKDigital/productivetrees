@@ -1,12 +1,13 @@
 package cy.jdkdigital.productivetrees;
 
 import com.mojang.logging.LogUtils;
+import cy.jdkdigital.productivetrees.gametest.ProductiveTreesGameTests;
 import cy.jdkdigital.productivetrees.registry.ClientRegistration;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.SharedConstants;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleType;
@@ -14,7 +15,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.registries.VanillaRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -30,7 +31,8 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.ModContainer;
@@ -43,6 +45,8 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.slf4j.Logger;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @Mod(ProductiveTrees.MODID)
@@ -53,10 +57,10 @@ public class ProductiveTrees
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static ResourceLocation EMPTY_RL = ResourceLocation.fromNamespaceAndPath(MODID, "");
+    public static Identifier EMPTY_RL = Identifier.fromNamespaceAndPath(MODID, "");
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK, MODID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, MODID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(BuiltInRegistries.FLUID, MODID);
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.FLUID_TYPES, MODID);
     public static final DeferredRegister<MenuType<?>> CONTAINER_TYPES = DeferredRegister.create(BuiltInRegistries.MENU, MODID);
@@ -66,7 +70,7 @@ public class ProductiveTrees
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, MODID);
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(BuiltInRegistries.FEATURE, MODID);
     public static final DeferredRegister<TreeDecoratorType<?>> TREE_DECORATORS = DeferredRegister.create(BuiltInRegistries.TREE_DECORATOR_TYPE, MODID);
-    public static final DeferredRegister<LootPoolEntryType> LOOT_POOL_ENTRIES = DeferredRegister.create(Registries.LOOT_POOL_ENTRY_TYPE, MODID);
+    public static final DeferredRegister<MapCodec<? extends LootPoolEntryContainer>> LOOT_POOL_ENTRIES = DeferredRegister.create(Registries.LOOT_POOL_ENTRY_TYPE, MODID);
     public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(BuiltInRegistries.POINT_OF_INTEREST_TYPE, MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
     public static final DeferredRegister<FoliagePlacerType<?>> FOLIAGE_PLACERS = DeferredRegister.create(Registries.FOLIAGE_PLACER_TYPE, MODID);
@@ -101,44 +105,49 @@ public class ProductiveTrees
 
         modEventBus.addListener(this::commonSetup);
 
+        ProductiveTreesGameTests.init();
+        modEventBus.addListener(ProductiveTreesGameTests::onRegisterGameTests);
+
         modContainer.registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
     }
 
     private static final String[] FLAMMABLE_LOGS = {"_log", "_wood", "_stripped_log", "_stripped_wood"};
     private static final String[] FLAMMABLE_PRODUCTS = {"_planks", "_stairs", "_slab", "_fence", "_fence_gate", "_door", "_trapdoor", "_pressure_plate", "_button", "_bookshelf"};
 
+    public static final Map<Block, int[]> FLAMMABILITY = new HashMap<>();
+
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            FireBlock fire = (FireBlock) Blocks.FIRE;
             TreeFinder.trees.forEach((id, tree) -> {
                 if (tree.isFireProof()) {
                     return;
                 }
-                setFlammable(fire, id, "_leaves", 30, 60);
-                setFlammable(fire, id, "_fruit", 30, 60);
+                setFlammable(id, "_leaves", 30, 60);
+                setFlammable(id, "_fruit", 30, 60);
                 for (String suffix : FLAMMABLE_LOGS) {
-                    setFlammable(fire, id, suffix, 5, 5);
+                    setFlammable(id, suffix, 5, 5);
                 }
                 for (String suffix : FLAMMABLE_PRODUCTS) {
-                    setFlammable(fire, id, suffix, 5, 20);
+                    setFlammable(id, suffix, 5, 20);
                 }
             });
         });
     }
 
-    private static void setFlammable(FireBlock fire, ResourceLocation tree, String suffix, int encouragement, int flammability) {
+    private static void setFlammable(Identifier tree, String suffix, int encouragement, int flammability) {
         Block block = TreeUtil.getBlock(tree, suffix);
         if (block != Blocks.AIR) {
-            fire.setFlammable(block, encouragement, flammability);
+            FLAMMABILITY.put(block, new int[]{encouragement, flammability});
         }
     }
 
-    private static DataGenerator generator;
-    private static void registerDataGen() {
-        generator = new DataGenerator(TreeFinder.DYNAMIC_RESOURCE_PATH, SharedConstants.getCurrentVersion(), true);
-        CompletableFuture<HolderLookup.Provider> lookupProvider = CompletableFuture.supplyAsync(VanillaRegistries::createLookup, Util.backgroundExecutor());
-        TreeRegistrator.registerDatagen(generator, lookupProvider);
-    }
+    // TODO: restore the in-game datagen runner once the datagen subsystem is ported to 26.1
+//    private static DataGenerator generator;
+//    private static void registerDataGen() {
+//        generator = new DataGenerator(TreeFinder.DYNAMIC_RESOURCE_PATH, SharedConstants.getCurrentVersion(), true);
+//        CompletableFuture<HolderLookup.Provider> lookupProvider = CompletableFuture.supplyAsync(VanillaRegistries::createLookup, Util.backgroundExecutor());
+//        TreeRegistrator.registerDatagen(generator, lookupProvider);
+//    }
 
     static boolean hasGenerated = false;
     public static void generateData() {

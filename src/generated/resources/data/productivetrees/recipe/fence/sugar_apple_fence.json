@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "fence",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "productivetrees:sugar_apple_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "productivetrees:sugar_apple_planks"
   },
   "pattern": [
     "W#W",

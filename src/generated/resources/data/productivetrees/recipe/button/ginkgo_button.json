@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:ginkgo_planks"
-    }
+    "productivetrees:ginkgo_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:ginkgo_button"
   }
 }

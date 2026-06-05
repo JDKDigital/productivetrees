@@ -50,7 +50,7 @@ public class FruitLeafPlacerDecorator extends TreeDecorator
         var rand = context.random();
         context.leaves().forEach(blockPos -> {
             if (count.get() < maxFruits && context.isAir(blockPos.below()) && rand.nextFloat() < density) {
-                context.setBlock(blockPos.below(), fruitProvider.getState(rand, blockPos.below()));
+                context.setBlock(blockPos.below(), fruitProvider.getState(context.level(), rand, blockPos.below()));
                 count.getAndIncrement();
             }
         });

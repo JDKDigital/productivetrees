@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/cinnamon_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -14067443
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -12632265
+      }
+    ]
+  }
+}

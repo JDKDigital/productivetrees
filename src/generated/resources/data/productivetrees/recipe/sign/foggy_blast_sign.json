@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:foggy_blast_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:foggy_blast_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

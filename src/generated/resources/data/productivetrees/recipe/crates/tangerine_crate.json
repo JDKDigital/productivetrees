@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/tangerine"
-    },
-    "R": {
-      "item": "productivetrees:tangerine"
-    }
+    "#": "#c:fruits/tangerine",
+    "R": "productivetrees:tangerine"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:tangerine_crate"
   }
 }

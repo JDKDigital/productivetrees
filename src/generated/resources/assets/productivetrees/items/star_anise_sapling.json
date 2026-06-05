@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/star_anise_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -10587317
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -11581627
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8237294
+      }
+    ]
+  }
+}

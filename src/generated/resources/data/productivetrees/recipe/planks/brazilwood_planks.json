@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:brazilwood_logs"
-    }
+    "#productivetrees:brazilwood_logs"
   ],
   "result": {
     "count": 4,

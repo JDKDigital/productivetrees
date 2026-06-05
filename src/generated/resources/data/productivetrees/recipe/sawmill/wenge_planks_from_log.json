@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:wenge_logs"
-  },
+  "input": "#productivetrees:wenge_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:wenge_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

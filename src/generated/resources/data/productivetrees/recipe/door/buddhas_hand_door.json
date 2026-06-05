@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:buddhas_hand_planks"
-    }
+    "#": "productivetrees:buddhas_hand_planks"
   },
   "pattern": [
     "##",

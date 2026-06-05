@@ -12,19 +12,21 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nonnull;
 
 public class SawmillRecipeCategory implements IRecipeCategory<SawmillRecipe>
 {
+    protected static final int BACKGROUND_WIDTH = 130;
+    protected static final int BACKGROUND_HEIGHT = 60;
     private final IDrawable background;
     private final IDrawable icon;
 
     public SawmillRecipeCategory(IGuiHelper guiHelper) {
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/sawmill.png");
-        this.background = guiHelper.createDrawable(location, 0, 0, 130, 60);
+        Identifier location = Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/sawmill.png");
+        this.background = guiHelper.createDrawable(location, 0, 0, BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
         this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TreeRegistrator.SAWMILL.get()));
     }
 
@@ -39,8 +41,17 @@ public class SawmillRecipeCategory implements IRecipeCategory<SawmillRecipe>
         return Component.translatable("jei.productivetrees.sawmill");
     }
 
-    @Nonnull
     @Override
+    public int getWidth() {
+        return BACKGROUND_WIDTH;
+    }
+
+    @Override
+    public int getHeight() {
+        return BACKGROUND_HEIGHT;
+    }
+
+    @SuppressWarnings("unused")
     public IDrawable getBackground() {
         return this.background;
     }

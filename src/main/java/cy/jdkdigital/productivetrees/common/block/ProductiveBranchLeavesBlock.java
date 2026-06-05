@@ -4,10 +4,11 @@ import cy.jdkdigital.productivetrees.registry.TreeObject;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.PipeBlock;
@@ -72,8 +73,8 @@ public class ProductiveBranchLeavesBlock extends ProductiveLeavesBlock
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighbourState, LevelAccessor level, BlockPos pos, BlockPos neighbourPos) {
-        BlockState updated = super.updateShape(state, direction, neighbourState, level, pos, neighbourPos);
+    public BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction direction, BlockPos neighbourPos, BlockState neighbourState, RandomSource random) {
+        BlockState updated = super.updateShape(state, level, ticks, pos, direction, neighbourPos, neighbourState, random);
         return updated.setValue(PROPERTY_BY_DIRECTION.get(direction), canConnectTo(neighbourState));
     }
 

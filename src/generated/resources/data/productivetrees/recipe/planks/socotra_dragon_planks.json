@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:socotra_dragon_logs"
-    }
+    "#productivetrees:socotra_dragon_logs"
   ],
   "result": {
     "count": 4,

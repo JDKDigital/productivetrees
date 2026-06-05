@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:mahogany_log"
-    }
+    "#": "productivetrees:mahogany_log"
   },
   "pattern": [
     "##",

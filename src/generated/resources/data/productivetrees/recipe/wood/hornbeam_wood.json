@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:hornbeam_log"
-    }
+    "#": "productivetrees:hornbeam_log"
   },
   "pattern": [
     "##",

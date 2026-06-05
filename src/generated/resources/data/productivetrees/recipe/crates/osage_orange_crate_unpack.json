@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:osage_orange_crate"
-    }
+    "productivetrees:osage_orange_crate"
   ],
   "result": {
     "count": 9,

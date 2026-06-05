@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees.util;
 
 import com.mojang.datafixers.util.Pair;
+import cy.jdkdigital.productivelib.compat.jei.RecipeMapCache;
 import cy.jdkdigital.productivelib.util.ColorUtil;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.*;
@@ -14,16 +15,18 @@ import cy.jdkdigital.productivetrees.registry.TreeObject;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.TypedDataComponent;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.item.crafting.RecipeMap;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -87,16 +90,16 @@ public class TreeUtil
                 return ColorUtil.getCacheColor(leafBlock.getTree().getLeafColor());
             }
             if (leaf.equals(Blocks.SPRUCE_LEAVES)) {
-                return FoliageColor.getEvergreenColor();
+                return FoliageColor.FOLIAGE_EVERGREEN;
             }
             if (leaf.equals(Blocks.BIRCH_LEAVES)) {
-                return FoliageColor.getBirchColor();
+                return FoliageColor.FOLIAGE_BIRCH;
             }
         }
         if (lightReader != null && pos != null) {
             return BiomeColors.getAverageFoliageColor(lightReader, pos);
         }
-        return FoliageColor.getDefaultColor();
+        return FoliageColor.FOLIAGE_DEFAULT;
     }
 
     public static ItemStack getLeafFromSapling(ItemStack saplingStack) {
@@ -108,9 +111,9 @@ public class TreeUtil
         }
         var resourceLocation = BuiltInRegistries.ITEM.getKey(saplingStack.getItem());
         if (resourceLocation != null) {
-            var block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_sapling", "_propagule").replace("_sapling", "_leaves")));
+            var block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_sapling", "_propagule").replace("_sapling", "_leaves"))).map(Holder::value).orElse(Blocks.AIR);
             if (block.equals(Blocks.AIR)) {
-                block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p + "_leaves"));
+                block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p + "_leaves")).map(Holder::value).orElse(Blocks.AIR);
             }
             if (block != null) {
                 return new ItemStack(block);
@@ -128,12 +131,12 @@ public class TreeUtil
         }
         var resourceLocation = BuiltInRegistries.ITEM.getKey(leafStack.getItem());
         if (resourceLocation != null) {
-            var block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_leaves", "_sapling")));
+            var block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_leaves", "_sapling"))).map(Holder::value).orElse(Blocks.AIR);
             if (block.equals(Blocks.AIR)) {
-                block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_leaves", "_propagule")));
+                block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_leaves", "_propagule"))).map(Holder::value).orElse(Blocks.AIR);
             }
             if (block.equals(Blocks.AIR)) {
-                block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_leaves", "")));
+                block = BuiltInRegistries.BLOCK.get(resourceLocation.withPath(p -> p.replace("_leaves", ""))).map(Holder::value).orElse(Blocks.AIR);
             }
             if (block != null) {
                 return new ItemStack(block);
@@ -189,7 +192,8 @@ public class TreeUtil
                 return sawmillRecipeCache.get(cacheItem);
             }
 
-            List<RecipeHolder<SawmillRecipe>> recipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.SAW_MILLLING_TYPE.get());
+            RecipeMap recipeMap = level instanceof ServerLevel serverLevel ? serverLevel.recipeAccess().recipeMap() : RecipeMapCache.getRecipeMap();
+            var recipes = recipeMap.byType(TreeRegistrator.SAW_MILLLING_TYPE.get());
             for (RecipeHolder<SawmillRecipe> recipe : recipes) {
                 if (recipe.value().input().test(stack)) {
                     sawmillRecipeCache.put(cacheItem, recipe);
@@ -206,7 +210,7 @@ public class TreeUtil
         return pollenStack;
     }
 
-    public static boolean isSpecialTree(ResourceLocation id) {
+    public static boolean isSpecialTree(Identifier id) {
         return  id.getPath().equals("cave_dweller") || // gray
                 id.getPath().equals("brown_amber"); // brown
     }
@@ -215,8 +219,8 @@ public class TreeUtil
         return name.equals("brown_amber") || name.equals("slimy_delight") || name.equals("foggy_blast") || name.equals("soul_tree") || name.equals("water_wonder");
     }
 
-    public static Block getBlock(ResourceLocation tree, String name) {
-        return BuiltInRegistries.BLOCK.get(tree.withPath(p -> p + name));
+    public static Block getBlock(Identifier tree, String name) {
+        return BuiltInRegistries.BLOCK.get(tree.withPath(p -> p + name)).map(Holder::value).orElse(Blocks.AIR);
     }
 
     public static TreeObject getTree(Block block) {
@@ -240,7 +244,7 @@ public class TreeUtil
         if (!uniqueLeaves.isEmpty()) {
             // Pollinate leaves
             Map<RecipeHolder<TreePollinationRecipe>, Pair<BlockState, BlockState>> matchedRecipes = new HashMap<>();
-            var allRecipes = level.getRecipeManager().getAllRecipesFor(TreeRegistrator.TREE_POLLINATION_TYPE.get());
+            var allRecipes = ((ServerLevel) level).recipeAccess().recipeMap().byType(TreeRegistrator.TREE_POLLINATION_TYPE.get());
             allRecipes.forEach(treePollinationRecipe -> {
                 if (!matchedRecipes.containsKey(treePollinationRecipe)) {
                     uniqueLeaves.forEach(stateA -> {
@@ -254,17 +258,17 @@ public class TreeUtil
             });
 
             if (!matchedRecipes.isEmpty()) {
-                RecipeHolder<TreePollinationRecipe> pickedRecipe = (RecipeHolder<TreePollinationRecipe>) matchedRecipes.keySet().toArray()[level.random.nextInt(matchedRecipes.size())];
+                RecipeHolder<TreePollinationRecipe> pickedRecipe = (RecipeHolder<TreePollinationRecipe>) matchedRecipes.keySet().toArray()[level.getRandom().nextInt(matchedRecipes.size())];
                 Pair<BlockState, BlockState> states = matchedRecipes.get(pickedRecipe);
 
-                BlockPos posA = level.random.nextBoolean() ? leafMap.get(states.getFirst()) : leafMap.get(states.getSecond());
+                BlockPos posA = level.getRandom().nextBoolean() ? leafMap.get(states.getFirst()) : leafMap.get(states.getSecond());
 
-                if (level.random.nextFloat() <= (pickedRecipe.value().chance * (isSpecialPollinator ? 5 : 1)) && level.getBlockState(posA).is(BlockTags.LEAVES)) {
+                if (level.getRandom().nextFloat() <= (pickedRecipe.value().chance * (isSpecialPollinator ? 5 : 1)) && level.getBlockState(posA).is(BlockTags.LEAVES)) {
                     level.setBlock(posA, TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
                     if (level.getBlockEntity(posA) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
                         pollinatedLeavesBlockEntity.setLeafA(states.getFirst().getBlock());
                         pollinatedLeavesBlockEntity.setLeafB(states.getSecond().getBlock());
-                        pollinatedLeavesBlockEntity.setResult(pickedRecipe.value().result);
+                        pollinatedLeavesBlockEntity.setResult(pickedRecipe.value().result());
                         pollinatedLeavesBlockEntity.setChanged();
                     }
                 }

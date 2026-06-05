@@ -4,47 +4,37 @@ import com.google.common.collect.Maps;
 import cy.jdkdigital.productivebees.datagen.BlockLootProvider;
 import cy.jdkdigital.productivelib.loot.OptionalLootItem;
 import cy.jdkdigital.productivelib.loot.condition.OptionalCopyBlockState;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
-import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
-import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import cy.jdkdigital.productivetrees.util.TreeUtil;
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.BeehiveBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
-import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
 import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.loot.CanItemPerformAbility;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
@@ -71,12 +61,12 @@ public class CompatLootDataProvider implements DataProvider
     }
 
     private CompletableFuture<?> run(CachedOutput pOutput, HolderLookup.Provider pProvider) {
-        final Map<ResourceLocation, LootTable> map = Maps.newHashMap();
+        final Map<Identifier, LootTable> map = Maps.newHashMap();
         this.subProviders.forEach((providerEntry) -> {
             providerEntry.provider().apply(pProvider).generate((resourceKey, builder) -> {
-                builder.setRandomSequence(resourceKey.location());
-                if (map.put(resourceKey.location(), builder.setParamSet(providerEntry.paramSet()).build()) != null) {
-                    throw new IllegalStateException("Duplicate loot table " + resourceKey.location());
+                builder.setRandomSequence(resourceKey.identifier());
+                if (map.put(resourceKey.identifier(), builder.setParamSet(providerEntry.paramSet()).build()) != null) {
+                    throw new IllegalStateException("Duplicate loot table " + resourceKey.identifier());
                 }
             });
         });
@@ -106,12 +96,16 @@ public class CompatLootDataProvider implements DataProvider
 
             TreeFinder.trees.forEach((id, treeObject) -> {
                 if (treeObject.getStyle().hiveStyle() != null) {
-                    Block hive = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
-                    Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(hive, LootProvider::genHiveDrop);
-                    this.add(hive, hiveFunc.apply(hive));
-                    Block box = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p ->  "expansion_box_" + p));
-                    Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(box, BlockLootProvider.LootProvider::genExpansionDrop);
-                    this.add(box, expansionFunc.apply(box));
+                    Block hive = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive")).map(Holder::value).orElse(null);
+                    Block box = BuiltInRegistries.BLOCK.get(treeObject.getId().withPath(p -> "expansion_box_" + p)).map(Holder::value).orElse(null);
+                    if (hive != null) {
+                        Function<Block, LootTable.Builder> hiveFunc = functionTable.getOrDefault(hive, LootProvider::genHiveDrop);
+                        this.add(hive, hiveFunc.apply(hive));
+                    }
+                    if (box != null) {
+                        Function<Block, LootTable.Builder> expansionFunc = functionTable.getOrDefault(box, BlockLootProvider.LootProvider::genExpansionDrop);
+                        this.add(box, expansionFunc.apply(box));
+                    }
                 }
             });
         }
@@ -133,16 +127,16 @@ public class CompatLootDataProvider implements DataProvider
 
         public static LootTable.Builder genHiveDrop(Block hive) {
             LootPoolEntryContainer.Builder<?> hiveNoHoney = OptionalLootItem.lootTableItem(hive).when(ExplosionCondition.survivesExplosion())
-                    .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.BEES));
+                    .apply(CopyComponentsFunction.copyComponentsFromBlockEntity(LootContextParams.BLOCK_ENTITY).include(DataComponents.BEES));
 
             LootPoolEntryContainer.Builder<?> hiveHoney;
             if (hive.defaultBlockState().hasProperty(BeehiveBlock.HONEY_LEVEL)) {
                 hiveHoney = OptionalLootItem.lootTableItem(hive).when(SILK_TOUCH)
-                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.BEES))
+                        .apply(CopyComponentsFunction.copyComponentsFromBlockEntity(LootContextParams.BLOCK_ENTITY).include(DataComponents.BEES))
                         .apply(OptionalCopyBlockState.copyState(hive).copy(BeehiveBlock.HONEY_LEVEL));
             } else {
                 hiveHoney = OptionalLootItem.lootTableItem(hive).when(SILK_TOUCH)
-                        .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(DataComponents.BEES));
+                        .apply(CopyComponentsFunction.copyComponentsFromBlockEntity(LootContextParams.BLOCK_ENTITY).include(DataComponents.BEES));
             }
 
             return LootTable.lootTable().withPool(

@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/brazilwood_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11699685
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8297386
+      }
+    ]
+  }
+}

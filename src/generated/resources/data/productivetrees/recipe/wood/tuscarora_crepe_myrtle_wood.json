@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:tuscarora_crepe_myrtle_log"
-    }
+    "#": "productivetrees:tuscarora_crepe_myrtle_log"
   },
   "pattern": [
     "##",

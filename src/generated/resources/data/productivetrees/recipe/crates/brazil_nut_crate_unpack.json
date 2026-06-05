@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:brazil_nut_crate"
-    }
+    "productivetrees:brazil_nut_crate"
   ],
   "result": {
     "count": 9,

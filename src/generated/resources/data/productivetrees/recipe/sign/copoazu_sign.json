@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:copoazu_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:copoazu_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

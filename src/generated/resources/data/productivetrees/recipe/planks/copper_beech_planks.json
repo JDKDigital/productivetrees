@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:copper_beech_logs"
-    }
+    "#productivetrees:copper_beech_logs"
   ],
   "result": {
     "count": 4,

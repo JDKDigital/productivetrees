@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:loblolly_pine_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:loblolly_pine_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

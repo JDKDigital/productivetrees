@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:hawthorn_planks"
-    }
+    "#": "productivetrees:hawthorn_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:hawthorn_pressure_plate"
   }
 }

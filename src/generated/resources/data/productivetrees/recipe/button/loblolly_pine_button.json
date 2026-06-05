@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:loblolly_pine_planks"
-    }
+    "productivetrees:loblolly_pine_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:loblolly_pine_button"
   }
 }

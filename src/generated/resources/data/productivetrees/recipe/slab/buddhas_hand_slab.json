@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:buddhas_hand_planks"
-    }
+    "#": "productivetrees:buddhas_hand_planks"
   },
   "pattern": [
     "###"

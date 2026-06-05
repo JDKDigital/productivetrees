@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:white_willow_planks"
-    }
+    "#": "productivetrees:white_willow_planks"
   },
   "pattern": [
     "###"

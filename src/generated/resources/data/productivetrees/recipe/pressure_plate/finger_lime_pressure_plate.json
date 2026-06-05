@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:finger_lime_planks"
-    }
+    "#": "productivetrees:finger_lime_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:finger_lime_pressure_plate"
   }
 }

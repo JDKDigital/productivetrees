@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:sand_pear_planks"
-    }
+    "productivetrees:sand_pear_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:sand_pear_button"
   }
 }

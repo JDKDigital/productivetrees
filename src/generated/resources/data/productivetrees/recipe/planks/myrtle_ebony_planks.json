@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:myrtle_ebony_logs"
-    }
+    "#productivetrees:myrtle_ebony_logs"
   ],
   "result": {
     "count": 4,

@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:great_sallow_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:great_sallow_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:tuscarora_crepe_myrtle_logs"
-    }
+    "#productivetrees:tuscarora_crepe_myrtle_logs"
   ],
   "result": {
     "count": 4,

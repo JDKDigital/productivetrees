@@ -9,17 +9,17 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
 import org.jetbrains.annotations.NotNull;
 
 public class TimeTravellerDisplayBlockEntity extends CapabilityBlockEntity
 {
     public static int SLOT_IN = 0;
-    public final IItemHandlerModifiable inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(1, this)
+    public final InventoryHandlerHelper.BlockEntityItemStackHandler inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(1, this)
     {
         @Override
-        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+        public boolean isItemValid(int slot, @NotNull ItemStack stack, boolean fromAutomation) {
             return true;
         }
 
@@ -29,8 +29,8 @@ public class TimeTravellerDisplayBlockEntity extends CapabilityBlockEntity
         }
 
         @Override
-        protected void onContentsChanged(int slot) {
-            super.onContentsChanged(slot);
+        protected void onContentsChanged(int index, ItemStack previousContents) {
+            super.onContentsChanged(index, previousContents);
             if (level instanceof ServerLevel serverLevel) {
                 serverLevel.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
             }
@@ -47,7 +47,7 @@ public class TimeTravellerDisplayBlockEntity extends CapabilityBlockEntity
     }
 
     @Override
-    public IItemHandler getItemHandler() {
+    public ResourceHandler<ItemResource> getItemHandler() {
         return inventoryHandler;
     }
 

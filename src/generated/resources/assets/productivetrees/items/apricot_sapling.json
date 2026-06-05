@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/apricot_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -8936940
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -13360606
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -2275061
+      }
+    ]
+  }
+}

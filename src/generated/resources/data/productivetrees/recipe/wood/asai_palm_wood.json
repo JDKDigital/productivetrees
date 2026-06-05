@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:asai_palm_log"
-    }
+    "#": "productivetrees:asai_palm_log"
   },
   "pattern": [
     "##",

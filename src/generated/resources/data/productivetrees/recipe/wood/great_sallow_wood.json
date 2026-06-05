@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:great_sallow_log"
-    }
+    "#": "productivetrees:great_sallow_log"
   },
   "pattern": [
     "##",

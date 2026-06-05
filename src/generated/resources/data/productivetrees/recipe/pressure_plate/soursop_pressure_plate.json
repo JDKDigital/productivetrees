@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:soursop_planks"
-    }
+    "#": "productivetrees:soursop_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:soursop_pressure_plate"
   }
 }

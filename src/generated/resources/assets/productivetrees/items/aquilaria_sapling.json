@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/aquilaria_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -8659845
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -11841723
+      }
+    ]
+  }
+}

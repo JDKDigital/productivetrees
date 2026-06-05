@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:wenge_planks"
-    }
+    "#": "productivetrees:wenge_planks"
   },
   "pattern": [
     "###"

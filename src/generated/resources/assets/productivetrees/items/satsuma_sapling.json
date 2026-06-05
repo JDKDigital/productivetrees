@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/satsuma_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11905776
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -12043984
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8237294
+      }
+    ]
+  }
+}

@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:cocobolo_planks"
-    }
+    "#": "productivetrees:cocobolo_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:cocobolo_pressure_plate"
   }
 }

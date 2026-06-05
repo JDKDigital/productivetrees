@@ -57,6 +57,6 @@ public class EntitySpawner extends BaseEntityBlock
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? null : createTickerHelper(blockEntityType, TreeRegistrator.ENTITY_SPAWNER_BLOCK_ENTITY.get(), EntitySpawnerBlockEntity::tick);
+        return level.isClientSide() ? null : createTickerHelper(blockEntityType, TreeRegistrator.ENTITY_SPAWNER_BLOCK_ENTITY.get(), EntitySpawnerBlockEntity::tick);
     }
 }

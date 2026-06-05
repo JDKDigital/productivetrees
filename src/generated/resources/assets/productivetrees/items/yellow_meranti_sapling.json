@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/yellow_meranti_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -5583010
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -12436223
+      }
+    ]
+  }
+}

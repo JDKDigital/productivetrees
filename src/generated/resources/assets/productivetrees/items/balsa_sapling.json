@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/balsa_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -13272772
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -1980213
+      }
+    ]
+  }
+}

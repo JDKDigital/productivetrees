@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:pomelo_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:pomelo_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

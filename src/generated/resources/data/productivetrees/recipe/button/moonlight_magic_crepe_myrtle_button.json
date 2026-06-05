@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:moonlight_magic_crepe_myrtle_planks"
-    }
+    "productivetrees:moonlight_magic_crepe_myrtle_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:moonlight_magic_crepe_myrtle_button"
   }
 }

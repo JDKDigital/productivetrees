@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:teak_planks"
-    }
+    "#": "productivetrees:teak_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:teak_pressure_plate"
   }
 }

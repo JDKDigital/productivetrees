@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:finger_lime_crate"
-    }
+    "productivetrees:finger_lime_crate"
   ],
   "result": {
     "count": 9,

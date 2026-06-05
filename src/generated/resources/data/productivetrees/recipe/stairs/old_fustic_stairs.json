@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:old_fustic_planks"
-    }
+    "#": "productivetrees:old_fustic_planks"
   },
   "pattern": [
     "#  ",

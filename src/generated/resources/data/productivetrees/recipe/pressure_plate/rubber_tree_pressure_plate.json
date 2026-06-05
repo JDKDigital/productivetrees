@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:rubber_tree_planks"
-    }
+    "#": "productivetrees:rubber_tree_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:rubber_tree_pressure_plate"
   }
 }

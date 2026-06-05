@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:moonlight_magic_crepe_myrtle_log"
-    }
+    "#": "productivetrees:moonlight_magic_crepe_myrtle_log"
   },
   "pattern": [
     "##",

@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/padauk_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -9863108
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -6190767
+      }
+    ]
+  }
+}

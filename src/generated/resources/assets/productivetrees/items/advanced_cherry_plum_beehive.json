@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_cherry_plum_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -6135463
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_ash",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -2838133
+      }
+    ]
+  }
+}

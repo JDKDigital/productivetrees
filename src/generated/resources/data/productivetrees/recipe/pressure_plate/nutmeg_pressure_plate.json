@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:nutmeg_planks"
-    }
+    "#": "productivetrees:nutmeg_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:nutmeg_pressure_plate"
   }
 }

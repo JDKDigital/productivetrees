@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:satsuma_planks"
-    }
+    "productivetrees:satsuma_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:satsuma_button"
   }
 }

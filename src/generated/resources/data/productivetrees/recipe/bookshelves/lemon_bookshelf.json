@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "productivetrees:lemon_planks"
-    },
-    "X": {
-      "item": "minecraft:book"
-    }
+    "#": "productivetrees:lemon_planks",
+    "X": "minecraft:book"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:lemon_bookshelf"
   }
 }

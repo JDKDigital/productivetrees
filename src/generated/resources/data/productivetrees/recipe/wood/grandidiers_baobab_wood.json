@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:grandidiers_baobab_log"
-    }
+    "#": "productivetrees:grandidiers_baobab_log"
   },
   "pattern": [
     "##",

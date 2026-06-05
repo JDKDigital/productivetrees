@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:iroko_log"
-    }
+    "#": "productivetrees:iroko_log"
   },
   "pattern": [
     "##",

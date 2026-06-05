@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:ipe_planks"
-    }
+    "#": "productivetrees:ipe_planks"
   },
   "pattern": [
     "###"

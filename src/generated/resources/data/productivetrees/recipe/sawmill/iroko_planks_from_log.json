@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:iroko_logs"
-  },
+  "input": "#productivetrees:iroko_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:iroko_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

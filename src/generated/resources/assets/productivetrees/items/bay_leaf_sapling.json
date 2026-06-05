@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/bay_leaf_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -13085150
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -12041418
+      }
+    ]
+  }
+}

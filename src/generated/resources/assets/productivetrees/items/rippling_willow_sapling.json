@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/rippling_willow_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -14470392
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -14860517
+      }
+    ]
+  }
+}

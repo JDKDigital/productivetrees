@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/clove_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -12752877
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -3100517
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -10607088
+      }
+    ]
+  }
+}

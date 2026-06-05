@@ -10,24 +10,27 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import javax.annotation.Nonnull;
-import java.util.Arrays;
 import java.util.List;
 
 public class TreeFruitingRecipeCategory implements IRecipeCategory<TreeFruitingRecipe>
 {
+    protected static final int BACKGROUND_WIDTH = 130;
+    protected static final int BACKGROUND_HEIGHT = 60;
     private final IDrawable background;
     private final IDrawable icon;
 
     public TreeFruitingRecipeCategory(IGuiHelper guiHelper) {
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/tree_fruiting.png");
-        this.background = guiHelper.createDrawable(location, 0, 0, 130, 60);
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "haw"))));
+        Identifier location = Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/tree_fruiting.png");
+        this.background = guiHelper.createDrawable(location, 0, 0, BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BuiltInRegistries.ITEM.get(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "haw")).map(Holder::value).orElse(Items.AIR)));
     }
 
     @Override
@@ -41,8 +44,17 @@ public class TreeFruitingRecipeCategory implements IRecipeCategory<TreeFruitingR
         return Component.translatable("jei.productivetrees.tree_fruiting");
     }
 
-    @Nonnull
     @Override
+    public int getWidth() {
+        return BACKGROUND_WIDTH;
+    }
+
+    @Override
+    public int getHeight() {
+        return BACKGROUND_HEIGHT;
+    }
+
+    @SuppressWarnings("unused")
     public IDrawable getBackground() {
         return this.background;
     }
@@ -56,11 +68,11 @@ public class TreeFruitingRecipeCategory implements IRecipeCategory<TreeFruitingR
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, TreeFruitingRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 28, 27)
-                .addItemStacks(Arrays.asList(recipe.tree.getItems()))
+                .addItemStacks(recipe.tree.items().<ItemStack>map(h -> new ItemStack(h.value())).toList())
                 .setSlotName("tree");
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 94, 27)
-                .addItemStacks(List.of(recipe.result))
+                .addItemStacks(List.of(recipe.result()))
                 .setSlotName("result");
     }
 }

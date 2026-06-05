@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:plum_crate"
-    }
+    "productivetrees:plum_crate"
   ],
   "result": {
     "count": 9,

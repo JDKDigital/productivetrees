@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:red_crepe_myrtle_planks"
-    }
+    "#": "productivetrees:red_crepe_myrtle_planks"
   },
   "pattern": [
     "#  ",

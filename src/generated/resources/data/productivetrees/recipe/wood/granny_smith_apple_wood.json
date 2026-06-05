@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:granny_smith_apple_log"
-    }
+    "#": "productivetrees:granny_smith_apple_log"
   },
   "pattern": [
     "##",

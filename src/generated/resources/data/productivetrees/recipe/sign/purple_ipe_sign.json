@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:purple_ipe_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:purple_ipe_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

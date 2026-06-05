@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/whitebeam_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -984075
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -9676721
+      }
+    ]
+  }
+}

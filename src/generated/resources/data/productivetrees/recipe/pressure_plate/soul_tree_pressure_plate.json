@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:soul_tree_planks"
-    }
+    "#": "productivetrees:soul_tree_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:soul_tree_pressure_plate"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:persimmon_log"
-    }
+    "#": "productivetrees:persimmon_log"
   },
   "pattern": [
     "##",

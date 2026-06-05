@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:socotra_dragon_planks"
-    }
+    "#": "productivetrees:socotra_dragon_planks"
   },
   "pattern": [
     "###"

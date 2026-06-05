@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:silver_fir_logs"
-  },
+  "input": "#productivetrees:silver_fir_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:silver_fir_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

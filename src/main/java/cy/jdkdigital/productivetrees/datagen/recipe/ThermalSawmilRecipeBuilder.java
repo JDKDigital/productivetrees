@@ -8,7 +8,7 @@
 //import net.minecraft.data.recipes.FinishedRecipe;
 //import net.minecraft.data.recipes.RecipeBuilder;
 //import net.minecraft.data.recipes.RecipeCategory;
-//import net.minecraft.resources.ResourceLocation;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.world.item.Item;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.item.crafting.Ingredient;
@@ -37,7 +37,7 @@
 //    }
 //
 //    public static ThermalSawmilRecipeBuilder tree(Block log, Block strippedLog, Block wood, Block strippedwood, Block plank) {
-//        return direct(Ingredient.of(log, strippedLog, wood, strippedwood), new ItemStack(plank, 6), new ItemStack(BuiltInRegistries.ITEM.get(new ResourceLocation("thermal:sawdust")), 1));
+//        return direct(Ingredient.of(log, strippedLog, wood, strippedwood), new ItemStack(plank, 6), new ItemStack(BuiltInRegistries.ITEM.get(new Identifier("thermal:sawdust")), 1));
 //    }
 //
 //    @Override
@@ -57,11 +57,11 @@
 //    }
 //
 //    @Override
-//    public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
+//    public void save(Consumer<FinishedRecipe> consumer, Identifier id) {
 //        consumer.accept(new Result(id, log, plank, secondary, this.advancement));
 //    }
 //
-//    record Result(ResourceLocation id, Ingredient log, ItemStack plank, ItemStack secondary,
+//    record Result(Identifier id, Ingredient log, ItemStack plank, ItemStack secondary,
 //                  Advancement.Builder advancement) implements FinishedRecipe
 //    {
 //        @Override
@@ -78,13 +78,13 @@
 //        }
 //
 //        @Override
-//        public ResourceLocation getId() {
+//        public Identifier getId() {
 //            return id;
 //        }
 //
 //        @Override
 //        public RecipeSerializer<?> getType() {
-//            return ForgeRegistries.RECIPE_SERIALIZERS.getValue(new ResourceLocation("thermal:sawmill"));
+//            return ForgeRegistries.RECIPE_SERIALIZERS.getValue(new Identifier("thermal:sawmill"));
 //        }
 //
 //        @Nullable
@@ -95,7 +95,7 @@
 //
 //        @Nullable
 //        @Override
-//        public ResourceLocation getAdvancementId() {
+//        public Identifier getAdvancementId() {
 //            return id.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/");
 //        }
 //    }

@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/rose_gum_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -12756923
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -14215151
+      }
+    ]
+  }
+}

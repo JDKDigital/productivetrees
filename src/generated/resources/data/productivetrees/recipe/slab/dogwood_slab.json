@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:dogwood_planks"
-    }
+    "#": "productivetrees:dogwood_planks"
   },
   "pattern": [
     "###"

@@ -1,12 +1,12 @@
 package cy.jdkdigital.productivetrees.datagen.dynamic;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.mojang.serialization.JsonOps;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import net.minecraft.server.packs.PackLocationInfo;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
-import net.minecraft.server.packs.metadata.MetadataSectionSerializer;
+import net.minecraft.server.packs.metadata.MetadataSectionType;
 import net.minecraft.util.GsonHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -29,20 +29,19 @@ public class DynamicDataPack extends PathPackResources
 
     @Nullable
     @Override
-    public <T> T getMetadataSection(MetadataSectionSerializer<T> metadataSectionSerializer) throws IOException {
+    public <T> T getMetadataSection(MetadataSectionType<T> metadataSectionType) throws IOException {
         JsonObject jsonobject = new JsonObject();
         JsonObject packObject = new JsonObject();
         packObject.addProperty("pack_format", packType.equals(PackType.SERVER_DATA) ? 48 : 34);
         packObject.addProperty("description", ProductiveTrees.MODID);
         jsonobject.add("pack", packObject);
-        if (!jsonobject.has(metadataSectionSerializer.getMetadataSectionName())) {
+        if (!jsonobject.has(metadataSectionType.name())) {
             return null;
         } else {
-            try {
-                return metadataSectionSerializer.fromJson(GsonHelper.getAsJsonObject(jsonobject, metadataSectionSerializer.getMetadataSectionName()));
-            } catch (JsonParseException jsonparseexception) {
-                return null;
-            }
+            return metadataSectionType.codec()
+                    .parse(JsonOps.INSTANCE, GsonHelper.getAsJsonObject(jsonobject, metadataSectionType.name()))
+                    .result()
+                    .orElse(null);
         }
     }
 }

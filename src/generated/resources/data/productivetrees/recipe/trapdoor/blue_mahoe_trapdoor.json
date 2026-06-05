@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:blue_mahoe_planks"
-    }
+    "#": "productivetrees:blue_mahoe_planks"
   },
   "pattern": [
     "###",

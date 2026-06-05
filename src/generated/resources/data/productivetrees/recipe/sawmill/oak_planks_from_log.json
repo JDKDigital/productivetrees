@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "minecraft:oak_logs"
-  },
+  "input": "#minecraft:oak_logs",
   "output": {
     "count": 6,
     "id": "minecraft:oak_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

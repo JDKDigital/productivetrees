@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:moonlight_magic_crepe_myrtle_planks"
-    }
+    "#": "productivetrees:moonlight_magic_crepe_myrtle_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:moonlight_magic_crepe_myrtle_pressure_plate"
   }
 }

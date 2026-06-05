@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:yellow_meranti_logs"
-    }
+    "#productivetrees:yellow_meranti_logs"
   ],
   "result": {
     "count": 4,

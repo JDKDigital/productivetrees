@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:padauk_planks"
-    }
+    "#": "productivetrees:padauk_planks"
   },
   "pattern": [
     "#  ",

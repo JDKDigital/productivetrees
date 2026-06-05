@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_lemon",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -4152730
+      }
+    ]
+  }
+}

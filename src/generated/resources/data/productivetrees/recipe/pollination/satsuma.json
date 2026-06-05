@@ -1,14 +1,9 @@
 {
   "type": "productivetrees:tree_pollination",
   "chance": 0.1,
-  "leafA": {
-    "item": "productivetrees:mandarin_leaves"
-  },
-  "leafB": {
-    "item": "productivetrees:kumquat_leaves"
-  },
+  "leafA": "productivetrees:mandarin_leaves",
+  "leafB": "productivetrees:kumquat_leaves",
   "result": {
-    "count": 1,
     "id": "productivetrees:satsuma_sapling"
   }
 }

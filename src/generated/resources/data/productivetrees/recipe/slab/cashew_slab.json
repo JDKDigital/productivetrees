@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:cashew_planks"
-    }
+    "#": "productivetrees:cashew_planks"
   },
   "pattern": [
     "###"

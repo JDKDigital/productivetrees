@@ -6,10 +6,11 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,8 +33,8 @@ public class StuddedTrunkPlacer extends TrunkPlacer
 {
     public static final MapCodec<StuddedTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return TrunkPlacerCodecs.trunkPlacerParts(instance).and(instance.group(
-                IntProvider.codec(0, 8).fieldOf("branch_count").forGetter((placer) -> placer.branchCount),
-                IntProvider.codec(1, 8).fieldOf("branch_length").forGetter((placer) -> placer.branchLength)
+                IntProviders.codec(0, 8).fieldOf("branch_count").forGetter((placer) -> placer.branchCount),
+                IntProviders.codec(1, 8).fieldOf("branch_length").forGetter((placer) -> placer.branchLength)
         )).apply(instance, StuddedTrunkPlacer::new);
     });
     private static final Direction[] ORTHO = {Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST};
@@ -53,10 +54,10 @@ public class StuddedTrunkPlacer extends TrunkPlacer
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-        setDirtAt(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, -1, 0), pConfig);
+        placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, -1, 0), pConfig);
 
         for (int h = 0; h < pFreeTreeHeight; ++h) {
             BlockPos center = pPos.above(h);
@@ -102,8 +103,9 @@ public class StuddedTrunkPlacer extends TrunkPlacer
 
     // the "wood" (all-bark) counterpart of the trunk's log block, used for the studs; falls back to the log if absent
     private BlockState woodState(BlockState log) {
-        ResourceLocation key = BuiltInRegistries.BLOCK.getKey(log.getBlock());
-        Block wood = BuiltInRegistries.BLOCK.get(key.withPath((path) -> path.replace("_log", "_wood")));
-        return wood == Blocks.AIR ? log : wood.defaultBlockState();
+        Identifier key = BuiltInRegistries.BLOCK.getKey(log.getBlock());
+        return BuiltInRegistries.BLOCK.get(key.withPath((path) -> path.replace("_log", "_wood")))
+                .map(holder -> holder.value().defaultBlockState())
+                .orElse(log);
     }
 }

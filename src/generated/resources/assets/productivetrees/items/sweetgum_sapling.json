@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/sweetgum_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11574955
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -5526126
+      }
+    ]
+  }
+}

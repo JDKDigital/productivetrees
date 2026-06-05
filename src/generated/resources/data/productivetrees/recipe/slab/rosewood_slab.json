@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:rosewood_planks"
-    }
+    "#": "productivetrees:rosewood_planks"
   },
   "pattern": [
     "###"

@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:copoazu_logs"
-  },
+  "input": "#productivetrees:copoazu_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:copoazu_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

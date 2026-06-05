@@ -1,8 +1,6 @@
 {
   "type": "treetap:tap_extract",
-  "log": {
-    "item": "productivetrees:rubber_tree_log"
-  },
+  "log": "productivetrees:rubber_tree_log",
   "processing_time": 1200,
   "result": {
     "id": "productivetrees:rubber"

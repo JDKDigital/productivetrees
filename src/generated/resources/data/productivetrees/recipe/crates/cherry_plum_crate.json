@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/cherry_plum"
-    },
-    "R": {
-      "item": "productivetrees:cherry_plum"
-    }
+    "#": "#c:fruits/cherry_plum",
+    "R": "productivetrees:cherry_plum"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:cherry_plum_crate"
   }
 }

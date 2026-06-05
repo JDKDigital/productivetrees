@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:lawson_cypress_log"
-    }
+    "#": "productivetrees:lawson_cypress_log"
   },
   "pattern": [
     "##",

@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:great_sallow_logs"
-  },
+  "input": "#productivetrees:great_sallow_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:great_sallow_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

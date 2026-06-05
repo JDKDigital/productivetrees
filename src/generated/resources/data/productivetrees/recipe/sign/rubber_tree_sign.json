@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:rubber_tree_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:rubber_tree_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

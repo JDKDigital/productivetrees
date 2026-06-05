@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/douglas_fir_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -10327246
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -10928325
+      }
+    ]
+  }
+}

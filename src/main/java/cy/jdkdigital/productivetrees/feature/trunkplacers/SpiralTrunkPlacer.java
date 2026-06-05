@@ -5,10 +5,11 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -30,8 +31,8 @@ public class SpiralTrunkPlacer extends TrunkPlacer
 {
     public static final MapCodec<SpiralTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return TrunkPlacerCodecs.trunkPlacerParts(instance).and(instance.group(
-                IntProvider.codec(2, 10).fieldOf("arm_count").forGetter((placer) -> placer.armCount),
-                IntProvider.codec(2, 12).fieldOf("arm_length").forGetter((placer) -> placer.armLength)
+                IntProviders.codec(2, 10).fieldOf("arm_count").forGetter((placer) -> placer.armCount),
+                IntProviders.codec(2, 12).fieldOf("arm_length").forGetter((placer) -> placer.armLength)
         )).apply(instance, SpiralTrunkPlacer::new);
     });
     // eight compass directions; an arm advances through them in order to curve a steady eighth-turn at a time
@@ -51,10 +52,10 @@ public class SpiralTrunkPlacer extends TrunkPlacer
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-        setDirtAt(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, -1, 0), pConfig);
+        placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, -1, 0), pConfig);
 
         for (int h = 0; h < pFreeTreeHeight; ++h) {
             this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, h, 0), pConfig);
@@ -89,8 +90,9 @@ public class SpiralTrunkPlacer extends TrunkPlacer
 
     // the "wood" (all-bark) counterpart of the trunk's log block; falls back to the log if absent
     private BlockState woodState(BlockState log) {
-        ResourceLocation key = BuiltInRegistries.BLOCK.getKey(log.getBlock());
-        Block wood = BuiltInRegistries.BLOCK.get(key.withPath((path) -> path.replace("_log", "_wood")));
-        return wood == Blocks.AIR ? log : wood.defaultBlockState();
+        Identifier key = BuiltInRegistries.BLOCK.getKey(log.getBlock());
+        return BuiltInRegistries.BLOCK.get(key.withPath((path) -> path.replace("_log", "_wood")))
+                .map(holder -> holder.value().defaultBlockState())
+                .orElse(log);
     }
 }

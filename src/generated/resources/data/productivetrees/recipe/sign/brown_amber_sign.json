@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:brown_amber_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:brown_amber_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

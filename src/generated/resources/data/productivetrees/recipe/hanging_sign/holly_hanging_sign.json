@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "hanging_sign",
   "key": {
-    "#": {
-      "item": "productivetrees:holly_planks"
-    },
-    "X": {
-      "item": "minecraft:chain"
-    }
+    "#": "productivetrees:holly_planks",
+    "X": "minecraft:iron_chain"
   },
   "pattern": [
     "X X",

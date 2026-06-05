@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/cocobolo_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -9134518
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8031361
+      }
+    ]
+  }
+}

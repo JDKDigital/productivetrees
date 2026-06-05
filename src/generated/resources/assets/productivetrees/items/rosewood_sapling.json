@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/rosewood_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -14732269
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -12965347
+      }
+    ]
+  }
+}

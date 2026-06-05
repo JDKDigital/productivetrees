@@ -3,19 +3,14 @@
   "category": "redstone",
   "group": "fence_gate",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "productivetrees:mango_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "productivetrees:mango_planks"
   },
   "pattern": [
     "#W#",
     "#W#"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:mango_fence_gate"
   }
 }

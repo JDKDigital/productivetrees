@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:yellow_meranti_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:yellow_meranti_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

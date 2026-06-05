@@ -40,7 +40,7 @@ public class Stripper extends CapabilityContainerBlock
             if (!pLevel.isClientSide()) {
                 openGui((ServerPlayer) pPlayer, blockEntity);
             }
-            return InteractionResult.SUCCESS_NO_ITEM_USED;
+            return InteractionResult.CONSUME;
         }
         return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
     }
@@ -48,7 +48,7 @@ public class Stripper extends CapabilityContainerBlock
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? null : createTickerHelper(blockEntityType, TreeRegistrator.STRIPPER_BLOCK_ENTITY.get(), StripperBlockEntity ::tick);
+        return level.isClientSide() ? null : createTickerHelper(blockEntityType, TreeRegistrator.STRIPPER_BLOCK_ENTITY.get(), StripperBlockEntity ::tick);
     }
 
     @SuppressWarnings("deprecation")

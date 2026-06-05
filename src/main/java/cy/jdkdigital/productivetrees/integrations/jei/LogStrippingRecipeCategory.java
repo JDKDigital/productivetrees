@@ -14,23 +14,28 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 
 import javax.annotation.Nonnull;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LogStrippingRecipeCategory implements IRecipeCategory<LogStrippingRecipe>
 {
+    protected static final int BACKGROUND_WIDTH = 130;
+    protected static final int BACKGROUND_HEIGHT = 60;
     private final IDrawable background;
     private final IDrawable icon;
 
     public LogStrippingRecipeCategory(IGuiHelper guiHelper) {
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/stripping.png");
-        this.background = guiHelper.createDrawable(location, 0, 0, 130, 60);
+        Identifier location = Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/stripping.png");
+        this.background = guiHelper.createDrawable(location, 0, 0, BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
         this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TreeRegistrator.STRIPPER.get()));
     }
 
@@ -45,8 +50,17 @@ public class LogStrippingRecipeCategory implements IRecipeCategory<LogStrippingR
         return Component.translatable("jei.productivetrees.log_stripping");
     }
 
-    @Nonnull
     @Override
+    public int getWidth() {
+        return BACKGROUND_WIDTH;
+    }
+
+    @Override
+    public int getHeight() {
+        return BACKGROUND_HEIGHT;
+    }
+
+    @SuppressWarnings("unused")
     public IDrawable getBackground() {
         return this.background;
     }
@@ -63,15 +77,18 @@ public class LogStrippingRecipeCategory implements IRecipeCategory<LogStrippingR
                 .addIngredients(recipe.input())
                 .setSlotName("log");
 
+        List<ItemStack> axes = new ArrayList<>();
+        BuiltInRegistries.ITEM.getTagOrEmpty(ModTags.STRIPPER_TOOLS).forEach((Holder<Item> h) -> axes.add(new ItemStack(h.value())));
         builder.addSlot(RecipeIngredientRole.INPUT, 30, 34)
-                .addIngredients(VanillaTypes.ITEM_STACK, Arrays.asList(Ingredient.of(ModTags.STRIPPER_TOOLS).getItems()))
+                .addItemStacks(axes)
                 .setSlotName("axe");
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 15)
                 .addItemStack(recipe.output())
                 .setSlotName("stripped");
 
-        if (!recipe.input().isEmpty() && recipe.input().getItems()[0].getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock) {
+        ItemStack firstInput = recipe.input().items().<ItemStack>map(h -> new ItemStack(h.value())).findFirst().orElse(ItemStack.EMPTY);
+        if (firstInput.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveLogBlock logBlock) {
             var tree = TreeUtil.getTree(logBlock);
             if (tree != null && tree.getStripDrop().isPresent()) {
                 builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 34)

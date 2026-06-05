@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/red_banana_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11370680
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -7862517
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8237294
+      }
+    ]
+  }
+}

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:cempedak_log"
-    }
+    "#": "productivetrees:cempedak_log"
   },
   "pattern": [
     "##",

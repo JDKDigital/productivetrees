@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_bay_leaf_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -3421733
+      }
+    ]
+  }
+}

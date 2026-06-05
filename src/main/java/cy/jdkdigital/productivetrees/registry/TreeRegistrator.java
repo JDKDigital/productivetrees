@@ -20,7 +20,9 @@ import cy.jdkdigital.productivetrees.common.feature.TrunkVineDecorator;
 import cy.jdkdigital.productivetrees.common.fluid.MapleSap;
 import cy.jdkdigital.productivetrees.common.fluid.type.MapleSapType;
 import cy.jdkdigital.productivetrees.common.item.PollenItem;
-import cy.jdkdigital.productivetrees.datagen.*;
+import cy.jdkdigital.productivetrees.common.item.SaplingBlockItem;
+// TODO: restore datagen wiring once the datagen subsystem is ported to 26.1
+//import cy.jdkdigital.productivetrees.datagen.*;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.ConiferFoliagePlacer;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.PlumeFoliagePlacer;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.BallFoliagePlacer;
@@ -60,6 +62,7 @@ import cy.jdkdigital.productivetrees.recipe.TreeFruitingRecipe;
 import cy.jdkdigital.productivetrees.recipe.TreePollinationRecipe;
 import cy.jdkdigital.productivetrees.util.CropConfig;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -69,7 +72,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.inventory.MenuType;
@@ -101,33 +104,34 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 public class TreeRegistrator
 {
-    public static final Supplier<DataComponentType<ResourceLocation>> POLLEN_BLOCK_COMPONENT = ProductiveTrees.DATA_COMPONENTS.register("pollen_block", () -> DataComponentType.<ResourceLocation>builder().persistent(ResourceLocation.CODEC).networkSynchronized(ResourceLocation.STREAM_CODEC).build());
+    public static final Supplier<DataComponentType<Identifier>> POLLEN_BLOCK_COMPONENT = ProductiveTrees.DATA_COMPONENTS.register("pollen_block", () -> DataComponentType.<Identifier>builder().persistent(Identifier.CODEC).networkSynchronized(Identifier.STREAM_CODEC).build());
 
-    public static final ResourceKey<CreativeModeTab> TAB_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, ProductiveTrees.MODID));
+    public static final ResourceKey<CreativeModeTab> TAB_KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, ProductiveTrees.MODID));
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = ProductiveTrees.CREATIVE_MODE_TABS.register(ProductiveTrees.MODID, () -> {
         return CreativeModeTab.builder()
-                .icon(() -> new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill"))))
+                .icon(() -> new ItemStack(BuiltInRegistries.ITEM.get(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill")).map(Holder::value).orElse(Items.AIR)))
                 .title(Component.translatable("itemGroup." + ProductiveTrees.MODID))
                 .build();
     });
-    public static final DeferredHolder<Block, Block> POLLINATED_LEAVES = registerBlock("pollinated_leaves", () -> new PollinatedLeaves(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)), false);
+    public static final DeferredHolder<Block, Block> POLLINATED_LEAVES = registerBlock("pollinated_leaves", PollinatedLeaves::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), false);
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PollinatedLeavesBlockEntity>> POLLINATED_LEAVES_BLOCK_ENTITY = registerBlockEntity("pollinated_leaves", () -> createBlockEntityType(PollinatedLeavesBlockEntity::new, POLLINATED_LEAVES.get()));
-    public static final DeferredHolder<Block, Block> STRIPPER = registerBlock("stripper", () -> new Stripper(BlockBehaviour.Properties.ofFullCopy(Blocks.STONECUTTER).noOcclusion()), true);
+    public static final DeferredHolder<Block, Block> STRIPPER = registerBlock("stripper", Stripper::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONECUTTER).noOcclusion(), true);
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<StripperBlockEntity>> STRIPPER_BLOCK_ENTITY = registerBlockEntity("stripper", () -> createBlockEntityType(StripperBlockEntity::new, STRIPPER.get()));
-    public static final DeferredHolder<Block, Block> SAWMILL = registerBlock("sawmill", () -> new Sawmill(BlockBehaviour.Properties.ofFullCopy(Blocks.STONECUTTER).noOcclusion()), true);
+    public static final DeferredHolder<Block, Block> SAWMILL = registerBlock("sawmill", Sawmill::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONECUTTER).noOcclusion(), true);
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SawmillBlockEntity>> SAWMILL_BLOCK_ENTITY = registerBlockEntity("sawmill", () -> createBlockEntityType(SawmillBlockEntity::new, SAWMILL.get()));
-    public static final DeferredHolder<Block, Block> WOOD_WORKER = registerBlock("wood_worker", () -> new WoodWorker(BlockBehaviour.Properties.ofFullCopy(Blocks.STONECUTTER).noOcclusion()), true);
+    public static final DeferredHolder<Block, Block> WOOD_WORKER = registerBlock("wood_worker", WoodWorker::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONECUTTER).noOcclusion(), true);
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WoodWorkerBlockEntity>> WOOD_WORKER_BLOCK_ENTITY = registerBlockEntity("wood_worker", () -> createBlockEntityType(WoodWorkerBlockEntity::new, WOOD_WORKER.get()));
-    public static final DeferredHolder<Block, Block> POLLEN_SIFTER = registerBlock("pollen_sifter", () -> new PollenSifter(BlockBehaviour.Properties.ofFullCopy(Blocks.STONECUTTER).noOcclusion()), true);
+    public static final DeferredHolder<Block, Block> POLLEN_SIFTER = registerBlock("pollen_sifter", PollenSifter::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STONECUTTER).noOcclusion(), true);
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PollenSifterBlockEntity>> POLLEN_SIFTER_BLOCK_ENTITY = registerBlockEntity("pollen_sifter", () -> createBlockEntityType(PollenSifterBlockEntity::new, POLLEN_SIFTER.get()));
-    public static final DeferredHolder<Block, Block> ENTITY_SPAWNER = ProductiveTrees.BLOCKS.register("entity_spawner", () -> new EntitySpawner(BlockBehaviour.Properties.ofFullCopy(Blocks.AIR)));
+    public static final DeferredHolder<Block, Block> ENTITY_SPAWNER = ProductiveTrees.BLOCKS.registerBlock("entity_spawner", EntitySpawner::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.AIR));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EntitySpawnerBlockEntity>> ENTITY_SPAWNER_BLOCK_ENTITY = registerBlockEntity("entity_spawner", () -> createBlockEntityType(EntitySpawnerBlockEntity::new, ENTITY_SPAWNER.get()));
-    public static final DeferredHolder<Block, Block> TIME_TRAVELLER_DISPLAY = registerBlock("time_traveller_display", () -> new TimeTravellerDisplay(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).noOcclusion()), true);
+    public static final DeferredHolder<Block, Block> TIME_TRAVELLER_DISPLAY = registerBlock("time_traveller_display", TimeTravellerDisplay::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).noOcclusion(), true);
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TimeTravellerDisplayBlockEntity>> TIME_TRAVELLER_DISPLAY_BLOCK_ENTITY = registerBlockEntity("time_traveller_display", () -> createBlockEntityType(TimeTravellerDisplayBlockEntity::new, TIME_TRAVELLER_DISPLAY.get()));
 
     public static final DeferredHolder<MenuType<?>, MenuType<StripperContainer>> STRIPPER_MENU = ProductiveTrees.CONTAINER_TYPES.register("stripper", () ->
@@ -147,29 +151,28 @@ public class TreeRegistrator
     public static final DeferredHolder<Fluid, BaseFlowingFluid> MAPLE_SAP = ProductiveTrees.FLUIDS.register("maple_sap", MapleSap.Source::new);
     public static final DeferredHolder<Fluid, BaseFlowingFluid> MAPLE_SAP_FLOWING = ProductiveTrees.FLUIDS.register("flowing_maple_sap", MapleSap.Flowing::new);
 
-    public static final DeferredHolder<Item, Item> MAPLE_SAP_BUCKET = registerItem("maple_sap_bucket", () -> new BucketItem(MAPLE_SAP.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
-    public static final DeferredHolder<Item, Item> UPGRADE_POLLEN_SIEVE = registerItem("upgrade_pollen_sieve", () -> new UpgradeItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredHolder<Item, Item> POLLEN = registerItem("pollen", () -> new PollenItem(new Item.Properties()));
+    public static final DeferredHolder<Item, Item> MAPLE_SAP_BUCKET = registerItem("maple_sap_bucket", p -> new BucketItem(MAPLE_SAP.get(), p), () -> new Item.Properties().craftRemainder(Items.BUCKET));
+    public static final DeferredHolder<Item, Item> POLLEN = registerItem("pollen", PollenItem::new, Item.Properties::new);
     public static final DeferredHolder<Item, Item> SAWDUST = registerItem("sawdust");
     public static final DeferredHolder<Item, Item> FUSTIC = registerItem("fustic");
     public static final DeferredHolder<Item, Item> HAEMATOXYLIN = registerItem("haematoxylin");
     public static final DeferredHolder<Item, Item> DRACAENA_SAP = registerItem("dracaena_sap");
     public static final DeferredHolder<Item, Item> RUBBER = registerItem("rubber");
     public static final DeferredHolder<Item, Item> CURED_RUBBER = registerItem("cured_rubber");
-    public static final DeferredHolder<Item, Item> MAPLE_SYRUP = registerItem("maple_syrup", () -> new Item(new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE)));
-    public static final DeferredHolder<Item, Item> SANDALWOOD_OIL = registerItem("sandalwood_oil", () -> new Item(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE)));
-    public static final DeferredHolder<Item, Item> DATE_PALM_JUICE = registerItem("date_palm_juice", () -> new Item(new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE)));
+    public static final DeferredHolder<Item, Item> MAPLE_SYRUP = registerItem("maple_syrup", Item::new, () -> new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE));
+    public static final DeferredHolder<Item, Item> SANDALWOOD_OIL = registerItem("sandalwood_oil", Item::new, () -> new Item.Properties().craftRemainder(Items.GLASS_BOTTLE));
+    public static final DeferredHolder<Item, Item> DATE_PALM_JUICE = registerItem("date_palm_juice", Item::new, () -> new Item.Properties().food(Foods.HONEY_BOTTLE).craftRemainder(Items.GLASS_BOTTLE));
 
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> TREE_POLLINATION = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_pollination", TreePollinationRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> TREE_POLLINATION = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_pollination", () -> TreePollinationRecipe.SERIALIZER);
     public static final DeferredHolder<RecipeType<?>, RecipeType<TreePollinationRecipe>> TREE_POLLINATION_TYPE = ProductiveTrees.RECIPE_TYPES.register("tree_pollination", () -> new RecipeType<>() {});
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> TREE_FRUITING = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_fruiting", TreeFruitingRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> TREE_FRUITING = ProductiveTrees.RECIPE_SERIALIZERS.register("tree_fruiting", () -> TreeFruitingRecipe.SERIALIZER);
     public static final DeferredHolder<RecipeType<?>, RecipeType<TreeFruitingRecipe>> TREE_FRUITING_TYPE = ProductiveTrees.RECIPE_TYPES.register("tree_fruiting", () -> new RecipeType<>() {});
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> LOG_STRIPPING = ProductiveTrees.RECIPE_SERIALIZERS.register("log_stripping", () -> new TripleOutputRecipe.Serializer<>(LogStrippingRecipe::new));
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<LogStrippingRecipe>> LOG_STRIPPING = ProductiveTrees.RECIPE_SERIALIZERS.register("log_stripping", () -> TripleOutputRecipe.createSerializer(LogStrippingRecipe::new));
     public static final DeferredHolder<RecipeType<?>, RecipeType<LogStrippingRecipe>> LOG_STRIPPING_TYPE = ProductiveTrees.RECIPE_TYPES.register("log_stripping", () -> new RecipeType<>() {});
-    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> SAW_MILLLING = ProductiveTrees.RECIPE_SERIALIZERS.register("sawmill", () -> new TripleOutputRecipe.Serializer<>(SawmillRecipe::new));
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<SawmillRecipe>> SAW_MILLLING = ProductiveTrees.RECIPE_SERIALIZERS.register("sawmill", () -> TripleOutputRecipe.createSerializer(SawmillRecipe::new));
     public static final DeferredHolder<RecipeType<?>, RecipeType<SawmillRecipe>> SAW_MILLLING_TYPE = ProductiveTrees.RECIPE_TYPES.register("sawmill", () -> new RecipeType<>() {});
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> NULL_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "null"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> NULL_FEATURE = ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "null"));
     public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<CenteredUpwardsBranchingTrunkPlacer>> CENTERED_UPWARDS_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("centered_upwards_branching_trunk_placer", () -> new TrunkPlacerType<>(CenteredUpwardsBranchingTrunkPlacer.CODEC));
     public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<UnlimitedStraightTrunkPlacer>> UNLIMITED_STRAIGHT_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("unlimited_straight_trunk_placer", () -> new TrunkPlacerType<>(UnlimitedStraightTrunkPlacer.CODEC));
     public static final DeferredHolder<TrunkPlacerType<?>, TrunkPlacerType<UnlimitedGiantTrunkPlacer>> UNLIMITED_GIANT_TRUNK_PLACER = ProductiveTrees.TRUNK_PLACERS.register("unlimited_giant_trunk_placer", () -> new TrunkPlacerType<>(UnlimitedGiantTrunkPlacer.CODEC));
@@ -210,14 +213,14 @@ public class TreeRegistrator
     public static final DeferredHolder<Feature<?>, TemplateTreeFeature> TEMPLATE_TREE = ProductiveTrees.FEATURES.register("template_tree", () -> new TemplateTreeFeature(TemplateTreeConfiguration.CODEC));
 
     // Fruiting items
-    static final FoodProperties BERRY_FOOD = (new FoodProperties.Builder()).alwaysEdible().fast().nutrition(1).saturationModifier(0.1F).build();
+    static final FoodProperties BERRY_FOOD = (new FoodProperties.Builder()).alwaysEdible().nutrition(1).saturationModifier(0.1F).build();
     static final FoodProperties SMALL_FRUIT_FOOD = (new FoodProperties.Builder()).nutrition(4).saturationModifier(0.3F).build();
     static final FoodProperties FRUIT_FOOD = (new FoodProperties.Builder()).nutrition(4).saturationModifier(0.3F).build();
     static final FoodProperties BIG_FRUIT_FOOD = (new FoodProperties.Builder()).nutrition(5).saturationModifier(0.3F).build();
     static final FoodProperties CITRUS_FOOD = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0F).build();
     static final FoodProperties BIG_CITRUS_FOOD = (new FoodProperties.Builder()).nutrition(3).saturationModifier(0F).build();
-    static final FoodProperties NUT_FOOD = (new FoodProperties.Builder()).alwaysEdible().fast().nutrition(1).saturationModifier(0.1F).build();
-    static final FoodProperties ROASTED_NUT_FOOD = (new FoodProperties.Builder()).alwaysEdible().fast().nutrition(1).saturationModifier(0.3F).build();
+    static final FoodProperties NUT_FOOD = (new FoodProperties.Builder()).alwaysEdible().nutrition(1).saturationModifier(0.1F).build();
+    static final FoodProperties ROASTED_NUT_FOOD = (new FoodProperties.Builder()).alwaysEdible().nutrition(1).saturationModifier(0.3F).build();
 
     public static List<CropConfig> BERRIES = new ArrayList<>()
     {{
@@ -325,33 +328,34 @@ public class TreeRegistrator
         add(new CropConfig("roasted_coffee_bean", null));
     }};
 
-    public static List<ResourceLocation> CRATED_CROPS = new ArrayList<>();
+    public static List<Identifier> CRATED_CROPS = new ArrayList<>();
+    public static final List<DeferredHolder<Item, Item>> FOOD_ITEMS = new ArrayList<>();
 
     public static void init() {
         BERRIES.forEach(cropConfig -> {
             registerItem(cropConfig.name(), cropConfig.food());
-            CRATED_CROPS.add(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
+            CRATED_CROPS.add(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
         });
         FRUITS.forEach(cropConfig -> {
             registerItem(cropConfig.name(), cropConfig.food());
-            CRATED_CROPS.add(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
+            CRATED_CROPS.add(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
         });
         NUTS.forEach(cropConfig -> {
             registerItem(cropConfig.name(), cropConfig.food());
-            CRATED_CROPS.add(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
+            CRATED_CROPS.add(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
         });
         ROASTED_NUTS.forEach(cropConfig -> {
             registerItem(cropConfig.name(), cropConfig.food());
-            CRATED_CROPS.add(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
+            CRATED_CROPS.add(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
         });
-        CRATED_CROPS.add(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "coffee_bean_crate"));
-        CRATED_CROPS.add(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "clove_crate"));
-        CRATED_CROPS.add(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "cinnamon_crate"));
-        CRATED_CROPS.add(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "nutmeg_crate"));
-        CRATED_CROPS.add(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "star_anise_crate"));
-        CRATED_CROPS.add(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "red_delicious_apple_crate"));
+        CRATED_CROPS.add(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "coffee_bean_crate"));
+        CRATED_CROPS.add(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "clove_crate"));
+        CRATED_CROPS.add(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "cinnamon_crate"));
+        CRATED_CROPS.add(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "nutmeg_crate"));
+        CRATED_CROPS.add(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "star_anise_crate"));
+        CRATED_CROPS.add(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "red_delicious_apple_crate"));
         CRATED_CROPS.forEach(cropName -> {
-            registerBlock(cropName.getPath(), () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).sound(SoundType.SCAFFOLDING)), true);
+            registerBlock(cropName.getPath(), Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).sound(SoundType.SCAFFOLDING), true);
         });
     }
 
@@ -368,8 +372,8 @@ public class TreeRegistrator
     public static final DeferredHolder<Item, Item> PLANET_PEACH = registerItem("planet_peach", Foods.GOLDEN_CARROT);
 
     // Various
-    public static final DeferredHolder<Block, Block> AMBER_PUDDLE = registerBlock("brown_amber_puddle", () -> new SnowLayerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SNOW).noOcclusion().sound(SoundType.SLIME_BLOCK)), false);
-    public static final DeferredHolder<Block, Block> COCONUT_SPROUT = registerBlock("coconut_sprout", () -> new CoconutSproutBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape()), true);
+    public static final DeferredHolder<Block, Block> AMBER_PUDDLE = registerBlock("brown_amber_puddle", SnowLayerBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.SNOW).noOcclusion().sound(SoundType.SLIME_BLOCK), false);
+    public static final DeferredHolder<Block, Block> COCONUT_SPROUT = registerBlock("coconut_sprout", CoconutSproutBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape(), true);
 
     private static List<DeferredHolder<Block, Block>> SIGNS = new ArrayList<>();
     private static List<DeferredHolder<Block, Block>> HANGING_SIGNS = new ArrayList<>();
@@ -403,56 +407,57 @@ public class TreeRegistrator
         );
 
         // Register sapling block
-        var sapling = registerBlock(name + "_sapling", () -> new ProductiveSaplingBlock(grower, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING), treeObject));
+        var sapling = registerBlock(name + "_sapling", props -> new ProductiveSaplingBlock(grower, props, treeObject), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING), false);
+        registerItem(name + "_sapling", p -> new SaplingBlockItem(sapling.get(), p.useBlockDescriptionPrefix()), Item.Properties::new);
         // Potted sapling
-        var pottedSapling = registerBlock(name + "_potted_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, sapling, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING)), false);
-        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, name + "_sapling"), pottedSapling);
+        var pottedSapling = registerBlock(name + "_potted_sapling", props -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, sapling, props), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_OAK_SAPLING), false);
+        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, name + "_sapling"), pottedSapling);
         // Register leaf block
-        registerBlock(name + "_leaves", () -> new ProductiveLeavesBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, lightLevel), treeObject));
+        registerBlock(name + "_leaves", props -> new ProductiveLeavesBlock(props, treeObject), () -> getProperties(Blocks.OAK_LEAVES, noOcclusion, lightLevel));
         // Register fruit block
         if (treeObject.hasFruit()) {
             if (name.equals("coconut")) {
-                registerBlock(name + "_fruit", () -> new ProductiveDroppyFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject, COCONUT_SPROUT), false);
+                registerBlock(name + "_fruit", props -> new ProductiveDroppyFruitBlock(props, treeObject, COCONUT_SPROUT), () -> getProperties(Blocks.OAK_LEAVES, noOcclusion, null), false);
             } else if (name.equals("brown_amber")) {
-                registerBlock(name + "_fruit", () -> new ProductiveDrippyFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject, AMBER_PUDDLE), false);
+                registerBlock(name + "_fruit", props -> new ProductiveDrippyFruitBlock(props, treeObject, AMBER_PUDDLE), () -> getProperties(Blocks.OAK_LEAVES, noOcclusion, null), false);
             } else if (!treeObject.getFruit().style().equals("default")) {
-                registerBlock(name + "_fruit", () -> new ProductiveDanglerFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null).offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape(), treeObject), false);
+                registerBlock(name + "_fruit", props -> new ProductiveDanglerFruitBlock(props, treeObject), () -> getProperties(Blocks.OAK_LEAVES, noOcclusion, null).offsetType(BlockBehaviour.OffsetType.XZ).dynamicShape(), false);
             } else {
-                registerBlock(name + "_fruit", () -> new ProductiveFruitBlock(getProperties(Blocks.OAK_LEAVES, noOcclusion, null), treeObject), false);
+                registerBlock(name + "_fruit", props -> new ProductiveFruitBlock(props, treeObject), () -> getProperties(Blocks.OAK_LEAVES, noOcclusion, null), false);
             }
         }
 
         // TODO map colors and properties
             // I don't know what this TODO means anymore
         // Register log block
-        registerBlock(name + "_log", () -> new ProductiveLogBlock(getProperties(treeObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_LOG, noOcclusion, lightLevel)));
+        registerBlock(name + "_log", ProductiveLogBlock::new, () -> getProperties(treeObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_LOG, noOcclusion, lightLevel));
         // Stripped log
-        registerBlock(name + "_stripped_log", () -> new ProductiveRotatedPillarBlock(getProperties(treeObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_LOG, noOcclusion, lightLevel)));
+        registerBlock(name + "_stripped_log", ProductiveRotatedPillarBlock::new, () -> getProperties(treeObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_LOG, noOcclusion, lightLevel));
         // Wood block
-        registerBlock(name + "_wood", () -> new ProductiveWoodBlock(getProperties(treeObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_WOOD, noOcclusion, lightLevel)));
+        registerBlock(name + "_wood", ProductiveWoodBlock::new, () -> getProperties(treeObject.isFireProof() ? Blocks.WARPED_STEM : Blocks.OAK_WOOD, noOcclusion, lightLevel));
         // Stripped wood
-        registerBlock(name + "_stripped_wood", () -> new ProductiveRotatedPillarBlock(getProperties(treeObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_WOOD, noOcclusion, lightLevel)));
+        registerBlock(name + "_stripped_wood", ProductiveRotatedPillarBlock::new, () -> getProperties(treeObject.isFireProof() ? Blocks.STRIPPED_WARPED_STEM : Blocks.STRIPPED_OAK_WOOD, noOcclusion, lightLevel));
         // Register planks block
-        var plank = registerBlock(name + "_planks", () -> new ProductivePlankBlock(getProperties(treeObject.isFireProof() ? Blocks.WARPED_PLANKS : Blocks.OAK_PLANKS, noOcclusion, lightLevel), name));
+        var plank = registerBlock(name + "_planks", props -> new ProductivePlankBlock(props, name), () -> getProperties(treeObject.isFireProof() ? Blocks.WARPED_PLANKS : Blocks.OAK_PLANKS, noOcclusion, lightLevel));
         if (!ProductiveTrees.isMinimal) {
             // Stairs
-            registerBlock(name + "_stairs", () -> new StairBlock(plank.get().defaultBlockState(), getProperties(Blocks.OAK_STAIRS, noOcclusion, lightLevel)));
+            registerBlock(name + "_stairs", props -> new StairBlock(plank.get().defaultBlockState(), props), () -> getProperties(Blocks.OAK_STAIRS, noOcclusion, lightLevel));
             // Slab
-            registerBlock(name + "_slab", () -> new SlabBlock(getProperties(Blocks.OAK_SLAB, noOcclusion, lightLevel)));
+            registerBlock(name + "_slab", SlabBlock::new, () -> getProperties(Blocks.OAK_SLAB, noOcclusion, lightLevel));
             // Fence
-            registerBlock(name + "_fence", () -> new FenceBlock(getProperties(Blocks.OAK_FENCE, noOcclusion, lightLevel)));
+            registerBlock(name + "_fence", FenceBlock::new, () -> getProperties(Blocks.OAK_FENCE, noOcclusion, lightLevel));
             // Fence gate
-            registerBlock(name + "_fence_gate", () -> new FenceGateBlock(WoodType.OAK, getProperties(Blocks.OAK_FENCE_GATE, noOcclusion, lightLevel)));
+            registerBlock(name + "_fence_gate", props -> new FenceGateBlock(WoodType.OAK, props), () -> getProperties(Blocks.OAK_FENCE_GATE, noOcclusion, lightLevel));
             // Pressure plate
-            registerBlock(name + "_pressure_plate", () -> new PressurePlateBlock(BlockSetType.OAK, getProperties(Blocks.OAK_PRESSURE_PLATE, noOcclusion, lightLevel)));
+            registerBlock(name + "_pressure_plate", props -> new PressurePlateBlock(BlockSetType.OAK, props), () -> getProperties(Blocks.OAK_PRESSURE_PLATE, noOcclusion, lightLevel));
             // Button
-            registerBlock(name + "_button", () -> new ButtonBlock(BlockSetType.OAK, 30, getProperties(Blocks.OAK_BUTTON, noOcclusion, lightLevel)));
+            registerBlock(name + "_button", props -> new ButtonBlock(BlockSetType.OAK, 30, props), () -> getProperties(Blocks.OAK_BUTTON, noOcclusion, lightLevel));
             // Door
-            registerBlock(name + "_door", () -> new DoorBlock(BlockSetType.OAK, getProperties(Blocks.OAK_DOOR, noOcclusion, lightLevel)));
+            registerBlock(name + "_door", props -> new DoorBlock(BlockSetType.OAK, props), () -> getProperties(Blocks.OAK_DOOR, noOcclusion, lightLevel));
             // Trapdoor
-            registerBlock(name + "_trapdoor", () -> new TrapDoorBlock(BlockSetType.OAK, getProperties(Blocks.ACACIA_TRAPDOOR, noOcclusion, lightLevel)));
+            registerBlock(name + "_trapdoor", props -> new TrapDoorBlock(BlockSetType.OAK, props), () -> getProperties(Blocks.ACACIA_TRAPDOOR, noOcclusion, lightLevel));
             // Bookshelf
-            registerBlock(name + "_bookshelf", () -> new Block(getProperties(Blocks.BOOKSHELF, noOcclusion, lightLevel)));
+            registerBlock(name + "_bookshelf", Block::new, () -> getProperties(Blocks.BOOKSHELF, noOcclusion, lightLevel));
             // Signs
             var woodType = WoodType.OAK;
             try {
@@ -461,13 +466,13 @@ public class TreeRegistrator
                 ProductiveTrees.LOGGER.warn("Unable to register woodtype for " + name + ". Error: " + e.getMessage());
             }
             WoodType finalWoodType = woodType;
-            var signBlock = registerBlock(name + "_sign", () -> new ProductiveStandingSignBlock(finalWoodType, getProperties(Blocks.OAK_SIGN, noOcclusion, lightLevel)), false);
-            var wallSignBlock = registerBlock(name + "_wall_sign", () -> new ProductiveWallSignBlock(finalWoodType, getProperties(Blocks.OAK_WALL_SIGN, noOcclusion, lightLevel)), false);
-            var hangingSignBlock = registerBlock(name + "_hanging_sign", () -> new ProductiveCeilingHangingSignBlock(finalWoodType, getProperties(Blocks.OAK_HANGING_SIGN, noOcclusion, lightLevel)), false);
-            var wallHangingSignBlock = registerBlock(name + "_wall_hanging_sign", () -> new ProductiveWallHangingSignBlock(finalWoodType, getProperties(Blocks.OAK_WALL_HANGING_SIGN, noOcclusion, lightLevel)), false);
+            var signBlock = registerBlock(name + "_sign", props -> new ProductiveStandingSignBlock(finalWoodType, props), () -> getProperties(Blocks.OAK_SIGN, noOcclusion, lightLevel), false);
+            var wallSignBlock = registerBlock(name + "_wall_sign", props -> new ProductiveWallSignBlock(finalWoodType, props), () -> getProperties(Blocks.OAK_WALL_SIGN, noOcclusion, lightLevel), false);
+            var hangingSignBlock = registerBlock(name + "_hanging_sign", props -> new ProductiveCeilingHangingSignBlock(finalWoodType, props), () -> getProperties(Blocks.OAK_HANGING_SIGN, noOcclusion, lightLevel), false);
+            var wallHangingSignBlock = registerBlock(name + "_wall_hanging_sign", props -> new ProductiveWallHangingSignBlock(finalWoodType, props), () -> getProperties(Blocks.OAK_WALL_HANGING_SIGN, noOcclusion, lightLevel), false);
 
-            registerItem(name + "_sign", () -> new SignItem(new Item.Properties(), signBlock.get(), wallSignBlock.get()));
-            registerItem(name + "_hanging_sign", () -> new SignItem(new Item.Properties(), hangingSignBlock.get(), wallHangingSignBlock.get()));
+            registerItem(name + "_sign", p -> new SignItem(signBlock.get(), wallSignBlock.get(), p.useBlockDescriptionPrefix()), Item.Properties::new);
+            registerItem(name + "_hanging_sign", p -> new HangingSignItem(hangingSignBlock.get(), wallHangingSignBlock.get(), p.useBlockDescriptionPrefix()), Item.Properties::new);
 
             SIGNS.add(signBlock);
             SIGNS.add(wallSignBlock);
@@ -481,14 +486,14 @@ public class TreeRegistrator
 
         if (name.equals("monkey_puzzle")) {
             // bending branch-leaf segments (radius = half-thickness); the small one won't join another of itself, so thin tips don't chain
-            registerBlock("monkey_puzzle_small_leaves", () -> new ProductiveBranchLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), treeObject, 2, false));
-            registerBlock("monkey_puzzle_medium_leaves", () -> new ProductiveBranchLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), treeObject, 4, true));
+            registerBlock("monkey_puzzle_small_leaves", props -> new ProductiveBranchLeavesBlock(props, treeObject, 2, false), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
+            registerBlock("monkey_puzzle_medium_leaves", props -> new ProductiveBranchLeavesBlock(props, treeObject, 4, true), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
         }
 
-        ProductiveTrees.BLOCKS.addAlias(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_fruit"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_fruit"));
-        ProductiveTrees.BLOCKS.addAlias(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_log"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_log"));
-        ProductiveTrees.BLOCKS.addAlias(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_leaves"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_leaves"));
-        ProductiveTrees.BLOCKS.addAlias(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_sapling"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_sapling"));
+        ProductiveTrees.BLOCKS.addAlias(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_fruit"), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_fruit"));
+        ProductiveTrees.BLOCKS.addAlias(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_log"), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_log"));
+        ProductiveTrees.BLOCKS.addAlias(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_leaves"), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_leaves"));
+        ProductiveTrees.BLOCKS.addAlias(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_sapling"), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_sapling"));
     }
 
     public static Supplier<BlockEntityType<ProductiveSignBlockEntity>> SIGN_BE;
@@ -499,27 +504,33 @@ public class TreeRegistrator
     }
 
     public static DeferredHolder<Item, Item> registerItem(String name) {
-        return registerItem(name, () -> new Item(new Item.Properties()));
+        return registerItem(name, Item::new, Item.Properties::new);
     }
 
     public static DeferredHolder<Item, Item> registerItem(String name, FoodProperties food) {
-        return registerItem(name, () -> new Item(new Item.Properties().food(food)));
+        DeferredHolder<Item, Item> item = registerItem(name, Item::new, () -> food == null ? new Item.Properties() : new Item.Properties().food(food));
+        if (food != null) {
+            FOOD_ITEMS.add(item);
+        }
+        return item;
     }
 
-    public static DeferredHolder<Item, Item> registerItem(String name, Supplier<Item> supplier) {
-        return ProductiveTrees.ITEMS.register(name, supplier);
+    @SuppressWarnings("unchecked")
+    public static <I extends Item> DeferredHolder<Item, I> registerItem(String name, Function<Item.Properties, ? extends I> factory, Supplier<Item.Properties> properties) {
+        return (DeferredHolder<Item, I>) ProductiveTrees.ITEMS.registerItem(name, factory::apply, properties);
     }
-    
-    public static DeferredHolder<Block, Block> registerBlock(String name, Supplier<Block> supplier, boolean hasItem) {
-        var block = ProductiveTrees.BLOCKS.register(name, supplier);
+
+    @SuppressWarnings("unchecked")
+    public static DeferredHolder<Block, Block> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends Block> factory, Supplier<BlockBehaviour.Properties> properties, boolean hasItem) {
+        var block = (DeferredHolder<Block, Block>) ProductiveTrees.BLOCKS.registerBlock(name, factory::apply, properties);
         if (hasItem) {
-            registerItem(name, () -> new BlockItem(block.get(), new Item.Properties()));
+            ProductiveTrees.ITEMS.registerItem(name, p -> new BlockItem(block.get(), p.useBlockDescriptionPrefix()));
         }
         return block;
     }
 
-    private static DeferredHolder<Block, Block> registerBlock(String name, Supplier<Block> blockSupplier) {
-        return registerBlock(name, blockSupplier, true);
+    public static DeferredHolder<Block, Block> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends Block> factory, Supplier<BlockBehaviour.Properties> properties) {
+        return registerBlock(name, factory, properties, true);
     }
 
     public static <E extends BlockEntity, T extends BlockEntityType<E>> DeferredHolder<BlockEntityType<?>, T> registerBlockEntity(String id, Supplier<T> supplier) {
@@ -527,7 +538,7 @@ public class TreeRegistrator
     }
 
     public static <E extends BlockEntity> BlockEntityType<E> createBlockEntityType(BlockEntityType.BlockEntitySupplier<E> factory, Block... blocks) {
-        return BlockEntityType.Builder.of(factory, blocks).build(null);
+        return new BlockEntityType<>(factory, blocks);
     }
 
     private static BlockBehaviour.Properties getProperties(Block copyFrom, boolean noOcclusion, @Nullable ToIntFunction<BlockState> lightLevel) {
@@ -541,21 +552,21 @@ public class TreeRegistrator
         return behavior;
     }
 
-    public static void registerDatagen(DataGenerator generator, CompletableFuture<HolderLookup.Provider> provider) {
-        PackOutput output = generator.getPackOutput();
-//        ExistingFileHelper helper = event.getExistingFileHelper();
-        generator.addProvider(true, new LanguageProvider(output));
-
-        generator.addProvider(true, new ModelProvider(output));
-
-        generator.addProvider(true, new LootDataProvider(output, List.of(new LootTableProvider.SubProviderEntry(LootDataProvider.LootProvider::new, LootContextParamSets.BLOCK)), provider));
-        generator.addProvider(true, new LootModifierProvider(output, provider));
-        generator.addProvider(true, new FeatureProvider(output));
-        generator.addProvider(true, new RecipeProvider(output, provider));
-        generator.addProvider(true, new DataMapProvider(output, provider));
-
-        BlockTagProvider blockTags = new BlockTagProvider(output, provider, null);
-        generator.addProvider(true, blockTags);
-        generator.addProvider(true, new ItemTagProvider(output, provider, blockTags.contentsGetter(), null));
-    }
+    // TODO: restore datagen wiring once the datagen subsystem is ported to 26.1
+//    public static void registerDatagen(DataGenerator generator, CompletableFuture<HolderLookup.Provider> provider) {
+//        PackOutput output = generator.getPackOutput();
+//        generator.addProvider(true, new LanguageProvider(output));
+//
+//        generator.addProvider(true, new ModelProvider(output));
+//
+//        generator.addProvider(true, new LootDataProvider(output, List.of(new LootTableProvider.SubProviderEntry(LootDataProvider.LootProvider::new, LootContextParamSets.BLOCK)), provider));
+//        generator.addProvider(true, new LootModifierProvider(output, provider));
+//        generator.addProvider(true, new FeatureProvider(output));
+//        generator.addProvider(true, new RecipeProvider(output, provider));
+//        generator.addProvider(true, new DataMapProvider(output, provider));
+//
+//        BlockTagProvider blockTags = new BlockTagProvider(output, provider, null);
+//        generator.addProvider(true, blockTags);
+//        generator.addProvider(true, new ItemTagProvider(output, provider, blockTags.contentsGetter(), null));
+//    }
 }

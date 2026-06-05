@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:pink_ivory_planks"
-    }
+    "#": "productivetrees:pink_ivory_planks"
   },
   "pattern": [
     "##",

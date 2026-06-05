@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/cedar_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11697895
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -10199713
+      }
+    ]
+  }
+}

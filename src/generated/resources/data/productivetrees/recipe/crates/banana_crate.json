@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/banana"
-    },
-    "R": {
-      "item": "productivetrees:banana"
-    }
+    "#": "#c:fruits/banana",
+    "R": "productivetrees:banana"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:banana_crate"
   }
 }

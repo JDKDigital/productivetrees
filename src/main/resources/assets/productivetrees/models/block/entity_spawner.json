@@ -1,6 +1,3 @@
 {
-  "parent": "block/block",
-  "textures": {
-    "all": "productivetrees:block/empty"
-  }
+  "parent": "minecraft:block/air"
 }

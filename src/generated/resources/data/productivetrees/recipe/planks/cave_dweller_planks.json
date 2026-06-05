@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:cave_dweller_logs"
-    }
+    "#productivetrees:cave_dweller_logs"
   ],
   "result": {
     "count": 4,

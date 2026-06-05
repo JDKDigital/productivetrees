@@ -6,7 +6,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -61,7 +60,7 @@ public class ProductiveFruitBlock extends ProductiveLeavesBlock
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return new ItemStack(treeObject.getFruit().getItem().getItem());
     }
 
@@ -95,9 +94,9 @@ public class ProductiveFruitBlock extends ProductiveLeavesBlock
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
         if (pStack.is(Items.BONE_MEAL) && !isMaxAge(pState)) {
-            if (!pLevel.isClientSide) {
+            if (!pLevel.isClientSide()) {
                 int i = this.getAge(pState);
                 pLevel.setBlock(pPos, this.getStateForAge(pState, i + 1), 2);
                 if (!pPlayer.isCreative()) {
@@ -105,20 +104,20 @@ public class ProductiveFruitBlock extends ProductiveLeavesBlock
                 }
             }
             pPlayer.swing(pHand);
-            return ItemInteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS;
         }
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.TRY_WITH_EMPTY_HAND;
     }
 
     @Override
     protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
         if (isMaxAge(pState)) {
-            if (!pLevel.isClientSide) {
+            if (!pLevel.isClientSide()) {
                 popResource(pLevel, pPos.relative(pHitResult.getDirection()), treeObject.getFruit().getItem());
                 pLevel.setBlock(pPos, this.getStateForAge(pState, 0), 2);
             }
             pPlayer.swing(InteractionHand.MAIN_HAND);
-            return InteractionResult.SUCCESS_NO_ITEM_USED;
+            return InteractionResult.CONSUME;
         }
         return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
     }

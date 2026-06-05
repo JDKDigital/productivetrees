@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:granny_smith_apple_planks"
-    }
+    "#": "productivetrees:granny_smith_apple_planks"
   },
   "pattern": [
     "###"

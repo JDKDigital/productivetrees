@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:purple_blackthorn_planks"
-    }
+    "productivetrees:purple_blackthorn_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:purple_blackthorn_button"
   }
 }

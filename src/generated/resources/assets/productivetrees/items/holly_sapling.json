@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/holly_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -12817613
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -10729411
+      }
+    ]
+  }
+}

@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:cork_oak_planks"
-    }
+    "#": "productivetrees:cork_oak_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:cork_oak_pressure_plate"
   }
 }

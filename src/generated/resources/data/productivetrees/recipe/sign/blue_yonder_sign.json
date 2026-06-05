@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:blue_yonder_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:blue_yonder_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

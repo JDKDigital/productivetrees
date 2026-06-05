@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:cherry_plum_logs"
-  },
+  "input": "#productivetrees:cherry_plum_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:cherry_plum_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

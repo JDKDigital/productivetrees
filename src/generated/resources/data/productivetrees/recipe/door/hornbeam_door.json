@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:hornbeam_planks"
-    }
+    "#": "productivetrees:hornbeam_planks"
   },
   "pattern": [
     "##",

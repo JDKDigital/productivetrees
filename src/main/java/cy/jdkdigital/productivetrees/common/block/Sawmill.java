@@ -39,7 +39,7 @@ public class Sawmill extends CapabilityContainerBlock
             if (!pLevel.isClientSide()) {
                 openGui((ServerPlayer) pPlayer, blockEntity);
             }
-            return InteractionResult.SUCCESS_NO_ITEM_USED;
+            return InteractionResult.CONSUME;
         }
         return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
     }
@@ -47,7 +47,7 @@ public class Sawmill extends CapabilityContainerBlock
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? null : createTickerHelper(blockEntityType, TreeRegistrator.SAWMILL_BLOCK_ENTITY.get(), SawmillBlockEntity::tick);
+        return level.isClientSide() ? null : createTickerHelper(blockEntityType, TreeRegistrator.SAWMILL_BLOCK_ENTITY.get(), SawmillBlockEntity::tick);
     }
 
     @SuppressWarnings("deprecation")

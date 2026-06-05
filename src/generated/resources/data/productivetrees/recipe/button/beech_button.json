@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:beech_planks"
-    }
+    "productivetrees:beech_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:beech_button"
   }
 }

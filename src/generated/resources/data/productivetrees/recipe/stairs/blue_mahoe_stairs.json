@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:blue_mahoe_planks"
-    }
+    "#": "productivetrees:blue_mahoe_planks"
   },
   "pattern": [
     "#  ",

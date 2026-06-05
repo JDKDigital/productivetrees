@@ -1,14 +1,9 @@
 {
   "type": "productivetrees:tree_pollination",
   "chance": 0.1,
-  "leafA": {
-    "item": "productivetrees:teak_leaves"
-  },
-  "leafB": {
-    "item": "minecraft:jungle_leaves"
-  },
+  "leafA": "productivetrees:teak_leaves",
+  "leafB": "minecraft:jungle_leaves",
   "result": {
-    "count": 1,
     "id": "productivetrees:kapok_sapling"
   }
 }

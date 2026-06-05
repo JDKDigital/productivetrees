@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:soursop_planks"
-    }
+    "#": "productivetrees:soursop_planks"
   },
   "pattern": [
     "#  ",

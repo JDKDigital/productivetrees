@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/lime"
-    },
-    "R": {
-      "item": "productivetrees:lime"
-    }
+    "#": "#c:fruits/lime",
+    "R": "productivetrees:lime"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:lime_crate"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:grandidiers_baobab_logs"
-    }
+    "#productivetrees:grandidiers_baobab_logs"
   ],
   "result": {
     "count": 4,

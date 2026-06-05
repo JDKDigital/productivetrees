@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "fence",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "productivetrees:zebrano_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "productivetrees:zebrano_planks"
   },
   "pattern": [
     "W#W",

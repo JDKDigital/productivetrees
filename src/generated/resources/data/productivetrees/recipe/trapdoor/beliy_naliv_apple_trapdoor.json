@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:beliy_naliv_apple_planks"
-    }
+    "#": "productivetrees:beliy_naliv_apple_planks"
   },
   "pattern": [
     "###",

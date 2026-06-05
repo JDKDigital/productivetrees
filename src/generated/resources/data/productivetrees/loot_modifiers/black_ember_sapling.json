@@ -1,7 +1,6 @@
 {
   "type": "productivelib:item_modifier",
   "addition": {
-    "count": 1,
     "id": "productivetrees:black_ember_sapling"
   },
   "chance": 0.3,
@@ -19,5 +18,6 @@
         }
       ]
     }
-  ]
+  ],
+  "priority": 0
 }

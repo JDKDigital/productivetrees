@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:sugar_apple_log"
-    }
+    "#": "productivetrees:sugar_apple_log"
   },
   "pattern": [
     "##",

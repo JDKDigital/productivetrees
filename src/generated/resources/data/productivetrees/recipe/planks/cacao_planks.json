@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:cacao_logs"
-    }
+    "#productivetrees:cacao_logs"
   ],
   "result": {
     "count": 4,

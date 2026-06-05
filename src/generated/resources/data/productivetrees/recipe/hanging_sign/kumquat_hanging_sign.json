@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "hanging_sign",
   "key": {
-    "#": {
-      "item": "productivetrees:kumquat_planks"
-    },
-    "X": {
-      "item": "minecraft:chain"
-    }
+    "#": "productivetrees:kumquat_planks",
+    "X": "minecraft:iron_chain"
   },
   "pattern": [
     "X X",

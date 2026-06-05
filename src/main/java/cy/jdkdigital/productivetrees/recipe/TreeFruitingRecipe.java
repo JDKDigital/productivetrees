@@ -3,23 +3,53 @@ package cy.jdkdigital.productivetrees.recipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.PlacementInfo;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeBookCategories;
+import net.minecraft.world.item.crafting.RecipeBookCategory;
+import net.minecraft.world.item.crafting.RecipeInput;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nonnull;
 
 public class TreeFruitingRecipe implements Recipe<RecipeInput>
 {
-    public final Ingredient tree;
-    public final ItemStack result;
+    public static final MapCodec<TreeFruitingRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
+            builder -> builder.group(
+                            Ingredient.CODEC.fieldOf("tree").forGetter(recipe -> recipe.tree),
+                            ItemStackTemplate.CODEC.fieldOf("result").forGetter(recipe -> recipe.resultTemplate)
+                    )
+                    .apply(builder, TreeFruitingRecipe::new)
+    );
 
-    public TreeFruitingRecipe(Ingredient tree, ItemStack result) {
+    public static final StreamCodec<RegistryFriendlyByteBuf, TreeFruitingRecipe> STREAM_CODEC = StreamCodec.of(
+            TreeFruitingRecipe::toNetwork, TreeFruitingRecipe::fromNetwork
+    );
+
+    public static final RecipeSerializer<TreeFruitingRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
+
+    public final Ingredient tree;
+    public final ItemStackTemplate resultTemplate;
+
+    private ItemStack resultCache;
+
+    public TreeFruitingRecipe(Ingredient tree, ItemStackTemplate resultTemplate) {
         this.tree = tree;
-        this.result = result;
+        this.resultTemplate = resultTemplate;
+    }
+
+    public ItemStack result() {
+        if (resultCache == null) {
+            resultCache = resultTemplate.create();
+        }
+        return resultCache;
     }
 
     @Override
@@ -33,69 +63,46 @@ public class TreeFruitingRecipe implements Recipe<RecipeInput>
     }
 
     @Override
-    public ItemStack assemble(RecipeInput container, HolderLookup.Provider provider) {
+    public ItemStack assemble(RecipeInput container) {
         return ItemStack.EMPTY;
     }
 
     @Override
-    public boolean canCraftInDimensions(int width, int height) {
-        return false;
+    public RecipeSerializer<TreeFruitingRecipe> getSerializer() {
+        return SERIALIZER;
     }
 
     @Override
-    public ItemStack getResultItem(HolderLookup.Provider provider) {
-        return this.result.copy();
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return TreeRegistrator.TREE_FRUITING.get();
-    }
-
-    @Override
-    public RecipeType<?> getType() {
+    public RecipeType<TreeFruitingRecipe> getType() {
         return TreeRegistrator.TREE_FRUITING_TYPE.get();
     }
 
-    public static class Serializer implements RecipeSerializer<TreeFruitingRecipe>
-    {
-        private static final MapCodec<TreeFruitingRecipe> CODEC = RecordCodecBuilder.mapCodec(
-                builder -> builder.group(
-                                Ingredient.CODEC.fieldOf("tree").forGetter(recipe -> recipe.tree),
-                                ItemStack.CODEC.fieldOf("result").forGetter(recipe -> recipe.result)
-                        )
-                        .apply(builder, TreeFruitingRecipe::new)
-        );
+    @Override
+    public String group() {
+        return "";
+    }
 
-        public static final StreamCodec<RegistryFriendlyByteBuf, TreeFruitingRecipe> STREAM_CODEC = StreamCodec.of(
-                TreeFruitingRecipe.Serializer::toNetwork, TreeFruitingRecipe.Serializer::fromNetwork
-        );
+    @Override
+    public boolean showNotification() {
+        return true;
+    }
 
-        @Override
-        public MapCodec<TreeFruitingRecipe> codec() {
-            return CODEC;
-        }
+    @Override
+    public PlacementInfo placementInfo() {
+        return PlacementInfo.NOT_PLACEABLE;
+    }
 
-        @Override
-        public StreamCodec<RegistryFriendlyByteBuf, TreeFruitingRecipe> streamCodec() {
-            return STREAM_CODEC;
-        }
+    @Override
+    public RecipeBookCategory recipeBookCategory() {
+        return RecipeBookCategories.CRAFTING_MISC;
+    }
 
-        public static TreeFruitingRecipe fromNetwork(@Nonnull RegistryFriendlyByteBuf buffer) {
-            try {
-                return new TreeFruitingRecipe(Ingredient.CONTENTS_STREAM_CODEC.decode(buffer), ItemStack.STREAM_CODEC.decode(buffer));
-            } catch (Exception e) {
-                throw e;
-            }
-        }
+    public static TreeFruitingRecipe fromNetwork(@Nonnull RegistryFriendlyByteBuf buffer) {
+        return new TreeFruitingRecipe(Ingredient.CONTENTS_STREAM_CODEC.decode(buffer), ItemStackTemplate.STREAM_CODEC.decode(buffer));
+    }
 
-        public static void toNetwork(@Nonnull RegistryFriendlyByteBuf buffer, TreeFruitingRecipe recipe) {
-            try {
-                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.tree);
-                ItemStack.STREAM_CODEC.encode(buffer, recipe.result);
-            } catch (Exception e) {
-                throw e;
-            }
-        }
+    public static void toNetwork(@Nonnull RegistryFriendlyByteBuf buffer, TreeFruitingRecipe recipe) {
+        Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.tree);
+        ItemStackTemplate.STREAM_CODEC.encode(buffer, recipe.resultTemplate);
     }
 }

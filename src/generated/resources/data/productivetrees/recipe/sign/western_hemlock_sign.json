@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:western_hemlock_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:western_hemlock_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

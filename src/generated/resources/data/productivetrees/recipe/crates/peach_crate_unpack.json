@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:peach_crate"
-    }
+    "productivetrees:peach_crate"
   ],
   "result": {
     "count": 9,

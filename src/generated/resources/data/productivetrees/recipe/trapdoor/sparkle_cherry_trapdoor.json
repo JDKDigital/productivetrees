@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:sparkle_cherry_planks"
-    }
+    "#": "productivetrees:sparkle_cherry_planks"
   },
   "pattern": [
     "###",

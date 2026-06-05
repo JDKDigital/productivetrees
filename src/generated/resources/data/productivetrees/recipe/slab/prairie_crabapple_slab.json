@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:prairie_crabapple_planks"
-    }
+    "#": "productivetrees:prairie_crabapple_planks"
   },
   "pattern": [
     "###"

@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "hanging_sign",
   "key": {
-    "#": {
-      "item": "productivetrees:thunder_bolt_planks"
-    },
-    "X": {
-      "item": "minecraft:chain"
-    }
+    "#": "productivetrees:thunder_bolt_planks",
+    "X": "minecraft:iron_chain"
   },
   "pattern": [
     "X X",

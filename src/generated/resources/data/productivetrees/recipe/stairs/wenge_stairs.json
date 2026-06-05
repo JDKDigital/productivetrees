@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:wenge_planks"
-    }
+    "#": "productivetrees:wenge_planks"
   },
   "pattern": [
     "#  ",

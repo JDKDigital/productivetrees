@@ -10,7 +10,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderSet;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -23,7 +24,7 @@ import java.util.function.BiConsumer;
 public class CenteredUpwardsBranchingTrunkPlacer extends UpwardsBranchingTrunkPlacer
 {
     public static final MapCodec<CenteredUpwardsBranchingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
-        return trunkPlacerParts(instance).and(instance.group(IntProvider.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter((trunkPlacer) -> trunkPlacer.extraBranchSteps), Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter((trunkPlacer) -> trunkPlacer.placeBranchPerLogProbability), IntProvider.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter((trunkPlacer) -> trunkPlacer.extraBranchLength), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("branch_start", 0.33F).forGetter((trunkPlacer) -> trunkPlacer.branchStartFraction))).apply(instance, CenteredUpwardsBranchingTrunkPlacer::new);
+        return trunkPlacerParts(instance).and(instance.group(IntProviders.POSITIVE_CODEC.fieldOf("extra_branch_steps").forGetter((trunkPlacer) -> trunkPlacer.extraBranchSteps), Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter((trunkPlacer) -> trunkPlacer.placeBranchPerLogProbability), IntProviders.NON_NEGATIVE_CODEC.fieldOf("extra_branch_length").forGetter((trunkPlacer) -> trunkPlacer.extraBranchLength), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("branch_start", 0.33F).forGetter((trunkPlacer) -> trunkPlacer.branchStartFraction))).apply(instance, CenteredUpwardsBranchingTrunkPlacer::new);
     });
     private final IntProvider extraBranchSteps;
     private final float placeBranchPerLogProbability;
@@ -44,7 +45,7 @@ public class CenteredUpwardsBranchingTrunkPlacer extends UpwardsBranchingTrunkPl
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> list = Lists.newArrayList();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
 

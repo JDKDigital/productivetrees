@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:asai_palm_planks"
-    }
+    "#": "productivetrees:asai_palm_planks"
   },
   "pattern": [
     "###"

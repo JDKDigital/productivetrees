@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:thunder_bolt_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:thunder_bolt_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

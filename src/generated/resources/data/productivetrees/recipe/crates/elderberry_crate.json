@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:berries/elderberry"
-    },
-    "R": {
-      "item": "productivetrees:elderberry"
-    }
+    "#": "#c:berries/elderberry",
+    "R": "productivetrees:elderberry"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:elderberry_crate"
   }
 }

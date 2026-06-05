@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:roasted_pistachio_crate"
-    }
+    "productivetrees:roasted_pistachio_crate"
   ],
   "result": {
     "count": 9,

@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/balsam_fir_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -13343165
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -9802649
+      }
+    ]
+  }
+}

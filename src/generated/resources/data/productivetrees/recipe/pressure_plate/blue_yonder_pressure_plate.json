@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:blue_yonder_planks"
-    }
+    "#": "productivetrees:blue_yonder_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:blue_yonder_pressure_plate"
   }
 }

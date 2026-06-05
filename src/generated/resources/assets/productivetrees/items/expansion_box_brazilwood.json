@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_brazilwood",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11985660
+      }
+    ]
+  }
+}

@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:pomelo_planks"
-    }
+    "productivetrees:pomelo_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:pomelo_button"
   }
 }

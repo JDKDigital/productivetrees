@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:ipe_planks"
-    }
+    "productivetrees:ipe_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:ipe_button"
   }
 }

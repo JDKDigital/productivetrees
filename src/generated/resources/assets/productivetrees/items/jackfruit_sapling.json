@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/jackfruit_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -12092157
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -10264495
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -2503842
+      }
+    ]
+  }
+}

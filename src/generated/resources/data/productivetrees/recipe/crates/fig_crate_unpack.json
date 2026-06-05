@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:fig_crate"
-    }
+    "productivetrees:fig_crate"
   ],
   "result": {
     "count": 9,

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:berries/asai_berry"
-    },
-    "R": {
-      "item": "productivetrees:asai_berry"
-    }
+    "#": "#c:berries/asai_berry",
+    "R": "productivetrees:asai_berry"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:asai_berry_crate"
   }
 }

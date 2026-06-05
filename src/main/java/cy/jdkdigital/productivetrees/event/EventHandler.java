@@ -29,10 +29,12 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
-import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.BlockGrowFeatureEvent;
+import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.ArrayList;
@@ -41,8 +43,17 @@ import java.util.ArrayList;
 public class EventHandler
 {
     @SubscribeEvent
-    public static void onServerStarting(AddReloadListenerEvent event) {
+    public static void onServerStarting(AddServerReloadListenersEvent event) {
         TreeFinder.context = event.getConditionContext();
+    }
+
+    @SubscribeEvent
+    public static void onDataSync(OnDatapackSyncEvent event) {
+        event.sendRecipes(
+                TreeRegistrator.TREE_POLLINATION_TYPE.get(),
+                TreeRegistrator.LOG_STRIPPING_TYPE.get(),
+                TreeRegistrator.SAW_MILLLING_TYPE.get()
+        );
     }
 
     @SubscribeEvent
@@ -70,7 +81,7 @@ public class EventHandler
     }
 
     @SubscribeEvent
-    public static void blockBreak(BlockEvent.BreakEvent event) {
+    public static void blockBreak(BreakBlockEvent event) {
         if (event.getLevel() instanceof Level level && event.getState().is(TreeRegistrator.POLLINATED_LEAVES.get()) && level.getBlockEntity(event.getPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
             if (!pollinatedLeavesBlockEntity.getResult().isEmpty()) {
                 Block.popResource(level, event.getPos(), pollinatedLeavesBlockEntity.getResult().copy());
@@ -118,12 +129,11 @@ public class EventHandler
                 if (item.getId().getPath().equals("pollen_sifter") && hasBees) {
                     continue;
                 }
-                if (item.getId().getPath().equals("upgrade_pollen_sieve") && !hasBees) {
-                    continue;
-                }
                 event.accept(item.get());
             }
-            event.accept(LibItems.UPGRADE_POLLEN_SIEVE.get());
+            if (hasBees) {
+                event.accept(LibItems.UPGRADE_POLLEN_SIEVE.get());
+            }
             event.accept(LibItems.UPGRADE_TIME.get());
             event.accept(LibItems.UPGRADE_TIME_2.get());
         }
@@ -144,31 +154,31 @@ public class EventHandler
     public static void registerBlockEntityCapabilities(RegisterCapabilitiesEvent event) {
         // Stripper
         event.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
+                Capabilities.Item.BLOCK,
                 TreeRegistrator.STRIPPER_BLOCK_ENTITY.get(),
                 (myBlockEntity, side) -> myBlockEntity.inventoryHandler
         );
         // Sawmill
         event.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
+                Capabilities.Item.BLOCK,
                 TreeRegistrator.SAWMILL_BLOCK_ENTITY.get(),
                 (myBlockEntity, side) -> myBlockEntity.inventoryHandler
         );
         // Wood worker
         event.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
+                Capabilities.Item.BLOCK,
                 TreeRegistrator.WOOD_WORKER_BLOCK_ENTITY.get(),
                 (myBlockEntity, side) -> myBlockEntity.inventoryHandler
         );
         // Pollen sifter
         event.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
+                Capabilities.Item.BLOCK,
                 TreeRegistrator.POLLEN_SIFTER_BLOCK_ENTITY.get(),
                 (myBlockEntity, side) -> myBlockEntity.inventoryHandler
         );
         // Display
         event.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
+                Capabilities.Item.BLOCK,
                 TreeRegistrator.TIME_TRAVELLER_DISPLAY_BLOCK_ENTITY.get(),
                 (myBlockEntity, side) -> myBlockEntity.inventoryHandler
         );

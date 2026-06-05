@@ -8,7 +8,7 @@
 //import net.minecraft.data.recipes.FinishedRecipe;
 //import net.minecraft.data.recipes.RecipeBuilder;
 //import net.minecraft.data.recipes.RecipeCategory;
-//import net.minecraft.resources.ResourceLocation;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.world.item.Item;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.item.crafting.Ingredient;
@@ -61,11 +61,11 @@
 //    }
 //
 //    @Override
-//    public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
+//    public void save(Consumer<FinishedRecipe> consumer, Identifier id) {
 //        consumer.accept(new Result(id, ingredient, log, sapling, fruit, fruitChance, this.advancement));
 //    }
 //
-//    record Result(ResourceLocation id, Ingredient ingredient, ItemStack log, ItemStack sapling, ItemStack fruit, float fruitChance,
+//    record Result(Identifier id, Ingredient ingredient, ItemStack log, ItemStack sapling, ItemStack fruit, float fruitChance,
 //                  Advancement.Builder advancement) implements FinishedRecipe
 //    {
 //        @Override
@@ -85,13 +85,13 @@
 //        }
 //
 //        @Override
-//        public ResourceLocation getId() {
+//        public Identifier getId() {
 //            return id;
 //        }
 //
 //        @Override
 //        public RecipeSerializer<?> getType() {
-//            return ForgeRegistries.RECIPE_SERIALIZERS.getValue(new ResourceLocation("thermal:insolator"));
+//            return ForgeRegistries.RECIPE_SERIALIZERS.getValue(new Identifier("thermal:insolator"));
 //        }
 //
 //        @Nullable
@@ -102,7 +102,7 @@
 //
 //        @Nullable
 //        @Override
-//        public ResourceLocation getAdvancementId() {
+//        public Identifier getAdvancementId() {
 //            return id.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/");
 //        }
 //    }

@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.util.TreeCreator;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.common.conditions.ICondition;
 
@@ -20,7 +20,7 @@ public class TreeFinder
 {
     public static Path DYNAMIC_RESOURCE_PATH = FMLPaths.CONFIGDIR.get().resolve("productivetrees/generated");
     public static ICondition.IContext context;
-    public static Map<ResourceLocation, TreeObject> trees = new LinkedHashMap<>();
+    public static Map<Identifier, TreeObject> trees = new LinkedHashMap<>();
 
     public static void discoverTrees() {
         try {
@@ -36,7 +36,7 @@ public class TreeFinder
 
         for (var name : TREES_JSON.keySet()) {
             JsonObject json = TREES_JSON.get(name).getAsJsonObject();
-            ResourceLocation id = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, name);
+            Identifier id = Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, name);
 
             if (!json.has("feature")) {
                 json.addProperty("feature", id.toString());

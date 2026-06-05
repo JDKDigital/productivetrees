@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/plum_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -8680409
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -3376809
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8237294
+      }
+    ]
+  }
+}

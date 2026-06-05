@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:old_fustic_planks"
-    }
+    "#": "productivetrees:old_fustic_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:old_fustic_pressure_plate"
   }
 }

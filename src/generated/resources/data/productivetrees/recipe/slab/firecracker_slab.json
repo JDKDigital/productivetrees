@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:firecracker_planks"
-    }
+    "#": "productivetrees:firecracker_planks"
   },
   "pattern": [
     "###"

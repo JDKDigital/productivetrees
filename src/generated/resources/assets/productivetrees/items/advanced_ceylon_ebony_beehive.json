@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_ceylon_ebony_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -16580350
+      }
+    ]
+  }
+}

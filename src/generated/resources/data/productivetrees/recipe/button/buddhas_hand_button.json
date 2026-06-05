@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:buddhas_hand_planks"
-    }
+    "productivetrees:buddhas_hand_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:buddhas_hand_button"
   }
 }

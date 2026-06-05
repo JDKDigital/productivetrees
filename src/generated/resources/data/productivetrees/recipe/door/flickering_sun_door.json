@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:flickering_sun_planks"
-    }
+    "#": "productivetrees:flickering_sun_planks"
   },
   "pattern": [
     "##",

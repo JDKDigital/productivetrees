@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:grandidiers_baobab_planks"
-    }
+    "#": "productivetrees:grandidiers_baobab_planks"
   },
   "pattern": [
     "#  ",

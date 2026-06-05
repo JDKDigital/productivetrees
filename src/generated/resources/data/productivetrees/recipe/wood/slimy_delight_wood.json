@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:slimy_delight_log"
-    }
+    "#": "productivetrees:slimy_delight_log"
   },
   "pattern": [
     "##",

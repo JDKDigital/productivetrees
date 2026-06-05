@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:flowering_crabapple_log"
-    }
+    "#": "productivetrees:flowering_crabapple_log"
   },
   "pattern": [
     "##",

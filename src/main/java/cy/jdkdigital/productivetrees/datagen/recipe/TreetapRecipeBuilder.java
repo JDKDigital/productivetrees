@@ -4,7 +4,7 @@ import cy.jdkdigital.treetap.common.recipe.TapExtractRecipe;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -69,7 +69,7 @@ public final class TreetapRecipeBuilder implements RecipeBuilder
     }
 
     @Override
-    public void save(RecipeOutput consumer, ResourceLocation id) {
+    public void save(RecipeOutput consumer, Identifier id) {
         consumer.accept(id, new TapExtractRecipe(log, result, ItemStack.EMPTY, harvestItem, collectBucket, processingTime, displayFluid, fluidColor, fluidColor, blocksRequired, List.of()), null);
     }
 }

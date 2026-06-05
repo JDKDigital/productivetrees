@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:nutmeg_logs"
-    }
+    "#productivetrees:nutmeg_logs"
   ],
   "result": {
     "count": 4,

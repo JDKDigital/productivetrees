@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:yew_planks"
-    }
+    "productivetrees:yew_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:yew_button"
   }
 }

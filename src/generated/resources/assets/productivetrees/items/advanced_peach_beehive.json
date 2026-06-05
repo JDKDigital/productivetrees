@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_peach_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -1009599
+      }
+    ]
+  }
+}

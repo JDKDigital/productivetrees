@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:sawdust"
-    },
-    "W": {
-      "item": "minecraft:water_bucket"
-    }
+    "#": "#c:sawdust",
+    "W": "minecraft:water_bucket"
   },
   "pattern": [
     "###",

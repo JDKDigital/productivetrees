@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:asai_palm_planks"
-    }
+    "#": "productivetrees:asai_palm_planks"
   },
   "pattern": [
     "#  ",

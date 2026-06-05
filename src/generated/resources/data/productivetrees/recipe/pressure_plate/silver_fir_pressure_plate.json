@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:silver_fir_planks"
-    }
+    "#": "productivetrees:silver_fir_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:silver_fir_pressure_plate"
   }
 }

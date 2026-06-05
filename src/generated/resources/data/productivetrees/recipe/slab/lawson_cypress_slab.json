@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:lawson_cypress_planks"
-    }
+    "#": "productivetrees:lawson_cypress_planks"
   },
   "pattern": [
     "###"

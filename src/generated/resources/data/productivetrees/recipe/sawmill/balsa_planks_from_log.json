@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:balsa_logs"
-  },
+  "input": "#productivetrees:balsa_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:balsa_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

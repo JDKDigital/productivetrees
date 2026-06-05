@@ -1,5 +1,6 @@
 package cy.jdkdigital.productivetrees.common.block;
 
+import com.mojang.serialization.MapCodec;
 import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -7,7 +8,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -21,8 +22,19 @@ import org.jetbrains.annotations.Nullable;
 
 public class PollinatedLeaves extends LeavesBlock implements EntityBlock
 {
+    public static final MapCodec<PollinatedLeaves> CODEC = simpleCodec(PollinatedLeaves::new);
+
     public PollinatedLeaves(Properties properties) {
-        super(properties);
+        super(0.0F, properties);
+    }
+
+    @Override
+    public MapCodec<PollinatedLeaves> codec() {
+        return CODEC;
+    }
+
+    @Override
+    protected void spawnFallingLeavesParticle(Level level, BlockPos pos, RandomSource random) {
     }
 
     @Nullable
@@ -40,7 +52,7 @@ public class PollinatedLeaves extends LeavesBlock implements EntityBlock
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         super.animateTick(pState, pLevel, pPos, pRandom);
-        if (pLevel.isClientSide && pLevel.random.nextBoolean() && pLevel.random.nextBoolean() && pLevel.random.nextBoolean()) {
+        if (pLevel.isClientSide() && pLevel.getRandom().nextBoolean() && pLevel.getRandom().nextBoolean() && pLevel.getRandom().nextBoolean()) {
             var hasSpyglass = Minecraft.getInstance().player.getItemInHand(InteractionHand.MAIN_HAND).is(Items.SPYGLASS) || Minecraft.getInstance().player.getItemInHand(InteractionHand.OFF_HAND).is(Items.SPYGLASS);
             if (hasSpyglass) {
                 ParticleUtils.spawnParticleInBlock(pLevel, pPos, 15, ParticleTypes.HAPPY_VILLAGER);
@@ -54,7 +66,7 @@ public class PollinatedLeaves extends LeavesBlock implements EntityBlock
     }
 
     @Override
-    public ItemStack pickupBlock(@Nullable Player pPlayer, LevelAccessor pLevel, BlockPos pPos, BlockState pState) {
+    public ItemStack pickupBlock(@Nullable LivingEntity pPlayer, LevelAccessor pLevel, BlockPos pPos, BlockState pState) {
         if (pLevel.getBlockEntity(pPos) instanceof PollinatedLeavesBlockEntity blockEntity) {
             return blockEntity.getResult();
         }

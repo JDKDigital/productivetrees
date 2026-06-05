@@ -7,10 +7,11 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -34,7 +35,7 @@ public class FlutedTrunkPlacer extends TrunkPlacer
         return TrunkPlacerCodecs.trunkPlacerParts(instance).and(instance.group(
                 Codec.intRange(1, 4).fieldOf("radius").forGetter((placer) -> placer.radius),
                 Codec.floatRange(0.0F, 1.0F).optionalFieldOf("branch_start", 0.8F).forGetter((placer) -> placer.branchStartFraction),
-                IntProvider.codec(1, 16).fieldOf("branch_length").forGetter((placer) -> placer.branchLength),
+                IntProviders.codec(1, 16).fieldOf("branch_length").forGetter((placer) -> placer.branchLength),
                 Codec.intRange(0, 32).optionalFieldOf("twist", 10).forGetter((placer) -> placer.twist)
         )).apply(instance, FlutedTrunkPlacer::new);
     });
@@ -57,7 +58,7 @@ public class FlutedTrunkPlacer extends TrunkPlacer
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
         int branchStart = Math.round(pFreeTreeHeight * this.branchStartFraction);
@@ -89,7 +90,7 @@ public class FlutedTrunkPlacer extends TrunkPlacer
                         continue;
                     }
                     if (h == 0) {
-                        setDirtAt(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, -1, dz), pConfig);
+                        placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, -1, dz), pConfig);
                     }
                     this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, h, dz), pConfig);
                 }
@@ -119,7 +120,7 @@ public class FlutedTrunkPlacer extends TrunkPlacer
     }
 
     // buttress roots: a short flare climbs a block or two up each side of the trunk, then a low spur creeps out along the ground
-    private void placeRoots(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, BlockPos pPos, TreeConfiguration pConfig, BlockPos.MutableBlockPos mutableBlockPos) {
+    private void placeRoots(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, BlockPos pPos, TreeConfiguration pConfig, BlockPos.MutableBlockPos mutableBlockPos) {
         int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
         int ground = pPos.getY();
         for (int[] d : dirs) {
@@ -156,8 +157,9 @@ public class FlutedTrunkPlacer extends TrunkPlacer
 
     // the "wood" (all-bark) counterpart of the trunk's log block, used for the roots; falls back to the log if absent
     private BlockState woodState(BlockState log) {
-        ResourceLocation key = BuiltInRegistries.BLOCK.getKey(log.getBlock());
-        Block wood = BuiltInRegistries.BLOCK.get(key.withPath((path) -> path.replace("_log", "_wood")));
-        return wood == Blocks.AIR ? log : wood.defaultBlockState();
+        Identifier key = BuiltInRegistries.BLOCK.getKey(log.getBlock());
+        return BuiltInRegistries.BLOCK.get(key.withPath((path) -> path.replace("_log", "_wood")))
+                .map(holder -> holder.value().defaultBlockState())
+                .orElse(log);
     }
 }

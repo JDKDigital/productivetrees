@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:osage_orange_planks"
-    }
+    "#": "productivetrees:osage_orange_planks"
   },
   "pattern": [
     "###",

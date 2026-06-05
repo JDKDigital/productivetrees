@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_beliy_naliv_apple",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -5412781
+      }
+    ]
+  }
+}

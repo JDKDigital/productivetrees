@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_yellow_meranti",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -1915519
+      }
+    ]
+  }
+}

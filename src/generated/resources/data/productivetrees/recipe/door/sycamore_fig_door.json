@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:sycamore_fig_planks"
-    }
+    "#": "productivetrees:sycamore_fig_planks"
   },
   "pattern": [
     "##",

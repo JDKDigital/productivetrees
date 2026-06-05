@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:copper_beech_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:copper_beech_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

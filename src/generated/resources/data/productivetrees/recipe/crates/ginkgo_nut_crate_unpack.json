@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:ginkgo_nut_crate"
-    }
+    "productivetrees:ginkgo_nut_crate"
   ],
   "result": {
     "count": 9,

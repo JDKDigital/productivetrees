@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_time_traveller",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -12602193
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_sparkle_cherry_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -272674
+      }
+    ]
+  }
+}

@@ -19,7 +19,7 @@ public class ProductiveDanglerFruitBlock extends ProductiveFruitBlock
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        Vec3 vec3 = pState.getOffset(pLevel, pPos);
+        Vec3 vec3 = pState.getOffset(pPos);
         return SHAPE.move(vec3.x/2d, vec3.y, vec3.z/2d);
     }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:sequoia_logs"
-    }
+    "#productivetrees:sequoia_logs"
   ],
   "result": {
     "count": 4,

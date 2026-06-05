@@ -1,13 +1,10 @@
 {
   "type": "minecraft:smelting",
-  "category": "blocks",
+  "category": "food",
   "cookingtime": 1080,
   "experience": 0.9,
-  "ingredient": {
-    "item": "productivetrees:chestnut_crate"
-  },
+  "ingredient": "productivetrees:chestnut_crate",
   "result": {
-    "count": 1,
     "id": "productivetrees:roasted_chestnut_crate"
   }
 }

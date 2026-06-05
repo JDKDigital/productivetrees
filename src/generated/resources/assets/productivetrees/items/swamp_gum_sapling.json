@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/swamp_gum_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -12756418
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -13160155
+      }
+    ]
+  }
+}

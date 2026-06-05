@@ -7,7 +7,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -22,8 +23,8 @@ public class SpreadingTrunkPlacer extends TrunkPlacer
 {
     public static final MapCodec<SpreadingTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return TrunkPlacerCodecs.trunkPlacerParts(instance).and(instance.group(
-                IntProvider.codec(0, 20).fieldOf("branch_count").forGetter((placer) -> placer.branchCount),
-                IntProvider.codec(1, 16).fieldOf("branch_length").forGetter((placer) -> placer.branchLength)
+                IntProviders.codec(0, 20).fieldOf("branch_count").forGetter((placer) -> placer.branchCount),
+                IntProviders.codec(1, 16).fieldOf("branch_length").forGetter((placer) -> placer.branchLength)
         )).apply(instance, SpreadingTrunkPlacer::new);
     });
     private final IntProvider branchCount;
@@ -41,14 +42,14 @@ public class SpreadingTrunkPlacer extends TrunkPlacer
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
 
         // a 2x2 trunk so it grows correctly from a 2x2 sapling patch
         for (int dx = 0; dx <= 1; ++dx) {
             for (int dz = 0; dz <= 1; ++dz) {
-                setDirtAt(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, -1, dz), pConfig);
+                placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, -1, dz), pConfig);
                 for (int h = 0; h < pFreeTreeHeight; ++h) {
                     this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, h, dz), pConfig);
                 }

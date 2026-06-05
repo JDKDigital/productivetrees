@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:nuts/roasted_beechnut"
-    },
-    "R": {
-      "item": "productivetrees:roasted_beechnut"
-    }
+    "#": "#c:nuts/roasted_beechnut",
+    "R": "productivetrees:roasted_beechnut"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:roasted_beechnut_crate"
   }
 }

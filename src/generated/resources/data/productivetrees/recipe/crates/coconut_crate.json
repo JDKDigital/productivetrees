@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/coconut"
-    },
-    "R": {
-      "item": "productivetrees:coconut"
-    }
+    "#": "#c:fruits/coconut",
+    "R": "productivetrees:coconut"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:coconut_crate"
   }
 }

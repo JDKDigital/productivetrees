@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:carob_logs"
-    }
+    "#productivetrees:carob_logs"
   ],
   "result": {
     "count": 4,

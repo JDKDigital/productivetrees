@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:grandidiers_baobab_planks"
-    }
+    "#": "productivetrees:grandidiers_baobab_planks"
   },
   "pattern": [
     "##",

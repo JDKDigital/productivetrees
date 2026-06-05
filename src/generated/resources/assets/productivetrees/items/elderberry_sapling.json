@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/elderberry_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -8611801
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -7302021
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -16316160
+      }
+    ]
+  }
+}

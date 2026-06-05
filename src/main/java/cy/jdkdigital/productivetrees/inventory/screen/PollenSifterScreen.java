@@ -3,48 +3,38 @@ package cy.jdkdigital.productivetrees.inventory.screen;
 import cy.jdkdigital.productivelib.client.screen.AbstractUpgradeableContainerScreen;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.inventory.PollenSifterContainer;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PollenSifterScreen extends AbstractUpgradeableContainerScreen<PollenSifterContainer>
 {
-    private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/container/pollen_sifter.png");
+    private static final Identifier GUI_TEXTURE = Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/container/pollen_sifter.png");
 
     public PollenSifterScreen(PollenSifterContainer container, Inventory inv, Component titleIn) {
         super(container, inv, titleIn);
     }
 
     @Override
-    public void render(GuiGraphics matrixStack, int mouseX, int mouseY, float partialTicks) {
-        super.render(matrixStack, mouseX, mouseY, partialTicks);
-        this.renderTooltip(matrixStack, mouseX, mouseY);
-    }
-
-    @Override
-    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        super.renderLabels(guiGraphics, mouseX, mouseY);
+    protected void extractLabels(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
+        super.extractLabels(graphics, mouseX, mouseY);
         if (isHovering(75, 33, 18, 18, mouseX, mouseY)) {
-            List<FormattedCharSequence> tooltipList = new ArrayList<>();
-            tooltipList.add(Component.translatable(ProductiveTrees.MODID + ".screen.progress", this.menu.getBlockEntity().progress + "/" + this.menu.getBlockEntity().recipeTime).getVisualOrderText());
-
-            guiGraphics.renderTooltip(font, tooltipList, mouseX - getGuiLeft(), mouseY - getGuiTop());
+            graphics.setTooltipForNextFrame(
+                    List.of(Component.translatable(ProductiveTrees.MODID + ".screen.progress", this.menu.getBlockEntity().progress + "/" + this.menu.getBlockEntity().recipeTime).getVisualOrderText()),
+                    mouseX, mouseY);
         }
     }
 
     @Override
-    protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
-        // Draw main screen
-        guiGraphics.blit(GUI_TEXTURE, this.getGuiLeft(), this.getGuiTop(), 0, 0, this.getXSize(), this.getYSize());
+    public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
+        super.extractBackground(graphics, mouseX, mouseY, partialTick);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
 
-        // Draw progress
-        int progress = (int) (18f * ((float) this.menu.getBlockEntity().progress  / (float) this.menu.getBlockEntity().recipeTime));
-        guiGraphics.blit(GUI_TEXTURE, this.getGuiLeft() + 75, this.getGuiTop() + 33, 202, 0, progress, 18);
+        int progress = (int) (18f * ((float) this.menu.getBlockEntity().progress / (float) this.menu.getBlockEntity().recipeTime));
+        graphics.blit(RenderPipelines.GUI_TEXTURED, GUI_TEXTURE, this.leftPos + 75, this.topPos + 33, 202.0F, 0.0F, progress, 18, 256, 256);
     }
 }

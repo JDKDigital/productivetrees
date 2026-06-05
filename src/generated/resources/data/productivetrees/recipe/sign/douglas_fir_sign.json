@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:douglas_fir_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:douglas_fir_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

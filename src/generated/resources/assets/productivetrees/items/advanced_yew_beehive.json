@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_yew_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -4946852
+      }
+    ]
+  }
+}

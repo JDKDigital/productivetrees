@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:cave_dweller_planks"
-    }
+    "#": "productivetrees:cave_dweller_planks"
   },
   "pattern": [
     "##",

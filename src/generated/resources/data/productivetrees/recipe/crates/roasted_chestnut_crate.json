@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:nuts/roasted_chestnut"
-    },
-    "R": {
-      "item": "productivetrees:roasted_chestnut"
-    }
+    "#": "#c:nuts/roasted_chestnut",
+    "R": "productivetrees:roasted_chestnut"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:roasted_chestnut_crate"
   }
 }

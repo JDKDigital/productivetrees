@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_red_maple",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -3032944
+      }
+    ]
+  }
+}

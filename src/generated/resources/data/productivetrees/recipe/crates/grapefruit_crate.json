@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/grapefruit"
-    },
-    "R": {
-      "item": "productivetrees:grapefruit"
-    }
+    "#": "#c:fruits/grapefruit",
+    "R": "productivetrees:grapefruit"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:grapefruit_crate"
   }
 }

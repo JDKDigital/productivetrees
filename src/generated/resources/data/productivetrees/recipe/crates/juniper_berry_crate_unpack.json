@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:juniper_berry_crate"
-    }
+    "productivetrees:juniper_berry_crate"
   ],
   "result": {
     "count": 9,

@@ -6,7 +6,8 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
@@ -20,8 +21,8 @@ public class RayFoliagePlacer extends FoliagePlacer
 {
     public static final MapCodec<RayFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return foliagePlacerParts(instance).and(instance.group(
-                IntProvider.codec(2, 16).fieldOf("ray_count").forGetter((placer) -> placer.rayCount),
-                IntProvider.codec(1, 8).fieldOf("ray_length").forGetter((placer) -> placer.rayLength)
+                IntProviders.codec(2, 16).fieldOf("ray_count").forGetter((placer) -> placer.rayCount),
+                IntProviders.codec(1, 8).fieldOf("ray_length").forGetter((placer) -> placer.rayLength)
         )).apply(instance, RayFoliagePlacer::new);
     });
     // the 26 surrounding directions a ray can shoot toward
@@ -55,7 +56,7 @@ public class RayFoliagePlacer extends FoliagePlacer
     }
 
     @Override
-    protected void createFoliage(LevelSimulatedReader pLevel, FoliageSetter pBlockSetter, RandomSource pRandom, TreeConfiguration pConfig, int pMaxFreeTreeHeight, FoliageAttachment pAttachment, int pFoliageHeight, int pFoliageRadius, int pOffset) {
+    protected void createFoliage(WorldGenLevel pLevel, FoliageSetter pBlockSetter, RandomSource pRandom, TreeConfiguration pConfig, int pMaxFreeTreeHeight, FoliageAttachment pAttachment, int pFoliageHeight, int pFoliageRadius, int pOffset) {
         BlockPos centre = pAttachment.pos().above(pOffset);
         BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
         // dense core

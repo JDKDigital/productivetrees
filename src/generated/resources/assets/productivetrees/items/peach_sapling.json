@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/peach_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11502814
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -9214371
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8237294
+      }
+    ]
+  }
+}

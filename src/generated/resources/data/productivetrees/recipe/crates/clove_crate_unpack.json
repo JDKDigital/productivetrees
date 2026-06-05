@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:clove_crate"
-    }
+    "productivetrees:clove_crate"
   ],
   "result": {
     "count": 9,

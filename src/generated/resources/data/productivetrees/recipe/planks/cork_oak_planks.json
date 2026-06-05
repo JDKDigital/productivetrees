@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:cork_oak_logs"
-    }
+    "#productivetrees:cork_oak_logs"
   ],
   "result": {
     "count": 4,

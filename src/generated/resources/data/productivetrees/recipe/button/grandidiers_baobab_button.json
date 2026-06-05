@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:grandidiers_baobab_planks"
-    }
+    "productivetrees:grandidiers_baobab_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:grandidiers_baobab_button"
   }
 }

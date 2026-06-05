@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/wenge_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -12025837
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -11187393
+      }
+    ]
+  }
+}

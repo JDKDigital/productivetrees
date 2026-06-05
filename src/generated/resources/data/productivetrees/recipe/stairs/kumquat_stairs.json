@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:kumquat_planks"
-    }
+    "#": "productivetrees:kumquat_planks"
   },
   "pattern": [
     "#  ",

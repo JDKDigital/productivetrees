@@ -7,11 +7,11 @@ import cy.jdkdigital.productivelib.util.ColorUtil;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class TreeCreator
 {
-    public static TreeObject create(ResourceLocation id, JsonObject json) throws JsonSyntaxException {
+    public static TreeObject create(Identifier id, JsonObject json) throws JsonSyntaxException {
         var treeOptional = TreeObject.codec(id).parse(JsonOps.INSTANCE, json);
 
         if (treeOptional.result().isPresent()) {

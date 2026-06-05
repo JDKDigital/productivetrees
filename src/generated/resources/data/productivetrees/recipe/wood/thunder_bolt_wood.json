@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:thunder_bolt_log"
-    }
+    "#": "productivetrees:thunder_bolt_log"
   },
   "pattern": [
     "##",

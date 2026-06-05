@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:mahogany_planks"
-    }
+    "#": "productivetrees:mahogany_planks"
   },
   "pattern": [
     "#  ",

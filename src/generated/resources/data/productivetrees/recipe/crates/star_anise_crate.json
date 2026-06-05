@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:star_anise"
-    },
-    "R": {
-      "item": "productivetrees:star_anise"
-    }
+    "#": "#c:star_anise",
+    "R": "productivetrees:star_anise"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:star_anise_crate"
   }
 }

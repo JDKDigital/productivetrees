@@ -7,14 +7,14 @@ import com.almostreliable.unified.api.unification.recipe.RecipeUnifier;
 import com.almostreliable.unified.api.unification.recipe.RecipeUnifierRegistry;
 import com.almostreliable.unified.api.unification.recipe.UnificationHelper;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class AlmostUnifiedCompat implements AlmostUnifiedPlugin
 {
-    private static final ResourceLocation pluginId = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, ProductiveTrees.MODID);
+    private static final Identifier pluginId = Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, ProductiveTrees.MODID);
 
     @Override
-    public ResourceLocation getPluginId() {
+    public Identifier getPluginId() {
         return pluginId;
     }
 

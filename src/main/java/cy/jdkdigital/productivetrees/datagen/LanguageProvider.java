@@ -29,10 +29,6 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add("jei.productivetrees.tree_fruiting", "Tree Fruiting");
         add("jei.productivetrees.log_stripping", "Log Stripping");
         add("jei.productivetrees.sawmill", "Sawmill");
-        add("emi.category.productivetrees.pollination", "Tree Pollination");
-        add("emi.category.productivetrees.fruiting", "Tree Fruiting");
-        add("emi.category.productivetrees.stripping", "Log Stripping");
-        add("emi.category.productivetrees.sawmill", "Sawmill");
         add("productivetrees.pollen.name", "%s");
         add("productivetrees.screen.progress", "Progress: %s");
         add("productivetrees.devices.advanced_beehive", "Advanced Beehive");
@@ -89,15 +85,14 @@ public class LanguageProvider extends net.neoforged.neoforge.common.data.Languag
         add(TreeRegistrator.CURED_RUBBER.get(), "Cured Rubber");
         add(TreeRegistrator.SANDALWOOD_OIL.get(), "Sandalwood Oil");
 
-        ProductiveTrees.ITEMS.getEntries().forEach(itemDeferredHolder -> {
-            var stack = new ItemStack(itemDeferredHolder.get());
-            if (stack.has(DataComponents.FOOD)) {
-                add(itemDeferredHolder.get(), LangUtil.capName(BuiltInRegistries.ITEM.getKey(itemDeferredHolder.get()).getPath()));
-            }
+        add(TreeRegistrator.MAPLE_SYRUP.get(), "Maple Syrup");
+        add(TreeRegistrator.DATE_PALM_JUICE.get(), "Date Palm Juice");
+        TreeRegistrator.FOOD_ITEMS.forEach(foodItem -> {
+            add(foodItem.get(), LangUtil.capName(BuiltInRegistries.ITEM.getKey(foodItem.get()).getPath()));
         });
 
         TreeRegistrator.CRATED_CROPS.forEach(crate -> {
-            add(BuiltInRegistries.BLOCK.get(crate), "Crate of " + LangUtil.pluralCapName(crate.getPath().replace("_crate", "")));
+            add(BuiltInRegistries.BLOCK.getValue(crate), "Crate of " + LangUtil.pluralCapName(crate.getPath().replace("_crate", "")));
         });
 
         TreeFinder.trees.forEach((id, treeObject) -> {

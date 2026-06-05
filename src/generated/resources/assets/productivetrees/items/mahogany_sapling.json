@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/mahogany_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -9137041
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -5002328
+      }
+    ]
+  }
+}

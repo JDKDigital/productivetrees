@@ -58,7 +58,7 @@ public class FruitTrunkDanglerDecorator extends TreeDecorator
                 return;
             }
             if (rand.nextFloat() < density) {
-                context.setBlock(leaf.below(), fruitProvider.getState(rand, leaf.below()));
+                context.setBlock(leaf.below(), fruitProvider.getState(context.level(), rand, leaf.below()));
                 count.getAndIncrement();
             }
         });

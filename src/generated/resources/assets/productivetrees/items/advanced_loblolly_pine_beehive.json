@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_loblolly_pine_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -468821
+      }
+    ]
+  }
+}

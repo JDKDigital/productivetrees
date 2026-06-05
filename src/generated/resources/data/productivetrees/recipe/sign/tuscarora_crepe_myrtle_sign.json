@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:tuscarora_crepe_myrtle_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:tuscarora_crepe_myrtle_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

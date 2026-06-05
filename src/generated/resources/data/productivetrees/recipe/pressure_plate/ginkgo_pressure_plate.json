@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:ginkgo_planks"
-    }
+    "#": "productivetrees:ginkgo_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:ginkgo_pressure_plate"
   }
 }

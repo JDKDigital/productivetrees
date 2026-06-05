@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:elderberry_logs"
-  },
+  "input": "#productivetrees:elderberry_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:elderberry_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

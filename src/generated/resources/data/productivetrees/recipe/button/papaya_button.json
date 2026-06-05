@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:papaya_planks"
-    }
+    "productivetrees:papaya_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:papaya_button"
   }
 }

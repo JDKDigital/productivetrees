@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:sparkle_cherry_planks"
-    }
+    "#": "productivetrees:sparkle_cherry_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:sparkle_cherry_pressure_plate"
   }
 }

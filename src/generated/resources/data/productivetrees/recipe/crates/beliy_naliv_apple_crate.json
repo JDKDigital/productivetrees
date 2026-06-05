@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/beliy_naliv_apple"
-    },
-    "R": {
-      "item": "productivetrees:beliy_naliv_apple"
-    }
+    "#": "#c:fruits/beliy_naliv_apple",
+    "R": "productivetrees:beliy_naliv_apple"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:beliy_naliv_apple_crate"
   }
 }

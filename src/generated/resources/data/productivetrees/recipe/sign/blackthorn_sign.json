@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:blackthorn_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:blackthorn_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

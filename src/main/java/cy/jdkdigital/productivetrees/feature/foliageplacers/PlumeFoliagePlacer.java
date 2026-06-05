@@ -6,7 +6,8 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
@@ -19,7 +20,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 public class PlumeFoliagePlacer extends FoliagePlacer
 {
     public static final MapCodec<PlumeFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
-        return foliagePlacerParts(instance).and(IntProvider.codec(0, 64).fieldOf("trunk_height").forGetter((placer) -> placer.trunkHeight)).apply(instance, PlumeFoliagePlacer::new);
+        return foliagePlacerParts(instance).and(IntProviders.codec(0, 64).fieldOf("trunk_height").forGetter((placer) -> placer.trunkHeight)).apply(instance, PlumeFoliagePlacer::new);
     });
     private final IntProvider trunkHeight;
 
@@ -34,7 +35,7 @@ public class PlumeFoliagePlacer extends FoliagePlacer
     }
 
     @Override
-    protected void createFoliage(LevelSimulatedReader pLevel, FoliageSetter pBlockSetter, RandomSource pRandom, TreeConfiguration pConfig, int pMaxFreeTreeHeight, FoliageAttachment pAttachment, int pFoliageHeight, int pFoliageRadius, int pOffset) {
+    protected void createFoliage(WorldGenLevel pLevel, FoliageSetter pBlockSetter, RandomSource pRandom, TreeConfiguration pConfig, int pMaxFreeTreeHeight, FoliageAttachment pAttachment, int pFoliageHeight, int pFoliageRadius, int pOffset) {
         BlockPos blockpos = pAttachment.pos();
         int max = pFoliageRadius + pAttachment.radiusOffset();
         // place rows top-down: the radius eases up (~half a block per row) to a point on top, then holds at max for a dense body

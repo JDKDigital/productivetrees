@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:nectarine_crate"
-    }
+    "productivetrees:nectarine_crate"
   ],
   "result": {
     "count": 9,

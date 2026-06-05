@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "hanging_sign",
   "key": {
-    "#": {
-      "item": "productivetrees:pomelo_planks"
-    },
-    "X": {
-      "item": "minecraft:chain"
-    }
+    "#": "productivetrees:pomelo_planks",
+    "X": "minecraft:iron_chain"
   },
   "pattern": [
     "X X",

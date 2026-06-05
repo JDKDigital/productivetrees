@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/baobab_fruit"
-    },
-    "R": {
-      "item": "productivetrees:baobab_fruit"
-    }
+    "#": "#c:fruits/baobab_fruit",
+    "R": "productivetrees:baobab_fruit"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:baobab_fruit_crate"
   }
 }

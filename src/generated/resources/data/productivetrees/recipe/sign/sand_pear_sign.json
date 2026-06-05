@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:sand_pear_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:sand_pear_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_golden_delicious_apple_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -5543105
+      }
+    ]
+  }
+}

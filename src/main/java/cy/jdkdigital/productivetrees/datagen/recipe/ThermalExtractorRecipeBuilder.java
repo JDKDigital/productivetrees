@@ -13,7 +13,7 @@
 //import net.minecraft.data.recipes.FinishedRecipe;
 //import net.minecraft.data.recipes.RecipeBuilder;
 //import net.minecraft.data.recipes.RecipeCategory;
-//import net.minecraft.resources.ResourceLocation;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.world.item.Item;
 //import net.minecraft.world.item.crafting.RecipeSerializer;
 //import net.minecraft.world.level.block.Block;
@@ -59,11 +59,11 @@
 //    }
 //
 //    @Override
-//    public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
+//    public void save(Consumer<FinishedRecipe> consumer, Identifier id) {
 //        consumer.accept(new Result(id, log, leaves, fluid, this.advancement));
 //    }
 //
-//    record Result(ResourceLocation id, Block log, Block leaves, FluidStack fluid,
+//    record Result(Identifier id, Block log, Block leaves, FluidStack fluid,
 //                  Advancement.Builder advancement) implements FinishedRecipe
 //    {
 //        @Override
@@ -77,7 +77,7 @@
 //            properties.remove("waterlogged");
 //            leafJson.add("Properties", properties);
 //            if (tree.hasFruit()) {
-//                var fruit = BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, tree.getId().getPath() + "_fruit"));
+//                var fruit = BuiltInRegistries.BLOCK.get(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, tree.getId().getPath() + "_fruit"));
 //                var fruitJson = BlockState.CODEC.encodeStart(JsonOps.INSTANCE, fruit.defaultBlockState()).getOrThrow(false, ProductiveTrees.LOGGER::error).getAsJsonObject();
 //                var fruitProperties = fruitJson.get("Properties").getAsJsonObject();
 //                fruitProperties.remove("distance");
@@ -102,13 +102,13 @@
 //        }
 //
 //        @Override
-//        public ResourceLocation getId() {
+//        public Identifier getId() {
 //            return id;
 //        }
 //
 //        @Override
 //        public RecipeSerializer<?> getType() {
-//            return ForgeRegistries.RECIPE_SERIALIZERS.getValue(new ResourceLocation("thermal:tree_extractor"));
+//            return ForgeRegistries.RECIPE_SERIALIZERS.getValue(new Identifier("thermal:tree_extractor"));
 //        }
 //
 //        @Nullable
@@ -119,7 +119,7 @@
 //
 //        @Nullable
 //        @Override
-//        public ResourceLocation getAdvancementId() {
+//        public Identifier getAdvancementId() {
 //            return id.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/");
 //        }
 //    }

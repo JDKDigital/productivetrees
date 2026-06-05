@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:silver_lime_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:silver_lime_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

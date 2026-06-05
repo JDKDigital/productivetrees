@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:hornbeam_planks"
-    }
+    "#": "productivetrees:hornbeam_planks"
   },
   "pattern": [
     "###"

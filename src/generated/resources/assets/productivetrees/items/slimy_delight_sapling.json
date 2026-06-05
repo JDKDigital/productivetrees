@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/slimy_delight_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -16721151
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -16024576
+      }
+    ]
+  }
+}

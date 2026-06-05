@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:european_larch_planks"
-    }
+    "#": "productivetrees:european_larch_planks"
   },
   "pattern": [
     "#  ",

@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:cork_oak_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:cork_oak_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

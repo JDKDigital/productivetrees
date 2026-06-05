@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_cempedak_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -6594749
+      }
+    ]
+  }
+}

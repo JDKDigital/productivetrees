@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/flowering_crabapple"
-    },
-    "R": {
-      "item": "productivetrees:flowering_crabapple"
-    }
+    "#": "#c:fruits/flowering_crabapple",
+    "R": "productivetrees:flowering_crabapple"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:flowering_crabapple_crate"
   }
 }

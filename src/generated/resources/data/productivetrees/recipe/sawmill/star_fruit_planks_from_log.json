@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:star_fruit_logs"
-  },
+  "input": "#productivetrees:star_fruit_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:star_fruit_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

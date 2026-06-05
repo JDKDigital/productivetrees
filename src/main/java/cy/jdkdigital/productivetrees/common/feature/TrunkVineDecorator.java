@@ -37,25 +37,25 @@ public class TrunkVineDecorator extends TreeDecorator
             if (randomsource.nextInt(3) > 0) {
                 BlockPos blockpos = logPos.west();
                 if (context.isAir(blockpos)) {
-                    context.setBlock(blockpos, vineProvider.getState(randomsource, blockpos).setValue(VineBlock.EAST, true));
+                    context.setBlock(blockpos, vineProvider.getState(context.level(), randomsource, blockpos).setValue(VineBlock.EAST, true));
                 }
             }
             if (randomsource.nextInt(3) > 0) {
                 BlockPos blockpos = logPos.east();
                 if (context.isAir(blockpos)) {
-                    context.setBlock(blockpos, vineProvider.getState(randomsource, blockpos).setValue(VineBlock.WEST, true));
+                    context.setBlock(blockpos, vineProvider.getState(context.level(), randomsource, blockpos).setValue(VineBlock.WEST, true));
                 }
             }
             if (randomsource.nextInt(3) > 0) {
                 BlockPos blockpos = logPos.north();
                 if (context.isAir(blockpos)) {
-                    context.setBlock(blockpos, vineProvider.getState(randomsource, blockpos).setValue(VineBlock.SOUTH, true));
+                    context.setBlock(blockpos, vineProvider.getState(context.level(), randomsource, blockpos).setValue(VineBlock.SOUTH, true));
                 }
             }
             if (randomsource.nextInt(3) > 0) {
                 BlockPos blockpos = logPos.south();
                 if (context.isAir(blockpos)) {
-                    context.setBlock(blockpos, vineProvider.getState(randomsource, blockpos).setValue(VineBlock.NORTH, true));
+                    context.setBlock(blockpos, vineProvider.getState(context.level(), randomsource, blockpos).setValue(VineBlock.NORTH, true));
                 }
             }
         });

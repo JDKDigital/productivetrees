@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/osage_orange"
-    },
-    "R": {
-      "item": "productivetrees:osage_orange"
-    }
+    "#": "#c:fruits/osage_orange",
+    "R": "productivetrees:osage_orange"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:osage_orange_crate"
   }
 }

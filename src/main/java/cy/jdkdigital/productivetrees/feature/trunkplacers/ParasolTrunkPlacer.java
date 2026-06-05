@@ -6,7 +6,8 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -26,8 +27,8 @@ public class ParasolTrunkPlacer extends TrunkPlacer
 {
     public static final MapCodec<ParasolTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return TrunkPlacerCodecs.trunkPlacerParts(instance).and(instance.group(
-                IntProvider.codec(2, 12).fieldOf("spoke_count").forGetter((placer) -> placer.spokeCount),
-                IntProvider.codec(1, 8).fieldOf("spoke_length").forGetter((placer) -> placer.spokeLength)
+                IntProviders.codec(2, 12).fieldOf("spoke_count").forGetter((placer) -> placer.spokeCount),
+                IntProviders.codec(1, 8).fieldOf("spoke_length").forGetter((placer) -> placer.spokeLength)
         )).apply(instance, ParasolTrunkPlacer::new);
     });
     // eight compass directions the spokes fan out toward
@@ -47,10 +48,10 @@ public class ParasolTrunkPlacer extends TrunkPlacer
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-        setDirtAt(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, -1, 0), pConfig);
+        placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, -1, 0), pConfig);
 
         for (int h = 0; h < pFreeTreeHeight; ++h) {
             this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, h, 0), pConfig);

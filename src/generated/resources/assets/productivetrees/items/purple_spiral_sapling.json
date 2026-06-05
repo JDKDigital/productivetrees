@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/purple_spiral_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -3628061
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -13172621
+      }
+    ]
+  }
+}

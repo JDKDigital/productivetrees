@@ -8,21 +8,21 @@ import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagEntry;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public class BlockTagProvider extends BlockTagsProvider
 {
-    public BlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, ExistingFileHelper helper) {
-        super(output, provider, ProductiveTrees.MODID, helper);
+    public BlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
+        super(output, provider, ProductiveTrees.MODID);
     }
 
     @Override
@@ -31,7 +31,6 @@ public class BlockTagProvider extends BlockTagsProvider
         var pickaxeMineable = tag(BlockTags.MINEABLE_WITH_PICKAXE);
         var storageBlocks = tag(Tags.Blocks.STORAGE_BLOCKS);
 
-        var dof = tag(ModTags.DIRT_OR_FARMLAND);
         var pollinatable = tag(ModTags.POLLINATABLE);
 
         var flowers = tag(BlockTags.FLOWERS);
@@ -64,14 +63,14 @@ public class BlockTagProvider extends BlockTagsProvider
         });
 
         // PBees
-        var hives = tag(BlockTags.create(ResourceLocation.parse("productivebees:advanced_beehives")));
-        var boxes = tag(BlockTags.create(ResourceLocation.parse("productivebees:expansion_boxes")));
+        var hives = tag(BlockTags.create(Identifier.parse("productivebees:advanced_beehives")));
+        var boxes = tag(BlockTags.create(Identifier.parse("productivebees:expansion_boxes")));
 
         // Serene seasons
-        var spring_crops = tag(BlockTags.create(ResourceLocation.parse("sereneseasons:spring_crops")));
-        var summer_crops = tag(BlockTags.create(ResourceLocation.parse("sereneseasons:summer_crops")));
-        var autumn_crops = tag(BlockTags.create(ResourceLocation.parse("sereneseasons:autumn_crops")));
-        var winter_crops = tag(BlockTags.create(ResourceLocation.parse("sereneseasons:winter_crops")));
+        var spring_crops = tag(BlockTags.create(Identifier.parse("sereneseasons:spring_crops")));
+        var summer_crops = tag(BlockTags.create(Identifier.parse("sereneseasons:summer_crops")));
+        var autumn_crops = tag(BlockTags.create(Identifier.parse("sereneseasons:autumn_crops")));
+        var winter_crops = tag(BlockTags.create(Identifier.parse("sereneseasons:winter_crops")));
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             sapling.add(TreeUtil.getBlock(id, "_sapling"));
@@ -96,7 +95,7 @@ public class BlockTagProvider extends BlockTagsProvider
 
             planks.add(TreeUtil.getBlock(id, "_planks"));
 
-            var logTag = BlockTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, id.getPath() + "_logs"));
+            var logTag = BlockTags.create(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, id.getPath() + "_logs"));
             tag(logTag).add(TreeUtil.getBlock(id, "_log"), TreeUtil.getBlock(id, "_wood"), TreeUtil.getBlock(id, "_stripped_log"), TreeUtil.getBlock(id, "_stripped_wood"));
             if (treeObject.isFireProof()) {
                 logs.addTag(logTag);
@@ -121,20 +120,18 @@ public class BlockTagProvider extends BlockTagsProvider
                 wallHangingSigns.add(TreeUtil.getBlock(id, "_wall_hanging_sign"));
             }
             if (treeObject.getStyle().hiveStyle() != null) {
-                hives.addOptional(Objects.requireNonNull(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive")));
-                boxes.addOptional(Objects.requireNonNull(treeObject.getId().withPath(p ->  "expansion_box_" + p)));
+                hives.add(TagEntry.optionalElement(Objects.requireNonNull(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"))));
+                boxes.add(TagEntry.optionalElement(Objects.requireNonNull(treeObject.getId().withPath(p ->  "expansion_box_" + p))));
             }
         });
 
         leaves.add(TreeRegistrator.POLLINATED_LEAVES.get());
-        dof.addOptionalTag(BlockTags.create(ResourceLocation.withDefaultNamespace("dirt")));
-        dof.add(Blocks.FARMLAND);
 
-        pollinatable.addTag(BlockTags.create(ResourceLocation.withDefaultNamespace("leaves"))).add(Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);
+        pollinatable.addTag(BlockTags.create(Identifier.withDefaultNamespace("leaves"))).add(Blocks.WARPED_WART_BLOCK, Blocks.NETHER_WART_BLOCK);
 
         TreeRegistrator.CRATED_CROPS.forEach(cratePath ->  {
-            var crateBlock = BuiltInRegistries.BLOCK.get(cratePath);
-            var blockTagKey = BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
+            var crateBlock = BuiltInRegistries.BLOCK.getValue(cratePath);
+            var blockTagKey = BlockTags.create(Identifier.fromNamespaceAndPath("c", "storage_blocks/" + cratePath.getPath().replace("_crate", "")));
             tag(blockTagKey).add(crateBlock);
             storageBlocks.addTag(blockTagKey);
             axeMineable.addTag(blockTagKey);

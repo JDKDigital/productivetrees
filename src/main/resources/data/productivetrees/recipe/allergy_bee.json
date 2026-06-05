@@ -2,9 +2,7 @@
   "type": "productivebees:bee_conversion",
   "source": "minecraft:bee",
   "result": "productivebees:allergy",
-  "item": {
-    "item": "productivetrees:pollen"
-  },
+  "item": "productivetrees:pollen",
   "chance": 0.1,
   "neoforge:conditions": [
     {

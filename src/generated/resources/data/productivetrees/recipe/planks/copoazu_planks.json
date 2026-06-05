@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:copoazu_logs"
-    }
+    "#productivetrees:copoazu_logs"
   ],
   "result": {
     "count": 4,

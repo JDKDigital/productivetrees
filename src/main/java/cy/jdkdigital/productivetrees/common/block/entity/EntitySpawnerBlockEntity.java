@@ -6,10 +6,12 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -33,16 +35,16 @@ public class EntitySpawnerBlockEntity extends BlockEntity
                 if (level.getBlockState(pos.relative(dir)).getBlock() instanceof ProductiveLogBlock pLog) {
                     var tree = TreeUtil.getTree(pLog);
                     if (tree != null) {
-                        var feature = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(tree.getFeature()).orElse(null);
+                        var feature = level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE).get(tree.getFeature()).orElse(null);
                         if (feature != null) {
-                            feature.value().getFeatures().forEach(configuredFeature -> {
-                                if (configuredFeature.config() instanceof TreeConfiguration treeConfig) {
+                            feature.value().getSubFeatures().forEach(configuredFeature -> {
+                                if (configuredFeature.value().config() instanceof TreeConfiguration treeConfig) {
                                     List<TreeDecorator> decorators = new ArrayList<>(treeConfig.decorators);
                                     for (TreeDecorator decorator : decorators) {
                                         if (decorator instanceof EntityPlacerDecorator entityPlacerDecorator) {
-                                            var entityType = BuiltInRegistries.ENTITY_TYPE.get(entityPlacerDecorator.getEntity());
+                                            EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(entityPlacerDecorator.getEntity()).map(Holder::value).orElse(null);
                                             if (entityType != null) {
-                                                entityType.spawn(serverLevel, pos, MobSpawnType.NATURAL);
+                                                entityType.spawn(serverLevel, pos, EntitySpawnReason.NATURAL);
                                             }
                                         }
                                     }

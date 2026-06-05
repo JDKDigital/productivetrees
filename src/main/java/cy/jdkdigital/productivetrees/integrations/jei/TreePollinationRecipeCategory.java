@@ -13,23 +13,23 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.fml.ModList;
 
 import javax.annotation.Nonnull;
-import java.util.Arrays;
 import java.util.List;
 
 public class TreePollinationRecipeCategory implements IRecipeCategory<TreePollinationRecipe>
 {
+    protected static final int BACKGROUND_WIDTH = 130;
+    protected static final int BACKGROUND_HEIGHT = 60;
     private final IDrawable background;
     private final IDrawable icon;
 
     public TreePollinationRecipeCategory(IGuiHelper guiHelper) {
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/tree_pollination.png");
-        this.background = guiHelper.createDrawable(location, 0, 0, 130, 60);
+        Identifier location = Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "textures/gui/jei/tree_pollination.png");
+        this.background = guiHelper.createDrawable(location, 0, 0, BACKGROUND_WIDTH, BACKGROUND_HEIGHT);
         this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TreeRegistrator.POLLEN.get()));
     }
 
@@ -44,8 +44,17 @@ public class TreePollinationRecipeCategory implements IRecipeCategory<TreePollin
         return Component.translatable("jei.productivetrees.tree_pollination");
     }
 
-    @Nonnull
     @Override
+    public int getWidth() {
+        return BACKGROUND_WIDTH;
+    }
+
+    @Override
+    public int getHeight() {
+        return BACKGROUND_HEIGHT;
+    }
+
+    @SuppressWarnings("unused")
     public IDrawable getBackground() {
         return this.background;
     }
@@ -59,27 +68,23 @@ public class TreePollinationRecipeCategory implements IRecipeCategory<TreePollin
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, TreePollinationRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 13, 27)
-                .addItemStacks(Arrays.stream(recipe.leafA.getItems()).map(TreeUtil::getSaplingFromLeaf).toList())
+                .addItemStacks(recipe.leafA.items().<ItemStack>map(h -> new ItemStack(h.value())).map(TreeUtil::getSaplingFromLeaf).toList())
                 .setSlotName("leafA");
-        builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(Arrays.stream(recipe.leafA.getItems()).filter(itemStack -> itemStack.getItem() instanceof BlockItem).map(itemStack -> TreeUtil.getPollen(((BlockItem) itemStack.getItem()).getBlock())).toList());
+        builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(recipe.leafA.items().<ItemStack>map(h -> new ItemStack(h.value())).filter(itemStack -> itemStack.getItem() instanceof BlockItem).map(itemStack -> TreeUtil.getPollen(((BlockItem) itemStack.getItem()).getBlock())).toList());
 
-        if (!ModList.get().isLoaded("emi")) {
-            builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(Arrays.asList(recipe.leafA.getItems()));
-        }
+        builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(recipe.leafA.items().<ItemStack>map(h -> new ItemStack(h.value())).toList());
 
         builder.addSlot(RecipeIngredientRole.INPUT, 56, 27)
-                .addItemStacks(Arrays.stream(recipe.leafB.getItems()).map(TreeUtil::getSaplingFromLeaf).toList())
+                .addItemStacks(recipe.leafB.items().<ItemStack>map(h -> new ItemStack(h.value())).map(TreeUtil::getSaplingFromLeaf).toList())
                 .setSlotName("leafB");
-        builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(Arrays.stream(recipe.leafB.getItems()).filter(itemStack -> itemStack.getItem() instanceof BlockItem).map(itemStack -> TreeUtil.getPollen(((BlockItem) itemStack.getItem()).getBlock())).toList());
+        builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(recipe.leafB.items().<ItemStack>map(h -> new ItemStack(h.value())).filter(itemStack -> itemStack.getItem() instanceof BlockItem).map(itemStack -> TreeUtil.getPollen(((BlockItem) itemStack.getItem()).getBlock())).toList());
 
-        if (!ModList.get().isLoaded("emi")) {
-            builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(Arrays.asList(recipe.leafB.getItems()));
-        }
+        builder.addInvisibleIngredients(RecipeIngredientRole.INPUT).addItemStacks(recipe.leafB.items().<ItemStack>map(h -> new ItemStack(h.value())).toList());
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 109, 27)
-                .addItemStacks(List.of(recipe.result))
+                .addItemStacks(List.of(recipe.result()))
                 .setSlotName("result");
 
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addItemStack(TreeUtil.getLeafFromSapling(recipe.result));
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).addItemStack(TreeUtil.getLeafFromSapling(recipe.result()));
     }
 }

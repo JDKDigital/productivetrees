@@ -3,11 +3,8 @@
   "category": "food",
   "cookingtime": 120,
   "experience": 0.1,
-  "ingredient": {
-    "item": "productivetrees:brazil_nut"
-  },
+  "ingredient": "productivetrees:brazil_nut",
   "result": {
-    "count": 1,
     "id": "productivetrees:roasted_brazil_nut"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:holly_planks"
-    }
+    "#": "productivetrees:holly_planks"
   },
   "pattern": [
     "###"

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:nuts/roasted_walnut"
-    },
-    "R": {
-      "item": "productivetrees:roasted_walnut"
-    }
+    "#": "#c:nuts/roasted_walnut",
+    "R": "productivetrees:roasted_walnut"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:roasted_walnut_crate"
   }
 }

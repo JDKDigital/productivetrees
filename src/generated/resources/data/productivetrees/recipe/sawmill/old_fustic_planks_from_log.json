@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:old_fustic_logs"
-  },
+  "input": "#productivetrees:old_fustic_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:old_fustic_planks"
@@ -12,7 +10,6 @@
     "id": "productivetrees:sawdust"
   },
   "tertiary": {
-    "count": 1,
     "id": "productivetrees:fustic"
   }
 }

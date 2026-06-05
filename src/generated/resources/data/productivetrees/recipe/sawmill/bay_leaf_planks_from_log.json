@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:bay_leaf_logs"
-  },
+  "input": "#productivetrees:bay_leaf_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:bay_leaf_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

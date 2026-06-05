@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/walnut_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -10187232
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -5991059
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -4948673
+      }
+    ]
+  }
+}

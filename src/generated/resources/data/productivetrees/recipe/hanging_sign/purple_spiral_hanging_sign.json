@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "hanging_sign",
   "key": {
-    "#": {
-      "item": "productivetrees:purple_spiral_planks"
-    },
-    "X": {
-      "item": "minecraft:chain"
-    }
+    "#": "productivetrees:purple_spiral_planks",
+    "X": "minecraft:iron_chain"
   },
   "pattern": [
     "X X",

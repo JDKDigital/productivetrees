@@ -30,8 +30,8 @@ public class CompatHandler
     private static List<DeferredHolder<Block, Block>> HIVES = new ArrayList<>();
     private static List<DeferredHolder<Block, Block>> BOXES = new ArrayList<>();
     public static void createHive(String name, WoodObject woodObject, ToIntFunction<BlockState> lightLevel) {
-        ModBlocks.HIVES.put("advanced_" + name + "_beehive", TreeRegistrator.registerBlock("advanced_" + name + "_beehive", () -> new AdvancedBeehive(Block.Properties.ofFullCopy(Blocks.BEEHIVE).lightLevel(lightLevel)), true));
-        ModBlocks.EXPANSIONS.put("expansion_box_" + name, TreeRegistrator.registerBlock("expansion_box_" + name, () -> new ExpansionBox(Block.Properties.ofFullCopy(Blocks.BEEHIVE).lightLevel(lightLevel)), true));
+        ModBlocks.HIVES.put("advanced_" + name + "_beehive", TreeRegistrator.registerBlock("advanced_" + name + "_beehive", AdvancedBeehive::new, () -> Block.Properties.ofFullCopy(Blocks.BEEHIVE).lightLevel(lightLevel), true));
+        ModBlocks.EXPANSIONS.put("expansion_box_" + name, TreeRegistrator.registerBlock("expansion_box_" + name, ExpansionBox::new, () -> Block.Properties.ofFullCopy(Blocks.BEEHIVE).lightLevel(lightLevel), true));
     }
 
     public static void collectValidUpgrades(CollectValidUpgradesEvent event) {
@@ -52,8 +52,8 @@ public class CompatHandler
                 // Check for pollen sieve upgrade and collect pollen from nearby leaf
                 if (beehiveBlockEntity instanceof AdvancedBeehiveBlockEntity advancedBeehiveBlockEntity) {
                     int sieveUpgrades = advancedBeehiveBlockEntity.getUpgradeCount(LibItems.UPGRADE_POLLEN_SIEVE.get());
-                    if (sieveUpgrades > 0 && level.random.nextInt(100) < (Config.SERVER.pollenChanceFromSieve.get() * (isSpecialPollinator ? 5 : 1))) {
-                        BlockState pollenLeaf = uniqueLeaves.get(level.random.nextInt(uniqueLeaves.size()));
+                    if (sieveUpgrades > 0 && level.getRandom().nextInt(100) < (Config.SERVER.pollenChanceFromSieve.get() * (isSpecialPollinator ? 5 : 1))) {
+                        BlockState pollenLeaf = uniqueLeaves.get(level.getRandom().nextInt(uniqueLeaves.size()));
                         var pollenStack = TreeUtil.getPollen(pollenLeaf.getBlock());
                         ((InventoryHandlerHelper.BlockEntityItemStackHandler) advancedBeehiveBlockEntity.inventoryHandler).addOutput(pollenStack);
                     }

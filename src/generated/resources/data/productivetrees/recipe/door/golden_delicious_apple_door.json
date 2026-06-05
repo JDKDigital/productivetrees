@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:golden_delicious_apple_planks"
-    }
+    "#": "productivetrees:golden_delicious_apple_planks"
   },
   "pattern": [
     "##",

@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_brown_amber_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -5093847
+      }
+    ]
+  }
+}

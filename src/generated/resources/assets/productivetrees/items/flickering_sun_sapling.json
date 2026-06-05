@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/flickering_sun_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -214205
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -9333
+      }
+    ]
+  }
+}

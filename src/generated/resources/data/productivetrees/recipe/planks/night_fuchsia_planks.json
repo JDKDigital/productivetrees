@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:night_fuchsia_logs"
-    }
+    "#productivetrees:night_fuchsia_logs"
   ],
   "result": {
     "count": 4,

@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:tangerine_logs"
-  },
+  "input": "#productivetrees:tangerine_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:tangerine_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/buddhas_hand"
-    },
-    "R": {
-      "item": "productivetrees:buddhas_hand"
-    }
+    "#": "#c:fruits/buddhas_hand",
+    "R": "productivetrees:buddhas_hand"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:buddhas_hand_crate"
   }
 }

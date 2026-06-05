@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:silver_lime_planks"
-    }
+    "productivetrees:silver_lime_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:silver_lime_button"
   }
 }

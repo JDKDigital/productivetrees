@@ -8,8 +8,6 @@ import cy.jdkdigital.productivetrees.inventory.SawmillContainer;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.MenuProvider;
@@ -19,8 +17,10 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,10 +38,10 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
     public static int SLOT_OUT = 1;
     public static int SLOT_SECONDARY = 2;
     public static int SLOT_TERTIARY = 3;
-    public final IItemHandlerModifiable inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(4, this)
+    public final InventoryHandlerHelper.BlockEntityItemStackHandler inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(4, this)
     {
         @Override
-        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+        public boolean isItemValid(int slot, @NotNull ItemStack stack, boolean fromAutomation) {
             if (isInputSlotItem(slot, stack)) {
                 return true;
             }
@@ -73,7 +73,7 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
         }
     };
 
-    protected IItemHandlerModifiable upgradeHandler = new InventoryHandlerHelper.UpgradeHandler(4, this, List.of(
+    protected InventoryHandlerHelper.UpgradeHandler upgradeHandler = new InventoryHandlerHelper.UpgradeHandler(4, this, List.of(
             LibItems.UPGRADE_TIME.get(),
             LibItems.UPGRADE_TIME_2.get()
     ));
@@ -92,12 +92,12 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
     }
 
     @Override
-    public IItemHandler getItemHandler() {
+    public ResourceHandler<ItemResource> getItemHandler() {
         return inventoryHandler;
     }
 
     @Override
-    public IItemHandlerModifiable getUpgradeHandler() {
+    public ResourceHandler<ItemResource> getUpgradeHandler() {
         return upgradeHandler;
     }
 
@@ -129,6 +129,7 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
                             }
                         }
                         log.shrink(1);
+                        blockEntity.inventoryHandler.setStackInSlot(SLOT_IN, log);
                     }
                     blockEntity.progress = 0;
                 }
@@ -143,14 +144,14 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
     }
 
     @Override
-    public void loadPacketNBT(CompoundTag tag, HolderLookup.Provider provider) {
-        super.loadPacketNBT(tag, provider);
-        this.progress = tag.getInt("RecipeProgress");
+    public void loadPacketNBT(ValueInput input) {
+        super.loadPacketNBT(input);
+        this.progress = input.getIntOr("RecipeProgress", 0);
     }
 
     @Override
-    public void savePacketNBT(CompoundTag tag, HolderLookup.Provider provider) {
-        super.savePacketNBT(tag, provider);
-        tag.putInt("RecipeProgress", this.progress);
+    public void savePacketNBT(ValueOutput output) {
+        super.savePacketNBT(output);
+        output.putInt("RecipeProgress", this.progress);
     }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:sycamore_fig_log"
-    }
+    "#": "productivetrees:sycamore_fig_log"
   },
   "pattern": [
     "##",

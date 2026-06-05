@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/citron"
-    },
-    "R": {
-      "item": "productivetrees:citron"
-    }
+    "#": "#c:fruits/citron",
+    "R": "productivetrees:citron"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:citron_crate"
   }
 }

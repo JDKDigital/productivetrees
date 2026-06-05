@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:purpleheart_planks"
-    }
+    "#": "productivetrees:purpleheart_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:purpleheart_pressure_plate"
   }
 }

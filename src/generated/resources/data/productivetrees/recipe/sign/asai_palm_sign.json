@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:asai_palm_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:asai_palm_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

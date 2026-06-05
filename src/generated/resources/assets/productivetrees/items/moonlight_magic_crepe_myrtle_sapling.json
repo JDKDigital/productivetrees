@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/moonlight_magic_crepe_myrtle_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -3618616
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -6386817
+      }
+    ]
+  }
+}

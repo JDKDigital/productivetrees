@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:foggy_blast_planks"
-    }
+    "#": "productivetrees:foggy_blast_planks"
   },
   "pattern": [
     "###",

@@ -6,7 +6,8 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
@@ -19,7 +20,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 public class FlameFoliagePlacer extends FoliagePlacer
 {
     public static final MapCodec<FlameFoliagePlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
-        return foliagePlacerParts(instance).and(IntProvider.codec(1, 32).fieldOf("flame_height").forGetter((placer) -> placer.flameHeight)).apply(instance, FlameFoliagePlacer::new);
+        return foliagePlacerParts(instance).and(IntProviders.codec(1, 32).fieldOf("flame_height").forGetter((placer) -> placer.flameHeight)).apply(instance, FlameFoliagePlacer::new);
     });
     private final IntProvider flameHeight;
 
@@ -34,7 +35,7 @@ public class FlameFoliagePlacer extends FoliagePlacer
     }
 
     @Override
-    protected void createFoliage(LevelSimulatedReader pLevel, FoliageSetter pBlockSetter, RandomSource pRandom, TreeConfiguration pConfig, int pMaxFreeTreeHeight, FoliageAttachment pAttachment, int pFoliageHeight, int pFoliageRadius, int pOffset) {
+    protected void createFoliage(WorldGenLevel pLevel, FoliageSetter pBlockSetter, RandomSource pRandom, TreeConfiguration pConfig, int pMaxFreeTreeHeight, FoliageAttachment pAttachment, int pFoliageHeight, int pFoliageRadius, int pOffset) {
         BlockPos base = pAttachment.pos();
         int driftX = 0;
         int driftZ = 0;

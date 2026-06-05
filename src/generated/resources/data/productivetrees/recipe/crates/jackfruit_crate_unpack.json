@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:jackfruit_crate"
-    }
+    "productivetrees:jackfruit_crate"
   ],
   "result": {
     "count": 9,

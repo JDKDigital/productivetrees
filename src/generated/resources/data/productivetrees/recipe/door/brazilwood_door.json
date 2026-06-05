@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:brazilwood_planks"
-    }
+    "#": "productivetrees:brazilwood_planks"
   },
   "pattern": [
     "##",

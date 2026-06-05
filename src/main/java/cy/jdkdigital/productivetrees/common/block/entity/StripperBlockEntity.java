@@ -26,8 +26,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.util.FakePlayerFactory;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,10 +41,10 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
     public static int SLOT_OUT = 1;
     public static int SLOT_AXE = 2;
     public static int SLOT_BARK = 3;
-    public final IItemHandlerModifiable inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(4, this)
+    public final InventoryHandlerHelper.BlockEntityItemStackHandler inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(4, this)
     {
         @Override
-        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+        public boolean isItemValid(int slot, @NotNull ItemStack stack, boolean fromAutomation) {
             if (isInputSlotItem(slot, stack)) {
                 return true;
             } else if ((slot == SLOT_OUT || slot == SLOT_BARK) && !stack.is(ModTags.STRIPPER_TOOLS) && !canProcess(stack)) {
@@ -84,15 +84,15 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
         }
 
         @Override
-        protected void onContentsChanged(int slot) {
-            super.onContentsChanged(slot);
-            if (slot == SLOT_AXE && level instanceof ServerLevel serverLevel) {
+        protected void onContentsChanged(int index, ItemStack previousContents) {
+            super.onContentsChanged(index, previousContents);
+            if (index == SLOT_AXE && level instanceof ServerLevel serverLevel) {
                 serverLevel.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
             }
         }
     };
 
-    protected IItemHandlerModifiable upgradeHandler = new InventoryHandlerHelper.UpgradeHandler(4, this, List.of(
+    protected InventoryHandlerHelper.UpgradeHandler upgradeHandler = new InventoryHandlerHelper.UpgradeHandler(4, this, List.of(
             LibItems.UPGRADE_TIME.get(),
             LibItems.UPGRADE_TIME_2.get()
     ));
@@ -113,12 +113,12 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
     }
 
     @Override
-    public IItemHandler getItemHandler() {
+    public ResourceHandler<ItemResource> getItemHandler() {
         return inventoryHandler;
     }
 
     @Override
-    public IItemHandlerModifiable getUpgradeHandler() {
+    public ResourceHandler<ItemResource> getUpgradeHandler() {
         return upgradeHandler;
     }
 
@@ -140,6 +140,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
                         }
                     }
                     log.shrink(itemCount);
+                    blockEntity.inventoryHandler.setStackInSlot(SLOT_IN, log);
                     if (axe.isDamageableItem()) {
                         Player fakePlayer = FakePlayerFactory.get(serverLevel, new GameProfile(TreeUtil.STRIPPER_UUID, "stripper"));
                         axe.hurtAndBreak(speedModifier, fakePlayer, EquipmentSlot.MAINHAND);

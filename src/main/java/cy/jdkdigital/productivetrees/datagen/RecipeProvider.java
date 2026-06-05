@@ -1,209 +1,208 @@
 package cy.jdkdigital.productivetrees.datagen;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
-import cy.jdkdigital.productivetrees.datagen.recipe.BotanyPotBlockDerivedCropRecipeBuilder;
 import cy.jdkdigital.productivetrees.datagen.recipe.SawmillRecipeBuilder;
 import cy.jdkdigital.productivetrees.datagen.recipe.TreePollinationRecipeBuilder;
 import cy.jdkdigital.productivetrees.registry.*;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
-import net.darkhax.botanypots.common.impl.data.display.types.AgingDisplayState;
-import net.darkhax.botanypots.common.impl.data.display.types.BasicOptions;
-import net.darkhax.botanypots.common.impl.data.display.types.SimpleDisplayState;
-import net.darkhax.botanypots.common.impl.data.itemdrops.SimpleDropProvider;
-import net.darkhax.botanypots.common.impl.data.recipe.crop.BasicCrop;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.data.recipes.RecipeBuilder;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.neoforged.fml.ModList;
-import net.neoforged.neoforge.common.conditions.IConditionBuilder;
-import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider implements IConditionBuilder
+public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider
 {
-    public RecipeProvider(PackOutput gen, CompletableFuture<HolderLookup.Provider> pRegistries) {
-        super(gen, pRegistries);
-    }
-
-    public String getName() {
-        return "Productive Tress Recipes";
+    public RecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+        super(registries, output);
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput recipeOutput) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 2)
+    protected void buildRecipes() {
+        shaped(RecipeCategory.MISC, Items.PAPER, 2)
                 .unlockedBy("has_sawdust", has(ModTags.SAWDUST))
                 .pattern("###").pattern("#W#").pattern("###")
-                .define('#', Ingredient.of(ModTags.SAWDUST))
-                .define('W', DataComponentIngredient.of(false, PotionContents.createItemStack(Items.POTION, Potions.WATER)))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawdust_to_paper_water_bottle"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PAPER, 2)
+                .define('#', tag(ModTags.SAWDUST))
+                .define('W', DataComponentIngredient.of(false, DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER), Items.POTION))
+                .save(this.output, recipeKey("sawdust_to_paper_water_bottle"));
+        shaped(RecipeCategory.MISC, Items.PAPER, 2)
                 .unlockedBy("has_sawdust", has(ModTags.SAWDUST))
                 .pattern("###").pattern("#W#").pattern("###")
-                .define('#', Ingredient.of(ModTags.SAWDUST))
+                .define('#', tag(ModTags.SAWDUST))
                 .define('W', Items.WATER_BUCKET)
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawdust_to_paper"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.BLUE_DYE, 2)
+                .save(this.output, recipeKey("sawdust_to_paper"));
+        shaped(RecipeCategory.MISC, Items.BLUE_DYE, 2)
                 .unlockedBy(getHasName(TreeRegistrator.HAEMATOXYLIN.get()), has(TreeRegistrator.HAEMATOXYLIN.get()))
                 .pattern("##")
                 .define('#', Ingredient.of(TreeRegistrator.HAEMATOXYLIN.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "blue_dye_from_haematoxylin"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.PURPLE_DYE, 2)
+                .save(this.output, recipeKey("blue_dye_from_haematoxylin"));
+        shaped(RecipeCategory.MISC, Items.PURPLE_DYE, 2)
                 .unlockedBy(getHasName(TreeRegistrator.HAEMATOXYLIN.get()), has(TreeRegistrator.HAEMATOXYLIN.get()))
                 .pattern("#").pattern("#")
                 .define('#', Ingredient.of(TreeRegistrator.HAEMATOXYLIN.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "purple_dye_from_haematoxylin"));
+                .save(this.output, recipeKey("purple_dye_from_haematoxylin"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.SUGAR, 3)
+        shapeless(RecipeCategory.MISC, Items.SUGAR, 3)
                 .unlockedBy("has_maple_syrup", has(ModTags.MAPLE_SYRUP))
                 .requires(ModTags.MAPLE_SYRUP)
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sugar_from_maple_syrup"));
+                .save(this.output, recipeKey("sugar_from_maple_syrup"));
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             var planks = TreeUtil.getBlock(treeObject.getId(), "_planks");
-            planksFromLogs(recipeOutput, TreeUtil.getBlock(treeObject.getId(), "_planks"), ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, id.getPath() + "_logs")));
-            woodFromLogs(recipeOutput, TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_log"));
+            planksFromLogs(TreeUtil.getBlock(treeObject.getId(), "_planks"), ItemTags.create(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, id.getPath() + "_logs")));
+            woodFromLog(TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_log"));
             if (!ProductiveTrees.isMinimal) {
-                shapedVariant(recipeOutput, BlockFamily.Variant.STAIRS, TreeUtil.getBlock(treeObject.getId(), "_stairs"), planks);
-                shapedVariant(recipeOutput, BlockFamily.Variant.SLAB, TreeUtil.getBlock(treeObject.getId(), "_slab"), planks);
-                shapedVariant(recipeOutput, BlockFamily.Variant.PRESSURE_PLATE, TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), planks);
-                shapedVariant(recipeOutput, BlockFamily.Variant.BUTTON, TreeUtil.getBlock(treeObject.getId(), "_button"), planks);
-                shapedVariant(recipeOutput, BlockFamily.Variant.FENCE, TreeUtil.getBlock(treeObject.getId(), "_fence"), planks);
-                shapedVariant(recipeOutput, BlockFamily.Variant.FENCE_GATE, TreeUtil.getBlock(treeObject.getId(), "_fence_gate"), planks);
-                shapedVariant(recipeOutput, BlockFamily.Variant.DOOR, TreeUtil.getBlock(treeObject.getId(), "_door"), planks);
-                shapedVariant(recipeOutput, BlockFamily.Variant.TRAPDOOR, TreeUtil.getBlock(treeObject.getId(), "_trapdoor"), planks);
-                shapedVariant(recipeOutput, BlockFamily.Variant.SIGN, TreeUtil.getBlock(treeObject.getId(), "_sign"), planks);
-                hangingSign(recipeOutput, TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), planks);
-                ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(recipeOutput, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf"));
+                shapedVariant(BlockFamily.Variant.STAIRS, TreeUtil.getBlock(treeObject.getId(), "_stairs"), planks);
+                shapedVariant(BlockFamily.Variant.SLAB, TreeUtil.getBlock(treeObject.getId(), "_slab"), planks);
+                shapedVariant(BlockFamily.Variant.PRESSURE_PLATE, TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), planks);
+                shapedVariant(BlockFamily.Variant.BUTTON, TreeUtil.getBlock(treeObject.getId(), "_button"), planks);
+                shapedVariant(BlockFamily.Variant.FENCE, TreeUtil.getBlock(treeObject.getId(), "_fence"), planks);
+                shapedVariant(BlockFamily.Variant.FENCE_GATE, TreeUtil.getBlock(treeObject.getId(), "_fence_gate"), planks);
+                shapedVariant(BlockFamily.Variant.DOOR, TreeUtil.getBlock(treeObject.getId(), "_door"), planks);
+                shapedVariant(BlockFamily.Variant.TRAPDOOR, TreeUtil.getBlock(treeObject.getId(), "_trapdoor"), planks);
+                shapedVariant(BlockFamily.Variant.SIGN, TreeUtil.getBlock(treeObject.getId(), "_sign"), planks);
+                hangingSignRecipe(TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), planks);
+                shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(this.output, ResourceKey.create(Registries.RECIPE, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf")));
             }
-            buildSawmillRecipe(treeObject, recipeOutput);
+            buildSawmillRecipe(treeObject);
         });
-        buildCrateRecipes(recipeOutput);
+        buildCrateRecipes();
 
-        buildTreeBreedingRecipes(recipeOutput);
+        buildTreeBreedingRecipes();
 
-        // vanilla wood sawmill processing
-        buildVanillaSawmillRecipes(recipeOutput);
-        buildCompatSawmillRecipes(recipeOutput);
+        buildVanillaSawmillRecipes();
 
-        // Nut toasting
         TreeRegistrator.ROASTED_NUTS.forEach(cropConfig -> {
-            var roastedNut = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name()));
-            var rawNut = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name().replace("roasted_", "")));
-            SimpleCookingRecipeBuilder.smelting(Ingredient.of(rawNut), RecipeCategory.FOOD, roastedNut, 0.1F, 120)
+            var roastedNut = BuiltInRegistries.ITEM.getValue(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name()));
+            var rawNut = BuiltInRegistries.ITEM.getValue(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name().replace("roasted_", "")));
+            SimpleCookingRecipeBuilder.smelting(Ingredient.of(rawNut), RecipeCategory.FOOD, CookingBookCategory.FOOD, roastedNut, 0.1F, 120)
                     .unlockedBy(getHasName(rawNut), has(rawNut))
-                    .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_smelting"));
+                    .save(this.output, recipeKey("roasting/" + cropConfig.name() + "_smelting"));
             SimpleCookingRecipeBuilder.smoking(Ingredient.of(rawNut), RecipeCategory.FOOD, roastedNut, 0.1F, 20)
                     .unlockedBy(getHasName(rawNut), has(rawNut))
-                    .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_smoking"));
+                    .save(this.output, recipeKey("roasting/" + cropConfig.name() + "_smoking"));
 
-            var roastedNutCrate = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
-            var rawNutCrate = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name().replace("roasted_", "") + "_crate"));
+            var roastedNutCrate = BuiltInRegistries.ITEM.getValue(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name() + "_crate"));
+            var rawNutCrate = BuiltInRegistries.ITEM.getValue(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, cropConfig.name().replace("roasted_", "") + "_crate"));
             if (rawNutCrate != null) {
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(rawNutCrate), RecipeCategory.FOOD, roastedNutCrate, 0.9F, 1080)
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(rawNutCrate), RecipeCategory.FOOD, CookingBookCategory.FOOD, roastedNutCrate, 0.9F, 1080)
                         .unlockedBy(getHasName(rawNutCrate), has(rawNutCrate))
-                        .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smelting"));
+                        .save(this.output, recipeKey("roasting/" + cropConfig.name() + "_crate_smelting"));
                 SimpleCookingRecipeBuilder.smoking(Ingredient.of(rawNutCrate), RecipeCategory.FOOD, roastedNutCrate, 0.9F, 180)
                         .unlockedBy(getHasName(rawNutCrate), has(rawNutCrate))
-                        .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "roasting/" + cropConfig.name() + "_crate_smoking"));
+                        .save(this.output, recipeKey("roasting/" + cropConfig.name() + "_crate_smoking"));
             }
         });
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(TreeRegistrator.RUBBER.get()), RecipeCategory.FOOD, TreeRegistrator.CURED_RUBBER.get(), 0.1F, 120)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(TreeRegistrator.RUBBER.get()), RecipeCategory.FOOD, CookingBookCategory.FOOD, TreeRegistrator.CURED_RUBBER.get(), 0.1F, 120)
                 .unlockedBy(getHasName(TreeRegistrator.RUBBER.get()), has(TreeRegistrator.RUBBER.get()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "cured_rubber"));
-
-        if (ModList.get().isLoaded("botanypots")) {
-            BotanyPotsCompat.buildRecipes(recipeOutput);
-        }
+                .save(this.output, recipeKey("cured_rubber"));
     }
 
-    private static void planksFromLogs(RecipeOutput consumer, ItemLike result, TagKey<Item> pLogs) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, result, 4)
-                .requires(Ingredient.of(pLogs))
+    private void planksFromLogs(ItemLike result, TagKey<Item> pLogs) {
+        shapeless(RecipeCategory.BUILDING_BLOCKS, result, 4)
+                .requires(tag(pLogs))
                 .group("planks")
                 .unlockedBy("has_logs", has(pLogs))
-                .save(consumer, prefixedRecipeId(result, "planks/"));
+                .save(this.output, prefixedRecipeKey(result, "planks/"));
     }
 
-    protected static void woodFromLogs(RecipeOutput consumer, ItemLike pWood, ItemLike pLog) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, pWood, 3)
+    private void woodFromLog(ItemLike pWood, ItemLike pLog) {
+        shaped(RecipeCategory.BUILDING_BLOCKS, pWood, 3)
                 .define('#', pLog).pattern("##").pattern("##").group("bark")
                 .unlockedBy("has_log", has(pLog))
-                .save(consumer, prefixedRecipeId(pWood, "wood/"));
+                .save(this.output, prefixedRecipeKey(pWood, "wood/"));
     }
 
-    private static void shapedVariant(RecipeOutput consumer, BlockFamily.Variant variant, ItemLike result, ItemLike plank) {
-        var builder = SHAPE_BUILDERS.get(variant).apply(result, plank);
+    private void shapedVariant(BlockFamily.Variant variant, ItemLike result, ItemLike plank) {
+        Ingredient base = Ingredient.of(plank);
+        RecipeBuilder builder = switch (variant) {
+            case STAIRS -> stairBuilder(result, base);
+            case SLAB -> slabBuilder(RecipeCategory.BUILDING_BLOCKS, result, base);
+            case PRESSURE_PLATE -> pressurePlateBuilder(RecipeCategory.REDSTONE, result, base);
+            case BUTTON -> buttonBuilder(result, base);
+            case FENCE -> fenceBuilder(result, base);
+            case FENCE_GATE -> fenceGateBuilder(result, base);
+            case DOOR -> doorBuilder(result, base);
+            case TRAPDOOR -> trapdoorBuilder(result, base);
+            case SIGN -> signBuilder(result, base);
+            default -> throw new IllegalArgumentException("Unsupported variant " + variant);
+        };
         builder.group(variant.name().toLowerCase());
         builder.unlockedBy(getHasName(plank), has(plank));
-        builder.save(consumer, prefixedRecipeId(result, variant.name().toLowerCase() + "/"));
+        builder.save(this.output, prefixedRecipeKey(result, variant.name().toLowerCase() + "/"));
     }
 
-    protected static void hangingSign(RecipeOutput consumer, ItemLike result, ItemLike plank) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', plank).define('X', Items.CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", has(plank)).save(consumer, prefixedRecipeId(result, "hanging_sign/"));
+    private void hangingSignRecipe(ItemLike result, ItemLike plank) {
+        shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', plank).define('X', Items.IRON_CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", has(plank)).save(this.output, prefixedRecipeKey(result, "hanging_sign/"));
     }
 
-    private static ResourceLocation prefixedRecipeId(ItemLike item, String prefix) {
-        return BuiltInRegistries.ITEM.getKey(item.asItem()).withPath(path ->  prefix + path);
+    private static ResourceKey<Recipe<?>> recipeKey(String path) {
+        return ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, path));
     }
 
-    private void buildSawmillRecipe(WoodObject treeObject, RecipeOutput consumer) {
+    private static ResourceKey<Recipe<?>> prefixedRecipeKey(ItemLike item, String prefix) {
+        return ResourceKey.create(Registries.RECIPE, BuiltInRegistries.ITEM.getKey(item.asItem()).withPath(path -> prefix + path));
+    }
+
+    private void buildSawmillRecipe(WoodObject treeObject) {
         String name = treeObject.getId().getPath();
-        SawmillRecipeBuilder.tree(treeObject, ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, treeObject.getId().getPath() + "_logs")), TreeUtil.getBlock(treeObject.getId(), "_planks")).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/" + name + "_planks_from_log"));
+        SawmillRecipeBuilder.tree(treeObject, tag(ItemTags.create(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, treeObject.getId().getPath() + "_logs"))), TreeUtil.getBlock(treeObject.getId(), "_planks")).save(this.output, recipeKey("sawmill/" + name + "_planks_from_log"));
     }
 
-    private void buildVanillaSawmillRecipes(RecipeOutput consumer) {
-        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.OAK_LOGS), new ItemStack(Items.OAK_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/oak_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.SPRUCE_LOGS), new ItemStack(Items.SPRUCE_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/spruce_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.ACACIA_LOGS), new ItemStack(Items.ACACIA_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/acacia_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.BIRCH_LOGS), new ItemStack(Items.BIRCH_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/birch_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.JUNGLE_LOGS), new ItemStack(Items.JUNGLE_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/jungle_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.CHERRY_LOGS), new ItemStack(Items.CHERRY_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/cherry_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.MANGROVE_LOGS), new ItemStack(Items.MANGROVE_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/mangrove_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.DARK_OAK_LOGS), new ItemStack(Items.DARK_OAK_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/dark_oak_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.CRIMSON_STEMS), new ItemStack(Items.CRIMSON_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/crimson_planks_from_log"));
-        SawmillRecipeBuilder.direct(Ingredient.of(ItemTags.WARPED_STEMS), new ItemStack(Items.WARPED_PLANKS, 6), new ItemStack(TreeRegistrator.SAWDUST.get(), 2), ItemStack.EMPTY).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sawmill/warped_planks_from_log"));
+    private void buildVanillaSawmillRecipes() {
+        SawmillRecipeBuilder.direct(tag(ItemTags.OAK_LOGS), new ItemStackTemplate(Items.OAK_PLANKS, 6), new ItemStackTemplate(TreeRegistrator.SAWDUST.get(), 2)).save(this.output, recipeKey("sawmill/oak_planks_from_log"));
+        SawmillRecipeBuilder.direct(tag(ItemTags.SPRUCE_LOGS), new ItemStackTemplate(Items.SPRUCE_PLANKS, 6), new ItemStackTemplate(TreeRegistrator.SAWDUST.get(), 2)).save(this.output, recipeKey("sawmill/spruce_planks_from_log"));
+        SawmillRecipeBuilder.direct(tag(ItemTags.ACACIA_LOGS), new ItemStackTemplate(Items.ACACIA_PLANKS, 6), new ItemStackTemplate(TreeRegistrator.SAWDUST.get(), 2)).save(this.output, recipeKey("sawmill/acacia_planks_from_log"));
+        SawmillRecipeBuilder.direct(tag(ItemTags.BIRCH_LOGS), new ItemStackTemplate(Items.BIRCH_PLANKS, 6), new ItemStackTemplate(TreeRegistrator.SAWDUST.get(), 2)).save(this.output, recipeKey("sawmill/birch_planks_from_log"));
+        SawmillRecipeBuilder.direct(tag(ItemTags.JUNGLE_LOGS), new ItemStackTemplate(Items.JUNGLE_PLANKS, 6), new ItemStackTemplate(TreeRegistrator.SAWDUST.get(), 2)).save(this.output, recipeKey("sawmill/jungle_planks_from_log"));
+        SawmillRecipeBuilder.direct(tag(ItemTags.CHERRY_LOGS), new ItemStackTemplate(Items.CHERRY_PLANKS, 6), new ItemStackTemplate(TreeRegistrator.SAWDUST.get(), 2)).save(this.output, recipeKey("sawmill/cherry_planks_from_log"));
+        SawmillRecipeBuilder.direct(tag(ItemTags.MANGROVE_LOGS), new ItemStackTemplate(Items.MANGROVE_PLANKS, 6), new ItemStackTemplate(TreeRegistrator.SAWDUST.get(), 2)).save(this.output, recipeKey("sawmill/mangrove_planks_from_log"));
+        SawmillRecipeBuilder.direct(tag(ItemTags.DARK_OAK_LOGS), new ItemStackTemplate(Items.DARK_OAK_PLANKS, 6), new ItemStackTemplate(TreeRegistrator.SAWDUST.get(), 2)).save(this.output, recipeKey("sawmill/dark_oak_planks_from_log"));
+        SawmillRecipeBuilder.direct(tag(ItemTags.CRIMSON_STEMS), new ItemStackTemplate(Items.CRIMSON_PLANKS, 6), new ItemStackTemplate(TreeRegistrator.SAWDUST.get(), 2)).save(this.output, recipeKey("sawmill/crimson_planks_from_log"));
+        SawmillRecipeBuilder.direct(tag(ItemTags.WARPED_STEMS), new ItemStackTemplate(Items.WARPED_PLANKS, 6), new ItemStackTemplate(TreeRegistrator.SAWDUST.get(), 2)).save(this.output, recipeKey("sawmill/warped_planks_from_log"));
     }
 
-    private void buildCompatSawmillRecipes(RecipeOutput consumer) {
-        // TODO BOP, RU, BYG etc.
-
-    }
-
-    private void buildCrateRecipes(RecipeOutput consumer) {
+    private void buildCrateRecipes() {
         TreeRegistrator.CRATED_CROPS.forEach(crate -> {
             var cropName = crate.getPath().replace("_crate", "");
-            var crateItem = BuiltInRegistries.ITEM.get(crate);
-            var cropItem = BuiltInRegistries.ITEM.get(crate.withPath(p -> cropName));
+            var crateItem = BuiltInRegistries.ITEM.getValue(crate);
+            var cropItem = BuiltInRegistries.ITEM.getValue(crate.withPath(p -> cropName));
 
-            var cropTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", ItemTagProvider.tagName(cropName)));
+            var cropTag = ItemTags.create(Identifier.fromNamespaceAndPath("c", ItemTagProvider.tagName(cropName)));
             if (TreeRegistrator.FRUITS.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0) {
-                cropTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "fruits/" + ItemTagProvider.tagName(cropName)));
+                cropTag = ItemTags.create(Identifier.fromNamespaceAndPath("c", "fruits/" + ItemTagProvider.tagName(cropName)));
             } else if (TreeRegistrator.BERRIES.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0) {
-                cropTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "berries/" + ItemTagProvider.tagName(cropName)));
+                cropTag = ItemTags.create(Identifier.fromNamespaceAndPath("c", "berries/" + ItemTagProvider.tagName(cropName)));
             } else if (TreeRegistrator.NUTS.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0 || TreeRegistrator.ROASTED_NUTS.stream().filter(cropConfig -> cropConfig.name().equals(cropName)).toList().size() > 0) {
-                cropTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "nuts/" + ItemTagProvider.tagName(cropName)));
+                cropTag = ItemTags.create(Identifier.fromNamespaceAndPath("c", "nuts/" + ItemTagProvider.tagName(cropName)));
             }
 
             if (cropName.equals("red_delicious_apple")) {
@@ -211,11 +210,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 cropTag = null;
             }
 
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, cropItem, 9)
+            shapeless(RecipeCategory.MISC, cropItem, 9)
                     .unlockedBy(getHasName(cropItem), has(cropItem))
                     .requires(crateItem)
-                    .save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "crates/" + crate.getPath() + "_unpack"));
-            var rBuilder = ShapedRecipeBuilder.shaped(RecipeCategory.MISC, crateItem)
+                    .save(this.output, recipeKey("crates/" + crate.getPath() + "_unpack"));
+            var rBuilder = shaped(RecipeCategory.MISC, crateItem)
                     .unlockedBy(getHasName(cropItem), has(cropItem))
                     .pattern("###")
                     .pattern("#R#")
@@ -226,239 +225,224 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
             } else {
                 rBuilder.define('#', cropItem);
             }
-            rBuilder.save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "crates/" + crate.getPath()));
+            rBuilder.save(this.output, recipeKey("crates/" + crate.getPath()));
         });
     }
 
-    private void buildTreeBreedingRecipes(RecipeOutput consumer) {
-        treeBreeding(consumer, "silver_lime", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 0.55f);
-        treeBreeding(consumer, "cacao", Blocks.JUNGLE_LEAVES, Blocks.CHERRY_LEAVES, 0.35f);
-        treeBreeding(consumer, "walnut", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
-        treeBreeding(consumer, "sweet_chestnut", "walnut", RecipeProvider.getLeafIngredient("wild_cherry", "silver_lime"), 0.1f);
-        treeBreeding(consumer, "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), Ingredient.of(Blocks.BIRCH_LEAVES), 0.1f);
-        treeBreeding(consumer, "sugar_maple", "european_larch", "red_maple", 0.05f);
-        treeBreeding(consumer, "citron", "silver_lime", "sour_cherry", 0.05f);
-        treeBreeding(consumer, "plum", "citron", "wild_cherry", 0.05f);
-        treeBreeding(consumer, "bull_pine", "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), 0.1f);
-        treeBreeding(consumer, "sequoia", "european_larch", "bull_pine", 0.05f);
-        treeBreeding(consumer, "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), Ingredient.of(Blocks.JUNGLE_LEAVES), 0.40f);
-        treeBreeding(consumer, "ipe", "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), 0.1f);
-        treeBreeding(consumer, "aquilaria", "teak", "ipe", 0.1f);
-        treeBreeding(consumer, "kapok", "teak", Ingredient.of(Blocks.JUNGLE_LEAVES), 0.1f);
-        treeBreeding(consumer, "ceylon_ebony", "kapok", Ingredient.of(Blocks.DARK_OAK_LEAVES), 0.1f);
-        treeBreeding(consumer, "purple_crepe_myrtle", "ceylon_ebony", Ingredient.of(Blocks.CHERRY_LEAVES), 0.05f);
-        treeBreeding(consumer, "zebrano", "white_poplar", "ceylon_ebony", 0.05f);
-        treeBreeding(consumer, "yellow_meranti", "ceylon_ebony", "kapok", 0.1f);
-        treeBreeding(consumer, "mahogany", "yellow_meranti", "kapok", 0.1f);
-        treeBreeding(consumer, "padauk", "red_maple", Ingredient.of(Blocks.JUNGLE_LEAVES), 0.05f);
-        treeBreeding(consumer, "dogwood", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 0.05f);
-        treeBreeding(consumer, "balsa", "teak", Ingredient.of(Blocks.ACACIA_LEAVES), 0.1f);
-        treeBreeding(consumer, "cocobolo", "balsa", Ingredient.of(Blocks.DARK_OAK_LEAVES), 0.1f);
-        treeBreeding(consumer, "wenge", "balsa", "cocobolo", 0.1f);
-        treeBreeding(consumer, "socotra_dragon", "wenge", "cocobolo", 0.1f);
-        treeBreeding(consumer, "grandidiers_baobab", "balsa", "wenge", 0.1f);
-        treeBreeding(consumer, "blue_mahoe", "teak", "balsa", 0.05f);
-        treeBreeding(consumer, "white_willow", "silver_lime", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES), 0.05f);
-        treeBreeding(consumer, "greenheart", "mahogany", "kapok", 0.1f);
-        treeBreeding(consumer, "papaya", "wild_cherry", "cacao", 0.05f);
-        treeBreeding(consumer, "date_palm", "papaya", "cacao", 0.05f);
-        treeBreeding(consumer, "asai_palm", "date_palm", "black_cherry", 0.05f);
-        treeBreeding(consumer, "persimmon", "ceylon_ebony", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 0.05f);
-        treeBreeding(consumer, "myrtle_ebony", "ceylon_ebony", "persimmon", 0.05f);
-        treeBreeding(consumer, "pomegranate", "holly", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").getItems()[0].getItem()), 0.05f);
-        treeBreeding(consumer, "white_poplar", "white_willow", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, getLeafIngredient("silver_lime").getItems()[0].getItem()), 0.05f);
-        treeBreeding(consumer, "red_delicious_apple", Ingredient.of(Blocks.CHERRY_LEAVES), Ingredient.of(Blocks.OAK_LEAVES, Blocks.DARK_OAK_LEAVES), 0.1f);
-        treeBreeding(consumer, "granny_smith_apple", "red_delicious_apple", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
-        treeBreeding(consumer, "golden_delicious_apple", "red_delicious_apple", "granny_smith_apple", 0.1f);
-        treeBreeding(consumer, "beliy_naliv_apple", "golden_delicious_apple", "granny_smith_apple", 0.1f);
-        treeBreeding(consumer, "sweet_crabapple", "red_delicious_apple", "sugar_maple", 0.1f);
-        treeBreeding(consumer, "flowering_crabapple", "sweet_crabapple", Blocks.FLOWERING_AZALEA_LEAVES, 0.1f);
-        treeBreeding(consumer, "prairie_crabapple", "red_delicious_apple", Ingredient.of(Blocks.BIRCH_LEAVES), 0.1f);
-        treeBreeding(consumer, "blackthorn", "plum", "red_delicious_apple", 0.1f);
-        treeBreeding(consumer, "cherry_plum", "plum", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
-        treeBreeding(consumer, "peach", "plum", "sweet_chestnut", 0.1f);
-        treeBreeding(consumer, "nectarine", "plum", "peach", 0.1f);
-        treeBreeding(consumer, "apricot", "plum", "peach", 0.1f);
-        treeBreeding(consumer, "almond", "plum", "walnut", 0.1f);
-        treeBreeding(consumer, "wild_cherry", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
-        treeBreeding(consumer, "sour_cherry", "white_willow", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
-        treeBreeding(consumer, "black_cherry", "ceylon_ebony", "sour_cherry", 0.1f);
-        treeBreeding(consumer, "orange", "mandarin", "pomelo", 0.1f);
-        treeBreeding(consumer, "mandarin", "pomelo", "wild_cherry", 0.1f);
-        treeBreeding(consumer, "tangerine", "mandarin", "kumquat", 0.1f);
-        treeBreeding(consumer, "satsuma", "mandarin", "kumquat", 0.1f);
-        treeBreeding(consumer, "lime", "pomelo", "key_lime", 0.1f);
-        treeBreeding(consumer, "key_lime", "citron", "wild_cherry", 0.1f);
-        treeBreeding(consumer, "finger_lime", "citron", "key_lime", 0.1f);
-        treeBreeding(consumer, "pomelo", "citron", "wild_cherry", 0.1f);
-        treeBreeding(consumer, "grapefruit", "pomelo", "orange", 0.1f);
-        treeBreeding(consumer, "kumquat", "mandarin", "wild_cherry", 0.1f);
-        treeBreeding(consumer, "lemon", "pomelo", "citron", 0.1f);
-        treeBreeding(consumer, "buddhas_hand", "mandarin", "citron", 0.1f);
-        treeBreeding(consumer, "banana", "balsa", "cacao", 0.1f);
-        treeBreeding(consumer, "red_banana", "banana", "kapok", 0.1f);
-        treeBreeding(consumer, "plantain", "banana", "teak", 0.1f);
-        treeBreeding(consumer, "butternut", "walnut", "wild_cherry", 0.1f);
-        treeBreeding(consumer, "rowan", "aspen", "alder", 0.1f);
-        treeBreeding(consumer, "western_hemlock", "bull_pine", "silver_fir", 3);
-        treeBreeding(consumer, "ash", "silver_lime", Blocks.SPRUCE_LEAVES, 0.1f);
-        treeBreeding(consumer, "alder", "beech", Blocks.BIRCH_LEAVES, 0.1f);
-        treeBreeding(consumer, "beech", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 0.50f);
-        treeBreeding(consumer, "aspen", "beech", "alder", 0.1f);
-        treeBreeding(consumer, "yew", "european_larch", Blocks.SPRUCE_LEAVES, 0.1f);
-        treeBreeding(consumer, "lawson_cypress", "bull_pine", Blocks.SPRUCE_LEAVES, 0.1f);
-        treeBreeding(consumer, "cork_oak", "lawson_cypress", Blocks.OAK_LEAVES, 0.1f);
-        treeBreeding(consumer, "douglas_fir", "silver_fir", Blocks.SPRUCE_LEAVES, 0.1f);
-        treeBreeding(consumer, "hazel", "aspen", "beech", 0.1f);
-        treeBreeding(consumer, "sycamore_fig", "ash", "sugar_maple", 0.1f);
-        treeBreeding(consumer, "breadfruit", "sycamore_fig", "sugar_maple", 0.1f);
-        treeBreeding(consumer, "cempedak", "sycamore_fig", "breadfruit", 0.1f);
-        treeBreeding(consumer, "jackfruit", "cempedak", "breadfruit", 0.1f);
-        treeBreeding(consumer, "whitebeam", "ash", Blocks.BIRCH_LEAVES, 0.1f);
-        treeBreeding(consumer, "hawthorn", "rowan", "beech", 0.1f);
-        treeBreeding(consumer, "pecan", "beech", Blocks.BIRCH_LEAVES, 0.1f);
-        treeBreeding(consumer, "sugar_apple", "pecan", "wild_cherry", 0.1f);
-        treeBreeding(consumer, "soursop", "sugar_apple", "banana", 0.1f);
-        treeBreeding(consumer, "elm", "ash", "silver_lime", 0.1f);
-        treeBreeding(consumer, "elderberry", "aspen", "alder", 0.1f);
-        treeBreeding(consumer, "holly", "alder", "rowan", 0.1f);
-        treeBreeding(consumer, "hornbeam", "ash", "whitebeam", 0.1f);
-        treeBreeding(consumer, "great_sallow", "white_willow", "aspen", 0.1f);
-        treeBreeding(consumer, "silver_fir", "balsam_fir", "bull_pine", 0.1f);
-        treeBreeding(consumer, "cedar", "silver_fir", "european_larch", 0.1f);
-        treeBreeding(consumer, "olive", "alder", "wild_cherry", 0.1f);
-        treeBreeding(consumer, "red_maple", "silver_lime", "european_larch", 0.1f);
-        treeBreeding(consumer, "balsam_fir", "alder", "european_larch", 0.1f);
-        treeBreeding(consumer, "loblolly_pine", "bull_pine", Blocks.SPRUCE_LEAVES, 0.1f);
-        treeBreeding(consumer, "sweetgum", "european_larch", "sugar_maple", 0.1f);
-        treeBreeding(consumer, "rubber_tree", "sweetgum", "loblolly_pine", 0.1f);
-        treeBreeding(consumer, "black_locust", "balsa", "silver_lime", 0.1f);
-        treeBreeding(consumer, "sand_pear", "red_delicious_apple", Blocks.FLOWERING_AZALEA_LEAVES, 0.1f);
-        treeBreeding(consumer, "cultivated_pear", "red_delicious_apple", "sand_pear", 0.1f);
-        treeBreeding(consumer, "osage_orange", "kapok", "old_fustic", 0.1f);
-        treeBreeding(consumer, "old_fustic", "red_maple", "mahogany", 0.1f);
-        treeBreeding(consumer, "brazilwood", "teak", "mahogany", 0.1f);
-        treeBreeding(consumer, "sandalwood", "brazilwood", "mahogany", 0.1f);
-        treeBreeding(consumer, "logwood", "kapok", "rosewood", 0.1f);
-        treeBreeding(consumer, "rosewood", "mahogany", "teak", 0.1f);
-        treeBreeding(consumer, "purpleheart", "brazilwood", "kapok", 0.1f);
-        treeBreeding(consumer, "iroko", "balsa", "teak", 0.1f);
-        treeBreeding(consumer, "ginkgo", "wenge", "silver_lime", 0.1f);
-        treeBreeding(consumer, "brazil_nut", "beech", "cacao", 0.1f);
-        treeBreeding(consumer, "rose_gum", "balsa", Blocks.FLOWERING_AZALEA_LEAVES, 0.1f);
-        treeBreeding(consumer, "swamp_gum", "yellow_meranti", "rose_gum", 0.1f);
-        treeBreeding(consumer, "boxwood", "holly", "alder", 0.1f);
-        treeBreeding(consumer, "coffea", "black_cherry", "cacao", 0.1f);
-        treeBreeding(consumer, "clove", "coffea", "teak", 0.1f);
-        treeBreeding(consumer, "monkey_puzzle", "western_hemlock", Blocks.JUNGLE_LEAVES, 0.1f);
-        treeBreeding(consumer, "rainbow_gum", "balsa", "rose_gum", 0.1f);
-        treeBreeding(consumer, "pink_ivory", "brazilwood", "rose_gum", 0.1f);
-        treeBreeding(consumer, "juniper", "elderberry", "silver_fir", 0.1f);
-        treeBreeding(consumer, "cinnamon", "rosewood", "teak", 0.1f);
-        treeBreeding(consumer, "coconut", "brazil_nut", "balsa", 0.1f);
-        treeBreeding(consumer, "cashew", "teak", Blocks.MANGROVE_LEAVES, 0.1f);
-        treeBreeding(consumer, "pistachio", "almond", "cashew", 0.1f);
-        treeBreeding(consumer, "avocado", "wenge", Blocks.OAK_LEAVES, 0.1f);
-        treeBreeding(consumer, "nutmeg", "teak", "clove", 0.1f);
-        treeBreeding(consumer, "allspice", "teak", "clove", 0.1f);
-        treeBreeding(consumer, "star_anise", "clove", "allspice", 0.1f);
-        treeBreeding(consumer, "mango", "orange", Blocks.MANGROVE_LEAVES, 0.1f);
-        treeBreeding(consumer, "star_fruit", "mango", "star_anise", 0.1f);
-        treeBreeding(consumer, "candlenut", "ginkgo", "hazel", 0.1f);
-        treeBreeding(consumer, "copoazu", "cacao", "candlenut", 0.1f);
-        treeBreeding(consumer, "carob", "sweet_chestnut", "copoazu", 0.1f);
-        treeBreeding(consumer, "pandanus", "walnut", "coconut", 0.1f);
-        treeBreeding(consumer, "salak", "pandanus", "coconut", 0.1f);
+    private void buildTreeBreedingRecipes() {
+        treeBreeding("silver_lime", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 0.55f);
+        treeBreeding("cacao", Blocks.JUNGLE_LEAVES, Blocks.CHERRY_LEAVES, 0.35f);
+        treeBreeding("walnut", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
+        treeBreeding("sweet_chestnut", "walnut", getLeafIngredient("wild_cherry", "silver_lime"), 0.1f);
+        treeBreeding("european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), Ingredient.of(Blocks.BIRCH_LEAVES), 0.1f);
+        treeBreeding("sugar_maple", "european_larch", "red_maple", 0.05f);
+        treeBreeding("citron", "silver_lime", "sour_cherry", 0.05f);
+        treeBreeding("plum", "citron", "wild_cherry", 0.05f);
+        treeBreeding("bull_pine", "european_larch", Ingredient.of(Blocks.SPRUCE_LEAVES), 0.1f);
+        treeBreeding("sequoia", "european_larch", "bull_pine", 0.05f);
+        treeBreeding("teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), Ingredient.of(Blocks.JUNGLE_LEAVES), 0.40f);
+        treeBreeding("ipe", "teak", Ingredient.of(Blocks.DARK_OAK_LEAVES), 0.1f);
+        treeBreeding("aquilaria", "teak", "ipe", 0.1f);
+        treeBreeding("kapok", "teak", Ingredient.of(Blocks.JUNGLE_LEAVES), 0.1f);
+        treeBreeding("ceylon_ebony", "kapok", Ingredient.of(Blocks.DARK_OAK_LEAVES), 0.1f);
+        treeBreeding("purple_crepe_myrtle", "ceylon_ebony", Ingredient.of(Blocks.CHERRY_LEAVES), 0.05f);
+        treeBreeding("zebrano", "white_poplar", "ceylon_ebony", 0.05f);
+        treeBreeding("yellow_meranti", "ceylon_ebony", "kapok", 0.1f);
+        treeBreeding("mahogany", "yellow_meranti", "kapok", 0.1f);
+        treeBreeding("padauk", "red_maple", Ingredient.of(Blocks.JUNGLE_LEAVES), 0.05f);
+        treeBreeding("dogwood", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 0.05f);
+        treeBreeding("balsa", "teak", Ingredient.of(Blocks.ACACIA_LEAVES), 0.1f);
+        treeBreeding("cocobolo", "balsa", Ingredient.of(Blocks.DARK_OAK_LEAVES), 0.1f);
+        treeBreeding("wenge", "balsa", "cocobolo", 0.1f);
+        treeBreeding("socotra_dragon", "wenge", "cocobolo", 0.1f);
+        treeBreeding("grandidiers_baobab", "balsa", "wenge", 0.1f);
+        treeBreeding("blue_mahoe", "teak", "balsa", 0.05f);
+        treeBreeding("white_willow", "silver_lime", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES), 0.05f);
+        treeBreeding("greenheart", "mahogany", "kapok", 0.1f);
+        treeBreeding("papaya", "wild_cherry", "cacao", 0.05f);
+        treeBreeding("date_palm", "papaya", "cacao", 0.05f);
+        treeBreeding("asai_palm", "date_palm", "black_cherry", 0.05f);
+        treeBreeding("persimmon", "ceylon_ebony", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").items().toList().getFirst().value()), 0.05f);
+        treeBreeding("myrtle_ebony", "ceylon_ebony", "persimmon", 0.05f);
+        treeBreeding("pomegranate", "holly", Ingredient.of(getLeafIngredient("purple_crepe_myrtle", "moonlight_magic_crepe_myrtle", "red_crepe_myrtle", "tuscarora_crepe_myrtle").items().toList().getFirst().value()), 0.05f);
+        treeBreeding("white_poplar", "white_willow", Ingredient.of(Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, getLeafIngredient("silver_lime").items().toList().getFirst().value()), 0.05f);
+        treeBreeding("red_delicious_apple", Ingredient.of(Blocks.CHERRY_LEAVES), Ingredient.of(Blocks.OAK_LEAVES, Blocks.DARK_OAK_LEAVES), 0.1f);
+        treeBreeding("granny_smith_apple", "red_delicious_apple", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
+        treeBreeding("golden_delicious_apple", "red_delicious_apple", "granny_smith_apple", 0.1f);
+        treeBreeding("beliy_naliv_apple", "golden_delicious_apple", "granny_smith_apple", 0.1f);
+        treeBreeding("sweet_crabapple", "red_delicious_apple", "sugar_maple", 0.1f);
+        treeBreeding("flowering_crabapple", "sweet_crabapple", Blocks.FLOWERING_AZALEA_LEAVES, 0.1f);
+        treeBreeding("prairie_crabapple", "red_delicious_apple", Ingredient.of(Blocks.BIRCH_LEAVES), 0.1f);
+        treeBreeding("blackthorn", "plum", "red_delicious_apple", 0.1f);
+        treeBreeding("cherry_plum", "plum", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
+        treeBreeding("peach", "plum", "sweet_chestnut", 0.1f);
+        treeBreeding("nectarine", "plum", "peach", 0.1f);
+        treeBreeding("apricot", "plum", "peach", 0.1f);
+        treeBreeding("almond", "plum", "walnut", 0.1f);
+        treeBreeding("wild_cherry", "silver_lime", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
+        treeBreeding("sour_cherry", "white_willow", Ingredient.of(Blocks.CHERRY_LEAVES), 0.1f);
+        treeBreeding("black_cherry", "ceylon_ebony", "sour_cherry", 0.1f);
+        treeBreeding("orange", "mandarin", "pomelo", 0.1f);
+        treeBreeding("mandarin", "pomelo", "wild_cherry", 0.1f);
+        treeBreeding("tangerine", "mandarin", "kumquat", 0.1f);
+        treeBreeding("satsuma", "mandarin", "kumquat", 0.1f);
+        treeBreeding("lime", "pomelo", "key_lime", 0.1f);
+        treeBreeding("key_lime", "citron", "wild_cherry", 0.1f);
+        treeBreeding("finger_lime", "citron", "key_lime", 0.1f);
+        treeBreeding("pomelo", "citron", "wild_cherry", 0.1f);
+        treeBreeding("grapefruit", "pomelo", "orange", 0.1f);
+        treeBreeding("kumquat", "mandarin", "wild_cherry", 0.1f);
+        treeBreeding("lemon", "pomelo", "citron", 0.1f);
+        treeBreeding("buddhas_hand", "mandarin", "citron", 0.1f);
+        treeBreeding("banana", "balsa", "cacao", 0.1f);
+        treeBreeding("red_banana", "banana", "kapok", 0.1f);
+        treeBreeding("plantain", "banana", "teak", 0.1f);
+        treeBreeding("butternut", "walnut", "wild_cherry", 0.1f);
+        treeBreeding("rowan", "aspen", "alder", 0.1f);
+        treeBreeding("western_hemlock", "bull_pine", "silver_fir", 3);
+        treeBreeding("ash", "silver_lime", Blocks.SPRUCE_LEAVES, 0.1f);
+        treeBreeding("alder", "beech", Blocks.BIRCH_LEAVES, 0.1f);
+        treeBreeding("beech", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 0.50f);
+        treeBreeding("aspen", "beech", "alder", 0.1f);
+        treeBreeding("yew", "european_larch", Blocks.SPRUCE_LEAVES, 0.1f);
+        treeBreeding("lawson_cypress", "bull_pine", Blocks.SPRUCE_LEAVES, 0.1f);
+        treeBreeding("cork_oak", "lawson_cypress", Blocks.OAK_LEAVES, 0.1f);
+        treeBreeding("douglas_fir", "silver_fir", Blocks.SPRUCE_LEAVES, 0.1f);
+        treeBreeding("hazel", "aspen", "beech", 0.1f);
+        treeBreeding("sycamore_fig", "ash", "sugar_maple", 0.1f);
+        treeBreeding("breadfruit", "sycamore_fig", "sugar_maple", 0.1f);
+        treeBreeding("cempedak", "sycamore_fig", "breadfruit", 0.1f);
+        treeBreeding("jackfruit", "cempedak", "breadfruit", 0.1f);
+        treeBreeding("whitebeam", "ash", Blocks.BIRCH_LEAVES, 0.1f);
+        treeBreeding("hawthorn", "rowan", "beech", 0.1f);
+        treeBreeding("pecan", "beech", Blocks.BIRCH_LEAVES, 0.1f);
+        treeBreeding("sugar_apple", "pecan", "wild_cherry", 0.1f);
+        treeBreeding("soursop", "sugar_apple", "banana", 0.1f);
+        treeBreeding("elm", "ash", "silver_lime", 0.1f);
+        treeBreeding("elderberry", "aspen", "alder", 0.1f);
+        treeBreeding("holly", "alder", "rowan", 0.1f);
+        treeBreeding("hornbeam", "ash", "whitebeam", 0.1f);
+        treeBreeding("great_sallow", "white_willow", "aspen", 0.1f);
+        treeBreeding("silver_fir", "balsam_fir", "bull_pine", 0.1f);
+        treeBreeding("cedar", "silver_fir", "european_larch", 0.1f);
+        treeBreeding("olive", "alder", "wild_cherry", 0.1f);
+        treeBreeding("red_maple", "silver_lime", "european_larch", 0.1f);
+        treeBreeding("balsam_fir", "alder", "european_larch", 0.1f);
+        treeBreeding("loblolly_pine", "bull_pine", Blocks.SPRUCE_LEAVES, 0.1f);
+        treeBreeding("sweetgum", "european_larch", "sugar_maple", 0.1f);
+        treeBreeding("rubber_tree", "sweetgum", "loblolly_pine", 0.1f);
+        treeBreeding("black_locust", "balsa", "silver_lime", 0.1f);
+        treeBreeding("sand_pear", "red_delicious_apple", Blocks.FLOWERING_AZALEA_LEAVES, 0.1f);
+        treeBreeding("cultivated_pear", "red_delicious_apple", "sand_pear", 0.1f);
+        treeBreeding("osage_orange", "kapok", "old_fustic", 0.1f);
+        treeBreeding("old_fustic", "red_maple", "mahogany", 0.1f);
+        treeBreeding("brazilwood", "teak", "mahogany", 0.1f);
+        treeBreeding("sandalwood", "brazilwood", "mahogany", 0.1f);
+        treeBreeding("logwood", "kapok", "rosewood", 0.1f);
+        treeBreeding("rosewood", "mahogany", "teak", 0.1f);
+        treeBreeding("purpleheart", "brazilwood", "kapok", 0.1f);
+        treeBreeding("iroko", "balsa", "teak", 0.1f);
+        treeBreeding("ginkgo", "wenge", "silver_lime", 0.1f);
+        treeBreeding("brazil_nut", "beech", "cacao", 0.1f);
+        treeBreeding("rose_gum", "balsa", Blocks.FLOWERING_AZALEA_LEAVES, 0.1f);
+        treeBreeding("swamp_gum", "yellow_meranti", "rose_gum", 0.1f);
+        treeBreeding("boxwood", "holly", "alder", 0.1f);
+        treeBreeding("coffea", "black_cherry", "cacao", 0.1f);
+        treeBreeding("clove", "coffea", "teak", 0.1f);
+        treeBreeding("monkey_puzzle", "western_hemlock", Blocks.JUNGLE_LEAVES, 0.1f);
+        treeBreeding("rainbow_gum", "balsa", "rose_gum", 0.1f);
+        treeBreeding("pink_ivory", "brazilwood", "rose_gum", 0.1f);
+        treeBreeding("juniper", "elderberry", "silver_fir", 0.1f);
+        treeBreeding("cinnamon", "rosewood", "teak", 0.1f);
+        treeBreeding("coconut", "brazil_nut", "balsa", 0.1f);
+        treeBreeding("cashew", "teak", Blocks.MANGROVE_LEAVES, 0.1f);
+        treeBreeding("pistachio", "almond", "cashew", 0.1f);
+        treeBreeding("avocado", "wenge", Blocks.OAK_LEAVES, 0.1f);
+        treeBreeding("nutmeg", "teak", "clove", 0.1f);
+        treeBreeding("allspice", "teak", "clove", 0.1f);
+        treeBreeding("star_anise", "clove", "allspice", 0.1f);
+        treeBreeding("mango", "orange", Blocks.MANGROVE_LEAVES, 0.1f);
+        treeBreeding("star_fruit", "mango", "star_anise", 0.1f);
+        treeBreeding("candlenut", "ginkgo", "hazel", 0.1f);
+        treeBreeding("copoazu", "cacao", "candlenut", 0.1f);
+        treeBreeding("carob", "sweet_chestnut", "copoazu", 0.1f);
+        treeBreeding("pandanus", "walnut", "coconut", 0.1f);
+        treeBreeding("salak", "pandanus", "coconut", 0.1f);
 
-        treeBreeding(consumer, "purple_spiral", "blue_yonder", "firecracker", 0.05f);
-        treeBreeding(consumer, "cave_dweller", "black_ember", "soul_tree", 0.05f);
-        treeBreeding(consumer, "foggy_blast", "cave_dweller", "soul_tree", 0.05f);
-        treeBreeding(consumer, "night_fuchsia", "purple_spiral", "sparkle_cherry", 0.05f);
-        treeBreeding(consumer, "time_traveller", "blue_yonder", "rippling_willow", 0.05f);
-        treeBreeding(consumer, "sparkle_cherry", "firecracker", "soul_tree", 0.05f);
-        treeBreeding(consumer, "slimy_delight", "rippling_willow", "soul_tree", 0.05f);
-        treeBreeding(consumer, "thunder_bolt", "firecracker", "flickering_sun", 0.05f);
-        treeBreeding(consumer, "rippling_willow", "blue_yonder", "flickering_sun", 0.05f);
-        treeBreeding(consumer, "water_wonder", "blue_yonder", "soul_tree", 0.05f);
+        treeBreeding("purple_spiral", "blue_yonder", "firecracker", 0.05f);
+        treeBreeding("cave_dweller", "black_ember", "soul_tree", 0.05f);
+        treeBreeding("foggy_blast", "cave_dweller", "soul_tree", 0.05f);
+        treeBreeding("night_fuchsia", "purple_spiral", "sparkle_cherry", 0.05f);
+        treeBreeding("time_traveller", "blue_yonder", "rippling_willow", 0.05f);
+        treeBreeding("sparkle_cherry", "firecracker", "soul_tree", 0.05f);
+        treeBreeding("slimy_delight", "rippling_willow", "soul_tree", 0.05f);
+        treeBreeding("thunder_bolt", "firecracker", "flickering_sun", 0.05f);
+        treeBreeding("rippling_willow", "blue_yonder", "flickering_sun", 0.05f);
+        treeBreeding("water_wonder", "blue_yonder", "soul_tree", 0.05f);
     }
 
-    public static void treeBreeding(RecipeOutput consumer, String name, String leafA, String leafB, float chance) {
-        treeBreeding(consumer, name, leafA, BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, leafB + "_leaves")), chance);
+    public void treeBreeding(String name, String leafA, String leafB, float chance) {
+        treeBreeding(name, leafA, BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, leafB + "_leaves")), chance);
     }
 
-    public static void treeBreeding(RecipeOutput consumer, String name, String leafA, Block leafB, float chance) {
-        treeBreeding(consumer, name, BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, leafA + "_leaves")), leafB, chance);
+    public void treeBreeding(String name, String leafA, Block leafB, float chance) {
+        treeBreeding(name, BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, leafA + "_leaves")), leafB, chance);
     }
 
-    public static void treeBreeding(RecipeOutput consumer, String name, String leafA, Ingredient leafB, float chance) {
-        treeBreeding(consumer, name, Ingredient.of(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, leafA + "_leaves"))), leafB, new ItemStack(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, name + "_sapling"))), chance);
+    public void treeBreeding(String name, String leafA, Ingredient leafB, float chance) {
+        treeBreeding(name, Ingredient.of(BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, leafA + "_leaves"))), leafB, new ItemStackTemplate(BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, name + "_sapling")).asItem()), chance);
     }
 
-    public static void treeBreeding(RecipeOutput consumer, String name, Ingredient leafA, Ingredient leafB, float chance) {
-        treeBreeding(consumer, name, leafA, leafB, new ItemStack(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, name + "_sapling"))), chance);
+    public void treeBreeding(String name, Ingredient leafA, Ingredient leafB, float chance) {
+        treeBreeding(name, leafA, leafB, new ItemStackTemplate(BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, name + "_sapling")).asItem()), chance);
     }
 
-    public static void treeBreeding(RecipeOutput consumer, String name, Block leafA, Block leafB, float chance) {
-        treeBreeding(consumer, name, leafA, leafB, name, chance);
+    public void treeBreeding(String name, Block leafA, Block leafB, float chance) {
+        treeBreeding(name, leafA, leafB, name, chance);
     }
 
-    public static void treeBreeding(RecipeOutput consumer, String name, Block leafA, Block leafB, String saplingName, float chance) {
-        treeBreeding(consumer, name, leafA, leafB, BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, saplingName + "_sapling")), chance);
+    public void treeBreeding(String name, Block leafA, Block leafB, String saplingName, float chance) {
+        treeBreeding(name, leafA, leafB, BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, saplingName + "_sapling")), chance);
     }
 
-    public static void treeBreeding(RecipeOutput consumer, String name, Block leafA, Block leafB, Block result, float chance) {
-        treeBreeding(consumer, name, Ingredient.of(leafA), Ingredient.of(leafB), new ItemStack(result), chance);
+    public void treeBreeding(String name, Block leafA, Block leafB, Block result, float chance) {
+        treeBreeding(name, Ingredient.of(leafA), Ingredient.of(leafB), new ItemStackTemplate(result.asItem()), chance);
     }
 
-    public static void treeBreeding(RecipeOutput consumer, String name, Ingredient leafA, Ingredient leafB, ItemStack result, float chance) {
+    public void treeBreeding(String name, Ingredient leafA, Ingredient leafB, ItemStackTemplate result, float chance) {
         if (leafA.isEmpty()) {
             throw new RuntimeException("Empty leafA for tree " + name);
         }
         if (leafB.isEmpty()) {
             throw new RuntimeException("Empty leafB for tree " + name);
         }
-        if (result.isEmpty()) {
+        if (result.item().value() == Items.AIR) {
             throw new RuntimeException("Empty result for tree " + name);
         }
-        TreePollinationRecipeBuilder.direct(leafA, leafB, result, chance).save(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "pollination/" + name));
+        TreePollinationRecipeBuilder.direct(leafA, leafB, result, chance).save(this.output, recipeKey("pollination/" + name));
     }
 
     private static Ingredient getLeafIngredient(String... treeNames) {
         var leaves = Arrays.stream(treeNames).map(s -> {
-            return new ItemStack(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, s + "_leaves")));
+            return (ItemLike) BuiltInRegistries.BLOCK.getValue(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, s + "_leaves"));
         });
         return Ingredient.of(leaves);
     }
 
-    static class BotanyPotsCompat {
-        protected static void buildRecipes(RecipeOutput recipeOutput) {
-            TreeFinder.trees.forEach((resourceLocation, treeObject) -> {
-                treeCropRecipe(treeObject, recipeOutput);
-            });
+    public static class Runner extends net.minecraft.data.recipes.RecipeProvider.Runner
+    {
+        public Runner(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries) {
+            super(packOutput, registries);
         }
 
-        private static void treeCropRecipe(TreeObject tree, RecipeOutput recipeOutput) {
-            var sapling = TreeUtil.getBlock(tree.getId(), "_sapling");
-            var wood = TreeUtil.getBlock(tree.getId(), "_log");
-            var leaves = TreeUtil.getBlock(tree.getId(), "_leaves");
+        @Override
+        protected net.minecraft.data.recipes.RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+            return new RecipeProvider(registries, output);
+        }
 
-            ProductiveTrees.LOGGER.info(tree.getId() + " sapling " + sapling);
-            ProductiveTrees.LOGGER.info(tree.getId() + " wood " + wood);
-
-            List<SimpleDropProvider.SimpleDrop> drops = new ArrayList<>(){{
-                var woodDrop = wood.asItem().getDefaultInstance();
-                woodDrop.setCount(2);
-                add(new SimpleDropProvider.SimpleDrop(woodDrop, 1f));
-            }};
-            drops.add(new SimpleDropProvider.SimpleDrop(sapling.asItem().getDefaultInstance(), 0.05f));
-            drops.add(new SimpleDropProvider.SimpleDrop(leaves.asItem().getDefaultInstance(), 1.00f));
-            if (tree.hasFruit() && !tree.getFruit().getItem().isEmpty()) {
-                ProductiveTrees.LOGGER.info(tree.getId() + " fruit " + tree.getFruit().getItem());
-                drops.add(new SimpleDropProvider.SimpleDrop(tree.getFruit().getItem().copy(), 1.00f));
-            }
-
-            BotanyPotBlockDerivedCropRecipeBuilder.drops(wood, Ingredient.of(sapling), BasicCrop.DIRT, List.of(new SimpleDropProvider(drops)), List.of(new AgingDisplayState(sapling, BasicOptions.ofDefault())))
-                    .save(recipeOutput.withConditions(new ModLoadedCondition("botanypots")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "botanypots/" + tree.getId().getPath()));
+        @Override
+        public String getName() {
+            return "Productive Trees Recipes";
         }
     }
 }

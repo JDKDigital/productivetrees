@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_brazil_nut",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -3901885
+      }
+    ]
+  }
+}

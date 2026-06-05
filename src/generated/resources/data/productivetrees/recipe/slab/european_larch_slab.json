@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:european_larch_planks"
-    }
+    "#": "productivetrees:european_larch_planks"
   },
   "pattern": [
     "###"

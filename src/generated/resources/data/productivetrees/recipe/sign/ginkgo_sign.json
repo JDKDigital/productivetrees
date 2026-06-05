@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:ginkgo_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:ginkgo_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

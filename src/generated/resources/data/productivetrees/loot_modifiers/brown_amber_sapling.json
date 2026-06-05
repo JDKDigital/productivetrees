@@ -1,8 +1,6 @@
 {
   "type": "productivelib:ingredient_modifier",
-  "addition": {
-    "item": "productivetrees:brown_amber_sapling"
-  },
+  "addition": "productivetrees:brown_amber_sapling",
   "chance": 0.1,
   "conditions": [
     {
@@ -10,5 +8,6 @@
       "loot_table_id": "minecraft:archaeology/ocean_ruin_cold"
     }
   ],
+  "priority": 0,
   "replace": true
 }

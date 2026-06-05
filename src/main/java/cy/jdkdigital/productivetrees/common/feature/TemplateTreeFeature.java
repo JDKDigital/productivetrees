@@ -3,7 +3,7 @@ package cy.jdkdigital.productivetrees.common.feature;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
@@ -30,13 +30,13 @@ public class TemplateTreeFeature extends Feature<TemplateTreeConfiguration>
 
     @Override
     public boolean place(FeaturePlaceContext<TemplateTreeConfiguration> context) {
-        List<ResourceLocation> templates = context.config().templates();
+        List<Identifier> templates = context.config().templates();
         if (templates.isEmpty()) {
             return false;
         }
         WorldGenLevel level = context.level();
         RandomSource random = context.random();
-        ResourceLocation id = templates.get(random.nextInt(templates.size()));
+        Identifier id = templates.get(random.nextInt(templates.size()));
         StructureTemplateManager manager = level.getLevel().getStructureManager();
         Optional<StructureTemplate> loaded = manager.get(id);
         if (loaded.isEmpty()) {

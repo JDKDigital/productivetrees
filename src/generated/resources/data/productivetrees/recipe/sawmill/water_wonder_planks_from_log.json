@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:water_wonder_logs"
-  },
+  "input": "#productivetrees:water_wonder_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:water_wonder_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

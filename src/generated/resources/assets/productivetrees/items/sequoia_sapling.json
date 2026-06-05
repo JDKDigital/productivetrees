@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/sequoia_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -9067913
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -9748951
+      }
+    ]
+  }
+}

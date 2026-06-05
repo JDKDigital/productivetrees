@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:date_palm_planks"
-    }
+    "#": "productivetrees:date_palm_planks"
   },
   "pattern": [
     "###",

@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/great_sallow_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -12756183
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -11777726
+      }
+    ]
+  }
+}

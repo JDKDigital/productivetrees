@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_rubber_tree",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -4672343
+      }
+    ]
+  }
+}

@@ -3,16 +3,19 @@ package cy.jdkdigital.productivetrees.common.block.entity;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.NotNull;
 
 public class PollinatedLeavesBlockEntity extends BlockEntity
@@ -50,20 +53,20 @@ public class PollinatedLeavesBlockEntity extends BlockEntity
     }
 
     @Override
-    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(pTag, pRegistries);
-        this.loadPacketNBT(pTag, pRegistries);
+    protected void loadAdditional(ValueInput input) {
+        super.loadAdditional(input);
+        this.loadPacketNBT(input);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.saveAdditional(pTag, pRegistries);
-        this.savePacketNBT(pTag, pRegistries);
+    protected void saveAdditional(ValueOutput output) {
+        super.saveAdditional(output);
+        this.savePacketNBT(output);
     }
 
     @Override
     public @NotNull CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
-        return saveWithId(pRegistries);
+        return saveWithoutMetadata(pRegistries);
     }
 
     @Override
@@ -72,37 +75,29 @@ public class PollinatedLeavesBlockEntity extends BlockEntity
     }
 
     @Override
-    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt, HolderLookup.Provider pRegistries) {
-        super.onDataPacket(net, pkt, pRegistries);
-        this.loadPacketNBT(pkt.getTag(), pRegistries);
+    public void onDataPacket(Connection net, ValueInput input) {
+        super.onDataPacket(net, input);
+        this.loadPacketNBT(input);
         if (level instanceof ClientLevel) {
             level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 0);
         }
     }
 
-    public void loadPacketNBT(CompoundTag tag, HolderLookup.Provider pRegistries) {
-        if (tag.contains("leafA")) {
-            this.leafA = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(tag.getString("leafA")));
-        }
-        if (tag.contains("leafB")) {
-            this.leafB = BuiltInRegistries.BLOCK.get(ResourceLocation.parse(tag.getString("leafB")));
-        }
-        if (tag.contains("result")) {
-            this.result = ItemStack.parse(pRegistries, tag.getCompound("result")).orElse(ItemStack.EMPTY);
-        } else {
-            this.result = ItemStack.EMPTY;
-        }
+    public void loadPacketNBT(ValueInput input) {
+        input.getString("leafA").ifPresent(s -> this.leafA = BuiltInRegistries.BLOCK.get(Identifier.parse(s)).map(Holder::value).orElse(null));
+        input.getString("leafB").ifPresent(s -> this.leafB = BuiltInRegistries.BLOCK.get(Identifier.parse(s)).map(Holder::value).orElse(null));
+        this.result = input.read("result", ItemStack.CODEC).orElse(ItemStack.EMPTY);
     }
 
-    public void savePacketNBT(CompoundTag tag, HolderLookup.Provider pRegistries) {
+    public void savePacketNBT(ValueOutput output) {
         if (leafA != null) {
-            tag.putString("leafA", BuiltInRegistries.BLOCK.getKey(leafA).toString());
+            output.putString("leafA", BuiltInRegistries.BLOCK.getKey(leafA).toString());
         }
         if (leafB != null) {
-            tag.putString("leafB", BuiltInRegistries.BLOCK.getKey(leafB).toString());
+            output.putString("leafB", BuiltInRegistries.BLOCK.getKey(leafB).toString());
         }
         if (result != null && !result.isEmpty()) {
-            tag.put("result", result.save(pRegistries, new CompoundTag()));
+            output.store("result", ItemStack.CODEC, result);
         }
     }
 }

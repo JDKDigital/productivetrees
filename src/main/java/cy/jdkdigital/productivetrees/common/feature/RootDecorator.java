@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
@@ -20,7 +21,7 @@ public class RootDecorator extends TreeDecorator
     public static final MapCodec<RootDecorator> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             BlockStateProvider.CODEC.fieldOf("root_provider").forGetter((decorator) -> decorator.rootProvider),
             Codec.floatRange(0.0F, 1.0F).fieldOf("place_chance").forGetter((decorator) -> decorator.placeChance),
-            IntProvider.codec(1, 8).fieldOf("length").forGetter((decorator) -> decorator.length)
+            IntProviders.codec(1, 8).fieldOf("length").forGetter((decorator) -> decorator.length)
     ).apply(instance, RootDecorator::new));
 
     private final BlockStateProvider rootProvider;
@@ -63,7 +64,7 @@ public class RootDecorator extends TreeDecorator
                     if (!context.isAir(mutable)) {
                         break;
                     }
-                    context.setBlock(mutable, this.rootProvider.getState(random, mutable));
+                    context.setBlock(mutable, this.rootProvider.getState(context.level(), random, mutable));
                     if (random.nextInt(2) == 0) {
                         mutable.move(Direction.DOWN);
                     }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:time_traveller_logs"
-    }
+    "#productivetrees:time_traveller_logs"
   ],
   "result": {
     "count": 4,

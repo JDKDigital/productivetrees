@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/sugar_maple_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -10513328
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -9737116
+      }
+    ]
+  }
+}

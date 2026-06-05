@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:white_poplar_planks"
-    }
+    "#": "productivetrees:white_poplar_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:white_poplar_pressure_plate"
   }
 }

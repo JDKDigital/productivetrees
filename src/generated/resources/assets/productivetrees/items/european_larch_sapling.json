@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/european_larch_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -6170241
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -11975616
+      }
+    ]
+  }
+}

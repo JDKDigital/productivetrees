@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:greenheart_logs"
-    }
+    "#productivetrees:greenheart_logs"
   ],
   "result": {
     "count": 4,

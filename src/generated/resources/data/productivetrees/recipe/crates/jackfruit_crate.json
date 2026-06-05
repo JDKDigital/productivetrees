@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/jackfruit"
-    },
-    "R": {
-      "item": "productivetrees:jackfruit"
-    }
+    "#": "#c:fruits/jackfruit",
+    "R": "productivetrees:jackfruit"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:jackfruit_crate"
   }
 }

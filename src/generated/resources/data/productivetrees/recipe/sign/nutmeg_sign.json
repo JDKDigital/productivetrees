@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:nutmeg_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:nutmeg_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

@@ -8,7 +8,7 @@ import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,7 +18,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -70,12 +70,12 @@ public class LootDataProvider implements DataProvider
     }
 
     private CompletableFuture<?> run(CachedOutput pOutput, HolderLookup.Provider pProvider) {
-        final Map<ResourceLocation, LootTable> map = Maps.newHashMap();
+        final Map<Identifier, LootTable> map = Maps.newHashMap();
         this.subProviders.forEach((providerEntry) -> {
             providerEntry.provider().apply(pProvider).generate((resourceKey, builder) -> {
-                builder.setRandomSequence(resourceKey.location());
-                if (map.put(resourceKey.location(), builder.setParamSet(providerEntry.paramSet()).build()) != null) {
-                    throw new IllegalStateException("Duplicate loot table " + resourceKey.location());
+                builder.setRandomSequence(resourceKey.identifier());
+                if (map.put(resourceKey.identifier(), builder.setParamSet(providerEntry.paramSet()).build()) != null) {
+                    throw new IllegalStateException("Duplicate loot table " + resourceKey.identifier());
                 }
             });
         });
@@ -124,7 +124,12 @@ public class LootDataProvider implements DataProvider
                     add(TreeUtil.getBlock(id, "_leaves"), leaf -> createOptionalLeavesDrops(leaf, TreeUtil.getBlock(id, "_sapling"), saplingChance));
                 }
                 if (treeObject.hasFruit()) {
-                    add(TreeUtil.getBlock(id, "_fruit"), leaf -> createFruitLeavesDrops(leaf, TreeUtil.getBlock(id, "_sapling"), treeObject.getFruit().getItem().getItem(), saplingChance));
+                    var fruitItem = treeObject.getFruit().getItemType();
+                    if (fruitItem.equals(Items.AIR)) {
+                        add(TreeUtil.getBlock(id, "_fruit"), leaf -> createFruitlessFruitDrops(TreeUtil.getBlock(id, "_sapling"), saplingChance));
+                    } else {
+                        add(TreeUtil.getBlock(id, "_fruit"), leaf -> createFruitLeavesDrops(leaf, TreeUtil.getBlock(id, "_sapling"), fruitItem, saplingChance));
+                    }
                 }
                 dropSelf(TreeUtil.getBlock(id, "_sapling"));
                 dropSelf(TreeUtil.getBlock(id, "_log"));
@@ -150,7 +155,7 @@ public class LootDataProvider implements DataProvider
             });
 
             TreeRegistrator.CRATED_CROPS.forEach(cratePath -> {
-                dropSelf(BuiltInRegistries.BLOCK.get(cratePath));
+                dropSelf(BuiltInRegistries.BLOCK.getValue(cratePath));
             });
         }
 
@@ -221,6 +226,20 @@ public class LootDataProvider implements DataProvider
                     ).withPool(
                             LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(
                                     LootItem.lootTableItem(fruit).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ProductiveFruitBlock.getAgeProperty(), ProductiveFruitBlock.getMaxAge()))).apply(ApplyExplosionDecay.explosionDecay())
+                            )
+                    );
+        }
+
+        protected @NotNull LootTable.Builder createFruitlessFruitDrops(Block sapling, float... dropChances) {
+            HolderLookup.RegistryLookup<Enchantment> registryLookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+            return LootTable.lootTable()
+                    .withPool(
+                            LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(
+                                    LootItem.lootTableItem(sapling).when(BonusLevelTableCondition.bonusLevelFlatChance(registryLookup.getOrThrow(Enchantments.FORTUNE), dropChances)).apply(ApplyExplosionDecay.explosionDecay())
+                            )
+                    ).withPool(
+                            LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(
+                                    LootItem.lootTableItem(Items.STICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(ApplyExplosionDecay.explosionDecay()).when(BonusLevelTableCondition.bonusLevelFlatChance(registryLookup.getOrThrow(Enchantments.FORTUNE), NORMAL_LEAVES_STICK_CHANCES))
                             )
                     );
         }

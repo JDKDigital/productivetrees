@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:sweetgum_logs"
-    }
+    "#productivetrees:sweetgum_logs"
   ],
   "result": {
     "count": 4,

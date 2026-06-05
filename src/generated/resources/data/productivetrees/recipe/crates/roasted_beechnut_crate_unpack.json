@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:roasted_beechnut_crate"
-    }
+    "productivetrees:roasted_beechnut_crate"
   ],
   "result": {
     "count": 9,

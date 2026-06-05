@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/yew_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11375302
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -10070188
+      }
+    ]
+  }
+}

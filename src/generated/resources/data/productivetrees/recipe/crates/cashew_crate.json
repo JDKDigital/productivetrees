@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:nuts/cashew"
-    },
-    "R": {
-      "item": "productivetrees:cashew"
-    }
+    "#": "#c:nuts/cashew",
+    "R": "productivetrees:cashew"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:cashew_crate"
   }
 }

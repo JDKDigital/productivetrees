@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:kumquat_logs"
-    }
+    "#productivetrees:kumquat_logs"
   ],
   "result": {
     "count": 4,

@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:granny_smith_apple_planks"
-    }
+    "#": "productivetrees:granny_smith_apple_planks"
   },
   "pattern": [
     "###",

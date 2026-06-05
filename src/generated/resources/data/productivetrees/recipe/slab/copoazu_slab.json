@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:copoazu_planks"
-    }
+    "#": "productivetrees:copoazu_planks"
   },
   "pattern": [
     "###"

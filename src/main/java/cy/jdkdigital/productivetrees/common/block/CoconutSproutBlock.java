@@ -45,8 +45,13 @@ public class CoconutSproutBlock extends FallingBlock implements SimpleWaterlogge
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        Vec3 vec3 = pState.getOffset(pLevel, pPos);
+        Vec3 vec3 = pState.getOffset(pPos);
         return SHAPE.move(vec3.x, vec3.y, vec3.z);
+    }
+
+    @Override
+    public int getDustColor(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        return pState.getMapColor(pLevel, pPos).col;
     }
 
     @Override

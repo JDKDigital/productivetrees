@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:loblolly_pine_planks"
-    }
+    "#": "productivetrees:loblolly_pine_planks"
   },
   "pattern": [
     "###",

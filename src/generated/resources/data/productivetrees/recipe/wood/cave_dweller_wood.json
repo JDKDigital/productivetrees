@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:cave_dweller_log"
-    }
+    "#": "productivetrees:cave_dweller_log"
   },
   "pattern": [
     "##",

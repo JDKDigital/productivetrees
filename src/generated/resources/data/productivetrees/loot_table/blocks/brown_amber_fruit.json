@@ -65,30 +65,6 @@
         }
       ],
       "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "conditions": [
-            {
-              "block": "productivetrees:brown_amber_fruit",
-              "condition": "minecraft:block_state_property",
-              "properties": {
-                "age": "7"
-              }
-            }
-          ],
-          "functions": [
-            {
-              "function": "minecraft:explosion_decay"
-            }
-          ],
-          "name": "minecraft:air"
-        }
-      ],
-      "rolls": 1.0
     }
   ],
   "random_sequence": "productivetrees:blocks/brown_amber_fruit"

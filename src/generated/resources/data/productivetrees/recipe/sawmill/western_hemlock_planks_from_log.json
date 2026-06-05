@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:western_hemlock_logs"
-  },
+  "input": "#productivetrees:western_hemlock_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:western_hemlock_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

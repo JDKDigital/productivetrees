@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:pomegranate_planks"
-    }
+    "#": "productivetrees:pomegranate_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:pomegranate_pressure_plate"
   }
 }

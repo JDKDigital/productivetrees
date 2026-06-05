@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:loblolly_pine_planks"
-    }
+    "#": "productivetrees:loblolly_pine_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:loblolly_pine_pressure_plate"
   }
 }

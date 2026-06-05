@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/black_cherry_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -13218284
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -9740733
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -15855853
+      }
+    ]
+  }
+}

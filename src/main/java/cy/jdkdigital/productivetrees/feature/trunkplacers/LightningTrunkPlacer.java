@@ -7,7 +7,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -27,8 +28,8 @@ public class LightningTrunkPlacer extends TrunkPlacer
 {
     public static final MapCodec<LightningTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return TrunkPlacerCodecs.trunkPlacerParts(instance).and(instance.group(
-                IntProvider.codec(1, 8).fieldOf("fork_count").forGetter((placer) -> placer.forkCount),
-                IntProvider.codec(1, 12).fieldOf("fork_length").forGetter((placer) -> placer.forkLength)
+                IntProviders.codec(1, 8).fieldOf("fork_count").forGetter((placer) -> placer.forkCount),
+                IntProviders.codec(1, 12).fieldOf("fork_length").forGetter((placer) -> placer.forkLength)
         )).apply(instance, LightningTrunkPlacer::new);
     });
     private final IntProvider forkCount;
@@ -46,10 +47,10 @@ public class LightningTrunkPlacer extends TrunkPlacer
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-        setDirtAt(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, -1, 0), pConfig);
+        placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, -1, 0), pConfig);
 
         // the main bolt: climbs straight but jogs a block sideways now and then
         List<BlockPos> bolt = new ArrayList<>();

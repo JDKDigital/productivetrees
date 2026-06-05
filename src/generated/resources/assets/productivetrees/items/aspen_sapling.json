@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/aspen_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -8210300
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -4478815
+      }
+    ]
+  }
+}

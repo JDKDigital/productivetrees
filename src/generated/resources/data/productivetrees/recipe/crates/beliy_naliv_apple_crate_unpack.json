@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:beliy_naliv_apple_crate"
-    }
+    "productivetrees:beliy_naliv_apple_crate"
   ],
   "result": {
     "count": 9,

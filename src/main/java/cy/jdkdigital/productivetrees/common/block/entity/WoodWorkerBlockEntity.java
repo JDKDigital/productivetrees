@@ -16,8 +16,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -28,10 +28,10 @@ public class WoodWorkerBlockEntity extends CapabilityBlockEntity implements Menu
     public static int SLOT_IN = 0;
     public static int SLOT_OUT = 1;
     public static int SLOT_AXE = 2;
-    public final IItemHandlerModifiable inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(3, this)
+    public final InventoryHandlerHelper.BlockEntityItemStackHandler inventoryHandler = new InventoryHandlerHelper.BlockEntityItemStackHandler(3, this)
     {
         @Override
-        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+        public boolean isItemValid(int slot, @NotNull ItemStack stack, boolean fromAutomation) {
             if (isInputSlotItem(slot, stack)) {
                 return true;
             }
@@ -54,9 +54,9 @@ public class WoodWorkerBlockEntity extends CapabilityBlockEntity implements Menu
         }
 
         @Override
-        protected void onContentsChanged(int slot) {
-            super.onContentsChanged(slot);
-            if (slot == SLOT_AXE && level instanceof ServerLevel serverLevel) {
+        protected void onContentsChanged(int index, ItemStack previousContents) {
+            super.onContentsChanged(index, previousContents);
+            if (index == SLOT_AXE && level instanceof ServerLevel serverLevel) {
                 serverLevel.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
             }
         }
@@ -78,7 +78,7 @@ public class WoodWorkerBlockEntity extends CapabilityBlockEntity implements Menu
     }
 
     @Override
-    public IItemHandler getItemHandler() {
+    public ResourceHandler<ItemResource> getItemHandler() {
         return inventoryHandler;
     }
 

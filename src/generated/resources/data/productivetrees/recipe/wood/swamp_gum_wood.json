@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:swamp_gum_log"
-    }
+    "#": "productivetrees:swamp_gum_log"
   },
   "pattern": [
     "##",

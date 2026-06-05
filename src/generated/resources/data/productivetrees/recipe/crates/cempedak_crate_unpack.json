@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:cempedak_crate"
-    }
+    "productivetrees:cempedak_crate"
   ],
   "result": {
     "count": 9,

@@ -7,7 +7,8 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -30,8 +31,8 @@ public class EmergentTrunkPlacer extends TrunkPlacer
         return TrunkPlacerCodecs.trunkPlacerParts(instance).and(instance.group(
                 Codec.intRange(1, 4).fieldOf("radius").forGetter((placer) -> placer.radius),
                 Codec.floatRange(0.0F, 1.0F).optionalFieldOf("wide_fraction", 0.45F).forGetter((placer) -> placer.wideFraction),
-                IntProvider.codec(2, 10).fieldOf("arm_count").forGetter((placer) -> placer.armCount),
-                IntProvider.codec(1, 16).fieldOf("arm_length").forGetter((placer) -> placer.armLength)
+                IntProviders.codec(2, 10).fieldOf("arm_count").forGetter((placer) -> placer.armCount),
+                IntProviders.codec(1, 16).fieldOf("arm_length").forGetter((placer) -> placer.armLength)
         )).apply(instance, EmergentTrunkPlacer::new);
     });
     // eight compass directions the crown arms fan out toward
@@ -55,7 +56,7 @@ public class EmergentTrunkPlacer extends TrunkPlacer
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
 
@@ -89,7 +90,7 @@ public class EmergentTrunkPlacer extends TrunkPlacer
                         continue;
                     }
                     if (h == 0) {
-                        setDirtAt(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, -1, dz), pConfig);
+                        placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, -1, dz), pConfig);
                     }
                     this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, h, dz), pConfig);
                 }

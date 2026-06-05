@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:sugar_apple_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:sugar_apple_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

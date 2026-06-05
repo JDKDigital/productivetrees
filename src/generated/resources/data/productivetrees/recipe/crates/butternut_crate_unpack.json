@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:butternut_crate"
-    }
+    "productivetrees:butternut_crate"
   ],
   "result": {
     "count": 9,

@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:soul_tree_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:soul_tree_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

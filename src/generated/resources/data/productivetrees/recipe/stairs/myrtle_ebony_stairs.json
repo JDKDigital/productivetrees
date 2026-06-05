@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:myrtle_ebony_planks"
-    }
+    "#": "productivetrees:myrtle_ebony_planks"
   },
   "pattern": [
     "#  ",

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:silver_lime_planks"
-    }
+    "#": "productivetrees:silver_lime_planks"
   },
   "pattern": [
     "###"

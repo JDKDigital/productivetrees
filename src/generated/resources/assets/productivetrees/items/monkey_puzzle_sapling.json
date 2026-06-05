@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/monkey_puzzle_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -10327771
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -11509478
+      }
+    ]
+  }
+}

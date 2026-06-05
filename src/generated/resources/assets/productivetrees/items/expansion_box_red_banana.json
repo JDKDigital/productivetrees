@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_red_banana",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -2604183
+      }
+    ]
+  }
+}

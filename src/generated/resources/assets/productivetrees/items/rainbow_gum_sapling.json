@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/rainbow_gum_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11190181
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -14668259
+      }
+    ]
+  }
+}

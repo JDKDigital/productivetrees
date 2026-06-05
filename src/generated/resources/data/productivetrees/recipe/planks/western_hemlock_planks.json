@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:western_hemlock_logs"
-    }
+    "#productivetrees:western_hemlock_logs"
   ],
   "result": {
     "count": 4,

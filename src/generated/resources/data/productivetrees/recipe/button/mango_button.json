@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:mango_planks"
-    }
+    "productivetrees:mango_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:mango_button"
   }
 }

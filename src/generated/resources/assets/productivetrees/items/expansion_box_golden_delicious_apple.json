@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_golden_delicious_apple",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -5543105
+      }
+    ]
+  }
+}

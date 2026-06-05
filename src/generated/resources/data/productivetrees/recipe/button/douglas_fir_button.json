@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:douglas_fir_planks"
-    }
+    "productivetrees:douglas_fir_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:douglas_fir_button"
   }
 }

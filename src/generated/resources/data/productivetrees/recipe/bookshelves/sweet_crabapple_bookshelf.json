@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "productivetrees:sweet_crabapple_planks"
-    },
-    "X": {
-      "item": "minecraft:book"
-    }
+    "#": "productivetrees:sweet_crabapple_planks",
+    "X": "minecraft:book"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:sweet_crabapple_bookshelf"
   }
 }

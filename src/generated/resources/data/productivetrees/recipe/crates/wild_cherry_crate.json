@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/wild_cherry"
-    },
-    "R": {
-      "item": "productivetrees:wild_cherry"
-    }
+    "#": "#c:fruits/wild_cherry",
+    "R": "productivetrees:wild_cherry"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:wild_cherry_crate"
   }
 }

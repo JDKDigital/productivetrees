@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:flowering_crabapple_planks"
-    }
+    "#": "productivetrees:flowering_crabapple_planks"
   },
   "pattern": [
     "###",

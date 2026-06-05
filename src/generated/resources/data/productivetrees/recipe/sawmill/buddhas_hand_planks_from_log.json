@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:buddhas_hand_logs"
-  },
+  "input": "#productivetrees:buddhas_hand_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:buddhas_hand_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:sandalwood_planks"
-    }
+    "#": "productivetrees:sandalwood_planks"
   },
   "pattern": [
     "###"

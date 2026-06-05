@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/black_cherry"
-    },
-    "R": {
-      "item": "productivetrees:black_cherry"
-    }
+    "#": "#c:fruits/black_cherry",
+    "R": "productivetrees:black_cherry"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:black_cherry_crate"
   }
 }

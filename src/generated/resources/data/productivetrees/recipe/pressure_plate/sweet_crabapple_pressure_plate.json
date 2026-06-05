@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:sweet_crabapple_planks"
-    }
+    "#": "productivetrees:sweet_crabapple_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:sweet_crabapple_pressure_plate"
   }
 }

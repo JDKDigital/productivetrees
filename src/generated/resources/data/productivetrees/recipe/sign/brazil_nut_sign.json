@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:brazil_nut_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:brazil_nut_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

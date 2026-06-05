@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:wenge_planks"
-    }
+    "#": "productivetrees:wenge_planks"
   },
   "pattern": [
     "##",

@@ -1,14 +1,9 @@
 {
   "type": "productivetrees:tree_pollination",
   "chance": 0.1,
-  "leafA": {
-    "item": "productivetrees:brazilwood_leaves"
-  },
-  "leafB": {
-    "item": "productivetrees:kapok_leaves"
-  },
+  "leafA": "productivetrees:brazilwood_leaves",
+  "leafB": "productivetrees:kapok_leaves",
   "result": {
-    "count": 1,
     "id": "productivetrees:purpleheart_sapling"
   }
 }

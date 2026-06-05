@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:walnut_planks"
-    }
+    "productivetrees:walnut_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:walnut_button"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:rosewood_log"
-    }
+    "#": "productivetrees:rosewood_log"
   },
   "pattern": [
     "##",

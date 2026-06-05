@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:red_crepe_myrtle_planks"
-    }
+    "#": "productivetrees:red_crepe_myrtle_planks"
   },
   "pattern": [
     "###",

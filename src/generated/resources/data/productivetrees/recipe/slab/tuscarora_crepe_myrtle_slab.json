@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:tuscarora_crepe_myrtle_planks"
-    }
+    "#": "productivetrees:tuscarora_crepe_myrtle_planks"
   },
   "pattern": [
     "###"

@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:pistachio_logs"
-  },
+  "input": "#productivetrees:pistachio_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:pistachio_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

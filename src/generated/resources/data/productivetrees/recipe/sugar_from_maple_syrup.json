@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "tag": "c:maple_syrup"
-    }
+    "#c:maple_syrup"
   ],
   "result": {
     "count": 3,

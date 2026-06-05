@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:sand_pear_logs"
-  },
+  "input": "#productivetrees:sand_pear_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:sand_pear_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:logwood_planks"
-    }
+    "#": "productivetrees:logwood_planks"
   },
   "pattern": [
     "###"

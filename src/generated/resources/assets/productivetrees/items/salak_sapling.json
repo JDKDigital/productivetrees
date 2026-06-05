@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/salak_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -10459355
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -6905792
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8699617
+      }
+    ]
+  }
+}

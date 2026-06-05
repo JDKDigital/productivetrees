@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/thunder_bolt_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -10151424
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -15465726
+      }
+    ]
+  }
+}

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "minecraft:planks"
-    },
-    "I": {
-      "tag": "c:ingots/iron"
-    },
-    "S": {
-      "item": "minecraft:stonecutter"
-    }
+    "#": "#minecraft:planks",
+    "I": "#c:ingots/iron",
+    "S": "minecraft:stonecutter"
   },
   "pattern": [
     "#S#",

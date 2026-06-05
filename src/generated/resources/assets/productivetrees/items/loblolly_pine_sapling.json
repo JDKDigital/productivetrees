@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/loblolly_pine_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -9590387
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -10398905
+      }
+    ]
+  }
+}

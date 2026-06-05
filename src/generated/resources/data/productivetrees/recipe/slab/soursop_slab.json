@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:soursop_planks"
-    }
+    "#": "productivetrees:soursop_planks"
   },
   "pattern": [
     "###"

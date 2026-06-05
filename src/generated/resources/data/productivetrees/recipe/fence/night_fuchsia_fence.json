@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "fence",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "productivetrees:night_fuchsia_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "productivetrees:night_fuchsia_planks"
   },
   "pattern": [
     "W#W",

@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.15,
-  "ingredient": {
-    "item": "productivetrees:maple_sap_bucket"
-  },
+  "ingredient": "productivetrees:maple_sap_bucket",
   "result": {
     "id": "productivetrees:maple_syrup"
   }

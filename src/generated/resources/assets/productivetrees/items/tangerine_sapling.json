@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/tangerine_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -12348845
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -3561848
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8237294
+      }
+    ]
+  }
+}

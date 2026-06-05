@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:cave_dweller_planks"
-    }
+    "#": "productivetrees:cave_dweller_planks"
   },
   "pattern": [
     "#  ",

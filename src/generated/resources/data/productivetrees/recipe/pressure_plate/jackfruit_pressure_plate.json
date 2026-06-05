@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:jackfruit_planks"
-    }
+    "#": "productivetrees:jackfruit_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:jackfruit_pressure_plate"
   }
 }

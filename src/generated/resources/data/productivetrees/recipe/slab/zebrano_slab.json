@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:zebrano_planks"
-    }
+    "#": "productivetrees:zebrano_planks"
   },
   "pattern": [
     "###"

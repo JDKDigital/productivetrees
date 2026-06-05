@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:thunder_bolt_planks"
-    }
+    "#": "productivetrees:thunder_bolt_planks"
   },
   "pattern": [
     "##",

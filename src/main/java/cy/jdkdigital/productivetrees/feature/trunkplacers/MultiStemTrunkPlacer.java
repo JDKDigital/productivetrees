@@ -6,7 +6,8 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -26,8 +27,8 @@ public class MultiStemTrunkPlacer extends TrunkPlacer
 {
     public static final MapCodec<MultiStemTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return TrunkPlacerCodecs.trunkPlacerParts(instance).and(instance.group(
-                IntProvider.codec(1, 8).fieldOf("stem_count").forGetter((placer) -> placer.stemCount),
-                IntProvider.codec(1, 8).fieldOf("lean_interval").forGetter((placer) -> placer.leanInterval)
+                IntProviders.codec(1, 8).fieldOf("stem_count").forGetter((placer) -> placer.stemCount),
+                IntProviders.codec(1, 8).fieldOf("lean_interval").forGetter((placer) -> placer.leanInterval)
         )).apply(instance, MultiStemTrunkPlacer::new);
     });
     // eight compass directions the stems fan out toward
@@ -47,10 +48,10 @@ public class MultiStemTrunkPlacer extends TrunkPlacer
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-        setDirtAt(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, -1, 0), pConfig);
+        placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, -1, 0), pConfig);
 
         int count = this.stemCount.sample(pRandom);
         int startFan = pRandom.nextInt(FAN.length);
@@ -65,7 +66,7 @@ public class MultiStemTrunkPlacer extends TrunkPlacer
             for (int h = 0; h <= stemHeight; ++h) {
                 this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.set(x, pPos.getY() + h, z), pConfig);
                 if (h == 0) {
-                    setDirtAt(pLevel, pBlockSetter, pRandom, mutableBlockPos.set(x, pPos.getY() - 1, z), pConfig);
+                    placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.set(x, pPos.getY() - 1, z), pConfig);
                 }
                 // lean a step outward every few blocks so the stem arcs away from the centre
                 if (h > 0 && h % lean == 0) {

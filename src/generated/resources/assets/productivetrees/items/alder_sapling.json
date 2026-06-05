@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/alder_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11962805
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -10462385
+      }
+    ]
+  }
+}

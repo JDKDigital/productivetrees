@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:granny_smith_apple_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:granny_smith_apple_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

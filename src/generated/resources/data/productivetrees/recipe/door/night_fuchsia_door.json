@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:night_fuchsia_planks"
-    }
+    "#": "productivetrees:night_fuchsia_planks"
   },
   "pattern": [
     "##",

@@ -7,7 +7,8 @@ import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -24,7 +25,7 @@ public class WhorledTrunkPlacer extends TrunkPlacer
         return TrunkPlacerCodecs.trunkPlacerParts(instance).and(instance.group(
                 Codec.intRange(0, 4).fieldOf("radius").forGetter((placer) -> placer.radius),
                 Codec.floatRange(0.0F, 1.0F).optionalFieldOf("branch_start", 0.1F).forGetter((placer) -> placer.branchStartFraction),
-                IntProvider.codec(1, 16).fieldOf("branch_length").forGetter((placer) -> placer.branchLength)
+                IntProviders.codec(1, 16).fieldOf("branch_length").forGetter((placer) -> placer.branchLength)
         )).apply(instance, WhorledTrunkPlacer::new);
     });
     // eight compass directions the whorl branches fan out toward, including the four diagonals
@@ -46,7 +47,7 @@ public class WhorledTrunkPlacer extends TrunkPlacer
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
         // branches begin partway up; the trunk below is a bare column
@@ -62,7 +63,7 @@ public class WhorledTrunkPlacer extends TrunkPlacer
                         continue;
                     }
                     if (h == 0) {
-                        setDirtAt(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, -1, dz), pConfig);
+                        placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, -1, dz), pConfig);
                     }
                     this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, h, dz), pConfig);
                 }

@@ -38,7 +38,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -98,8 +98,8 @@ public class FeatureProvider implements DataProvider
 
         List<CompletableFuture<?>> output = new ArrayList<>();
 
-        Map<ResourceLocation, Supplier<JsonElement>> placedFeatures = Maps.newHashMap();
-        Map<ResourceLocation, Supplier<JsonElement>> configuredFeatures = Maps.newHashMap();
+        Map<Identifier, Supplier<JsonElement>> placedFeatures = Maps.newHashMap();
+        Map<Identifier, Supplier<JsonElement>> configuredFeatures = Maps.newHashMap();
         TreeFinder.trees.forEach((id, treeObject) -> {
             String path = treeObject.getId().getPath();
             // a null feature means the tree is mega-only (e.g. elm), so skip the regular 1x1 feature
@@ -111,13 +111,13 @@ public class FeatureProvider implements DataProvider
                 }
             }
             if (!treeObject.getMegaFeature().equals(TreeRegistrator.NULL_FEATURE)) {
-                ResourceLocation megaId = treeObject.getMegaFeature().location();
+                Identifier megaId = treeObject.getMegaFeature().identifier();
                 placedFeatures.put(megaId, getMegaPlacedFeature(treeObject, megaId));
                 // trees placed as exact exported structures (e.g. brown_amber) emit a template feature; others grow procedurally
                 configuredFeatures.put(megaId, megaTemplates.containsKey(path) ? () -> buildTemplateConfiguredFeature(megaTemplates.get(path)) : getMegaConfiguredFeature(treeObject));
             }
             if (!treeObject.getLargeMegaFeature().equals(TreeRegistrator.NULL_FEATURE)) {
-                ResourceLocation largeMegaId = treeObject.getLargeMegaFeature().location();
+                Identifier largeMegaId = treeObject.getLargeMegaFeature().identifier();
                 placedFeatures.put(largeMegaId, getMegaPlacedFeature(treeObject, largeMegaId));
                 configuredFeatures.put(largeMegaId, largeMegaTemplates.containsKey(path) ? () -> buildTemplateConfiguredFeature(largeMegaTemplates.get(path)) : getLargeMegaConfiguredFeature(treeObject));
             }
@@ -197,7 +197,7 @@ public class FeatureProvider implements DataProvider
         };
     }
 
-    private Supplier<JsonElement> getMegaPlacedFeature(TreeObject treeObject, ResourceLocation megaId) {
+    private Supplier<JsonElement> getMegaPlacedFeature(TreeObject treeObject, Identifier megaId) {
         return () -> {
             JsonElement placement = PlacementModifier.CODEC.encodeStart(JsonOps.INSTANCE, BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(TreeUtil.getBlock(treeObject.getId(), "_sapling").defaultBlockState(), Vec3i.ZERO))).getOrThrow();
             JsonArray placementArray = new JsonArray();
@@ -448,7 +448,7 @@ public class FeatureProvider implements DataProvider
 
     // hangs vanilla vines off the trunk logs, using the block named in the tree's decoration.vine
     private JsonElement vineDecorator(TreeObject treeObject) {
-        return TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new TrunkVineDecorator(SimpleStateProvider.simple(BuiltInRegistries.BLOCK.get(ResourceLocation.parse(treeObject.getDecoration().vine()))))).getOrThrow();
+        return TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new TrunkVineDecorator(SimpleStateProvider.simple(BuiltInRegistries.BLOCK.getValue(Identifier.parse(treeObject.getDecoration().vine()))))).getOrThrow();
     }
 
     private JsonElement createConiferFoliage(int radius, int height, int offset) {

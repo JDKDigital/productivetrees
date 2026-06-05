@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_grandidiers_baobab_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -8890562
+      }
+    ]
+  }
+}

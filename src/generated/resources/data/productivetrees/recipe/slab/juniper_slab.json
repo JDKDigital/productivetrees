@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:juniper_planks"
-    }
+    "#": "productivetrees:juniper_planks"
   },
   "pattern": [
     "###"

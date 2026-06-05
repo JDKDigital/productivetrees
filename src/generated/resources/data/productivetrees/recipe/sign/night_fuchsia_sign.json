@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:night_fuchsia_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:night_fuchsia_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

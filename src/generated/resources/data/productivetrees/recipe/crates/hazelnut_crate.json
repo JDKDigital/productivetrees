@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:nuts/hazelnut"
-    },
-    "R": {
-      "item": "productivetrees:hazelnut"
-    }
+    "#": "#c:nuts/hazelnut",
+    "R": "productivetrees:hazelnut"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:hazelnut_crate"
   }
 }

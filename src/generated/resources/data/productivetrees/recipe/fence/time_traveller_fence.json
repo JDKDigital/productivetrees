@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "fence",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "productivetrees:time_traveller_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "productivetrees:time_traveller_planks"
   },
   "pattern": [
     "W#W",

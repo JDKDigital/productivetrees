@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/persimmon_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -14799596
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -13362176
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8237294
+      }
+    ]
+  }
+}

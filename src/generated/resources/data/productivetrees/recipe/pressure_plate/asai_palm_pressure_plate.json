@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:asai_palm_planks"
-    }
+    "#": "productivetrees:asai_palm_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:asai_palm_pressure_plate"
   }
 }

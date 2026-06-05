@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:golden_delicious_apple_logs"
-  },
+  "input": "#productivetrees:golden_delicious_apple_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:golden_delicious_apple_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

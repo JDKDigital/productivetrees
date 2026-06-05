@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:pandanus_planks"
-    }
+    "productivetrees:pandanus_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:pandanus_button"
   }
 }

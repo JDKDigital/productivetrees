@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:western_hemlock_planks"
-    }
+    "#": "productivetrees:western_hemlock_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:western_hemlock_pressure_plate"
   }
 }

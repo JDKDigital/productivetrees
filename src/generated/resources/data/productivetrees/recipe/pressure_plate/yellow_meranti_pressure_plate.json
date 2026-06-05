@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:yellow_meranti_planks"
-    }
+    "#": "productivetrees:yellow_meranti_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:yellow_meranti_pressure_plate"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:time_traveller_planks"
-    }
+    "#": "productivetrees:time_traveller_planks"
   },
   "pattern": [
     "#  ",

@@ -1,0 +1,13 @@
+{
+  "attack": 1.0,
+  "createComb": false,
+  "flowerTag": "minecraft:leaves",
+  "particleColor": "#4cbb17",
+  "particleType": "pop",
+  "primaryColor": "#aaff00",
+  "renderer": "default_foliage",
+  "secondaryColor": "#7fffd4",
+  "size": 0.5,
+  "tertiaryColor": "#088f8f",
+  "useGlowLayer": true
+}

@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/bull_pine_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -8415682
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -10867694
+      }
+    ]
+  }
+}

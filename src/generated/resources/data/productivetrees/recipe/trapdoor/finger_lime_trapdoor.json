@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "trapdoor",
   "key": {
-    "#": {
-      "item": "productivetrees:finger_lime_planks"
-    }
+    "#": "productivetrees:finger_lime_planks"
   },
   "pattern": [
     "###",

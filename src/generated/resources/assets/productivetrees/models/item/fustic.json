@@ -13,8 +13,5 @@
         "count": 3
       }
     }
-  ],
-  "textures": {
-    "layer0": "productivetrees:item/fustic"
-  }
+  ]
 }

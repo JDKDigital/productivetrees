@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "productivetrees:time_traveller_planks"
-    },
-    "I": {
-      "tag": "c:glass_blocks/colorless"
-    },
-    "S": {
-      "tag": "c:strings"
-    }
+    "#": "productivetrees:time_traveller_planks",
+    "I": "#c:glass_blocks/colorless",
+    "S": "#c:strings"
   },
   "pattern": [
     "###",

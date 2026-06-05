@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_rose_gum_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -7846857
+      }
+    ]
+  }
+}

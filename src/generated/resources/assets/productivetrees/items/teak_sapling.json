@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/teak_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -9335178
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -9073330
+      }
+    ]
+  }
+}

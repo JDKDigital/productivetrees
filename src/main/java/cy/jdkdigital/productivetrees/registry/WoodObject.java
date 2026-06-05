@@ -3,27 +3,29 @@ package cy.jdkdigital.productivetrees.registry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.util.WoodSet;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import java.util.Optional;
 
 public class WoodObject
 {
-    private final ResourceLocation id;
+    private final Identifier id;
     private final boolean fireProof;
     private final TreeObject.TreeColors colors;
-    private final Optional<ResourceLocation> stripDrop;
+    private final Optional<Identifier> stripDrop;
 
-    public WoodObject(ResourceLocation id, boolean fireProof, TreeColors colors, Optional<ResourceLocation> stripDrop) {
+    public WoodObject(Identifier id, boolean fireProof, TreeColors colors, Optional<Identifier> stripDrop) {
         this.id = id;
         this.fireProof = fireProof;
         this.colors = colors;
         this.stripDrop = stripDrop;
     }
 
-    public ResourceLocation getId() {
+    public Identifier getId() {
         return id;
     }
 
@@ -51,12 +53,12 @@ public class WoodObject
         return colors.plankColor;
     }
 
-    public Optional<ResourceLocation> getStripDrop() {
+    public Optional<Identifier> getStripDrop() {
         return stripDrop;
     }
 
     public ItemStack getStripDropStack() {
-        return new ItemStack(BuiltInRegistries.ITEM.get(stripDrop.get()));
+        return new ItemStack(BuiltInRegistries.ITEM.get(stripDrop.get()).map(Holder::value).orElse(Items.AIR));
     }
 
     public record TreeColors(String leafColor, String logColor, String plankColor)

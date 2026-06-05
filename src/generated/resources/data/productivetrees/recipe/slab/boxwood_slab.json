@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:boxwood_planks"
-    }
+    "#": "productivetrees:boxwood_planks"
   },
   "pattern": [
     "###"

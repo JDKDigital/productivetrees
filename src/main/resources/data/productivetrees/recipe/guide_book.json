@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "minecraft:book"
-    },
-    {
-      "tag": "c:sawdust"
-    }
+    "minecraft:book",
+    "#c:sawdust"
   ],
   "result": {
     "type": "component",

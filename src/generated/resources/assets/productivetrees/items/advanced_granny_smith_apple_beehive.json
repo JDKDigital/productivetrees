@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_granny_smith_apple_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -1467037
+      }
+    ]
+  }
+}

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "stairs",
   "key": {
-    "#": {
-      "item": "productivetrees:aquilaria_planks"
-    }
+    "#": "productivetrees:aquilaria_planks"
   },
   "pattern": [
     "#  ",

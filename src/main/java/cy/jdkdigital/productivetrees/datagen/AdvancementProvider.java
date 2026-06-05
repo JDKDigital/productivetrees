@@ -12,7 +12,7 @@
 //import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.nbt.NbtUtils;
 //import net.minecraft.network.chat.Component;
-//import net.minecraft.resources.ResourceLocation;
+//import net.minecraft.resources.Identifier;
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.level.ItemLike;
@@ -30,9 +30,9 @@
 //    }
 //
 //    private static void generate(HolderLookup.Provider registries, Consumer<Advancement> saver, ExistingFileHelper existingFileHelper) {
-////        ResourceLocation amateurArcheologist = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "adv1");
+////        Identifier amateurArcheologist = Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "adv1");
 ////        Advancement parent = advancement(amateurArcheologist, Items.EGG)
-////                .parent(new ResourceLocation("adventure/root"))
+////                .parent(new Identifier("adventure/root"))
 ////                .addCriterion("find_artifact", InventoryChangeTrigger.TriggerInstance.hasItems(
 ////                        ItemPredicate.Builder.item().of(ItemTags.AXOLOTL_TEMPT_ITEMS).build()
 ////                )).save(saver, amateurArcheologist, existingFileHelper);
@@ -41,15 +41,15 @@
 //
 //        var coconutTag = new CompoundTag();
 //        coconutTag.put("BlockState", NbtUtils.writeBlockState(TreeRegistrator.COCONUT_SPROUT.get().defaultBlockState()));
-//        ResourceLocation chestSlayer = ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "adv2");
-//        advancement(chestSlayer, BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "coconut")))
-//                .parent(ResourceLocation.withDefaultNamespace("adventure/root"))
+//        Identifier chestSlayer = Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "adv2");
+//        advancement(chestSlayer, BuiltInRegistries.ITEM.get(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "coconut")))
+//                .parent(Identifier.withDefaultNamespace("adventure/root"))
 //                .addCriterion("death_by_coconut", KilledTrigger.TriggerInstance.entityKilledPlayer(
 //                        EntityPredicate.Builder.entity().of(EntityType.FALLING_BLOCK).nbt(new NbtPredicate(coconutTag))
 //                )).save(saver, chestSlayer, existingFileHelper);
 //    }
 //
-//    private static Advancement.Builder advancement(ResourceLocation id, ItemLike icon) {
+//    private static Advancement.Builder advancement(Identifier id, ItemLike icon) {
 //        return Advancement.Builder.advancement().display(display(id.getPath(), icon));
 //    }
 //

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:cork_oak_planks"
-    }
+    "#": "productivetrees:cork_oak_planks"
   },
   "pattern": [
     "###"

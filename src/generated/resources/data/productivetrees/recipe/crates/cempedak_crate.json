@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/cempedak"
-    },
-    "R": {
-      "item": "productivetrees:cempedak"
-    }
+    "#": "#c:fruits/cempedak",
+    "R": "productivetrees:cempedak"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:cempedak_crate"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "slab",
   "key": {
-    "#": {
-      "item": "productivetrees:brazilwood_planks"
-    }
+    "#": "productivetrees:brazilwood_planks"
   },
   "pattern": [
     "###"

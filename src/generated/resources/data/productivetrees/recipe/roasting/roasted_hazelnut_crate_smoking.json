@@ -3,11 +3,8 @@
   "category": "food",
   "cookingtime": 180,
   "experience": 0.9,
-  "ingredient": {
-    "item": "productivetrees:hazelnut_crate"
-  },
+  "ingredient": "productivetrees:hazelnut_crate",
   "result": {
-    "count": 1,
     "id": "productivetrees:roasted_hazelnut_crate"
   }
 }

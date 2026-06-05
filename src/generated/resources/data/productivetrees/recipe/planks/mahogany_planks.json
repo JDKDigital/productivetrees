@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:mahogany_logs"
-    }
+    "#productivetrees:mahogany_logs"
   ],
   "result": {
     "count": 4,

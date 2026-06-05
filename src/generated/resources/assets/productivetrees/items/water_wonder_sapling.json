@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/water_wonder_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -8211468
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -15636359
+      }
+    ]
+  }
+}

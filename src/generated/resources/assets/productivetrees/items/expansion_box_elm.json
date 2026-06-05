@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_elm",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -3363188
+      }
+    ]
+  }
+}

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:blue_mahoe_log"
-    }
+    "#": "productivetrees:blue_mahoe_log"
   },
   "pattern": [
     "##",

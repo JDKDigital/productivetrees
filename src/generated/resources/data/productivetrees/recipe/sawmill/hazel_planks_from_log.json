@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:hazel_logs"
-  },
+  "input": "#productivetrees:hazel_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:hazel_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

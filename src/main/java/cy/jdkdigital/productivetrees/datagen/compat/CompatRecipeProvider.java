@@ -11,7 +11,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -39,9 +39,9 @@ public class CompatRecipeProvider extends net.minecraft.data.recipes.RecipeProvi
 
     @Override
     protected void buildRecipes(RecipeOutput pRecipeOutput) {
-        Block THERMAL_SAWMILL = BuiltInRegistries.BLOCK.get(ResourceLocation.parse("thermal:sawmill"));
-        Block THERMAL_INSOLATOR = BuiltInRegistries.BLOCK.get(ResourceLocation.parse("thermal:insolator"));
-        Block THERMAL_EXTRACTOR = BuiltInRegistries.BLOCK.get(ResourceLocation.parse("thermal:tree_extractor"));
+        Block THERMAL_SAWMILL = BuiltInRegistries.BLOCK.get(Identifier.parse("thermal:sawmill"));
+        Block THERMAL_INSOLATOR = BuiltInRegistries.BLOCK.get(Identifier.parse("thermal:insolator"));
+        Block THERMAL_EXTRACTOR = BuiltInRegistries.BLOCK.get(Identifier.parse("thermal:tree_extractor"));
 
         TreeFinder.trees.forEach((id, treeObject) -> {
             buildCorailWoodcutterRecipes(treeObject, pRecipeOutput);
@@ -52,13 +52,13 @@ public class CompatRecipeProvider extends net.minecraft.data.recipes.RecipeProvi
 //                ThermalSawmilRecipeBuilder.tree(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood"), TreeUtil.getBlock(treeObject.getId(), "_planks"))
 //                        .unlockedBy("has_log", has(TreeUtil.getBlock(treeObject.getId(), "_log")))
 //                        .unlockedBy("has_sawmill", has(THERMAL_SAWMILL))
-//                        .save(pRecipeOutput.withConditions(new ModLoadedCondition("thermal")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "thermal/sawmill/" + id.getPath()));
+//                        .save(pRecipeOutput.withConditions(new ModLoadedCondition("thermal")), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "thermal/sawmill/" + id.getPath()));
 //            }
 //            if (THERMAL_INSOLATOR != null) {
 //                ThermalInsulatorRecipeBuilder.tree(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_sapling"), treeObject.getFruit().getItem().copy(), treeObject.getFruit().growthSpeed())
 //                        .unlockedBy("has_sapling", has(TreeUtil.getBlock(treeObject.getId(), "_planks")))
 //                        .unlockedBy("has_insolator", has(THERMAL_INSOLATOR))
-//                        .save(pRecipeOutput.withConditions(new ModLoadedCondition("thermal")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "thermal/insolator/" + id.getPath()));
+//                        .save(pRecipeOutput.withConditions(new ModLoadedCondition("thermal")), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "thermal/insolator/" + id.getPath()));
 //            }
 //            if (THERMAL_EXTRACTOR != null) {
 //                String fluidName = "thermal:sap"; // resin, latex
@@ -72,11 +72,11 @@ public class CompatRecipeProvider extends net.minecraft.data.recipes.RecipeProvi
 //                    fluidName = "productivetrees:maple_sap";
 //                }
 
-//                FluidStack fluid = new FluidStack(BuiltInRegistries.FLUID.get(new ResourceLocation(fluidName)), 50);
+//                FluidStack fluid = new FluidStack(BuiltInRegistries.FLUID.get(new Identifier(fluidName)), 50);
 //                ThermalExtractorRecipeBuilder.direct(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_leaves"), fluid)
 //                        .unlockedBy("has_log", has(TreeUtil.getBlock(treeObject.getId(), "_log")))
 //                        .unlockedBy("has_tree_extractor", has(THERMAL_EXTRACTOR))
-//                        .save(pRecipeOutput.withConditions(new ModLoadedCondition("thermal")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "thermal/tree_extractor/" + id.getPath()));
+//                        .save(pRecipeOutput.withConditions(new ModLoadedCondition("thermal")), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "thermal/tree_extractor/" + id.getPath()));
 //            }
             if (treeObject.getStyle().hiveStyle() != null) {
                 buildHiveRecipe(ProductiveBees.MODID, treeObject, pRecipeOutput);
@@ -89,14 +89,14 @@ public class CompatRecipeProvider extends net.minecraft.data.recipes.RecipeProvi
         buildCompatSawmillRecipes(pRecipeOutput);
 
         // Treetap recipes
-        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "socotra_dragon_log")), new ItemStack(TreeRegistrator.DRACAENA_SAP.get()), new ItemStack(Items.GLASS_BOTTLE), "#9d0300", 1200)
-                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/dracaena_sap"));
-        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sandalwood_log")), new ItemStack(TreeRegistrator.SANDALWOOD_OIL.get()), new ItemStack(Items.GLASS_BOTTLE), "#f1eda6", 2400)
-                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/sandalwood_oil"));
-        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "sugar_maple_log")), new ItemStack(TreeRegistrator.MAPLE_SAP_BUCKET.get()), new FluidStack(TreeRegistrator.MAPLE_SAP.get(), 1000), 2400)
-                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/maple_sap"));
-        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "date_palm_log")), new ItemStack(TreeRegistrator.DATE_PALM_JUICE.get()), new ItemStack(Items.GLASS_BOTTLE), "#cd7408", 2400)
-                .save(pRecipeOutput.withConditions(modLoaded("treetap")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/date_palm_juice"));
+        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "socotra_dragon_log")), new ItemStack(TreeRegistrator.DRACAENA_SAP.get()), new ItemStack(Items.GLASS_BOTTLE), "#9d0300", 1200)
+                .save(pRecipeOutput.withConditions(modLoaded("treetap")), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/dracaena_sap"));
+        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "sandalwood_log")), new ItemStack(TreeRegistrator.SANDALWOOD_OIL.get()), new ItemStack(Items.GLASS_BOTTLE), "#f1eda6", 2400)
+                .save(pRecipeOutput.withConditions(modLoaded("treetap")), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/sandalwood_oil"));
+        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "sugar_maple_log")), new ItemStack(TreeRegistrator.MAPLE_SAP_BUCKET.get()), new FluidStack(TreeRegistrator.MAPLE_SAP.get(), 1000), 2400)
+                .save(pRecipeOutput.withConditions(modLoaded("treetap")), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/maple_sap"));
+        TreetapRecipeBuilder.direct(BuiltInRegistries.BLOCK.get(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "date_palm_log")), new ItemStack(TreeRegistrator.DATE_PALM_JUICE.get()), new ItemStack(Items.GLASS_BOTTLE), "#cd7408", 2400)
+                .save(pRecipeOutput.withConditions(modLoaded("treetap")), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "treetap/date_palm_juice"));
 
     }
 
@@ -106,9 +106,9 @@ public class CompatRecipeProvider extends net.minecraft.data.recipes.RecipeProvi
     }
 
     private void buildMekanismWoodcutterRecipes(WoodObject treeObject, RecipeOutput consumer) {
-        var logTag = ItemTags.create(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, treeObject.getId().getPath() + "_logs"));
+        var logTag = ItemTags.create(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, treeObject.getId().getPath() + "_logs"));
         mekanism.api.datagen.recipe.builder.SawmillRecipeBuilder.sawing(ItemStackIngredient.of(SizedIngredient.of(logTag, 1)), new ItemStack(TreeUtil.getBlock(treeObject.getId(), "_planks"), 6))
-                .build(consumer.withConditions(new ModLoadedCondition("mekanism")), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "mekanism/sawmill/" + treeObject.getId().getPath()));
+                .build(consumer.withConditions(new ModLoadedCondition("mekanism")), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "mekanism/sawmill/" + treeObject.getId().getPath()));
     }
 
     private void buildCorailWoodcutterRecipes(WoodObject treeObject, RecipeOutput consumer) {
@@ -117,73 +117,73 @@ public class CompatRecipeProvider extends net.minecraft.data.recipes.RecipeProvi
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_planks"), 4)
 //                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_planks_from_logs"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_planks_from_logs"));
 //
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_button"), 4)
 //                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_button_from_logs"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_button_from_logs"));
 //
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_fence"), 4)
 //                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_fence_from_logs"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_fence_from_logs"));
 //
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_fence_gate"), 1)
 //                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_fence_gate_from_logs"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_fence_gate_from_logs"));
 //
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), 4)
 //                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_pressure_plate_from_logs"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_pressure_plate_from_logs"));
 //
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_slab"), 8)
 //                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_slab_from_logs"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_slab_from_logs"));
 //
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")), TreeUtil.getBlock(treeObject.getId(), "_stairs"), 4)
 //                        .unlockedBy("has_logs", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_log"), TreeUtil.getBlock(treeObject.getId(), "_wood"), TreeUtil.getBlock(treeObject.getId(), "_stripped_log"), TreeUtil.getBlock(treeObject.getId(), "_stripped_wood")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_stairs_from_logs"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_stairs_from_logs"));
 //
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_planks")), TreeUtil.getBlock(treeObject.getId(), "_button"), 1)
 //                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_planks")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_button_from_planks"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_button_from_planks"));
 //
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_planks")), TreeUtil.getBlock(treeObject.getId(), "_fence"), 1)
 //                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_planks")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_fence_from_planks"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_fence_from_planks"));
 //
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_planks")), TreeUtil.getBlock(treeObject.getId(), "_pressure_plate"), 1)
 //                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_planks")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_pressure_plate_from_planks"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_pressure_plate_from_planks"));
 //
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_planks")), TreeUtil.getBlock(treeObject.getId(), "_slab"), 2)
 //                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_planks")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_slab_from_planks"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_slab_from_planks"));
 //
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("corail_woodcutter")).setRecipe(
 //                woodcutter(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_planks")), TreeUtil.getBlock(treeObject.getId(), "_stairs"), 1)
 //                        .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(TreeUtil.getBlock(treeObject.getId(), "_planks")).build()))
 //                        ::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_stairs_from_planks"));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "corail/woodcutter/" + name + "_stairs_from_planks"));
     }
 
 //    private static SingleItemRecipeBuilder woodcutter(Ingredient ingredient, ItemLike output, int count) {
@@ -207,7 +207,7 @@ public class CompatRecipeProvider extends net.minecraft.data.recipes.RecipeProvi
 
 //        SingleConditionalRecipe.builder().addCondition(modLoaded("botanytrees")).setRecipe(
 //            BotanyPotCropRecipeBuilder.direct(Ingredient.of(TreeUtil.getBlock(treeObject.getId(), "_sapling")), Set.of("dirt"), 2400, drops, TreeUtil.getBlock(treeObject.getId(), "_sapling").defaultBlockState(), 0)::save
-//        ).build(consumer, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "botanytrees/" + name));
+//        ).build(consumer, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "botanytrees/" + name));
     }
 
     public void buildHiveRecipe(String modid, WoodObject treeObject, RecipeOutput consumer) {
@@ -219,9 +219,9 @@ public class CompatRecipeProvider extends net.minecraft.data.recipes.RecipeProvi
                 .define('F', Ingredient.of(cy.jdkdigital.productivebees.init.ModTags.Common.CAMPFIRES))
                 .define('S', Ingredient.of(Tags.Items.TOOLS_SHEAR))
                 .unlockedBy("has_hive", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BEEHIVE))
-                .save(consumer.withConditions(modLoaded(modid)), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "hives/" + BuiltInRegistries.BLOCK.getKey(hive).getPath().replace("advanced_", "")));
+                .save(consumer.withConditions(modLoaded(modid)), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "hives/" + BuiltInRegistries.BLOCK.getKey(hive).getPath().replace("advanced_", "")));
 
-        buildHiveResetRecipes(modid, hive, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "hives/" + BuiltInRegistries.BLOCK.getKey(hive).getPath().replace("advanced_", "") + "_clear"), consumer);
+        buildHiveResetRecipes(modid, hive, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "hives/" + BuiltInRegistries.BLOCK.getKey(hive).getPath().replace("advanced_", "") + "_clear"), consumer);
     }
 
     public void buildBoxRecipe(String modid, WoodObject treeObject, RecipeOutput consumer) {
@@ -230,10 +230,10 @@ public class CompatRecipeProvider extends net.minecraft.data.recipes.RecipeProvi
                 .define('W', TreeUtil.getBlock(treeObject.getId(), "_planks"))
                 .define('C', Ingredient.of(cy.jdkdigital.productivebees.init.ModTags.Common.HONEYCOMBS))
                 .unlockedBy("has_hive", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BEEHIVE))
-                .save(consumer.withConditions(modLoaded(modid)), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "expansion_boxes/" + BuiltInRegistries.BLOCK.getKey(box).getPath()));
+                .save(consumer.withConditions(modLoaded(modid)), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "expansion_boxes/" + BuiltInRegistries.BLOCK.getKey(box).getPath()));
     }
 
-    private void buildHiveResetRecipes(String modid, Block hive, ResourceLocation location, RecipeOutput consumer) {
+    private void buildHiveResetRecipes(String modid, Block hive, Identifier location, RecipeOutput consumer) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, hive).group("hives")
                 .unlockedBy("has_hive", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BEEHIVE))
                 .requires(hive)

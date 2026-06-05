@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:sour_cherry_crate"
-    }
+    "productivetrees:sour_cherry_crate"
   ],
   "result": {
     "count": 9,

@@ -5,20 +5,24 @@ import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEn
 import cy.jdkdigital.productivetrees.recipe.RecipeHelper;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 public class PollenItem extends Item
 {
@@ -27,13 +31,13 @@ public class PollenItem extends Item
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, TooltipDisplay pDisplay, Consumer<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        super.appendHoverText(pStack, pContext, pDisplay, pTooltipComponents, pTooltipFlag);
         if (pStack.has(TreeRegistrator.POLLEN_BLOCK_COMPONENT)) {
-            Block leaf = BuiltInRegistries.BLOCK.get(pStack.get(TreeRegistrator.POLLEN_BLOCK_COMPONENT));
-            pTooltipComponents.add(Component.translatable(ProductiveTrees.MODID + ".pollen.name", Component.translatable(leaf.getDescriptionId()).withStyle(ChatFormatting.GREEN)).withStyle(ChatFormatting.DARK_BLUE));
+            Block leaf = BuiltInRegistries.BLOCK.get(pStack.get(TreeRegistrator.POLLEN_BLOCK_COMPONENT)).map(Holder::value).orElse(Blocks.AIR);
+            pTooltipComponents.accept(Component.translatable(ProductiveTrees.MODID + ".pollen.name", Component.translatable(leaf.getDescriptionId()).withStyle(ChatFormatting.GREEN)).withStyle(ChatFormatting.DARK_BLUE));
         }
-        pTooltipComponents.add(Component.translatable(ProductiveTrees.MODID + ".information.pollen").withStyle(ChatFormatting.GOLD));
+        pTooltipComponents.accept(Component.translatable(ProductiveTrees.MODID + ".information.pollen").withStyle(ChatFormatting.GOLD));
     }
 
     @Override
@@ -43,7 +47,7 @@ public class PollenItem extends Item
             ItemStack stack = context.getPlayer().getItemInHand(context.getHand());
             BlockState state = level.getBlockState(context.getClickedPos());
             if (stack.has(TreeRegistrator.POLLEN_BLOCK_COMPONENT) && state.is(BlockTags.LEAVES) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get())) {
-                Block leafB = BuiltInRegistries.BLOCK.get(stack.get(TreeRegistrator.POLLEN_BLOCK_COMPONENT));
+                Block leafB = BuiltInRegistries.BLOCK.get(stack.get(TreeRegistrator.POLLEN_BLOCK_COMPONENT)).map(Holder::value).orElse(Blocks.AIR);
                 var recipe = RecipeHelper.getPollinationRecipe(level, state, leafB.defaultBlockState());
                 level.setBlock(context.getClickedPos(), TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
                 if (level.getBlockEntity(context.getClickedPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
@@ -51,14 +55,14 @@ public class PollenItem extends Item
                     pollinatedLeavesBlockEntity.setLeafB(leafB);
 
                     ItemStack result = ItemStack.EMPTY;
-                    ResourceLocation backupItem = level.random.nextBoolean() ? BuiltInRegistries.BLOCK.getKey(state.getBlock()) : stack.get(TreeRegistrator.POLLEN_BLOCK_COMPONENT);
+                    Identifier backupItem = level.getRandom().nextBoolean() ? BuiltInRegistries.BLOCK.getKey(state.getBlock()) : stack.get(TreeRegistrator.POLLEN_BLOCK_COMPONENT);
                     if (recipe == null && backupItem != null) {
-                        var item = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(backupItem.getNamespace(), backupItem.getPath().replace("leaves", "sapling")));
+                        var item = BuiltInRegistries.ITEM.get(Identifier.fromNamespaceAndPath(backupItem.getNamespace(), backupItem.getPath().replace("leaves", "sapling"))).map(Holder::value).orElse(Items.AIR);
                         if (item != null) {
                             result = new ItemStack(item);
                         }
                     } else if (recipe != null){
-                        result = recipe.value().result;
+                        result = recipe.value().result();
                     }
                     pollinatedLeavesBlockEntity.setResult(result);
                     pollinatedLeavesBlockEntity.setChanged();

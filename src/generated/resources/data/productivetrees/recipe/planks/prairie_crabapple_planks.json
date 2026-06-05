@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:prairie_crabapple_logs"
-    }
+    "#productivetrees:prairie_crabapple_logs"
   ],
   "result": {
     "count": 4,

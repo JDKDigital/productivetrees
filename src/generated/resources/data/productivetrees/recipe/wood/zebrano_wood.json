@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:zebrano_log"
-    }
+    "#": "productivetrees:zebrano_log"
   },
   "pattern": [
     "##",

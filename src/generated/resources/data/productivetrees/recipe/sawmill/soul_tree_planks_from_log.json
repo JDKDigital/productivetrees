@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:soul_tree_logs"
-  },
+  "input": "#productivetrees:soul_tree_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:soul_tree_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

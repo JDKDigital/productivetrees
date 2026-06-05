@@ -82,7 +82,7 @@ public class TaperDecorator extends TreeDecorator
 
             // fill the dropped shoulder, favouring face middles so the taper eases there rather than at the corners
             if (random.nextFloat() < this.placeChance * (0.4F + 0.6F * faceMiddle)) {
-                context.setBlock(above, this.woodProvider.getState(random, above));
+                context.setBlock(above, this.woodProvider.getState(context.level(), random, above));
             }
         }
     }

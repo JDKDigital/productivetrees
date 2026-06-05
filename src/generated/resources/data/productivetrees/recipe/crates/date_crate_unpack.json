@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:date_crate"
-    }
+    "productivetrees:date_crate"
   ],
   "result": {
     "count": 9,

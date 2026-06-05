@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:blue_mahoe_logs"
-    }
+    "#productivetrees:blue_mahoe_logs"
   ],
   "result": {
     "count": 4,

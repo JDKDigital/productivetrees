@@ -1,0 +1,11 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/pollen",
+    "tints": [
+      {
+        "type": "productivetrees:pollen"
+      }
+    ]
+  }
+}

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:fruits/kumquat"
-    },
-    "R": {
-      "item": "productivetrees:kumquat"
-    }
+    "#": "#c:fruits/kumquat",
+    "R": "productivetrees:kumquat"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:kumquat_crate"
   }
 }

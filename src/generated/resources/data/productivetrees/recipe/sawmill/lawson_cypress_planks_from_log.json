@@ -1,8 +1,6 @@
 {
   "type": "productivetrees:sawmill",
-  "input": {
-    "tag": "productivetrees:lawson_cypress_logs"
-  },
+  "input": "#productivetrees:lawson_cypress_logs",
   "output": {
     "count": 6,
     "id": "productivetrees:lawson_cypress_planks"
@@ -10,6 +8,5 @@
   "secondary": {
     "count": 2,
     "id": "productivetrees:sawdust"
-  },
-  "tertiary": {}
+  }
 }

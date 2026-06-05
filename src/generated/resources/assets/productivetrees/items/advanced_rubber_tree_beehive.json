@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/advanced_rubber_tree_beehive",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -4672343
+      }
+    ]
+  }
+}

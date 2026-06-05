@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_socotra_dragon",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -2191547
+      }
+    ]
+  }
+}

@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "productivetrees:blue_yonder_planks"
-    },
-    "X": {
-      "item": "minecraft:book"
-    }
+    "#": "productivetrees:blue_yonder_planks",
+    "X": "minecraft:book"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:blue_yonder_bookshelf"
   }
 }

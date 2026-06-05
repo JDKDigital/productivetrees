@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "fence",
   "key": {
-    "#": {
-      "item": "minecraft:stick"
-    },
-    "W": {
-      "item": "productivetrees:western_hemlock_planks"
-    }
+    "#": "minecraft:stick",
+    "W": "productivetrees:western_hemlock_planks"
   },
   "pattern": [
     "W#W",

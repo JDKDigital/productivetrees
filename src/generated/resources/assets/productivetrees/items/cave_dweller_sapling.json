@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/cave_dweller_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11051169
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -11908018
+      }
+    ]
+  }
+}

@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:whitebeam_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:whitebeam_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

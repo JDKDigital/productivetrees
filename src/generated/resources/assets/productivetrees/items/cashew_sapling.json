@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/cashew_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -13540857
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -12829384
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -3989980
+      }
+    ]
+  }
+}

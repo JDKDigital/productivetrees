@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_cashew",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -5868973
+      }
+    ]
+  }
+}

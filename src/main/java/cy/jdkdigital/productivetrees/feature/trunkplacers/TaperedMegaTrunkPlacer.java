@@ -8,7 +8,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -24,8 +25,8 @@ public class TaperedMegaTrunkPlacer extends TrunkPlacer
     public static final MapCodec<TaperedMegaTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return TrunkPlacerCodecs.trunkPlacerParts(instance).and(instance.group(
                 Codec.intRange(0, 8).fieldOf("flare_height").forGetter((placer) -> placer.baseHeight),
-                IntProvider.codec(0, 12).fieldOf("branch_count").forGetter((placer) -> placer.branchCount),
-                IntProvider.codec(1, 8).fieldOf("branch_length").forGetter((placer) -> placer.branchLength)
+                IntProviders.codec(0, 12).fieldOf("branch_count").forGetter((placer) -> placer.branchCount),
+                IntProviders.codec(1, 8).fieldOf("branch_length").forGetter((placer) -> placer.branchLength)
         )).apply(instance, TaperedMegaTrunkPlacer::new);
     });
     private final int baseHeight;
@@ -45,14 +46,14 @@ public class TaperedMegaTrunkPlacer extends TrunkPlacer
     }
 
     @Override
-    public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
 
         // a 2x2 root flare so it fills the sapling patch, but only for the first few blocks before it pinches into a single slender column
         for (int dx = 0; dx <= 1; ++dx) {
             for (int dz = 0; dz <= 1; ++dz) {
-                setDirtAt(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, -1, dz), pConfig);
+                placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, -1, dz), pConfig);
                 for (int h = 0; h < this.baseHeight; ++h) {
                     // each base row drops a corner so the 2x2 tapers off rather than ending abruptly
                     if (h > 0 && dx == 1 && dz == 1) {

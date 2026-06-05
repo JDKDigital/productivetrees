@@ -10,7 +10,7 @@ import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -20,9 +20,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-public record BotanyPotBlockDerivedCropRecipeBuilder(Block block, Optional<Ingredient> seed, Ingredient soil, int growTime, Optional<List<Display>> display, int lightLevel, Optional<List<ItemDropProvider>> drops, Optional<BasicOptions> renderOptions, Optional<ResourceLocation> functionId, Optional<BlockPredicate> potPredicate, float baseYield, float yieldScale) implements RecipeBuilder
+public record BotanyPotBlockDerivedCropRecipeBuilder(Block block, Optional<Ingredient> seed, Ingredient soil, int growTime, Optional<List<Display>> display, int lightLevel, Optional<List<ItemDropProvider>> drops, Optional<BasicOptions> renderOptions, Optional<Identifier> functionId, Optional<BlockPredicate> potPredicate, float baseYield, float yieldScale) implements RecipeBuilder
 {
-    public static BotanyPotBlockDerivedCropRecipeBuilder direct(Block block, Optional<Ingredient> seed, Ingredient soil, int growTime, Optional<List<Display>> display, int lightLevel, Optional<List<ItemDropProvider>> drops, Optional<BasicOptions> renderOptions, Optional<ResourceLocation> functionId, Optional<BlockPredicate> potPredicate, float baseYield, float yieldScale) {
+    public static BotanyPotBlockDerivedCropRecipeBuilder direct(Block block, Optional<Ingredient> seed, Ingredient soil, int growTime, Optional<List<Display>> display, int lightLevel, Optional<List<ItemDropProvider>> drops, Optional<BasicOptions> renderOptions, Optional<Identifier> functionId, Optional<BlockPredicate> potPredicate, float baseYield, float yieldScale) {
         return new BotanyPotBlockDerivedCropRecipeBuilder(block, seed, soil, growTime, display, lightLevel, drops, renderOptions, functionId, potPredicate, baseYield, yieldScale);
     }
 
@@ -54,7 +54,7 @@ public record BotanyPotBlockDerivedCropRecipeBuilder(Block block, Optional<Ingre
     }
 
     @Override
-    public void save(RecipeOutput consumer, ResourceLocation id) {
+    public void save(RecipeOutput consumer, Identifier id) {
         consumer.accept(id, new BlockDerivedCrop(new BlockDerivedCrop.Properties(block, seed, soil, growTime, display, lightLevel, drops, renderOptions, functionId, potPredicate, baseYield, yieldScale)), null);
     }
 }

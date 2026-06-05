@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/cacao_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -14134265
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -11122870
+      }
+    ]
+  }
+}

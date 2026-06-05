@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "productivetrees:papaya_crate"
-    }
+    "productivetrees:papaya_crate"
   ],
   "result": {
     "count": 9,

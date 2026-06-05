@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/wild_cherry_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -6178738
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -11716043
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8237294
+      }
+    ]
+  }
+}

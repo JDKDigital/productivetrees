@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/kapok_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -9652870
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -333879
+      }
+    ]
+  }
+}

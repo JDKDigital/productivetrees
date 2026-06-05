@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/grapefruit_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -10513346
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -12831712
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8237294
+      }
+    ]
+  }
+}

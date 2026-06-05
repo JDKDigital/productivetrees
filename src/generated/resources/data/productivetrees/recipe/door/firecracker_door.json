@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:firecracker_planks"
-    }
+    "#": "productivetrees:firecracker_planks"
   },
   "pattern": [
     "##",

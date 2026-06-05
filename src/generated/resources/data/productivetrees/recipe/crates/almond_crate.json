@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:nuts/almond"
-    },
-    "R": {
-      "item": "productivetrees:almond"
-    }
+    "#": "#c:nuts/almond",
+    "R": "productivetrees:almond"
   },
   "pattern": [
     "###",
@@ -15,7 +11,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:almond_crate"
   }
 }

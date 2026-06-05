@@ -3,9 +3,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    {
-      "tag": "productivetrees:wenge_logs"
-    }
+    "#productivetrees:wenge_logs"
   ],
   "result": {
     "count": 4,

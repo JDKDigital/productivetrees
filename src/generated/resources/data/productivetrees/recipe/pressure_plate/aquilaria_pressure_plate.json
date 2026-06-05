@@ -3,15 +3,12 @@
   "category": "redstone",
   "group": "pressure_plate",
   "key": {
-    "#": {
-      "item": "productivetrees:aquilaria_planks"
-    }
+    "#": "productivetrees:aquilaria_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:aquilaria_pressure_plate"
   }
 }

@@ -3,9 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": {
-      "item": "productivetrees:purple_crepe_myrtle_log"
-    }
+    "#": "productivetrees:purple_crepe_myrtle_log"
   },
   "pattern": [
     "##",

@@ -45,7 +45,7 @@ public class FruitLeafReplacerDecorator extends TreeDecorator
         var rand = context.random();
         context.leaves().forEach(blockPos -> {
             if (rand.nextFloat() < density) {
-                context.setBlock(blockPos, fruitProvider.getState(rand, blockPos));
+                context.setBlock(blockPos, fruitProvider.getState(context.level(), rand, blockPos));
             }
         });
     }

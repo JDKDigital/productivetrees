@@ -5,17 +5,17 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
 public class EntityPlacerDecorator extends TreeDecorator
 {
-    public static final MapCodec<EntityPlacerDecorator> CODEC = RecordCodecBuilder.mapCodec((decoratorInstance) -> decoratorInstance.group(ResourceLocation.CODEC.fieldOf("entity").forGetter(EntityPlacerDecorator::getEntity), Codec.INT.fieldOf("count").orElse(1).forGetter(EntityPlacerDecorator::getCount)).apply(decoratorInstance, EntityPlacerDecorator::new));
-    private final ResourceLocation entity;
+    public static final MapCodec<EntityPlacerDecorator> CODEC = RecordCodecBuilder.mapCodec((decoratorInstance) -> decoratorInstance.group(Identifier.CODEC.fieldOf("entity").forGetter(EntityPlacerDecorator::getEntity), Codec.INT.fieldOf("count").orElse(1).forGetter(EntityPlacerDecorator::getCount)).apply(decoratorInstance, EntityPlacerDecorator::new));
+    private final Identifier entity;
     private final int count;
 
-    public EntityPlacerDecorator(ResourceLocation entity, int count) {
+    public EntityPlacerDecorator(Identifier entity, int count) {
         this.entity = entity;
         this.count = count;
     }
@@ -41,7 +41,7 @@ public class EntityPlacerDecorator extends TreeDecorator
         }
     }
 
-    public ResourceLocation getEntity() {
+    public Identifier getEntity() {
         return entity;
     }
 

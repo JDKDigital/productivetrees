@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:osage_orange_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:osage_orange_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",

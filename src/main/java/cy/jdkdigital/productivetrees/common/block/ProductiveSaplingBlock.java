@@ -195,35 +195,6 @@ public class ProductiveSaplingBlock extends SaplingBlock
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTootipComponents, TooltipFlag pTooltipFlag) {
-        if (pStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof ProductiveSaplingBlock saplingBlock) {
-            pTootipComponents.add(Component.translatable("block." + ProductiveTrees.MODID + "." + saplingBlock.treeObject.getId().getPath() + ".latin").withStyle(ChatFormatting.DARK_GREEN).withStyle(ChatFormatting.ITALIC));
-            super.appendHoverText(pStack, pContext, pTootipComponents, pTooltipFlag);
-            String configurations = "";
-            if (!saplingBlock.treeObject.getFeature().equals(TreeRegistrator.NULL_FEATURE)) {
-                configurations += "1x1 ";
-            }
-            if (!saplingBlock.treeObject.getMegaFeature().equals(TreeRegistrator.NULL_FEATURE)) {
-                configurations += switch (saplingBlock.treeObject.getMegaConfiguration()) {
-                    case 5 -> "5x5 ";
-                    case 3 -> "3x3 ";
-                    default -> "2x2 ";
-                };
-            }
-            if (!saplingBlock.treeObject.getLargeMegaFeature().equals(TreeRegistrator.NULL_FEATURE)) {
-                // the large patch is (megaConfiguration - 1) radius wide, matching the growth check above
-                int largeWidth = 2 * (saplingBlock.treeObject.getMegaConfiguration() - 1) + 1;
-                configurations += largeWidth + "x" + largeWidth + " ";
-            }
-            if (!configurations.isEmpty()) {
-                pTootipComponents.add(Component.translatable(ProductiveTrees.MODID + ".sapling.configurations", configurations).withStyle(ChatFormatting.GOLD));
-            }
-        } else {
-            super.appendHoverText(pStack, pContext, pTootipComponents, pTooltipFlag);
-        }
-    }
-
-    @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!level.isAreaLoaded(pos, 1)) {
             return;

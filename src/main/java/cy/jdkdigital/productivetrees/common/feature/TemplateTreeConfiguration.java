@@ -2,7 +2,7 @@ package cy.jdkdigital.productivetrees.common.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.List;
  * list of structure variants (loaded from {@code data/productivetrees/structure/<name>.nbt}); one is picked at
  * random per placement.
  */
-public record TemplateTreeConfiguration(List<ResourceLocation> templates) implements FeatureConfiguration
+public record TemplateTreeConfiguration(List<Identifier> templates) implements FeatureConfiguration
 {
     public static final Codec<TemplateTreeConfiguration> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
-            ResourceLocation.CODEC.listOf().fieldOf("templates").forGetter(TemplateTreeConfiguration::templates)
+            Identifier.CODEC.listOf().fieldOf("templates").forGetter(TemplateTreeConfiguration::templates)
     ).apply(instance, TemplateTreeConfiguration::new));
 }

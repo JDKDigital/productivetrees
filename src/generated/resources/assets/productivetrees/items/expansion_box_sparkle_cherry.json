@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/expansion_box_sparkle_cherry",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -272674
+      }
+    ]
+  }
+}

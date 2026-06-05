@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/silver_fir_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -11835583
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -10461088
+      }
+    ]
+  }
+}

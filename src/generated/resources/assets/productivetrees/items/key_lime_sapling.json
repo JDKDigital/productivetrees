@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "productivetrees:item/key_lime_sapling",
+    "tints": [
+      {
+        "type": "productivetrees:tree",
+        "color": -12486638
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -9538464
+      },
+      {
+        "type": "productivetrees:tree",
+        "color": -8237294
+      }
+    ]
+  }
+}

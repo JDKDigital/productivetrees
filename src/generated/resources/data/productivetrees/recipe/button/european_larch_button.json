@@ -3,12 +3,9 @@
   "category": "redstone",
   "group": "button",
   "ingredients": [
-    {
-      "item": "productivetrees:european_larch_planks"
-    }
+    "productivetrees:european_larch_planks"
   ],
   "result": {
-    "count": 1,
     "id": "productivetrees:european_larch_button"
   }
 }

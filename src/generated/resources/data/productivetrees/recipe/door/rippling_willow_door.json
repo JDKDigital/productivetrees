@@ -3,9 +3,7 @@
   "category": "redstone",
   "group": "door",
   "key": {
-    "#": {
-      "item": "productivetrees:rippling_willow_planks"
-    }
+    "#": "productivetrees:rippling_willow_planks"
   },
   "pattern": [
     "##",

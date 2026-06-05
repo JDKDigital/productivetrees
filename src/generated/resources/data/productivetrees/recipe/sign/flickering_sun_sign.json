@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "sign",
   "key": {
-    "#": {
-      "item": "productivetrees:flickering_sun_planks"
-    },
-    "X": {
-      "item": "minecraft:stick"
-    }
+    "#": "productivetrees:flickering_sun_planks",
+    "X": "minecraft:stick"
   },
   "pattern": [
     "###",
