@@ -8,11 +8,15 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.core.Holder;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -36,7 +40,7 @@ public class TreeObject extends WoodObject
     private final GrowthCondition growthCondition;
     private final Decoration decoration;
 
-    public TreeObject(ResourceLocation id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, int megaConfiguration, ResourceKey<ConfiguredFeature<?, ?>> largeMegaFeature, String style, Optional<ResourceLocation> stripDrop, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
+    public TreeObject(Identifier id, ResourceKey<ConfiguredFeature<?, ?>> feature, ResourceKey<ConfiguredFeature<?, ?>> megaFeature, int megaConfiguration, ResourceKey<ConfiguredFeature<?, ?>> largeMegaFeature, String style, Optional<Identifier> stripDrop, TreeColors colors, Fruit fruit, MutationInfo mutationInfo, TagKey<Block> soil, boolean fireProof, TintStyle tintStyle, boolean fallingLeaves, GrowthCondition growthCondition, Decoration decoration) {
         super(id, fireProof, colors, stripDrop);
         this.feature = feature;
         this.megaFeature = megaFeature;
@@ -52,19 +56,19 @@ public class TreeObject extends WoodObject
         this.decoration = decoration;
     }
 
-    public static Codec<TreeObject> codec(ResourceLocation id) {
+    public static Codec<TreeObject> codec(Identifier id) {
         return RecordCodecBuilder.create(instance -> instance.group(
-                ResourceLocation.CODEC.fieldOf("id").orElse(id).forGetter(TreeObject::getId),
+                Identifier.CODEC.fieldOf("id").orElse(id).forGetter(TreeObject::getId),
                 ResourceKey.codec(Registries.CONFIGURED_FEATURE).fieldOf("feature").orElse(TreeRegistrator.NULL_FEATURE).forGetter(TreeObject::getFeature),
-                ResourceLocation.CODEC.fieldOf("megaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : TreeRegistrator.NULL_FEATURE, (value) -> value != null ? value.location() : null).forGetter(TreeObject::getMegaFeature),
+                Identifier.CODEC.fieldOf("megaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : TreeRegistrator.NULL_FEATURE, (value) -> value != null ? value.identifier() : null).forGetter(TreeObject::getMegaFeature),
                 Codec.INT.fieldOf("megaConfiguration").orElse(2).forGetter(TreeObject::getMegaConfiguration),
-                ResourceLocation.CODEC.fieldOf("largeMegaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : TreeRegistrator.NULL_FEATURE, (value) -> value != null ? value.location() : null).forGetter(TreeObject::getLargeMegaFeature),
+                Identifier.CODEC.fieldOf("largeMegaFeature").orElse(null).xmap((value) -> value != null ? ResourceKey.create(Registries.CONFIGURED_FEATURE, value) : TreeRegistrator.NULL_FEATURE, (value) -> value != null ? value.identifier() : null).forGetter(TreeObject::getLargeMegaFeature),
                 Codec.STRING.fieldOf("style").orElse(id.getPath()).forGetter(TreeObject::getStyleName),
-                ResourceLocation.CODEC.optionalFieldOf("stripDrop").forGetter(TreeObject::getStripDrop),
+                Identifier.CODEC.optionalFieldOf("stripDrop").forGetter(TreeObject::getStripDrop),
                 TreeColors.CODEC.fieldOf("colors").orElse(TreeColors.DEFAULT).forGetter(TreeObject::getColors),
                 Fruit.CODEC.fieldOf("fruit").orElse(Fruit.DEFAULT).forGetter(TreeObject::getFruit),
                 MutationInfo.CODEC.fieldOf("mutation_info").orElse(MutationInfo.DEFAULT).forGetter(TreeObject::getMutationInfo),
-                TagKey.hashedCodec(Registries.BLOCK).fieldOf("soil").orElse(ModTags.DIRT_OR_FARMLAND).forGetter(TreeObject::getSoil),
+                TagKey.hashedCodec(Registries.BLOCK).fieldOf("soil").orElse(BlockTags.SUPPORTS_VEGETATION).forGetter(TreeObject::getSoil),
                 Codec.BOOL.fieldOf("fireproof").orElse(false).forGetter(TreeObject::isFireProof),
                 TintStyle.CODEC.fieldOf("tint").orElse(TintStyle.HIVES).forGetter(TreeObject::getTintStyle),
                 Codec.BOOL.fieldOf("fallingLeaves").orElse(false).forGetter(TreeObject::hasFallingLeaves),
@@ -133,6 +137,10 @@ public class TreeObject extends WoodObject
         return fallingLeaves;
     }
 
+    public boolean hasBlossomPetals() {
+        return decoration.blossomPetals();
+    }
+
     public GrowthCondition getGrowthConditions() {
         return growthCondition;
     }
@@ -153,21 +161,22 @@ public class TreeObject extends WoodObject
         ).apply(instance, GrowthCondition::new));
     }
 
-    public record Decoration(String vine, Integer lightLevel)
+    public record Decoration(String vine, Integer lightLevel, boolean blossomPetals)
     {
-        private static final Decoration DEFAULT = new Decoration("", 0);
+        private static final Decoration DEFAULT = new Decoration("", 0, false);
         public static Codec<Decoration> CODEC = RecordCodecBuilder.create(instance -> instance.group(
                 Codec.STRING.fieldOf("vine").orElse("").forGetter(Decoration::vine),
-                Codec.INT.fieldOf("lightLevel").orElse(0).forGetter(Decoration::lightLevel)
+                Codec.INT.fieldOf("lightLevel").orElse(0).forGetter(Decoration::lightLevel),
+                Codec.BOOL.fieldOf("blossomPetals").orElse(false).forGetter(Decoration::blossomPetals)
         ).apply(instance, Decoration::new));
     }
 
-    public record Fruit(String style, ResourceLocation fruitItem, int count, float growthSpeed, String flowerColor, String unripeColor, String ripeColor)
+    public record Fruit(String style, Identifier fruitItem, int count, float growthSpeed, String flowerColor, String unripeColor, String ripeColor)
     {
         private static final Fruit DEFAULT = new Fruit("", ProductiveTrees.EMPTY_RL, 1, 1.0F, "", "", "");
         public static Codec<Fruit> CODEC = RecordCodecBuilder.create(instance -> instance.group(
                 Codec.STRING.fieldOf("style").orElse("default").forGetter(Fruit::style),
-                ResourceLocation.CODEC.fieldOf("item").forGetter(Fruit::fruitItem),
+                Identifier.CODEC.fieldOf("item").forGetter(Fruit::fruitItem),
                 Codec.INT.fieldOf("count").orElse(1).forGetter(Fruit::count),
                 Codec.FLOAT.fieldOf("growthSpeed").orElse(1.0F).forGetter(Fruit::growthSpeed),
                 Codec.STRING.fieldOf("flowerColor").orElse("#ffffff").forGetter(Fruit::flowerColor),
@@ -176,16 +185,19 @@ public class TreeObject extends WoodObject
         ).apply(instance, Fruit::new));
 
         public ItemStack getItem() {
-            var item = BuiltInRegistries.ITEM.get(fruitItem);
-            return item != null ? new ItemStack(item, count) : ItemStack.EMPTY;
+            return BuiltInRegistries.ITEM.get(fruitItem).map(holder -> new ItemStack(holder.value(), count)).orElse(ItemStack.EMPTY);
+        }
+
+        public Item getItemType() {
+            return BuiltInRegistries.ITEM.get(fruitItem).map(Holder::value).orElse(Items.AIR);
         }
     }
 
-    public record MutationInfo(ResourceLocation target, float chance)
+    public record MutationInfo(Identifier target, float chance)
     {
         private static final MutationInfo DEFAULT = new MutationInfo(ProductiveTrees.EMPTY_RL, 0f);
         public static Codec<MutationInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                ResourceLocation.CODEC.fieldOf("target").forGetter(MutationInfo::target),
+                Identifier.CODEC.fieldOf("target").forGetter(MutationInfo::target),
                 Codec.FLOAT.fieldOf("chance").orElse(1.0F).forGetter(MutationInfo::chance)
         ).apply(instance, MutationInfo::new));
     }

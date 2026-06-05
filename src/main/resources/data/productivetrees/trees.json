@@ -4,7 +4,8 @@
       "leafColor": "#49764b",
       "logColor": "#605b4f",
       "plankColor": "#7f3615"
-    }
+    },
+    "fallingLeaves": true
   },
   "allspice": {
     "colors": {
@@ -45,7 +46,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#87b203",
       "ripeColor": "#dd490b"
-    }
+    },
+    "fallingLeaves": true
   },
   "aquilaria": {
     "colors": {
@@ -73,7 +75,8 @@
       "leafColor": "#6e8422",
       "logColor": "#676d69",
       "plankColor": "#d4b18b"
-    }
+    },
+    "fallingLeaves": true
   },
   "aspen": {
     "megaFeature": "productivetrees:aspen_mega",
@@ -81,7 +84,8 @@
       "leafColor": "#82b884",
       "logColor": "#bba8a1",
       "plankColor": "#cdc3aa"
-    }
+    },
+    "fallingLeaves": true
   },
   "avocado": {
     "colors": {
@@ -152,7 +156,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#9aaa01",
       "ripeColor": "#6f2304"
-    }
+    },
+    "fallingLeaves": true
   },
   "beliy_naliv_apple": {
     "colors": {
@@ -165,7 +170,8 @@
       "growthSpeed": 0.3,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "blackthorn": {
     "colors": {
@@ -183,7 +189,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#86955c",
       "ripeColor": "#171925"
-    }
+    },
+    "fallingLeaves": true
   },
   "black_cherry": {
     "megaFeature": "productivetrees:black_cherry_mega",
@@ -198,7 +205,8 @@
       "growthSpeed": 0.3,
       "unripeColor": "#477709",
       "ripeColor": "#0e0f13"
-    }
+    },
+    "fallingLeaves": true
   },
   "black_ember": {
     "megaFeature": "productivetrees:black_ember_mega",
@@ -218,7 +226,8 @@
       "leafColor": "#86ab9a",
       "logColor": "#767678",
       "plankColor": "#744318"
-    }
+    },
+    "fallingLeaves": true
   },
   "blue_mahoe": {
     "colors": {
@@ -324,7 +333,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#ab9d46",
       "ripeColor": "#815a38"
-    }
+    },
+    "fallingLeaves": true
   },
   "cacao": {
     "colors": {
@@ -345,7 +355,8 @@
       "growthSpeed": 0.3,
       "unripeColor": "#4c5a1c",
       "ripeColor": "#caaf7a"
-    }
+    },
+    "fallingLeaves": true
   },
   "carob": {
     "colors": {
@@ -372,7 +383,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#cea120",
       "ripeColor": "#c31e24"
-    }
+    },
+    "fallingLeaves": true
   },
   "cave_dweller": {
     "feature": "productivetrees:null",
@@ -433,7 +445,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#a9b935",
       "ripeColor": "#661c24"
-    }
+    },
+    "fallingLeaves": true
   },
   "cinnamon": {
     "colors": {
@@ -533,7 +546,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#9aaa01",
       "ripeColor": "#6f2304"
-    }
+    },
+    "fallingLeaves": true
   },
   "cork_oak": {
     "megaFeature": "productivetrees:cork_oak_mega",
@@ -555,7 +569,8 @@
       "growthSpeed": 0.6,
       "unripeColor": "#768422",
       "ripeColor": "#5f6f0c"
-    }
+    },
+    "fallingLeaves": true
   },
   "date_palm": {
     "colors": {
@@ -576,7 +591,8 @@
       "leafColor": "#e7efed",
       "logColor": "#b69a8e",
       "plankColor": "#cba590"
-    }
+    },
+    "fallingLeaves": true
   },
   "douglas_fir": {
     "megaFeature": "productivetrees:douglas_fir_mega",
@@ -599,7 +615,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#f8f8f8",
       "ripeColor": "#070900"
-    }
+    },
+    "fallingLeaves": true
   },
   "elm": {
     "feature": "productivetrees:null",
@@ -608,7 +625,8 @@
       "leafColor": "#21514f",
       "logColor": "#dfc19e",
       "plankColor": "#ccae8c"
-    }
+    },
+    "fallingLeaves": true
   },
   "european_larch": {
     "megaFeature": "productivetrees:european_larch_mega",
@@ -616,7 +634,8 @@
       "leafColor": "#a1d97f",
       "logColor": "#494440",
       "plankColor": "#af784f"
-    }
+    },
+    "fallingLeaves": true
   },
   "finger_lime": {
     "colors": {
@@ -672,7 +691,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "foggy_blast": {
     "colors": {
@@ -696,7 +716,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "golden_delicious_apple": {
     "colors": {
@@ -709,7 +730,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "grandidiers_baobab": {
     "feature": "productivetrees:null",
@@ -739,7 +761,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "grapefruit": {
     "colors": {
@@ -761,7 +784,8 @@
       "leafColor": "#3d5b29",
       "logColor": "#4c4942",
       "plankColor": "#d1a173"
-    }
+    },
+    "fallingLeaves": true
   },
   "greenheart": {
     "colors": {
@@ -782,7 +806,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "hazel": {
     "megaFeature": "productivetrees:hazel_mega",
@@ -797,7 +822,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#8b9423",
       "ripeColor": "#ccb088"
-    }
+    },
+    "fallingLeaves": true
   },
   "holly": {
     "megaFeature": "productivetrees:holly_mega",
@@ -812,7 +838,8 @@
       "leafColor": "#38431b",
       "logColor": "#5d5d53",
       "plankColor": "#ebc8a8"
-    }
+    },
+    "fallingLeaves": true
   },
   "ipe": {
     "megaFeature": "productivetrees:ipe_mega",
@@ -1053,7 +1080,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "night_fuchsia": {
     "megaFeature": "productivetrees:night_fuchsia_mega",
@@ -1129,7 +1157,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "padauk": {
     "feature": "productivetrees:null",
@@ -1180,7 +1209,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "pecan": {
     "feature": "productivetrees:null",
@@ -1196,7 +1226,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#5c7b1b",
       "ripeColor": "#c58759"
-    }
+    },
+    "fallingLeaves": true
   },
   "persimmon": {
     "colors": {
@@ -1209,7 +1240,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "pink_ivory": {
     "megaFeature": "productivetrees:pink_ivory_mega",
@@ -1231,7 +1263,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "plantain": {
     "colors": {
@@ -1260,7 +1293,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "pomegranate": {
     "colors": {
@@ -1273,7 +1307,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#a9b935",
       "ripeColor": "#661c24"
-    }
+    },
+    "fallingLeaves": true
   },
   "pomelo": {
     "colors": {
@@ -1299,7 +1334,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "purpleheart": {
     "feature": "productivetrees:null",
@@ -1323,7 +1359,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#86955c",
       "ripeColor": "#171925"
-    }
+    },
+    "fallingLeaves": true
   },
   "purple_crepe_myrtle": {
     "colors": {
@@ -1339,15 +1376,15 @@
   "purple_spiral": {
     "megaFeature": "productivetrees:purple_spiral_mega",
     "decoration": {
-      "lightLevel": 11
+      "lightLevel": 11,
+      "blossomPetals": true
     },
     "colors": {
       "leafColor": "#c8a3e3",
       "logColor": "#370073",
       "plankColor": "#d2a6fd"
     },
-    "fireproof": true,
-    "fallingLeaves": true
+    "fireproof": true
   },
   "rainbow_gum": {
     "feature": "productivetrees:null",
@@ -1397,14 +1434,16 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "red_maple": {
     "colors": {
       "leafColor": "#f81f31",
       "logColor": "#b0a9a5",
       "plankColor": "#d1b890"
-    }
+    },
+    "fallingLeaves": true
   },
   "rippling_willow": {
     "colors": {
@@ -1415,7 +1454,8 @@
     "decoration": {
       "lightLevel": 11
     },
-    "fireproof": true
+    "fireproof": true,
+    "fallingLeaves": true
   },
   "rosewood": {
     "megaFeature": "productivetrees:rosewood_mega",
@@ -1446,7 +1486,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#8fa425",
       "ripeColor": "#7b411f"
-    }
+    },
+    "fallingLeaves": true
   },
   "rubber_tree": {
     "colors": {
@@ -1486,7 +1527,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "satsuma": {
     "colors": {
@@ -1525,7 +1567,8 @@
       "leafColor": "#b5de82",
       "logColor": "#8b847a",
       "plankColor": "#dfc0a4"
-    }
+    },
+    "fallingLeaves": true
   },
   "slimy_delight": {
     "colors": {
@@ -1581,7 +1624,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "sparkle_cherry": {
     "colors": {
@@ -1626,7 +1670,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "sugar_apple": {
     "colors": {
@@ -1646,7 +1691,8 @@
       "leafColor": "#5f9450",
       "logColor": "#6b6c64",
       "plankColor": "#ab8a61"
-    }
+    },
+    "fallingLeaves": true
   },
   "swamp_gum": {
     "colors": {
@@ -1660,7 +1706,8 @@
       "leafColor": "#4f6155",
       "logColor": "#abad92",
       "plankColor": "#786e63"
-    }
+    },
+    "fallingLeaves": true
   },
   "sweet_chestnut": {
     "megaFeature": "productivetrees:sweet_chestnut_mega",
@@ -1676,7 +1723,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "sweet_crabapple": {
     "colors": {
@@ -1689,7 +1737,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "sycamore_fig": {
     "colors": {
@@ -1703,7 +1752,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "tangerine": {
     "colors": {
@@ -1787,7 +1837,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#afca81",
       "ripeColor": "#b47d3f"
-    }
+    },
+    "fallingLeaves": true
   },
   "water_wonder": {
     "decoration": {
@@ -1823,21 +1874,24 @@
       "leafColor": "#f0fbf5",
       "logColor": "#6c584f",
       "plankColor": "#e2e2e2"
-    }
+    },
+    "fallingLeaves": true
   },
   "white_poplar": {
     "colors": {
       "leafColor": "#d2d2c6",
       "logColor": "#676056",
       "plankColor": "#bebab1"
-    }
+    },
+    "fallingLeaves": true
   },
   "white_willow": {
     "colors": {
       "leafColor": "#e8e9e3",
       "logColor": "#446681",
       "plankColor": "#cfb89b"
-    }
+    },
+    "fallingLeaves": true
   },
   "wild_cherry": {
     "colors": {
@@ -1851,7 +1905,8 @@
       "growthSpeed": 0.5,
       "unripeColor": "#bdcaa0",
       "ripeColor": "#824f12"
-    }
+    },
+    "fallingLeaves": true
   },
   "yellow_meranti": {
     "feature": "productivetrees:null",
