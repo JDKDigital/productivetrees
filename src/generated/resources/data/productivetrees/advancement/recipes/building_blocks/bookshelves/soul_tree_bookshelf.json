@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:soul_tree_bookshelf"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_book": {

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:coffea_fence"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "fence",

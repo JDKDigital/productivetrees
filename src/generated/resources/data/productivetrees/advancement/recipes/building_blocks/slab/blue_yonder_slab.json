@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:blue_yonder_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_blue_yonder_planks": {

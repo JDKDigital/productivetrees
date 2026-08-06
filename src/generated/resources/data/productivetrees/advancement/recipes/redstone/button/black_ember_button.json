@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:black_ember_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_black_ember_planks": {

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:soul_tree_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_soul_tree_planks": {

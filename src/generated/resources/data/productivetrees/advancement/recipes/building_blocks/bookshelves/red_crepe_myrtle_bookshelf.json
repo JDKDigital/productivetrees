@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:red_crepe_myrtle_bookshelf"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_book": {

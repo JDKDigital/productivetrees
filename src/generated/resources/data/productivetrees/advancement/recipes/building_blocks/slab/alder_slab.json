@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:alder_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_alder_planks": {

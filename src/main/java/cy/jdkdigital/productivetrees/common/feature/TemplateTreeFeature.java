@@ -49,21 +49,16 @@ public class TemplateTreeFeature extends Feature<TemplateTreeConfiguration>
         StructureTemplate template = loaded.get();
         Vec3i size = template.getSize();
         Rotation rotation = Rotation.getRandom(random);
-        // Anchor and rotate around the trunk base (centre of the lowest layer of the tree's logs) so the trunk lands
-        // on the sapling origin. The structure's bounding-box centre can sit well off the trunk on asymmetric builds
-        // (e.g. the cave dweller's arch), which would grow the tree away from where the saplings were placed. Falls
-        // back to the bounding-box centre if the trunk can't be located.
+        // Anchor and rotate around the trunk base 
         BlockPos pivot = findTrunkBase(template, id).orElseGet(() -> new BlockPos(size.getX() / 2, 0, size.getZ() / 2));
-        // Skip structure_void positions (the tree's empty space) so they leave the existing block instead of
-        // overwriting it. placeInWorld does not skip structure_void on its own; the processor removes those infos.
+        // Skip structure_void positions
         StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation).setRotationPivot(pivot).setIgnoreEntities(true)
                 .addProcessor(new BlockIgnoreProcessor(List.of(Blocks.STRUCTURE_VOID)));
         BlockPos placePos = context.origin().offset(-pivot.getX(), 0, -pivot.getZ());
         return template.placeInWorld(level, placePos, placePos, settings, random, Block.UPDATE_CLIENTS);
     }
 
-    // Centre (x,z at y 0) of the lowest layer of the tree's logs - this is where the sapling sat, so it becomes the
-    // placement anchor. The tree is resolved from the template id (e.g. "cave_dweller_giga_1" -> the cave_dweller log).
+    // Centre (x,z at y 0) of the lowest layer of the tree's logs
     private static Optional<BlockPos> findTrunkBase(StructureTemplate template, ResourceLocation templateId) {
         Block log = resolveLogBlock(templateId);
         if (log == Blocks.AIR) {

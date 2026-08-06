@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:sour_cherry_stairs"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_sour_cherry_planks": {

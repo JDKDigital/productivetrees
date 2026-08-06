@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:bull_pine_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_bull_pine_planks": {

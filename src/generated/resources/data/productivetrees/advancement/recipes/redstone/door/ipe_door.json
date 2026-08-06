@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:ipe_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_ipe_planks": {

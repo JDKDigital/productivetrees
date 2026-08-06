@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:star_anise_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_star_anise_planks": {

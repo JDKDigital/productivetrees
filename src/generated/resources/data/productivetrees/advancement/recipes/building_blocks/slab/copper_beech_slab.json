@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:copper_beech_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_copper_beech_planks": {

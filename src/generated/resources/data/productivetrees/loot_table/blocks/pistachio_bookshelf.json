@@ -8,7 +8,7 @@
           "type": "minecraft:alternatives",
           "children": [
             {
-              "type": "minecraft:item",
+              "type": "productivelib:optional_loot_item",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",

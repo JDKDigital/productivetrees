@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:plum_sign"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_plum_planks": {

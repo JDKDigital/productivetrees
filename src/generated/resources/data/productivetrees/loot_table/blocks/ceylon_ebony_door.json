@@ -10,11 +10,11 @@
       ],
       "entries": [
         {
-          "type": "minecraft:item",
+          "type": "productivelib:optional_loot_item",
           "conditions": [
             {
               "block": "productivetrees:ceylon_ebony_door",
-              "condition": "minecraft:block_state_property",
+              "condition": "productivetrees:optional_block_state_property",
               "properties": {
                 "half": "lower"
               }

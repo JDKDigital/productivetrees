@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:western_hemlock_slab"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "group": "slab",

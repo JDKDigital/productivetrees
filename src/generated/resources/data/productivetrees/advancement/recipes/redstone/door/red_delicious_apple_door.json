@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:red_delicious_apple_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_red_delicious_apple_planks": {

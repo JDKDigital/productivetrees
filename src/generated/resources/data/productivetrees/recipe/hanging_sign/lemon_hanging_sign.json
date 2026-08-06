@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:lemon_hanging_sign"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "hanging_sign",

@@ -3,14 +3,14 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
       "entries": [
         {
-          "type": "minecraft:item",
+          "type": "productivelib:optional_loot_item",
+          "conditions": [
+            {
+              "condition": "minecraft:survives_explosion"
+            }
+          ],
           "name": "productivetrees:pandanus_hanging_sign"
         }
       ],

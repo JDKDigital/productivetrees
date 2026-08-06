@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:brazil_nut_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_brazil_nut_planks": {

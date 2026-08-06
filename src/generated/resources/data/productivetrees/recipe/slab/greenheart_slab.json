@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:greenheart_slab"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "group": "slab",

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:finger_lime_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_finger_lime_planks": {

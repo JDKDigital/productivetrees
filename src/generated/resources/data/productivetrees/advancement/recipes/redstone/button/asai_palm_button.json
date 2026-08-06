@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:asai_palm_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_asai_palm_planks": {

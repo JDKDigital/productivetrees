@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:night_fuchsia_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_night_fuchsia_planks": {

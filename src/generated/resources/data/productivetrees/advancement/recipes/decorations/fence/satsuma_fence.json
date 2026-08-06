@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:satsuma_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_satsuma_planks": {

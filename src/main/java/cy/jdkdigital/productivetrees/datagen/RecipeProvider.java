@@ -13,6 +13,7 @@ import net.darkhax.botanypots.common.impl.data.itemdrops.SimpleDropProvider;
 import net.darkhax.botanypots.common.impl.data.recipe.crop.BasicCrop;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.common.conditions.ItemExistsCondition;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -95,7 +96,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 shapedVariant(recipeOutput, BlockFamily.Variant.TRAPDOOR, TreeUtil.getBlock(treeObject.getId(), "_trapdoor"), planks);
                 shapedVariant(recipeOutput, BlockFamily.Variant.SIGN, TreeUtil.getBlock(treeObject.getId(), "_sign"), planks);
                 hangingSign(recipeOutput, TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), planks);
-                ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(recipeOutput, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf"));
+                ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(ifItemExists(recipeOutput, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")), treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf"));
             }
             buildSawmillRecipe(treeObject, recipeOutput);
         });
@@ -153,15 +154,22 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider im
                 .save(consumer, prefixedRecipeId(pWood, "wood/"));
     }
 
+    // Gate recipes for the optional decorative/functional blocks on the result item being registered, so they are
+    // cleanly skipped (no parse error) when minimal mode leaves that block unregistered. Recipe loading evaluates
+    // neoforge:conditions before resolving the result, so this suppresses the error entirely.
+    private static RecipeOutput ifItemExists(RecipeOutput consumer, ItemLike result) {
+        return consumer.withConditions(new ItemExistsCondition(BuiltInRegistries.ITEM.getKey(result.asItem())));
+    }
+
     private static void shapedVariant(RecipeOutput consumer, BlockFamily.Variant variant, ItemLike result, ItemLike plank) {
         var builder = SHAPE_BUILDERS.get(variant).apply(result, plank);
         builder.group(variant.name().toLowerCase());
         builder.unlockedBy(getHasName(plank), has(plank));
-        builder.save(consumer, prefixedRecipeId(result, variant.name().toLowerCase() + "/"));
+        builder.save(ifItemExists(consumer, result), prefixedRecipeId(result, variant.name().toLowerCase() + "/"));
     }
 
     protected static void hangingSign(RecipeOutput consumer, ItemLike result, ItemLike plank) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', plank).define('X', Items.CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", has(plank)).save(consumer, prefixedRecipeId(result, "hanging_sign/"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', plank).define('X', Items.CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", has(plank)).save(ifItemExists(consumer, result), prefixedRecipeId(result, "hanging_sign/"));
     }
 
     private static ResourceLocation prefixedRecipeId(ItemLike item, String prefix) {

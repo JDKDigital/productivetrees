@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:cempedak_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_cempedak_planks": {

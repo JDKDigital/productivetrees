@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:prairie_crabapple_stairs"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_prairie_crabapple_planks": {

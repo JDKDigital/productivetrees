@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:moonlight_magic_crepe_myrtle_sign"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_moonlight_magic_crepe_myrtle_planks": {

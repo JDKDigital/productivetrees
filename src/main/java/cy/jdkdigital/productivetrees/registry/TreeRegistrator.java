@@ -3,6 +3,8 @@ package cy.jdkdigital.productivetrees.registry;
 import cy.jdkdigital.productivelib.common.item.UpgradeItem;
 import cy.jdkdigital.productivelib.common.recipe.TripleOutputRecipe;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.common.loot.OptionalBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.*;
 import cy.jdkdigital.productivetrees.common.feature.EntityPlacerDecorator;
@@ -491,9 +493,16 @@ public class TreeRegistrator
         ProductiveTrees.BLOCKS.addAlias(ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_sapling"), ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_sapling"));
     }
 
+    public static final DeferredHolder<LootItemConditionType, LootItemConditionType> OPTIONAL_BLOCK_STATE_PROPERTY = ProductiveTrees.LOOT_CONDITIONS.register("optional_block_state_property", () -> new LootItemConditionType(OptionalBlockStatePropertyCondition.CODEC));
+
     public static Supplier<BlockEntityType<ProductiveSignBlockEntity>> SIGN_BE;
     public static Supplier<BlockEntityType<ProductiveHangingSignBlockEntity>> HANGING_SIGN_BE;
     public static void registerSignBlockEntities() {
+        // In minimal mode no sign blocks are registered, so there is nothing to build a block entity type from.
+        // A BlockEntityType with zero valid blocks throws, so skip registration entirely (SIGN_BE stays null).
+        if (ProductiveTrees.isMinimal) {
+            return;
+        }
         SIGN_BE = registerBlockEntity("productivetrees_sign", () -> createBlockEntityType(ProductiveSignBlockEntity::new, SIGNS.stream().map(DeferredHolder::get).toList().toArray(new Block[0])));
         HANGING_SIGN_BE = registerBlockEntity("productivetrees_hanging_sign", () -> createBlockEntityType(ProductiveHangingSignBlockEntity::new, HANGING_SIGNS.stream().map(DeferredHolder::get).toList().toArray(new Block[0])));
     }

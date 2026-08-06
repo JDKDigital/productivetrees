@@ -31,6 +31,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorTy
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.ModContainer;
@@ -67,6 +68,7 @@ public class ProductiveTrees
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(BuiltInRegistries.FEATURE, MODID);
     public static final DeferredRegister<TreeDecoratorType<?>> TREE_DECORATORS = DeferredRegister.create(BuiltInRegistries.TREE_DECORATOR_TYPE, MODID);
     public static final DeferredRegister<LootPoolEntryType> LOOT_POOL_ENTRIES = DeferredRegister.create(Registries.LOOT_POOL_ENTRY_TYPE, MODID);
+    public static final DeferredRegister<LootItemConditionType> LOOT_CONDITIONS = DeferredRegister.create(Registries.LOOT_CONDITION_TYPE, MODID);
     public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(BuiltInRegistries.POINT_OF_INTEREST_TYPE, MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
     public static final DeferredRegister<FoliagePlacerType<?>> FOLIAGE_PLACERS = DeferredRegister.create(Registries.FOLIAGE_PLACER_TYPE, MODID);
@@ -76,6 +78,11 @@ public class ProductiveTrees
 
     public ProductiveTrees(IEventBus modEventBus, ModContainer modContainer)
     {
+        // Startup configs are loaded synchronously the moment they are registered, so isMinimal is
+        // resolved here before TreeRegistrator.init() decides which blocks to register below.
+        modContainer.registerConfig(ModConfig.Type.STARTUP, Config.STARTUP_CONFIG);
+        isMinimal = Config.STARTUP.minimal.get();
+
         TreeFinder.discoverTrees();
 
         BLOCKS.register(modEventBus);
@@ -88,6 +95,7 @@ public class ProductiveTrees
         RECIPE_TYPES.register(modEventBus);
         PARTICLE_TYPES.register(modEventBus);
         LOOT_POOL_ENTRIES.register(modEventBus);
+        LOOT_CONDITIONS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
         FEATURES.register(modEventBus);
         TREE_DECORATORS.register(modEventBus);

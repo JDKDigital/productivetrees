@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:purple_crepe_myrtle_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_purple_crepe_myrtle_planks": {

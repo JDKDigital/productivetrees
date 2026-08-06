@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:elderberry_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_elderberry_planks": {

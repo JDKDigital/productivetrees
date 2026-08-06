@@ -5,6 +5,7 @@ import cy.jdkdigital.productivelib.loot.OptionalLootItem;
 import cy.jdkdigital.productivelib.loot.condition.OptionalCopyBlockState;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveFruitBlock;
+import cy.jdkdigital.productivetrees.common.loot.OptionalBlockStatePropertyCondition;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
@@ -26,6 +27,8 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.BeehiveBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -133,19 +136,23 @@ public class LootDataProvider implements DataProvider
                 dropSelf(TreeUtil.getBlock(id, "_stripped_log"));
                 dropSelf(TreeUtil.getBlock(id, "_stripped_wood"));
                 if (!ProductiveTrees.isMinimal) {
-                    dropSelf(TreeUtil.getBlock(id, "_slab"));
-                    dropSelf(TreeUtil.getBlock(id, "_stairs"));
-                    dropSelf(TreeUtil.getBlock(id, "_fence"));
-                    dropSelf(TreeUtil.getBlock(id, "_fence_gate"));
-                    dropSelf(TreeUtil.getBlock(id, "_pressure_plate"));
-                    dropSelf(TreeUtil.getBlock(id, "_button"));
-                    dropDoor(TreeUtil.getBlock(id, "_door"));
-                    dropSelf(TreeUtil.getBlock(id, "_trapdoor"));
-                    this.add(TreeUtil.getBlock(id, "_bookshelf"), createSingleItemTableWithSilkTouch(TreeUtil.getBlock(id, "_bookshelf"), Items.BOOK, ConstantValue.exactly(3.0F)));
-                    dropSelf(TreeUtil.getBlock(id, "_sign"));
-                    dropOther(TreeUtil.getBlock(id, "_wall_sign"), TreeUtil.getBlock(id, "_sign"));
-                    dropSelf(TreeUtil.getBlock(id, "_hanging_sign"));
-                    dropOther(TreeUtil.getBlock(id, "_wall_hanging_sign"), TreeUtil.getBlock(id, "_hanging_sign"));
+                    // These decorative/functional blocks are skipped in minimal mode, but their loot tables ship in
+                    // every build. Using productivelib's OptionalLootItem lets the tables still PARSE when the block
+                    // and its item are unregistered (a vanilla item entry hard-fails on the missing item); full-mode
+                    // drop behaviour is unchanged.
+                    optionalDropSelf(TreeUtil.getBlock(id, "_slab"));
+                    optionalDropSelf(TreeUtil.getBlock(id, "_stairs"));
+                    optionalDropSelf(TreeUtil.getBlock(id, "_fence"));
+                    optionalDropSelf(TreeUtil.getBlock(id, "_fence_gate"));
+                    optionalDropSelf(TreeUtil.getBlock(id, "_pressure_plate"));
+                    optionalDropSelf(TreeUtil.getBlock(id, "_button"));
+                    optionalDropDoor(TreeUtil.getBlock(id, "_door"));
+                    optionalDropSelf(TreeUtil.getBlock(id, "_trapdoor"));
+                    optionalBookshelf(TreeUtil.getBlock(id, "_bookshelf"));
+                    optionalDropSelf(TreeUtil.getBlock(id, "_sign"));
+                    optionalDropOther(TreeUtil.getBlock(id, "_wall_sign"), TreeUtil.getBlock(id, "_sign"));
+                    optionalDropSelf(TreeUtil.getBlock(id, "_hanging_sign"));
+                    optionalDropOther(TreeUtil.getBlock(id, "_wall_hanging_sign"), TreeUtil.getBlock(id, "_hanging_sign"));
                 }
             });
 
@@ -235,6 +242,42 @@ public class LootDataProvider implements DataProvider
             return LootTable.lootTable().withPool(
                     LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                             .add(builder));
+        }
+
+        // The blocks these serve only exist outside minimal mode, but their tables ship in every build and must
+        // still parse when the block/item is absent. OptionalLootItem (productivelib) tolerates a missing item at
+        // load where a vanilla LootItem hard-fails; full-mode drop behaviour is preserved.
+        private void optionalDropSelf(Block block) {
+            this.add(block, LootTable.lootTable().withPool(
+                    LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                            .add(OptionalLootItem.lootTableItem(block).when(ExplosionCondition.survivesExplosion()))));
+        }
+
+        private void optionalDropOther(Block block, Block drop) {
+            this.add(block, LootTable.lootTable().withPool(
+                    LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                            .add(OptionalLootItem.lootTableItem(drop).when(ExplosionCondition.survivesExplosion()))));
+        }
+
+        private void optionalDropDoor(Block block) {
+            // Tolerant block-state condition: vanilla LootItemBlockStatePropertyCondition names the block strictly and
+            // would drop the whole table on load when minimal mode leaves the door unregistered.
+            this.add(block, LootTable.lootTable().withPool(
+                    LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                            .when(ExplosionCondition.survivesExplosion())
+                            .add(OptionalLootItem.lootTableItem(block)
+                                    .when(OptionalBlockStatePropertyCondition.of(block,
+                                            StatePropertiesPredicate.Builder.properties().hasProperty(DoorBlock.HALF, DoubleBlockHalf.LOWER))))));
+        }
+
+        private void optionalBookshelf(Block block) {
+            this.add(block, LootTable.lootTable().withPool(
+                    LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                            .add(OptionalLootItem.lootTableItem(block)
+                                    .when(this.hasSilkTouch())
+                                    .otherwise(LootItem.lootTableItem(Items.BOOK)
+                                            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(3.0F)))
+                                            .apply(ApplyExplosionDecay.explosionDecay())))));
         }
     }
 }

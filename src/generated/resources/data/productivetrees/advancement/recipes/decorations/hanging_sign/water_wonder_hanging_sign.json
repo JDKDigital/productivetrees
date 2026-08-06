@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:water_wonder_hanging_sign"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_stripped_logs": {

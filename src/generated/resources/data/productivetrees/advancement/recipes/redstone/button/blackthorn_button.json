@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:blackthorn_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_blackthorn_planks": {

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:nutmeg_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_nutmeg_planks": {

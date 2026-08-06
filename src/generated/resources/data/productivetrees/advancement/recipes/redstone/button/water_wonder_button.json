@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:water_wonder_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_the_recipe": {

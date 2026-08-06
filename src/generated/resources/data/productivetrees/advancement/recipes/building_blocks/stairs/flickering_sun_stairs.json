@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:flickering_sun_stairs"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_flickering_sun_planks": {

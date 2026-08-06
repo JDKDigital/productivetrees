@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:balsam_fir_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_balsam_fir_planks": {

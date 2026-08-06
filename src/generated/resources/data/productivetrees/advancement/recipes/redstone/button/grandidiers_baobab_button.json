@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:grandidiers_baobab_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_grandidiers_baobab_planks": {

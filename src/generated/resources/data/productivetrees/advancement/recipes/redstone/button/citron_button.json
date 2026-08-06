@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:citron_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_citron_planks": {

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:osage_orange_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_osage_orange_planks": {

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:moonlight_magic_crepe_myrtle_button"
+    }
+  ],
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "group": "button",

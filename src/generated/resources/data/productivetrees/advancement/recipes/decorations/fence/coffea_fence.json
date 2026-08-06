@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:coffea_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_coffea_planks": {

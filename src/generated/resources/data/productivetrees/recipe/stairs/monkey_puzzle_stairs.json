@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:monkey_puzzle_stairs"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "group": "stairs",

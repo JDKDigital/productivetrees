@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:brown_amber_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_brown_amber_planks": {

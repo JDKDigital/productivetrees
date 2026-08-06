@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:flowering_crabapple_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_flowering_crabapple_planks": {

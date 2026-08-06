@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:wild_cherry_stairs"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "group": "stairs",

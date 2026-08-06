@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:rainbow_gum_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_rainbow_gum_planks": {

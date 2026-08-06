@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:sand_pear_sign"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "sign",

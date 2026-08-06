@@ -62,8 +62,11 @@ public class ClientEventHandler
         event.registerBlockEntityRenderer(TreeRegistrator.STRIPPER_BLOCK_ENTITY.get(), StripperBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(TreeRegistrator.TIME_TRAVELLER_DISPLAY_BLOCK_ENTITY.get(), TimeTravellerDisplayBlockEntityRenderer::new);
 
-        event.registerBlockEntityRenderer(TreeRegistrator.SIGN_BE.get(), SignRenderer::new);
-        event.registerBlockEntityRenderer(TreeRegistrator.HANGING_SIGN_BE.get(), HangingSignRenderer::new);
+        // SIGN_BE/HANGING_SIGN_BE are not registered in minimal mode (no sign blocks exist)
+        if (TreeRegistrator.SIGN_BE != null) {
+            event.registerBlockEntityRenderer(TreeRegistrator.SIGN_BE.get(), SignRenderer::new);
+            event.registerBlockEntityRenderer(TreeRegistrator.HANGING_SIGN_BE.get(), HangingSignRenderer::new);
+        }
     }
 
     @SubscribeEvent

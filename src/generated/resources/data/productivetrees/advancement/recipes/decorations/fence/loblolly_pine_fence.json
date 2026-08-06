@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:loblolly_pine_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_loblolly_pine_planks": {

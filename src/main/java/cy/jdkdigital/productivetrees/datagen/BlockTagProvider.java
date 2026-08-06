@@ -92,7 +92,7 @@ public class BlockTagProvider extends BlockTagsProvider
                 flowers.add(TreeUtil.getBlock(id, "_leaves"));
             }
 
-            axeMineable.add(TreeUtil.getBlock(id, "_bookshelf"));
+            axeMineable.addOptional(id.withPath(p -> p + "_bookshelf"));
 
             planks.add(TreeUtil.getBlock(id, "_planks"));
 
@@ -103,23 +103,24 @@ public class BlockTagProvider extends BlockTagsProvider
             } else {
                 logsThatBurn.addTag(logTag);
             }
-            if (!ProductiveTrees.isMinimal) {
-                stairs.add(TreeUtil.getBlock(id, "_stairs"));
-                slabs.add(TreeUtil.getBlock(id, "_slab"));
-                fences.add(TreeUtil.getBlock(id, "_fence"));
-                fenceGates.add(TreeUtil.getBlock(id, "_fence_gate"));
-                woodenFenceGates.add(TreeUtil.getBlock(id, "_fence_gate"));
-                pressurePlates.add(TreeUtil.getBlock(id, "_pressure_plate"));
-                buttons.add(TreeUtil.getBlock(id, "_button"));
-                doors.add(TreeUtil.getBlock(id, "_door"));
-                trapdoors.add(TreeUtil.getBlock(id, "_trapdoor"));
-                signs.add(TreeUtil.getBlock(id, "_sign"));
-                bookshelves.add(TreeUtil.getBlock(id, "_bookshelf"));
-                enchantment.add(TreeUtil.getBlock(id, "_bookshelf"));
-                hangingSigns.add(TreeUtil.getBlock(id, "_hanging_sign"));
-                wallSigns.add(TreeUtil.getBlock(id, "_wall_sign"));
-                wallHangingSigns.add(TreeUtil.getBlock(id, "_wall_hanging_sign"));
-            }
+            // Added as optional tag entries: minimal mode leaves these decorative/functional wood blocks
+            // unregistered, and a single unresolved *required* entry makes the whole tag fail to load
+            // (dropping even its vanilla entries). Optional entries are silently skipped when absent.
+            stairs.addOptional(id.withPath(p -> p + "_stairs"));
+            slabs.addOptional(id.withPath(p -> p + "_slab"));
+            fences.addOptional(id.withPath(p -> p + "_fence"));
+            fenceGates.addOptional(id.withPath(p -> p + "_fence_gate"));
+            woodenFenceGates.addOptional(id.withPath(p -> p + "_fence_gate"));
+            pressurePlates.addOptional(id.withPath(p -> p + "_pressure_plate"));
+            buttons.addOptional(id.withPath(p -> p + "_button"));
+            doors.addOptional(id.withPath(p -> p + "_door"));
+            trapdoors.addOptional(id.withPath(p -> p + "_trapdoor"));
+            signs.addOptional(id.withPath(p -> p + "_sign"));
+            bookshelves.addOptional(id.withPath(p -> p + "_bookshelf"));
+            enchantment.addOptional(id.withPath(p -> p + "_bookshelf"));
+            hangingSigns.addOptional(id.withPath(p -> p + "_hanging_sign"));
+            wallSigns.addOptional(id.withPath(p -> p + "_wall_sign"));
+            wallHangingSigns.addOptional(id.withPath(p -> p + "_wall_hanging_sign"));
             if (treeObject.getStyle().hiveStyle() != null) {
                 hives.addOptional(Objects.requireNonNull(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive")));
                 boxes.addOptional(Objects.requireNonNull(treeObject.getId().withPath(p ->  "expansion_box_" + p)));

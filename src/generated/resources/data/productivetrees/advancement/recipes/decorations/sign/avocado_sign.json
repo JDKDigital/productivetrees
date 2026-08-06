@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:avocado_sign"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_avocado_planks": {

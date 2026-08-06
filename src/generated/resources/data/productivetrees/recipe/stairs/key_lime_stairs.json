@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:item_exists",
+      "item": "productivetrees:key_lime_stairs"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "group": "stairs",
