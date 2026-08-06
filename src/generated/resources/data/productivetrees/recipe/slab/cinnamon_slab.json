@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:cinnamon_slab"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "group": "slab",

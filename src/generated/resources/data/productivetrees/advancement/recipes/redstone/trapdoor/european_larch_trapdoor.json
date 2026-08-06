@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:european_larch_trapdoor"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_european_larch_planks": {

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:sweetgum_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_sweetgum_planks": {

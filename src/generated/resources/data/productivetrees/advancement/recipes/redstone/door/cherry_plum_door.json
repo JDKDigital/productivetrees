@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:cherry_plum_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_cherry_plum_planks": {

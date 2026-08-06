@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:rubber_tree_fence_gate"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_rubber_tree_planks": {

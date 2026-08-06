@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:european_larch_fence"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "fence",

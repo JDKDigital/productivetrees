@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:peach_trapdoor"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_peach_planks": {

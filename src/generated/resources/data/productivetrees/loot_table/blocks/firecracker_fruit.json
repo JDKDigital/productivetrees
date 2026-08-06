@@ -65,6 +65,30 @@
         }
       ],
       "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "productivetrees:firecracker_fruit",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "age": "7"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "minecraft:firework_rocket"
+        }
+      ],
+      "rolls": 1.0
     }
   ],
   "random_sequence": "productivetrees:blocks/firecracker_fruit"

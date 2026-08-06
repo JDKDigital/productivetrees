@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:olive_fence_gate"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_olive_planks": {

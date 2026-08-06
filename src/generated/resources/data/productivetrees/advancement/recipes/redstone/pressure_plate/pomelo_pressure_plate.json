@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:pomelo_pressure_plate"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_pomelo_planks": {

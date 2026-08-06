@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:red_delicious_apple_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_red_delicious_apple_planks": {

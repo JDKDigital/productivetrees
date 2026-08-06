@@ -1,3 +1,33 @@
+26.1.2-1.2.0
+
+- Added a "minimal" mode (startup config option, off by default) that skips registering the decorative and functional wood blocks - stairs, slabs, fences, fence gates, pressure plates, buttons, doors, trapdoors, bookshelves and signs - for every tree. Logs, wood, planks, leaves, saplings and fruit are always kept. This roughly halves the number of block states the mod adds, lowering RAM usage. It must be set to the same value on the server and every client, as it changes which blocks exist.
+
+
+26.1.2-1.1.2
+
+- Fixed a crash caused by blossom petal particles
+- Added the missing bay leaf pollination recipe (cinnamon + olive)
+- Fixed vanilla oak signs dropping a zebrano sign when broken (wall signs now drop their own wood)
+
+
+26.1.2-1.1.1
+
+- Fruiting leaves now show their growth progress in Jade/Waila tooltips again
+
+
+26.1.2-1.1.0
+
+- Added AgriTech and AgriTech: Evolved compat
+- Pollinated leaves now drop their pollination result no matter how the block is broken
+- Luck now increases the chance of finding rare loot saplings
+
+
+26.1.2-1.0.2
+
+- Fixed JEI tree fruiting recipes failing to register when a fruit item is missing
+- Fixed firecracker fruit item
+
+
 26.1.2-1.0.1
 
 - Added petal particles to deciduous trees

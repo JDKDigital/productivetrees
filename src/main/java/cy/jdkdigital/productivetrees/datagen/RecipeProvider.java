@@ -34,6 +34,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.conditions.RegisteredCondition;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 
 import java.util.Arrays;
@@ -90,7 +91,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 shapedVariant(BlockFamily.Variant.TRAPDOOR, TreeUtil.getBlock(treeObject.getId(), "_trapdoor"), planks);
                 shapedVariant(BlockFamily.Variant.SIGN, TreeUtil.getBlock(treeObject.getId(), "_sign"), planks);
                 hangingSignRecipe(TreeUtil.getBlock(treeObject.getId(), "_hanging_sign"), planks);
-                shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(this.output, ResourceKey.create(Registries.RECIPE, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf")));
+                shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(whenRegistered(TreeUtil.getBlock(treeObject.getId(), "_bookshelf")), ResourceKey.create(Registries.RECIPE, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf")));
             }
             buildSawmillRecipe(treeObject);
         });
@@ -141,6 +142,13 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 .save(this.output, prefixedRecipeKey(pWood, "wood/"));
     }
 
+    // Recipes for the optional decorative/functional wood blocks ship in every build. Gate them on the result
+    // item being registered so they are cleanly skipped (no parse error) when minimal mode leaves it unregistered.
+    // Recipe loading honours neoforge:conditions before resolving the result, so this suppresses the error entirely.
+    private RecipeOutput whenRegistered(ItemLike result) {
+        return this.output.withConditions(new RegisteredCondition<>(ResourceKey.create(Registries.ITEM, BuiltInRegistries.ITEM.getKey(result.asItem()))));
+    }
+
     private void shapedVariant(BlockFamily.Variant variant, ItemLike result, ItemLike plank) {
         Ingredient base = Ingredient.of(plank);
         RecipeBuilder builder = switch (variant) {
@@ -157,11 +165,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider
         };
         builder.group(variant.name().toLowerCase());
         builder.unlockedBy(getHasName(plank), has(plank));
-        builder.save(this.output, prefixedRecipeKey(result, variant.name().toLowerCase() + "/"));
+        builder.save(whenRegistered(result), prefixedRecipeKey(result, variant.name().toLowerCase() + "/"));
     }
 
     private void hangingSignRecipe(ItemLike result, ItemLike plank) {
-        shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', plank).define('X', Items.IRON_CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", has(plank)).save(this.output, prefixedRecipeKey(result, "hanging_sign/"));
+        shaped(RecipeCategory.DECORATIONS, result, 6).group("hanging_sign").define('#', plank).define('X', Items.IRON_CHAIN).pattern("X X").pattern("###").pattern("###").unlockedBy("has_stripped_logs", has(plank)).save(whenRegistered(result), prefixedRecipeKey(result, "hanging_sign/"));
     }
 
     private static ResourceKey<Recipe<?>> recipeKey(String path) {
@@ -354,6 +362,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider
         treeBreeding("pink_ivory", "brazilwood", "rose_gum", 0.1f);
         treeBreeding("juniper", "elderberry", "silver_fir", 0.1f);
         treeBreeding("cinnamon", "rosewood", "teak", 0.1f);
+        treeBreeding("bay_leaf", "cinnamon", "olive", 0.1f);
         treeBreeding("coconut", "brazil_nut", "balsa", 0.1f);
         treeBreeding("cashew", "teak", Blocks.MANGROVE_LEAVES, 0.1f);
         treeBreeding("pistachio", "almond", "cashew", 0.1f);

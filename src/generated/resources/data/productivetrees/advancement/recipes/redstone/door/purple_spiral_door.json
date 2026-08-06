@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:purple_spiral_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_purple_spiral_planks": {

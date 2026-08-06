@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:rippling_willow_fence"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "fence",

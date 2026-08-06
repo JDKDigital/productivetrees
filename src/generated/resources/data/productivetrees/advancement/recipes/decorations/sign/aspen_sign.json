@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:aspen_sign"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_aspen_planks": {

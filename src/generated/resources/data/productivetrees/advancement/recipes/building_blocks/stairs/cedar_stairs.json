@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:cedar_stairs"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_cedar_planks": {

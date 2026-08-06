@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:buddhas_hand_hanging_sign"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_stripped_logs": {

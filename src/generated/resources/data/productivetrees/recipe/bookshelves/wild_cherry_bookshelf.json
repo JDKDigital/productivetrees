@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:wild_cherry_bookshelf"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {

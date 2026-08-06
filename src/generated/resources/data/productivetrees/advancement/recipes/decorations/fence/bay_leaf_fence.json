@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:bay_leaf_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_bay_leaf_planks": {

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:thunder_bolt_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_the_recipe": {

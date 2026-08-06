@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:monkey_puzzle_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_monkey_puzzle_planks": {

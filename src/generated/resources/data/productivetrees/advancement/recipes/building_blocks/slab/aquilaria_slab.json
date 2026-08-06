@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:aquilaria_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_aquilaria_planks": {

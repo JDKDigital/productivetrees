@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:rosewood_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_rosewood_planks": {

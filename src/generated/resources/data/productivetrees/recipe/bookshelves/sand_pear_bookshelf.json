@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:sand_pear_bookshelf"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {

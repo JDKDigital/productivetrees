@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:purple_ipe_fence_gate"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_purple_ipe_planks": {

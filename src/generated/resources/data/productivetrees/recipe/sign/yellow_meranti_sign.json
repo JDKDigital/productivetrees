@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:yellow_meranti_sign"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "sign",

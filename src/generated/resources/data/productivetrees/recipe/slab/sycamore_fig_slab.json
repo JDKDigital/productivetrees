@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:sycamore_fig_slab"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "group": "slab",

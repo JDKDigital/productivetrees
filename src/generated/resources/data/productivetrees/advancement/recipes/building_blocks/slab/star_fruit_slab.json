@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:star_fruit_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_star_fruit_planks": {

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:bay_leaf_bookshelf"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_book": {

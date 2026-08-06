@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "agritechevolved"
+    }
+  ],
+  "type": "agritechevolved:tree",
+  "drops": [
+    {
+      "chance": 1.0,
+      "item": "productivetrees:copoazu_log",
+      "max": 6,
+      "min": 2
+    },
+    {
+      "chance": 0.5,
+      "item": "productivetrees:copoazu_sapling",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "chance": 0.5,
+      "item": "minecraft:stick",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "chance": 0.2,
+      "item": "productivetrees:copoazu",
+      "max": 1,
+      "min": 1
+    }
+  ],
+  "sapling": "productivetrees:copoazu_sapling",
+  "soils": [
+    "#agritechevolved:tree_soils"
+  ]
+}

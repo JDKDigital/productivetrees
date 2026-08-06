@@ -209,6 +209,7 @@
     "fallingLeaves": true
   },
   "black_ember": {
+    "feature": "productivetrees:black_ember",
     "megaFeature": "productivetrees:black_ember_mega",
     "decoration": {
       "lightLevel": 11
@@ -284,7 +285,7 @@
     }
   },
   "brown_amber": {
-    "feature": "productivetrees:null",
+    "feature": "productivetrees:brown_amber",
     "megaFeature": "productivetrees:brown_amber_mega",
     "megaConfiguration": 3,
     "largeMegaFeature": "productivetrees:brown_amber_giga",
@@ -651,6 +652,7 @@
     }
   },
   "firecracker": {
+    "feature": "productivetrees:firecracker",
     "megaFeature": "productivetrees:firecracker_mega",
     "megaConfiguration": 3,
     "colors": {
@@ -662,7 +664,7 @@
       "lightLevel": 11
     },
     "fruit": {
-      "item": "minecraft:firework",
+      "item": "minecraft:firework_rocket",
       "growthSpeed": 0.5,
       "unripeColor": "#8cab05",
       "ripeColor": "#384c00"
@@ -670,6 +672,7 @@
     "fireproof": true
   },
   "flickering_sun": {
+    "feature": "productivetrees:flickering_sun",
     "colors": {
       "leafColor": "#fcbb43",
       "logColor": "#ffdb8b",
@@ -1590,6 +1593,7 @@
     }
   },
   "soul_tree": {
+    "feature": "productivetrees:soul_tree",
     "decoration": {
       "lightLevel": 11
     },
@@ -1806,6 +1810,7 @@
     }
   },
   "blue_yonder": {
+    "feature": "productivetrees:blue_yonder",
     "decoration": {
       "lightLevel": 11
     },

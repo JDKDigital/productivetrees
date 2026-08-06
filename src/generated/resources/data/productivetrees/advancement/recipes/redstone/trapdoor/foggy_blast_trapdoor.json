@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:foggy_blast_trapdoor"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_foggy_blast_planks": {

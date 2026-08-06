@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:star_anise_pressure_plate"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_star_anise_planks": {

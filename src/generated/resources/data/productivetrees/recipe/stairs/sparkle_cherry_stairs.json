@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:sparkle_cherry_stairs"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "group": "stairs",

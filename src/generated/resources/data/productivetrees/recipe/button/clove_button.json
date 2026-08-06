@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:clove_button"
+    }
+  ],
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "group": "button",

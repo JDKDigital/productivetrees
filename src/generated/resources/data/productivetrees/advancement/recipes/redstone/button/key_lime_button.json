@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:key_lime_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_key_lime_planks": {

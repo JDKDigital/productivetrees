@@ -1,5 +1,6 @@
 package cy.jdkdigital.productivetrees.feature.trunkplacers;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
@@ -32,18 +33,22 @@ public class SpiralTrunkPlacer extends TrunkPlacer
     public static final MapCodec<SpiralTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return TrunkPlacerCodecs.trunkPlacerParts(instance).and(instance.group(
                 IntProviders.codec(2, 10).fieldOf("arm_count").forGetter((placer) -> placer.armCount),
-                IntProviders.codec(2, 12).fieldOf("arm_length").forGetter((placer) -> placer.armLength)
+                IntProviders.codec(2, 12).fieldOf("arm_length").forGetter((placer) -> placer.armLength),
+                Codec.intRange(1, 3).fieldOf("trunk_width").forGetter((placer) -> placer.trunkWidth)
         )).apply(instance, SpiralTrunkPlacer::new);
     });
     // eight compass directions; an arm advances through them in order to curve a steady eighth-turn at a time
     private static final int[][] FAN = {{0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1}};
     private final IntProvider armCount;
     private final IntProvider armLength;
+    // side of the square log column at the base — 1 for the regular tree, 2 for the 2x2 mega
+    private final int trunkWidth;
 
-    public SpiralTrunkPlacer(int baseHeight, int heightRandA, int heightRandB, IntProvider armCount, IntProvider armLength) {
+    public SpiralTrunkPlacer(int baseHeight, int heightRandA, int heightRandB, IntProvider armCount, IntProvider armLength, int trunkWidth) {
         super(baseHeight, heightRandA, heightRandB);
         this.armCount = armCount;
         this.armLength = armLength;
+        this.trunkWidth = trunkWidth;
     }
 
     @Override
@@ -55,21 +60,29 @@ public class SpiralTrunkPlacer extends TrunkPlacer
     public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel pLevel, BiConsumer<BlockPos, BlockState> pBlockSetter, RandomSource pRandom, int pFreeTreeHeight, BlockPos pPos, TreeConfiguration pConfig) {
         List<FoliagePlacer.FoliageAttachment> attachments = new ArrayList<>();
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
-        placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, -1, 0), pConfig);
 
-        for (int h = 0; h < pFreeTreeHeight; ++h) {
-            this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, 0, h, 0), pConfig);
+        // a square log column trunkWidth blocks on a side, with dirt seated under every base column
+        for (int dx = 0; dx < this.trunkWidth; ++dx) {
+            for (int dz = 0; dz < this.trunkWidth; ++dz) {
+                placeBelowTrunkBlock(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, -1, dz), pConfig);
+                for (int h = 0; h < pFreeTreeHeight; ++h) {
+                    this.placeLog(pLevel, pBlockSetter, pRandom, mutableBlockPos.setWithOffset(pPos, dx, h, dz), pConfig);
+                }
+            }
         }
 
+        // arms fan out from the middle of the column top
+        int half = this.trunkWidth / 2;
         int arms = this.armCount.sample(pRandom);
         int startFan = pRandom.nextInt(FAN.length);
         int top = pPos.getY() + pFreeTreeHeight - 1;
         for (int i = 0; i < arms; ++i) {
-            int idx = startFan + i * Math.max(1, FAN.length / Math.max(1, arms));
+            // spread the arms evenly across the full eight-direction compass (divide last so they wrap all the way round)
+            int idx = startFan + Math.round((float) (i * FAN.length) / Math.max(1, arms));
             int length = this.armLength.sample(pRandom);
-            int bx = pPos.getX();
+            int bx = pPos.getX() + half;
             int by = top;
-            int bz = pPos.getZ();
+            int bz = pPos.getZ() + half;
             for (int step = 1; step <= length; ++step) {
                 int[] dir = FAN[idx % FAN.length];
                 bx += dir[0];
@@ -84,7 +97,7 @@ public class SpiralTrunkPlacer extends TrunkPlacer
             attachments.add(new FoliagePlacer.FoliageAttachment(new BlockPos(bx, by, bz), 0, false));
         }
 
-        attachments.add(new FoliagePlacer.FoliageAttachment(pPos.above(pFreeTreeHeight), 0, false));
+        attachments.add(new FoliagePlacer.FoliageAttachment(pPos.offset(half, pFreeTreeHeight, half), 0, false));
         return attachments;
     }
 

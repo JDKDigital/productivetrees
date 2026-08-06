@@ -103,7 +103,12 @@ public class ProductiveTreesJeiPlugin implements IModPlugin
         List<TreeFruitingRecipe> fruitingRecipeList = new ArrayList<>();
         TreeFinder.trees.forEach((id, treeObject) -> {
             if (treeObject.hasFruit()) {
-                fruitingRecipeList.add(new TreeFruitingRecipe(Ingredient.of(TreeUtil.getBlock(id, "_sapling")), ItemStackTemplate.fromNonEmptyStack(treeObject.getFruit().getItem().copy())));
+                ItemStack fruit = treeObject.getFruit().getItem().copy();
+                if (!fruit.isEmpty()) {
+                    fruitingRecipeList.add(new TreeFruitingRecipe(Ingredient.of(TreeUtil.getBlock(id, "_sapling")), ItemStackTemplate.fromNonEmptyStack(fruit)));
+                } else if (BuiltInRegistries.ITEM.get(treeObject.getFruit().fruitItem()).isEmpty()) {
+                    ProductiveTrees.LOGGER.warn("Tree {} has unregistered fruit item {}", id, treeObject.getFruit().fruitItem());
+                }
             }
         });
         registration.addRecipes(TREE_FRUITING_TYPE, fruitingRecipeList);

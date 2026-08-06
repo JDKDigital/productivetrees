@@ -413,8 +413,8 @@ public class FeatureProvider implements DataProvider
         return TrunkPlacer.CODEC.encodeStart(JsonOps.INSTANCE, new ParasolTrunkPlacer(height, randA, randB, spokeCount, spokeLength)).getOrThrow();
     }
 
-    private JsonElement createSpiralTrunk(int height, int randA, int randB, IntProvider armCount, IntProvider armLength) {
-        return TrunkPlacer.CODEC.encodeStart(JsonOps.INSTANCE, new SpiralTrunkPlacer(height, randA, randB, armCount, armLength)).getOrThrow();
+    private JsonElement createSpiralTrunk(int height, int randA, int randB, IntProvider armCount, IntProvider armLength, int trunkWidth) {
+        return TrunkPlacer.CODEC.encodeStart(JsonOps.INSTANCE, new SpiralTrunkPlacer(height, randA, randB, armCount, armLength, trunkWidth)).getOrThrow();
     }
 
     private JsonElement createLightningTrunk(int height, int randA, int randB, IntProvider forkCount, IntProvider forkLength) {
@@ -484,6 +484,7 @@ public class FeatureProvider implements DataProvider
         put("almond", MEDIUM_FRUIT_DISTRIBUTION);
         put("avocado", (fruitProvider) -> TreeDecorator.CODEC.encodeStart(JsonOps.INSTANCE, new FruitLeafReplacerDecorator(0.3f, fruitProvider)).getOrThrow());
         put("banana", createDanglerFruitProvider(0.4f, 4));
+        put("brown_amber", createDanglerFruitProvider(0.2f, 5));
         put("grandidiers_baobab", createDanglerFruitProvider(0.3f, 20));
         put("breadfruit", createDanglerFruitProvider(0.25f, 18));
         put("cempedak", createDanglerFruitProvider(0.25f, 15));
@@ -507,6 +508,7 @@ public class FeatureProvider implements DataProvider
         put("avocado", createRoughFoliage(4, 3));
         put("banana", createFrondFoliage(0, 0, UniformInt.of(8, 8), UniformInt.of(3, 4)));
         put("balsam_fir", createConiferFoliage(2, 6, 1));
+        put("brown_amber", createRoughFoliage(3, 3));
         put("bull_pine", createRoughFoliage(2, 2));
         put("red_banana", createFrondFoliage(0, 0, UniformInt.of(8, 8), UniformInt.of(3, 4)));
         put("plantain", createFrondFoliage(0, 0, UniformInt.of(8, 8), UniformInt.of(3, 4), false));
@@ -681,6 +683,7 @@ public class FeatureProvider implements DataProvider
         put("blue_mahoe", createWideTrunk(12, 2, 0, 0, 0.45F, UniformInt.of(6, 8)));
         put("boxwood", createStraightTrunk(3, 4, 0));
         put("brazilwood", createBranchingTrunk(9, 3, 0, UniformInt.of(1, 3), 0.6F, UniformInt.of(2, 3)));
+        put("brown_amber", createBranchingTrunk(7, 2, 0, UniformInt.of(1, 2), 0.5F, UniformInt.of(2, 4)));
         put("bull_pine", createWhorledTrunk(10, 3, 0, 0, 0.15F, UniformInt.of(1, 2)));
         put("butternut", createBranchingTrunk(9, 2, 0, UniformInt.of(1, 3), 0.5F, UniformInt.of(3, 5)));
         put("candlenut", createBranchingTrunk(9, 2, 0, UniformInt.of(1, 3), 0.5F, UniformInt.of(3, 5)));
@@ -784,7 +787,7 @@ public class FeatureProvider implements DataProvider
         put("silver_fir", createStraightTrunk(22, 9, 0));
         put("silver_lime", createStraightTrunk(6, 2, 0));
         put("socotra_dragon", createParasolTrunk(4, 1, 0, UniformInt.of(6, 8), UniformInt.of(2, 3)));
-        put("purple_spiral", createSpiralTrunk(6, 1, 0, UniformInt.of(4, 6), UniformInt.of(4, 5)));
+        put("purple_spiral", createSpiralTrunk(6, 1, 0, UniformInt.of(4, 6), UniformInt.of(4, 5), 1));
         put("soursop", createStraightTrunk(4, 1, 0));
         put("sour_cherry", createBranchingTrunk(3, 2, 0, UniformInt.of(1, 2), 0.5F, UniformInt.of(1, 2)));
         put("foggy_blast", createBranchingTrunk(4, 3, 0, UniformInt.of(1, 3), 0.4F, UniformInt.of(3, 4)));
@@ -920,7 +923,7 @@ public class FeatureProvider implements DataProvider
         put("night_fuchsia", createStuddedTrunk(8, 2, 0, UniformInt.of(3, 5), UniformInt.of(3, 5)));
         put("brazil_nut", createEmergentTrunk(26, 6, 0, 2, 0.4F, UniformInt.of(5, 7), UniformInt.of(6, 8)));
         put("purpleheart", createEmergentTrunk(30, 10, 0, 2, 0.5F, UniformInt.of(5, 7), UniformInt.of(5, 7)));
-        put("purple_spiral", createSpiralTrunk(7, 2, 0, UniformInt.of(5, 7), UniformInt.of(6, 8)));
+        put("purple_spiral", createSpiralTrunk(7, 2, 0, UniformInt.of(5, 7), UniformInt.of(6, 8), 2));
         put("european_larch", createConiferTrunk(26, 4, 0, 0.08F, 9));
         put("yellow_meranti", createEmergentTrunk(72, 14, 0, 2, 0.4F, UniformInt.of(6, 8), UniformInt.of(7, 10)));
         put("western_hemlock", createWideTrunk(56, 12, 0, 2, 0.4F, UniformInt.of(5, 9)));

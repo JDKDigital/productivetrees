@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:pink_ipe_sign"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_pink_ipe_planks": {

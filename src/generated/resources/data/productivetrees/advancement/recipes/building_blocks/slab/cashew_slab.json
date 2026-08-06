@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:cashew_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_cashew_planks": {

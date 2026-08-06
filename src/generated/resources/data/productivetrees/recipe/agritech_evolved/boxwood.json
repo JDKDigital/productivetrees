@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "agritechevolved"
+    }
+  ],
+  "type": "agritechevolved:tree",
+  "drops": [
+    {
+      "chance": 1.0,
+      "item": "productivetrees:boxwood_log",
+      "max": 6,
+      "min": 2
+    },
+    {
+      "chance": 0.5,
+      "item": "productivetrees:boxwood_sapling",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "chance": 0.5,
+      "item": "minecraft:stick",
+      "max": 2,
+      "min": 1
+    }
+  ],
+  "sapling": "productivetrees:boxwood_sapling",
+  "soils": [
+    "#agritechevolved:tree_soils"
+  ]
+}

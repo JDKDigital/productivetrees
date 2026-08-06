@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:soul_tree_fence"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "fence",

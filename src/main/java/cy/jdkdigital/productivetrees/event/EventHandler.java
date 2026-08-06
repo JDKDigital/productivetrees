@@ -7,7 +7,6 @@ import cy.jdkdigital.productivelib.registry.LibItems;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.common.block.ProductiveLogBlock;
 import cy.jdkdigital.productivetrees.common.block.ProductiveSaplingBlock;
-import cy.jdkdigital.productivetrees.common.block.entity.PollinatedLeavesBlockEntity;
 import cy.jdkdigital.productivetrees.integrations.productivebees.CompatHandler;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
@@ -28,13 +27,11 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.ItemAbilities;
-import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.BlockGrowFeatureEvent;
-import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.ArrayList;
@@ -76,15 +73,6 @@ public class EventHandler
             }
             case "upgrade_pollen_sieve" -> {
                 event.addValidBlock(Component.translatable("productivetrees.devices.advanced_beehive"), tPrefix + "advanced_beehive");
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void blockBreak(BreakBlockEvent event) {
-        if (event.getLevel() instanceof Level level && event.getState().is(TreeRegistrator.POLLINATED_LEAVES.get()) && level.getBlockEntity(event.getPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
-            if (!pollinatedLeavesBlockEntity.getResult().isEmpty()) {
-                Block.popResource(level, event.getPos(), pollinatedLeavesBlockEntity.getResult().copy());
             }
         }
     }
@@ -137,17 +125,6 @@ public class EventHandler
             event.accept(LibItems.UPGRADE_TIME.get());
             event.accept(LibItems.UPGRADE_TIME_2.get());
         }
-    }
-
-    @SubscribeEvent
-    public static void dynamicDatapack(AddPackFindersEvent event) {
-//        ProductiveTrees.LOGGER.info("dynamicDatapack");
-//        if (event.getPackType() == PackType.SERVER_DATA) {
-//            event.addRepositorySource(new DataGenPackFinder(event.getPackType()));
-//        }
-//        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-//            event.addRepositorySource(new DataGenPackFinder(event.getPackType()));
-//        }
     }
 
     @SubscribeEvent

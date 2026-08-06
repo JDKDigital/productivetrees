@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:silver_fir_fence"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "fence",

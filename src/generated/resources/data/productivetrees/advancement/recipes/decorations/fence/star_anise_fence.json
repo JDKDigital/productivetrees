@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:star_anise_fence"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_star_anise_planks": {

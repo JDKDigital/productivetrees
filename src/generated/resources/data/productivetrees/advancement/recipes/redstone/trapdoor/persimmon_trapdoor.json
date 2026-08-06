@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:persimmon_trapdoor"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_persimmon_planks": {

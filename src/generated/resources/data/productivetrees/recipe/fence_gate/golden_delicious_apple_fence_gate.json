@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:golden_delicious_apple_fence_gate"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "group": "fence_gate",

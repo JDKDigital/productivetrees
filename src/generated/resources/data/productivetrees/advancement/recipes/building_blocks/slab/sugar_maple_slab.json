@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:sugar_maple_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_sugar_maple_planks": {

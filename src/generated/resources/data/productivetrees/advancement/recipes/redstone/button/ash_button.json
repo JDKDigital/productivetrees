@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:ash_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_ash_planks": {

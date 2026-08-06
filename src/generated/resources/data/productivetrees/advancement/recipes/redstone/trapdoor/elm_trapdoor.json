@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:elm_trapdoor"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_elm_planks": {

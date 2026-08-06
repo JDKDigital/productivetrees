@@ -2,7 +2,10 @@ package cy.jdkdigital.productivetrees.registry;
 
 import cy.jdkdigital.productivelib.common.item.UpgradeItem;
 import cy.jdkdigital.productivelib.common.recipe.TripleOutputRecipe;
+import com.mojang.serialization.MapCodec;
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.common.loot.OptionalBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import cy.jdkdigital.productivetrees.common.block.*;
 import cy.jdkdigital.productivetrees.common.block.entity.*;
 import cy.jdkdigital.productivetrees.common.feature.EntityPlacerDecorator;
@@ -21,8 +24,6 @@ import cy.jdkdigital.productivetrees.common.fluid.MapleSap;
 import cy.jdkdigital.productivetrees.common.fluid.type.MapleSapType;
 import cy.jdkdigital.productivetrees.common.item.PollenItem;
 import cy.jdkdigital.productivetrees.common.item.SaplingBlockItem;
-// TODO: restore datagen wiring once the datagen subsystem is ported to 26.1
-//import cy.jdkdigital.productivetrees.datagen.*;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.ConiferFoliagePlacer;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.PlumeFoliagePlacer;
 import cy.jdkdigital.productivetrees.feature.foliageplacers.BallFoliagePlacer;
@@ -466,10 +467,14 @@ public class TreeRegistrator
                 ProductiveTrees.LOGGER.warn("Unable to register woodtype for " + name + ". Error: " + e.getMessage());
             }
             WoodType finalWoodType = woodType;
+            // OAK_WALL_SIGN/OAK_WALL_HANGING_SIGN carry an explicit loot id pointing at the vanilla standing-sign table,
+            // which ofFullCopy would inherit; point each wall variant at its own wood's standing-sign table instead
+            var signLoot = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "blocks/" + name + "_sign"));
+            var hangingSignLoot = ResourceKey.create(Registries.LOOT_TABLE, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "blocks/" + name + "_hanging_sign"));
             var signBlock = registerBlock(name + "_sign", props -> new ProductiveStandingSignBlock(finalWoodType, props), () -> getProperties(Blocks.OAK_SIGN, noOcclusion, lightLevel), false);
-            var wallSignBlock = registerBlock(name + "_wall_sign", props -> new ProductiveWallSignBlock(finalWoodType, props), () -> getProperties(Blocks.OAK_WALL_SIGN, noOcclusion, lightLevel), false);
+            var wallSignBlock = registerBlock(name + "_wall_sign", props -> new ProductiveWallSignBlock(finalWoodType, props), () -> getProperties(Blocks.OAK_WALL_SIGN, noOcclusion, lightLevel).overrideLootTable(Optional.of(signLoot)), false);
             var hangingSignBlock = registerBlock(name + "_hanging_sign", props -> new ProductiveCeilingHangingSignBlock(finalWoodType, props), () -> getProperties(Blocks.OAK_HANGING_SIGN, noOcclusion, lightLevel), false);
-            var wallHangingSignBlock = registerBlock(name + "_wall_hanging_sign", props -> new ProductiveWallHangingSignBlock(finalWoodType, props), () -> getProperties(Blocks.OAK_WALL_HANGING_SIGN, noOcclusion, lightLevel), false);
+            var wallHangingSignBlock = registerBlock(name + "_wall_hanging_sign", props -> new ProductiveWallHangingSignBlock(finalWoodType, props), () -> getProperties(Blocks.OAK_WALL_HANGING_SIGN, noOcclusion, lightLevel).overrideLootTable(Optional.of(hangingSignLoot)), false);
 
             registerItem(name + "_sign", p -> new SignItem(signBlock.get(), wallSignBlock.get(), p.useBlockDescriptionPrefix()), Item.Properties::new);
             registerItem(name + "_hanging_sign", p -> new HangingSignItem(hangingSignBlock.get(), wallHangingSignBlock.get(), p.useBlockDescriptionPrefix()), Item.Properties::new);
@@ -496,9 +501,16 @@ public class TreeRegistrator
         ProductiveTrees.BLOCKS.addAlias(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_sapling"), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_sapling"));
     }
 
+    public static final DeferredHolder<MapCodec<? extends LootItemCondition>, MapCodec<OptionalBlockStatePropertyCondition>> OPTIONAL_BLOCK_STATE_PROPERTY = ProductiveTrees.LOOT_CONDITIONS.register("optional_block_state_property", () -> OptionalBlockStatePropertyCondition.CODEC);
+
     public static Supplier<BlockEntityType<ProductiveSignBlockEntity>> SIGN_BE;
     public static Supplier<BlockEntityType<ProductiveHangingSignBlockEntity>> HANGING_SIGN_BE;
     public static void registerSignBlockEntities() {
+        // In minimal mode no sign blocks are registered, so there is nothing to build a block entity type from.
+        // A BlockEntityType with zero valid blocks throws, so skip registration entirely (SIGN_BE stays null).
+        if (ProductiveTrees.isMinimal) {
+            return;
+        }
         SIGN_BE = registerBlockEntity("productivetrees_sign", () -> createBlockEntityType(ProductiveSignBlockEntity::new, SIGNS.stream().map(DeferredHolder::get).toList().toArray(new Block[0])));
         HANGING_SIGN_BE = registerBlockEntity("productivetrees_hanging_sign", () -> createBlockEntityType(ProductiveHangingSignBlockEntity::new, HANGING_SIGNS.stream().map(DeferredHolder::get).toList().toArray(new Block[0])));
     }
@@ -551,22 +563,4 @@ public class TreeRegistrator
         }
         return behavior;
     }
-
-    // TODO: restore datagen wiring once the datagen subsystem is ported to 26.1
-//    public static void registerDatagen(DataGenerator generator, CompletableFuture<HolderLookup.Provider> provider) {
-//        PackOutput output = generator.getPackOutput();
-//        generator.addProvider(true, new LanguageProvider(output));
-//
-//        generator.addProvider(true, new ModelProvider(output));
-//
-//        generator.addProvider(true, new LootDataProvider(output, List.of(new LootTableProvider.SubProviderEntry(LootDataProvider.LootProvider::new, LootContextParamSets.BLOCK)), provider));
-//        generator.addProvider(true, new LootModifierProvider(output, provider));
-//        generator.addProvider(true, new FeatureProvider(output));
-//        generator.addProvider(true, new RecipeProvider(output, provider));
-//        generator.addProvider(true, new DataMapProvider(output, provider));
-//
-//        BlockTagProvider blockTags = new BlockTagProvider(output, provider, null);
-//        generator.addProvider(true, blockTags);
-//        generator.addProvider(true, new ItemTagProvider(output, provider, blockTags.contentsGetter(), null));
-//    }
 }

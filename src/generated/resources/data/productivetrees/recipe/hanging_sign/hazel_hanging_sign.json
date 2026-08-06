@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:hazel_hanging_sign"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "hanging_sign",

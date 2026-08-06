@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:firecracker_door"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "group": "door",

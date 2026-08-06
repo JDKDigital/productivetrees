@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:blue_yonder_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_blue_yonder_planks": {

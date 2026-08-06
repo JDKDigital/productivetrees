@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:flowering_crabapple_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_flowering_crabapple_planks": {

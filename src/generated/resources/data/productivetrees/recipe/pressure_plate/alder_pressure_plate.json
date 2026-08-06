@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:alder_pressure_plate"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "group": "pressure_plate",

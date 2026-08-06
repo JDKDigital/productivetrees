@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:sand_pear_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_sand_pear_planks": {

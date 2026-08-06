@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:flickering_sun_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_flickering_sun_planks": {

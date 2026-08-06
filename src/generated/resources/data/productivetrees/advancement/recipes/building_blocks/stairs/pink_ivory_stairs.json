@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:pink_ivory_stairs"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_pink_ivory_planks": {

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:osage_orange_sign"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "sign",

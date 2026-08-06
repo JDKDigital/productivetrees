@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:balsam_fir_sign"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_balsam_fir_planks": {

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:balsa_pressure_plate"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_balsa_planks": {

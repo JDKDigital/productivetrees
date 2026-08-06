@@ -8,10 +8,10 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,10 +19,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.neoforged.neoforge.common.CommonHooks;
 
-public class ProductiveFruitBlock extends ProductiveLeavesBlock
+public class ProductiveFruitBlock extends ProductiveLeavesBlock implements BonemealableBlock
 {
     public ProductiveFruitBlock(Properties properties, TreeObject treeObject) {
         super(properties, treeObject);
@@ -94,19 +93,18 @@ public class ProductiveFruitBlock extends ProductiveLeavesBlock
     }
 
     @Override
-    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if (pStack.is(Items.BONE_MEAL) && !isMaxAge(pState)) {
-            if (!pLevel.isClientSide()) {
-                int i = this.getAge(pState);
-                pLevel.setBlock(pPos, this.getStateForAge(pState, i + 1), 2);
-                if (!pPlayer.isCreative()) {
-                    pStack.shrink(1);
-                }
-            }
-            pPlayer.swing(pHand);
-            return InteractionResult.SUCCESS;
-        }
-        return InteractionResult.TRY_WITH_EMPTY_HAND;
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+        return !isMaxAge(state);
+    }
+
+    @Override
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+        return true;
+    }
+
+    @Override
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+        level.setBlock(pos, this.getStateForAge(state, this.getAge(state) + 1), 2);
     }
 
     @Override

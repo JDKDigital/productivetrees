@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:white_willow_slab"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_the_recipe": {

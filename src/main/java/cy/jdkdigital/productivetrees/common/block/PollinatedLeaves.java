@@ -18,7 +18,11 @@ import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class PollinatedLeaves extends LeavesBlock implements EntityBlock
 {
@@ -63,6 +67,15 @@ public class PollinatedLeaves extends LeavesBlock implements EntityBlock
     @Override
     protected boolean decaying(BlockState blockState) {
         return false;
+    }
+
+    @Override
+    protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+        // the pollination result is stored on the block entity, so drop it directly instead of from a loot table
+        if (params.getOptionalParameter(LootContextParams.BLOCK_ENTITY) instanceof PollinatedLeavesBlockEntity blockEntity && !blockEntity.getResult().isEmpty()) {
+            return List.of(blockEntity.getResult().copy());
+        }
+        return super.getDrops(state, params);
     }
 
     @Override

@@ -41,7 +41,7 @@ public class PetalParticle extends SingleQuadParticle
         this.xo = this.x;
         this.yo = this.y;
         this.zo = this.z;
-        if (this.lifetime-- <= 0) {
+        if (this.age++ >= this.lifetime) {
             this.remove();
         } else {
             this.yd -= 0.04D * this.gravity;

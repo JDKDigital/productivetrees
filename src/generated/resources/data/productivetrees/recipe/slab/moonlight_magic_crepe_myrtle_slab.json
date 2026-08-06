@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:moonlight_magic_crepe_myrtle_slab"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "group": "slab",

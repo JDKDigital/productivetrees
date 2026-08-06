@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:cultivated_pear_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_cultivated_pear_planks": {

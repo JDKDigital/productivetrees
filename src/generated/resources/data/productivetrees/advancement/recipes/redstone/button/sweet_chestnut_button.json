@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:sweet_chestnut_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_sweet_chestnut_planks": {

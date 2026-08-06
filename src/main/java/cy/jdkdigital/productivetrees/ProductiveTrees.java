@@ -6,15 +6,10 @@ import cy.jdkdigital.productivetrees.registry.ClientRegistration;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
 import cy.jdkdigital.productivetrees.registry.TreeRegistrator;
-import net.minecraft.SharedConstants;
-import net.minecraft.util.Util;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.registries.VanillaRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.inventory.MenuType;
@@ -33,6 +28,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.minecraft.world.level.material.Fluid;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.ModContainer;
@@ -44,10 +40,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.slf4j.Logger;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 
 @Mod(ProductiveTrees.MODID)
 public class ProductiveTrees
@@ -71,6 +65,7 @@ public class ProductiveTrees
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(BuiltInRegistries.FEATURE, MODID);
     public static final DeferredRegister<TreeDecoratorType<?>> TREE_DECORATORS = DeferredRegister.create(BuiltInRegistries.TREE_DECORATOR_TYPE, MODID);
     public static final DeferredRegister<MapCodec<? extends LootPoolEntryContainer>> LOOT_POOL_ENTRIES = DeferredRegister.create(Registries.LOOT_POOL_ENTRY_TYPE, MODID);
+    public static final DeferredRegister<MapCodec<? extends LootItemCondition>> LOOT_CONDITIONS = DeferredRegister.create(Registries.LOOT_CONDITION_TYPE, MODID);
     public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(BuiltInRegistries.POINT_OF_INTEREST_TYPE, MODID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
     public static final DeferredRegister<FoliagePlacerType<?>> FOLIAGE_PLACERS = DeferredRegister.create(Registries.FOLIAGE_PLACER_TYPE, MODID);
@@ -80,6 +75,9 @@ public class ProductiveTrees
 
     public ProductiveTrees(IEventBus modEventBus, ModContainer modContainer)
     {
+        modContainer.registerConfig(ModConfig.Type.STARTUP, Config.STARTUP_CONFIG);
+        isMinimal = Config.STARTUP.minimal.get();
+
         TreeFinder.discoverTrees();
 
         BLOCKS.register(modEventBus);
@@ -92,6 +90,7 @@ public class ProductiveTrees
         RECIPE_TYPES.register(modEventBus);
         PARTICLE_TYPES.register(modEventBus);
         LOOT_POOL_ENTRIES.register(modEventBus);
+        LOOT_CONDITIONS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
         FEATURES.register(modEventBus);
         TREE_DECORATORS.register(modEventBus);
@@ -139,28 +138,5 @@ public class ProductiveTrees
         if (block != Blocks.AIR) {
             FLAMMABILITY.put(block, new int[]{encouragement, flammability});
         }
-    }
-
-    // TODO: restore the in-game datagen runner once the datagen subsystem is ported to 26.1
-//    private static DataGenerator generator;
-//    private static void registerDataGen() {
-//        generator = new DataGenerator(TreeFinder.DYNAMIC_RESOURCE_PATH, SharedConstants.getCurrentVersion(), true);
-//        CompletableFuture<HolderLookup.Provider> lookupProvider = CompletableFuture.supplyAsync(VanillaRegistries::createLookup, Util.backgroundExecutor());
-//        TreeRegistrator.registerDatagen(generator, lookupProvider);
-//    }
-
-    static boolean hasGenerated = false;
-    public static void generateData() {
-//        if (!hasGenerated) {
-//            try {
-//                if(generator == null) {
-//                    registerDataGen();
-//                }
-//                generator.run();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            hasGenerated = true;
-//        }
     }
 }

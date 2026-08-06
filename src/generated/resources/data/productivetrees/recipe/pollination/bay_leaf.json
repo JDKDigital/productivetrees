@@ -1,0 +1,9 @@
+{
+  "type": "productivetrees:tree_pollination",
+  "chance": 0.1,
+  "leafA": "productivetrees:cinnamon_leaves",
+  "leafB": "productivetrees:olive_leaves",
+  "result": {
+    "id": "productivetrees:bay_leaf_sapling"
+  }
+}

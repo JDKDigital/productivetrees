@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:black_ember_fence_gate"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_black_ember_planks": {

@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "agritechtwo"
+    }
+  ],
+  "type": "agritechtwo:tree",
+  "drops": [
+    {
+      "chance": 1.0,
+      "item": "productivetrees:blue_yonder_log",
+      "max": 6,
+      "min": 2
+    },
+    {
+      "chance": 0.5,
+      "item": "productivetrees:blue_yonder_sapling",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "chance": 0.5,
+      "item": "minecraft:stick",
+      "max": 2,
+      "min": 1
+    },
+    {
+      "chance": 0.1,
+      "item": "productivetrees:planet_peach",
+      "max": 1,
+      "min": 1
+    }
+  ],
+  "sapling": "productivetrees:blue_yonder_sapling",
+  "soils": [
+    "#agritechtwo:tree_soils"
+  ]
+}

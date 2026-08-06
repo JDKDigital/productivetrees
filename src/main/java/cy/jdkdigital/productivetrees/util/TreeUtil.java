@@ -211,8 +211,7 @@ public class TreeUtil
     }
 
     public static boolean isSpecialTree(Identifier id) {
-        return  id.getPath().equals("cave_dweller") || // gray
-                id.getPath().equals("brown_amber"); // brown
+        return id.getPath().equals("cave_dweller"); // gray, mega-only template tree
     }
 
     public static boolean isTranslucentTree(String name) {

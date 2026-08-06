@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees.datagen;
 
 import cy.jdkdigital.productivetrees.ProductiveTrees;
+import cy.jdkdigital.productivetrees.datagen.compat.AgriTechRecipeProvider;
 import cy.jdkdigital.productivetrees.datagen.compat.CompatLootDataProvider;
 import cy.jdkdigital.productivetrees.datagen.compat.CompatModelProvider;
 import net.minecraft.core.HolderLookup;
@@ -33,6 +34,7 @@ public class ProductiveTreesDataProvider
         generator.addProvider(true, new LootModifierProvider(output, provider));
         generator.addProvider(true, new FeatureProvider(output));
         generator.addProvider(true, new RecipeProvider.Runner(output, provider));
+        generator.addProvider(true, new AgriTechRecipeProvider.Runner(output, provider));
         generator.addProvider(true, new BeeProvider(output, provider));
         generator.addProvider(true, new DataMapProvider(output, provider));
 

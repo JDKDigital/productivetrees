@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:swamp_gum_trapdoor"
+    }
+  ],
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "group": "trapdoor",

@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:rose_gum_sign"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_rose_gum_planks": {

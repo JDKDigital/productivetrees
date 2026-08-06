@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:avocado_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_avocado_planks": {

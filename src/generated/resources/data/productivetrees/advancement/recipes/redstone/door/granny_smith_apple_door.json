@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:granny_smith_apple_door"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_granny_smith_apple_planks": {

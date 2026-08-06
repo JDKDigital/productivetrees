@@ -142,9 +142,16 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
+    // In-dev testing only — present at runtime, not shipped or pulled by dependents.
+    localRuntime "curse.maven:jade-324717:7938398"
+    localRuntime "curse.maven:utilitarian-929559:8216931"  // utilitarian-26.1.2-0.22.0
+
     // Mod-compat dependencies — file IDs resolved against MC 26.1.2 on CurseForge.
+    // AgriTech (mod id "agritechtwo") and its companion AgriTech: Evolved (mod id "agritechevolved").
+    implementation "curse.maven:agritech-1485550:8261458"  // agritechtwo-1.2.2.1+neoforge-mc-26.1.2
+    implementation "curse.maven:agritech-evolved-1287394:8261464"  // agritechevolved-2.1.2.1+neoforge-mc26.1.2
+
     // Re-enable each as the upstream mod publishes a 26.1.2 build and its integration is ported.
-//    implementation "curse.maven:jade-324717:7938398"
 //    implementation "curse.maven:treetap-927874:6026105"  // no 26.1.2
 //    implementation "curse.maven:almost-unified-633823:6014834"  // no 26.1.2
 //    implementation "curse.maven:mekanism-268560:5574951"  // no 26.1.2

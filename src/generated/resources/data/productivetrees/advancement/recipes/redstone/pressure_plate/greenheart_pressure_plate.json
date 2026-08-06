@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:greenheart_pressure_plate"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_greenheart_planks": {

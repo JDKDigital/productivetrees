@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:registered",
+      "value": "productivetrees:pistachio_button"
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_pistachio_planks": {
