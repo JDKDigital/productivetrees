@@ -14,6 +14,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.neoforged.neoforge.gametest.GameTestHolder;
@@ -44,7 +45,53 @@ public class TreeFeatureTests
         for (String tree : bands().keySet()) {
             tests.add(new TestFunction("trees", tree, TEMPLATE, 100, 0L, true, helper -> growAndCheck(helper, tree)));
         }
+        tests.add(new TestFunction("trees", "template_tree_protected_blocks", TEMPLATE, 100, 0L, true,
+                TreeFeatureTests::templateTreePreservesProtectedBlocks));
         return tests;
+    }
+
+    private static void templateTreePreservesProtectedBlocks(GameTestHelper helper) {
+        String tree = "blue_yonder";
+        ServerLevel level = helper.getLevel();
+        ResourceKey<ConfiguredFeature<?, ?>> key = ResourceKey.create(Registries.CONFIGURED_FEATURE,
+                ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, tree));
+        var holder = level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE).get(key);
+        if (holder.isEmpty()) {
+            helper.fail("no configured feature productivetrees:" + tree);
+            return;
+        }
+        ConfiguredFeature<?, ?> feature = holder.get().value();
+        BlockPos origin = helper.absolutePos(new BlockPos(CELL, 1, CELL));
+        long seed = 0xB10E_70ADL;
+
+        clearCell(level, origin);
+        if (!feature.place(level, level.getChunkSource().getGenerator(), RandomSource.create(seed), origin)) {
+            helper.fail(tree + ": unobstructed feature.place() false");
+            return;
+        }
+        BlockPos collisionPos = findTreeBlock(level, origin, tree);
+        if (collisionPos == null) {
+            helper.fail(tree + ": unobstructed template placed no tree blocks");
+            return;
+        }
+
+        for (Block obstruction : List.of(Blocks.BEDROCK, Blocks.REINFORCED_DEEPSLATE, Blocks.BARRIER, Blocks.STONE)) {
+            clearCell(level, origin);
+            level.setBlock(collisionPos, obstruction.defaultBlockState(), 2);
+            if (!feature.place(level, level.getChunkSource().getGenerator(), RandomSource.create(seed), origin)) {
+                helper.fail(tree + ": obstructed feature.place() false for " + BuiltInRegistries.BLOCK.getKey(obstruction));
+                return;
+            }
+            if (!level.getBlockState(collisionPos).is(obstruction)) {
+                helper.fail(BuiltInRegistries.BLOCK.getKey(obstruction) + " was replaced by template tree at " + collisionPos);
+                return;
+            }
+            if (findTreeBlock(level, origin, tree) == null) {
+                helper.fail(tree + ": tree did not grow around " + BuiltInRegistries.BLOCK.getKey(obstruction));
+                return;
+            }
+        }
+        helper.succeed();
     }
 
     private static final int SAMPLES = 5;
@@ -153,6 +200,22 @@ public class TreeFeatureTests
             }
         }
         return anyLog ? new int[]{topLog - origin.getY() + 1, crownRadius, leafCount} : null;
+    }
+
+    private static BlockPos findTreeBlock(ServerLevel level, BlockPos origin, String tree) {
+        BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+        for (int dx = -CELL; dx <= CELL; ++dx) {
+            for (int dz = -CELL; dz <= CELL; ++dz) {
+                for (int dy = 0; dy <= 26; ++dy) {
+                    cursor.set(origin.getX() + dx, origin.getY() + dy, origin.getZ() + dz);
+                    ResourceLocation id = BuiltInRegistries.BLOCK.getKey(level.getBlockState(cursor).getBlock());
+                    if (id.getNamespace().equals(ProductiveTrees.MODID) && id.getPath().startsWith(tree + "_")) {
+                        return cursor.immutable();
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     private static int median(int[] values) {

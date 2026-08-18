@@ -53,7 +53,8 @@ public class TemplateTreeFeature extends Feature<TemplateTreeConfiguration>
         BlockPos pivot = findTrunkBase(template, id).orElseGet(() -> new BlockPos(size.getX() / 2, 0, size.getZ() / 2));
         // Skip structure_void positions
         StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation).setRotationPivot(pivot).setIgnoreEntities(true)
-                .addProcessor(new BlockIgnoreProcessor(List.of(Blocks.STRUCTURE_VOID)));
+                .addProcessor(new BlockIgnoreProcessor(List.of(Blocks.STRUCTURE_VOID)))
+                .addProcessor(TreeReplaceableProcessor.INSTANCE);
         BlockPos placePos = context.origin().offset(-pivot.getX(), 0, -pivot.getZ());
         return template.placeInWorld(level, placePos, placePos, settings, random, Block.UPDATE_CLIENTS);
     }

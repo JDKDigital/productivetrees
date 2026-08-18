@@ -1,6 +1,7 @@
 package cy.jdkdigital.productivetrees;
 
 import com.mojang.logging.LogUtils;
+import cy.jdkdigital.productivetrees.common.feature.TreeReplaceableProcessor;
 import cy.jdkdigital.productivetrees.registry.ClientRegistration;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.util.TreeUtil;
@@ -29,6 +30,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
@@ -39,6 +41,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.slf4j.Logger;
@@ -74,6 +77,9 @@ public class ProductiveTrees
     public static final DeferredRegister<FoliagePlacerType<?>> FOLIAGE_PLACERS = DeferredRegister.create(Registries.FOLIAGE_PLACER_TYPE, MODID);
     public static final DeferredRegister<TrunkPlacerType<?>> TRUNK_PLACERS = DeferredRegister.create(Registries.TRUNK_PLACER_TYPE, MODID);
     public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENTS = DeferredRegister.create(Registries.DATA_COMPONENT_TYPE, MODID);
+    public static final DeferredRegister<StructureProcessorType<?>> STRUCTURE_PROCESSORS = DeferredRegister.create(BuiltInRegistries.STRUCTURE_PROCESSOR, MODID);
+    public static final DeferredHolder<StructureProcessorType<?>, StructureProcessorType<TreeReplaceableProcessor>> TREE_REPLACEABLE_PROCESSOR =
+            STRUCTURE_PROCESSORS.register("tree_replaceable", () -> () -> TreeReplaceableProcessor.CODEC);
     public static boolean isMinimal = false;
 
     public ProductiveTrees(IEventBus modEventBus, ModContainer modContainer)
@@ -103,6 +109,7 @@ public class ProductiveTrees
         FOLIAGE_PLACERS.register(modEventBus);
         TRUNK_PLACERS.register(modEventBus);
         DATA_COMPONENTS.register(modEventBus);
+        STRUCTURE_PROCESSORS.register(modEventBus);
 
         TreeRegistrator.init();
         ClientRegistration.init();
