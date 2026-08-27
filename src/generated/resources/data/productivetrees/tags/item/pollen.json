@@ -1,0 +1,9 @@
+{
+  "values": [
+    "productivetrees:pollen",
+    {
+      "id": "productivefarming:pollen",
+      "required": false
+    }
+  ]
+}

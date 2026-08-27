@@ -68,6 +68,9 @@ public class ItemTagProvider extends BlockTagCopyingItemTagProvider
         var dietProteinsTag = tag(ItemTags.create(Identifier.parse("diet:proteins")));
         var dietIngredientsTag = tag(ItemTags.create(Identifier.parse("diet:ingredients")));
 
+        tag(ModTags.POLLEN).add(TreeRegistrator.POLLEN.get())
+                .add(TagEntry.optionalElement(Identifier.fromNamespaceAndPath("productivefarming", "pollen")));
+
         tag(ModTags.SAWDUST).add(TreeRegistrator.SAWDUST.get());
         tag(ModTags.DUSTS_WOOD).add(TreeRegistrator.SAWDUST.get());
         tag(ModTags.DUSTS).addTag(ModTags.DUSTS_WOOD);

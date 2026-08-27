@@ -1,8 +1,8 @@
 {
   "type": "productivebees:bee_conversion",
   "source": "minecraft:bee",
-  "result": "productivebees:allergy",
-  "item": "productivetrees:pollen",
+  "result": "productivetrees:allergy",
+  "item": "#productivetrees:pollen",
   "chance": 0.1,
   "neoforge:conditions": [
     {
@@ -13,7 +13,7 @@
       "type": "productivelib:lazy",
       "value": {
         "type": "productivebees:bee_exists",
-        "bee": "productivebees:allergy"
+        "bee": "productivetrees:allergy"
       }
     }
   ]
