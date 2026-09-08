@@ -62,7 +62,7 @@ public class CenteredUpwardsBranchingTrunkPlacer extends UpwardsBranchingTrunkPl
             }
 
             if (i == pFreeTreeHeight - 1) {
-                list.add(new FoliagePlacer.FoliageAttachment(mutableBlockPos.set(pPos.getX(), j + 1, pPos.getZ()), 0, false));
+                list.add(new FoliagePlacer.FoliageAttachment(mutableBlockPos.set(pPos.getX(), j + 1, pPos.getZ()).immutable(), 0, false));
             }
         }
 

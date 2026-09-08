@@ -32,7 +32,6 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
     public int tickRate = 10;
     public int recipeTime = 200;
     public int progress = 0;
-    private ItemStack buffer = ItemStack.EMPTY;
 
     public static int SLOT_IN = 0;
     public static int SLOT_OUT = 1;
@@ -102,36 +101,37 @@ public class SawmillBlockEntity extends CapabilityBlockEntity implements MenuPro
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, SawmillBlockEntity blockEntity) {
-        if (++blockEntity.tickCounter % blockEntity.tickRate == 0 && level instanceof ServerLevel serverLevel) {
+        if (++blockEntity.tickCounter % blockEntity.tickRate == 0 && level instanceof ServerLevel) {
             var log = blockEntity.inventoryHandler.getStackInSlot(SLOT_IN);
-            var output = blockEntity.inventoryHandler.getStackInSlot(SLOT_OUT);
-            if (!blockEntity.buffer.isEmpty() && blockEntity.inventoryHandler.insertItem(SLOT_OUT, blockEntity.buffer.copy(), true).isEmpty()) {
-                blockEntity.inventoryHandler.insertItem(SLOT_OUT, blockEntity.buffer.copy(), false);
-                blockEntity.buffer = ItemStack.EMPTY;
-            } else if (!log.isEmpty() && (output.isEmpty() || output.getCount() < output.getMaxStackSize())) {
-                var speedModifier = 1 + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get()) + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME_2.get()) * 2;
-                blockEntity.progress+= blockEntity.tickRate * speedModifier;
-                if (blockEntity.progress >= blockEntity.recipeTime) {
-                    var recipe = TreeUtil.getSawmillRecipe(level, log);
-                    if (recipe != null) {
-                        var leftOver = blockEntity.inventoryHandler.insertItem(SLOT_OUT, recipe.value().output().copy(), false);
-                        if (!leftOver.isEmpty()) {
-                            blockEntity.buffer = leftOver;
-                        }
-                        if (!recipe.value().secondary().isEmpty()) {
-                            var tLeftover = blockEntity.inventoryHandler.insertItem(SLOT_SECONDARY, recipe.value().secondary().copy(), false);
-
-                            if (!recipe.value().tertiary().isEmpty()) {
-                                blockEntity.inventoryHandler.insertItem(SLOT_TERTIARY, recipe.value().tertiary().copy(), false);
-                            } else if(!tLeftover.isEmpty()) {
-                                // Insert secondary output into tertiary slot
-                                blockEntity.inventoryHandler.insertItem(SLOT_TERTIARY, tLeftover, false);
-                            }
-                        }
-                        log.shrink(1);
-                        blockEntity.inventoryHandler.setStackInSlot(SLOT_IN, log);
+            if (log.isEmpty()) {
+                return;
+            }
+            var recipe = TreeUtil.getSawmillRecipe(level, log);
+            if (recipe == null) {
+                return;
+            }
+            var speedModifier = 1 + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME.get()) + blockEntity.getUpgradeCount(LibItems.UPGRADE_TIME_2.get()) * 2;
+            blockEntity.progress += blockEntity.tickRate * speedModifier;
+            if (blockEntity.progress >= blockEntity.recipeTime) {
+                var primary = recipe.value().output();
+                var secondary = recipe.value().secondary();
+                var tertiary = recipe.value().tertiary();
+                boolean fits = blockEntity.inventoryHandler.insertItem(SLOT_OUT, primary.copy(), true).isEmpty()
+                        && (secondary.isEmpty() || blockEntity.inventoryHandler.insertItem(SLOT_SECONDARY, secondary.copy(), true).isEmpty())
+                        && (tertiary.isEmpty() || blockEntity.inventoryHandler.insertItem(SLOT_TERTIARY, tertiary.copy(), true).isEmpty());
+                if (fits) {
+                    blockEntity.inventoryHandler.insertItem(SLOT_OUT, primary.copy(), false);
+                    if (!secondary.isEmpty()) {
+                        blockEntity.inventoryHandler.insertItem(SLOT_SECONDARY, secondary.copy(), false);
                     }
+                    if (!tertiary.isEmpty()) {
+                        blockEntity.inventoryHandler.insertItem(SLOT_TERTIARY, tertiary.copy(), false);
+                    }
+                    log.shrink(1);
+                    blockEntity.inventoryHandler.setStackInSlot(SLOT_IN, log);
                     blockEntity.progress = 0;
+                } else {
+                    blockEntity.progress = blockEntity.recipeTime;
                 }
             }
         }

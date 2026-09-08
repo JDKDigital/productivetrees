@@ -56,8 +56,9 @@ public class PollinatedLeaves extends LeavesBlock implements EntityBlock
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         super.animateTick(pState, pLevel, pPos, pRandom);
-        if (pLevel.isClientSide() && pLevel.getRandom().nextBoolean() && pLevel.getRandom().nextBoolean() && pLevel.getRandom().nextBoolean()) {
-            var hasSpyglass = Minecraft.getInstance().player.getItemInHand(InteractionHand.MAIN_HAND).is(Items.SPYGLASS) || Minecraft.getInstance().player.getItemInHand(InteractionHand.OFF_HAND).is(Items.SPYGLASS);
+        var player = Minecraft.getInstance().player;
+        if (player != null && pLevel.isClientSide() && pLevel.getRandom().nextBoolean() && pLevel.getRandom().nextBoolean() && pLevel.getRandom().nextBoolean()) {
+            var hasSpyglass = player.getItemInHand(InteractionHand.MAIN_HAND).is(Items.SPYGLASS) || player.getItemInHand(InteractionHand.OFF_HAND).is(Items.SPYGLASS);
             if (hasSpyglass) {
                 ParticleUtils.spawnParticleInBlock(pLevel, pPos, 15, ParticleTypes.HAPPY_VILLAGER);
             }
@@ -81,7 +82,7 @@ public class PollinatedLeaves extends LeavesBlock implements EntityBlock
     @Override
     public ItemStack pickupBlock(@Nullable LivingEntity pPlayer, LevelAccessor pLevel, BlockPos pPos, BlockState pState) {
         if (pLevel.getBlockEntity(pPos) instanceof PollinatedLeavesBlockEntity blockEntity) {
-            return blockEntity.getResult();
+            return blockEntity.getResult().copy();
         }
         return ItemStack.EMPTY;
     }

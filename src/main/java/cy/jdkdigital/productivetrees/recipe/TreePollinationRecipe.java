@@ -57,7 +57,7 @@ public class TreePollinationRecipe implements Recipe<RecipeInput>
         if (resultCache == null) {
             resultCache = resultTemplate.create();
         }
-        return resultCache;
+        return resultCache.copy();
     }
 
     @Override

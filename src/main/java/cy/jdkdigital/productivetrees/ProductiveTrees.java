@@ -41,8 +41,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.slf4j.Logger;
 
-import java.util.HashMap;
-import java.util.Map;
 
 @Mod(ProductiveTrees.MODID)
 public class ProductiveTrees
@@ -80,6 +78,7 @@ public class ProductiveTrees
         isMinimal = !DatagenModLoader.isRunningDataGen() && Config.STARTUP.minimal.get();
 
         TreeFinder.discoverTrees();
+        TreeRegistrator.registerAliases();
 
         BLOCKS.register(modEventBus);
         BLOCK_ENTITIES.register(modEventBus);
@@ -114,7 +113,6 @@ public class ProductiveTrees
     private static final String[] FLAMMABLE_LOGS = {"_log", "_wood", "_stripped_log", "_stripped_wood"};
     private static final String[] FLAMMABLE_PRODUCTS = {"_planks", "_stairs", "_slab", "_fence", "_fence_gate", "_door", "_trapdoor", "_pressure_plate", "_button", "_bookshelf"};
 
-    public static final Map<Block, int[]> FLAMMABILITY = new HashMap<>();
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
@@ -137,7 +135,7 @@ public class ProductiveTrees
     private static void setFlammable(Identifier tree, String suffix, int encouragement, int flammability) {
         Block block = TreeUtil.getBlock(tree, suffix);
         if (block != Blocks.AIR) {
-            FLAMMABILITY.put(block, new int[]{encouragement, flammability});
+            ((FireBlock) Blocks.FIRE).setFlammable(block, encouragement, flammability);
         }
     }
 }

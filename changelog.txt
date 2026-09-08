@@ -1,7 +1,10 @@
 26.1.2-1.3.0
 
-- Fixed the allergy bee conversion recipe never loading (it referenced the wrong bee id).
-- The allergy bee conversion now also accepts pollen from Productive Farming.
+- Fixed the allergy bee conversion recipe never loading
+- The allergy bee conversion now also accepts pollen from Productive Farming
+- Advanced beehives and expansion boxes can be crafted again
+- Sawmill no longer voids output when its result slots are full
+- Fixed wooden stairs, slabs, fences, gates, doors, trapdoors, pressure plates, buttons and bookshelves not being flammable
 
 
 26.1.2-1.2.1

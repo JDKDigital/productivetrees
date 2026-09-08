@@ -495,6 +495,9 @@ public class TreeRegistrator
             registerBlock("monkey_puzzle_medium_leaves", props -> new ProductiveBranchLeavesBlock(props, treeObject, 4, true), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
         }
 
+    }
+
+    public static void registerAliases() {
         ProductiveTrees.BLOCKS.addAlias(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_fruit"), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_fruit"));
         ProductiveTrees.BLOCKS.addAlias(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_log"), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_log"));
         ProductiveTrees.BLOCKS.addAlias(Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osange_orange_leaves"), Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "osage_orange_leaves"));

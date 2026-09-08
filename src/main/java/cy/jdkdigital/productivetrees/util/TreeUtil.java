@@ -185,14 +185,19 @@ public class TreeUtil
     }
 
     static Map<String, RecipeHolder<SawmillRecipe>> sawmillRecipeCache = new HashMap<>();
+    static RecipeMap sawmillRecipeCacheSource = null;
     public static RecipeHolder<SawmillRecipe> getSawmillRecipe(Level level, ItemStack stack) {
         if (!stack.isEmpty()) {
+            RecipeMap recipeMap = level instanceof ServerLevel serverLevel ? serverLevel.recipeAccess().recipeMap() : RecipeMapCache.getRecipeMap();
+            if (recipeMap != sawmillRecipeCacheSource) {
+                sawmillRecipeCache.clear();
+                sawmillRecipeCacheSource = recipeMap;
+            }
             var cacheItem = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString() + (!stack.getComponents().isEmpty() ? stack.getComponents().stream().map(TypedDataComponent::toString).reduce((s, s2) -> s + s2) : "");
             if (sawmillRecipeCache.containsKey(cacheItem)) {
                 return sawmillRecipeCache.get(cacheItem);
             }
 
-            RecipeMap recipeMap = level instanceof ServerLevel serverLevel ? serverLevel.recipeAccess().recipeMap() : RecipeMapCache.getRecipeMap();
             var recipes = recipeMap.byType(TreeRegistrator.SAW_MILLLING_TYPE.get());
             for (RecipeHolder<SawmillRecipe> recipe : recipes) {
                 if (recipe.value().input().test(stack)) {
@@ -200,6 +205,7 @@ public class TreeUtil
                     return recipe;
                 }
             }
+            sawmillRecipeCache.put(cacheItem, null);
         }
         return null;
     }
@@ -227,18 +233,22 @@ public class TreeUtil
     }
 
     public static void pollinateLeaves(Level level, BlockPos pos, int distance, boolean isSpecialPollinator, List<BlockState> uniqueLeaves) {
-        List<BlockPos> leaves = BlockPos.betweenClosedStream(pos.offset(-distance, -distance, -distance), pos.offset(distance, distance, distance)).map(BlockPos::immutable).toList();
-        // Build permutation map
         Map<BlockState, BlockPos> leafMap = new HashMap<>();
-        leaves.forEach(blockPos -> {
-            var state = level.getBlockState(blockPos);
-            if (state.is(ModTags.POLLINATABLE) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get()) && !(state.getBlock() instanceof ProductiveFruitBlock)) {
-                leafMap.put(state, blockPos);
-                if (!uniqueLeaves.contains(state)) {
-                    uniqueLeaves.add(state);
+        BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+        for (int x = -distance; x <= distance; x++) {
+            for (int y = -distance; y <= distance; y++) {
+                for (int z = -distance; z <= distance; z++) {
+                    cursor.setWithOffset(pos, x, y, z);
+                    var state = level.getBlockState(cursor);
+                    if (state.is(ModTags.POLLINATABLE) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get()) && !(state.getBlock() instanceof ProductiveFruitBlock)) {
+                        if (!leafMap.containsKey(state)) {
+                            leafMap.put(state, cursor.immutable());
+                            uniqueLeaves.add(state);
+                        }
+                    }
                 }
             }
-        });
+        }
 
         if (!uniqueLeaves.isEmpty()) {
             // Pollinate leaves

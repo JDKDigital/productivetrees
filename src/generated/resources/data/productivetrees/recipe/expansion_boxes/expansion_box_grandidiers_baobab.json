@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivebees"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "expansion_boxes",
+  "key": {
+    "C": "#c:honeycombs",
+    "W": "productivetrees:grandidiers_baobab_planks"
+  },
+  "pattern": [
+    "WWW",
+    "WCW",
+    "WWW"
+  ],
+  "result": {
+    "id": "productivetrees:expansion_box_grandidiers_baobab"
+  }
+}

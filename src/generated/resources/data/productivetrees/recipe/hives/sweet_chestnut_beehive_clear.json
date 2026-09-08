@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivebees"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "hives",
+  "ingredients": [
+    "productivetrees:advanced_sweet_chestnut_beehive"
+  ],
+  "result": {
+    "id": "productivetrees:advanced_sweet_chestnut_beehive"
+  }
+}

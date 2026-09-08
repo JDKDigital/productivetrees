@@ -1,6 +1,6 @@
 {
   "type": "productivetrees:tree_pollination",
-  "chance": 3.0,
+  "chance": 0.3,
   "leafA": "productivetrees:bull_pine_leaves",
   "leafB": "productivetrees:silver_fir_leaves",
   "result": {

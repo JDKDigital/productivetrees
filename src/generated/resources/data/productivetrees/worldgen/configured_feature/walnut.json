@@ -4,7 +4,7 @@
     "decorators": [
       {
         "type": "productivetrees:fruit_leaf_replacer",
-        "density": 0.6,
+        "density": 0.4,
         "fruit_provider": {
           "type": "minecraft:simple_state_provider",
           "state": {

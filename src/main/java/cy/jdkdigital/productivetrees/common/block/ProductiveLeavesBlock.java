@@ -2,7 +2,6 @@ package cy.jdkdigital.productivetrees.common.block;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import cy.jdkdigital.productivetrees.ProductiveTrees;
 import cy.jdkdigital.productivetrees.registry.ClientRegistration;
 import cy.jdkdigital.productivetrees.registry.TreeFinder;
 import cy.jdkdigital.productivetrees.registry.TreeObject;
@@ -16,10 +15,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -37,6 +34,7 @@ public class ProductiveLeavesBlock extends LeavesBlock
             "white_willow", "rippling_willow", "water_wonder");
     // how many connected-leaf steps a leaf may sit from a log before it decays
     private static final int LEAF_REACH = 10;
+    private static final int LEAF_SCAN_BUDGET = 1024;
 
     public static final MapCodec<ProductiveLeavesBlock> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             propertiesCodec(),
@@ -101,6 +99,9 @@ public class ProductiveLeavesBlock extends LeavesBlock
                             if (!visited.add(cursor.asLong())) {
                                 continue;
                             }
+                            if (visited.size() > LEAF_SCAN_BUDGET) {
+                                return true;
+                            }
                             BlockState neighbour = level.getBlockState(cursor);
                             if (neighbour.is(BlockTags.LOGS)) {
                                 return true;
@@ -126,7 +127,11 @@ public class ProductiveLeavesBlock extends LeavesBlock
             BlockPos blockpos = pos.below();
             BlockState blockstate = level.getBlockState(blockpos);
             if (!isFaceFull(blockstate.getCollisionShape(level, blockpos), Direction.UP)) {
-                int leaf = TextColor.parseColor(treeObject.getLeafColor()).result().get().getValue();
+                var parsedColor = TextColor.parseColor(treeObject.getLeafColor()).result();
+                if (parsedColor.isEmpty()) {
+                    return;
+                }
+                int leaf = parsedColor.get().getValue();
                 if (petals) {
                     // blossom trees drift coloured petals instead of leaves
                     var particle = ClientRegistration.PETAL_PARTICLES.get();
@@ -141,17 +146,5 @@ public class ProductiveLeavesBlock extends LeavesBlock
 
     public TreeObject getTree() {
         return treeObject;
-    }
-
-    @Override
-    public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        int[] info = ProductiveTrees.FLAMMABILITY.get(state.getBlock());
-        return info != null ? info[0] : 0;
-    }
-
-    @Override
-    public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        int[] info = ProductiveTrees.FLAMMABILITY.get(state.getBlock());
-        return info != null ? info[1] : 0;
     }
 }

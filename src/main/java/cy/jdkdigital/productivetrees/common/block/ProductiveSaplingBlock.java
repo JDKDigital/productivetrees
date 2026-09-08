@@ -222,6 +222,6 @@ public class ProductiveSaplingBlock extends SaplingBlock
             var biome = level.getBiome(pos);
             return treeObject.getGrowthConditions().biome() == null || treeObject.getGrowthConditions().biome().isEmpty() || treeObject.getGrowthConditions().biome().get().contains(biome);
         }
-        return true;
+        return false;
     }
 }

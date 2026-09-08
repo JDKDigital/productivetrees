@@ -500,7 +500,7 @@ public class FeatureProvider implements DataProvider
         put("hazel", MEDIUM_FRUIT_DISTRIBUTION);
         put("pecan", MEDIUM_FRUIT_DISTRIBUTION);
         put("pistachio", MEDIUM_FRUIT_DISTRIBUTION);
-        put("wallnut", MEDIUM_FRUIT_DISTRIBUTION);
+        put("walnut", MEDIUM_FRUIT_DISTRIBUTION);
     }};
     private final Map<String, JsonElement> foliagePlacers = new HashMap<>() {{
         put("default", createFoliage(2, 3));

@@ -34,6 +34,8 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.conditions.RegisteredCondition;
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient;
 
@@ -94,6 +96,9 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 shaped(RecipeCategory.BUILDING_BLOCKS, TreeUtil.getBlock(treeObject.getId(), "_bookshelf")).define('#', planks).define('X', Items.BOOK).pattern("###").pattern("XXX").pattern("###").unlockedBy("has_book", has(planks)).save(whenRegistered(TreeUtil.getBlock(treeObject.getId(), "_bookshelf")), ResourceKey.create(Registries.RECIPE, treeObject.getId().withPath(p -> "bookshelves/" + p + "_bookshelf")));
             }
             buildSawmillRecipe(treeObject);
+            if (treeObject.getStyle().hiveStyle() != null) {
+                buildHiveRecipes(treeObject);
+            }
         });
         buildCrateRecipes();
 
@@ -140,6 +145,37 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider
                 .define('#', pLog).pattern("##").pattern("##").group("bark")
                 .unlockedBy("has_log", has(pLog))
                 .save(this.output, prefixedRecipeKey(pWood, "wood/"));
+    }
+
+    private void buildHiveRecipes(TreeObject treeObject) {
+        Block hive = BuiltInRegistries.BLOCK.getValue(treeObject.getId().withPath(p -> "advanced_" + p + "_beehive"));
+        Block box = BuiltInRegistries.BLOCK.getValue(treeObject.getId().withPath(p -> "expansion_box_" + p));
+        if (hive == null || hive == Blocks.AIR || box == null || box == Blocks.AIR) {
+            return;
+        }
+        var planks = TreeUtil.getBlock(treeObject.getId(), "_planks");
+        RecipeOutput hiveOutput = this.output.withConditions(new ModLoadedCondition("productivebees"));
+        String hivePath = BuiltInRegistries.BLOCK.getKey(hive).getPath().replace("advanced_", "");
+
+        shaped(RecipeCategory.MISC, hive).group("hives").pattern("WWW").pattern("CHC").pattern("FWS")
+                .define('W', planks)
+                .define('H', tag(cy.jdkdigital.productivebees.init.ModTags.Common.HIVES))
+                .define('C', tag(cy.jdkdigital.productivebees.init.ModTags.Common.HONEYCOMBS))
+                .define('F', tag(cy.jdkdigital.productivebees.init.ModTags.Common.CAMPFIRES))
+                .define('S', tag(Tags.Items.TOOLS_SHEAR))
+                .unlockedBy("has_hive", has(Items.BEEHIVE))
+                .save(hiveOutput, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "hives/" + hivePath)));
+
+        shapeless(RecipeCategory.MISC, hive).group("hives")
+                .requires(hive)
+                .unlockedBy("has_hive", has(Items.BEEHIVE))
+                .save(hiveOutput, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "hives/" + hivePath + "_clear")));
+
+        shaped(RecipeCategory.MISC, box).group("expansion_boxes").pattern("WWW").pattern("WCW").pattern("WWW")
+                .define('W', planks)
+                .define('C', tag(cy.jdkdigital.productivebees.init.ModTags.Common.HONEYCOMBS))
+                .unlockedBy("has_hive", has(Items.BEEHIVE))
+                .save(hiveOutput, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "expansion_boxes/" + BuiltInRegistries.BLOCK.getKey(box).getPath())));
     }
 
     // Recipes for the optional decorative/functional wood blocks ship in every build. Gate them on the result
@@ -307,7 +343,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider
         treeBreeding("plantain", "banana", "teak", 0.1f);
         treeBreeding("butternut", "walnut", "wild_cherry", 0.1f);
         treeBreeding("rowan", "aspen", "alder", 0.1f);
-        treeBreeding("western_hemlock", "bull_pine", "silver_fir", 3);
+        treeBreeding("western_hemlock", "bull_pine", "silver_fir", 0.3f);
         treeBreeding("ash", "silver_lime", Blocks.SPRUCE_LEAVES, 0.1f);
         treeBreeding("alder", "beech", Blocks.BIRCH_LEAVES, 0.1f);
         treeBreeding("beech", Blocks.OAK_LEAVES, Blocks.BIRCH_LEAVES, 0.50f);

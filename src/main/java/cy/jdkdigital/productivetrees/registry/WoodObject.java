@@ -58,7 +58,7 @@ public class WoodObject
     }
 
     public ItemStack getStripDropStack() {
-        return new ItemStack(BuiltInRegistries.ITEM.get(stripDrop.get()).map(Holder::value).orElse(Items.AIR));
+        return stripDrop.map(id -> new ItemStack(BuiltInRegistries.ITEM.get(id).map(Holder::value).orElse(Items.AIR))).orElse(ItemStack.EMPTY);
     }
 
     public record TreeColors(String leafColor, String logColor, String plankColor)

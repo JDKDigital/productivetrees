@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -43,37 +44,38 @@ public class PollenItem extends Item
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
-        if (context.getPlayer() != null) {
-            ItemStack stack = context.getPlayer().getItemInHand(context.getHand());
-            BlockState state = level.getBlockState(context.getClickedPos());
-            if (stack.has(TreeRegistrator.POLLEN_BLOCK_COMPONENT) && state.is(BlockTags.LEAVES) && !state.is(TreeRegistrator.POLLINATED_LEAVES.get())) {
-                Block leafB = BuiltInRegistries.BLOCK.get(stack.get(TreeRegistrator.POLLEN_BLOCK_COMPONENT)).map(Holder::value).orElse(Blocks.AIR);
-                var recipe = RecipeHelper.getPollinationRecipe(level, state, leafB.defaultBlockState());
-                level.setBlock(context.getClickedPos(), TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
-                if (level.getBlockEntity(context.getClickedPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
-                    pollinatedLeavesBlockEntity.setLeafA(state.getBlock());
-                    pollinatedLeavesBlockEntity.setLeafB(leafB);
+        Player player = context.getPlayer();
+        if (player == null) {
+            return super.useOn(context);
+        }
+        ItemStack stack = player.getItemInHand(context.getHand());
+        BlockState state = level.getBlockState(context.getClickedPos());
+        if (!stack.has(TreeRegistrator.POLLEN_BLOCK_COMPONENT) || !state.is(BlockTags.LEAVES) || state.is(TreeRegistrator.POLLINATED_LEAVES.get())) {
+            return super.useOn(context);
+        }
+        if (!level.isClientSide()) {
+            Block leafB = BuiltInRegistries.BLOCK.get(stack.get(TreeRegistrator.POLLEN_BLOCK_COMPONENT)).map(Holder::value).orElse(Blocks.AIR);
+            var recipe = RecipeHelper.getPollinationRecipe(level, state, leafB.defaultBlockState());
+            level.setBlock(context.getClickedPos(), TreeRegistrator.POLLINATED_LEAVES.get().defaultBlockState(), Block.UPDATE_ALL);
+            if (level.getBlockEntity(context.getClickedPos()) instanceof PollinatedLeavesBlockEntity pollinatedLeavesBlockEntity) {
+                pollinatedLeavesBlockEntity.setLeafA(state.getBlock());
+                pollinatedLeavesBlockEntity.setLeafB(leafB);
 
-                    ItemStack result = ItemStack.EMPTY;
-                    Identifier backupItem = level.getRandom().nextBoolean() ? BuiltInRegistries.BLOCK.getKey(state.getBlock()) : stack.get(TreeRegistrator.POLLEN_BLOCK_COMPONENT);
-                    if (recipe == null && backupItem != null) {
-                        var item = BuiltInRegistries.ITEM.get(Identifier.fromNamespaceAndPath(backupItem.getNamespace(), backupItem.getPath().replace("leaves", "sapling"))).map(Holder::value).orElse(Items.AIR);
-                        if (item != null) {
-                            result = new ItemStack(item);
-                        }
-                    } else if (recipe != null){
-                        result = recipe.value().result();
-                    }
-                    pollinatedLeavesBlockEntity.setResult(result);
-                    pollinatedLeavesBlockEntity.setChanged();
-                    if (!context.getPlayer().isCreative()) {
-                        stack.shrink(1);
-                    }
-                    context.getPlayer().swing(context.getHand());
-                    level.levelEvent(2005, context.getClickedPos(), 0);
+                ItemStack result = ItemStack.EMPTY;
+                Identifier backupItem = level.getRandom().nextBoolean() ? BuiltInRegistries.BLOCK.getKey(state.getBlock()) : stack.get(TreeRegistrator.POLLEN_BLOCK_COMPONENT);
+                if (recipe == null && backupItem != null) {
+                    result = new ItemStack(BuiltInRegistries.ITEM.get(Identifier.fromNamespaceAndPath(backupItem.getNamespace(), backupItem.getPath().replace("leaves", "sapling"))).map(Holder::value).orElse(Items.AIR));
+                } else if (recipe != null) {
+                    result = recipe.value().result();
                 }
+                pollinatedLeavesBlockEntity.setResult(result);
+                pollinatedLeavesBlockEntity.setChanged();
+                if (!player.isCreative()) {
+                    stack.shrink(1);
+                }
+                level.levelEvent(2005, context.getClickedPos(), 0);
             }
         }
-        return super.useOn(context);
+        return InteractionResult.SUCCESS;
     }
 }
