@@ -12,6 +12,7 @@ public class ModTags
     public static final TagKey<Block> POLLINATABLE = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "pollinatable"));
     public static final TagKey<Item> POLLINATABLE_ITEM = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "pollinatable"));
     public static final TagKey<Item> STRIPPER_TOOLS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "stripper_tools"));
+    public static final TagKey<Item> STRIPPABLE_LOGS = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "strippable_logs"));
 
     public static final TagKey<Item> POLLEN = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(ProductiveTrees.MODID, "pollen"));
 

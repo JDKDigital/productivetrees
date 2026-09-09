@@ -59,6 +59,8 @@ public class ItemTagProvider extends BlockTagCopyingItemTagProvider
                 .add(TagEntry.optionalElement(Identifier.parse("allthemodium:unobtainium_axe")))
                 .add(TagEntry.optionalElement(Identifier.parse("allthemodium:vibranium_axe")))
                 .add(TagEntry.optionalElement(Identifier.parse("allthemodium:allthemodium_axe")));
+
+        tag(ModTags.STRIPPABLE_LOGS).addTag(ItemTags.LOGS).addTag(ItemTags.BAMBOO_BLOCKS);
         copy(ModTags.POLLINATABLE, ModTags.POLLINATABLE_ITEM);
         copy(BlockTags.create(Identifier.parse("productivebees:advanced_beehives")), ItemTags.create(Identifier.parse("productivebees:advanced_beehives")));
         copy(BlockTags.create(Identifier.parse("productivebees:expansion_boxes")), ItemTags.create(Identifier.parse("productivebees:expansion_boxes")));

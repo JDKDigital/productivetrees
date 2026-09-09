@@ -115,7 +115,7 @@ public class ProductiveTreesJeiPlugin implements IModPlugin
 
         List<LogStrippingRecipe> jsonRecipes = recipeMap.byType(TreeRegistrator.LOG_STRIPPING_TYPE.get()).stream().map(RecipeHolder::value).toList();
         List<LogStrippingRecipe> stripList = new ArrayList<>(jsonRecipes);
-        BuiltInRegistries.ITEM.getTagOrEmpty(ItemTags.LOGS).forEach((Holder<Item> h) -> {
+        BuiltInRegistries.ITEM.getTagOrEmpty(ModTags.STRIPPABLE_LOGS).forEach((Holder<Item> h) -> {
             ItemStack itemStack = new ItemStack(h.value());
             var stripped = TreeUtil.getStrippedItem(itemStack);
             if (!stripped.isEmpty() && !ItemStack.isSameItem(itemStack, stripped)) {

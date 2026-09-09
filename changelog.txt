@@ -1,3 +1,9 @@
+26.1.2-1.3.1
+
+- Structure-based trees no longer overwrite blocks in their way
+- Bamboo blocks can now be stripped in the log stripper
+
+
 26.1.2-1.3.0
 
 - Fixed the allergy bee conversion recipe never loading
