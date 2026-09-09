@@ -6,11 +6,13 @@ import cy.jdkdigital.productivetrees.util.TreeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
@@ -55,7 +57,25 @@ public class TemplateTreeFeature extends Feature<TemplateTreeConfiguration>
         StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation).setRotationPivot(pivot).setIgnoreEntities(true)
                 .addProcessor(new BlockIgnoreProcessor(List.of(Blocks.STRUCTURE_VOID)));
         BlockPos placePos = context.origin().offset(-pivot.getX(), 0, -pivot.getZ());
+        if (isObstructed(level, template, settings, placePos)) {
+            return false;
+        }
         return template.placeInWorld(level, placePos, placePos, settings, random, Block.UPDATE_CLIENTS);
+    }
+
+    private static boolean isObstructed(WorldGenLevel level, StructureTemplate template, StructurePlaceSettings settings, BlockPos placePos) {
+        for (StructureTemplate.StructureBlockInfo info : template.palettes.get(0).blocks()) {
+            if (info.state().is(Blocks.STRUCTURE_VOID)) {
+                continue;
+            }
+            BlockPos worldPos = StructureTemplate.calculateRelativePosition(settings, info.pos()).offset(placePos);
+            BlockState existing = level.getBlockState(worldPos);
+            if (existing.isAir() || existing.is(BlockTags.REPLACEABLE_BY_TREES) || existing.is(BlockTags.SAPLINGS)) {
+                continue;
+            }
+            return true;
+        }
+        return false;
     }
 
     // Centre (x,z at y 0) of the lowest layer of the tree's logs

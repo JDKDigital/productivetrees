@@ -13,6 +13,7 @@ public class ModTags
     public static final TagKey<Block> POLLINATABLE = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "pollinatable"));
     public static final TagKey<Item> POLLINATABLE_ITEM = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "pollinatable"));
     public static final TagKey<Item> STRIPPER_TOOLS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "stripper_tools"));
+    public static final TagKey<Item> STRIPPABLE_LOGS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(ProductiveTrees.MODID, "strippable_logs"));
 
     public static final TagKey<Item> DUSTS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "dusts"));
     public static final TagKey<Item> DUSTS_WOOD = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "dusts/wood"));

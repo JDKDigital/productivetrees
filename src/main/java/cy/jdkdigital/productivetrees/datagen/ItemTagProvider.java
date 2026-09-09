@@ -58,6 +58,8 @@ public class ItemTagProvider extends ItemTagsProvider
                 .addOptional(ResourceLocation.parse("allthemodium:unobtainium_axe"))
                 .addOptional(ResourceLocation.parse("allthemodium:vibranium_axe"))
                 .addOptional(ResourceLocation.parse("allthemodium:allthemodium_axe"));
+
+        tag(ModTags.STRIPPABLE_LOGS).addTag(ItemTags.LOGS).addTag(ItemTags.BAMBOO_BLOCKS);
         copy(ModTags.POLLINATABLE, ModTags.POLLINATABLE_ITEM);
         copy(BlockTags.create(ResourceLocation.parse("productivebees:advanced_beehives")), ItemTags.create(ResourceLocation.parse("productivebees:advanced_beehives")));
         copy(BlockTags.create(ResourceLocation.parse("productivebees:expansion_boxes")), ItemTags.create(ResourceLocation.parse("productivebees:expansion_boxes")));

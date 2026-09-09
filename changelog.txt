@@ -1,3 +1,9 @@
+1.21.1-1.1.1
+
+- Structure-based trees no longer overwrite blocks in their way
+- Bamboo blocks can now be stripped in the log stripper
+
+
 1.21.1-1.1.0
 
 - Added a "minimal" mode (startup config option, off by default) that skips registering the decorative and functional wood blocks - stairs, slabs, fences, fence gates, pressure plates, buttons, doors, trapdoors, bookshelves and signs - for every tree. Logs, wood, planks, leaves, saplings and fruit are always kept. This roughly halves the number of block states the mod adds, lowering RAM usage. It must be set to the same value on the server and every client, as it changes which blocks exist.

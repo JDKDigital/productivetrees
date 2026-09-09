@@ -66,7 +66,7 @@ public class StripperBlockEntity extends CapabilityBlockEntity implements MenuPr
 
         @Override
         public boolean isInputSlotItem(int slot, ItemStack stack) {
-            if ((slot == SLOT_IN && stack.is(ItemTags.LOGS) && canProcess(stack)) || (slot == SLOT_AXE && stack.is(ModTags.STRIPPER_TOOLS))) {
+            if ((slot == SLOT_IN && stack.is(ModTags.STRIPPABLE_LOGS) && canProcess(stack)) || (slot == SLOT_AXE && stack.is(ModTags.STRIPPER_TOOLS))) {
                 var currentOutStack = getStackInSlot(slot);
                 return currentOutStack.isEmpty() || (currentOutStack.getCount() < currentOutStack.getMaxStackSize() && ItemStack.isSameItemSameComponents(stack, currentOutStack));
             }

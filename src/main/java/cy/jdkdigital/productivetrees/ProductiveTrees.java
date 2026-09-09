@@ -38,6 +38,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.attachment.AttachmentType;
+import net.neoforged.neoforge.data.loading.DatagenModLoader;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -81,7 +82,7 @@ public class ProductiveTrees
         // Startup configs are loaded synchronously the moment they are registered, so isMinimal is
         // resolved here before TreeRegistrator.init() decides which blocks to register below.
         modContainer.registerConfig(ModConfig.Type.STARTUP, Config.STARTUP_CONFIG);
-        isMinimal = Config.STARTUP.minimal.get();
+        isMinimal = !DatagenModLoader.isRunningDataGen() && Config.STARTUP.minimal.get();
 
         TreeFinder.discoverTrees();
 
